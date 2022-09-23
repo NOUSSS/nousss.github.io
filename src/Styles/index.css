@@ -16,8 +16,8 @@
     height: 911px;
     width: 1820px;
     background-color: #0066cc;
-    position: fixed;
     margin-left: 10px;
+    position: fixed;
     margin-top: 10px;
     border-radius: 10px;
 }
@@ -32,10 +32,13 @@ h1 span {
     color: orange;
 }
 
+.card {
+    margin-top: 180px;
+}
+
 .saga {
     display: inline;
     margin: 17px;
-    margin-top: 500px;
     max-height: 5px;
 }
 
