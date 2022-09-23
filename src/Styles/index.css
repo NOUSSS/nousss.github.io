@@ -14,7 +14,7 @@
 .container {
     opacity: 90%;
     height: 911px;
-    width: 1724px;
+    width: 1820px;
     background-color: #0066cc;
     position: fixed;
     margin-left: 10px;
@@ -22,12 +22,30 @@
     border-radius: 10px;
 }
 
-.container .title h1 {
+h1 {
     letter-spacing: 5px;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
 }
 
-.container .title h1 span {
+h1 span {
     color: orange;
+}
+
+.saga {
+    display: inline;
+    margin: 17px;
+    margin-top: 500px;
+    max-height: 5px;
+}
+
+.saga img {
+    max-width: 158px;
+    max-height: 440px;
+    border-style: double;
+}
+
+.saga img:hover {
+    transform: scale(1.05);
+    transition: all 0.5s;
 }
