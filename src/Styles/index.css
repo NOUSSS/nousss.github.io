@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+body {
+    font-family: 'Roboto', sans-serif;
+    flex-wrap: wrap;
+}
+
 .background {
     position: absolute;
     left: 0px;
@@ -15,16 +20,15 @@
     opacity: 90%;
     height: 911px;
     width: 1820px;
-    background-color: #0066cc;
-    margin-left: 10px;
-    position: fixed;
-    margin-top: 10px;
+    background-color: #201F1F;
+    margin-left: 32px;
+    margin-top: 20px;
     border-radius: 10px;
+    position: fixed;
 }
 
 h1 {
     letter-spacing: 5px;
-    font-family: 'Roboto', sans-serif;
     margin-left: 20px;
 }
 
@@ -32,8 +36,31 @@ h1 span {
     color: orange;
 }
 
-.card {
+.epText {
+    position: fixed;
+    margin-top: -145px;
+    margin-left: 40%;
+    font-size: 50px;
+    letter-spacing: 12px;
+    text-shadow: black 1px 0 10px;
+}
+
+.epText span {
+    color: orange;
+}
+
+.selectText {
+    max-width: 800px;
+    position: fixed;
+    margin-top: 217px;
+    margin-left: 750px;
+    font-size: 50px;
+    letter-spacing: 8px;
+}
+
+.epCard {
     margin-top: 180px;
+    opacity: 0.5;
 }
 
 .saga {
@@ -43,12 +70,14 @@ h1 span {
 }
 
 .saga img {
-    max-width: 158px;
+    margin-top: -50px;
+    max-width: 138px;
     max-height: 440px;
     border-style: double;
 }
 
 .saga img:hover {
     transform: scale(1.05);
-    transition: all 0.5s;
+    transition: all 0.2s;
+    opacity: 1;
 }
