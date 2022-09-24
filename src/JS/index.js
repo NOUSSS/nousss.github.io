@@ -37,7 +37,7 @@ const call = async function () {
   let i = 10;
 
   for (const e of card) {
-    e.innerHTML = `<a href="../Pages/blank.html"><img style="opacity: 50%;" class="sagaImage" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="../Assets/Saga/Saga${i}.jpeg" /></a>`;
+    e.innerHTML = `<a href="../Pages/Saga/${i}.html"><img style="opacity: 50%;" class="sagaImage" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="../Assets/Saga/Saga${i}.jpeg" /></a>`;
     i--;
   }
 };
@@ -46,7 +46,7 @@ function appear(id) {
   const div = document.getElementsByClassName("selectText")[0];
   const img = document.getElementById(id);
 
-  img.style.opacity = "100%";
+  img.style.opacity = "1";
   div.innerHTML = `Sélection : <br/><span style="color: orange;">${sObj[id].name}</span> (${sObj[id].ep})`;
 }
 
@@ -54,7 +54,7 @@ function disapear(id) {
   const div = document.getElementsByClassName("selectText")[0];
   const img = document.getElementById(id);
 
-  img.style.opacity = "50%";
+  img.style.opacity = "0.5";
   div.innerHTML = `Sélection : <br/><span style="color: orange;">Aucun</span>`;
 }
 
