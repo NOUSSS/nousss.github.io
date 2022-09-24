@@ -60,7 +60,6 @@ h1 span {
 
 .epCard {
     margin-top: 180px;
-    opacity: 0.5;
 }
 
 .saga {
@@ -73,11 +72,9 @@ h1 span {
     margin-top: -50px;
     max-width: 138px;
     max-height: 440px;
-    border-style: double;
 }
 
 .saga img:hover {
     transform: scale(1.05);
     transition: all 0.2s;
-    opacity: 1;
 }
