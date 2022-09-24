@@ -58,23 +58,33 @@ h1 span {
     letter-spacing: 8px;
 }
 
-.epCard {
+.card {
     margin-top: 180px;
 }
 
-.saga {
+.image {
     display: inline;
     margin: 17px;
     max-height: 5px;
 }
 
-.saga img {
+.image img {
     margin-top: -50px;
     max-width: 138px;
     max-height: 440px;
+    cursor: pointer;
 }
 
-.saga img:hover {
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    font-size: 30px;
+    transition: all ease-in-out 0.5s;
+}
+
+.image img:hover {
     transform: scale(1.05);
     transition: all 0.2s;
 }

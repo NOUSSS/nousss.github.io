@@ -32,12 +32,12 @@ const sObj = {
 };
 
 const call = async function () {
-  const card = document.getElementsByClassName("saga");
+  const card = document.getElementsByClassName("image");
 
   let i = 10;
 
   for (const e of card) {
-    e.innerHTML = `<a href="../Pages/Saga/${i}.html"><img style="opacity: 50%;" class="sagaImage" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="../Assets/Saga/Saga${i}.jpeg" /></a>`;
+    e.innerHTML = `<img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onclick="change(id);" onmouseout="disapear(id);" onmouseover="appear(id);" src="../Assets/Saga/Saga${i}.jpeg" />`;
     i--;
   }
 };
@@ -56,6 +56,28 @@ function disapear(id) {
 
   img.style.opacity = "0.5";
   div.innerHTML = `Sélection : <br/><span style="color: orange;">Aucun</span>`;
+}
+
+function change(id) {
+  const title = document.getElementsByClassName("title")[0];
+  title.innerHTML = '<h1><a onclick="restart();"> One Piece <span>Streaming</span></a></h1>';
+
+  const firstText = document.getElementsByClassName("epText")[0];
+  firstText.innerHTML = "Les <span>Arcs</span>";
+
+  const image = document.getElementsByClassName("image");
+  for (const img of image) img.style.display = "none";
+}
+
+function restart() {
+  const title = document.getElementsByClassName("title")[0];
+  title.innerHTML = "<h1>One Piece <span>Streaming</span></h1>";
+
+  const firstText = document.getElementsByClassName("epText")[0];
+  firstText.innerHTML = "Les <span>Sagas</span>";
+
+  const image = document.getElementsByClassName("image");
+  for (const img of image) img.style.display = "";
 }
 
 window.onload = call;
