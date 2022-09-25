@@ -42,7 +42,7 @@ const call = async function () {
   let i = 10;
 
   for (const e of card) {
-    e.innerHTML = `<img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onclick="change(id);" onmouseout="disapear(id);" onmouseover="appear(id);" src="../Assets/Saga/Saga${i}.jpeg" />`;
+    e.innerHTML = `<img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onclick="change(id);" onmouseout="disapear(id);" onmouseover="appear(id);" src="./src/Assets/Saga/Saga${i}.jpeg" />`;
     i--;
   }
 };
