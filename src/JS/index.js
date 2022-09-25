@@ -83,7 +83,7 @@ async function change(id) {
   console.log(sagaTitle);
 
   for (let i = 0; i < sObj[id].arcs; i++) {
-    const file = `../Assets/Arcs/${sagaTitle}/${i + 1}.jpeg`;
+    const file = `./src/Assets/Arcs/${sagaTitle}/${i + 1}.jpeg`;
     cards.innerHTML = `<div><img style="opacity: 50%;" onmouseout="disapear(i + 1);" onmouseover="appear(i + 1);" src="${file}" /></div>`;
   }
 }
