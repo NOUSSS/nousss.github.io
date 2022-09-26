@@ -90,6 +90,12 @@ a:hover {
     transition: all 0.2s;
 }
 
+.title:hover, .selectText:hover, .epText:hover {
+    transition-timing-function: ease-in-out;
+    transition: all 0.3s linear;
+    color: orange;
+}
+
 @media (max-width:768px) {
     .container {
         width:703px;
