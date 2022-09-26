@@ -97,6 +97,34 @@ a:hover {
     }
 }
 
+@media (max-width:1024px) {
+    .epText {
+        margin-left: 31%;
+    }
+
+    .selectText {
+        margin-top: 618px;
+        margin-left: 364px;
+        font-size: 38px;
+    }
+
+    .card {
+        margin-left: 34px;
+        margin-top: 294px;
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .image {
+        padding-bottom: 188px;
+    }
+
+    .container {
+        height: 1256px;
+        width: 957px;
+    }
+}
+
 @media (max-width: 828px) {
     .epText {
         margin-left: 31%;
@@ -123,7 +151,7 @@ a:hover {
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 540px) {
     h1 {
         font-size: 24px;
         margin-top: 14px;
