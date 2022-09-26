@@ -123,7 +123,7 @@ a:hover {
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 460px) {
     h1 {
         font-size: 24px;
         margin-top: 14px;
