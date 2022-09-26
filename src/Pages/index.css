@@ -93,7 +93,7 @@ a:hover {
 @media (max-width:768px) {
     .container {
         width:703px;
-        height: 981px;
+        height: 709px;
     }
 }
 
@@ -149,7 +149,7 @@ a:hover {
 
     .container {
         height: 926px;
-        width: 742px;
+        width: 704px;
     }
 }
 
@@ -164,7 +164,7 @@ a:hover {
         position: relative;
         width: 350px;
         height: 1431px;
-        margin-left: 19px;
+        margin-left: 4px;
     }
 
     .title {
@@ -199,7 +199,7 @@ a:hover {
     .selectText {
         position: fixed;
         margin-top: -9px;
-        margin-left: -17px;
+        margin-left: 5px;
         font-size: 25px;
         letter-spacing: 3px;
     }
