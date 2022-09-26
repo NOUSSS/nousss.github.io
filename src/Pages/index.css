@@ -3,10 +3,11 @@
 body {
     font-family: 'Roboto', sans-serif;
     flex-wrap: wrap;
+    background-color: orange;
 }
 
 .background {
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     z-index: -1;
@@ -88,3 +89,52 @@ a:hover {
     transform: scale(1.05);
     transition: all 0.2s;
 }
+
+@media (max-width:820px) {
+    .epText {
+        margin-left: 31%;
+    }
+
+    .selectText {
+        margin-top: 486px;
+        margin-left: 272px;
+    }
+
+    .card {
+        flex-wrap: wrap;
+    }
+
+    .container {
+        height: 1117px;
+        width: 742px;
+    }
+}
+
+@media (max-width:600px) {
+    h1 {
+        font-size: 24px;
+        margin-top: 14px;
+        position: fixed;
+    }
+
+    .container {
+        position: relative;
+        width: 390px;
+    }
+
+    .background {
+        position: fixed;
+    }
+
+    .epText {
+        margin-top: 68px;
+        margin-left: 25%;
+    }
+
+    .card {
+        padding-bottom: 20px;
+        position: fixed;
+        margin-top: 274px;
+    }
+}
+
