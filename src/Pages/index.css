@@ -139,6 +139,8 @@ a:hover {
     .card {
         flex-wrap: wrap;
         display: flex;
+        margin-top: 190px;
+        margin-left: 5px;
     }
 
     .image {
