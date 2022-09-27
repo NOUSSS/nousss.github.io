@@ -42,7 +42,7 @@ const call = async function () {
   let i = 10;
 
   for (const e of card) {
-    e.innerHTML = `<a href = "./src/Pages/Alabasta/index.html"><img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="./src/Assets/Saga/Saga${i}.jpeg" /></a>`;
+    e.innerHTML = `<a class="imgs" href = "https://nousss.github.io"><img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="./Assets/Saga/Saga${i}.jpeg" /></a>`;
     i--;
   }
 };
@@ -52,7 +52,7 @@ function appear(id) {
   const img = document.getElementById(id);
 
   img.style.opacity = "1";
-  div.innerHTML = `Sélection : <br/><span style="color: orange;">${sObj[id].name}</span> (${sObj[id].ep})`;
+  div.innerHTML = `Sélection : <br/><span style="color: cyan;">${sObj[id].name}</span> (${sObj[id].ep})`;
 }
 
 function disapear(id) {
@@ -60,7 +60,7 @@ function disapear(id) {
   const img = document.getElementById(id);
 
   img.style.opacity = "0.5";
-  div.innerHTML = `Sélection : <br/><span style="color: orange;">Aucun</span>`;
+  div.innerHTML = `Sélection : <br/><span style="color: cyan;">Aucun</span>`;
 }
 
 async function change(id) {

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: cyan;
+}
+
+img {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    filter: blur(15.5px);
+}
+
+.container {
+    position: fixed;
+    width: 90%;
+    height: 90%;
+    margin-left: 80px;
+    margin-top: 40px;
+    background: rgba(36, 36, 36, 0.89);
+    border-radius: 37px;
+}
+
+span {
+    color: cyan;
+}
+
+h1 {
+    color: white;
+    margin-top: 48px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 400;
+    font-size: 121.52px;
+}
+
+.rect {
+    box-sizing: border-box;
+    position: fixed;
+    width: 634px;
+    height: 454px;
+    border: 4px solid #fff;
+    border-radius: 86px;
+    margin-left: 500px;
+}
+
+.saga, .films {
+    position: fixed;
+    font-size: 95px;
+    color: cyan;
+    text-shadow: 6.31541px 11.8414px 8.68369px #000000;   
+    text-decoration: none;
+    background: linear-gradient(to top, white 0%, white 4px, transparent 5px) no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.5s;
+}
+
+.saga {
+    margin-top: 239px;
+    margin-left: 702px;
+}
+
+.films {
+    margin-top: 90px;
+    margin-left: 702px;
+}
+
+.films:hover, .saga:hover {
+    background-size: 100% 100%;
+}

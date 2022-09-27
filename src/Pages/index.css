@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     flex-wrap: wrap;
-    background-color: orange;
+    background-color: cyan;
 }
 
 .background {
@@ -34,7 +34,7 @@ h1 {
 }
 
 h1 span {
-    color: orange;
+    color: cyan;
 }
 
 .epText {
@@ -47,7 +47,7 @@ h1 span {
 }
 
 .epText span {
-    color: orange;
+    color: cyan;
 }
 
 .selectText {
@@ -61,10 +61,13 @@ h1 span {
 
 .card {
     margin-top: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .image {
-    display: inline;
+    padding-bottom: 188px;
     margin: 17px;
     max-height: 5px;
 }
@@ -76,12 +79,11 @@ h1 span {
     cursor: pointer;
 }
 
-a {
+.imgs {
     cursor: pointer;
 }
 
-a:hover {
-    font-size: 30px;
+.imgs:hover {
     transition: all ease-in-out 0.5s;
 }
 
@@ -93,8 +95,28 @@ a:hover {
 .title:hover, .selectText:hover, .epText:hover {
     transition-timing-function: ease-in-out;
     transition: all 0.3s linear;
-    color: orange;
+    color: cyan;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+h1:hover {
+    transition: 0.5s;
+    font-size: 35px;
+}
+
+footer {
+    justify-content: center;
+    margin-top: 13%;
+    display: flex;
+    opacity: 28%;
+    color: white;
+
+}
+
 
 @media (max-width:768px) {
     .container {
