@@ -69,3 +69,50 @@ h1 {
 .films:hover, .saga:hover {
     background-size: 100% 100%;
 }
+
+@media (max-width:1112px) {
+    h1 {
+        font-size: 98.52px
+    }
+
+    .rect {
+        margin-left: 198px;
+    }
+
+    .films, .saga {
+        margin-left: 413px;
+    }
+}
+
+@media (max-width:820px) {
+    .rect {
+        margin-left: 23px;
+    }
+
+    .container {
+        width: 665px;
+        margin-left: 46px;
+    }
+    
+    .films, .saga {
+        margin-left: 224px
+    }
+}
+
+@media (max-width:414px) {
+    h1 {
+        font-size: 50px;
+    }
+    .container {
+        width: 302px
+    }
+    .rect {
+        width: 248px;
+        height: 364px;
+        margin-left: 32px;
+    }
+    .films, .saga {
+        margin-left: 94px;
+        font-size: 52px;
+    }
+}
