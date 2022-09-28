@@ -104,4 +104,6 @@ function restart() {
   document.querySelector("title").textContent = "OPS";
 }
 
+// https://17.mugiwara.xyz/op/saga-${saga}/hd/${op?}-${ep}.mp4
+
 window.onload = call;
