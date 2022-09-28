@@ -23,7 +23,7 @@ body {
     height: 700px;
     background-color: #3b3b3b;
     border-radius: 35px;
-    margin-top: 10%;
+    margin-top: 9%;
     opacity: 0.85;
     transition: transform 1s;
 }
@@ -83,8 +83,8 @@ a:hover { background-size: 100% 100%; }
 
 .title:hover { color: orange; }
 
-@media (max-width: 640px) {
+@media (max-width: 1580px) {
     .container {
-        margin-top: 57px;
+        margin-top: 178px;
     }
 }
