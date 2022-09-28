@@ -19,13 +19,19 @@ body {
 }
 
 .container {
-    width: 499px;
-    height: 554px;
+    width: 500px;
+    height: 700px;
     background-color: #3b3b3b;
     border-radius: 35px;
     margin-top: 10%;
     opacity: 0.85;
     transition: transform 1s;
+}
+
+.citation {
+    transition: 0.5s;
+    font-size: 27px;
+    color: white;
 }
 
 .title {
@@ -47,7 +53,7 @@ span {
 
 .choices {
     font-size: 50px;
-    margin-top: 94px;
+    margin-top: 61px;
     padding-bottom: 5px;
 }
 
@@ -61,7 +67,7 @@ a {
 }
 
 footer p {
-    margin-top: 106px;
+    margin-top: 38px;
     opacity: 80%;
 }
 
