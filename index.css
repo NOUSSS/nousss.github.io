@@ -83,8 +83,8 @@ a:hover { background-size: 100% 100%; }
 
 .title:hover { color: orange; }
 
-@media (max-width: 634px) {
+@media (max-width: 640px) {
     .container {
-        margin-top: 124px;
+        margin-top: 57px;
     }
 }
