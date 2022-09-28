@@ -12,7 +12,7 @@ const citation = [
   "Quoi qu’il arrive, ne perdez jamais espoir face aux adversités du monde qui vous entoure ! Soyez assez forts pour pouvoir rire de tout, ne vous préoccupez pas du regard des autres. – Belmer",
   "Ne pas voir la pourriture de ce monde, est un plaisir uniquement connu des aveugles. – Fujitora",
   "La passion et les rêves sont comme le temps, rien ne peut les arrêter, et il en sera ainsi tant qu’il y aura des hommes prêts à donner un sens au mot « LIBERTE » – Gol D. Roger",
-  "La justice créée par l’humanité ne périra jamais – Sengoku",
+  "La justice crée par l’humanité ne périra jamais – Sengoku",
   "La cuisine est un don de dieu, les épices un don du diable… je crois que c’était un peu trop épicé pour toi – Sanji",
   "Justice vaincra ? Je ne vois pas comment il pourrait en être autrement ! La justice est toujours du côté des vainqueurs ! - Doflamingo",
   "Je ne suis pas né homme pour céder devant la force. - Portgas D. Ace",
@@ -24,11 +24,25 @@ const citation = [
 const call = function () {
   const citationTexte = document.getElementsByClassName("citation")[0];
 
-  citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
+  let cache = [...citation];
+
+  let nowCitation = getNewCitation(cache);
+  citationTexte.innerHTML = getNewCitation(cache);
+
+  cache.splice(cache.indexOf(nowCitation), 1);
 
   setInterval(() => {
-    citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
+    const newCitation = getNewCitation(cache);
+
+    if (cache.length === 1) cache = [...citation];
+    if (cache.includes(newCitation)) cache.splice(cache.indexOf(newCitation), 1);
+
+    citationTexte.innerHTML = newCitation;
   }, 10000);
 };
 
 window.onload = call;
+
+function getNewCitation(a) {
+  return a[Math.floor(Math.random() * a.length)];
+}
