@@ -32,7 +32,6 @@ const call = function () {
 
   setInterval(() => {
     let res = citation[Math.floor(Math.random() * citation.length)];
-    console.log(res);
     citationTexte.innerHTML = res;
   }, 10000);
 };
