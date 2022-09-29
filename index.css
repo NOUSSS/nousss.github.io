@@ -34,6 +34,8 @@ body {
     color: white;
 }
 
+.citation span { color: orange; }
+
 .title {
     letter-spacing: 3px;
     font-size: 20px;
@@ -56,6 +58,7 @@ span {
     margin-top: 61px;
     padding-bottom: 5px;
 }
+
 
 a {
     color: cyan;
