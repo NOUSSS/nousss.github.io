@@ -22,15 +22,13 @@ const citation = [
 
 const call = function () {
   const citationTexte = document.getElementsByClassName("citation")[0];
-  let res = getNewCitation(citation);
+  citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
 
   setInterval(() => {
+    let res = citation[Math.floor(Math.random() * citation.length)];
+    console.log(res);
     citationTexte.innerHTML = res;
   }, 10000);
 };
 
 window.onload = call;
-
-function getNewCitation(a) {
-  return a[Math.floor(Math.random() * a.length)];
-}
