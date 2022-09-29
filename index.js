@@ -26,7 +26,7 @@ const citation = [
   "Je vous pardonne, savez-vous pourquoi? Tout simplement parce que je n'ai jamais fait confiance à personne. - <span>Crocodile</span>",
 ];
 
-const call = function () {
+window.onload = function () {
   const citationTexte = document.getElementsByClassName("citation")[0];
   citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
 
@@ -35,5 +35,3 @@ const call = function () {
     citationTexte.innerHTML = res;
   }, 10000);
 };
-
-window.onload = call;
