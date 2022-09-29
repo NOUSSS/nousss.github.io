@@ -13,7 +13,6 @@ const citation = [
   "Ne pas voir la pourriture de ce monde, est un plaisir uniquement connu des aveugles. – Fujitora",
   "La passion et les rêves sont comme le temps, rien ne peut les arrêter, et il en sera ainsi tant qu’il y aura des hommes prêts à donner un sens au mot « LIBERTE » – Gol D. Roger",
   "La justice crée par l’humanité ne périra jamais – Sengoku",
-  "La cuisine est un don de dieu, les épices un don du diable… je crois que c’était un peu trop épicé pour toi – Sanji",
   "Justice vaincra ? Je ne vois pas comment il pourrait en être autrement ! La justice est toujours du côté des vainqueurs ! - Doflamingo",
   "Je ne suis pas né homme pour céder devant la force. - Portgas D. Ace",
   "Un homme meurt quand il tombe dans l'oubli. - Hiluluk",
