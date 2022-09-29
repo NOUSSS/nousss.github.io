@@ -22,21 +22,10 @@ const citation = [
 
 const call = function () {
   const citationTexte = document.getElementsByClassName("citation")[0];
-
-  let cache = [...citation];
-
-  let nowCitation = getNewCitation(cache);
-  citationTexte.innerHTML = getNewCitation(cache);
-
-  cache.splice(cache.indexOf(nowCitation), 1);
+  let res = getNewCitation(citation);
 
   setInterval(() => {
-    const newCitation = getNewCitation(cache);
-
-    if (cache.length === 1) cache = [...citation];
-    if (cache.includes(newCitation)) cache.splice(cache.indexOf(newCitation), 1);
-
-    citationTexte.innerHTML = newCitation;
+    citationTexte.innerHTML = res;
   }, 10000);
 };
 
