@@ -18,6 +18,12 @@ const citation = [
   "Un homme meurt quand il tombe dans l'oubli. - Hiluluk",
   "Je ne ferai rien que je puisse regretter un jour. - Portgas D. Ace",
   "Quand on a faim, on mange ! - Monkey D. Luffy",
+  "J'ai fait équipe avec vous uniquement parce que nous avions des intérêts communs. - Nami",
+  "A-t-on déjà vu un cuisinier qui ait peur du feu. - Sanji",
+  "Les gradés ne commentent jamais d'erreur. - Morgan",
+  "Sous aucun prétexte je ne pardonnerai à ceux qui s'en prennent à mes amis. - Shanks le roux",
+  "Si vous les avez au bout du fil, dites leur que je ne reçois aucun ordre de personne. - Smoker",
+  "Je vous pardonne, savez-vous pourquoi? Tout simplement parce que je n'ai jamais fait confiance à personne. - Crocodile",
 ];
 
 const call = function () {
