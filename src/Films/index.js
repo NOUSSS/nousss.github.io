@@ -11,7 +11,7 @@ function getFilms() {
       ? (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`)
       : (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`);
 
-    divVideos.innerHTML += `<div><img id="${url}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+    divVideos.innerHTML += `<div><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
   }
 }
 
@@ -32,7 +32,8 @@ const obj = {
   14: "Stampede",
 };
 
-function appearVideo(url) {
+function appearVideo(first) {
+  const [url, i] = first.split(" ");
   const video = document.getElementsByClassName("video")[0];
 
   video.style.display = "";
@@ -44,6 +45,9 @@ function appearVideo(url) {
   const container = document.getElementsByClassName("container")[0];
   container.style.marginTop = "5px;";
 
+  const firstText = document.getElementsByClassName("firstText")[0];
+  firstText.innerHTML = `Film : <span>${obj[i]}</span>`;
+
   const all = document.getElementsByClassName("visible")[0];
   all.style.display = "none";
 
@@ -52,6 +56,9 @@ function appearVideo(url) {
 }
 
 function Reset() {
+  const firstText = document.getElementsByClassName("firstText")[0];
+  firstText.innerHTML = "Les films disponibles.";
+
   const video = document.getElementsByClassName("video")[0];
 
   video.innerHTML = `<img class="cancel" onclick="Reset();" src="src/Assets/Cancel.png" alt="" />`;

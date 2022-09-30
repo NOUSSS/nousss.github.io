@@ -1,67 +1,40 @@
-const sObj = {
-  1: { name: "East Blue", ep: "1 à 61", note: "9,7/10 - C'est le commencement.", arcs: 6 },
-  2: {
-    name: "Alabasta",
-    ep: "62 à 143",
-    note: "9,4/10 - Luffy contre un Grand Corsair (Crocodile).",
-    arcs: 5,
-  },
-  3: {
-    name: "Île céleste",
-    ep: "144 à 206",
-    note: "7/10 - Luffy contre Ener sur une île céleste.",
-    arcs: 2,
-  },
-  4: { name: "Water Seven", ep: "207 à 325", note: "10/10 - Les mugiwara contre le CP9.", arcs: 4 },
-  5: {
-    name: "Thriller Bark",
-    ep: "326 à 389",
-    note: "8/10 - Luffy contre un grand corsair (Moria).",
-    arcs: 1,
-  },
-  6: {
-    name: "Guerre au Sommet",
-    ep: "390 à 516",
-    note: "10/10 - Indescriptible, juste incroyable.",
-    arcs: 4,
-  },
-  7: {
-    name: "Île des Hommes-Poissons",
-    ep: "517 à 574",
-    note: "7/10 - Hommes poissons vs Humain.",
-    arcs: 2,
-  },
-  8: { name: "Dressrosa", ep: "575 à 746", note: "9.5/10 - Luffy contre Doflamingo.", arcs: 2 },
-  9: { name: "Whale Cake Island", ep: "747 à 889", note: "7/10 - ", arcs: 3 },
-  10: { name: "Pays des Wa", ep: "890 à ?", note: "10/10 - Luffy vs Kaido.", arcs: 1 },
-};
-
-const call = async function () {
-  const card = document.getElementsByClassName("image");
-
-  let i = 10;
-
-  for (const e of card) {
-    e.innerHTML = `<a class="imgs" href = "./Pages/Alabasta/index.html"><img style="opacity: 50%;" id="${i}" title="${sObj[i].note}" onmouseout="disapear(id);" onmouseover="appear(id);" src="./Assets/Saga/Saga${i}.jpeg" /></a>`;
-    i--;
-  }
-};
-
-function appear(id) {
-  const div = document.getElementsByClassName("selectText")[0];
-  const img = document.getElementById(id);
-
-  img.style.opacity = "1";
-  div.innerHTML = `Sélection : <br/><span style="color: cyan;">${sObj[id].name}</span> (${sObj[id].ep})`;
-}
-
-function disapear(id) {
-  const div = document.getElementsByClassName("selectText")[0];
-  const img = document.getElementById(id);
-
-  img.style.opacity = "0.5";
-  div.innerHTML = `Sélection : <br/><span style="color: cyan;">Aucun</span>`;
-}
+// const sObj = {
+//   1: { name: "East Blue", ep: "1 à 61", note: "9,7/10 - C'est le commencement.", arcs: 6 },
+//   2: {
+//     name: "Alabasta",
+//     ep: "62 à 143",
+//     note: "9,4/10 - Luffy contre un Grand Corsair (Crocodile).",
+//     arcs: 5,
+//   },
+//   3: {
+//     name: "Île céleste",
+//     ep: "144 à 206",
+//     note: "7/10 - Luffy contre Ener sur une île céleste.",
+//     arcs: 2,
+//   },
+//   4: { name: "Water Seven", ep: "207 à 325", note: "10/10 - Les mugiwara contre le CP9.", arcs: 4 },
+//   5: {
+//     name: "Thriller Bark",
+//     ep: "326 à 389",
+//     note: "8/10 - Luffy contre un grand corsair (Moria).",
+//     arcs: 1,
+//   },
+//   6: {
+//     name: "Guerre au Sommet",
+//     ep: "390 à 516",
+//     note: "10/10 - Indescriptible, juste incroyable.",
+//     arcs: 4,
+//   },
+//   7: {
+//     name: "Île des Hommes-Poissons",
+//     ep: "517 à 574",
+//     note: "7/10 - Hommes poissons vs Humain.",
+//     arcs: 2,
+//   },
+//   8: { name: "Dressrosa", ep: "575 à 746", note: "9.5/10 - Luffy contre Doflamingo.", arcs: 2 },
+//   9: { name: "Whale Cake Island", ep: "747 à 889", note: "7/10 - ", arcs: 3 },
+//   10: { name: "Pays des Wa", ep: "890 à ?", note: "10/10 - Luffy vs Kaido.", arcs: 1 },
+// };
 
 async function change(id) {
   const sagaTitle = sObj[id].name;
@@ -103,7 +76,5 @@ function restart() {
 
   document.querySelector("title").textContent = "OPS";
 }
-
-// https://17.mugiwara.xyz/op/saga-${saga}/hd/${op?}-${ep}.mp4
 
 window.onload = call;

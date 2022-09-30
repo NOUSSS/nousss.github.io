@@ -73,6 +73,8 @@ h1:hover {
     transform: scale(1.1);
 }
 
+.firstText span { color: orange }
+
 span {
     color: orange;
 }
