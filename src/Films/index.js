@@ -2,21 +2,70 @@ window.onload = getFilms;
 
 function getFilms() {
   const divVideos = document.getElementsByClassName("films")[0];
-  const length = 8;
+  const length = 14;
 
   for (let i = 1; i < length; i++) {
-    console.log(i);
     let url;
 
     i > 10
       ? (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`)
       : (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`);
 
-    divVideos.innerHTML += `<img src="src/Assets/Films/${i}.jpg" />`;
+    divVideos.innerHTML += `<div><img id="${url}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
   }
 }
 
 const obj = {
-  1: "One Piece - Le film.",
-  2: "",
+  1: "Le film",
+  2: "L'Aventure de l'Île de l'Horloge",
+  3: "Le Royaume de Chopper, l'Étrange Île des Animaux",
+  4: "L'Aventure sans Issue",
+  5: "La Malédiction de l'Épée Sacrée",
+  6: "Le Baron Omatsuri et l'Île aux Secrets",
+  7: "Le Mecha Géant du Château Karakuri",
+  8: "Les Pirates et la Princesse du Désert",
+  9: "Le Miracle des Cerisiers en Hiver",
+  10: "Strong World.",
+  11: "3D - À la poursuite du chapeau de paille",
+  12: "Z",
+  13: "Gold",
+  14: "Stampede",
 };
+
+function appearVideo(url) {
+  const video = document.getElementsByClassName("video")[0];
+
+  video.style.display = "";
+  video.innerHTML += `<video controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+
+  const films = document.getElementsByClassName("films")[0];
+  films.style.display = "none";
+
+  const container = document.getElementsByClassName("container")[0];
+  container.style.marginTop = "5px;";
+
+  const all = document.getElementsByClassName("visible")[0];
+  all.style.display = "none";
+
+  const cancel = document.getElementsByClassName("cancel")[0];
+  cancel.style.display = "flex";
+}
+
+function Reset() {
+  const video = document.getElementsByClassName("video")[0];
+
+  video.innerHTML = `<img class="cancel" onclick="Reset();" src="src/Assets/Cancel.png" alt="" />`;
+  video.style.display = "none";
+
+  const films = document.getElementsByClassName("films")[0];
+  films.style.display = "";
+
+  const all = document.getElementsByClassName("visible")[0];
+  all.style.display = "";
+
+  const cancel = document.getElementsByClassName("cancel")[0];
+  cancel.style.display = "none";
+
+  const container = document.getElementsByClassName("container")[0];
+  container.style.marginTop = "32px;";
+}

@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap');
 
 body {
-    background-color: #3b3b3b;
+    background-color: #222121;
     display: flex;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     justify-content: center;
+    opacity: 100%;
 }
 
 .background {
@@ -15,25 +16,46 @@ body {
     top: 0;
     filter: blur(10px);
     -webkit-filter: blur(10px);
+    opacity: 0.1;
 }
 
 .container {
-    margin-top: 5px;
-    width: 1313px;
-    height: 809px;
+    width: 1700px;
+    height: auto;
     position: relative;
-    background-color: #3b3b3b;
+    background-color: #333030;
     border-radius: 50px;
-    opacity: 0.8;
-    margin-top: 54px;
+    opacity: 0.88;
+    margin-top: 32px;
+    box-shadow: 0px 0px 20px black;
 }
 
-.films img {
-    width: 101px;
-    margin: 10px;
-    opacity: 0.5;
+.films div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 33px;
+}
+
+.video img {
+    align-items: center;
+    justify-content: center;
+    width: 77px;
+    height: auto;
+    display: none;
+}
+
+.films div img {
+    width: 89px;
+    height: 108px;
     transition: all 0.5s;
-    margin-top: -25px;
+    opacity: 0.5;
+}
+
+.filmText {
+    width: 72px;
+    color: white;
+    margin-left: -82px;
+    margin-top: 21px;
 }
 
 a {
@@ -55,7 +77,7 @@ span {
     color: orange;
 }
 
-p {
+.firstText {
     color: cyan;
     font-size: 50px;
 }
@@ -64,3 +86,15 @@ p {
     opacity: 1;
     transform: scale(1.1);
 }   
+
+@media (max-width: 836px) {
+    video {
+        width: 547px;
+    }
+}
+
+@media (max-width: 574px) {
+    video {
+        width: 300px;
+    }
+}
