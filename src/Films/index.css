@@ -37,8 +37,6 @@ body {
 }
 
 .video img {
-    align-items: center;
-    justify-content: center;
     width: 77px;
     height: auto;
     display: none;
