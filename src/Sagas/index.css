@@ -47,9 +47,9 @@ input {
     box-shadow: 0px 0px 20px black;
 }
 
-.films { overflow-x: auto; }
+.sagas { overflow-x: auto; }
 
-.films div {
+.sagas div {
     display: inline-flex;
     margin: 33px;
 }
@@ -60,7 +60,7 @@ input {
     display: none;
 }
 
-.films div img {
+.sagas div img {
     width: 89px;
     height: 108px;
     transition: all 0.5s;
@@ -100,7 +100,7 @@ span {
     font-size: 50px;
 }
 
-.films img:hover {
+.sagas img:hover {
     opacity: 1;
     transform: scale(1.1);
 }   
