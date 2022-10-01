@@ -40,7 +40,7 @@ function getSagas() {
   const length = 11;
 
   for (let i = 1; i < length; i++) {
-    divSagas.innerHTML += `<div id="${obj[i]}" class="divSagas" ><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+    divSagas.innerHTML += `<div id="${obj[i]}" class="divSagas" ><a href="SagaEpisode.html"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
   }
 }
 
