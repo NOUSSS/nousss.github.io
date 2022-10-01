@@ -1,3 +1,5 @@
+let exportObj = {};
+
 window.onload = function () {
   getSagas();
 
@@ -20,17 +22,14 @@ window.onload = function () {
       let i = 0;
 
       for (const s of sagas) {
-        if (!s.id.toLowerCase().includes(input.value.toLowerCase()))
-          s.style.display = "none";
+        if (!s.id.toLowerCase().includes(input.value.toLowerCase())) s.style.display = "none";
         else i++;
       }
 
       const text = document.getElementsByClassName("findText")[0];
       console.log(i);
       text.innerHTML =
-        i > 1
-          ? `<span>${i}</span> Sagas trouvés.`
-          : `<span>${i}</span> Saga trouvé.`;
+        i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
     }
   });
 };
