@@ -38,7 +38,10 @@ window.onload = function () {
       }
 
       textFind.style.display = "";
-      textFind.innerHTML = `<span>${i}</span> Film trouvé(s).`;
+      textFind.innerHTML =
+        i > 1
+          ? `<span>${i}</span> Films trouvés.`
+          : `<span>${i}</span> Film trouvé.`;
 
       container.style.marginTop = "8px";
     }
