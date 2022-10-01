@@ -80,6 +80,16 @@ const obj = {
   14: "Stampede",
 };
 
+function call(cache, video) {
+  if (cache) {
+    video.pause();
+    cache = false;
+  } else {
+    video.resume();
+    cache = true;
+  }
+}
+
 function appearVideo(first) {
   const [url, i] = first.split(" ");
   const video = document.getElementsByClassName("video")[0];
@@ -91,7 +101,15 @@ function appearVideo(first) {
   findText.style.display = "none";
 
   video.style.display = "";
-  video.innerHTML += `<video controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+  video.innerHTML += `<video class="filmVideo" controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+
+  let cache = false;
+
+  document.addEventListener("keypress", ({ code }) => {
+    if (code === "Space") {
+      call(cache, video);
+    }
+  });
 
   const films = document.getElementsByClassName("films")[0];
   films.style.display = "none";
