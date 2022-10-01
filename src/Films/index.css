@@ -16,7 +16,7 @@ body {
     top: 0;
     filter: blur(10px);
     -webkit-filter: blur(10px);
-    opacity: 0.1;
+    opacity: 0.9;
 }
 
 .container {
@@ -25,14 +25,15 @@ body {
     position: relative;
     background-color: #333030;
     border-radius: 50px;
-    opacity: 0.88;
+    opacity: 0.8;
     margin-top: 32px;
     box-shadow: 0px 0px 20px black;
 }
 
+.films { overflow-x: auto; }
+
 .films div {
     display: inline-flex;
-    flex-wrap: wrap;
     margin: 33px;
 }
 
@@ -96,5 +97,12 @@ span {
 @media (max-width: 574px) {
     video {
         width: 300px;
+    }
+}
+
+@media (max-height: 768px) {
+    .container {
+        margin-top: -130px;
+        transform: scale(0.65);
     }
 }
