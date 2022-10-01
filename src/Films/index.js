@@ -1,12 +1,12 @@
 window.onload = function () {
+  const container = document.getElementsByClassName("container")[0];
+  let cache = container.style.marginTop;
+
   getFilms();
 
   const input = document.querySelector("input");
 
   input.addEventListener("keypress", ({ key }) => {
-    const container = document.getElementsByClassName("container")[0];
-    let cache = container.style.marginTop;
-
     if (key === "Enter") {
       const films = document.getElementsByClassName("divFilm");
 
@@ -26,6 +26,7 @@ window.onload = function () {
       let i = 0;
 
       for (const f of films) {
+        f.style.display = "";
         if (!f.id.toLowerCase().includes(input.value.toLowerCase()))
           f.style.display = "none";
         else {
@@ -80,6 +81,12 @@ function appearVideo(first) {
   const [url, i] = first.split(" ");
   const video = document.getElementsByClassName("video")[0];
 
+  const input = document.querySelector("input");
+  input.style.display = "none";
+
+  const findText = document.getElementsByClassName("findText")[0];
+  findText.style.display = "none";
+
   video.style.display = "";
   video.innerHTML += `<video controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
 
@@ -90,6 +97,8 @@ function appearVideo(first) {
   container.style.marginTop = "5px;";
 
   const firstText = document.getElementsByClassName("firstText")[0];
+
+  firstText.style.display = "";
   firstText.innerHTML = `Film : <span>${obj[i]}</span>`;
 
   const all = document.getElementsByClassName("visible")[0];
@@ -100,6 +109,9 @@ function appearVideo(first) {
 }
 
 function Reset() {
+  const input = document.querySelector("input");
+  input.style.display = "";
+
   const firstText = document.getElementsByClassName("firstText")[0];
   firstText.innerHTML = "Les films disponibles.";
 
