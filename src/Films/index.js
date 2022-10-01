@@ -5,11 +5,14 @@ window.onload = function () {
   getFilms();
 
   const input = document.querySelector("input");
+  const films = document.getElementsByClassName("divFilm");
+
+  let i = 0;
 
   input.addEventListener("keypress", ({ key }) => {
-    if (key === "Enter") {
-      const films = document.getElementsByClassName("divFilm");
+    i++;
 
+    setTimeout(() => {
       if (!input.value) {
         for (const f of films) f.style.display = "";
 
@@ -21,30 +24,33 @@ window.onload = function () {
         return (findText.style.display = "none");
       }
 
-      const textFind = document.getElementsByClassName("findText")[0];
+      let cacheIndex = i;
 
-      let i = 0;
+      setTimeout(() => {
+        if (cacheIndex === i) {
+          const textFind = document.getElementsByClassName("findText")[0];
 
-      for (const f of films) {
-        f.style.display = "";
-        if (!f.id.toLowerCase().includes(input.value.toLowerCase()))
-          f.style.display = "none";
-        else {
-          i++;
+          let i = 0;
 
-          const firstText = document.getElementsByClassName("firstText")[0];
-          firstText.style.display = "none";
+          for (const f of films) {
+            f.style.display = "";
+            if (!f.id.toLowerCase().includes(input.value.toLowerCase())) f.style.display = "none";
+            else {
+              i++;
+
+              const firstText = document.getElementsByClassName("firstText")[0];
+              firstText.style.display = "none";
+            }
+          }
+
+          textFind.style.display = "";
+          textFind.innerHTML =
+            i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
+
+          container.style.marginTop = "8px";
         }
-      }
-
-      textFind.style.display = "";
-      textFind.innerHTML =
-        i > 1
-          ? `<span>${i}</span> Films trouvés.`
-          : `<span>${i}</span> Film trouvé.`;
-
-      container.style.marginTop = "8px";
-    }
+      }, 500);
+    }, 500);
   });
 };
 
@@ -80,16 +86,6 @@ const obj = {
   14: "Stampede",
 };
 
-function call(cache, video) {
-  if (cache) {
-    video.pause();
-    cache = false;
-  } else {
-    video.resume();
-    cache = true;
-  }
-}
-
 function appearVideo(first) {
   const [url, i] = first.split(" ");
   const video = document.getElementsByClassName("video")[0];
@@ -102,14 +98,6 @@ function appearVideo(first) {
 
   video.style.display = "";
   video.innerHTML += `<video class="filmVideo" controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
-
-  let cache = false;
-
-  document.addEventListener("keypress", ({ code }) => {
-    if (code === "Space") {
-      call(cache, video);
-    }
-  });
 
   const films = document.getElementsByClassName("films")[0];
   films.style.display = "none";
@@ -152,4 +140,12 @@ function Reset() {
 
   const container = document.getElementsByClassName("container")[0];
   container.style.marginTop = "32px;";
+
+  const divFilms = document.getElementsByClassName("divFilm");
+
+  for (const f of divFilms) f.style.display = "";
+
+  const findText = document.getElementsByClassName("findText")[0];
+  firstText.style.display = "";
+  return (findText.style.display = "none");
 }
