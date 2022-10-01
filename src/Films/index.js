@@ -1,4 +1,48 @@
-window.onload = getFilms;
+window.onload = function () {
+  getFilms();
+
+  const input = document.querySelector("input");
+
+  input.addEventListener("keypress", ({ key }) => {
+    const container = document.getElementsByClassName("container")[0];
+    let cache = container.style.marginTop;
+
+    if (key === "Enter") {
+      const films = document.getElementsByClassName("divFilm");
+
+      if (!input.value) {
+        for (const f of films) f.style.display = "";
+
+        const firstText = document.getElementsByClassName("firstText")[0];
+        const findText = document.getElementsByClassName("findText")[0];
+
+        firstText.style.display = "";
+        container.style.marginTop = cache;
+        return (findText.style.display = "none");
+      }
+
+      const textFind = document.getElementsByClassName("findText")[0];
+
+      let i = 0;
+
+      for (const f of films) {
+        if (!f.id.toLowerCase().includes(input.value.toLowerCase()))
+          f.style.display = "none";
+        else {
+          i++;
+
+          const firstText = document.getElementsByClassName("firstText")[0];
+          firstText.style.display = "none";
+        }
+      }
+
+      textFind.style.display = "";
+      textFind.innerHTML = `<span>${i}</span> Film trouvé(s).`;
+
+      container.style.marginTop = "8px";
+    }
+  });
+};
 
 function getFilms() {
   const divVideos = document.getElementsByClassName("films")[0];
@@ -11,7 +55,7 @@ function getFilms() {
       ? (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`)
       : (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`);
 
-    divVideos.innerHTML += `<div><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+    divVideos.innerHTML += `<div id="${obj[i]}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
   }
 }
 

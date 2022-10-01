@@ -9,6 +9,23 @@ body {
     opacity: 100%;
 }
 
+input {
+    border: none;
+    height: 29px;
+    justify-content: left;
+    text-align: left;
+}
+
+.findText {
+    color: white;
+    margin: 25px;
+    font-size: 36px;
+}
+
+.findText span {
+    color: orange;
+}
+
 .background {
     position: fixed;
     width: 100%;
