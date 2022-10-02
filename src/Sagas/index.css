@@ -95,6 +95,10 @@ span {
     color: orange;
 }
 
+footer p {
+    opacity: 59%;
+}
+
 .firstText {
     color: cyan;
     font-size: 50px;

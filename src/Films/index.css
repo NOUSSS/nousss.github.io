@@ -110,6 +110,11 @@ span {
     font-size: 50px;
 }
 
+footer p {
+    opacity: 59%;
+    color: black;
+}
+
 .films img:hover {
     opacity: 1;
     transform: scale(1.1);

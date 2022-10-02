@@ -1,1 +1,153 @@
-var _0xf875=["\x6F\x6E\x6C\x6F\x61\x64","\x42\x6F\x6E\x6A\x6F\x75\x72\x2C\x20\x70\x6F\x75\x72\x72\x61\x69\x73\x2D\x6A\x65\x20\x73\x61\x76\x6F\x69\x72\x20\x63\x65\x20\x71\x75\x65\x20\x74\x75\x20\x65\x73\x73\x61\x69\x65\x73\x20\x64\x65\x20\x66\x61\x69\x72\x65\x20\x6C\xE0\x20\x3F","\x6C\x6F\x67","\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x6D\x61\x72\x67\x69\x6E\x54\x6F\x70","\x73\x74\x79\x6C\x65","\x69\x6E\x70\x75\x74","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x64\x69\x76\x46\x69\x6C\x6D","\x6B\x65\x79\x70\x72\x65\x73\x73","\x76\x61\x6C\x75\x65","\x64\x69\x73\x70\x6C\x61\x79","","\x66\x69\x72\x73\x74\x54\x65\x78\x74","\x66\x69\x6E\x64\x54\x65\x78\x74","\x6E\x6F\x6E\x65","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x69\x6E\x63\x6C\x75\x64\x65\x73","\x69\x64","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x3C\x73\x70\x61\x6E\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E\x20\x46\x69\x6C\x6D\x73\x20\x74\x72\x6F\x75\x76\xE9\x73\x2E","\x3C\x2F\x73\x70\x61\x6E\x3E\x20\x46\x69\x6C\x6D\x20\x74\x72\x6F\x75\x76\xE9\x2E","\x38\x70\x78","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x66\x69\x6C\x6D\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x31\x34\x2E\x6D\x75\x67\x69\x77\x61\x72\x61\x2E\x78\x79\x7A\x2F\x6F\x70\x2F\x66\x69\x6C\x6D\x73\x2F\x68\x64\x2F\x6F\x6E\x65\x2D\x70\x69\x65\x63\x65\x2D\x66\x69\x6C\x6D","\x2E\x6D\x70\x34","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x31\x34\x2E\x6D\x75\x67\x69\x77\x61\x72\x61\x2E\x78\x79\x7A\x2F\x6F\x70\x2F\x66\x69\x6C\x6D\x73\x2F\x6F\x6E\x65\x2D\x70\x69\x65\x63\x65\x2D\x66\x69\x6C\x6D","\x3C\x64\x69\x76\x20\x69\x64\x3D\x22","\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x64\x69\x76\x46\x69\x6C\x6D\x22\x20\x3E\x3C\x69\x6D\x67\x20\x69\x64\x3D\x22","\x20","\x22\x20\x6F\x6E\x63\x6C\x69\x63\x6B\x3D\x22\x61\x70\x70\x65\x61\x72\x56\x69\x64\x65\x6F\x28\x69\x64\x29\x22\x73\x72\x63\x3D\x22\x73\x72\x63\x2F\x41\x73\x73\x65\x74\x73\x2F\x46\x69\x6C\x6D\x73\x2F","\x2E\x6A\x70\x67\x22\x20\x2F\x3E\x3C\x70\x20\x63\x6C\x61\x73\x73\x3D\x22\x66\x69\x6C\x6D\x54\x65\x78\x74\x22\x20\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E","\x3C\x2F\x70\x3E\x3C\x2F\x64\x69\x76\x3E","\x4C\x65\x20\x66\x69\x6C\x6D","\x4C\x27\x41\x76\x65\x6E\x74\x75\x72\x65\x20\x64\x65\x20\x6C\x27\xCE\x6C\x65\x20\x64\x65\x20\x6C\x27\x48\x6F\x72\x6C\x6F\x67\x65","\x4C\x65\x20\x52\x6F\x79\x61\x75\x6D\x65\x20\x64\x65\x20\x43\x68\x6F\x70\x70\x65\x72\x2C\x20\x6C\x27\xC9\x74\x72\x61\x6E\x67\x65\x20\xCE\x6C\x65\x20\x64\x65\x73\x20\x41\x6E\x69\x6D\x61\x75\x78","\x4C\x27\x41\x76\x65\x6E\x74\x75\x72\x65\x20\x73\x61\x6E\x73\x20\x49\x73\x73\x75\x65","\x4C\x61\x20\x4D\x61\x6C\xE9\x64\x69\x63\x74\x69\x6F\x6E\x20\x64\x65\x20\x6C\x27\xC9\x70\xE9\x65\x20\x53\x61\x63\x72\xE9\x65","\x4C\x65\x20\x42\x61\x72\x6F\x6E\x20\x4F\x6D\x61\x74\x73\x75\x72\x69\x20\x65\x74\x20\x6C\x27\xCE\x6C\x65\x20\x61\x75\x78\x20\x53\x65\x63\x72\x65\x74\x73","\x4C\x65\x20\x4D\x65\x63\x68\x61\x20\x47\xE9\x61\x6E\x74\x20\x64\x75\x20\x43\x68\xE2\x74\x65\x61\x75\x20\x4B\x61\x72\x61\x6B\x75\x72\x69","\x4C\x65\x73\x20\x50\x69\x72\x61\x74\x65\x73\x20\x65\x74\x20\x6C\x61\x20\x50\x72\x69\x6E\x63\x65\x73\x73\x65\x20\x64\x75\x20\x44\xE9\x73\x65\x72\x74","\x4C\x65\x20\x4D\x69\x72\x61\x63\x6C\x65\x20\x64\x65\x73\x20\x43\x65\x72\x69\x73\x69\x65\x72\x73\x20\x65\x6E\x20\x48\x69\x76\x65\x72","\x53\x74\x72\x6F\x6E\x67\x20\x57\x6F\x72\x6C\x64\x2E","\x33\x44\x20\x2D\x20\xC0\x20\x6C\x61\x20\x70\x6F\x75\x72\x73\x75\x69\x74\x65\x20\x64\x75\x20\x63\x68\x61\x70\x65\x61\x75\x20\x64\x65\x20\x70\x61\x69\x6C\x6C\x65","\x5A","\x47\x6F\x6C\x64","\x53\x74\x61\x6D\x70\x65\x64\x65","\x73\x70\x6C\x69\x74","\x76\x69\x64\x65\x6F","\x3C\x76\x69\x64\x65\x6F\x20\x63\x6C\x61\x73\x73\x3D\x22\x66\x69\x6C\x6D\x56\x69\x64\x65\x6F\x22\x20\x63\x6F\x6E\x74\x72\x6F\x6C\x73\x3D\x22\x63\x6F\x6E\x74\x72\x6F\x6C\x73\x22\x20\x61\x75\x74\x6F\x70\x6C\x61\x79\x20\x77\x69\x64\x74\x68\x3D\x22\x38\x30\x30\x22\x20\x68\x65\x69\x67\x68\x74\x3D\x22\x61\x75\x74\x6F\x22\x3E\x3C\x73\x6F\x75\x72\x63\x65\x20\x73\x72\x63\x3D\x22","\x22\x20\x74\x79\x70\x65\x3D\x22\x76\x69\x64\x65\x6F\x2F\x6D\x70\x34\x22\x3E\x3C\x2F\x76\x69\x64\x65\x6F\x3E","\x35\x70\x78\x3B","\x46\x69\x6C\x6D\x20\x3A\x20\x3C\x73\x70\x61\x6E\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E","\x76\x69\x73\x69\x62\x6C\x65","\x61\x72\x72\x6F\x77","\x66\x6C\x65\x78","\x4C\x65\x73\x20\x66\x69\x6C\x6D\x73\x20\x64\x69\x73\x70\x6F\x6E\x69\x62\x6C\x65\x73\x2E","\x3C\x69\x6D\x67\x20\x63\x6C\x61\x73\x73\x3D\x22\x61\x72\x72\x6F\x77\x22\x20\x6F\x6E\x63\x6C\x69\x63\x6B\x3D\x22\x52\x65\x73\x65\x74\x28\x29\x3B\x22\x20\x73\x72\x63\x3D\x22\x73\x72\x63\x2F\x41\x73\x73\x65\x74\x73\x2F\x41\x72\x72\x6F\x77\x2E\x70\x6E\x67\x22\x20\x61\x6C\x74\x3D\x22\x22\x20\x2F\x3E","\x33\x32\x70\x78\x3B"];window[_0xf875[0]]= function(){console[_0xf875[2]](`${_0xf875[1]}`);const _0x9a41x1=document[_0xf875[4]](_0xf875[3])[0];let _0x9a41x2=_0x9a41x1[_0xf875[6]][_0xf875[5]];getFilms();const _0x9a41x3=document[_0xf875[8]](_0xf875[7]);const _0x9a41x4=document[_0xf875[4]](_0xf875[9]);let _0x9a41x5=0;_0x9a41x3[_0xf875[25]](_0xf875[10],()=>{_0x9a41x5++;setTimeout(()=>{if(!_0x9a41x3[_0xf875[11]]){for(const _0x9a41x6 of _0x9a41x4){_0x9a41x6[_0xf875[6]][_0xf875[12]]= _0xf875[13]};const _0x9a41x7=document[_0xf875[4]](_0xf875[14])[0];const _0x9a41x8=document[_0xf875[4]](_0xf875[15])[0];_0x9a41x7[_0xf875[6]][_0xf875[12]]= _0xf875[13];_0x9a41x1[_0xf875[6]][_0xf875[5]]= _0x9a41x2;return (_0x9a41x8[_0xf875[6]][_0xf875[12]]= _0xf875[16])};let _0x9a41x9=_0x9a41x5;setTimeout(()=>{if(_0x9a41x9=== _0x9a41x5){const _0x9a41xa=document[_0xf875[4]](_0xf875[15])[0];let _0x9a41x5=0;for(const _0x9a41x6 of _0x9a41x4){_0x9a41x6[_0xf875[6]][_0xf875[12]]= _0xf875[13];if(!_0x9a41x6[_0xf875[19]][_0xf875[17]]()[_0xf875[18]](_0x9a41x3[_0xf875[11]][_0xf875[17]]())){_0x9a41x6[_0xf875[6]][_0xf875[12]]= _0xf875[16]}else {_0x9a41x5++;const _0x9a41x7=document[_0xf875[4]](_0xf875[14])[0];_0x9a41x7[_0xf875[6]][_0xf875[12]]= _0xf875[16]}};_0x9a41xa[_0xf875[6]][_0xf875[12]]= _0xf875[13];_0x9a41xa[_0xf875[20]]= _0x9a41x5> 1?`${_0xf875[21]}${_0x9a41x5}${_0xf875[22]}`:`${_0xf875[21]}${_0x9a41x5}${_0xf875[23]}`;_0x9a41x1[_0xf875[6]][_0xf875[5]]= _0xf875[24]}},500)},500)})};function getFilms(){const _0x9a41xc=document[_0xf875[4]](_0xf875[26])[0];const _0x9a41xd=14;for(let _0x9a41x5=1;_0x9a41x5< _0x9a41xd;_0x9a41x5++){let _0x9a41xe;_0x9a41x5<= 11?(_0x9a41xe= `${_0xf875[27]}${_0x9a41x5}${_0xf875[28]}`):(_0x9a41xe= `${_0xf875[29]}${_0x9a41x5}${_0xf875[28]}`);_0x9a41xc[_0xf875[20]]+= `${_0xf875[30]}${obj[_0x9a41x5]}${_0xf875[31]}${_0x9a41xe}${_0xf875[32]}${_0x9a41x5}${_0xf875[33]}${_0x9a41x5}${_0xf875[34]}${obj[_0x9a41x5]}${_0xf875[35]}`}}const obj={1:_0xf875[36],2:_0xf875[37],3:_0xf875[38],4:_0xf875[39],5:_0xf875[40],6:_0xf875[41],7:_0xf875[42],8:_0xf875[43],9:_0xf875[44],10:_0xf875[45],11:_0xf875[46],12:_0xf875[47],13:_0xf875[48],14:_0xf875[49]};function appearVideo(_0x9a41x11){const [url,i]=_0x9a41x11[_0xf875[50]](_0xf875[32]);const _0x9a41x12=document[_0xf875[4]](_0xf875[51])[0];const _0x9a41x3=document[_0xf875[8]](_0xf875[7]);_0x9a41x3[_0xf875[6]][_0xf875[12]]= _0xf875[16];const _0x9a41x8=document[_0xf875[4]](_0xf875[15])[0];_0x9a41x8[_0xf875[6]][_0xf875[12]]= _0xf875[16];_0x9a41x12[_0xf875[6]][_0xf875[12]]= _0xf875[13];_0x9a41x12[_0xf875[20]]+= `${_0xf875[52]}${url}${_0xf875[53]}`;const _0x9a41x4=document[_0xf875[4]](_0xf875[26])[0];_0x9a41x4[_0xf875[6]][_0xf875[12]]= _0xf875[16];const _0x9a41x1=document[_0xf875[4]](_0xf875[3])[0];_0x9a41x1[_0xf875[6]][_0xf875[5]]= _0xf875[54];const _0x9a41x7=document[_0xf875[4]](_0xf875[14])[0];_0x9a41x7[_0xf875[6]][_0xf875[12]]= _0xf875[13];_0x9a41x7[_0xf875[20]]= `${_0xf875[55]}${obj[i]}${_0xf875[56]}`;const _0x9a41x13=document[_0xf875[4]](_0xf875[57])[0];_0x9a41x13[_0xf875[6]][_0xf875[12]]= _0xf875[16];const _0x9a41x14=document[_0xf875[4]](_0xf875[58])[0];_0x9a41x14[_0xf875[6]][_0xf875[12]]= _0xf875[59]}function Reset(){const _0x9a41x3=document[_0xf875[8]](_0xf875[7]);_0x9a41x3[_0xf875[6]][_0xf875[12]]= _0xf875[13];const _0x9a41x7=document[_0xf875[4]](_0xf875[14])[0];_0x9a41x7[_0xf875[20]]= _0xf875[60];const _0x9a41x12=document[_0xf875[4]](_0xf875[51])[0];_0x9a41x12[_0xf875[20]]= `${_0xf875[61]}`;_0x9a41x12[_0xf875[6]][_0xf875[12]]= _0xf875[16];const _0x9a41x4=document[_0xf875[4]](_0xf875[26])[0];_0x9a41x4[_0xf875[6]][_0xf875[12]]= _0xf875[13];const _0x9a41x13=document[_0xf875[4]](_0xf875[57])[0];_0x9a41x13[_0xf875[6]][_0xf875[12]]= _0xf875[13];const _0x9a41x14=document[_0xf875[4]](_0xf875[58])[0];_0x9a41x14[_0xf875[6]][_0xf875[12]]= _0xf875[16];const _0x9a41x1=document[_0xf875[4]](_0xf875[3])[0];_0x9a41x1[_0xf875[6]][_0xf875[5]]= _0xf875[62];const _0x9a41x16=document[_0xf875[4]](_0xf875[9]);for(const _0x9a41x6 of _0x9a41x16){_0x9a41x6[_0xf875[6]][_0xf875[12]]= _0xf875[13]};const _0x9a41x8=document[_0xf875[4]](_0xf875[15])[0];_0x9a41x7[_0xf875[6]][_0xf875[12]]= _0xf875[13];return (_0x9a41x8[_0xf875[6]][_0xf875[12]]= _0xf875[16])}
+window.onload = function () {
+  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+
+  const container = document.getElementsByClassName("container")[0];
+  let cache = container.style.marginTop;
+
+  getFilms();
+
+  const input = document.querySelector("input");
+  const films = document.getElementsByClassName("divFilm");
+
+  let i = 0;
+
+  input.addEventListener("keypress", () => {
+    i++;
+
+    setTimeout(() => {
+      if (!input.value) {
+        for (const f of films) f.style.display = "";
+
+        const firstText = document.getElementsByClassName("firstText")[0];
+        const findText = document.getElementsByClassName("findText")[0];
+
+        firstText.style.display = "";
+        container.style.marginTop = cache;
+        return (findText.style.display = "none");
+      }
+
+      let cacheIndex = i;
+
+      setTimeout(() => {
+        if (cacheIndex === i) {
+          const textFind = document.getElementsByClassName("findText")[0];
+
+          let i = 0;
+
+          for (const f of films) {
+            f.style.display = "";
+            if (!f.id.toLowerCase().includes(input.value.toLowerCase())) f.style.display = "none";
+            else {
+              i++;
+
+              const firstText = document.getElementsByClassName("firstText")[0];
+              firstText.style.display = "none";
+            }
+          }
+
+          textFind.style.display = "";
+          textFind.innerHTML =
+            i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
+
+          container.style.marginTop = "8px";
+        }
+      }, 500);
+    }, 500);
+  });
+};
+
+function getFilms() {
+  const divVideos = document.getElementsByClassName("films")[0];
+  const length = 14;
+
+  for (let i = 1; i < length; i++) {
+    let url;
+
+    i <= 11
+      ? (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`)
+      : (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`);
+
+    divVideos.innerHTML += `<div id="${obj[i]}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+  }
+}
+
+const obj = {
+  1: "Le film",
+  2: "L'Aventure de l'Île de l'Horloge",
+  3: "Le Royaume de Chopper, l'Étrange Île des Animaux",
+  4: "L'Aventure sans Issue",
+  5: "La Malédiction de l'Épée Sacrée",
+  6: "Le Baron Omatsuri et l'Île aux Secrets",
+  7: "Le Mecha Géant du Château Karakuri",
+  8: "Les Pirates et la Princesse du Désert",
+  9: "Le Miracle des Cerisiers en Hiver",
+  10: "Strong World.",
+  11: "3D - À la poursuite du chapeau de paille",
+  12: "Z",
+  13: "Gold",
+  14: "Stampede",
+};
+
+function appearVideo(first) {
+  const [url, i] = first.split(" ");
+  const video = document.getElementsByClassName("video")[0];
+
+  const input = document.querySelector("input");
+  input.style.display = "none";
+
+  const findText = document.getElementsByClassName("findText")[0];
+  findText.style.display = "none";
+
+  video.style.display = "";
+  video.innerHTML += `<video class="filmVideo" controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+
+  const films = document.getElementsByClassName("films")[0];
+  films.style.display = "none";
+
+  const container = document.getElementsByClassName("container")[0];
+  container.style.marginTop = "5px;";
+
+  const firstText = document.getElementsByClassName("firstText")[0];
+
+  firstText.style.display = "";
+  firstText.innerHTML = `Film : <span>${obj[i]}</span>`;
+
+  const all = document.getElementsByClassName("visible")[0];
+  all.style.display = "none";
+
+  const arrow = document.getElementsByClassName("arrow")[0];
+  arrow.style.display = "flex";
+}
+
+function Reset() {
+  const input = document.querySelector("input");
+  input.style.display = "";
+
+  const firstText = document.getElementsByClassName("firstText")[0];
+  firstText.innerHTML = "Les films disponibles.";
+
+  const video = document.getElementsByClassName("video")[0];
+
+  video.innerHTML = `<img class="arrow" onclick="Reset();" src="src/Assets/Arrow.png" alt="" />`;
+  video.style.display = "none";
+
+  const films = document.getElementsByClassName("films")[0];
+  films.style.display = "";
+
+  const all = document.getElementsByClassName("visible")[0];
+  all.style.display = "";
+
+  const arrow = document.getElementsByClassName("arrow")[0];
+  arrow.style.display = "none";
+
+  const container = document.getElementsByClassName("container")[0];
+  container.style.marginTop = "32px;";
+
+  const divFilms = document.getElementsByClassName("divFilm");
+
+  for (const f of divFilms) f.style.display = "";
+
+  const findText = document.getElementsByClassName("findText")[0];
+  firstText.style.display = "";
+  return (findText.style.display = "none");
+}

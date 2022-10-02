@@ -1,1 +1,59 @@
-var _0xd830=["\x6F\x6E\x6C\x6F\x61\x64","\x42\x6F\x6E\x6A\x6F\x75\x72\x2C\x20\x70\x6F\x75\x72\x72\x61\x69\x73\x2D\x6A\x65\x20\x73\x61\x76\x6F\x69\x72\x20\x63\x65\x20\x71\x75\x65\x20\x74\x75\x20\x65\x73\x73\x61\x69\x65\x73\x20\x64\x65\x20\x66\x61\x69\x72\x65\x20\x6C\xE0\x20\x3F","\x6C\x6F\x67","\x69\x6E\x70\x75\x74","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x6B\x65\x79\x70\x72\x65\x73\x73","\x45\x6E\x74\x65\x72","\x76\x61\x6C\x75\x65","\x64\x69\x76\x53\x61\x67\x61\x73","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","","\x66\x69\x6E\x64\x54\x65\x78\x74","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x74\x6F\x4C\x6F\x77\x65\x72\x43\x61\x73\x65","\x69\x6E\x63\x6C\x75\x64\x65\x73","\x69\x64","\x6E\x6F\x6E\x65","\x3C\x73\x70\x61\x6E\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E\x20\x53\x61\x67\x61\x73\x20\x74\x72\x6F\x75\x76\xE9\x73\x2E","\x3C\x2F\x73\x70\x61\x6E\x3E\x20\x53\x61\x67\x61\x20\x74\x72\x6F\x75\x76\xE9\x2E","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x73\x61\x67\x61\x73","\x3C\x64\x69\x76\x20\x69\x64\x3D\x22","\x22\x20\x63\x6C\x61\x73\x73\x3D\x22\x64\x69\x76\x53\x61\x67\x61\x73\x22\x20\x3E\x3C\x61\x20\x68\x72\x65\x66\x3D\x22\x53\x61\x67\x61\x45\x70\x69\x73\x6F\x64\x65\x2E\x68\x74\x6D\x6C\x22\x3E\x3C\x69\x6D\x67\x20\x69\x64\x3D\x22","\x22\x20\x73\x72\x63\x3D\x22\x73\x72\x63\x2F\x41\x73\x73\x65\x74\x73\x2F\x53\x61\x67\x61\x2F\x53\x61\x67\x61","\x2E\x6A\x70\x65\x67\x22\x20\x2F\x3E\x3C\x2F\x61\x3E\x3C\x70\x20\x63\x6C\x61\x73\x73\x3D\x22\x66\x69\x6C\x6D\x54\x65\x78\x74\x22\x20\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E\x3C\x62\x72\x2F\x3E","\x3C\x2F\x70\x3E\x3C\x2F\x64\x69\x76\x3E","\x45\x61\x73\x74\x20\x42\x6C\x75\x65","\x41\x6C\x61\x62\x61\x73\x74\x61","\x4C\x65\x73\x20\xCE\x6C\x65\x73\x20\x63\xE9\x6C\x65\x73\x74\x65\x73","\x57\x61\x74\x65\x72\x20\x53\x65\x76\x65\x6E","\x54\x68\x72\x69\x6C\x6C\x65\x72\x20\x42\x61\x72\x6B","\x47\x75\x65\x72\x72\x65\x20\x61\x75\x20\x73\x6F\x6D\x6D\x65\x74\x20\x28\u2764\uFE0F\x29","\xCE\x6C\x65\x20\x64\x65\x73\x20\x68\x6F\x6D\x6D\x65\x73\x20\x70\x6F\x69\x73\x73\x6F\x6E\x73","\x44\x72\x65\x73\x73\x72\x6F\x73\x61","\x57\x68\x6F\x6C\x65\x20\x43\x61\x6B\x65\x20\x49\x73\x6C\x61\x6E\x64","\x50\x61\x79\x73\x20\x64\x65\x73\x20\x57\x41"];let exportObj={};window[_0xd830[0]]= function(){console[_0xd830[2]](`${_0xd830[1]}`);getSagas();const _0x3d7cx2=document[_0xd830[4]](_0xd830[3]);_0x3d7cx2[_0xd830[22]](_0xd830[5],({_0x3d7cx3})=>{if(_0x3d7cx3=== _0xd830[6]&&  !_0x3d7cx2[_0xd830[7]]){const _0x3d7cx4=document[_0xd830[9]](_0xd830[8]);for(const _0x3d7cx5 of _0x3d7cx4){_0x3d7cx5[_0xd830[11]][_0xd830[10]]= _0xd830[12]};const _0x3d7cx6=document[_0xd830[9]](_0xd830[13])[0];_0x3d7cx6[_0xd830[14]]= _0xd830[12]};if(_0x3d7cx3=== _0xd830[6]&& _0x3d7cx2[_0xd830[7]]){const _0x3d7cx4=document[_0xd830[9]](_0xd830[8]);for(const _0x3d7cx5 of _0x3d7cx4){_0x3d7cx5[_0xd830[11]][_0xd830[10]]= _0xd830[12]};let _0x3d7cx7=0;for(const _0x3d7cx5 of _0x3d7cx4){if(!_0x3d7cx5[_0xd830[17]][_0xd830[15]]()[_0xd830[16]](_0x3d7cx2[_0xd830[7]][_0xd830[15]]())){_0x3d7cx5[_0xd830[11]][_0xd830[10]]= _0xd830[18]}else {_0x3d7cx7++}};const _0x3d7cx6=document[_0xd830[9]](_0xd830[13])[0];console[_0xd830[2]](_0x3d7cx7);_0x3d7cx6[_0xd830[14]]= _0x3d7cx7> 1?`${_0xd830[19]}${_0x3d7cx7}${_0xd830[20]}`:`${_0xd830[19]}${_0x3d7cx7}${_0xd830[21]}`}})};function getSagas(){const _0x3d7cx9=document[_0xd830[9]](_0xd830[23])[0];const _0x3d7cxa=11;for(let _0x3d7cx7=1;_0x3d7cx7< _0x3d7cxa;_0x3d7cx7++){_0x3d7cx9[_0xd830[14]]+= `${_0xd830[24]}${obj[_0x3d7cx7]}${_0xd830[25]}${_0x3d7cx7}${_0xd830[26]}${_0x3d7cx7}${_0xd830[27]}${obj[_0x3d7cx7]}${_0xd830[28]}`}}const obj={1:_0xd830[29],2:_0xd830[30],3:_0xd830[31],4:_0xd830[32],5:_0xd830[33],6:_0xd830[34],7:_0xd830[35],8:_0xd830[36],9:_0xd830[37],10:_0xd830[38]}
+let exportObj = {};
+
+window.onload = function () {
+  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+
+  getSagas();
+
+  const input = document.querySelector("input");
+  input.addEventListener("keypress", ({ key }) => {
+    if (key === "Enter" && !input.value) {
+      const sagas = document.getElementsByClassName("divSagas");
+
+      for (const s of sagas) s.style.display = "";
+
+      const text = document.getElementsByClassName("findText")[0];
+      text.innerHTML = "";
+    }
+
+    if (key === "Enter" && input.value) {
+      const sagas = document.getElementsByClassName("divSagas");
+
+      for (const s of sagas) s.style.display = "";
+
+      let i = 0;
+
+      for (const s of sagas) {
+        if (!s.id.toLowerCase().includes(input.value.toLowerCase())) s.style.display = "none";
+        else i++;
+      }
+
+      const text = document.getElementsByClassName("findText")[0];
+      console.log(i);
+      text.innerHTML =
+        i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
+    }
+  });
+};
+
+function getSagas() {
+  const divSagas = document.getElementsByClassName("sagas")[0];
+  const length = 11;
+
+  for (let i = 1; i < length; i++) {
+    divSagas.innerHTML += `<div id="${obj[i]}" class="divSagas" ><a href="SagaEpisode.html"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+  }
+}
+
+const obj = {
+  1: "East Blue",
+  2: "Alabasta",
+  3: "Les Îles célestes",
+  4: "Water Seven",
+  5: "Thriller Bark",
+  6: "Guerre au sommet (❤️)",
+  7: "Île des hommes poissons",
+  8: "Dressrosa",
+  9: "Whole Cake Island",
+  10: "Pays des WA",
+};

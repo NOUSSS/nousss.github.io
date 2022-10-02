@@ -1,1 +1,42 @@
-var _0xb316=["\x6E\x61\x6D\x65","\x74\x69\x74\x6C\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x73\x42\x79\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x3C\x68\x31\x3E\x3C\x61\x20\x6F\x6E\x63\x6C\x69\x63\x6B\x3D\x22\x72\x65\x73\x74\x61\x72\x74\x28\x29\x3B\x22\x3E\x20\x4F\x6E\x65\x20\x50\x69\x65\x63\x65\x20\x3C\x73\x70\x61\x6E\x3E\x53\x74\x72\x65\x61\x6D\x69\x6E\x67\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x61\x3E\x3C\x2F\x68\x31\x3E","\x65\x70\x54\x65\x78\x74","\x4C\x65\x73\x20\x3C\x73\x70\x61\x6E\x3E\x41\x72\x63\x73\x3C\x2F\x73\x70\x61\x6E\x3E","\x69\x6D\x61\x67\x65","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x6E\x6F\x6E\x65","\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72","\x63\x61\x72\x64","","\x6C\x6F\x67","\x61\x72\x63\x73","\x2E\x2F\x73\x72\x63\x2F\x41\x73\x73\x65\x74\x73\x2F\x41\x72\x63\x73\x2F","\x2F","\x2E\x6A\x70\x65\x67","\x3C\x64\x69\x76\x3E\x3C\x69\x6D\x67\x20\x73\x74\x79\x6C\x65\x3D\x22\x6F\x70\x61\x63\x69\x74\x79\x3A\x20\x35\x30\x25\x3B\x22\x20\x6F\x6E\x6D\x6F\x75\x73\x65\x6F\x75\x74\x3D\x22\x64\x69\x73\x61\x70\x65\x61\x72\x28\x69\x20\x2B\x20\x31\x29\x3B\x22\x20\x6F\x6E\x6D\x6F\x75\x73\x65\x6F\x76\x65\x72\x3D\x22\x61\x70\x70\x65\x61\x72\x28\x69\x20\x2B\x20\x31\x29\x3B\x22\x20\x73\x72\x63\x3D\x22","\x22\x20\x2F\x3E\x3C\x2F\x64\x69\x76\x3E","\x3C\x68\x31\x3E\x4F\x6E\x65\x20\x50\x69\x65\x63\x65\x20\x3C\x73\x70\x61\x6E\x3E\x53\x74\x72\x65\x61\x6D\x69\x6E\x67\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x68\x31\x3E","\x4C\x65\x73\x20\x3C\x73\x70\x61\x6E\x3E\x53\x61\x67\x61\x73\x3C\x2F\x73\x70\x61\x6E\x3E","\x4F\x50\x53","\x6F\x6E\x6C\x6F\x61\x64"];async function change(_0xf0fex2){const _0xf0fex3=sObj[_0xf0fex2][_0xb316[0]];const _0xf0fex4=document[_0xb316[2]](_0xb316[1])[0];_0xf0fex4[_0xb316[3]]= _0xb316[4];const _0xf0fex5=document[_0xb316[2]](_0xb316[5])[0];_0xf0fex5[_0xb316[3]]= _0xb316[6];const _0xf0fex6=document[_0xb316[2]](_0xb316[7]);for(const _0xf0fex7 of _0xf0fex6){_0xf0fex7[_0xb316[9]][_0xb316[8]]= _0xb316[10]};document[_0xb316[12]](_0xb316[1])[_0xb316[11]]= _0xf0fex3;const _0xf0fex8=document[_0xb316[2]](_0xb316[13])[1];_0xf0fex8[_0xb316[9]][_0xb316[8]]= _0xb316[14];console[_0xb316[15]](_0xf0fex3);for(let _0xf0fex9=0;_0xf0fex9< sObj[_0xf0fex2][_0xb316[16]];_0xf0fex9++){const _0xf0fexa=`${_0xb316[17]}${_0xf0fex3}${_0xb316[18]}${_0xf0fex9+ 1}${_0xb316[19]}`;_0xf0fex8[_0xb316[3]]= `${_0xb316[20]}${_0xf0fexa}${_0xb316[21]}`}}function restart(){const _0xf0fex4=document[_0xb316[2]](_0xb316[1])[0];_0xf0fex4[_0xb316[3]]= _0xb316[22];const _0xf0fex5=document[_0xb316[2]](_0xb316[5])[0];_0xf0fex5[_0xb316[3]]= _0xb316[23];const _0xf0fex6=document[_0xb316[2]](_0xb316[7]);for(const _0xf0fex7 of _0xf0fex6){_0xf0fex7[_0xb316[9]][_0xb316[8]]= _0xb316[14]};const _0xf0fex8=document[_0xb316[2]](_0xb316[13])[1];_0xf0fex8[_0xb316[9]][_0xb316[8]]= _0xb316[10];document[_0xb316[12]](_0xb316[1])[_0xb316[11]]= _0xb316[24]}window[_0xb316[25]]= call
+function change(id) {
+  const sagaTitle = sObj[id].name;
+
+  const title = document.getElementsByClassName("title")[0];
+  title.innerHTML = '<h1><a onclick="restart();"> One Piece <span>Streaming</span></a></h1>';
+
+  const firstText = document.getElementsByClassName("epText")[0];
+  firstText.innerHTML = "Les <span>Arcs</span>";
+
+  const image = document.getElementsByClassName("image");
+  for (const img of image) img.style.display = "none";
+
+  document.querySelector("title").textContent = sagaTitle;
+
+  const cards = document.getElementsByClassName("card")[1];
+  cards.style.display = "";
+
+  console.log(sagaTitle);
+
+  for (let i = 0; i < sObj[id].arcs; i++) {
+    const file = `./src/Assets/Arcs/${sagaTitle}/${i + 1}.jpeg`;
+    cards.innerHTML = `<div><img style="opacity: 50%;" onmouseout="disapear(i + 1);" onmouseover="appear(i + 1);" src="${file}" /></div>`;
+  }
+}
+
+function restart() {
+  const title = document.getElementsByClassName("title")[0];
+  title.innerHTML = "<h1>One Piece <span>Streaming</span></h1>";
+
+  const firstText = document.getElementsByClassName("epText")[0];
+  firstText.innerHTML = "Les <span>Sagas</span>";
+
+  const image = document.getElementsByClassName("image");
+  for (const img of image) img.style.display = "";
+
+  const cards = document.getElementsByClassName("card")[1];
+  cards.style.display = "none";
+
+  document.querySelector("title").textContent = "OPS";
+}
+
+window.onload = call;
