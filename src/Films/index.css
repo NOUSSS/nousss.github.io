@@ -26,6 +26,10 @@ input {
     color: orange;
 }
 
+.video img:hover {
+    transform: scale(1.15);
+}
+
 .background {
     position: fixed;
     width: 100%;
@@ -55,9 +59,11 @@ input {
 }
 
 .video img {
-    width: 77px;
+    width: 52px;
     height: auto;
     display: none;
+    color: white;
+    transition: 0.5s;
 }
 
 .films div img {

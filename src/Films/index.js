@@ -113,8 +113,8 @@ function appearVideo(first) {
   const all = document.getElementsByClassName("visible")[0];
   all.style.display = "none";
 
-  const cancel = document.getElementsByClassName("cancel")[0];
-  cancel.style.display = "flex";
+  const arrow = document.getElementsByClassName("arrow")[0];
+  arrow.style.display = "flex";
 }
 
 function Reset() {
@@ -126,7 +126,7 @@ function Reset() {
 
   const video = document.getElementsByClassName("video")[0];
 
-  video.innerHTML = `<img class="cancel" onclick="Reset();" src="src/Assets/Cancel.png" alt="" />`;
+  video.innerHTML = `<img class="arrow" onclick="Reset();" src="src/Assets/arrow.png" alt="" />`;
   video.style.display = "none";
 
   const films = document.getElementsByClassName("films")[0];
@@ -135,8 +135,8 @@ function Reset() {
   const all = document.getElementsByClassName("visible")[0];
   all.style.display = "";
 
-  const cancel = document.getElementsByClassName("cancel")[0];
-  cancel.style.display = "none";
+  const arrow = document.getElementsByClassName("arrow")[0];
+  arrow.style.display = "none";
 
   const container = document.getElementsByClassName("container")[0];
   container.style.marginTop = "32px;";
