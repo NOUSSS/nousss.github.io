@@ -11,7 +11,7 @@ window.onload = function () {
 
   let i = 0;
 
-  input.addEventListener("keypress", ({ key }) => {
+  input.addEventListener("keypress", () => {
     i++;
 
     setTimeout(() => {
