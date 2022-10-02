@@ -7,6 +7,7 @@ body {
     font-family: 'Kanit', sans-serif;
     text-align: center;
     background-color: orange;
+    behavior: 'smooth'
 }
 
 body::-webkit-scrollbar {
@@ -43,12 +44,23 @@ body::-webkit-scrollbar {
 }
 
 .citation {
-    transition: 0.5s;
     font-size: 27px;
     color: white;
+    position: relative;
+}
+  
+.citation p {
+    margin-top: -13px;
+    position: absolute;
+    opacity: 0;
+    transition-duration: 300ms;
+}
+  
+.citation p.visible {
+    opacity: 1;
 }
 
-.citation span { color: orange; }
+.citation p span { color: orange; }
 
 .title {
     letter-spacing: 3px;
@@ -69,7 +81,7 @@ span {
 
 .choices {
     font-size: 50px;
-    margin-top: 61px;
+    margin-top: 231px;
     padding-bottom: 5px;
 }
 
@@ -112,9 +124,15 @@ a:hover { background-size: 100% 100%; }
     }
 }
 
+@media (max-width: 484px) {
+    .choices {
+        margin-top: 345px;
+    }
+}
+
 @media (max-width: 813px) {
     .container {
         margin-top: 35px;
-        height: 767px;
+        height: auto;
     }
 }

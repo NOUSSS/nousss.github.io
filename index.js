@@ -29,11 +29,39 @@ const citation = [
 window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
-  const citationTexte = document.getElementsByClassName("citation")[0];
-  citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
+  setText(citation[Math.floor(Math.random() * citation.length)]);
 
   setInterval(() => {
     let res = citation[Math.floor(Math.random() * citation.length)];
-    citationTexte.innerHTML = res;
+    setText(res);
   }, 10000);
 };
+
+const titleContainer = document.getElementsByClassName("citation")[0];
+
+function fadeIn(element) {
+  titleContainer.appendChild(element);
+  requestAnimationFrame(() => {
+    element.classList.add("visible");
+  });
+}
+
+function fadeOut(element) {
+  element.classList.remove("visible");
+  element.addEventListener(
+    "transitionend",
+    () => {
+      element.remove();
+    },
+    { once: true }
+  );
+}
+
+function setText(text) {
+  Array.from(titleContainer.children).forEach((element) => {
+    fadeOut(element);
+  });
+  const h1 = document.createElement("p");
+  h1.innerHTML = text;
+  fadeIn(h1);
+}
