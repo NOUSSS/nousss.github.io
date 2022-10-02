@@ -1,4 +1,6 @@
 window.onload = function () {
+  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+
   const container = document.getElementsByClassName("container")[0];
   let cache = container.style.marginTop;
 

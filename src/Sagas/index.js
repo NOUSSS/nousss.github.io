@@ -1,6 +1,8 @@
 let exportObj = {};
 
 window.onload = function () {
+  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+
   getSagas();
 
   const input = document.querySelector("input");

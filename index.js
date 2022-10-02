@@ -27,6 +27,8 @@ const citation = [
 ];
 
 window.onload = function () {
+  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+
   const citationTexte = document.getElementsByClassName("citation")[0];
   citationTexte.innerHTML = citation[Math.floor(Math.random() * citation.length)];
 
