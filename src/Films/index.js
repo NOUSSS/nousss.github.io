@@ -126,7 +126,7 @@ function Reset() {
 
   const video = document.getElementsByClassName("video")[0];
 
-  video.innerHTML = `<img class="arrow" onclick="Reset();" src="src/Assets/arrow.png" alt="" />`;
+  video.innerHTML = `<img class="arrow" onclick="Reset();" src="src/Assets/Arrow.png" alt="" />`;
   video.style.display = "none";
 
   const films = document.getElementsByClassName("films")[0];

@@ -51,7 +51,9 @@ input {
     box-shadow: 0px 0px 20px black;
 }
 
-.films { overflow-x: auto; }
+.films {
+    overflow-x: auto;
+}
 
 .films div {
     display: inline-flex;
@@ -95,7 +97,9 @@ h1:hover {
     transform: scale(1.1);
 }
 
-.firstText span { color: orange }
+.firstText span {
+    color: orange
+}
 
 span {
     color: orange;
@@ -109,7 +113,7 @@ span {
 .films img:hover {
     opacity: 1;
     transform: scale(1.1);
-}   
+}
 
 @media (max-width: 836px) {
     video {
@@ -120,12 +124,5 @@ span {
 @media (max-width: 574px) {
     video {
         width: 300px;
-    }
-}
-
-@media (max-height: 768px) {
-    .container {
-        margin-top: -130px;
-        transform: scale(0.65);
     }
 }
