@@ -1,7 +1,6 @@
 const citation = [
   "L’avenir ne peut exister que si on met sa vie en jeu ! - <span>Monkey D. Luffy</span>",
   "À quoi te sert ton ambition si tu ne peux pas protéger ton capitaine ? - <span>Roronoa Zoro</span>",
-  "Vivre n’est pas un crime - <span>Franky</span>",
   "Les gens ne cesseront jamais d’avoir des rêves ! - <span>Barbe Noire</span>",
   "Il y a des batailles qu’on ne gagne pas avec les poings ! - <span>Barbe Noire</span>",
   "Un pirate doit être fier de son nom. Tâchez de vous souvenir du mien - <span>Monkey D. Luffy</span>",
@@ -58,10 +57,12 @@ function fadeOut(element) {
 }
 
 function setText(text) {
-  Array.from(titleContainer.children).forEach((element) => {
-    fadeOut(element);
+  Array.from(titleContainer.children).forEach((e) => {
+    fadeOut(e);
   });
-  const h1 = document.createElement("p");
-  h1.innerHTML = text;
-  fadeIn(h1);
+
+  const texte = document.createElement("p");
+  texte.innerHTML = text;
+
+  fadeIn(texte);
 }
