@@ -116,6 +116,10 @@ a:hover { background-size: 100% 100%; }
     .container {
         margin-top: 100px;
     }
+
+    .container:hover {
+        transform: none;
+    }
 }
 
 @media (max-width: 608px) {
