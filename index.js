@@ -25,12 +25,14 @@ const citation = [
   "Je vous pardonne, savez-vous pourquoi? Tout simplement parce que je n'ai jamais fait confiance à personne. - <span>Crocodile</span>",
 ];
 
+let interval;
+
 window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   setText(citation[Math.floor(Math.random() * citation.length)]);
 
-  setInterval(() => {
+  interval = setInterval(() => {
     let res = citation[Math.floor(Math.random() * citation.length)];
     setText(res);
   }, 10000);
@@ -62,7 +64,23 @@ function setText(text) {
   });
 
   const texte = document.createElement("p");
+
   texte.innerHTML = text;
+  texte.addEventListener("click", () => {
+    clearInterval(interval);
+
+    Change();
+
+    interval = setInterval(() => {
+      Change();
+    }, 10000);
+  });
 
   fadeIn(texte);
+}
+
+function Change() {
+  const text = citation[Math.floor(Math.random() * citation.length)];
+
+  setText(text);
 }

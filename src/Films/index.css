@@ -120,14 +120,31 @@ footer p {
     transform: scale(1.1);
 }
 
+@media (max-width: 296px) {
+    .container {
+        margin-top: -60px !important;
+    }
+}
+
 @media (max-width: 836px) {
     video {
         width: 547px;
     }
 }
 
+@media (max-width: 308px) { 
+    .container {
+        margin-top: -531px !important
+    }
+}
+
 @media (max-width: 574px) {
     video {
         width: 300px;
+    }
+
+    .container {
+        transform: scale(0.7);
+        margin-top: -229px;
     }
 }

@@ -1,6 +1,7 @@
 const wait = (m) => new Promise((r) => setTimeout(r, m));
 
 function search(input, div, container) {
+  let cache = container.style.marginTop;
   let i = 0;
 
   input.addEventListener("keypress", () => {
@@ -19,7 +20,7 @@ function search(input, div, container) {
               firstText.style.display = "";
               findText.style.display = "none";
 
-              return;
+              return (container.style.marginTop = cache);
             }
           });
         }, 100);
@@ -32,7 +33,7 @@ function search(input, div, container) {
 
         firstText.style.display = "";
         findText.style.display = "none";
-        return;
+        return (container.style.marginTop = cache);
       }
 
       let cacheIndex = i;
