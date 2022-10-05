@@ -48,8 +48,11 @@ function search(input, div, container) {
             f.style.display = "";
 
             if (
-              !f.id.split("|")[0].includes(input.value.toLowerCase()) &&
-              !f.id.split("|")[1].includes(input.value.toLowerCase())
+              !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+              !f.id
+                .split("|")[1]
+                .split(", ")
+                .some((e) => e.includes(input.value.toLowerCase()))
             )
               f.style.display = "none";
             else {
@@ -86,8 +89,11 @@ function search(input, div, container) {
             for (const f of div) {
               f.style.display = "";
               if (
-                !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) ||
-                !f.id.split("|")[1].includes(input.value.toLowerCase())
+                !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+                !f.id
+                  .split("|")[1]
+                  .split(", ")
+                  .some((e) => e.includes(input.value.toLowerCase()))
               )
                 f.style.display = "none";
               else {

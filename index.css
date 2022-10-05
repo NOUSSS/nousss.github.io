@@ -33,6 +33,11 @@ body::-webkit-scrollbar {
     -webkit-filter: blur(10px);
 }
 
+li {
+    list-style: none;
+    line-height: 23px;
+}
+
 .container {
     width: 500px;
     height: 700px;
@@ -81,8 +86,8 @@ span {
 
 .choices {
     font-size: 50px;
-    margin-top: 231px;
-    padding-bottom: 5px;
+    margin-left: -38px;
+    margin-top: 266px;
 }
 
 
