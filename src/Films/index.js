@@ -1,7 +1,6 @@
 const wait = (m) => new Promise((r) => setTimeout(r, m));
 
 function search(input, div, container) {
-  let cache = container.style.marginTop;
   let i = 0;
 
   input.addEventListener("keypress", () => {
@@ -20,7 +19,7 @@ function search(input, div, container) {
               firstText.style.display = "";
               findText.style.display = "none";
 
-              return (container.style.marginTop = cache);
+              return;
             }
           });
         }, 100);
@@ -33,7 +32,8 @@ function search(input, div, container) {
 
         firstText.style.display = "";
         findText.style.display = "none";
-        return (container.style.marginTop = cache);
+
+        return;
       }
 
       let cacheIndex = i;
@@ -67,7 +67,7 @@ function search(input, div, container) {
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
-          container.style.marginTop = "-67px";
+          container.style.marginTop = "45px";
         }
       }, 50);
     }, 50);
@@ -108,7 +108,7 @@ function search(input, div, container) {
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
-            container.style.marginTop = "-67px";
+            container.style.marginTop = "45px";
           }
         }, 50);
       }, 50);
