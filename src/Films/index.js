@@ -46,7 +46,12 @@ function search(input, div, container) {
 
           for (const f of div) {
             f.style.display = "";
-            if (!f.id.toLowerCase().includes(input.value.toLowerCase())) f.style.display = "none";
+
+            if (
+              !f.id.split("|")[0].includes(input.value.toLowerCase()) &&
+              !f.id.split("|")[1].includes(input.value.toLowerCase())
+            )
+              f.style.display = "none";
             else {
               i++;
 
@@ -80,7 +85,11 @@ function search(input, div, container) {
 
             for (const f of div) {
               f.style.display = "";
-              if (!f.id.toLowerCase().includes(input.value.toLowerCase())) f.style.display = "none";
+              if (
+                !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) ||
+                !f.id.split("|")[1].includes(input.value.toLowerCase())
+              )
+                f.style.display = "none";
               else {
                 i++;
 
@@ -123,25 +132,29 @@ function getFilms() {
       ? (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`)
       : (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`);
 
-    divVideos.innerHTML += `<div id="${obj[i]}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+    divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
+      ", "
+    )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
+      obj[i].name
+    }</p></div>`;
   }
 }
 
 const obj = {
-  1: "Le film",
-  2: "L'Aventure de l'Île de l'Horloge",
-  3: "Le Royaume de Chopper, l'Étrange Île des Animaux",
-  4: "L'Aventure sans Issue",
-  5: "La Malédiction de l'Épée Sacrée",
-  6: "Le Baron Omatsuri et l'Île aux Secrets",
-  7: "Le Mecha Géant du Château Karakuri",
-  8: "Les Pirates et la Princesse du Désert",
-  9: "Le Miracle des Cerisiers en Hiver",
-  10: "Strong World.",
-  11: "3D - À la poursuite du chapeau de paille",
-  12: "Z",
-  13: "Gold",
-  14: "Stampede",
+  1: { name: "Le film" },
+  2: { name: "L'Aventure de l'Île de l'Horloge", aliases: ["ile"] },
+  3: { name: "Le Royaume de Chopper, l'Étrange Île des Animaux", aliases: ["ile"] },
+  4: { name: "L'Aventure sans Issue" },
+  5: { name: "La Malédiction de l'Épée Sacrée", aliases: ["epee sacre"] },
+  6: { name: "Le Baron Omatsuri et l'Île aux Secrets", aliases: ["ile"] },
+  7: { name: "Le Mecha Géant du Château Karakuri", aliases: ["chateau"] },
+  8: { name: "Les Pirates et la Princesse du Désert", aliases: ["desert"] },
+  9: { name: "Le Miracle des Cerisiers en Hiver" },
+  10: { name: "Strong World" },
+  11: { name: "3D - À la poursuite du chapeau de paille" },
+  12: { name: "Z" },
+  13: { name: "Gold", aliases: ["or"] },
+  14: { name: "Stampede" },
 };
 
 function appearVideo(first) {
@@ -166,7 +179,7 @@ function appearVideo(first) {
   const firstText = document.getElementsByClassName("firstText")[0];
 
   firstText.style.display = "";
-  firstText.innerHTML = `Film : <span>${obj[i]}</span>`;
+  firstText.innerHTML = `Film : <span>${obj[i].name}</span>`;
 
   const all = document.getElementsByClassName("visible")[0];
   all.style.display = "none";

@@ -2,7 +2,7 @@ function change(id) {
   const sagaTitle = sObj[id].name;
 
   const title = document.getElementsByClassName("title")[0];
-  title.innerHTML = '<h1><a onclick="restart();"> One Piece <span>Streaming</span></a></h1>';
+  title.innerHTML = '<h1><a onclick="restart();"> Mugiwara-no <span>Streaming</span></a></h1>';
 
   const firstText = document.getElementsByClassName("epText")[0];
   firstText.innerHTML = "Les <span>Arcs</span>";
@@ -25,7 +25,7 @@ function change(id) {
 
 function restart() {
   const title = document.getElementsByClassName("title")[0];
-  title.innerHTML = "<h1>One Piece <span>Streaming</span></h1>";
+  title.innerHTML = "<h1>Mugiwara-no <span>Streaming</span></h1>";
 
   const firstText = document.getElementsByClassName("epText")[0];
   firstText.innerHTML = "Les <span>Sagas</span>";

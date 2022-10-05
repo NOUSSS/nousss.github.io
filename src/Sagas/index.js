@@ -45,7 +45,14 @@ function search(input, div, container) {
 
           for (const s of div) {
             s.style.display = "";
-            if (!s.id.toLowerCase().includes(input.value.toLowerCase())) s.style.display = "none";
+            if (
+              !s.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+              !s.id
+                .split("|")[1]
+                .split(", ")
+                .some((e) => e.includes(input.value.toLowerCase()))
+            )
+              s.style.display = "none";
             else {
               i++;
 
@@ -79,7 +86,14 @@ function search(input, div, container) {
 
             for (const s of div) {
               s.style.display = "";
-              if (!s.id.toLowerCase().includes(input.value.toLowerCase())) s.style.display = "none";
+              if (
+                !s.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+                !s.id
+                  .split("|")[1]
+                  .split(", ")
+                  .some((e) => e.includes(input.value.toLowerCase()))
+              )
+                s.style.display = "none";
               else {
                 i++;
 
@@ -116,19 +130,32 @@ function getSagas() {
   const length = 11;
 
   for (let i = 1; i < length; i++) {
-    divSagas.innerHTML += `<div id="${obj[i]}" class="divSagas" ><a href="SagaEpisode.html"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${obj[i]}</p></div>`;
+    divSagas.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
+      ", "
+    )}" class="divSagas" ><a href="SagaEpisode.html"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
+      obj[i].name
+    }</p></div>`;
   }
 }
 
 const obj = {
-  1: "East Blue",
-  2: "Alabasta",
-  3: "Les Îles célestes",
-  4: "Water Seven",
-  5: "Thriller Bark",
-  6: "Guerre au sommet (❤️)",
-  7: "Île des hommes poissons",
-  8: "Dressrosa",
-  9: "Whole Cake Island",
-  10: "Pays de Wano",
+  1: {
+    name: "East Blue",
+    aliases: ["shanks", "debut", "début", "start", "luffy", "log town", "roger", "baggy"],
+  },
+  2: { name: "Alabasta", aliases: ["crocodile"] },
+  3: { name: "Les Îles célestes", aliases: ["ile", "poneglyphe"] },
+  4: { name: "Water Seven", aliases: ["robin", "cp9"] },
+  5: { name: "Thriller Bark", aliases: ["moria"] },
+  6: { name: "Guerre au sommet (❤️)", aliases: ["marinford", "sabaody", "boa hancok"] },
+  7: { name: "Île des hommes poissons", aliases: ["ile"] },
+  8: { name: "Dressrosa", aliases: ["doflamingo", "vegapunk", "quatre", "4 empereurs"] },
+  9: {
+    name: "Whole Cake Island",
+    aliases: ["tougato", "big mom", "sanji", "vinsmoke", "judge", "quatre", "4 empereurs"],
+  },
+  10: {
+    name: "Pays de Wano",
+    aliases: ["kaido", "wanocuni", "zoro", "ashura", "quatre", "4 empereurs"],
+  },
 };
