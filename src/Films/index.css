@@ -26,10 +26,6 @@ input {
     color: orange;
 }
 
-.video img:hover {
-    transform: scale(1.15);
-}
-
 .background {
     position: fixed;
     width: 100%;
@@ -60,19 +56,15 @@ input {
     margin: 33px;
 }
 
-.video img {
-    width: 52px;
-    height: auto;
-    display: none;
-    color: white;
-    transition: 0.5s;
-}
-
 .films div img {
     width: 89px;
     height: 108px;
     transition: all 0.5s;
     opacity: 0.5;
+}
+
+.video {
+    margin-bottom: 33px;
 }
 
 .filmText {
@@ -81,6 +73,8 @@ input {
     margin-left: -82px;
     margin-top: 21px;
 }
+
+video { transition: all 0.5s; }
 
 a {
     text-decoration: none;
@@ -120,31 +114,32 @@ footer p {
     transform: scale(1.1);
 }
 
-/* @media (max-width: 296px) {
-    .container {
-        margin-top: -60px !important;
+@media (max-width: 805px) {
+    video {
+        width: 594px;;
     }
 }
 
-@media (max-width: 836px) {
+@media (max-width: 598px) {
     video {
-        width: 547px;
+        width: 508px;
     }
 }
 
-@media (max-width: 308px) { 
-    .container {
-        margin-top: -531px !important
-    }
-} */
-
-@media (max-width: 574px) {
+@media (max-width: 506px) {
     video {
-        width: 300px;
+        width: 396px;
     }
+}
 
-    /* .container {
-        transform: scale(0.7);
-        margin-top: -229px;
-    } */
+@media (max-width: 398px) {
+    video {
+        width: 327px;
+    }
+}
+
+@media (max-width: 336px) {
+    video {
+        width: 284px;
+    }
 }

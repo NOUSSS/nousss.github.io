@@ -119,6 +119,7 @@ function search(input, div, container) {
 window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
+  appearVideo(`${getURLVideo(1)}`);
   getFilms();
   search(
     document.querySelector("input"),
@@ -132,18 +133,35 @@ function getFilms() {
   const length = 14;
 
   for (let i = 1; i < length; i++) {
-    let url;
-
-    i <= 11
-      ? (url = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${i}.mp4`)
-      : (url = `https://14.mugiwara.xyz/op/films/one-piece-film${i}.mp4`);
-
+    const url = getURLVideo(i);
     divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
     )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
+}
+
+function appearVideo(id) {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  const [url, index] = id.split(" ");
+
+  const video = document.getElementsByClassName("video")[0];
+  video.innerHTML = `<video class="filmVideo" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+}
+
+function getURLVideo(index) {
+  let res;
+
+  index <= 11
+    ? (res = `https://14.mugiwara.xyz/op/films/hd/one-piece-film${index}.mp4`)
+    : (res = `https://14.mugiwara.xyz/op/films/one-piece-film${index}.mp4`);
+
+  return res;
 }
 
 const obj = {
@@ -162,67 +180,3 @@ const obj = {
   13: { name: "Gold", aliases: ["or"] },
   14: { name: "Stampede" },
 };
-
-function appearVideo(first) {
-  const [url, i] = first.split(" ");
-  const video = document.getElementsByClassName("video")[0];
-
-  const input = document.querySelector("input");
-  input.style.display = "none";
-
-  const findText = document.getElementsByClassName("findText")[0];
-  findText.style.display = "none";
-
-  video.style.display = "";
-  video.innerHTML += `<video class="filmVideo" controls="controls" autoplay width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
-
-  const films = document.getElementsByClassName("films")[0];
-  films.style.display = "none";
-
-  const container = document.getElementsByClassName("container")[0];
-  container.style.marginTop = "5px;";
-
-  const firstText = document.getElementsByClassName("firstText")[0];
-
-  firstText.style.display = "";
-  firstText.innerHTML = `Film : <span>${obj[i].name}</span>`;
-
-  const all = document.getElementsByClassName("visible")[0];
-  all.style.display = "none";
-
-  const arrow = document.getElementsByClassName("arrow")[0];
-  arrow.style.display = "flex";
-}
-
-function Reset() {
-  const input = document.querySelector("input");
-  input.style.display = "";
-
-  const firstText = document.getElementsByClassName("firstText")[0];
-  firstText.innerHTML = "Les films disponibles.";
-
-  const video = document.getElementsByClassName("video")[0];
-
-  video.innerHTML = `<img class="arrow" onclick="Reset();" src="src/Assets/Arrow.png" alt="" />`;
-  video.style.display = "none";
-
-  const films = document.getElementsByClassName("films")[0];
-  films.style.display = "";
-
-  const all = document.getElementsByClassName("visible")[0];
-  all.style.display = "";
-
-  const arrow = document.getElementsByClassName("arrow")[0];
-  arrow.style.display = "none";
-
-  const container = document.getElementsByClassName("container")[0];
-  container.style.marginTop = "32px;";
-
-  const divFilms = document.getElementsByClassName("divFilm");
-
-  for (const f of divFilms) f.style.display = "";
-
-  const findText = document.getElementsByClassName("findText")[0];
-  firstText.style.display = "";
-  return (findText.style.display = "none");
-}
