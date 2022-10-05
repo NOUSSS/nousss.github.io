@@ -119,7 +119,7 @@ function search(input, div, container) {
 window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
-  appearVideo(`${getURLVideo(1)}`);
+  appearVideo(`${getURLVideo(1)} 1`);
   getFilms();
   search(
     document.querySelector("input"),
@@ -149,6 +149,9 @@ function appearVideo(id) {
   });
 
   const [url, index] = id.split(" ");
+  const findText = document.querySelector(".findText");
+
+  findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
   video.innerHTML = `<video class="filmVideo" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
