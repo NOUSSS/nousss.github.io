@@ -158,7 +158,13 @@ function appearVideo(id) {
   findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
-  video.innerHTML = `<video id="filmVideo" preload="metadata" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+
+  let autoplay;
+
+  if (video.getElementsByTagName("source")[0]) autoplay = "autoplay";
+  else autoplay = "";
+
+  video.innerHTML = `<video ${autoplay} id="filmVideo" preload="metadata" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
 }
 
 function getURLVideo(index) {
