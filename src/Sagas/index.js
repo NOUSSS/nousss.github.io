@@ -65,7 +65,7 @@ function search(input, div, container) {
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
 
-          container.style.marginTop = "8px";
+          container.style.marginTop = "45px";
         }
       }, 50);
     }, 50);
@@ -106,7 +106,7 @@ function search(input, div, container) {
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
 
-            container.style.marginTop = "8px";
+            container.style.marginTop = "45px";
           }
         }, 50);
       }, 50);
