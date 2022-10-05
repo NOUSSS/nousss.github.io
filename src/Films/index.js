@@ -126,6 +126,10 @@ window.onload = function () {
     document.getElementsByClassName("divFilm"),
     document.getElementsByClassName("container")[0]
   );
+
+  setTimeout(() => {
+    window.scrollTo({ top: 580, behavior: "smooth" });
+  }, 1000);
 };
 
 function getFilms() {
@@ -154,7 +158,7 @@ function appearVideo(id) {
   findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
-  video.innerHTML = `<video class="filmVideo" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+  video.innerHTML = `<video id="filmVideo" preload="metadata" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
 }
 
 function getURLVideo(index) {

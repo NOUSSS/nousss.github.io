@@ -102,6 +102,7 @@ span {
 .firstText {
     color: cyan;
     font-size: 50px;
+    transition: all 0.5s;
 }
 
 footer p {
@@ -121,6 +122,10 @@ footer p {
 }
 
 @media (max-width: 598px) {
+    .firstText {
+        font-size: 35px;
+    }
+
     video {
         width: 508px;
     }
