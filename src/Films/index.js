@@ -134,7 +134,7 @@ window.onload = function () {
 
 function getFilms() {
   const divVideos = document.getElementsByClassName("films")[0];
-  const length = 14;
+  const length = 15;
 
   for (let i = 1; i < length; i++) {
     const url = getURLVideo(i);
@@ -178,18 +178,18 @@ function getURLVideo(index) {
 }
 
 const obj = {
-  1: { name: "Le film" },
-  2: { name: "L'Aventure de l'Île de l'Horloge", aliases: ["ile"] },
-  3: { name: "Le Royaume de Chopper, l'Étrange Île des Animaux", aliases: ["ile"] },
-  4: { name: "L'Aventure sans Issue" },
-  5: { name: "La Malédiction de l'Épée Sacrée", aliases: ["epee sacre"] },
-  6: { name: "Le Baron Omatsuri et l'Île aux Secrets", aliases: ["ile"] },
-  7: { name: "Le Mecha Géant du Château Karakuri", aliases: ["chateau"] },
-  8: { name: "Les Pirates et la Princesse du Désert", aliases: ["desert"] },
-  9: { name: "Le Miracle des Cerisiers en Hiver" },
-  10: { name: "Strong World" },
-  11: { name: "3D - À la poursuite du chapeau de paille" },
-  12: { name: "Z" },
-  13: { name: "Gold", aliases: ["or"] },
-  14: { name: "Stampede" },
+  1: { name: "Le film", aliases: ["1"] },
+  2: { name: "L'Aventure de l'Île de l'Horloge", aliases: ["ile", "2"] },
+  3: { name: "Le Royaume de Chopper, l'Étrange Île des Animaux", aliases: ["ile", "3"] },
+  4: { name: "L'Aventure sans Issue", aliases: ["4"] },
+  5: { name: "La Malédiction de l'Épée Sacrée", aliases: ["epee sacre", "5"] },
+  6: { name: "Le Baron Omatsuri et l'Île aux Secrets", aliases: ["ile", "6"] },
+  7: { name: "Le Mecha Géant du Château Karakuri", aliases: ["chateau", "7"] },
+  8: { name: "Les Pirates et la Princesse du Désert", aliases: ["desert", "8"] },
+  9: { name: "Le Miracle des Cerisiers en Hiver", aliases: ["9"] },
+  10: { name: "Strong World", aliases: ["10"] },
+  11: { name: "3D - À la poursuite du chapeau de paille", aliases: ["11"] },
+  12: { name: "Z", aliases: ["zed", "12"] },
+  13: { name: "Gold", aliases: ["or", "13"] },
+  14: { name: "Stampede", aliases: ["14"] },
 };
