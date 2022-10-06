@@ -155,6 +155,7 @@ function appearVideo(id) {
   const [url, index] = id.split(" ");
   const findText = document.querySelector(".findText");
 
+  document.querySelector("title").textContent = `${obj[index].name} - Mugiwara-no Streaming`;
   findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
