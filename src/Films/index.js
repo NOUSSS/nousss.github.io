@@ -117,6 +117,25 @@ function search(input, div, container) {
 }
 
 window.onload = function () {
+  let checked = false;
+  let textToggle = document.getElementsByClassName("toggle")[0];
+  let cache = textToggle.style.marginRight;
+
+  document
+    .getElementsByClassName("buttonSwitch")[0]
+    .getElementsByTagName("input")[0]
+    .addEventListener("change", () => {
+      if (!checked) {
+        textToggle.innerHTML = "VF";
+        textToggle.style.marginRight = "22px";
+        checked = true;
+      } else {
+        textToggle.innerHTML = "VOSTFR";
+        textToggle.style.marginRight = cache;
+        checked = false;
+      }
+    });
+
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   appearVideo(`${getURLVideo(1)} 1`);
