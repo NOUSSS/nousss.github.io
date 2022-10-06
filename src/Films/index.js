@@ -117,6 +117,7 @@ function search(input, div, container) {
 }
 
 window.onload = function () {
+  /*
   let checked = false;
   let textToggle = document.getElementsByClassName("toggle")[0];
   let cache = textToggle.style.marginRight;
@@ -135,6 +136,7 @@ window.onload = function () {
         checked = false;
       }
     });
+    */
 
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
