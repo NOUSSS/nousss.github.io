@@ -99,6 +99,20 @@ span {
     color: orange;
 }
 
+.downloadButton img {
+    max-width: 48px;
+    background-color: orange;
+    border-radius: 13px;
+    margin-left: 767px;
+    opacity: 0.6;
+    transition: all 0.5s;
+}
+
+.dlImg:hover {
+    opacity: 1;
+    transform: scale(1.05)
+}
+
 .buttonSwitch {
     text-align: right;
     margin-right: 30px;

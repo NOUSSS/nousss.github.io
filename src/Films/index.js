@@ -140,7 +140,8 @@ window.onload = function () {
 
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
-  appearVideo(`${getURLVideo(1)} 1`);
+  const url = appearVideo(`${getURLFilm(1)} 1`);
+
   getFilms();
   search(
     document.querySelector("input"),
@@ -148,23 +149,49 @@ window.onload = function () {
     document.getElementsByClassName("container")[0]
   );
 
+  const image = document.querySelector(".downloadButton");
+
+  // image.innerHTML = `<a id="${url}" onclick="dl(id)"><img class="dlImg" src="src/Assets/Download.png" /></a`;
+
   setTimeout(() => {
     window.scrollTo({ top: 580, behavior: "smooth" });
   }, 1000);
 };
+
+function dl(url) {
+  var element = document.createElement("a");
+  element.setAttribute("href", url);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
 
 function getFilms() {
   const divVideos = document.getElementsByClassName("films")[0];
   const length = 15;
 
   for (let i = 1; i < length; i++) {
-    const url = getURLVideo(i);
+    const url = getURLFilm(i);
     divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
     )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
+}
+
+function isIOS() {
+  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+
+  return /iPhone|iPad|iPod/i.test(
+    navigator.userAgent ||
+      navigator.vendor ||
+      (window.opera && opera.toString() === `[object Opera]`)
+  );
 }
 
 function appearVideo(id) {
@@ -174,6 +201,7 @@ function appearVideo(id) {
   });
 
   const [url, index] = id.split(" ");
+
   const findText = document.querySelector(".findText");
 
   document.querySelector("title").textContent = `${obj[index].name} - Mugiwara-no Streaming`;
@@ -187,9 +215,11 @@ function appearVideo(id) {
   else autoplay = "";
 
   video.innerHTML = `<video ${autoplay} id="filmVideo" preload="metadata" controls="controls" width="800" height="auto"><source src="${url}" type="video/mp4"></video>`;
+
+  return url;
 }
 
-function getURLVideo(index) {
+function getURLFilm(index) {
   let res;
 
   index <= 11

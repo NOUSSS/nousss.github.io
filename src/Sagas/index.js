@@ -132,7 +132,10 @@ function getSagas() {
   for (let i = 1; i < length; i++) {
     divSagas.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
-    )}" class="divSagas" ><a href="SagaEpisode.html"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
+    )}" class="divSagas" ><a><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
+      // SagaEpisode.html?id=${i}&title=${
+      //   obj[i].name
+      // }
       obj[i].name
     }</p></div>`;
   }
