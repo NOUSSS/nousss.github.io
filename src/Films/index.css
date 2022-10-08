@@ -165,6 +165,7 @@ input:checked::after {
 }
 
 .tips {
+  color: white;
   margin: 29px
 }
 
