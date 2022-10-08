@@ -270,9 +270,7 @@ const obj = {
       "barbe noire",
       "buster call",
       "kizaru",
-      "amiral",
       "Laugh Tale",
-      "eternal logpos",
     ],
   },
 };
