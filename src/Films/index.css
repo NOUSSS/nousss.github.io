@@ -107,7 +107,7 @@ span {
   transition: all 0.5s;
 }
 
-.copyButton p span {
+.downloadButton p span {
   width: 48px;
   margin: 5px;
   display: inline-block;

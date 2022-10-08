@@ -141,15 +141,13 @@ window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   appearVideo(`${getURLFilm(1)} 1`);
-  document.querySelector(".image").addEventListener("click", () => {
-    copyLinkVideo(
-      document.querySelector("video").getElementsByTagName("source")[0].src,
-      document
-        .getElementsByClassName("copyButton")[0]
-        .getElementsByTagName("p")[0]
-        .getElementsByTagName("span")[0]
-    );
-  });
+
+  document.querySelector(".image").addEventListener("click", () => download());
+  document
+    .querySelector(".downloadButton")
+    .getElementsByTagName("p")[0]
+    .getElementsByTagName("span")[0]
+    .addEventListener("click", () => download());
 
   getFilms();
   search(
@@ -163,13 +161,23 @@ window.onload = function () {
   }, 1000);
 };
 
-function copyLinkVideo(url, text) {
+function download() {
+  openDownloader(
+    document.querySelector("video").getElementsByTagName("source")[0].src,
+    document
+      .getElementsByClassName("downloadButton")[0]
+      .getElementsByTagName("p")[0]
+      .getElementsByTagName("span")[0]
+  );
+}
+
+function openDownloader(url, text) {
   let { inner, color } = { inner: text.innerHTML, color: text.style.color };
 
-  navigator.clipboard.writeText(url);
+  window.open(`https://pastedownload.com/25/#url=${url}`, "_blank");
 
   text.style.color = "green";
-  text.innerHTML = "Lien copié !";
+  text.innerHTML = "Lien ouvert !";
 
   setTimeout(() => {
     text.innerHTML = inner;
