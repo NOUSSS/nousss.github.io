@@ -142,6 +142,16 @@ window.onload = function () {
 
   const url = appearVideo(`${getURLFilm(1)} 1`);
 
+  document.querySelector(".image").addEventListener("click", () => {
+    copyLinkVideo(
+      url,
+      document
+        .getElementsByClassName("copyButton")[0]
+        .getElementsByTagName("p")[0]
+        .getElementsByTagName("span")[0]
+    );
+  });
+
   getFilms();
   search(
     document.querySelector("input"),
@@ -149,25 +159,23 @@ window.onload = function () {
     document.getElementsByClassName("container")[0]
   );
 
-  const image = document.querySelector(".downloadButton");
-
-  // image.innerHTML = `<a id="${url}" onclick="dl(id)"><img class="dlImg" src="src/Assets/Download.png" /></a`;
-
   setTimeout(() => {
     window.scrollTo({ top: 580, behavior: "smooth" });
   }, 1000);
 };
 
-function dl(url) {
-  var element = document.createElement("a");
-  element.setAttribute("href", url);
+function copyLinkVideo(url, text) {
+  let { inner, color } = { inner: text.innerHTML, color: text.style.color };
 
-  element.style.display = "none";
-  document.body.appendChild(element);
+  navigator.clipboard.writeText(url);
 
-  element.click();
+  text.style.color = "green";
+  text.innerHTML = "Lien copié !";
 
-  document.body.removeChild(element);
+  setTimeout(() => {
+    text.innerHTML = inner;
+    text.style.color = color;
+  }, 3000);
 }
 
 function getFilms() {
