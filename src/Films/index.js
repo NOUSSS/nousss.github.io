@@ -140,11 +140,10 @@ window.onload = function () {
 
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
-  const url = appearVideo(`${getURLFilm(1)} 1`);
-
+  appearVideo(`${getURLFilm(1)} 1`);
   document.querySelector(".image").addEventListener("click", () => {
     copyLinkVideo(
-      url,
+      document.querySelector("video").getElementsByTagName("source")[0].src,
       document
         .getElementsByClassName("copyButton")[0]
         .getElementsByTagName("p")[0]
