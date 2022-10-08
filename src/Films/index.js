@@ -258,5 +258,21 @@ const obj = {
   11: { name: "3D - À la poursuite du chapeau de paille", aliases: ["11"] },
   12: { name: "Z", aliases: ["zed", "12"] },
   13: { name: "Gold", aliases: ["or", "13"] },
-  14: { name: "Stampede", aliases: ["14"] },
+  14: {
+    name: "Stampede",
+    aliases: [
+      "14",
+      "boa",
+      "roger",
+      "fugitora",
+      "mihawk",
+      "bullet",
+      "barbe noire",
+      "buster call",
+      "kizaru",
+      "amiral",
+      "Laugh Tale",
+      "eternal logpos",
+    ],
+  },
 };
