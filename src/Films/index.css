@@ -164,12 +164,20 @@ input:checked::after {
   transition: all 0.5s;
 }
 
+.tips {
+  margin: 29px
+}
+
+.tips span {
+  color: orange;
+}
+
 footer p {
   opacity: 59%;
   color: black;
 }
 
-.films img:hover {
+.imgClick:hover {
   opacity: 0.6;
   transform: scale(0.9);
 }

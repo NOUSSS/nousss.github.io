@@ -142,6 +142,11 @@ window.onload = function () {
 
   appearVideo(`${getURLFilm(1)} 1`);
 
+  if (isIOS()) {
+    document.querySelector(".tips").innerHTML =
+      "<span>Tips : </span>Si vous êtes sur <span>iPhone</span>, pour télécharger la vidéo vous devez cliquer sur le bouton <span>télécharger</span> ci-dessous avec <span>SAFARI</span> puis cliquez sur le bouton partager juste en bas au milieu puis '<span>Enregistrer dans fichiers</span>'.";
+  }
+
   document.querySelector(".image").addEventListener("click", () => download());
   document
     .querySelector(".downloadButton")
@@ -174,7 +179,7 @@ function download() {
 function openDownloader(url, text) {
   let { inner, color } = { inner: text.innerHTML, color: text.style.color };
 
-  window.open(`https://pastedownload.com/25/#url=${url}`, "_blank");
+  window.open(url, "_blank");
 
   text.style.color = "green";
   text.innerHTML = "Lien ouvert !";
@@ -193,7 +198,7 @@ function getFilms() {
     const url = getURLFilm(i);
     divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
-    )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
+    )}" class="divFilm" ><img class="imgClick" id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
