@@ -48,7 +48,10 @@ function search(input, div, container) {
             f.style.display = "";
 
             if (
-              !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+              !f.id
+                .split("|")[0]
+                .toLowerCase()
+                .includes(input.value.toLowerCase()) &&
               !f.id
                 .split("|")[1]
                 .split(", ")
@@ -65,7 +68,9 @@ function search(input, div, container) {
 
           textFind.style.display = "";
           textFind.innerHTML =
-            i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
+            i > 1
+              ? `<span>${i}</span> Films trouvés.`
+              : `<span>${i}</span> Film trouvé.`;
 
           container.style.marginTop = "45px";
         }
@@ -89,7 +94,10 @@ function search(input, div, container) {
             for (const f of div) {
               f.style.display = "";
               if (
-                !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
+                !f.id
+                  .split("|")[0]
+                  .toLowerCase()
+                  .includes(input.value.toLowerCase()) &&
                 !f.id
                   .split("|")[1]
                   .split(", ")
@@ -99,14 +107,17 @@ function search(input, div, container) {
               else {
                 i++;
 
-                const firstText = document.getElementsByClassName("firstText")[0];
+                const firstText =
+                  document.getElementsByClassName("firstText")[0];
                 firstText.style.display = "none";
               }
             }
 
             textFind.style.display = "";
             textFind.innerHTML =
-              i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
+              i > 1
+                ? `<span>${i}</span> Films trouvés.`
+                : `<span>${i}</span> Film trouvé.`;
 
             container.style.marginTop = "45px";
           }
@@ -144,7 +155,7 @@ window.onload = function () {
 
   if (isIOS()) {
     document.querySelector(".tips").innerHTML =
-      "<span>Tips : </span>Si vous êtes sur <span>iPhone</span>, pour télécharger la vidéo vous devez cliquer sur le bouton <span>télécharger</span> ci-dessous avec <span>SAFARI</span> puis cliquez sur le bouton partager juste en bas au milieu puis '<span>Enregistrer dans fichiers</span>'.";
+      "Sur <span>iPhone</span>, pour télécharger la vidéo vous devez cliquer sur le bouton <span>télécharger</span> ci-dessous avec <span>SAFARI</span> puis cliquez sur le bouton partager juste en bas au milieu puis '<span>Enregistrer dans fichiers</span>'.";
   }
 
   document.querySelector(".image").addEventListener("click", () => download());
@@ -198,14 +209,15 @@ function getFilms() {
     const url = getURLFilm(i);
     divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
-    )}" class="divFilm" ><img class="imgClick" id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
+    )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
 }
 
 function isIOS() {
-  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+  if (typeof window === `undefined` || typeof navigator === `undefined`)
+    return false;
 
   return /iPhone|iPad|iPod/i.test(
     navigator.userAgent ||
@@ -224,7 +236,9 @@ function appearVideo(id) {
 
   const findText = document.querySelector(".findText");
 
-  document.querySelector("title").textContent = `${obj[index].name} - Mugiwara-no Streaming`;
+  document.querySelector(
+    "title"
+  ).textContent = `${obj[index].name} - Mugiwara-no Streaming`;
   findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
@@ -252,12 +266,18 @@ function getURLFilm(index) {
 const obj = {
   1: { name: "Le film", aliases: ["1"] },
   2: { name: "L'Aventure de l'Île de l'Horloge", aliases: ["ile", "2"] },
-  3: { name: "Le Royaume de Chopper, l'Étrange Île des Animaux", aliases: ["ile", "3"] },
+  3: {
+    name: "Le Royaume de Chopper, l'Étrange Île des Animaux",
+    aliases: ["ile", "3"],
+  },
   4: { name: "L'Aventure sans Issue", aliases: ["4"] },
   5: { name: "La Malédiction de l'Épée Sacrée", aliases: ["epee sacre", "5"] },
   6: { name: "Le Baron Omatsuri et l'Île aux Secrets", aliases: ["ile", "6"] },
   7: { name: "Le Mecha Géant du Château Karakuri", aliases: ["chateau", "7"] },
-  8: { name: "Les Pirates et la Princesse du Désert", aliases: ["desert", "8"] },
+  8: {
+    name: "Les Pirates et la Princesse du Désert",
+    aliases: ["desert", "8"],
+  },
   9: { name: "Le Miracle des Cerisiers en Hiver", aliases: ["9"] },
   10: { name: "Strong World", aliases: ["10"] },
   11: { name: "3D - À la poursuite du chapeau de paille", aliases: ["11"] },

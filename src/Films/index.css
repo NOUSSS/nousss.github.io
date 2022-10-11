@@ -178,7 +178,7 @@ footer p {
   color: black;
 }
 
-.imgClick:hover {
+.divFilm :hover {
   opacity: 0.6;
   transform: scale(0.9);
 }
