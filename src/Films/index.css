@@ -178,7 +178,7 @@ footer p {
   color: black;
 }
 
-.divFilm :hover {
+.poster:hover{
   opacity: 0.6;
   transform: scale(0.9);
 }

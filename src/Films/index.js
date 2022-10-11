@@ -48,10 +48,7 @@ function search(input, div, container) {
             f.style.display = "";
 
             if (
-              !f.id
-                .split("|")[0]
-                .toLowerCase()
-                .includes(input.value.toLowerCase()) &&
+              !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
               !f.id
                 .split("|")[1]
                 .split(", ")
@@ -68,9 +65,7 @@ function search(input, div, container) {
 
           textFind.style.display = "";
           textFind.innerHTML =
-            i > 1
-              ? `<span>${i}</span> Films trouvés.`
-              : `<span>${i}</span> Film trouvé.`;
+            i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
           container.style.marginTop = "45px";
         }
@@ -94,10 +89,7 @@ function search(input, div, container) {
             for (const f of div) {
               f.style.display = "";
               if (
-                !f.id
-                  .split("|")[0]
-                  .toLowerCase()
-                  .includes(input.value.toLowerCase()) &&
+                !f.id.split("|")[0].toLowerCase().includes(input.value.toLowerCase()) &&
                 !f.id
                   .split("|")[1]
                   .split(", ")
@@ -107,17 +99,14 @@ function search(input, div, container) {
               else {
                 i++;
 
-                const firstText =
-                  document.getElementsByClassName("firstText")[0];
+                const firstText = document.getElementsByClassName("firstText")[0];
                 firstText.style.display = "none";
               }
             }
 
             textFind.style.display = "";
             textFind.innerHTML =
-              i > 1
-                ? `<span>${i}</span> Films trouvés.`
-                : `<span>${i}</span> Film trouvé.`;
+              i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
             container.style.marginTop = "45px";
           }
@@ -209,15 +198,14 @@ function getFilms() {
     const url = getURLFilm(i);
     divVideos.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
-    )}" class="divFilm" ><img id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
+    )}" class="divFilm" ><img class="poster" id="${url} ${i}" onclick="appearVideo(id)"src="src/Assets/Films/${i}.jpg" /><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
 }
 
 function isIOS() {
-  if (typeof window === `undefined` || typeof navigator === `undefined`)
-    return false;
+  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
 
   return /iPhone|iPad|iPod/i.test(
     navigator.userAgent ||
@@ -236,9 +224,7 @@ function appearVideo(id) {
 
   const findText = document.querySelector(".findText");
 
-  document.querySelector(
-    "title"
-  ).textContent = `${obj[index].name} - Mugiwara-no Streaming`;
+  document.querySelector("title").textContent = `${obj[index].name} - Mugiwara-no Streaming`;
   findText.innerHTML = `<span>${obj[index].name}</span>`;
 
   const video = document.getElementsByClassName("video")[0];
