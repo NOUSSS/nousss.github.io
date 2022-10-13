@@ -1,6 +1,10 @@
 window.onload = async function () {
+  let PageTitle = document.querySelector("title").textContent;
+
   const index = getParam("id");
   const title = getParam("title");
+
+  PageTitle = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
   text.innerHTML = `<a href="Saga.html">${title}</a>`;
@@ -26,15 +30,16 @@ window.onload = async function () {
       for (const url of eps2) {
         i++;
 
-        const title = (await getEpisode(i)).title;
+        const epTitle = (await getEpisode(i)).title;
 
-        list.innerHTML += `<p class="epClick" id="${url}<<<${title}<<<${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${title}</p>`;
+        list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
       }
     }, 1000);
   });
 };
 
 const Change = function (params) {
+  let PageTitle = document.querySelector("title").textContent;
   const [url, title, index] = params.split("<<<");
 
   window.scrollTo({
@@ -45,6 +50,8 @@ const Change = function (params) {
   document.querySelector(
     ".episodes"
   ).innerHTML = `<p class="bigText" ><span class="numberEp">${index}</span> - ${title}</p><iframe width=640 height=360 src=${url}></iframe>`;
+
+  PageTitle = `${index} - Mugiwara-no Streaming`;
 };
 
 const addScript = function (index) {
