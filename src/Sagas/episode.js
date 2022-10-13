@@ -28,9 +28,6 @@ window.onload = async function () {
 
       divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
 
-      document.querySelector("iframe").addEventListener("ended", () => {
-        console.clear();
-      });
       for (const url of eps2) {
         i++;
 
