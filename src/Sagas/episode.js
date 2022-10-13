@@ -28,14 +28,14 @@ window.onload = async function () {
 
         const title = (await getEpisode(i)).title;
 
-        list.innerHTML += `<p class="epClick" id="${url}|${title}|${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${title}</p>`;
+        list.innerHTML += `<p class="epClick" id="${url}<<<${title}<<<${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${title}</p>`;
       }
     }, 1000);
   });
 };
 
 const Change = function (params) {
-  const [url, title, index] = params.split("|");
+  const [url, title, index] = params.split("<<<");
 
   window.scrollTo({
     top: 0,
