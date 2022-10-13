@@ -1,34 +1,87 @@
-let data;
-
 window.onload = async function () {
-  const number = Number(getParam("id"));
+  const index = getParam("id");
   const title = getParam("title");
 
-  console.log(number);
-
   const text = document.getElementsByClassName("firstText")[0];
+  text.innerHTML = `<a href="Saga.html">${title}</a>`;
 
-  text.innerHTML = title;
+  const loading = document.querySelector(".loading");
+  loading.innerHTML = "Épisodes en cours de chargement...";
 
   const divEp = document.querySelector(".episodes");
+  const list = document.querySelector(".list");
 
-  const Http = new XMLHttpRequest();
+  const secondText = document.querySelector(".secondText");
 
-  Http.open("GET", "https://api.api-onepiece.com/episodes");
-  Http.send();
+  addScript(index).then(() => {
+    setTimeout(async () => {
+      loading.innerHTML = "";
+      secondText.innerHTML = `<span>${eps2.length}</span> épisodes trouvés.`;
 
-  Http.onreadystatechange = function () {
-    let res = JSON.parse(Http.responseText);
-    const data = res.filter((e) => e.saga?.id === number).map((e) => e?.title);
+      let i = allIndex[index];
 
-    for (const d of data) {
-      if (d) divEp.innerHTML += `<p>${d}</p>`;
-    }
-  };
+      const tempURL = eps2[0];
+
+      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
+      for (const url of eps2) {
+        i++;
+
+        const title = (await getEpisode(i)).title;
+
+        list.innerHTML += `<p class="epClick" id="${url}|${title}|${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${title}</p>`;
+      }
+    }, 1000);
+  });
+};
+
+const Change = function (params) {
+  const [url, title, index] = params.split("|");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  document.querySelector(
+    ".episodes"
+  ).innerHTML = `<p class="bigText" ><span class="numberEp">${index}</span> - ${title}</p><iframe width=640 height=360 src=${url}></iframe>`;
+};
+
+const addScript = function (index) {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.setAttribute("src", `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`);
+
+    resolve(document.head.appendChild(script));
+  });
 };
 
 function getParam(query) {
-  var rx = new RegExp("[?&]" + query + "=([^&]+).*$");
-  var returnVal = window.location.search.match(rx);
-  return returnVal === null ? "" : decodeURI(returnVal[1]);
+  const regex = new RegExp("[?&]" + query + "=([^&]+).*$");
+  const urlMatch = window.location.search.match(regex);
+
+  return urlMatch === null ? "" : decodeURI(urlMatch[1]);
 }
+
+const getEpisode = function (index) {
+  return new Promise((resolve) => {
+    const api = `https://api.api-onepiece.com/episodes/${index}`;
+
+    fetch(api).then((result) => {
+      resolve(result.json());
+    });
+  });
+};
+
+const allIndex = {
+  1: 0,
+  2: 61,
+  3: 143,
+  4: 206,
+  5: 325,
+  6: 389,
+  7: 516,
+  8: 574,
+  9: 746,
+  10: 889,
+};

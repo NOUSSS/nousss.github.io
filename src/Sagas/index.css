@@ -95,11 +95,20 @@ span {
     color: orange;
 }
 
+p {
+    color: white;
+}
+
 footer p {
     opacity: 59%;
 }
 
-.firstText {
+.numberEp { 
+    color: orange 
+}
+
+
+.firstText a, .firstText {
     color: cyan;
     font-size: 50px;
 }
@@ -109,14 +118,59 @@ footer p {
     transform: scale(0.9);
 }   
 
-@media (max-width: 836px) {
-    video {
-        width: 547px;
+.epClick :hover { 
+    color: orange 
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bigText {
+    font-size: 30px;
+}
+
+
+
+@media (max-width: 649px) {
+    .epClick {
+        width: 245px;
+        position: relative;
+        left: 206px;
+    }
+
+    .bigText {
+        font-size: 21px
+    }
+
+    iframe {
+        width: 450px;
+        height: 258px;
     }
 }
 
-@media (max-width: 574px) {
-    video {
-        width: 300px;
+@media (max-width: 458px) {
+    .epClick {
+        position: relative;
+        left: 90px;
+    }
+
+    iframe {
+        width: 325px;
+        height: 185px;
+    }
+}
+
+@media (max-width: 358px) {
+    .epClick {
+        position: relative;
+        left: 17px;
+    }
+
+    iframe {
+        width: 265px;
+        height: 153px;
     }
 }
