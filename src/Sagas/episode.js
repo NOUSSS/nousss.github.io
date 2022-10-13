@@ -20,18 +20,18 @@ window.onload = async function () {
   addScript(index).then(() => {
     setTimeout(async () => {
       loading.innerHTML = "";
-      secondText.innerHTML = `<span>${eps1.length}</span> épisodes trouvés.`;
+      secondText.innerHTML = `<span>${eps2.length}</span> épisodes trouvés.`;
 
       let i = allIndex[index];
 
-      const tempURL = eps1[0];
+      const tempURL = eps2[0];
 
       divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
 
       document.querySelector("iframe").addEventListener("ended", () => {
         console.clear();
       });
-      for (const url of eps1) {
+      for (const url of eps2) {
         i++;
 
         const epTitle = (await getEpisode(i)).title;
