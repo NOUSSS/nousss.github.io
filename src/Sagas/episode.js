@@ -33,28 +33,49 @@ window.onload = async function () {
 
       loading.innerHTML = "";
       secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
-      buttons.innerHTML = `<button onclick="Prev();">Épisode précedent</button><button onclick="Next()">Épisode suivant</button>`;
+      buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button onclick="Next()">Épisode suivant</button>`;
 
       let i = allIndex[index];
 
       const tempURL = lecteur[0];
+      const tempTitle = (await getEpisode(i + 1))?.title;
 
       divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
 
+      document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
+        i + 1
+      }</span> - ${tempTitle}</p>`;
+
+      let cachedIndex = 0;
+
       for (const url of lecteur) {
+        cachedIndex++;
         i++;
 
         const epTitle = (await getEpisode(i))?.title;
 
         if (!epTitle) return;
 
-        list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+        if (Number(document.querySelector(".bigText").innerText.split(" - ")[0]) !== Number(i))
+          list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+        else
+          list.innerHTML += `<p style="display:none" class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
       }
     }, 1000);
   });
 };
 
+let database = null;
+
 const Change = function (params) {
+  document.getElementsByClassName("epClick")[0].style.display = "";
+
+  if (!database) {
+    document.querySelector(".prevButton").style.display = "";
+
+    database = 1;
+  }
+
   let PageTitle = document.querySelector("title");
   const [url, title, index] = params.split("<<<");
 
@@ -106,9 +127,43 @@ const getEpisode = function (index) {
   });
 };
 
-const Prev = function () {};
+const Prev = async function () {
+  const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
-const Next = function () {};
+  const indexEpisode = document.querySelector(".bigText").innerText.split(" - ")[0];
+
+  for (const text of document.getElementsByClassName("epClick")) {
+    if (text.id.split("<<<")[2] === indexEpisode) {
+      const [_, __, index, cacheIndex] = text.id.split("<<<");
+      const url = lecteur[cacheIndex - 2];
+      const title = (await getEpisode(index - 1)).title;
+
+      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`);
+    }
+  }
+};
+
+const Next = async function () {
+  document.getElementsByClassName("epClick")[0].style.display = "";
+
+  const lecteur = getLecteur("sibnet", [eps2, eps1]);
+
+  if (document.querySelector(".bigText").innerText) {
+    const indexEpisode = document.querySelector(".bigText").innerText.split(" - ")[0];
+
+    for (const text of document.getElementsByClassName("epClick")) {
+      if (text.id.split("<<<")[2] === indexEpisode) {
+        const [_, __, index, cacheIndex] = text.id.split("<<<");
+        const url = lecteur[Number(cacheIndex)];
+        const title = (await getEpisode(Number(index) + 1)).title;
+
+        Change(`${url}<<<${title}<<<${Number(index) + 1}<<<${Number(cacheIndex) + 1}`);
+      } else {
+        console.log(text.id.split("<<<")[2]);
+      }
+    }
+  }
+};
 
 const allIndex = {
   1: 0,
