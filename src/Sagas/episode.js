@@ -76,7 +76,7 @@ window.onload = async function () {
 
 let database = null;
 
-const Change = function (params, doNotDetect) {
+const Change = function (params, doNotDetect, doNotScroll) {
   document.getElementsByClassName("epClick")[0].style.display = "";
 
   if (!doNotDetect) {
@@ -90,10 +90,12 @@ const Change = function (params, doNotDetect) {
   let PageTitle = document.querySelector("title");
   const [url, title, index] = params.split("<<<");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  if (!doNotScroll) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   document.querySelector(
     ".bigText"
@@ -154,7 +156,7 @@ const Prev = async function () {
       const url = lecteur[cacheIndex - 2];
       const title = (await getEpisode(index - 1)).title;
 
-      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`, true);
+      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`, true, true);
     }
   }
 };
@@ -173,7 +175,7 @@ const Next = async function () {
         const url = lecteur[Number(cacheIndex)];
         const title = (await getEpisode(Number(index) + 1)).title;
 
-        Change(`${url}<<<${title}<<<${Number(index) + 1}<<<${Number(cacheIndex) + 1}`);
+        Change(`${url}<<<${title}<<<${Number(index) + 1}<<<${Number(cacheIndex) + 1}`, null, true);
       }
     }
   }
