@@ -20,7 +20,7 @@ window.onload = async function () {
   addScript(index).then(() => {
     setTimeout(async () => {
       loading.innerHTML = "";
-      secondText.innerHTML = `<span>${eps2.length}</span> épisodes trouvés.`;
+      secondText.innerHTML = `<button onclick="Prev();">Précedent</button><p><span>${eps2.length}</span> épisodes trouvés.</p><button onclick="Next()">Suivant</button>`;
 
       let i = allIndex[index];
 
@@ -58,7 +58,10 @@ const Change = function (params) {
 const addScript = function (index) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.setAttribute("src", `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`);
+    script.setAttribute(
+      "src",
+      `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`
+    );
 
     resolve(document.head.appendChild(script));
   });
@@ -79,6 +82,27 @@ const getEpisode = function (index) {
       resolve(result.json());
     });
   });
+};
+
+const Prev = function () {
+  const textGetter = document.querySelector(".numberEp");
+};
+
+const Next = async function () {
+  const textGetter = document.querySelector(".numberEp");
+
+  if (textGetter.innerHTML) {
+    const index = Number(textGetter.innerHTML) + 1;
+
+    const title = (await getEpisode(index)).title;
+    textGetter.innerHTML = index;
+
+    const indexURL = textGetter.getElementsByTagName("span");
+
+    document.querySelector(
+      ".episodes"
+    ).innerHTML = `<p class="bigText" ><span class="numberEp">${index}</span> - ${title}</p><iframe width=640 height=360 src=${url}></iframe>`;
+  }
 };
 
 const allIndex = {

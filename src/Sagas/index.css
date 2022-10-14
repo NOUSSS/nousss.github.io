@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap");
 
 body {
     background-color: #222121;
     display: flex;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-align: center;
     justify-content: center;
     opacity: 100%;
@@ -14,6 +14,22 @@ input {
     height: 29px;
     justify-content: left;
     text-align: left;
+}
+
+button {
+    transition: all 0.5s;
+    border-radius: 13px;
+    width: 89px;
+    height: 31px;
+    background-color: rgb(9, 101, 206);
+    color: black;
+    font-size: 14px;
+    margin: 14px;
+}
+
+button:hover {
+    background-color: rgb(9, 144, 206);
+    transform: scale(0.9);
 }
 
 .findText {
@@ -47,7 +63,15 @@ input {
     box-shadow: 0px 0px 20px black;
 }
 
-.sagas { overflow-x: auto; }
+.secondText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sagas {
+    overflow-x: auto;
+}
 
 .sagas div {
     display: inline-flex;
@@ -89,7 +113,9 @@ h1:hover {
     transform: scale(1.1);
 }
 
-.firstText span { color: orange }
+.firstText span {
+    color: orange;
+}
 
 span {
     color: orange;
@@ -103,12 +129,12 @@ footer p {
     opacity: 59%;
 }
 
-.numberEp { 
-    color: orange 
+.numberEp {
+    color: orange;
 }
 
-
-.firstText a, .firstText {
+.firstText a,
+.firstText {
     color: cyan;
     font-size: 50px;
 }
@@ -116,10 +142,10 @@ footer p {
 .sagas img:hover {
     opacity: 0.5;
     transform: scale(0.9);
-}   
+}
 
-.epClick :hover { 
-    color: orange 
+.epClick :hover {
+    color: orange;
 }
 
 .list {
@@ -132,8 +158,6 @@ footer p {
     font-size: 30px;
 }
 
-
-
 @media (max-width: 649px) {
     .epClick {
         width: 245px;
@@ -142,7 +166,7 @@ footer p {
     }
 
     .bigText {
-        font-size: 21px
+        font-size: 21px;
     }
 
     iframe {
