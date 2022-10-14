@@ -1,11 +1,13 @@
+let paramIndex;
+
 window.onload = async function () {
+  paramIndex = getParam("id");
+
   setTimeout(() => {
     console.clear();
   }, 5000);
 
   let PageTitle = document.querySelector("title").textContent;
-
-  const index = getParam("id");
   const title = getParam("title");
 
   PageTitle = `${title} - Mugiwara-no Streaming`;
@@ -21,7 +23,7 @@ window.onload = async function () {
   const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
 
-  addScript(index).then(() => {
+  addScript(paramIndex).then(() => {
     setTimeout(async () => {
       search(
         document.querySelector("input"),
@@ -35,7 +37,7 @@ window.onload = async function () {
       secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
       buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button onclick="Next()">Épisode suivant</button>`;
 
-      let i = allIndex[index];
+      let i = allIndex[paramIndex];
 
       const tempURL = lecteur[0];
       const tempTitle = (await getEpisode(i + 1))?.title;
@@ -67,13 +69,15 @@ window.onload = async function () {
 
 let database = null;
 
-const Change = function (params) {
+const Change = function (params, doNotDetect) {
   document.getElementsByClassName("epClick")[0].style.display = "";
 
-  if (!database) {
-    document.querySelector(".prevButton").style.display = "";
+  if (!doNotDetect) {
+    if (!database) {
+      document.querySelector(".prevButton").style.display = "";
 
-    database = 1;
+      database = 1;
+    }
   }
 
   let PageTitle = document.querySelector("title");
@@ -132,13 +136,18 @@ const Prev = async function () {
 
   const indexEpisode = document.querySelector(".bigText").innerText.split(" - ")[0];
 
+  if (Number(indexEpisode) - 2 === Number(allIndex[paramIndex])) {
+    document.querySelector(".prevButton").style.display = "none";
+    database = null;
+  }
+
   for (const text of document.getElementsByClassName("epClick")) {
     if (text.id.split("<<<")[2] === indexEpisode) {
       const [_, __, index, cacheIndex] = text.id.split("<<<");
       const url = lecteur[cacheIndex - 2];
       const title = (await getEpisode(index - 1)).title;
 
-      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`);
+      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`, true);
     }
   }
 };
@@ -158,8 +167,6 @@ const Next = async function () {
         const title = (await getEpisode(Number(index) + 1)).title;
 
         Change(`${url}<<<${title}<<<${Number(index) + 1}<<<${Number(cacheIndex) + 1}`);
-      } else {
-        console.log(text.id.split("<<<")[2]);
       }
     }
   }
