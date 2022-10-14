@@ -3,9 +3,9 @@ let paramIndex;
 window.onload = async function () {
   paramIndex = getParam("id");
 
-  setTimeout(() => {
+  setInterval(() => {
     console.clear();
-  }, 5000);
+  }, 0);
 
   let PageTitle = document.querySelector("title").textContent;
   const title = getParam("title");
@@ -25,6 +25,13 @@ window.onload = async function () {
 
   addScript(paramIndex).then(() => {
     setTimeout(async () => {
+      if (Number(paramIndex) === 10) {
+        document.querySelector(
+          ".warning"
+        ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelque problemes de
+    syncronisation au niveau des <span>URLs</span> des épisodes.`;
+      }
+
       search(
         document.querySelector("input"),
         document.getElementsByClassName("epClick"),
@@ -50,13 +57,13 @@ window.onload = async function () {
 
       let cachedIndex = 0;
 
-      for (const url of lecteur) {
+      for (let url of lecteur) {
         cachedIndex++;
         i++;
 
-        const epTitle = (await getEpisode(i))?.title;
+        let epTitle = (await getEpisode(i))?.title;
 
-        if (!epTitle) return;
+        if (!epTitle) epTitle = "";
 
         if (Number(document.querySelector(".bigText").innerText.split(" - ")[0]) !== Number(i))
           list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;

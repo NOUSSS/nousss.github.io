@@ -48,6 +48,10 @@ input::placeholder {
     left: 5px;
 }
 
+.warning {
+    color: red;
+}
+
 button {
     transition: all 0.5s;
     border: none;
