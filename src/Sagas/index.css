@@ -20,7 +20,6 @@ select {
     height: 36px;
     border: none;
     border-radius: 7px;
-
 }
 
 input {
@@ -58,6 +57,11 @@ button {
     background-color: rgb(9, 101, 206);
     font-size: 14px;
     margin: 9px;
+    color: black;
+}
+
+.epClick {
+    cursor: pointer;
 }
 
 button:hover {
