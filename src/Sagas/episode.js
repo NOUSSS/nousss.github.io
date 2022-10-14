@@ -1,4 +1,8 @@
 window.onload = async function () {
+  setTimeout(() => {
+    console.clear();
+  }, 5000);
+
   let PageTitle = document.querySelector("title").textContent;
 
   const index = getParam("id");
@@ -7,31 +11,42 @@ window.onload = async function () {
   PageTitle = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga.html">${title}</a>`;
+  text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = "Épisodes en cours de chargement...";
 
   const divEp = document.querySelector(".episodes");
   const list = document.querySelector(".list");
-
+  const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
 
   addScript(index).then(() => {
     setTimeout(async () => {
+      search(
+        document.querySelector("input"),
+        document.getElementsByClassName("epClick"),
+        document.getElementsByClassName("container")[0]
+      );
+
+      const lecteur = getLecteur("sibnet", [eps2, eps1]);
+
       loading.innerHTML = "";
-      secondText.innerHTML = `<button onclick="Prev();">Précedent</button><p><span>${eps2.length}</span> épisodes trouvés.</p><button onclick="Next()">Suivant</button>`;
+      secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
+      buttons.innerHTML = `<button onclick="Prev();">Épisode précedent</button><button onclick="Next()">Épisode suivant</button>`;
 
       let i = allIndex[index];
 
-      const tempURL = eps2[0];
+      const tempURL = lecteur[0];
 
       divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
 
-      for (const url of eps2) {
+      for (const url of lecteur) {
         i++;
 
-        const epTitle = (await getEpisode(i)).title;
+        const epTitle = (await getEpisode(i))?.title;
+
+        if (!epTitle) return;
 
         list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
       }
@@ -40,7 +55,7 @@ window.onload = async function () {
 };
 
 const Change = function (params) {
-  let PageTitle = document.querySelector("title").textContent;
+  let PageTitle = document.querySelector("title");
   const [url, title, index] = params.split("<<<");
 
   window.scrollTo({
@@ -49,19 +64,26 @@ const Change = function (params) {
   });
 
   document.querySelector(
-    ".episodes"
-  ).innerHTML = `<p class="bigText" ><span class="numberEp">${index}</span> - ${title}</p><iframe width=640 height=360 src=${url}></iframe>`;
+    ".bigText"
+  ).innerHTML = `<span class="numberEp">${index}</span> - ${title}</p>`;
 
-  PageTitle = `${index} - Mugiwara-no Streaming`;
+  document.querySelector(
+    ".episodes"
+  ).innerHTML = `<iframe width=640 height=360 src=${url}></iframe>`;
+
+  PageTitle.textContent = `${index} - Mugiwara-no Streaming`;
 };
+
+function LecteurChange() {
+  const select = document.querySelector("select");
+
+  alert(select.value);
+}
 
 const addScript = function (index) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.setAttribute(
-      "src",
-      `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`
-    );
+    script.setAttribute("src", `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`);
 
     resolve(document.head.appendChild(script));
   });
@@ -84,26 +106,9 @@ const getEpisode = function (index) {
   });
 };
 
-const Prev = function () {
-  const textGetter = document.querySelector(".numberEp");
-};
+const Prev = function () {};
 
-const Next = async function () {
-  const textGetter = document.querySelector(".numberEp");
-
-  if (textGetter.innerHTML) {
-    const index = Number(textGetter.innerHTML) + 1;
-
-    const title = (await getEpisode(index)).title;
-    textGetter.innerHTML = index;
-
-    const indexURL = textGetter.getElementsByTagName("span");
-
-    document.querySelector(
-      ".episodes"
-    ).innerHTML = `<p class="bigText" ><span class="numberEp">${index}</span> - ${title}</p><iframe width=640 height=360 src=${url}></iframe>`;
-  }
-};
+const Next = function () {};
 
 const allIndex = {
   1: 0,
@@ -115,5 +120,94 @@ const allIndex = {
   7: 516,
   8: 574,
   9: 746,
-  10: 889,
+  10: 877,
 };
+
+function search(input, div, container) {
+  let i = 0;
+
+  input.addEventListener("keypress", () => {
+    i++;
+
+    setTimeout(() => {
+      if (input.value.length === 1) {
+        setTimeout(() => {
+          input.addEventListener("keydown", ({ code }) => {
+            if (code === "Backspace" && input.value.length === 1) {
+              for (const s of div) s.style.display = "";
+              return;
+            }
+          });
+        }, 100);
+      }
+      if (!input.value) {
+        for (const s of div) s.style.display = "";
+        return;
+      }
+
+      let cacheIndex = i;
+
+      setTimeout(() => {
+        if (cacheIndex === i) {
+          let i = 0;
+
+          for (const s of div) {
+            s.style.display = "";
+            if (
+              !s.id
+                .split("<<<")
+                .some((e_) =>
+                  e_.split(" ").some((e) => e.toLowerCase().includes(input.value.toLowerCase()))
+                )
+            )
+              s.style.display = "none";
+            else {
+              i++;
+            }
+          }
+
+          container.style.marginTop = "45px";
+        }
+      }, 50);
+    }, 50);
+  });
+
+  input.addEventListener("keydown", () => {
+    if (input.value.length > 1) {
+      i++;
+
+      setTimeout(() => {
+        let cacheIndex = i;
+
+        setTimeout(() => {
+          if (cacheIndex === i) {
+            let i = 0;
+
+            for (const s of div) {
+              s.style.display = "";
+              if (
+                !s.id
+                  .split("<<<")
+                  .some((e_) =>
+                    e_.split(" ").some((e) => e.toLowerCase().includes(input.value.toLowerCase()))
+                  )
+              )
+                s.style.display = "none";
+              else {
+                i++;
+              }
+            }
+
+            container.style.marginTop = "45px";
+          }
+        }, 50);
+      }, 50);
+    }
+  });
+}
+
+function getLecteur(query, choices) {
+  for (const lecteur of choices) {
+    if (lecteur[0].includes(query)) return lecteur;
+  }
+}

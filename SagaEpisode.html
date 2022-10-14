@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="./src/Sagas/index.css" />
     <link rel="shortcut icon" href="./src/Assets/Icon.png" type="image/x-icon" />
     <title>Mugiwara-no Streaming</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mugiwara-no Streaming" />
+    <meta
+      property="og:description"
+      content="Un site pour regarder Mugiwara-no gratuitement avec tout les épisodes et films à jour en VF et en VOSTFR !"
+    />
+    <meta content="#ff7300" data-react-helmet="true" name="theme-color" />
   </head>
   <body>
     <img class="background" src="./src/Assets/Background.jpg" />
@@ -18,9 +25,23 @@
       <div class="secondContainer">
         <p class="firstText"></p>
         <div class="secondText"></div>
+        <input
+          type="search"
+          name="sagaSearch"
+          placeholder="Rechercher"
+          title="Système de recherche avancé."
+        />
         <p class="loading"></p>
+        <div class="buttons"></div>
+        <p class="bigText"></p>
         <div class="episodes"></div>
+        <select name="lecteur" onchange="LecteurChange();">
+          <option value="" disabled selected hidden>Changer de lecteur</option>
+          <option value="Sibnet">Sibnet</option>
+          <option value="Myvi">Myvi</option>
+        </select>
         <div class="list"></div>
+        <p class="mark">Les vidéos ne sont pas hébergées sur nos serveurs.</p>
       </div>
       <script src="./src/Sagas/episode.js"></script>
     </div>

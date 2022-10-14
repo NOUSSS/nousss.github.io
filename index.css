@@ -12,16 +12,16 @@ body {
 
 body::-webkit-scrollbar {
     width: 16px;
-  }
-  
+}
+
 body::-webkit-scrollbar-track {
     background: orange
 }
-  
+
 body::-webkit-scrollbar-thumb {
-    background-color: cyan; 
-    border-radius: 20px; 
-    border: 3px solid orange; 
+    background-color: cyan;
+    border-radius: 20px;
+    border: 3px solid orange;
 }
 
 .background {
@@ -53,19 +53,21 @@ li {
     color: white;
     position: relative;
 }
-  
+
 .citation p {
     margin-top: -13px;
     position: absolute;
     opacity: 0;
     transition-duration: 300ms;
 }
-  
+
 .citation p.visible {
     opacity: 1;
 }
 
-.citation p span { color: orange; }
+.citation p span {
+    color: orange;
+}
 
 .title {
     letter-spacing: 3px;
@@ -105,17 +107,21 @@ footer p {
     opacity: 80%;
 }
 
-a:hover { background-size: 100% 100%; }
+a:hover {
+    background-size: 100% 100%;
+}
 
 .title img:hover {
     transform: scale(0.9);
 }
-  
+
 .container:hover {
     transform: scale(0.95);
 }
 
-.title:hover { color: orange; }
+.title:hover {
+    color: orange;
+}
 
 @media (max-width: 440px) {
     .container {
