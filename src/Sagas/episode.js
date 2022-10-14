@@ -28,8 +28,8 @@ window.onload = async function () {
       if (Number(paramIndex) === 10) {
         document.querySelector(
           ".warning"
-        ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelque problemes de
-    syncronisation au niveau des <span>URLs</span> des épisodes.`;
+        ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelques problemes de
+    syncronisation entre les <span>vidéos</span> et les <span>titres</span>.`;
       }
 
       search(
