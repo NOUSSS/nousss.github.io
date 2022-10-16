@@ -1,16 +1,23 @@
 let paramIndex;
 
 window.onload = async function () {
+  setTimeout(() => {
+    if (window.scrollY < 50) {
+      window.scrollTo({
+        top: 120,
+        behavior: "smooth",
+      });
+    }
+  }, 4000);
+
   paramIndex = getParam("id");
 
   setInterval(() => {
     console.clear();
   }, 0);
 
-  let PageTitle = document.querySelector("title").textContent;
   const title = getParam("title");
-
-  PageTitle = `${title} - Mugiwara-no Streaming`;
+  document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
   text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;

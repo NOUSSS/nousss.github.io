@@ -23,13 +23,20 @@ select {
 }
 
 input {
-    border: none;
+    border: 1px grey solid;
     border-radius: 7px;
-    height: 29px;
-    width: 86px;
+    height: 31px;
+    width: 144px;
     transition: width 0.5s;
     position: relative;
-    top: 12px;
+    top: -31px;
+}
+
+label img {
+    position: relative;
+    left: -13px;
+    top: -19px;
+    width: 35px;
 }
 
 .mark {
@@ -40,7 +47,7 @@ input {
 }
 
 input:hover {
-    width: 150px;
+    width: 291px;
 }
 
 input::placeholder {
@@ -53,6 +60,8 @@ input::placeholder {
 }
 
 button {
+    position: relative;
+    top: -20px;
     transition: all 0.5s;
     border: none;
     border-radius: 7px;
@@ -60,7 +69,7 @@ button {
     height: 47px;
     background-color: rgb(9, 101, 206);
     font-size: 14px;
-    margin: 9px;
+    margin: 17px;
     color: black;
 }
 
@@ -102,6 +111,10 @@ button:hover {
     opacity: 0.8;
     margin-top: 32px;
     box-shadow: 0px 0px 20px black;
+}
+
+.secondText p {
+    margin: -15px;
 }
 
 .sagas div {
@@ -170,6 +183,10 @@ footer p {
     font-size: 50px;
 }
 
+.thirdContainer {
+    margin-top: 50px;
+}
+
 .sagas img:hover {
     opacity: 0.5;
     transform: scale(0.9);
@@ -180,6 +197,7 @@ footer p {
 }
 
 .list {
+    margin-top: 18px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -189,13 +207,13 @@ footer p {
     font-size: 30px;
 }
 
-@media (max-width: 649px) {
-    .epClick {
-        width: 245px;
-        position: relative;
-        left: 206px;
+@media (max-width: 372px) {
+    input:hover {
+        width: 215px
     }
+}
 
+@media (max-width: 649px) {
     .bigText {
         font-size: 21px;
     }
@@ -207,11 +225,6 @@ footer p {
 }
 
 @media (max-width: 458px) {
-    .epClick {
-        position: relative;
-        left: 90px;
-    }
-
     iframe {
         width: 325px;
         height: 185px;
@@ -219,11 +232,6 @@ footer p {
 }
 
 @media (max-width: 358px) {
-    .epClick {
-        position: relative;
-        left: 17px;
-    }
-
     iframe {
         width: 265px;
         height: 153px;
