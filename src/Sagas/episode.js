@@ -1,4 +1,5 @@
 let paramIndex;
+let clearConsoleInterval;
 
 window.onload = async function () {
   setTimeout(() => {
@@ -12,7 +13,7 @@ window.onload = async function () {
 
   paramIndex = getParam("id");
 
-  setInterval(() => {
+  clearConsoleInterval = setInterval(() => {
     console.clear();
   }, 0);
 
