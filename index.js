@@ -28,6 +28,7 @@ const citation = [
 let interval;
 
 window.onload = function () {
+    console.log('Hello World');
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   setText(citation[Math.floor(Math.random() * citation.length)]);
