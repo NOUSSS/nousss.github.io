@@ -199,6 +199,13 @@ input:checked::after {
 footer p {
   opacity: 59%;
   color: black;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 .poster:hover {
