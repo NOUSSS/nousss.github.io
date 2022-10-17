@@ -56,6 +56,7 @@ input::placeholder {
 }
 
 .warning {
+    margin: 57px;
     color: red;
 }
 
@@ -84,7 +85,7 @@ button:hover {
 
 .findText {
     color: white;
-    margin: 25px;
+    margin: 46px;
     font-size: 36px;
 }
 

@@ -115,6 +115,10 @@ function search(input, div, container) {
 }
 
 window.onload = function () {
+  if (!isIOS()) {
+    document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
+  }
+
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   getSagas();
@@ -124,6 +128,16 @@ window.onload = function () {
     document.getElementsByClassName("container")[0]
   );
 };
+
+function isIOS() {
+  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+
+  return /iPhone|iPad|iPod/i.test(
+    navigator.userAgent ||
+      navigator.vendor ||
+      (window.opera && opera.toString() === `[object Opera]`)
+  );
+}
 
 function getSagas() {
   const divSagas = document.getElementsByClassName("sagas")[0];

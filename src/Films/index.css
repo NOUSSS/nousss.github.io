@@ -10,14 +10,24 @@ body {
 }
 
 input {
-  border: none;
-  height: 29px;
-  width: 86px;
+  border: 1px grey solid;
+  border-radius: 7px;
+  height: 31px;
+  width: 144px;
   transition: width 0.5s;
+  position: relative;
+  top: -31px;
+}
+
+label img {
+  position: relative;
+  left: -13px;
+  top: -19px;
+  width: 35px;
 }
 
 input:hover {
-  width: 150px;
+  width: 291px;
 }
 
 input::placeholder {
@@ -27,7 +37,7 @@ input::placeholder {
 
 .findText {
   color: white;
-  margin: 25px;
+  margin: 46px;
   font-size: 36px;
 }
 
@@ -116,6 +126,10 @@ span {
   transition: all 0.5s;
 }
 
+.downloadButton {
+  margin: 47px;
+}
+
 .downloadButton p span {
   width: 48px;
   margin: 5px;
@@ -195,6 +209,12 @@ footer p {
 @media (max-width: 805px) {
   video {
     width: 594px;
+  }
+}
+
+@media (max-width: 372px) {
+  input:hover {
+    width: 215px
   }
 }
 

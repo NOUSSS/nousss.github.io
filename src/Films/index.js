@@ -138,7 +138,9 @@ window.onload = function () {
     });
     */
 
-  console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
+  if (!isIOS()) {
+    document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
+  }
 
   appearVideo(`${getURLFilm(1)} 1`);
 

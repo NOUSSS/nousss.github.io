@@ -2,6 +2,10 @@ let paramIndex;
 let clearConsoleInterval;
 
 window.onload = async function () {
+  if (!isIOS()) {
+    document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
+  }
+
   setTimeout(() => {
     if (window.scrollY < 50) {
       window.scrollTo({
@@ -18,6 +22,8 @@ window.onload = async function () {
   }, 0);
 
   const title = getParam("title");
+
+  if (!title || !paramIndex) return (window.location.href = "./index.html");
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
@@ -115,6 +121,16 @@ const Change = function (params, doNotDetect, doNotScroll) {
 
   PageTitle.textContent = `${index} - Mugiwara-no Streaming`;
 };
+
+function isIOS() {
+  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+
+  return /iPhone|iPad|iPod/i.test(
+    navigator.userAgent ||
+      navigator.vendor ||
+      (window.opera && opera.toString() === `[object Opera]`)
+  );
+}
 
 function LecteurChange() {
   const select = document.querySelector("select");
@@ -232,13 +248,7 @@ function search(input, div, container) {
 
           for (const s of div) {
             s.style.display = "";
-            if (
-              !s.id
-                .split("<<<")
-                .some((e_) =>
-                  e_.split(" ").some((e) => e.toLowerCase().includes(input.value.toLowerCase()))
-                )
-            )
+            if (!s.id.split("<<<").some((e) => e.includes(input.value.toLowerCase())))
               s.style.display = "none";
             else {
               i++;
@@ -265,11 +275,7 @@ function search(input, div, container) {
             for (const s of div) {
               s.style.display = "";
               if (
-                !s.id
-                  .split("<<<")
-                  .some((e_) =>
-                    e_.split(" ").some((e) => e.toLowerCase().includes(input.value.toLowerCase()))
-                  )
+                !s.id.split("<<<").some((e) => e.toLowerCase().includes(input.value.toLowerCase()))
               )
                 s.style.display = "none";
               else {
