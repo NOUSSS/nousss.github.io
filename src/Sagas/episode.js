@@ -23,11 +23,11 @@ window.onload = async function () {
 
   const title = getParam("title");
 
-  if (!title || !paramIndex) return (window.location.href = "./index.html");
+  if (!title || !paramIndex) return (window.location.href = "./index");
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;
+  text.innerHTML = `<a href="Saga">${title} - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = "Épisodes en cours de chargement...";
