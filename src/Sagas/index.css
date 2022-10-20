@@ -9,7 +9,16 @@ body {
     opacity: 100%;
 }
 
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 26px;
+}
+
 .buttons {
+    width: 415px;
+    border-bottom: grey solid 1px;
     position: relative;
     top: 17px;
 }
@@ -46,7 +55,7 @@ label img {
     text-decoration: underline;
 }
 
-input:hover {
+input:focus {
     width: 291px;
 }
 
@@ -63,24 +72,31 @@ input::placeholder {
 button {
     position: relative;
     top: -20px;
-    transition: all 0.5s;
-    border: none;
-    border-radius: 7px;
+    left: 0;
+    right: 0;
+    border: orange 1px solid;
+    border-radius: 3px;
     width: 89px;
     height: 47px;
-    background-color: rgb(9, 101, 206);
+    background-color: hsl(231deg 13% 10%);
     font-size: 14px;
     margin: 17px;
-    color: black;
+    color: orange;
+    transition: all 300ms;
 }
 
 .epClick {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: rgb(9, 144, 206);
-    transform: scale(0.9);
+.nextButton:hover {
+    position: relative;
+    left: 8px;
+}
+
+.prevButton:hover {
+    position: relative;
+    left: -8px;
 }
 
 .findText {
@@ -98,20 +114,21 @@ button:hover {
     width: 100%;
     height: 100%;
     top: 0;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    opacity: 0.9;
+    left: 0;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    opacity: 0.12;
 }
 
 .container {
     width: 1700px;
     height: auto;
     position: relative;
-    background-color: #333030;
-    border-radius: 50px;
-    opacity: 0.8;
-    margin-top: 32px;
-    box-shadow: 0px 0px 20px black;
+    margin-top: 85px;
+    background-color: hsl(225deg 9% 17%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 7px;
+    opacity: 0.9;
 }
 
 .secondText p {
@@ -132,7 +149,7 @@ button:hover {
 .sagas div img {
     width: 89px;
     height: 108px;
-    transition: all 0.5s;
+    transition: all 300ms;
     opacity: 1;
 }
 
@@ -150,12 +167,13 @@ a {
     color: white;
 }
 
-h1 {
-    transition: all 0.5s;
-}
-
-h1:hover {
-    transform: scale(1.1);
+.logo {
+    font-size: 36px;
+    transition: opacity 300ms;
+    position: fixed;
+    left: 20px;
+    top: 0;
+    letter-spacing: 5px;
 }
 
 .firstText span {
@@ -170,7 +188,45 @@ p {
     color: white;
 }
 
-footer p {
+.poster {
+    transition: tranform 300ms;
+}
+
+.divSagas:hover .poster {
+    transform: rotate(10deg);
+}
+
+.searchBarSagas {
+    border-bottom: grey solid 1px;
+    padding: 7px;
+}
+
+.title img {
+    color: black;
+    width: auto;
+    height: 50px;
+    transition: transform 1s;
+}
+
+.title {
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: white;
+}
+
+.title img:hover {
+    transform: rotate(360deg)
+}
+
+.title:hover {
+    color: orange;
+}
+
+.title:hover span {
+    color: white;
+}
+
+footer {
     opacity: 59%;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -191,13 +247,25 @@ footer p {
     font-size: 50px;
 }
 
-.thirdContainer {
-    margin-top: 50px;
+.title {
+    margin-bottom: 136px;
+    width: auto;
+    height: 50px;
+    transition: transform 1s;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: white;
 }
 
-.sagas img:hover {
-    opacity: 0.5;
-    transform: scale(0.9);
+.title img {
+    color: black;
+    width: auto;
+    height: 50px;
+    transition: transform 1s;
+}
+
+.thirdContainer {
+    margin-top: 50px;
 }
 
 .epClick :hover {
@@ -215,12 +283,6 @@ footer p {
     font-size: 30px;
 }
 
-@media (max-width: 372px) {
-    input:hover {
-        width: 215px
-    }
-}
-
 @media (max-width: 649px) {
     .bigText {
         font-size: 21px;
@@ -232,10 +294,22 @@ footer p {
     }
 }
 
+@media (max-width: 506px) {
+    .logo {
+        font-size: 26px;
+    }
+}
+
 @media (max-width: 458px) {
     iframe {
         width: 325px;
         height: 185px;
+    }
+}
+
+@media (max-width: 372px) {
+    input:focus {
+        width: 215px
     }
 }
 

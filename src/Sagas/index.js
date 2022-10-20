@@ -65,7 +65,7 @@ function search(input, div, container) {
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
 
-          container.style.marginTop = "45px";
+          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -106,7 +106,7 @@ function search(input, div, container) {
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
 
-            container.style.marginTop = "45px";
+            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);
@@ -115,6 +115,16 @@ function search(input, div, container) {
 }
 
 window.onload = function () {
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition >= 37) {
+      document.querySelector(".logo").style.opacity = "0";
+    } else {
+      document.querySelector(".logo").style = "";
+    }
+  });
+
   if (!isIOS()) {
     document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
   }
@@ -146,9 +156,9 @@ function getSagas() {
   for (let i = 1; i < length; i++) {
     divSagas.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
       ", "
-    )}" class="divSagas" ><a href="SagaEpisode?id=${i}&title=${
+    )}" class="divSagas" ><a href="SagaEpisode.html?id=${i}&title=${
       obj[i].name
-    }"><img id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
+    }"><img class="poster" id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }

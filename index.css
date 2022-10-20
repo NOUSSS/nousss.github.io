@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap');
 
 body {
+    font-family: 'Kanit', sans-serif;
+    background-color: hsl(231deg 13% 10%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Kanit', sans-serif;
     text-align: center;
-    background-color: orange;
-    behavior: 'smooth'
+    flex-direction: column;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    opacity: 0.4;
 }
 
 body::-webkit-scrollbar {
@@ -15,22 +26,21 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background: orange
+    background: orange;
+}
+
+.logo {
+    transition: opacity 300ms;
+    position: fixed;
+    left: 20px;
+    top: 0;
+    letter-spacing: 5px;
 }
 
 body::-webkit-scrollbar-thumb {
     background-color: cyan;
     border-radius: 20px;
     border: 3px solid orange;
-}
-
-.background {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: fixed;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
 }
 
 li {
@@ -41,11 +51,12 @@ li {
 .container {
     width: 500px;
     height: 742px;
-    background-color: #3b3b3b;
-    border-radius: 35px;
-    margin-top: 4%;
-    opacity: 0.85;
-    transition: transform 1s;
+    background-color: hsl(225deg 9% 17%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 7px;
+    margin-top: 7%;
+    opacity: 0.9;
+    transition: all 1s;
 }
 
 .citation {
@@ -75,13 +86,17 @@ li {
     color: white;
 }
 
+h1 {
+    color: white;
+}
+
 span {
     color: orange;
 }
 
 .title img {
     color: black;
-    width: 50px;
+    width: auto;
     height: 50px;
     transition: transform 1s;
 }
@@ -102,7 +117,7 @@ a {
     transition: background-size 0.5s;
 }
 
-footer p {
+footer {
     margin-top: 38px;
     opacity: 80%;
     -webkit-user-select: none;
@@ -119,52 +134,49 @@ a:hover {
 }
 
 .title img:hover {
-    transform: scale(0.9);
+    transform: rotate(360deg)
 }
 
-.container:hover {
-    transform: scale(0.95);
-}
-
-.title:hover {
+.title h1:hover {
     color: orange;
 }
 
-@media (max-width: 440px) {
+.title h1:hover span {
+    color: white;
+}
+
+@media (max-width: 1600px) {
     .container {
-        margin-top: -53px !important
+        margin-top: 146px;
+    }
+}
+
+@media (max-width: 520px) {
+    .container {
+        height: 822px;
+        width: 376px;
+        margin-top: 93px;
     }
 
     .choices {
-        margin-top: 428px !important;
+        margin-top: 349px;
     }
 }
 
-@media (max-width: 1580px) {
+@media (max-width: 457px) {
     .container {
-        margin-top: 100px;
+        width: 356px;
+        margin-top: 144px;
     }
 }
 
-@media (max-width: 608px) {
+@media (max-width: 400px) {
     .container {
-        transform: scale(0.8);
+        width: 261px;
+        height: 990px;
     }
 
-    .container:hover {
-        transform: scale(0.75);
-    }
-}
-
-@media (max-width: 484px) {
     .choices {
-        margin-top: 345px;
-    }
-}
-
-@media (max-width: 813px) {
-    .container {
-        margin-top: 35px;
-        height: auto;
+        margin-top: 500px;
     }
 }

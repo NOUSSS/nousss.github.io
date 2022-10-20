@@ -2,6 +2,16 @@ let paramIndex;
 let clearConsoleInterval;
 
 window.onload = async function () {
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition >= 37) {
+      document.querySelector(".logo").style.opacity = "0";
+    } else {
+      document.querySelector(".logo").style = "";
+    }
+  });
+
   if (!isIOS()) {
     document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
   }
@@ -17,17 +27,17 @@ window.onload = async function () {
 
   paramIndex = getParam("id");
 
-  clearConsoleInterval = setInterval(() => {
-    console.clear();
-  }, 0);
+  // clearConsoleInterval = setInterval(() => {
+  //   console.clear();
+  // }, 0);
 
   const title = getParam("title");
 
-  if (!title || !paramIndex) return (window.location.href = "./index");
+  if (!title || !paramIndex) return (window.location.href = "/");
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga">${title} - VostFR</a>`;
+  text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = "Épisodes en cours de chargement...";
@@ -37,56 +47,79 @@ window.onload = async function () {
   const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
 
-  addScript(paramIndex).then(() => {
-    setTimeout(async () => {
-      if (Number(paramIndex) === 10) {
-        document.querySelector(
-          ".warning"
-        ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelques problemes de
+  addScript(paramIndex, "https://anime-sama.fr/anime/one-piece/saga{index}/episodes.js").then(
+    () => {
+      // document.querySelector(".langage-choices").addEventListener("click", () => {
+      //   text.innerText = text.innerText.replace("VostFR", "VF");
+
+      //   return resetScript().then(() => {
+      //     setTimeout(() => {
+      //       addScript(
+      //         paramIndex,
+      //         `https://anime-sama.fr/anime/one-piece/saga{index}vf/episodes.js?filever=9014`
+      //       ).then(() => {
+      //         setTimeout(() => {}, 1000);
+      //       });
+      //     }, 1000);
+      //   });
+      // });
+
+      setTimeout(async () => {
+        if (Number(paramIndex) === 10) {
+          document.querySelector(
+            ".warning"
+          ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelques problemes de
     syncronisation entre les <span>vidéos</span> et les <span>titres</span>.`;
-      }
+        }
 
-      search(
-        document.querySelector("input"),
-        document.getElementsByClassName("epClick"),
-        document.getElementsByClassName("container")[0]
-      );
+        search(
+          document.querySelector("input"),
+          document.getElementsByClassName("epClick"),
+          document.getElementsByClassName("container")[0]
+        );
 
-      const lecteur = getLecteur("sibnet", [eps2, eps1]);
+        const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
-      loading.innerHTML = "";
-      secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
-      buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button onclick="Next()">Épisode suivant</button>`;
+        loading.innerHTML = "";
+        secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
+        buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button class="nextButton" onclick="Next()">Épisode suivant</button>`;
 
-      let i = allIndex[paramIndex];
+        let i = allIndex[paramIndex];
 
-      const tempURL = lecteur[0];
-      const tempTitle = (await getEpisode(i + 1))?.title;
+        const tempURL = lecteur[0];
+        const tempTitle = (await getEpisode(i + 1))?.title;
 
-      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
+        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
 
-      document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
-        i + 1
-      }</span> - ${tempTitle}</p>`;
+        document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
+          i + 1
+        }</span> - ${tempTitle}</p>`;
 
-      let cachedIndex = 0;
+        let cachedIndex = 0;
 
-      for (let url of lecteur) {
-        cachedIndex++;
-        i++;
+        for (let url of lecteur) {
+          cachedIndex++;
+          i++;
 
-        let epTitle = (await getEpisode(i))?.title;
+          let epTitle = (await getEpisode(i))?.title;
 
-        if (!epTitle) epTitle = "";
+          if (!epTitle) epTitle = "";
 
-        if (Number(document.querySelector(".bigText").innerText.split(" - ")[0]) !== Number(i))
-          list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
-        else
-          list.innerHTML += `<p style="display:none" class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
-      }
-    }, 1000);
-  });
+          if (Number(document.querySelector(".bigText").innerText.split(" - ")[0]) !== Number(i))
+            list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+          else
+            list.innerHTML += `<p style="display:none" class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+        }
+      }, 1000);
+    }
+  );
 };
+
+function resetScript() {
+  const script = document.querySelector(".script");
+
+  return new Promise((resolve) => resolve(script.parentNode.removeChild(script)));
+}
 
 let database = null;
 
@@ -138,10 +171,12 @@ function LecteurChange() {
   alert(select.value);
 }
 
-const addScript = function (index) {
+const addScript = function (index, url) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.setAttribute("src", `https://anime-sama.fr/anime/one-piece/saga${index}/episodes.js`);
+
+    script.className = "script";
+    script.setAttribute("src", url.replace("{index}", index));
 
     resolve(document.head.appendChild(script));
   });
@@ -255,7 +290,7 @@ function search(input, div, container) {
             }
           }
 
-          container.style.marginTop = "45px";
+          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -283,7 +318,7 @@ function search(input, div, container) {
               }
             }
 
-            container.style.marginTop = "45px";
+            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);

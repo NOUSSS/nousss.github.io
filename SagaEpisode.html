@@ -11,19 +11,23 @@
     <meta property="og:title" content="Mugiwara-no Streaming" />
     <meta
       property="og:description"
-      content="Un site pour regarder Mugiwara-no gratuitement avec tout les épisodes et films à jour en VF et en VOSTFR !"
+      content="Un site pour regarder One Piece et bientôt d'autre animé gratuitement avec tout les épisodes et films à jour en VF et en VOSTFR !"
     />
     <meta content="#ff7300" data-react-helmet="true" name="theme-color" />
   </head>
   <body>
-    <img class="background" src="./src/Assets/Background.jpg" />
-
+    <img class="background" src="./src/Assets/Background.jpg" alt="" />
+    <a href="/"
+      ><h1 class="logo"><span>Mugiwara-no</span> Streaming</h1></a
+    >
     <div class="container">
-      <a href="index"
-        ><h1>Mugiwara-no <span>Streaming</span></h1></a
-      >
+      <div class="title">
+        <img class="logoImage" src="src/Assets/Logo.png" alt="" />
+        <h1>One <span>Piece</span></h1>
+      </div>
       <div class="secondContainer">
         <p class="firstText"></p>
+        <!-- <div class="langage-choices">VostFR</div> -->
         <p class="warning"></p>
         <label class="searchBar" for="">
           <img class="searchImg" /><input
@@ -41,7 +45,9 @@
 
           <p class="bigText"></p>
           <div class="episodes"></div>
-          <div class="buttons"></div>
+          <div class="buttonsContainer">
+            <div class="buttons"></div>
+          </div>
           <!-- <select name="lecteur">
           <option value="" disabled selected hidden>Changer de lecteur</option>
           <option value="Sibnet">Sibnet</option>

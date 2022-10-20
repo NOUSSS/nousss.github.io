@@ -24,6 +24,7 @@ function search(input, div, container) {
           });
         }, 100);
       }
+
       if (!input.value) {
         for (const f of div) f.style.display = "";
 
@@ -117,26 +118,15 @@ function search(input, div, container) {
 }
 
 window.onload = function () {
-  /*
-  let checked = false;
-  let textToggle = document.getElementsByClassName("toggle")[0];
-  let cache = textToggle.style.marginRight;
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
 
-  document
-    .getElementsByClassName("buttonSwitch")[0]
-    .getElementsByTagName("input")[0]
-    .addEventListener("change", () => {
-      if (!checked) {
-        textToggle.innerHTML = "VF";
-        textToggle.style.marginRight = "22px";
-        checked = true;
-      } else {
-        textToggle.innerHTML = "VOSTFR";
-        textToggle.style.marginRight = cache;
-        checked = false;
-      }
-    });
-    */
+    if (scrollPosition >= 37) {
+      document.querySelector(".logo").style.opacity = "0";
+    } else {
+      document.querySelector(".logo").style = "";
+    }
+  });
 
   if (!isIOS()) {
     document.querySelector(".searchImg").setAttribute("src", "src/Assets/SearchIcon.svg");
@@ -218,7 +208,7 @@ function isIOS() {
 
 function appearVideo(id) {
   window.scrollTo({
-    top: 0,
+    top: 230,
     behavior: "smooth",
   });
 
