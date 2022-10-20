@@ -17,7 +17,6 @@ body {
 }
 
 .buttons {
-    width: 415px;
     border-bottom: grey solid 1px;
     position: relative;
     top: 17px;
@@ -273,6 +272,8 @@ footer {
 }
 
 .list {
+
+    align-items: center;
     margin-top: 18px;
     display: flex;
     justify-content: center;
@@ -282,6 +283,24 @@ footer {
 .bigText {
     font-size: 30px;
 }
+
+
+
+
+@media (max-width: 372px) {
+    input:focus {
+        width: 215px
+    }
+}
+
+@media (max-width: 506px) {
+    .logo {
+        font-size: 26px;
+    }
+}
+
+
+
 
 @media (max-width: 649px) {
     .bigText {
@@ -294,22 +313,10 @@ footer {
     }
 }
 
-@media (max-width: 506px) {
-    .logo {
-        font-size: 26px;
-    }
-}
-
 @media (max-width: 458px) {
     iframe {
         width: 325px;
         height: 185px;
-    }
-}
-
-@media (max-width: 372px) {
-    input:focus {
-        width: 215px
     }
 }
 

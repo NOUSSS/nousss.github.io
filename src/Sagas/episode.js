@@ -139,7 +139,7 @@ const Change = function (params, doNotDetect, doNotScroll) {
 
   if (!doNotScroll) {
     window.scrollTo({
-      top: 0,
+      top: 250,
       behavior: "smooth",
     });
   }
