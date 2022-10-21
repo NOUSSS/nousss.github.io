@@ -31,8 +31,10 @@ select {
 }
 
 input {
-    border: 1px grey solid;
-    border-radius: 7px;
+    color: white;
+    background-color: hsl(231deg 13% 10%);
+    border: none;
+    border-radius: 4px;
     height: 31px;
     width: 144px;
     transition: width 0.5s;
@@ -68,7 +70,9 @@ input::placeholder {
     color: red;
 }
 
-button {
+button,
+.nextSaga,
+.prevSaga {
     position: relative;
     top: -20px;
     left: 0;
@@ -88,12 +92,18 @@ button {
     cursor: pointer;
 }
 
-.nextButton:hover {
+.nextSaga {
+    margin-top: 64px;
+}
+
+.nextButton:hover,
+.nextSaga:hover {
     position: relative;
     left: 8px;
 }
 
-.prevButton:hover {
+.prevButton:hover,
+.prevSaga:hover {
     position: relative;
     left: -8px;
 }

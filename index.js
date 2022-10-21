@@ -29,6 +29,11 @@ const citation = [
 let interval;
 
 window.onload = function () {
+  document.querySelector(".title img").classList.add("hover");
+
+  setTimeout(() => {
+    document.querySelector(".title img").classList.remove("hover");
+  }, 2000);
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   window.addEventListener("scroll", () => {
@@ -75,16 +80,13 @@ function setText(text) {
   });
 
   const texte = document.createElement("p");
-
   texte.innerHTML = text;
+
   texte.addEventListener("click", () => {
     clearInterval(interval);
-
     Change();
 
-    interval = setInterval(() => {
-      Change();
-    }, 10000);
+    interval = setInterval(Change, 10000);
   });
 
   fadeIn(texte);
@@ -92,6 +94,5 @@ function setText(text) {
 
 function Change() {
   const text = citation[Math.floor(Math.random() * citation.length)];
-
   setText(text);
 }

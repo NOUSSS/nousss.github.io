@@ -2,6 +2,9 @@ let paramIndex;
 let clearConsoleInterval;
 
 window.onload = async function () {
+  document.querySelector(".nextSaga").addEventListener("click", nextSaga);
+  document.querySelector(".prevSaga").addEventListener("click", prevSaga);
+
   window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
 
@@ -27,9 +30,16 @@ window.onload = async function () {
 
   paramIndex = getParam("id");
 
+  if (paramIndex === "10") {
+    document.querySelector(".nextSaga").style.display = "none";
+    document.querySelector(".prevSaga").style = "margin-top: 64px";
+  }
+
+  if (paramIndex === "1") document.querySelector(".prevSaga").style.display = "none";
+
   // clearConsoleInterval = setInterval(() => {
   //   console.clear();
-  // }, 0);
+  // }, 200);
 
   const title = getParam("title");
 
@@ -40,7 +50,7 @@ window.onload = async function () {
   text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
-  loading.innerHTML = "Épisodes en cours de chargement...";
+  loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;
 
   const divEp = document.querySelector(".episodes");
   const list = document.querySelector(".list");
@@ -65,13 +75,6 @@ window.onload = async function () {
       // });
 
       setTimeout(async () => {
-        if (Number(paramIndex) === 10) {
-          document.querySelector(
-            ".warning"
-          ).innerHTML = `Si vous êtes aux épisodes <span>1005</span> et plus, sachez qu'il y a quelques problemes de
-    syncronisation entre les <span>vidéos</span> et les <span>titres</span>.`;
-        }
-
         search(
           document.querySelector("input"),
           document.getElementsByClassName("epClick"),
@@ -90,11 +93,17 @@ window.onload = async function () {
         const tempTitle = (await getEpisode(i + 1))?.title;
 
         divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
-
         document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
           i + 1
         }</span> - ${tempTitle}</p>`;
 
+        if (paramIndex === "10") {
+          lecteur.splice(127, 1);
+          lecteur.splice(138, 1);
+          lecteur.splice(145, 1);
+          lecteur.splice(153, 1);
+          lecteur.splice(158, 1);
+        }
         let cachedIndex = 0;
 
         for (let url of lecteur) {
@@ -103,17 +112,60 @@ window.onload = async function () {
 
           let epTitle = (await getEpisode(i))?.title;
 
-          if (!epTitle) epTitle = "";
+          if (!epTitle && i === 1036)
+            epTitle = `Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
+          if (!epTitle) epTitle = "Impossible de retrouver le nom de l'épisode.";
 
-          if (Number(document.querySelector(".bigText").innerText.split(" - ")[0]) !== Number(i))
-            list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
-          else
-            list.innerHTML += `<p style="display:none" class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+          list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
         }
       }, 1000);
     }
   );
 };
+
+function prevSaga() {
+  const obj = [
+    "East Blue",
+    "Alabasta",
+    "Les Îles célestes",
+    "Water Seven",
+    "Thriller Bark",
+    "Guerre au sommet (❤️)",
+    "Île des hommes poissons",
+    "Dressrosa",
+    "Whole Cake Island",
+    "Pays de Wano",
+  ];
+
+  const identifiant = getParam("id");
+  const current = obj[identifiant - 2];
+
+  return (window.location.href = `SagaEpisode.html?id=${Number(identifiant) - 1}&title=${encodeURI(
+    current
+  )}`);
+}
+
+function nextSaga() {
+  const obj = [
+    "East Blue",
+    "Alabasta",
+    "Les Îles célestes",
+    "Water Seven",
+    "Thriller Bark",
+    "Guerre au sommet (❤️)",
+    "Île des hommes poissons",
+    "Dressrosa",
+    "Whole Cake Island",
+    "Pays de Wano",
+  ];
+
+  const identifiant = getParam("id");
+  const current = obj[identifiant];
+
+  return (window.location.href = `SagaEpisode.html?id=${Number(identifiant) + 1}&title=${encodeURI(
+    current
+  )}`);
+}
 
 function resetScript() {
   const script = document.querySelector(".script");
@@ -135,7 +187,10 @@ const Change = function (params, doNotDetect, doNotScroll) {
   }
 
   let PageTitle = document.querySelector("title");
-  const [url, title, index] = params.split("<<<");
+  const [url, title, index, cache] = params.split("<<<");
+
+  console.clear();
+  console.log(cache);
 
   if (!doNotScroll) {
     window.scrollTo({
