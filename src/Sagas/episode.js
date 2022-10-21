@@ -75,11 +75,7 @@ window.onload = async function () {
       // });
 
       setTimeout(async () => {
-        search(
-          document.querySelector("input"),
-          document.getElementsByClassName("epClick"),
-          document.getElementsByClassName("container")[0]
-        );
+        search(document.querySelector("input"), document.getElementsByClassName("epClick"));
 
         const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
@@ -187,10 +183,7 @@ const Change = function (params, doNotDetect, doNotScroll) {
   }
 
   let PageTitle = document.querySelector("title");
-  const [url, title, index, cache] = params.split("<<<");
-
-  console.clear();
-  console.log(cache);
+  const [url, title, index] = params.split("<<<");
 
   if (!doNotScroll) {
     window.scrollTo({
@@ -308,7 +301,7 @@ const allIndex = {
   10: 877,
 };
 
-function search(input, div, container) {
+function search(input, div) {
   let i = 0;
 
   input.addEventListener("keypress", () => {
@@ -344,8 +337,6 @@ function search(input, div, container) {
               i++;
             }
           }
-
-          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -372,8 +363,6 @@ function search(input, div, container) {
                 i++;
               }
             }
-
-            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);

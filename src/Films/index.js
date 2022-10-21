@@ -1,6 +1,6 @@
 const wait = (m) => new Promise((r) => setTimeout(r, m));
 
-function search(input, div, container) {
+function search(input, div) {
   let i = 0;
 
   input.addEventListener("keypress", () => {
@@ -67,8 +67,6 @@ function search(input, div, container) {
           textFind.style.display = "";
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
-
-          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -108,8 +106,6 @@ function search(input, div, container) {
             textFind.style.display = "";
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
-
-            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);
@@ -147,11 +143,7 @@ window.onload = function () {
     .addEventListener("click", () => download());
 
   getFilms();
-  search(
-    document.querySelector("input"),
-    document.getElementsByClassName("divFilm"),
-    document.getElementsByClassName("container")[0]
-  );
+  search(document.querySelector("input"), document.getElementsByClassName("divFilm"));
 
   setTimeout(() => {
     window.scrollTo({ top: 580, behavior: "smooth" });

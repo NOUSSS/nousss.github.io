@@ -1,6 +1,6 @@
 let exportObj = {};
 
-function search(input, div, container) {
+function search(input, div) {
   let i = 0;
 
   input.addEventListener("keypress", () => {
@@ -64,8 +64,6 @@ function search(input, div, container) {
           textFind.style.display = "";
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
-
-          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -105,8 +103,6 @@ function search(input, div, container) {
             textFind.style.display = "";
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Sagas trouvés.` : `<span>${i}</span> Saga trouvé.`;
-
-            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);
@@ -132,11 +128,7 @@ window.onload = function () {
   console.log(`Bonjour, pourrais-je savoir ce que tu essaies de faire là ?`);
 
   getSagas();
-  search(
-    document.querySelector("input"),
-    document.getElementsByClassName("divSagas"),
-    document.getElementsByClassName("container")[0]
-  );
+  search(document.querySelector("input"), document.getElementsByClassName("divSagas"));
 };
 
 function isIOS() {
