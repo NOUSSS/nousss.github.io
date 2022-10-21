@@ -68,7 +68,7 @@ function search(input, div, container) {
           textFind.innerHTML =
             i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
-          container.style.marginTop = "45px";
+          container.style.marginTop = "109px";
         }
       }, 50);
     }, 50);
@@ -109,7 +109,7 @@ function search(input, div, container) {
             textFind.innerHTML =
               i > 1 ? `<span>${i}</span> Films trouvés.` : `<span>${i}</span> Film trouvé.`;
 
-            container.style.marginTop = "45px";
+            container.style.marginTop = "109px";
           }
         }, 50);
       }, 50);
