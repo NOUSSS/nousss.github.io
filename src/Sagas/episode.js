@@ -204,12 +204,12 @@ const Change = function (params, doNotDetect, doNotScroll) {
 };
 
 function isIOS() {
-  if (typeof window === `undefined` || typeof navigator === `undefined`) return false;
+  if (typeof window === "undefined" || typeof navigator === "undefined") return false;
 
   return /iPhone|iPad|iPod/i.test(
     navigator.userAgent ||
       navigator.vendor ||
-      (window.opera && opera.toString() === `[object Opera]`)
+      (window.opera && opera.toString() === "[object Opera]")
   );
 }
 
