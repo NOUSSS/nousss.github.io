@@ -29,6 +29,19 @@ const citation = [
 let interval;
 
 window.onload = function () {
+  setInterval(() => {
+    const whiteText = document.querySelector(".title h1");
+    const orangeText = document.querySelector(".title h1 span");
+
+    whiteText.style.color = "orange";
+    orangeText.style.color = "white";
+
+    setTimeout(() => {
+      whiteText.style.color = "white";
+      orangeText.style.color = "orange";
+    }, 1000);
+  }, 2000);
+
   document.querySelector(".title img").classList.add("hover");
 
   setTimeout(() => {

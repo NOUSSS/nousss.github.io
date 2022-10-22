@@ -2,6 +2,19 @@ let paramIndex;
 let clearConsoleInterval;
 
 window.onload = async function () {
+  setInterval(() => {
+    const whiteText = document.querySelector(".title h1");
+    const orangeText = document.querySelector(".title h1 span");
+
+    whiteText.style.color = "orange";
+    orangeText.style.color = "white";
+
+    setTimeout(() => {
+      whiteText.style.color = "white";
+      orangeText.style.color = "orange";
+    }, 1000);
+  }, 2000);
+
   document.querySelector(".nextSaga").addEventListener("click", nextSaga);
   document.querySelector(".prevSaga").addEventListener("click", prevSaga);
 
@@ -47,7 +60,7 @@ window.onload = async function () {
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga.html">${title} - VostFR</a>`;
+  text.innerHTML = `<a href="Saga">${title} - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;
@@ -136,7 +149,7 @@ function prevSaga() {
   const identifiant = getParam("id");
   const current = obj[identifiant - 2];
 
-  return (window.location.href = `SagaEpisode.html?id=${Number(identifiant) - 1}&title=${encodeURI(
+  return (window.location.href = `SagaEpisode?id=${Number(identifiant) - 1}&title=${encodeURI(
     current
   )}`);
 }
@@ -158,7 +171,7 @@ function nextSaga() {
   const identifiant = getParam("id");
   const current = obj[identifiant];
 
-  return (window.location.href = `SagaEpisode.html?id=${Number(identifiant) + 1}&title=${encodeURI(
+  return (window.location.href = `SagaEpisode?id=${Number(identifiant) + 1}&title=${encodeURI(
     current
   )}`);
 }

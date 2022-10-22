@@ -95,10 +95,21 @@ span {
 }
 
 .title img {
+    animation: spin 1s;
     color: black;
     width: auto;
     height: 50px;
     transition: transform 1s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .choices {
@@ -135,14 +146,6 @@ a:hover {
 
 .title img:hover {
     transform: rotate(360deg)
-}
-
-.title h1:hover {
-    color: orange;
-}
-
-.title h1:hover span {
-    color: white;
 }
 
 @media (max-width: 1600px) {
