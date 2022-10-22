@@ -130,7 +130,7 @@ window.onload = function () {
   window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
 
-    if (scrollPosition >= 37) {
+    if (scrollPosition >= 35) {
       document.querySelector(".logo").style.opacity = "0";
     } else {
       document.querySelector(".logo").style = "";
