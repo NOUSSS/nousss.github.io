@@ -129,6 +129,8 @@ a {
 }
 
 footer {
+    color: grey;
+    margin-top: 20px;
     margin-top: 38px;
     opacity: 80%;
     -webkit-user-select: none;
