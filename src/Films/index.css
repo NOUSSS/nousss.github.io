@@ -189,9 +189,9 @@ footer {
 
 .title img {
   animation: spin 1s;
-  color: black;
+
   width: auto;
-  height: 50px;
+  height: 70px;
   transition: transform 1s;
 }
 

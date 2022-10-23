@@ -212,9 +212,9 @@ p {
 
 .title img {
     animation: spin 1s;
-    color: black;
+
     width: auto;
-    height: 50px;
+    height: 70px;
     transition: transform 1s;
 }
 
@@ -272,7 +272,7 @@ footer {
 .title {
     margin-bottom: 136px;
     width: auto;
-    height: 50px;
+    height: 70px;
     transition: transform 1s;
     letter-spacing: 3px;
     font-size: 20px;
@@ -280,9 +280,9 @@ footer {
 }
 
 .title img {
-    color: black;
+
     width: auto;
-    height: 50px;
+    height: 70px;
     transition: transform 1s;
 }
 
