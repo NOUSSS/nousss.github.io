@@ -99,12 +99,15 @@ window.onload = async function () {
         let i = allIndex[paramIndex];
 
         const tempURL = lecteur[0];
-        const tempTitle = (await getEpisode(i + 1))?.title;
+        let tempTitle = (await getEpisode(i + 1))?.title;
+
+        if (tempTitle) tempTitle = `- ${tempTitle}`;
+        if (!tempTitle) tempTitle = "";
 
         divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
         document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
           i + 1
-        }</span> - ${tempTitle}</p>`;
+        }</span> ${tempTitle}</p>`;
 
         if (paramIndex === "10") {
           lecteur.splice(127, 1);
@@ -120,12 +123,16 @@ window.onload = async function () {
           i++;
 
           let epTitle = (await getEpisode(i))?.title;
+          if (epTitle) epTitle = `- ${epTitle}`;
 
           if (!epTitle && i === 1036)
-            epTitle = `Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
-          if (!epTitle) epTitle = "Impossible de retrouver le nom de l'épisode.";
+            epTitle = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
 
-          list.innerHTML += `<p class="epClick" id="${url}<<<${epTitle}<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> - ${epTitle}</p>`;
+          if (!epTitle) epTitle = "";
+
+          list.innerHTML += `<p class="epClick" id="${url}<<<${
+            epTitle === "" || !epTitle ? "none" : epTitle
+          }<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> ${epTitle}</p>`;
         }
       }, 1000);
     }
@@ -185,6 +192,18 @@ function resetScript() {
 let database = null;
 
 const Change = function (params, doNotDetect, doNotScroll) {
+  let [url, title, index, cache] = params.split("<<<");
+
+  const allEpisodesLength = document.querySelectorAll(".list p").length;
+  const currentLength = document.querySelector(".numberEp").dataset?.cache;
+
+  if (
+    Number(allEpisodesLength) - 1 === Number(currentLength) ||
+    Number(allEpisodesLength) === Number(cache)
+  ) {
+    document.querySelector(".nextButton").style.display = "none";
+  }
+
   document.getElementsByClassName("epClick")[0].style.display = "";
 
   if (!doNotDetect) {
@@ -196,7 +215,6 @@ const Change = function (params, doNotDetect, doNotScroll) {
   }
 
   let PageTitle = document.querySelector("title");
-  const [url, title, index] = params.split("<<<");
 
   if (!doNotScroll) {
     window.scrollTo({
@@ -205,9 +223,11 @@ const Change = function (params, doNotDetect, doNotScroll) {
     });
   }
 
+  if (title === "none") title = "";
+
   document.querySelector(
     ".bigText"
-  ).innerHTML = `<span class="numberEp">${index}</span> - ${title}</p>`;
+  ).innerHTML = `<span data-cache="${cache}" class="numberEp">${index}</span> ${title}</p>`;
 
   document.querySelector(
     ".episodes"
@@ -261,6 +281,8 @@ const getEpisode = function (index) {
 };
 
 const Prev = async function () {
+  document.querySelector(".nextButton").style = "";
+
   const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
   const indexEpisode = document.querySelector(".bigText").innerText.split(" - ")[0];
@@ -274,9 +296,18 @@ const Prev = async function () {
     if (text.id.split("<<<")[2] === indexEpisode) {
       const [_, __, index, cacheIndex] = text.id.split("<<<");
       const url = lecteur[cacheIndex - 2];
-      const title = (await getEpisode(index - 1)).title;
 
-      Change(`${url}<<<${title}<<<${index - 1}<<<${cacheIndex - 1}`, true, true);
+      let title = await getEpisode(index - 1);
+
+      if (!title?.title) title = "";
+
+      Change(
+        `${url}<<<${title?.title === "none" || !title?.title ? "none" : `- ${title.title}`}<<<${
+          index - 1
+        }<<<${cacheIndex - 1}`,
+        true,
+        true
+      );
     }
   }
 };
@@ -286,6 +317,13 @@ const Next = async function () {
 
   const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
+  const allEpisodesLength = document.querySelectorAll(".list p").length;
+  const currentLength = document.querySelector(".numberEp").dataset.cache;
+
+  if (Number(allEpisodesLength) - 1 === Number(currentLength)) {
+    document.querySelector(".nextButton").style.display = "none";
+  }
+
   if (document.querySelector(".bigText").innerText) {
     const indexEpisode = document.querySelector(".bigText").innerText.split(" - ")[0];
 
@@ -293,9 +331,18 @@ const Next = async function () {
       if (text.id.split("<<<")[2] === indexEpisode) {
         const [_, __, index, cacheIndex] = text.id.split("<<<");
         const url = lecteur[Number(cacheIndex)];
-        const title = (await getEpisode(Number(index) + 1)).title;
 
-        Change(`${url}<<<${title}<<<${Number(index) + 1}<<<${Number(cacheIndex) + 1}`, null, true);
+        let title = await getEpisode(Number(index) + 1);
+
+        if (!title?.title) title = "";
+
+        Change(
+          `${url}<<<${title?.title === "" || !title?.title ? "none" : `- ${title?.title}`}<<<${
+            Number(index) + 1
+          }<<<${Number(cacheIndex) + 1}`,
+          null,
+          true
+        );
       }
     }
   }
