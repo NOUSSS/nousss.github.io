@@ -100,7 +100,7 @@ window.onload = async function () {
         if (tempTitle) tempTitle = `- ${tempTitle}`;
         if (!tempTitle) tempTitle = "";
 
-        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL}></iframe>`;
+        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
         document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
           i + 1
         }</span> ${tempTitle}</p>`;
@@ -227,7 +227,7 @@ const Change = function (params, doNotDetect, doNotScroll) {
 
   document.querySelector(
     ".episodes"
-  ).innerHTML = `<iframe width=640 height=360 src=${url}></iframe>`;
+  ).innerHTML = `<iframe width=640 height=360 src=${url} allowfullscreen></iframe>`;
 
   PageTitle.textContent = `${index} - Mugiwara-no Streaming`;
 };
