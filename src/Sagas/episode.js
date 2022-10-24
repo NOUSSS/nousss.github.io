@@ -1,5 +1,5 @@
 let paramIndex;
-let clearConsoleInterval;
+let consoleInterval = setInterval(() => console.clear(), 10);
 
 window.onload = async function () {
   setInterval(() => {
@@ -49,10 +49,6 @@ window.onload = async function () {
   }
 
   if (paramIndex === "1") document.querySelector(".prevSaga").style.display = "none";
-
-  // clearConsoleInterval = setInterval(() => {
-  //   console.clear();
-  // }, 200);
 
   const title = getParam("title");
 

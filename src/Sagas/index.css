@@ -218,6 +218,11 @@ p {
     transition: transform 1s;
 }
 
+.listContainer {
+    overflow-y: auto;
+    height: 400px;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
