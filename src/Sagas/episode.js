@@ -94,16 +94,29 @@ window.onload = async function () {
 
         let i = allIndex[paramIndex];
 
-        const tempURL = lecteur[0];
-        let tempTitle = (await getEpisode(i + 1))?.title;
+        if (paramIndex === "5") {
+          const tempURL = lecteur[0];
+          let tempTitle = (await getEpisode(i + 1 + 11))?.title;
 
-        if (tempTitle) tempTitle = `- ${tempTitle}`;
-        if (!tempTitle) tempTitle = "";
+          if (tempTitle) tempTitle = `- ${tempTitle}`;
+          if (!tempTitle) tempTitle = "";
 
-        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
-        document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
-          i + 1
-        }</span> ${tempTitle}</p>`;
+          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+          document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
+            i + 1 + 11
+          }</span> ${tempTitle}</p>`;
+        } else {
+          const tempURL = lecteur[0];
+          let tempTitle = (await getEpisode(i + 1))?.title;
+
+          if (tempTitle) tempTitle = `- ${tempTitle}`;
+          if (!tempTitle) tempTitle = "";
+
+          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+          document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
+            i + 1
+          }</span> ${tempTitle}</p>`;
+        }
 
         if (paramIndex === "10") {
           lecteur.splice(127, 1);
@@ -112,11 +125,25 @@ window.onload = async function () {
           lecteur.splice(153, 1);
           lecteur.splice(158, 1);
         }
+
+        if (paramIndex === "5") {
+          console.log("yers");
+          lecteur.splice(1 - 1, 10);
+        }
+
+        console.log(lecteur);
+
         let cachedIndex = 0;
+        let cacheData = false;
 
         for (let url of lecteur) {
           cachedIndex++;
           i++;
+
+          if (paramIndex === "5" && !cacheData) {
+            cacheData = true;
+            i = i + 11;
+          }
 
           let epTitle = (await getEpisode(i))?.title;
           if (epTitle) epTitle = `- ${epTitle}`;
@@ -276,7 +303,25 @@ const getEpisode = function (index) {
   });
 };
 
+let cachePrevData = false;
+
 const Prev = async function () {
+  if (!cachePrevData) {
+    cachePrevData = true;
+
+    document.querySelector(".listContainer").scrollTo({
+      top: document.querySelector(".listContainer").scrollTop - 80,
+      behavior: "smooth",
+    });
+  } else {
+    cacheData = false;
+
+    document.querySelector(".listContainer").scrollTo({
+      top: document.querySelector(".listContainer").scrollTop - 46,
+      behavior: "smooth",
+    });
+  }
+
   document.querySelector(".nextButton").style = "";
 
   const lecteur = getLecteur("sibnet", [eps2, eps1]);
@@ -308,7 +353,23 @@ const Prev = async function () {
   }
 };
 
+let cacheData = false;
+
 const Next = async function () {
+  if (!cacheData) {
+    cacheData = true;
+
+    document.querySelector(".listContainer").scrollTo({
+      top: document.querySelector(".listContainer").scrollTop + 80,
+      behavior: "smooth",
+    });
+  } else {
+    document.querySelector(".listContainer").scrollTo({
+      top: document.querySelector(".listContainer").scrollTop + 46,
+      behavior: "smooth",
+    });
+  }
+
   document.getElementsByClassName("epClick")[0].style.display = "";
 
   const lecteur = getLecteur("sibnet", [eps2, eps1]);
