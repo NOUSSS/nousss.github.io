@@ -120,12 +120,30 @@ span {
 
 
 a {
+    display: inline-block;
+    position: relative;
     color: cyan;
     cursor: pointer;
     text-decoration: none;
-    background: linear-gradient(to top, orange 0%, orange 2px, transparent 5px) no-repeat;
-    background-size: 0 100%;
-    transition: background-size 0.5s;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 43px;
+    background-color: orange;
+    height: 3px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 350ms ease-out
+}
+
+a:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
 }
 
 footer {
@@ -140,10 +158,6 @@ footer {
     -o-user-select: none;
     user-select: none;
     cursor: default;
-}
-
-a:hover {
-    background-size: 100% 100%;
 }
 
 .title img:hover {
