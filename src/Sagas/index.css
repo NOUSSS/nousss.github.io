@@ -155,6 +155,12 @@ button,
     display: none;
 }
 
+.betterSibnetLink {
+    text-decoration: underline;
+    color: orange;
+    letter-spacing: 1px;
+}
+
 .sagas div img {
     width: 89px;
     height: 108px;
@@ -171,12 +177,16 @@ button,
 
 a {
     text-decoration: none;
+}
+
+.a {
     letter-spacing: 3px;
     font-size: 20px;
     color: white;
 }
 
 .logo {
+    color: white;
     font-size: 36px;
     transition: opacity 300ms;
     position: fixed;
@@ -221,6 +231,10 @@ p {
 .listContainer {
     overflow-y: auto;
     height: 400px;
+}
+
+.recommandation {
+    margin-bottom: 57px;
 }
 
 @keyframes spin {

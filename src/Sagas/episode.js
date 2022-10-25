@@ -2,6 +2,11 @@ let paramIndex;
 let consoleInterval = setInterval(() => console.clear(), 10);
 
 window.onload = async function () {
+  if (!isIOS()) {
+    document.querySelector(".recommandation").innerHTML =
+      "Extension recommandé pour le visionnage : <span><a class='betterSibnetLink' target='_blank' href='https://chrome.google.com/webstore/detail/sibnet-betterplayer/dlpiocjogoilggigpijnoamnjjolfhdm'>Better Sibnet</a></span>";
+  }
+
   setInterval(() => {
     const whiteText = document.querySelector(".title h1");
     const orangeText = document.querySelector(".title h1 span");
