@@ -61,7 +61,7 @@ window.onload = async function () {
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga">${title} - VostFR</a>`;
+  text.innerHTML = `<a href="Saga"><span>${title}</span> - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;

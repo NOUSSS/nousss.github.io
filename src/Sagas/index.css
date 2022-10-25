@@ -50,7 +50,7 @@ label img {
 }
 
 .mark {
-    color: cyan;
+    color: orange;
     position: relative;
     top: 8px;
     text-decoration: underline;
@@ -214,9 +214,19 @@ p {
     transform: rotate(10deg);
 }
 
+.searchBar {
+    position: relative;
+    top: 40px;
+}
+
 .searchBarSagas {
     border-bottom: grey solid 1px;
     padding: 7px;
+}
+
+.buttonSagaContainer {
+    position: relative;
+    top: 50px;
 }
 
 .title img {
@@ -227,7 +237,14 @@ p {
     transition: transform 1s;
 }
 
+.mark,
+footer {
+    margin-top: 56px;
+}
+
 .listContainer {
+    position: relative;
+    top: 56px;
     overflow-y: auto;
     height: 400px;
 }
@@ -265,7 +282,7 @@ p {
 }
 
 footer {
-    color: grey;
+    color: white;
     margin-top: 20px;
     opacity: 1;
     -webkit-user-select: none;
@@ -283,7 +300,7 @@ footer {
 
 .firstText a,
 .firstText {
-    color: cyan;
+    color: white;
     font-size: 50px;
 }
 
@@ -313,10 +330,8 @@ footer {
 }
 
 .list {
-
-    align-items: center;
-    margin-top: 18px;
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -324,7 +339,6 @@ footer {
 .bigText {
     font-size: 30px;
 }
-
 
 
 

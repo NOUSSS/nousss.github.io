@@ -121,7 +121,7 @@ span {
 
 a {
     position: relative;
-    color: cyan;
+    color: rgb(255, 238, 0);
     cursor: pointer;
     text-decoration: none;
 }
@@ -135,17 +135,16 @@ a::after {
     height: 3px;
     width: 100%;
     transform: scaleX(0);
-    transform-origin: bottom right;
+    transform-origin: center;
     transition: transform 350ms ease-out
 }
 
 a:hover::after {
-    transform-origin: bottom left;
     transform: scaleX(1);
 }
 
 footer {
-    color: grey;
+    color: white;
     margin-top: 20px;
     margin-top: 38px;
     opacity: 80%;

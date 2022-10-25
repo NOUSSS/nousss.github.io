@@ -147,7 +147,7 @@ span {
 }
 
 .firstText {
-  color: cyan;
+  color: white;
   font-size: 50px;
   transition: all 0.5s;
 }
@@ -163,8 +163,7 @@ span {
 
 footer {
   margin-top: 20px;
-  color: grey;
-  opacity: 1;
+  color: white;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
