@@ -184,7 +184,7 @@ function prevSaga() {
   const identifiant = getParam("id");
   const current = obj[identifiant - 2];
 
-  return (window.location.href = `SagaEpisode?id=${Number(identifiant) - 1}&title=${encodeURI(
+  return (window.location.href = `Episodes?id=${Number(identifiant) - 1}&title=${encodeURI(
     current
   )}`);
 }
@@ -206,7 +206,7 @@ function nextSaga() {
   const identifiant = getParam("id");
   const current = obj[identifiant];
 
-  return (window.location.href = `SagaEpisode?id=${Number(identifiant) + 1}&title=${encodeURI(
+  return (window.location.href = `Episodes?id=${Number(identifiant) + 1}&title=${encodeURI(
     current
   )}`);
 }
