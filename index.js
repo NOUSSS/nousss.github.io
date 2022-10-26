@@ -15,7 +15,6 @@ const citation = [
   "Justice vaincra ? Je ne vois pas comment il pourrait en être autrement ! La justice est toujours du côté des vainqueurs ! - <span>Doflamingo</span>",
   "Je ne suis pas né homme pour céder devant la force. - <span>Portgas D. Ace</span>",
   "Un homme meurt quand il tombe dans l'oubli. - <span>Hiluluk</span>",
-  "On reconnaît un vrai homme en fonction de ses priorités. - <span>NouSs</span>",
   "Je ne ferai rien que je puisse regretter un jour. - <span>Portgas D. Ace</span>",
   "Quand on a faim, on mange ! - <span>Monkey D. Luffy</span>",
   "J'ai fait équipe avec vous uniquement parce que nous avions des intérêts communs. - <span>Nami</span>",
