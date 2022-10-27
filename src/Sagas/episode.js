@@ -203,7 +203,7 @@ const Change = function (params, doNotDetect, doNotScroll) {
       cachedIndex: cache,
     },
     null,
-    `Episodes.html?id=${paramIndex}&title=${encodeURI(
+    `Episodes?id=${paramIndex}&title=${encodeURI(
       obj[paramIndex - 1]
     )}&cachedIndex=${cache}&currentEpisode=${index}`
   );
