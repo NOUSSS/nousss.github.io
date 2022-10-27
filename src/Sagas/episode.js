@@ -1,4 +1,19 @@
+const obj = [
+  "East Blue",
+  "Alabasta",
+  "Les Îles célestes",
+  "Water Seven",
+  "Thriller Bark",
+  "Guerre au sommet (❤️)",
+  "Île des hommes poissons",
+  "Dressrosa",
+  "Whole Cake Island",
+  "Pays de Wano",
+];
+
 let paramIndex;
+let title;
+
 let consoleInterval = setInterval(() => console.clear(), 10);
 
 window.onload = async function () {
@@ -6,19 +21,6 @@ window.onload = async function () {
     document.querySelector(".recommandation").innerHTML =
       "Extension recommandé pour le visionnage : <span><a class='betterSibnetLink' target='_blank' href='https://chrome.google.com/webstore/detail/sibnet-betterplayer/dlpiocjogoilggigpijnoamnjjolfhdm'>Better Sibnet</a></span>";
   }
-
-  setInterval(() => {
-    const whiteText = document.querySelector(".title h1");
-    const orangeText = document.querySelector(".title h1 span");
-
-    whiteText.style.color = "orange";
-    orangeText.style.color = "white";
-
-    setTimeout(() => {
-      whiteText.style.color = "white";
-      orangeText.style.color = "orange";
-    }, 1000);
-  }, 2000);
 
   document.querySelector(".nextSaga").addEventListener("click", nextSaga);
   document.querySelector(".prevSaga").addEventListener("click", prevSaga);
@@ -48,6 +50,8 @@ window.onload = async function () {
 
   paramIndex = getParam("id");
 
+  let dataIndex = getParam("cachedIndex");
+
   if (paramIndex === "10") {
     document.querySelector(".nextSaga").style.display = "none";
     document.querySelector(".prevSaga").style = "margin-top: 64px";
@@ -55,7 +59,7 @@ window.onload = async function () {
 
   if (paramIndex === "1") document.querySelector(".prevSaga").style.display = "none";
 
-  const title = getParam("title");
+  title = getParam("title");
 
   if (!title || !paramIndex) return (window.location.href = "/");
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
@@ -98,30 +102,7 @@ window.onload = async function () {
         buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button class="nextButton" onclick="Next()">Épisode suivant</button>`;
 
         let i = allIndex[paramIndex];
-
-        if (paramIndex === "5") {
-          const tempURL = lecteur[0];
-          let tempTitle = (await getEpisode(i + 1 + 11))?.title;
-
-          if (tempTitle) tempTitle = `- ${tempTitle}`;
-          if (!tempTitle) tempTitle = "";
-
-          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
-          document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
-            i + 1 + 11
-          }</span> ${tempTitle}</p>`;
-        } else {
-          const tempURL = lecteur[0];
-          let tempTitle = (await getEpisode(i + 1))?.title;
-
-          if (tempTitle) tempTitle = `- ${tempTitle}`;
-          if (!tempTitle) tempTitle = "";
-
-          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
-          document.querySelector(".bigText").innerHTML = `<span class="numberEp">${
-            i + 1
-          }</span> ${tempTitle}</p>`;
-        }
+        let episodeIndex = dataIndex ? i + 1 + Number(dataIndex) - 1 : i + 1;
 
         if (paramIndex === "10") {
           lecteur.splice(127, 1);
@@ -132,11 +113,32 @@ window.onload = async function () {
         }
 
         if (paramIndex === "5") {
-          console.log("yers");
           lecteur.splice(1 - 1, 10);
-        }
 
-        console.log(lecteur);
+          let indexEpisode = dataIndex ? i + 1 + 11 + Number(dataIndex) - 1 : i + 1 + 11;
+
+          const tempURL = lecteur[0];
+          let tempTitle = (await getEpisode(indexEpisode))?.title;
+
+          if (tempTitle) tempTitle = `- ${tempTitle}`;
+          if (!tempTitle) tempTitle = "";
+
+          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+          document.querySelector(
+            ".bigText"
+          ).innerHTML = `<span class="numberEp">${indexEpisode}</span> ${tempTitle}</p>`;
+        } else {
+          const tempURL = dataIndex ? lecteur[Number(dataIndex) - 1] : lecteur[0];
+          let tempTitle = (await getEpisode(episodeIndex))?.title;
+
+          if (tempTitle) tempTitle = `- ${tempTitle}`;
+          if (!tempTitle) tempTitle = "";
+
+          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+          document.querySelector(
+            ".bigText"
+          ).innerHTML = `<span class="numberEp">${episodeIndex}</span> ${tempTitle}</p>`;
+        }
 
         let cachedIndex = 0;
         let cacheData = false;
@@ -168,19 +170,6 @@ window.onload = async function () {
 };
 
 function prevSaga() {
-  const obj = [
-    "East Blue",
-    "Alabasta",
-    "Les Îles célestes",
-    "Water Seven",
-    "Thriller Bark",
-    "Guerre au sommet (❤️)",
-    "Île des hommes poissons",
-    "Dressrosa",
-    "Whole Cake Island",
-    "Pays de Wano",
-  ];
-
   const identifiant = getParam("id");
   const current = obj[identifiant - 2];
 
@@ -190,19 +179,6 @@ function prevSaga() {
 }
 
 function nextSaga() {
-  const obj = [
-    "East Blue",
-    "Alabasta",
-    "Les Îles célestes",
-    "Water Seven",
-    "Thriller Bark",
-    "Guerre au sommet (❤️)",
-    "Île des hommes poissons",
-    "Dressrosa",
-    "Whole Cake Island",
-    "Pays de Wano",
-  ];
-
   const identifiant = getParam("id");
   const current = obj[identifiant];
 
@@ -221,6 +197,16 @@ let database = null;
 
 const Change = function (params, doNotDetect, doNotScroll) {
   let [url, title, index, cache] = params.split("<<<");
+
+  window.history.pushState(
+    {
+      cachedIndex: cache,
+    },
+    null,
+    `Episodes.html?id=${paramIndex}&title=${encodeURI(
+      obj[paramIndex - 1]
+    )}&cachedIndex=${cache}&currentEpisode=${index}`
+  );
 
   const allEpisodesLength = document.querySelectorAll(".list p").length;
   const currentLength = document.querySelector(".numberEp").dataset?.cache;
