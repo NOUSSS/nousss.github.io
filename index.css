@@ -120,6 +120,7 @@ span {
 
 
 a {
+    text-shadow: 0 0 20px black;
     position: relative;
     color: #65ADFF;
     cursor: pointer;
