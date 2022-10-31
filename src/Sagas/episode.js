@@ -158,6 +158,12 @@ window.onload = async function () {
           if (!epTitle && i === 1036)
             epTitle = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
 
+          if (!epTitle && i === 1037)
+            epTitle = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
+
+          if (!epTitle && i === 1038)
+            epTitle = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
+
           if (!epTitle) epTitle = "";
 
           list.innerHTML += `<p class="epClick" id="${url}<<<${
