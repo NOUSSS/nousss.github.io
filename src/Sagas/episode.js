@@ -164,6 +164,11 @@ window.onload = async function () {
           if (!epTitle && i === 1038)
             epTitle = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
 
+          if (!epTitle && i === 1039)
+            epTitle = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
+
+          if (!epTitle && i === 1040) epTitle = `- La fierté du timonier - Jinbe en colère !`;
+
           if (!epTitle) epTitle = "";
 
           list.innerHTML += `<p class="epClick" id="${url}<<<${
