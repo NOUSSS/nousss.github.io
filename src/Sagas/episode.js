@@ -14,7 +14,7 @@ const obj = [
 let paramIndex;
 let title;
 
-let consoleInterval = setInterval(() => console.clear(), 10);
+// let consoleInterval = setInterval(() => console.clear(), 10);
 
 window.onload = async function () {
   if (!isIOS()) {
@@ -75,7 +75,9 @@ window.onload = async function () {
   const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
 
-  addScript(paramIndex, "https://anime-sama.fr/anime/one-piece/saga{index}/episodes.js").then(
+
+
+  addScript(paramIndex, "https://anime-sama.fr/anime/one-piece/{saga}{index}/episodes.js").then(
     () => {
       // document.querySelector(".langage-choices").addEventListener("click", () => {
       //   text.innerText = text.innerText.replace("VostFR", "VF");
@@ -279,12 +281,18 @@ function LecteurChange() {
 
 const addScript = function (index, url) {
   return new Promise((resolve) => {
-    const script = document.createElement("script");
+      const saga = {
+          10: "s",
+          9: "s",
+          6: "s",
+      };
 
-    script.className = "script";
-    script.setAttribute("src", url.replace("{index}", index));
+      const script = document.createElement("script");
 
-    resolve(document.head.appendChild(script));
+      script.className = "script";
+      script.setAttribute("src", url.replace("{index}", index).replace("{saga}", saga[index] ?? "saga"));
+
+      resolve(document.head.appendChild(script));
   });
 };
 
