@@ -48,9 +48,9 @@ window.onload = async function () {
     }
   }, 4000);
 
-  paramIndex = getParam("id");
+  paramIndex = window.localStorage.getItem("id");
 
-  let dataIndex = getParam("cachedIndex");
+  let dataIndex = window.localStorage.getItem("cache");
 
   if (paramIndex === "10") {
     document.querySelector(".nextSaga").style.display = "none";
@@ -59,13 +59,12 @@ window.onload = async function () {
 
   if (paramIndex === "1") document.querySelector(".prevSaga").style.display = "none";
 
-  title = getParam("title");
+  title = window.localStorage.getItem("title");
 
-  if (!title || !paramIndex) return (window.location.href = "/");
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga"><span>${title}</span> - VostFR</a>`;
+  text.innerHTML = `<a href="Saga"><span>${decodeURI(title)}</span> - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;
@@ -74,8 +73,6 @@ window.onload = async function () {
   const list = document.querySelector(".list");
   const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
-
-
 
   addScript(paramIndex, "https://anime-sama.fr/anime/one-piece/{saga}{index}/episodes.js").then(
     () => {
@@ -183,21 +180,26 @@ window.onload = async function () {
 };
 
 function prevSaga() {
-  const identifiant = getParam("id");
+  const identifiant = window.localStorage.getItem("id");
   const current = obj[identifiant - 2];
 
-  return (window.location.href = `Episodes?id=${Number(identifiant) - 1}&title=${encodeURI(
-    current
-  )}`);
+  window.localStorage.setItem("id", Number(identifiant) - 1);
+  window.localStorage.setItem("title", encodeURI(current));
+
+  return window.location.reload();
 }
 
 function nextSaga() {
-  const identifiant = getParam("id");
+  const identifiant = window.localStorage.getItem("id");
   const current = obj[identifiant];
 
-  return (window.location.href = `Episodes?id=${Number(identifiant) + 1}&title=${encodeURI(
-    current
-  )}`);
+  window.localStorage.setItem("id", Number(identifiant) + 1);
+  window.localStorage.setItem("title", encodeURI(current));
+
+  window.localStorage.removeItem("cache");
+  window.localStorage.removeItem("currentEpisode");
+
+  return window.location.reload();
 }
 
 function resetScript() {
@@ -211,15 +213,9 @@ let database = null;
 const Change = function (params, doNotDetect, doNotScroll) {
   let [url, title, index, cache] = params.split("<<<");
 
-  window.history.pushState(
-    {
-      cachedIndex: cache,
-    },
-    null,
-    `Episodes?id=${paramIndex}&title=${encodeURI(
-      obj[paramIndex - 1]
-    )}&cachedIndex=${cache}&currentEpisode=${index}`
-  );
+  window.localStorage.setItem("title", encodeURI(obj[paramIndex - 1]));
+  window.localStorage.setItem("cache", cache);
+  window.localStorage.setItem("currentEpisode", index);
 
   const allEpisodesLength = document.querySelectorAll(".list p").length;
   const currentLength = document.querySelector(".numberEp").dataset?.cache;
@@ -281,27 +277,23 @@ function LecteurChange() {
 
 const addScript = function (index, url) {
   return new Promise((resolve) => {
-      const saga = {
-          10: "s",
-          9: "s",
-          6: "s",
-      };
+    const saga = {
+      10: "s",
+      9: "s",
+      6: "s",
+    };
 
-      const script = document.createElement("script");
+    const script = document.createElement("script");
 
-      script.className = "script";
-      script.setAttribute("src", url.replace("{index}", index).replace("{saga}", saga[index] ?? "saga"));
+    script.className = "script";
+    script.setAttribute(
+      "src",
+      url.replace("{index}", index).replace("{saga}", saga[index] ?? "saga")
+    );
 
-      resolve(document.head.appendChild(script));
+    resolve(document.head.appendChild(script));
   });
 };
-
-function getParam(query) {
-  const regex = new RegExp("[?&]" + query + "=([^&]+).*$");
-  const urlMatch = window.location.search.match(regex);
-
-  return urlMatch === null ? "" : decodeURI(urlMatch[1]);
-}
 
 const getEpisode = function (index) {
   return new Promise((resolve) => {

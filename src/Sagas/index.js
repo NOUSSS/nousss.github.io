@@ -159,11 +159,11 @@ function getSagas() {
   const length = 11;
 
   for (let i = 1; i < length; i++) {
-    divSagas.innerHTML += `<div id="${obj[i].name}|${obj[i].aliases?.join(
-      ", "
-    )}" class="divSagas" ><a href="Episodes?id=${i}&title=${
+    divSagas.innerHTML += `<div onclick="window.localStorage.setItem('id', '${i}');window.localStorage.setItem('title', '${
       obj[i].name
-    }"><img class="poster" id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
+    }')" id="${obj[i].name}|${obj[i].aliases?.join(
+      ", "
+    )}" class="divSagas" ><a href="Episodes"><img class="poster" id="${i}" src="src/Assets/Saga/Saga${i}.jpeg" /></a><p class="filmText" ><br/><br/><br/><br/><br/>${
       obj[i].name
     }</p></div>`;
   }
