@@ -156,17 +156,19 @@ window.onload = async function () {
 
           if (!epTitle && i === 1036)
             epTitle = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
-
           if (!epTitle && i === 1037)
             epTitle = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
-
           if (!epTitle && i === 1038)
             epTitle = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
-
           if (!epTitle && i === 1039)
             epTitle = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
-
           if (!epTitle && i === 1040) epTitle = `- La fierté du timonier - Jinbe en colère !`;
+          if (!epTitle && i === 1041) epTitle = `- Bataille de monstres. Yamato et Franky !`;
+          if (!epTitle && i === 1042)
+            epTitle = `- Le piège de la prédatrice. La séduction de Black Maria !`;
+          if (!epTitle && i === 1043)
+            epTitle = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
+          if (!epTitle && i === 1044) epTitle = `- Clutch. L'incarnation démoniaque de Robin !`;
 
           if (!epTitle) epTitle = "";
 
