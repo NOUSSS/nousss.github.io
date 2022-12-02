@@ -64,7 +64,7 @@ window.onload = async function () {
   document.querySelector("title").textContent = `${title} - Mugiwara-no Streaming`;
 
   const text = document.getElementsByClassName("firstText")[0];
-  text.innerHTML = `<a href="Saga"><span>${decodeURI(title)}</span> - VostFR</a>`;
+  text.innerHTML = `<a href="Saga"><span>${title}</span> - VostFR</a>`;
 
   const loading = document.querySelector(".loading");
   loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;
@@ -184,7 +184,7 @@ function prevSaga() {
   const current = obj[identifiant - 2];
 
   window.localStorage.setItem("id", Number(identifiant) - 1);
-  window.localStorage.setItem("title", encodeURI(current));
+  window.localStorage.setItem("title", current);
 
   return window.location.reload();
 }
@@ -194,7 +194,7 @@ function nextSaga() {
   const current = obj[identifiant];
 
   window.localStorage.setItem("id", Number(identifiant) + 1);
-  window.localStorage.setItem("title", encodeURI(current));
+  window.localStorage.setItem("title", current);
 
   window.localStorage.removeItem("cache");
   window.localStorage.removeItem("currentEpisode");
@@ -213,7 +213,7 @@ let database = null;
 const Change = function (params, doNotDetect, doNotScroll) {
   let [url, title, index, cache] = params.split("<<<");
 
-  window.localStorage.setItem("title", encodeURI(obj[paramIndex - 1]));
+  window.localStorage.setItem("title", obj[paramIndex - 1]);
   window.localStorage.setItem("cache", cache);
   window.localStorage.setItem("currentEpisode", index);
 
