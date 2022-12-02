@@ -342,14 +342,32 @@ const Prev = async function () {
       const [_, __, index, cacheIndex] = text.id.split("<<<");
       const url = lecteur[cacheIndex - 2];
 
-      let title = await getEpisode(index - 1);
+      let title = (await getEpisode(index - 1))?.title;
 
-      if (!title?.title) title = "";
+      if (title) title = `- ${title}`;
+
+      if (!title && index - 1 === 1036)
+        title = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
+      if (!title && index - 1 === 1037)
+        title = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
+      if (!title && index - 1 === 1038)
+        title = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
+      if (!title && index - 1 === 1039)
+        title = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
+      if (!title && index - 1 === 1040) title = `- La fierté du timonier - Jinbe en colère !`;
+      if (!title && index - 1 === 1041) title = `- Bataille de monstres. Yamato et Franky !`;
+      if (!title && index - 1 === 1042)
+        title = `- Le piège de la prédatrice. La séduction de Black Maria !`;
+      if (!title && index - 1 === 1043)
+        title = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
+      if (!title && index - 1 === 1044) title = `- Clutch. L'incarnation démoniaque de Robin !`;
+
+      if (!title) title = "";
 
       Change(
-        `${url}<<<${title?.title === "none" || !title?.title ? "none" : `- ${title.title}`}<<<${
-          index - 1
-        }<<<${cacheIndex - 1}`,
+        `${url}<<<${title === "none" || !title ? "none" : title}<<<${index - 1}<<<${
+          cacheIndex - 1
+        }`,
         true,
         true
       );
@@ -393,28 +411,33 @@ const Next = async function () {
         const [_, __, index, cacheIndex] = text.id.split("<<<");
         const url = lecteur[Number(cacheIndex)];
 
-        let title = (await getEpisode(Number(index) + 1)).title;
+        let title = (await getEpisode(Number(index) + 1))?.title;
 
         if (title) title = `- ${title}`;
 
-        if (!title && i === 1036)
+        if (!title && Number(index) + 1 === 1036)
           title = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
-        if (!title && i === 1037) title = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
-        if (!title && i === 1038)
+        if (!title && Number(index) + 1 === 1037)
+          title = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
+        if (!title && Number(index) + 1 === 1038)
           title = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
-        if (!title && i === 1039)
+        if (!title && Number(index) + 1 === 1039)
           title = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
-        if (!title && i === 1040) title = `- La fierté du timonier - Jinbe en colère !`;
-        if (!title && i === 1041) title = `- Bataille de monstres. Yamato et Franky !`;
-        if (!title && i === 1042)
+        if (!title && Number(index) + 1 === 1040)
+          title = `- La fierté du timonier - Jinbe en colère !`;
+        if (!title && Number(index) + 1 === 1041)
+          title = `- Bataille de monstres. Yamato et Franky !`;
+        if (!title && Number(index) + 1 === 1042)
           title = `- Le piège de la prédatrice. La séduction de Black Maria !`;
-        if (!title && i === 1043) title = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
-        if (!title && i === 1044) title = `- Clutch. L'incarnation démoniaque de Robin !`;
+        if (!title && Number(index) + 1 === 1043)
+          title = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
+        if (!title && Number(index) + 1 === 1044)
+          title = `- Clutch. L'incarnation démoniaque de Robin !`;
 
         if (!title) title = "";
 
         Change(
-          `${url}<<<${title === "" || !title ? "none" : `- ${title}`}<<<${Number(index) + 1}<<<${
+          `${url}<<<${title === "" || !title ? "none" : title}<<<${Number(index) + 1}<<<${
             Number(cacheIndex) + 1
           }`,
           null,
