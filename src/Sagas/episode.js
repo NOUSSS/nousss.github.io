@@ -74,111 +74,111 @@ window.onload = async function () {
   const buttons = document.querySelector(".buttons");
   const secondText = document.querySelector(".secondText");
 
-  addScript(paramIndex, "https://anime-sama.fr/anime/one-piece/{saga}{index}/episodes.js").then(
-    () => {
-      // document.querySelector(".langage-choices").addEventListener("click", () => {
-      //   text.innerText = text.innerText.replace("VostFR", "VF");
+  addScript(
+    paramIndex,
+    "https://anime-sama.fr/catalogue/one-piece/saison{index}/vostfr/episodes.js"
+  ).then(() => {
+    // document.querySelector(".langage-choices").addEventListener("click", () => {
+    //   text.innerText = text.innerText.replace("VostFR", "VF");
 
-      //   return resetScript().then(() => {
-      //     setTimeout(() => {
-      //       addScript(
-      //         paramIndex,
-      //         `https://anime-sama.fr/anime/one-piece/saga{index}vf/episodes.js?filever=9014`
-      //       ).then(() => {
-      //         setTimeout(() => {}, 1000);
-      //       });
-      //     }, 1000);
-      //   });
-      // });
+    //   return resetScript().then(() => {
+    //     setTimeout(() => {
+    //       addScript(
+    //         paramIndex,
+    //         `https://anime-sama.fr/anime/one-piece/saga{index}vf/episodes.js?filever=9014`
+    //       ).then(() => {
+    //         setTimeout(() => {}, 1000);
+    //       });
+    //     }, 1000);
+    //   });
+    // });
 
-      setTimeout(async () => {
-        search(document.querySelector("input"), document.getElementsByClassName("epClick"));
+    setTimeout(async () => {
+      search(document.querySelector("input"), document.getElementsByClassName("epClick"));
 
-        const lecteur = getLecteur("sibnet", [eps2, eps1]);
+      const lecteur = getLecteur("sibnet", [eps2, eps1]);
 
-        loading.innerHTML = "";
-        secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
-        buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button class="nextButton" onclick="Next()">Épisode suivant</button>`;
+      loading.innerHTML = "";
+      secondText.innerHTML = `<p><span>${lecteur.length}</span> épisodes trouvés.</p>`;
+      buttons.innerHTML = `<button class="prevButton" style="display: none" onclick="Prev();">Épisode précedent</button><button class="nextButton" onclick="Next()">Épisode suivant</button>`;
 
-        let i = allIndex[paramIndex];
-        let episodeIndex = dataIndex ? i + 1 + Number(dataIndex) - 1 : i + 1;
+      let i = allIndex[paramIndex];
+      let episodeIndex = dataIndex ? i + 1 + Number(dataIndex) - 1 : i + 1;
 
-        if (paramIndex === "10") {
-          lecteur.splice(127, 1);
-          lecteur.splice(138, 1);
-          lecteur.splice(145, 1);
-          lecteur.splice(153, 1);
-          lecteur.splice(158, 1);
+      if (paramIndex === "10") {
+        lecteur.splice(127, 1);
+        lecteur.splice(138, 1);
+        lecteur.splice(145, 1);
+        lecteur.splice(153, 1);
+        lecteur.splice(158, 1);
+      }
+
+      if (paramIndex === "5") {
+        lecteur.splice(1 - 1, 10);
+
+        let indexEpisode = dataIndex ? i + 1 + 11 + Number(dataIndex) - 1 : i + 1 + 11;
+
+        const tempURL = lecteur[0];
+        let tempTitle = (await getEpisode(indexEpisode))?.title;
+
+        if (tempTitle) tempTitle = `- ${tempTitle}`;
+        if (!tempTitle) tempTitle = "";
+
+        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+        document.querySelector(
+          ".bigText"
+        ).innerHTML = `<span class="numberEp">${indexEpisode}</span> ${tempTitle}</p>`;
+      } else {
+        const tempURL = dataIndex ? lecteur[Number(dataIndex) - 1] : lecteur[0];
+        let tempTitle = (await getEpisode(episodeIndex))?.title;
+
+        if (tempTitle) tempTitle = `- ${tempTitle}`;
+        if (!tempTitle) tempTitle = "";
+
+        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
+        document.querySelector(
+          ".bigText"
+        ).innerHTML = `<span class="numberEp">${episodeIndex}</span> ${tempTitle}</p>`;
+      }
+
+      let cachedIndex = 0;
+      let cacheData = false;
+
+      for (let url of lecteur) {
+        cachedIndex++;
+        i++;
+
+        if (paramIndex === "5" && !cacheData) {
+          cacheData = true;
+          i = i + 11;
         }
 
-        if (paramIndex === "5") {
-          lecteur.splice(1 - 1, 10);
+        let epTitle = (await getEpisode(i))?.title;
+        if (epTitle) epTitle = `- ${epTitle}`;
 
-          let indexEpisode = dataIndex ? i + 1 + 11 + Number(dataIndex) - 1 : i + 1 + 11;
+        if (!epTitle && i === 1036)
+          epTitle = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
+        if (!epTitle && i === 1037)
+          epTitle = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
+        if (!epTitle && i === 1038)
+          epTitle = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
+        if (!epTitle && i === 1039)
+          epTitle = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
+        if (!epTitle && i === 1040) epTitle = `- La fierté du timonier - Jinbe en colère !`;
+        if (!epTitle && i === 1041) epTitle = `- Bataille de monstres. Yamato et Franky !`;
+        if (!epTitle && i === 1042)
+          epTitle = `- Le piège de la prédatrice. La séduction de Black Maria !`;
+        if (!epTitle && i === 1043) epTitle = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
+        if (!epTitle && i === 1044) epTitle = `- Clutch. L'incarnation démoniaque de Robin !`;
 
-          const tempURL = lecteur[0];
-          let tempTitle = (await getEpisode(indexEpisode))?.title;
+        if (!epTitle) epTitle = "";
 
-          if (tempTitle) tempTitle = `- ${tempTitle}`;
-          if (!tempTitle) tempTitle = "";
-
-          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
-          document.querySelector(
-            ".bigText"
-          ).innerHTML = `<span class="numberEp">${indexEpisode}</span> ${tempTitle}</p>`;
-        } else {
-          const tempURL = dataIndex ? lecteur[Number(dataIndex) - 1] : lecteur[0];
-          let tempTitle = (await getEpisode(episodeIndex))?.title;
-
-          if (tempTitle) tempTitle = `- ${tempTitle}`;
-          if (!tempTitle) tempTitle = "";
-
-          divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${tempURL} allowfullscreen></iframe>`;
-          document.querySelector(
-            ".bigText"
-          ).innerHTML = `<span class="numberEp">${episodeIndex}</span> ${tempTitle}</p>`;
-        }
-
-        let cachedIndex = 0;
-        let cacheData = false;
-
-        for (let url of lecteur) {
-          cachedIndex++;
-          i++;
-
-          if (paramIndex === "5" && !cacheData) {
-            cacheData = true;
-            i = i + 11;
-          }
-
-          let epTitle = (await getEpisode(i))?.title;
-          if (epTitle) epTitle = `- ${epTitle}`;
-
-          if (!epTitle && i === 1036)
-            epTitle = `- Resistez dans la nuit noire. Le cri du généralissme de Wano !`;
-          if (!epTitle && i === 1037)
-            epTitle = `- Croyez en Luffy. La contre-attaque de l'alliance !`;
-          if (!epTitle && i === 1038)
-            epTitle = `- Coup fatal de Nami. O-Tama tente le tout pour le tout !`;
-          if (!epTitle && i === 1039)
-            epTitle = `- Augmentation drastique des alliés ! L'équipage au chapeau de paille contre-attaque !`;
-          if (!epTitle && i === 1040) epTitle = `- La fierté du timonier - Jinbe en colère !`;
-          if (!epTitle && i === 1041) epTitle = `- Bataille de monstres. Yamato et Franky !`;
-          if (!epTitle && i === 1042)
-            epTitle = `- Le piège de la prédatrice. La séduction de Black Maria !`;
-          if (!epTitle && i === 1043)
-            epTitle = `- Trancher le cauchemar. L'épée glaciale de Brook !`;
-          if (!epTitle && i === 1044) epTitle = `- Clutch. L'incarnation démoniaque de Robin !`;
-
-          if (!epTitle) epTitle = "";
-
-          list.innerHTML += `<p class="epClick" id="${url}<<<${
-            epTitle === "" || !epTitle ? "none" : epTitle
-          }<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> ${epTitle}</p>`;
-        }
-      }, 1000);
-    }
-  );
+        list.innerHTML += `<p class="epClick" id="${url}<<<${
+          epTitle === "" || !epTitle ? "none" : epTitle
+        }<<<${i}<<<${cachedIndex}" onclick="Change(id)" ><span class="numberEp">${i}</span> ${epTitle}</p>`;
+      }
+    }, 1000);
+  });
 };
 
 function prevSaga() {
@@ -279,19 +279,10 @@ function LecteurChange() {
 
 const addScript = function (index, url) {
   return new Promise((resolve) => {
-    const saga = {
-      10: "s",
-      9: "s",
-      6: "s",
-    };
-
     const script = document.createElement("script");
 
     script.className = "script";
-    script.setAttribute(
-      "src",
-      url.replace("{index}", index).replace("{saga}", saga[index] ?? "saga")
-    );
+    script.setAttribute("src", url.replace("{index}", index));
 
     resolve(document.head.appendChild(script));
   });
