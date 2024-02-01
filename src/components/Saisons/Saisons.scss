@@ -1,0 +1,134 @@
+.h1 {
+  position: relative;
+  top: 35px;
+  color: white;
+  font-size: 50px;
+}
+
+.lastSaison {
+  margin: 50px;
+  color: white;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.label--saisons {
+  border-bottom: solid grey 1px;
+  position: relative;
+  top: -20px;
+  margin: 65px;
+
+  img {
+    position: relative;
+    left: -50px;
+    width: 37px;
+    top: 10px;
+  }
+
+  input {
+    color: white;
+    background-color: hsl(231deg 13% 10%);
+    border: none;
+    border-radius: 4px;
+    height: 31px;
+    width: 144px;
+    transition: width 0.5s;
+    position: relative;
+    top: -24px;
+
+    &:focus {
+      width: 250px;
+    }
+
+    &::placeholder {
+      position: relative;
+      left: 5px;
+    }
+  }
+}
+
+.output--saisons {
+  color: white;
+  font-size: 36px;
+}
+
+.saisons {
+  overflow-x: auto;
+  position: relative;
+  top: -20px;
+
+  div {
+    display: inline-flex;
+    margin: 33px;
+
+    img {
+      width: 89px;
+      height: 108px;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+  }
+}
+
+.text--saisons {
+  width: 134px;
+  color: white;
+  margin-left: -109px;
+}
+
+a {
+  font-size: 20px;
+}
+
+span {
+  color: orange;
+}
+
+.image {
+  max-width: 48px;
+  opacity: 0.6;
+  transition: all 0.5s;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.poster-saison {
+  transition: tranform 300ms;
+}
+
+.container--poster-saison {
+  &:hover {
+    .poster-saison {
+      transform: rotate(10deg);
+    }
+  }
+}
+
+.title {
+  // letter-spacing: 3px;
+  font-size: 70px;
+  color: white;
+
+  &:hover {
+    color: orange;
+
+    span {
+      color: white;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

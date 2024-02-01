@@ -1,0 +1,260 @@
+.container--buttons {
+  display: flex;
+  justify-content: center;
+  padding: 26px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.buttons {
+  border-bottom: grey solid 1px;
+  position: relative;
+  top: 17px;
+}
+
+.loading {
+  color: white;
+}
+
+.label--episodes {
+  margin: 20px;
+  position: relative;
+  top: 52px;
+
+  img {
+    left: -50px;
+    position: relative;
+    top: 10px;
+    width: 37px;
+  }
+
+  input {
+    background-color: #16171d;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    height: 31px;
+    position: relative;
+    top: -24px;
+    transition: width 0.5s;
+    width: 144px;
+
+    &:focus {
+      width: 250px;
+    }
+
+    &::placeholder {
+      margin-left: 5px;
+    }
+  }
+}
+
+button,
+.nextSaga,
+.prevSaga {
+  position: relative;
+  top: -20px;
+  left: 0;
+  right: 0;
+  border: orange 1px solid;
+  border-radius: 3px;
+  width: 89px;
+  height: 47px;
+  background-color: hsl(231deg 13% 10%);
+  font-size: 14px;
+  margin: 17px;
+  color: orange;
+  transition: all 300ms;
+}
+
+.episodeList {
+  cursor: pointer;
+}
+
+.nextSaga {
+  margin-top: 64px;
+}
+
+.nextButton,
+.nextSaga {
+  &:hover {
+    position: relative;
+    left: 8px;
+  }
+}
+
+.prevButton,
+.prevSaga {
+  &:hover {
+    position: relative;
+    left: -8px;
+  }
+}
+
+.output--episodes {
+  color: white;
+  font-size: 20px;
+}
+
+.titleSaison {
+  margin: 46px;
+  color: white;
+  font-size: 36px;
+
+  a {
+    color: white;
+    font-size: 56px;
+  }
+}
+
+.historiqueEpisode {
+  p {
+    color: white;
+    margin: -15px;
+  }
+}
+
+.cinema {
+  display: flex;
+  margin: 20px;
+
+  p {
+    position: relative;
+    left: -15px;
+    top: -5px;
+  }
+
+  input {
+    appearance: none;
+
+    &:checked + span {
+      background-color: #ffa300;
+
+      &::before {
+        left: 40px;
+      }
+    }
+
+    &:hover + span::before {
+      box-shadow: 0px 0px 20px 0px black;
+    }
+  }
+
+  span {
+    background-color: #999692;
+    width: 65px;
+    height: 15px;
+    border-radius: 50px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -7px;
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 50%;
+      transition: all ease-out 0.2s;
+    }
+  }
+}
+
+.container--list {
+  position: relative;
+  top: 30px;
+  overflow-y: auto;
+  height: 400px;
+  margin: 21px;
+
+  &::-webkit-scrollbar {
+    width: 12.5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffa300;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: cyan;
+    border-radius: 20px;
+    border: 3px solid #ffa300;
+  }
+}
+
+.title {
+  height: 70px;
+  font-size: 66px;
+  color: white;
+
+  img {
+    width: auto;
+    height: 70px;
+    transition: transform 1s;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+
+    &:hover {
+      color: orange;
+
+      span {
+        color: white;
+      }
+    }
+  }
+}
+
+.episodeNumber {
+  color: orange;
+}
+
+.episodeList {
+  width: 900px;
+}
+
+.download {
+  position: relative;
+  top: 35px;
+
+  span {
+    a {
+      text-decoration: underline;
+      color: orange;
+    }
+  }
+}
+
+iframe {
+  border: 0;
+  position: relative;
+  width: 1206px;
+  height: 678px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.episode {
+  font-size: 30px;
+  margin: 29px;
+  margin-top: 50px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

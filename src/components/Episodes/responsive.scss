@@ -1,0 +1,75 @@
+@media (max-width: 1216px) {
+  .episode {
+    width: 500px;
+  }
+  iframe {
+    width: 947px;
+    height: 532px;
+  }
+}
+
+@media (max-width: 962px) {
+  iframe {
+    width: 769px;
+    height: 440px;
+  }
+}
+
+@media (max-width: 782px) {
+  iframe {
+    width: 600px;
+    height: 337px;
+  }
+}
+
+@media (max-width: 372px) {
+  input:focus {
+    width: 215px;
+  }
+}
+
+@media (max-width: 409px) {
+  .download {
+    width: 350px;
+  }
+}
+
+@media (max-width: 506px) {
+  .logo {
+    font-size: 26px;
+  }
+
+  .episodeList {
+    width: 361px;
+  }
+
+  .titleSaison {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 649px) {
+  .episode {
+    font-size: 21px;
+    width: 322px;
+  }
+
+  iframe {
+    width: 450px;
+    height: 258px;
+  }
+}
+
+@media (max-width: 458px) {
+  iframe {
+    width: 325px;
+    height: 185px;
+  }
+}
+
+@media (max-width: 358px) {
+  iframe {
+    width: 265px;
+    height: 153px;
+  }
+}

@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap');
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: #1d1e20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.container--home {
+  .card {
+    width: 500px;
+    height: 770px;
+    background-color: hsl(231, 10%, 14%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 7px;
+    margin-top: 20%;
+    opacity: 0.9;
+    transition: all 1s;
+
+    .choices {
+      font-size: 50px;
+      margin-top: 333px;
+
+      position: relative;
+      top: -10px;
+
+      a {
+        text-shadow: 0 0 20px black;
+        position: relative;
+        color: #65adff;
+        cursor: pointer;
+        font-size: 43px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-color: #ffa300;
+          height: 3px;
+          width: 100%;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: transform 350ms ease-out;
+        }
+
+        &:hover {
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+
+    .citation {
+      font-size: 25px;
+      position: relative;
+      margin-top: 75px;
+      color: white;
+
+      .visible {
+        opacity: 1;
+      }
+
+      p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition-duration: 300ms;
+
+        span {
+          color: #ffa300;
+        }
+      }
+    }
+
+    .title {
+      letter-spacing: 3px;
+      font-size: 20px;
+      color: white;
+
+      img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        animation: spin 1s;
+        width: auto;
+        height: 70px;
+        transition: transform 1s;
+
+        &:hover {
+          transform: translate(-50%) rotate(360deg);
+        }
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+
+  h1 {
+    color: white;
+  }
+
+  span {
+    color: #ffa300;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%) rotate(360deg);
+  }
+}
+
+footer {
+  position: relative;
+  top: 25px;
+
+  color: white;
+  opacity: 1;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+}
