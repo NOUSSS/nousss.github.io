@@ -54,7 +54,14 @@ const Saisons = () => {
         </h1>
       </div>
 
-      <p className="h1">
+      <p
+        style={{
+          position: 'relative',
+          top: '35px',
+          color: 'white',
+          fontSize: '50px',
+        }}
+      >
         Les <span>saisons</span> disponibles.
       </p>
 

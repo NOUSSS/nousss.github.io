@@ -1,4 +1,9 @@
-export const WANOHS = [127, 139, 147, 156, 162, 173, 190, 195, 204, 210, 221];
+export const WANOHS: number[] = [
+  127, 139, 147, 156, 162, 173, 190, 195, 204, 210, 221,
+];
+
+export const eggHeadHS: number[] = [4];
+
 export const allIndex: { [key: string]: number } = {
   1: 0,
   2: 61,

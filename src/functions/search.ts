@@ -1,4 +1,4 @@
-import { clear, toUpper } from "./main.ts";
+import { clear, toUpper } from './main.ts';
 
 export function initSearchBar(
   input: HTMLInputElement,
@@ -16,16 +16,16 @@ export function initSearchBar(
     let count = 0;
 
     for (let i2 = 0; i2 < div.length; i2++) {
-      div[i2].style.display = "";
+      div[i2].style.display = '';
 
       if (!div[i2].id.toLowerCase().includes(input.value.toLowerCase())) {
-        div[i2].style.display = "none";
+        div[i2].style.display = 'none';
       } else {
         count++;
       }
     }
 
-    output.style.display = "";
+    output.style.display = '';
     output.innerHTML =
       count > 1
         ? `<span>${count}</span> ${toUpper(component)} trouvés.`
@@ -35,16 +35,16 @@ export function initSearchBar(
   i++;
 
   if (input.value.length === 1) {
-    input.addEventListener("keydown", ({ code }) => {
-      if (code === "Backspace" && input.value.length === 1) {
+    input.addEventListener('keydown', ({ code }) => {
+      if (code === 'Backspace' && input.value.length === 1) {
         clear(div);
 
-        output.innerHTML = cacheText || "";
+        output.innerHTML = cacheText || '';
 
         return;
       }
 
-      if (code === "Backspace" && input.value.length > 1) {
+      if (code === 'Backspace' && input.value.length > 1) {
         updateResults();
       }
     });
@@ -53,7 +53,7 @@ export function initSearchBar(
   if (!input.value) {
     clear(div);
 
-    output.style.display = "none";
+    output.style.display = 'none';
 
     return;
   }

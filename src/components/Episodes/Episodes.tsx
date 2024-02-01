@@ -11,10 +11,10 @@ import { NextSaga, PrevSaga } from './functions';
 import { initSearchBar } from '../../functions/search';
 import { Link } from 'react-router-dom';
 
-import episodesNames from './episode';
+import episodesNames from './episodes-names';
 
 import { isIOS } from '../../functions/main';
-import { WANOHS, allIndex } from './constants';
+import { WANOHS, allIndex, eggHeadHS } from './constants';
 
 import { windowKeys } from '../interfaces/interface';
 
@@ -37,6 +37,57 @@ function Change(indexEpisode: number | string) {
 
   if (window.localStorage.getItem('saison') === '10') {
     if (WANOHS.includes(Number(indexEpisode) - 1)) {
+      let esp = '';
+
+      document.querySelectorAll('p').forEach((e) => {
+        if (e.dataset?.id === indexEpisode) {
+          esp = e.id.match(/[0-9]/g)!.join('');
+        }
+      });
+
+      const url = lecteur[Number(indexEpisode) - 1];
+
+      downloadText(url);
+
+      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
+      document.querySelector(
+        '.episode'
+      )!.innerHTML = `<span class="episodeNumber">E-SP${esp}</span>`;
+
+      window.localStorage.setItem('episode', String(indexEpisode));
+      window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
+    } else {
+      let retard = 0;
+
+      document.querySelectorAll('.episodeList').forEach((e, i) => {
+        if (i + 1 < Number(indexEpisode)) {
+          if (e.id.includes('E-SP')) retard++;
+        }
+      });
+
+      const saison = window.localStorage.getItem('saison');
+
+      const numberEpisode =
+        Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
+
+      const title = episodesNames.find(
+        ({ index }) => index === String(numberEpisode)
+      )!.name;
+
+      const url = lecteur[Number(indexEpisode) - 1];
+
+      downloadText(url);
+
+      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
+      document.querySelector(
+        '.episode'
+      )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${title}`;
+
+      window.localStorage.setItem('episode', String(indexEpisode));
+      window.localStorage.removeItem('episodeSpecial');
+    }
+  } else if (window.localStorage.getItem('saison') === '11') {
+    if (eggHeadHS.includes(Number(indexEpisode) - 1)) {
       let esp = '';
 
       document.querySelectorAll('p').forEach((e) => {
@@ -241,6 +292,21 @@ export default function Episodes() {
       ) {
         if (window.localStorage.getItem('saison') === '10') {
           if (WANOHS.includes(indexEpisode - 1)) {
+            retard++;
+
+            const title = `E-SP${retard}`;
+
+            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${title}" ><span class="episodeNumber">${title}</span></p>`;
+          } else {
+            const episodeNumber = episodeIndex + indexEpisode - retard;
+            const episodeTitle = episodesNames.find(
+              ({ index }) => index === String(episodeNumber)
+            )!.name;
+
+            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${episodeNumber} ${episodeTitle}" ><span class="episodeNumber">${episodeNumber}</span> : ${episodeTitle}</p>`;
+          }
+        } else if (window.localStorage.getItem('saison') === '11') {
+          if (eggHeadHS.includes(indexEpisode - 1)) {
             retard++;
 
             const title = `E-SP${retard}`;

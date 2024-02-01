@@ -81,10 +81,6 @@ a {
   font-size: 20px;
 }
 
-span {
-  color: orange;
-}
-
 .langage {
   color: white;
 
@@ -111,8 +107,6 @@ span {
   margin-top: 70px;
 
   span {
-    color: orange;
-
     a {
       color: orange;
       text-decoration: underline;
@@ -139,29 +133,5 @@ span {
     .poster {
       transform: rotate(10deg);
     }
-  }
-}
-
-.title {
-  // letter-spacing: 3px;
-  font-size: 57px;
-  color: white;
-
-  &:hover {
-    color: orange;
-
-    span {
-      color: white;
-    }
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
