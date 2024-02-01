@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import './Films.scss';
 import './responsive.scss';
 
-import searchImg from '../../Assets/Search.svg';
+import searchImg from '../../assets/Search.svg';
 
 import { isIOS, getURLFilm } from '../../functions/main';
 import { addScript, appearVideo, getFilms } from './functions';

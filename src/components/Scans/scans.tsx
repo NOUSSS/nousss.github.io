@@ -1,20 +1,20 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 import {
   getTailleChapitres,
   nextChapitre,
   prevChapitre,
   selectChapter,
-} from "./functions";
+} from './functions';
 
-import { addScript } from "../Films/functions";
+import { addScript } from '../Films/functions';
 
-import "./scans.scss";
-import "./responsive.scss";
+import './scans.scss';
+import './responsive.scss';
 
-import uparrow from "../../Assets/uparrow.png";
+import uparrow from '../../assets/uparrow.png';
 
-import { SCRIPT_URL, CHAPITRE_SPECIAUX } from "./constants";
+import { SCRIPT_URL, CHAPITRE_SPECIAUX } from './constants';
 
 const Scans = () => {
   useEffect(() => {
@@ -24,7 +24,7 @@ const Scans = () => {
       for (let i = 0; i < getTailleChapitres(); i++) {
         if (CHAPITRE_SPECIAUX.includes(i)) {
           document.querySelector(
-            ".chapitres"
+            '.chapitres'
           )!.innerHTML += `<option id="Chapitre ${
             i + 1
           }">Chapitre ONE SHOT</option>`;
@@ -32,48 +32,48 @@ const Scans = () => {
           retard++;
         } else {
           document.querySelector(
-            ".chapitres"
+            '.chapitres'
           )!.innerHTML += `<option id="Chapitre ${i + 1}">Chapitre ${
             i + 1 - retard
           }</option>`;
         }
       }
 
-      const select = document.querySelector("select")!;
-      const currentChapter = window.localStorage.getItem("chapitre") ?? 1;
+      const select = document.querySelector('select')!;
+      const currentChapter = window.localStorage.getItem('chapitre') ?? 1;
 
       selectChapter(currentChapter);
 
-      select.addEventListener("change", (event) => {
+      select.addEventListener('change', (event) => {
         if (event.target instanceof HTMLSelectElement) {
           const id = event.target.selectedOptions[0].id
             .match(/[0-9]/g)!
-            .join("");
+            .join('');
 
           selectChapter(id);
         }
       });
 
       document
-        .querySelectorAll(".prevButton")
-        .forEach((e) => e.addEventListener("click", prevChapitre));
+        .querySelectorAll('.prevButton')
+        .forEach((e) => e.addEventListener('click', prevChapitre));
 
       document
-        .querySelectorAll(".nextButton")
-        .forEach((e) => e.addEventListener("click", nextChapitre));
+        .querySelectorAll('.nextButton')
+        .forEach((e) => e.addEventListener('click', nextChapitre));
 
-      document.querySelector(".lastChapter")!.addEventListener("click", () => {
+      document.querySelector('.lastChapter')!.addEventListener('click', () => {
         selectChapter(
           document
-            .querySelector("select")!
+            .querySelector('select')!
             .options[
-              document.querySelector("select")!.options.length - 1
+              document.querySelector('select')!.options.length - 1
             ].id.match(/[0-9]/g)!
-            .join("")
+            .join('')
         );
       });
 
-      document.querySelector(".loading")!.innerHTML = "";
+      document.querySelector('.loading')!.innerHTML = '';
     });
   }, []);
 
@@ -97,9 +97,9 @@ const Scans = () => {
       </div>
 
       <p className="loading">
-        Si les chapitres ne chargent pas apres 5-10 secondes, cliquez{" "}
+        Si les chapitres ne chargent pas apres 5-10 secondes, cliquez{' '}
         <span
-          style={{ textDecoration: "underline" }}
+          style={{ textDecoration: 'underline' }}
           onClick={() => window.location.reload()}
         >
           ici
@@ -116,7 +116,7 @@ const Scans = () => {
 
       <img
         alt="scroll tout en haut de la page"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         src={uparrow}
       ></img>
 

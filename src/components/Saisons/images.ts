@@ -1,14 +1,14 @@
-import s1 from '../../Assets/Saisons/Saison1.jpeg';
-import s2 from '../../Assets/Saisons/Saison2.jpeg';
-import s3 from '../../Assets/Saisons/Saison3.jpeg';
-import s4 from '../../Assets/Saisons/Saison4.jpeg';
-import s5 from '../../Assets/Saisons/Saison5.jpeg';
-import s6 from '../../Assets/Saisons/Saison6.jpeg';
-import s7 from '../../Assets/Saisons/Saison7.jpeg';
-import s8 from '../../Assets/Saisons/Saison8.jpeg';
-import s9 from '../../Assets/Saisons/Saison9.jpeg';
-import s10 from '../../Assets/Saisons/Saison10.jpeg';
-import s11 from '../../Assets/Saisons/Saison11.jpeg';
+import s1 from '../../assets/Saisons/Saison1.jpeg';
+import s2 from '../../assets/Saisons/Saison2.jpeg';
+import s3 from '../../assets/Saisons/Saison3.jpeg';
+import s4 from '../../assets/Saisons/Saison4.jpeg';
+import s5 from '../../assets/Saisons/Saison5.jpeg';
+import s6 from '../../assets/Saisons/Saison6.jpeg';
+import s7 from '../../assets/Saisons/Saison7.jpeg';
+import s8 from '../../assets/Saisons/Saison8.jpeg';
+import s9 from '../../assets/Saisons/Saison9.jpeg';
+import s10 from '../../assets/Saisons/Saison10.jpeg';
+import s11 from '../../assets/Saisons/Saison11.jpeg';
 
 type ImageKey = keyof typeof images;
 

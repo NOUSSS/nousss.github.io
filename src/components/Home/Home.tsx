@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { isIOS } from '../../functions/main';
 import { citation } from './citations';
 import { Link } from 'react-router-dom';
-import logo from '../../Assets/Logo.png';
+import logo from '../../assets/Logo.png';
 
 const Home = () => {
   const interval = useRef<number | null>(null);

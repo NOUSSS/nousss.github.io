@@ -4,7 +4,7 @@ import { obj } from '../Saisons/saisonsObj';
 import './Episodes.scss';
 import './responsive.scss';
 
-import searchImg from '../../Assets/Search.svg';
+import searchImg from '../../assets/Search.svg';
 
 import { addScript } from '../Films/functions';
 import { NextSaga, PrevSaga } from './functions';
