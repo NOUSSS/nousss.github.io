@@ -3,6 +3,10 @@ type horsSeriesType = {
   hs: number[];
 };
 
+interface allIndexType {
+  [key: string]: number;
+}
+
 export const horsSeries: horsSeriesType[] = [
   {
     saison: '10',
@@ -14,7 +18,7 @@ export const horsSeries: horsSeriesType[] = [
   },
 ];
 
-export const allIndex: { [key: string]: number } = {
+export const allIndex: allIndexType = {
   1: 0,
   2: 61,
   3: 143,
