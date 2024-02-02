@@ -52,8 +52,8 @@ body {
 }
 
 button,
-.nextSaga,
-.prevSaga {
+.NextSaison,
+.PrevSaison {
   position: relative;
   top: -20px;
   left: 0;
@@ -73,12 +73,12 @@ button,
   cursor: pointer;
 }
 
-.nextSaga {
+.NextSaison {
   margin-top: 64px;
 }
 
 .nextButton,
-.nextSaga {
+.NextSaison {
   &:hover {
     position: relative;
     left: 8px;
@@ -86,7 +86,7 @@ button,
 }
 
 .prevButton,
-.prevSaga {
+.PrevSaison {
   &:hover {
     position: relative;
     left: -8px;

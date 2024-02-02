@@ -1,254 +1,53 @@
-import { useEffect } from 'react';
-import { obj } from '../Saisons/saisonsObj';
-
 import './Episodes.scss';
 import './responsive.scss';
 
-import searchImg from '../../assets/Search.svg';
-
+import { useEffect, useState } from 'react';
+import { obj } from '../Saisons/saisonsObj';
 import { addScript } from '../Films/functions';
-import { NextSaga, PrevSaga } from './functions';
+import { NextSaison, PrevSaison } from './switchSaisons';
 import { initSearchBar } from '../../functions/search';
 import { Link } from 'react-router-dom';
-
-import episodesNames from './episodes-names';
-
-import { isIOS } from '../../functions/main';
-import { WANOHS, allIndex, eggHeadHS } from './constants';
-
+import { allIndex, horsSeries } from './constants';
 import { windowKeys } from '../interfaces/interface';
+import { clickEvents, downloadText, toggleCinemaMode } from './utils';
+
+import searchImg from '../../assets/Search.svg';
+import episodesNames from './episodes-names';
 
 let lecteur: string[];
 
-function downloadText(url: String) {
-  if (isIOS()) {
-    document.querySelector(
-      '.download'
-    )!.innerHTML = `Pour télécharger, cliquez <span><a target="_blank" href="${url}">ici</a></span> puis appuyer sur le bouton <span>"partager"</span>, puis <span>'Enregistrer dans fichiers'</span>`;
-  } else {
-    document.querySelector(
-      '.download'
-    )!.innerHTML = `Pour télécharger, cliquez <span><a target="_blank" href="${url}">ici</a></span> puis faites <span>clique droit</span>, puis <span>'Enregistrer la vidéo sous'</span>`;
-  }
-}
-
-function Change(indexEpisode: number | string) {
-  const divEp = document.querySelector('.episodes')!;
-
-  if (window.localStorage.getItem('saison') === '10') {
-    if (WANOHS.includes(Number(indexEpisode) - 1)) {
-      let esp = '';
-
-      document.querySelectorAll('p').forEach((e) => {
-        if (e.dataset?.id === indexEpisode) {
-          esp = e.id.match(/[0-9]/g)!.join('');
-        }
-      });
-
-      const url = lecteur[Number(indexEpisode) - 1];
-
-      downloadText(url);
-
-      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">E-SP${esp}</span>`;
-
-      window.localStorage.setItem('episode', String(indexEpisode));
-      window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
-    } else {
-      let retard = 0;
-
-      document.querySelectorAll('.episodeList').forEach((e, i) => {
-        if (i + 1 < Number(indexEpisode)) {
-          if (e.id.includes('E-SP')) retard++;
-        }
-      });
-
-      const saison = window.localStorage.getItem('saison');
-
-      const numberEpisode =
-        Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
-
-      const title = episodesNames.find(
-        ({ index }) => index === String(numberEpisode)
-      )!.name;
-
-      const url = lecteur[Number(indexEpisode) - 1];
-
-      downloadText(url);
-
-      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${title}`;
-
-      window.localStorage.setItem('episode', String(indexEpisode));
-      window.localStorage.removeItem('episodeSpecial');
-    }
-  } else if (window.localStorage.getItem('saison') === '11') {
-    if (eggHeadHS.includes(Number(indexEpisode) - 1)) {
-      let esp = '';
-
-      document.querySelectorAll('p').forEach((e) => {
-        if (e.dataset?.id === indexEpisode) {
-          esp = e.id.match(/[0-9]/g)!.join('');
-        }
-      });
-
-      const url = lecteur[Number(indexEpisode) - 1];
-
-      downloadText(url);
-
-      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">E-SP${esp}</span>`;
-
-      window.localStorage.setItem('episode', String(indexEpisode));
-      window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
-    } else {
-      let retard = 0;
-
-      document.querySelectorAll('.episodeList').forEach((e, i) => {
-        if (i + 1 < Number(indexEpisode)) {
-          if (e.id.includes('E-SP')) retard++;
-        }
-      });
-
-      const saison = window.localStorage.getItem('saison');
-
-      const numberEpisode =
-        Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
-
-      const title = episodesNames.find(
-        ({ index }) => index === String(numberEpisode)
-      )!.name;
-
-      const url = lecteur[Number(indexEpisode) - 1];
-
-      downloadText(url);
-
-      divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${title}`;
-
-      window.localStorage.setItem('episode', String(indexEpisode));
-      window.localStorage.removeItem('episodeSpecial');
-    }
-  } else {
-    const numberEpisode =
-      Number(allIndex[window.localStorage.getItem('saison') ?? 0]) +
-      Number(indexEpisode);
-
-    const url = lecteur[Number(indexEpisode) - 1];
-
-    downloadText(url);
-
-    const episodeTitle = episodesNames.find(
-      ({ index }) => index === String(numberEpisode)
-    )!.name;
-
-    divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-    document.querySelector(
-      '.episode'
-    )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${episodeTitle}`;
-
-    window.localStorage.setItem('episode', String(indexEpisode));
-    window.localStorage.removeItem('episodeSpecial');
-  }
-
-  window.scrollTo({ top: 332, behavior: 'smooth' });
-}
-
-function NextEpisode() {
-  const newEpisodeIndex = Number(window.localStorage.getItem('episode')) + 1;
-
-  if (newEpisodeIndex - 1 === lecteur.length) {
-    if (window.localStorage.getItem('saison') === '11') return;
-
-    window.localStorage.setItem('episode', '1');
-
-    NextSaga();
-  } else {
-    Change(newEpisodeIndex);
-  }
-}
-
-function PrevEpisode() {
-  const newEpisodeIndex = Number(window.localStorage.getItem('episode')) - 1;
-
-  if (newEpisodeIndex < 1) {
-    if (window.localStorage.getItem('saison') === '1') return;
-
-    window.localStorage.setItem('episode', '1');
-    PrevSaga();
-  } else {
-    Change(newEpisodeIndex);
-  }
-}
-
 export default function Episodes() {
+  const [saison] = useState({
+    name: obj[window.localStorage.getItem('saison') ?? 0].name,
+    index: window.localStorage.getItem('saison'),
+  });
+
   useEffect(() => {
-    const saison = {
-      name: obj[window.localStorage.getItem('saison') ?? 0].name,
-      index: window.localStorage.getItem('saison'),
-    };
+    const NextSaisonSelector =
+      document.querySelector<HTMLElement>('.NextSaison')!;
 
-    const nextSaga = document.querySelector('.nextSaga') as HTMLElement;
-    const prevSaga = document.querySelector('.prevSaga') as HTMLElement;
+    const PrevSaisonSelector =
+      document.querySelector<HTMLElement>('.PrevSaison')!;
 
-    if (isIOS()) {
-      const cinemaToggleSwitch = document.querySelector(
-        '.cinema'
-      ) as HTMLElement;
-
-      cinemaToggleSwitch.style.display = 'none';
-    } else if (!isIOS()) {
-      const cinemaMode = document.querySelector(
-        '.cinema input'
-      ) as HTMLInputElement;
-
-      cinemaMode.addEventListener('change', () => {
-        const iframeParent = document.querySelector('.episodes') as HTMLElement;
-
-        if (cinemaMode.checked) {
-          document.documentElement.requestFullscreen().catch(() => 0);
-
-          iframeParent.style.width = '200%';
-          iframeParent.style.height = `${
-            document.querySelector('iframe')!.offsetHeight
-          }px`;
-
-          iframeParent.style.backgroundColor = 'black';
-        } else if (!cinemaMode.checked) {
-          document.exitFullscreen().catch(() => 0);
-
-          iframeParent.style.width = '';
-          iframeParent.style.height = '';
-
-          iframeParent.style.backgroundColor = '';
-        }
-      });
-    }
+    toggleCinemaMode();
 
     if (saison.index === Object.keys(allIndex)[0])
-      prevSaga.style.display = 'none';
+      PrevSaisonSelector.style.display = 'none';
+
     if (
       saison.index === Object.keys(allIndex)[Object.keys(allIndex).length - 1]
     )
-      nextSaga.style.display = 'none';
+      NextSaisonSelector.style.display = 'none';
 
-    const divEp = document.querySelector('.episodes')!;
+    const episodesContainer = document.querySelector('.episodes')!;
     const list = document.querySelector('.list')!;
     const buttons = document.querySelector('.buttons')!;
 
-    nextSaga.addEventListener('click', NextSaga);
-    prevSaga.addEventListener('click', PrevSaga);
+    NextSaisonSelector.addEventListener('click', NextSaison);
+    PrevSaisonSelector.addEventListener('click', PrevSaison);
 
     setTimeout(() => {
-      if (window.scrollY < 50) {
+      if (window.scrollY <= 50) {
         window.scrollTo({
           top: 300,
           behavior: 'smooth',
@@ -258,7 +57,8 @@ export default function Episodes() {
 
     const firstValue = Object.values(allIndex)[0];
 
-    if (saison.index === String(firstValue)) prevSaga.style.display = 'none';
+    if (saison.index === String(firstValue))
+      PrevSaisonSelector.style.display = 'none';
 
     document.querySelector(
       'title'
@@ -274,8 +74,8 @@ export default function Episodes() {
       loading.innerHTML = '';
 
       const text = document.getElementsByClassName('titleSaison')[0];
-      text.innerHTML = `<Link to="/Saisons"><span>${saison.name} (${lecteur.length})</span> [VOSTFR]</Link>`;
 
+      text.innerHTML = `<Link to="/Saisons"><span>${saison.name} (${lecteur.length})</span> [VOSTFR]</Link>`;
       buttons.innerHTML = `<button class="prevButton">Épisode précedent</button><button class="nextButton" >Épisode suivant</button>`;
 
       let episodeIndex = allIndex[saison.index ?? 0];
@@ -290,23 +90,12 @@ export default function Episodes() {
         indexEpisode < lecteur.length + 1;
         indexEpisode++
       ) {
-        if (window.localStorage.getItem('saison') === '10') {
-          if (WANOHS.includes(indexEpisode - 1)) {
-            retard++;
+        const isHorsSerie = horsSeries.find(
+          ({ saison }) => saison === window.localStorage.getItem('saison')
+        );
 
-            const title = `E-SP${retard}`;
-
-            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${title}" ><span class="episodeNumber">${title}</span></p>`;
-          } else {
-            const episodeNumber = episodeIndex + indexEpisode - retard;
-            const episodeTitle = episodesNames.find(
-              ({ index }) => index === String(episodeNumber)
-            )!.name;
-
-            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${episodeNumber} ${episodeTitle}" ><span class="episodeNumber">${episodeNumber}</span> : ${episodeTitle}</p>`;
-          }
-        } else if (window.localStorage.getItem('saison') === '11') {
-          if (eggHeadHS.includes(indexEpisode - 1)) {
+        if (isHorsSerie) {
+          if (isHorsSerie.hs.includes(indexEpisode - 1)) {
             retard++;
 
             const title = `E-SP${retard}`;
@@ -346,7 +135,7 @@ export default function Episodes() {
             index === String(episodeIndex + Number(episode) - retard)
         )!.name;
 
-        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
+        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
         document.querySelector(
           '.episode'
         )!.innerHTML = `<span class="episodeNumber">${
@@ -359,7 +148,7 @@ export default function Episodes() {
       if (episode !== '1' && esp) {
         const URL_EPISODE = lecteur[Number(episode) - 1];
 
-        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
+        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
         document.querySelector(
           '.episode'
         )!.innerHTML = `<span class="episodeNumber">${esp}</span>`;
@@ -374,7 +163,7 @@ export default function Episodes() {
           ({ index }) => index === String(Number(episodeIndex) + 1)
         )!.name;
 
-        divEp.innerHTML = `<iframe class="vid" width=640 height=360 src=${firstEpisode} allowfullscreen></iframe>`;
+        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${firstEpisode} allowfullscreen></iframe>`;
         document.querySelector(
           '.episode'
         )!.innerHTML = `<span class="episodeNumber">${
@@ -386,20 +175,7 @@ export default function Episodes() {
         downloadText(firstEpisode);
       }
 
-      document.querySelectorAll('.episodeList').forEach((episode) => {
-        episode.addEventListener('click', () => {
-          const episodeId = (episode as HTMLElement).dataset.id;
-
-          Change(episodeId!);
-        });
-      });
-
-      document
-        .querySelector('.nextButton')!
-        .addEventListener('click', NextEpisode);
-      document
-        .querySelector('.prevButton')!
-        .addEventListener('click', PrevEpisode);
+      clickEvents(lecteur);
     });
   }, []);
 
@@ -451,8 +227,8 @@ export default function Episodes() {
         <div className="list"></div>
       </div>
       <div className="buttonSagaContainer">
-        <button className="prevSaga">Saga précédente</button>
-        <button className="nextSaga">Saga suivante</button>
+        <button className="PrevSaison">Saga précédente</button>
+        <button className="NextSaison">Saga suivante</button>
       </div>
 
       <p className="mark">Les vidéos ne sont pas hébergées sur nos serveurs.</p>
