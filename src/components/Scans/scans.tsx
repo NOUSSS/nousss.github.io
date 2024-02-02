@@ -15,6 +15,7 @@ import './responsive.scss';
 import uparrow from '../../assets/uparrow.png';
 
 import { SCRIPT_URL, CHAPITRE_SPECIAUX } from './constants';
+import { Footer, Title } from '../components';
 
 const Scans = () => {
   useEffect(() => {
@@ -79,11 +80,7 @@ const Scans = () => {
 
   return (
     <div className="container--scans">
-      <div className="title">
-        <h1>
-          One <span>Piece</span>
-        </h1>
-      </div>
+      <Title />
 
       <select name="chapitres" className="chapitres"></select>
 
@@ -120,8 +117,7 @@ const Scans = () => {
         src={uparrow}
       ></img>
 
-      <p className="mark">Les images ne sont pas hébergées sur nos serveurs.</p>
-      <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+      <Footer />
     </div>
   );
 };

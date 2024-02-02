@@ -6,6 +6,7 @@ import { isIOS } from '../../functions/main';
 import { citation } from './citations';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
+import { Footer } from '../components';
 
 const Home = () => {
   const interval = useRef<number | null>(null);
@@ -112,7 +113,7 @@ const Home = () => {
           </li>
         </div>
 
-        <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+        <Footer />
       </div>
     </div>
   );

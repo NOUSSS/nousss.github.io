@@ -8,6 +8,7 @@ import searchImg from '../../assets/Search.svg';
 import { getSaisons, changeSaison } from './functions';
 import { initSearchBar } from '../../functions/search';
 import { obj } from './saisonsObj';
+import { Footer, Title } from '../components';
 
 const Saisons = () => {
   useEffect(() => {
@@ -48,11 +49,7 @@ const Saisons = () => {
 
   return (
     <div className="container--saisons">
-      <div className="title">
-        <h1>
-          One <span>Piece</span>
-        </h1>
-      </div>
+      <Title />
 
       <p
         style={{
@@ -77,7 +74,7 @@ const Saisons = () => {
 
       <div className="saisons"></div>
 
-      <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+      <Footer />
     </div>
   );
 };

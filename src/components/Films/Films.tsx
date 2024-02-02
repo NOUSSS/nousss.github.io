@@ -9,6 +9,7 @@ import { isIOS, getURLFilm } from '../../functions/main';
 import { addScript, appearVideo, getFilms } from './functions';
 import { initSearchBar } from '../../functions/search';
 import { windowKeys } from '../interfaces/interface';
+import { Footer, Title } from '../components';
 
 const Films = () => {
   useEffect(() => {
@@ -79,11 +80,7 @@ const Films = () => {
 
   return (
     <div className="container--films">
-      <div className="title">
-        <h1>
-          One <span>Piece</span>
-        </h1>
-      </div>
+      <Title />
 
       <div className="film"></div>
       <div className="video--films"></div>
@@ -107,8 +104,7 @@ const Films = () => {
       <div className="tips--films"></div>
       <div className="films"></div>
 
-      <p className="mark">Les vidéos ne sont pas hébergées sur nos serveurs.</p>
-      <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+      <Footer />
     </div>
   );
 };

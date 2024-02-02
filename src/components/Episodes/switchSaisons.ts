@@ -24,11 +24,9 @@ export function PrevSaison(): void {
   if (window.localStorage.getItem('saison') === '1') return;
 
   const url = window.location.hash;
-
   const newSaison = String(Number(window.localStorage.getItem('saison')) - 1);
 
   window.localStorage.setItem('saison', newSaison);
- 
 
   if (url.match(reg)) {
     const newHash = `#S${newSaison}/Episodes`;

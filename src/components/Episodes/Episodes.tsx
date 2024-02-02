@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { allIndex, horsSeries } from './constants';
 import { windowKeys } from '../interfaces/interface';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
+import { Footer, Title } from '../components';
 
 import searchImg from '../../assets/Search.svg';
 import episodesNames from './episodes-names';
@@ -181,11 +182,7 @@ export default function Episodes() {
 
   return (
     <div className="container--episodes">
-      <div className="title">
-        <h1>
-          One <span>Piece</span>
-        </h1>
-      </div>
+      <Title />
 
       <Link to="/Saisons">
         <p className="titleSaison"></p>
@@ -231,8 +228,7 @@ export default function Episodes() {
         <button className="NextSaison">Saga suivante</button>
       </div>
 
-      <p className="mark">Les vidéos ne sont pas hébergées sur nos serveurs.</p>
-      <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+      <Footer />
     </div>
   );
 }
