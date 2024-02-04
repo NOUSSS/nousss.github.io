@@ -1,39 +1,37 @@
-export function NextSaison(): void {
-  const reg = /S(\d+)/;
+import { obj } from '../Saisons/saisons-names';
 
+export function NextSaison(setSaison: any): void {
   if (window.localStorage.getItem('saison') === '11') return;
 
-  const url = window.location.hash;
   const newSaison = String(Number(window.localStorage.getItem('saison')) + 1);
 
   window.localStorage.setItem('saison', newSaison);
 
-  if (url.match(reg)) {
-    const newHash = `#S${newSaison}/Episodes`;
+  const newHash = `#S${newSaison}/Episodes`;
 
-    window.localStorage.setItem('episode', '1');
-    window.location.hash = newHash;
+  window.localStorage.setItem('episode', '1');
+  window.location.hash = newHash;
 
-    window.location.reload();
-  }
+  setSaison({
+    name: obj[newSaison].name,
+    index: newSaison,
+  });
 }
 
-export function PrevSaison(): void {
-  const reg = /S(\d+)/;
-
+export function PrevSaison(setSaison: any): void {
   if (window.localStorage.getItem('saison') === '1') return;
 
-  const url = window.location.hash;
   const newSaison = String(Number(window.localStorage.getItem('saison')) - 1);
 
   window.localStorage.setItem('saison', newSaison);
 
-  if (url.match(reg)) {
-    const newHash = `#S${newSaison}/Episodes`;
+  const newHash = `#S${newSaison}/Episodes`;
 
-    window.localStorage.setItem('episode', '1');
-    window.location.hash = newHash;
+  window.localStorage.setItem('episode', '1');
+  window.location.hash = newHash;
 
-    window.location.reload();
-  }
+  setSaison({
+    name: obj[newSaison].name,
+    index: newSaison,
+  });
 }

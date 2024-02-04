@@ -13,18 +13,9 @@ import { changeSaison } from './utils';
 
 const Saisons = () => {
   const [output, setOutput] = useState<React.ReactNode>();
-
   const saison = window.localStorage.getItem('saison');
 
   useEffect(() => {
-    if (saison) {
-      document
-        .querySelector('.historiqueSaison')!
-        .addEventListener('click', () => {
-          changeSaison(document.querySelector('.historiqueSaison')!.id);
-        });
-    }
-
     setTimeout(() => {
       window.scrollTo({ top: 580, behavior: 'smooth' });
     }, 1000);
@@ -64,7 +55,10 @@ const Saisons = () => {
         {saison ? (
           <>
             Historique Saison :{' '}
-            <span>
+            <span
+              onClick={() => changeSaison(saison)}
+              style={{ cursor: 'pointer' }}
+            >
               <a id={saison} className="historiqueSaison">
                 {obj[saison!].name}
               </a>

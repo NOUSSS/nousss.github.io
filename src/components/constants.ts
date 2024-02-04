@@ -17,6 +17,9 @@ export const SCANS_OPTIONS = {
 };
 
 export const EPISODES_OPTIONS = {
+  SCRIPT_URL: (index: string | number) =>
+    `https://anime-sama.fr/catalogue/one-piece/saison${index}/vostfr/episodes.js`,
+
   horsSeries: [
     {
       saison: '10',

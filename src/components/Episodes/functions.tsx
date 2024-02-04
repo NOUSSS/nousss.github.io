@@ -126,7 +126,8 @@ export function NextEpisode(
   lecteur: string[],
   setVideo: any,
   setEpisodeTitle: any,
-  setDownloadText: any
+  setDownloadText: any,
+  setSaison: any
 ) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) + 1;
 
@@ -135,7 +136,7 @@ export function NextEpisode(
 
     window.localStorage.setItem('episode', '1');
 
-    NextSaison();
+    NextSaison(setSaison);
   } else {
     Change(
       newEpisodeIndex,
@@ -151,7 +152,8 @@ export function PrevEpisode(
   lecteur: string[],
   setVideo: any,
   setEpisodeTitle: any,
-  setDownloadText: any
+  setDownloadText: any,
+  setSaison: any
 ) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) - 1;
 
@@ -159,7 +161,7 @@ export function PrevEpisode(
     if (window.localStorage.getItem('saison') === '1') return;
 
     window.localStorage.setItem('episode', '1');
-    PrevSaison();
+    PrevSaison(setSaison);
   } else {
     Change(
       newEpisodeIndex,

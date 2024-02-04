@@ -28,7 +28,7 @@ export async function appearVideo(
   const lang = window.localStorage.getItem('lang');
 
   window.scrollTo({
-    top: 185,
+    top: 0,
     behavior: 'smooth',
   });
 
@@ -102,9 +102,9 @@ export async function appearVideo(
   return url;
 }
 
-export function changeLangage(lang: string): void {
+export function changeLangage(lang: string, setLang: any): void {
   window.localStorage.setItem('lang', lang);
-  window.location.reload();
+  setLang(lang);
 }
 
 export function getFilms(setFilmsFront: any) {

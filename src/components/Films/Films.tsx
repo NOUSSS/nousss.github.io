@@ -25,6 +25,10 @@ const Films = () => {
   const [video, setVideo] = useState<React.ReactNode>();
   const [title, setTitle] = useState<React.ReactNode>();
 
+  const [lang, setLang] = useState<string>(
+    window.localStorage.getItem('lang') ?? 'vostfr'
+  );
+
   const [output, setOutput] = useState<React.ReactNode>('');
 
   useEffect(() => {
@@ -33,9 +37,7 @@ const Films = () => {
     if (!window.localStorage.getItem('lang'))
       window.localStorage.setItem('lang', 'vostfr');
 
-    const langage = window.localStorage.getItem('lang');
-
-    addScript(SCRIPT_URL(langage as string)).then(() => {
+    addScript(SCRIPT_URL(lang)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
 
       if (eps1.includes(BLACKLIST_URL))
@@ -55,18 +57,16 @@ const Films = () => {
       getFilms(setFilmsFront);
 
       setTimeout(() => {
-        window.scrollTo({ top: 580, behavior: 'smooth' });
-
         const langButton = document.querySelectorAll('.langage');
 
         Array.from([...langButton]).map((_, i) => {
           langButton[i].addEventListener('click', () => {
-            changeLangage(langButton[i].id);
+            changeLangage(langButton[i].id, setLang);
           });
         });
       }, 1000);
     });
-  }, []);
+  }, [lang]);
 
   setTimeout(() => {
     const poster = document.querySelectorAll('.poster');

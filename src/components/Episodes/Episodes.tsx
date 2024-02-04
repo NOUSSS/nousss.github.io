@@ -12,15 +12,15 @@ import { windowKeys } from '../interfaces/interface';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
 import { Footer, Title } from '../components';
 
-const { allIndex, horsSeries } = EPISODES_OPTIONS;
-
 import searchImg from '../../assets/Search.svg';
 import episodesNames from './episodes-names';
 
+const { allIndex, horsSeries, SCRIPT_URL } = EPISODES_OPTIONS;
+
 export default function Episodes() {
-  const [saison] = useState({
+  const [saison, setSaison] = useState({
     name: obj[window.localStorage.getItem('saison') ?? 0].name,
-    index: window.localStorage.getItem('saison'),
+    index: window.localStorage.getItem('saison')!,
   });
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
@@ -28,11 +28,10 @@ export default function Episodes() {
   const [video, setVideo] = useState<React.ReactNode>();
 
   const [loading, setLoading] = useState<React.ReactNode>('');
+  const [output, setOutput] = useState<React.ReactNode>('');
   const [textDownload, setDownloadText] = useState<React.ReactNode>('');
 
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
-
-  const [output, setOutput] = useState<React.ReactNode>('');
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -47,6 +46,9 @@ export default function Episodes() {
     if (saison.index === firstSaison) PrevSaisonSelector.style.display = 'none';
     if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
 
+    if (saison.index !== firstSaison) PrevSaisonSelector.style.display = '';
+    if (saison.index !== lastSaison) NextSaisonSelector.style.display = '';
+
     toggleCinemaMode();
 
     setTimeout(() => {
@@ -57,11 +59,6 @@ export default function Episodes() {
         });
       }
     }, 4000);
-
-    const firstValue = Object.values(allIndex)[0];
-
-    if (saison.index === String(firstValue))
-      PrevSaisonSelector.style.display = 'none';
 
     document.querySelector(
       'title'
@@ -79,9 +76,7 @@ export default function Episodes() {
       </>
     );
 
-    addScript(
-      `https://anime-sama.fr/catalogue/one-piece/saison${saison.index}/vostfr/episodes.js`
-    ).then(() => {
+    addScript(SCRIPT_URL(saison.index)).then(() => {
       const lecteur = (window as windowKeys)['epsAS'];
       setLoading('');
 
@@ -256,10 +251,16 @@ export default function Episodes() {
       }
 
       setTimeout(() => {
-        clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);
+        clickEvents(
+          lecteur,
+          setVideo,
+          setEpisodeTitle,
+          setDownloadText,
+          setSaison
+        );
       }, 1000);
     });
-  }, []);
+  }, [saison]);
 
   return (
     <div className="container--episodes">
@@ -311,13 +312,13 @@ export default function Episodes() {
       <div className="container--list">
         <div className="list">{episodes}</div>
       </div>
-      <div className="buttonSagaContainer">
-        <button onClick={PrevSaison} className="PrevSaison">
-          Saga précédente
+      <div className="buttons--saisons">
+        <button onClick={() => PrevSaison(setSaison)} className="PrevSaison">
+          Saison précédente
         </button>
 
-        <button onClick={NextSaison} className="NextSaison">
-          Saga suivante
+        <button onClick={() => NextSaison(setSaison)} className="NextSaison">
+          Saison suivante
         </button>
       </div>
 

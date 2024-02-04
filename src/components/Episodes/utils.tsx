@@ -69,7 +69,8 @@ export function clickEvents(
   lecteur: string[],
   setVideo: any,
   setTitle: any,
-  setDownloadText: any
+  setDownloadText: any,
+  setSaison: any
 ): void {
   const episodes = document.querySelectorAll('.list-episodes');
 
@@ -86,11 +87,11 @@ export function clickEvents(
   document
     .querySelector('.nextButton')!
     .addEventListener('click', () =>
-      NextEpisode(lecteur, setVideo, setTitle, setDownloadText)
+      NextEpisode(lecteur, setVideo, setTitle, setDownloadText, setSaison)
     );
   document
     .querySelector('.prevButton')!
     .addEventListener('click', () =>
-      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText)
+      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText, setSaison)
     );
 }
