@@ -65,33 +65,79 @@ export function toggleCinemaMode(): void {
   }
 }
 
+type EventHandler = (() => void) | null;
+
+const eventHandlers = {
+  episodes: [] as EventHandler[],
+
+  nextButton: null as EventHandler,
+  prevButton: null as EventHandler,
+};
+
+export function removeClickEvents(): void {
+  const episodes = document.querySelectorAll('.list-episodes');
+  episodes.forEach((episode, index) => {
+    const handler = eventHandlers.episodes[index];
+
+    if (typeof handler === 'function') {
+      episode.removeEventListener('click', handler);
+    }
+  });
+
+  const nextButton = document.querySelector('.nextButton');
+  if (nextButton && typeof eventHandlers.nextButton === 'function') {
+    nextButton.removeEventListener('click', eventHandlers.nextButton);
+  }
+
+  const prevButton = document.querySelector('.prevButton');
+  if (prevButton && typeof eventHandlers.prevButton === 'function') {
+    prevButton.removeEventListener('click', eventHandlers.prevButton);
+  }
+
+  eventHandlers.episodes = [];
+
+  eventHandlers.nextButton = null;
+  eventHandlers.prevButton = null;
+}
+
 export function clickEvents(
   lecteur: string[],
   setVideo: any,
   setTitle: any,
-  setDownloadText: any,
-  setSaison: any
+  setDownloadText: any
 ): void {
+  removeClickEvents();
+
   const episodes = document.querySelectorAll('.list-episodes');
 
-  Array.from([...episodes]).map((_, i) => {
-    const episode = episodes[i] as HTMLElement;
-
-    episode.addEventListener('click', () => {
-      const episodeId = episode.dataset.id;
+  episodes.forEach((episode, index) => {
+    const handler = () => {
+      const episodeId = (episode as HTMLElement).dataset.id;
 
       Change(episodeId!, lecteur, setVideo, setTitle, setDownloadText);
-    });
+    };
+
+    episode.addEventListener('click', handler);
+    eventHandlers.episodes[index] = handler;
   });
 
-  document
-    .querySelector('.nextButton')!
-    .addEventListener('click', () =>
-      NextEpisode(lecteur, setVideo, setTitle, setDownloadText, setSaison)
-    );
-  document
-    .querySelector('.prevButton')!
-    .addEventListener('click', () =>
-      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText, setSaison)
-    );
+  const nextButton = document.querySelector('.nextButton');
+
+  if (nextButton) {
+    const nextHandler = () =>
+      NextEpisode(lecteur, setVideo, setTitle, setDownloadText);
+
+    nextButton.addEventListener('click', nextHandler);
+    eventHandlers.nextButton = nextHandler;
+  }
+
+  const prevButton = document.querySelector('.prevButton');
+
+  if (prevButton) {
+    const prevHandler = () =>
+      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText);
+
+    prevButton.addEventListener('click', prevHandler);
+    eventHandlers.prevButton = prevHandler;
+  }
 }

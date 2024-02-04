@@ -67,7 +67,7 @@ const Saisons = () => {
         ) : null}
       </p>
 
-      <div className="output--saisons">{output}</div>
+      <div className="search--output--saisons">{output}</div>
 
       <label className="label--saisons" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />

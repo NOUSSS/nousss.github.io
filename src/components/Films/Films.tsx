@@ -85,7 +85,7 @@ const Films = () => {
       <div className="film">{title}</div>
 
       <div className="video--films">{video}</div>
-      <div className="output--films">{output}</div>
+      <div className="search--output--films">{output}</div>
 
       <label className="label--films" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />

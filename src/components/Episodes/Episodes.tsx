@@ -9,13 +9,20 @@ import { initSearchBar } from '../../functions/search';
 import { Link } from 'react-router-dom';
 import { EPISODES_OPTIONS } from '../constants';
 import { windowKeys } from '../interfaces/interface';
-import { clickEvents, downloadText, toggleCinemaMode } from './utils';
+import {
+  clickEvents,
+  downloadText,
+  removeClickEvents,
+  toggleCinemaMode,
+} from './utils';
 import { Footer, Title } from '../components';
 
 import searchImg from '../../assets/Search.svg';
 import episodesNames from './episodes-names';
 
 const { allIndex, horsSeries, SCRIPT_URL } = EPISODES_OPTIONS;
+
+let lecteur: string[] = [];
 
 export default function Episodes() {
   const [saison, setSaison] = useState({
@@ -25,7 +32,7 @@ export default function Episodes() {
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
-  const [video, setVideo] = useState<React.ReactNode>();
+  const [video, setVideo] = useState<string>('');
 
   const [loading, setLoading] = useState<React.ReactNode>('');
   const [output, setOutput] = useState<React.ReactNode>('');
@@ -44,10 +51,10 @@ export default function Episodes() {
     const firstSaison = Object.keys(allIndex)[0];
 
     if (saison.index === firstSaison) PrevSaisonSelector.style.display = 'none';
-    if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
+    else PrevSaisonSelector.style.display = '';
 
-    if (saison.index !== firstSaison) PrevSaisonSelector.style.display = '';
-    if (saison.index !== lastSaison) NextSaisonSelector.style.display = '';
+    if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
+    else NextSaisonSelector.style.display = '';
 
     toggleCinemaMode();
 
@@ -77,9 +84,9 @@ export default function Episodes() {
     );
 
     addScript(SCRIPT_URL(saison.index)).then(() => {
-      const lecteur = (window as windowKeys)['epsAS'];
-      setLoading('');
+      lecteur = (window as windowKeys)['epsAS'];
 
+      setLoading('');
       setSaisonTitle(
         <>
           <span>
@@ -182,15 +189,7 @@ export default function Episodes() {
             index === String(episodeIndex + Number(episode) - retard)
         )!.name;
 
-        setVideo(
-          <iframe
-            className="vid"
-            width="640"
-            height="360"
-            src={URL_EPISODE}
-            allowFullScreen
-          ></iframe>
-        );
+        setVideo(URL_EPISODE);
 
         setEpisodeTitle(
           <>
@@ -207,15 +206,7 @@ export default function Episodes() {
       if (episode !== '1' && esp) {
         const URL_EPISODE = lecteur[Number(episode) - 1];
 
-        setVideo(
-          <iframe
-            className="vid"
-            width="640"
-            height="360"
-            src={URL_EPISODE}
-            allowFullScreen
-          ></iframe>
-        );
+        setVideo(URL_EPISODE);
 
         setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
         downloadText(URL_EPISODE, setDownloadText);
@@ -228,15 +219,7 @@ export default function Episodes() {
           ({ index }) => index === String(Number(episodeIndex) + 1)
         )!.name;
 
-        setVideo(
-          <iframe
-            className="vid"
-            width="640"
-            height="360"
-            src={firstEpisode}
-            allowFullScreen
-          ></iframe>
-        );
+        setVideo(firstEpisode);
 
         setEpisodeTitle(
           <>
@@ -250,17 +233,30 @@ export default function Episodes() {
         downloadText(firstEpisode, setDownloadText);
       }
 
+      removeClickEvents();
+
       setTimeout(() => {
-        clickEvents(
-          lecteur,
-          setVideo,
-          setEpisodeTitle,
-          setDownloadText,
-          setSaison
-        );
+        clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);
       }, 1000);
     });
   }, [saison]);
+
+  useEffect(() => {
+    const episode = window.localStorage.getItem('episode') ?? '1';
+
+    const NextEpisodeSelector =
+      document.querySelector<HTMLElement>('.nextButton')!;
+
+    const PrevEpisodeSelector =
+      document.querySelector<HTMLElement>('.prevButton')!;
+
+    if (!episode || episode === '1') PrevEpisodeSelector.style.display = 'none';
+    else PrevEpisodeSelector.style.display = '';
+
+    if (Number(episode) === lecteur.length)
+      NextEpisodeSelector.style.display = 'none';
+    else NextEpisodeSelector.style.display = '';
+  }, [video]);
 
   return (
     <div className="container--episodes">
@@ -273,7 +269,17 @@ export default function Episodes() {
       <p className="loading">{loading}</p>
       <p className="episodeTitle">{episodeTitle}</p>
 
-      <div className="episodeVideo">{video}</div>
+      <div className="episodeVideo">
+        {video ? (
+          <iframe
+            className="vid"
+            width="640"
+            height="360"
+            src={video}
+            allowFullScreen
+          ></iframe>
+        ) : null}
+      </div>
 
       <label className="cinema">
         <p>Mode cinema</p>
@@ -288,7 +294,7 @@ export default function Episodes() {
         </div>
       </div>
 
-      <div className="output--episodes">{output}</div>
+      <div className="search--output--episodes">{output}</div>
 
       <p className="download">{textDownload}</p>
       <label

@@ -1,5 +1,4 @@
 import { EPISODES_OPTIONS } from '../constants';
-import { NextSaison, PrevSaison } from './switchSaisons';
 
 const { allIndex, horsSeries } = EPISODES_OPTIONS;
 
@@ -31,15 +30,7 @@ export function Change(
 
       downloadText(url, setDownloadText);
 
-      setVideo(
-        <iframe
-          className="vid"
-          width="640"
-          height="360"
-          src={url}
-          allowFullScreen
-        ></iframe>
-      );
+      setVideo(url);
 
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
@@ -67,15 +58,7 @@ export function Change(
 
       downloadText(url, setDownloadText);
 
-      setVideo(
-        <iframe
-          className="vid"
-          width="640"
-          height="360"
-          src={url}
-          allowFullScreen
-        ></iframe>
-      );
+      setVideo(url);
 
       setEpisodeTitle(
         <>
@@ -99,15 +82,7 @@ export function Change(
       ({ index }) => index === String(numberEpisode)
     )!.name;
 
-    setVideo(
-      <iframe
-        className="vid"
-        width="640"
-        height="360"
-        src={url}
-        allowFullScreen
-      ></iframe>
-    );
+    setVideo(url);
 
     setEpisodeTitle(
       <>
@@ -126,18 +101,12 @@ export function NextEpisode(
   lecteur: string[],
   setVideo: any,
   setEpisodeTitle: any,
-  setDownloadText: any,
-  setSaison: any
+  setDownloadText: any
 ) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) + 1;
 
-  if (newEpisodeIndex - 1 === lecteur.length) {
-    if (window.localStorage.getItem('saison') === '11') return;
-
-    window.localStorage.setItem('episode', '1');
-
-    NextSaison(setSaison);
-  } else {
+  if (newEpisodeIndex - 1 === lecteur.length) return;
+  else {
     Change(
       newEpisodeIndex,
       lecteur,
@@ -152,17 +121,12 @@ export function PrevEpisode(
   lecteur: string[],
   setVideo: any,
   setEpisodeTitle: any,
-  setDownloadText: any,
-  setSaison: any
+  setDownloadText: any
 ) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) - 1;
 
-  if (newEpisodeIndex < 1) {
-    if (window.localStorage.getItem('saison') === '1') return;
-
-    window.localStorage.setItem('episode', '1');
-    PrevSaison(setSaison);
-  } else {
+  if (newEpisodeIndex < 1) return;
+  else {
     Change(
       newEpisodeIndex,
       lecteur,

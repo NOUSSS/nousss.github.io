@@ -6,7 +6,9 @@ export function initSearchBar(
   component: string,
   setOutput: any
 ): void {
-  const output = document.querySelector<HTMLElement>(`.output--${component}`)!;
+  const output = document.querySelector<HTMLElement>(
+    `.search--output--${component}`
+  )!;
 
   let i = 0;
 

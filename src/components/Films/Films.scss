@@ -20,7 +20,7 @@
   margin: 20px;
 }
 
-.output--films {
+.search--output--films {
   color: white;
   margin: -5px;
   font-size: 34px;
@@ -95,10 +95,6 @@ a {
 
 .poster {
   transition: tranform 300ms;
-}
-
-.output--cached {
-  display: none;
 }
 
 .container--poster {
