@@ -10,7 +10,7 @@ import Scans from './components/Scans/scans';
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
 
-const App = () => {
+const AppRoutes = () => {
   const currentSeason =
     window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1';
 
@@ -40,30 +40,26 @@ const App = () => {
   return useRoutes(pages);
 };
 
-const Renderer = () => {
+const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
-      const whiteText = document.querySelector('.title h1') as HTMLElement;
-      const orangeText = document.querySelector(
-        '.title h1 span'
-      ) as HTMLElement;
+      const whiteText = document.querySelector<HTMLElement>('.title h1')!;
+      const orangeText = document.querySelector<HTMLElement>('.title h1 span')!;
 
       whiteText.style.color = 'orange';
       orangeText.style.color = 'white';
 
       setTimeout(() => {
-        whiteText.style.setProperty('color', 'white');
-        orangeText.style.setProperty('color', 'orange');
+        whiteText.style.color = 'white';
+        orangeText.style.color = 'orange';
       }, 1000);
     }, 2000);
 
     window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition >= 35) {
-        (document.querySelector('.logo') as HTMLElement).style.opacity = '0';
+      if (window.scrollY >= 35) {
+        document.querySelector<HTMLElement>('.logo')!.style.opacity = '0';
       } else {
-        (document.querySelector('.logo') as HTMLElement).style.opacity = '';
+        document.querySelector<HTMLElement>('.logo')!.style.opacity = '';
       }
     });
 
@@ -82,9 +78,9 @@ const Renderer = () => {
           <span>Mugiwara-no</span> Streaming
         </h1>
       </Link>
-      <App />
+      <AppRoutes />
     </>
   );
 };
 
-export default Renderer;
+export default App;

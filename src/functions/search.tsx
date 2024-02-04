@@ -3,33 +3,40 @@ import { clear, toUpper } from './main.ts';
 export function initSearchBar(
   input: HTMLInputElement,
   div: HTMLCollectionOf<any>,
-  component: string
+  component: string,
+  setOutput: any
 ): void {
-  let i = 0;
-  let cacheText = document.querySelector(`output--${component}`)?.innerHTML;
+  const output = document.querySelector<HTMLElement>(`.output--${component}`)!;
 
-  const output = document.getElementsByClassName(
-    `output--${component}`
-  )[0] as HTMLElement;
+  let i = 0;
 
   function updateResults(): void {
     let count = 0;
 
-    for (let i2 = 0; i2 < div.length; i2++) {
-      div[i2].style.display = '';
+    Array.from([...div]).map((_, index) => {
+      div[index].style.display = '';
 
-      if (!div[i2].id.toLowerCase().includes(input.value.toLowerCase())) {
-        div[i2].style.display = 'none';
+      if (!div[index].id.toLowerCase().includes(input.value.toLowerCase())) {
+        div[index].style.display = 'none';
       } else {
         count++;
       }
-    }
+    });
 
     output.style.display = '';
-    output.innerHTML =
-      count > 1
-        ? `<span>${count}</span> ${toUpper(component)} trouvés.`
-        : `<span>${count}</span> ${toUpper(component)} trouvé.`;
+    setOutput(
+      <>
+        {count > 1 ? (
+          <>
+            <span>{count}</span> {toUpper(component)} trouvés.
+          </>
+        ) : (
+          <>
+            <span>{count}</span> {toUpper(component)} trouvé.
+          </>
+        )}
+      </>
+    );
   }
 
   i++;
@@ -39,7 +46,7 @@ export function initSearchBar(
       if (code === 'Backspace' && input.value.length === 1) {
         clear(div);
 
-        output.innerHTML = cacheText || '';
+        setOutput('');
 
         return;
       }

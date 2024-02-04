@@ -1,15 +1,33 @@
 import { isIOS } from '../../functions/main';
 import { Change, NextEpisode, PrevEpisode } from './functions';
 
-export function downloadText(url: String): void {
+export function downloadText(url: string, setDownloadText: any): void {
   if (isIOS()) {
-    document.querySelector(
-      '.download'
-    )!.innerHTML = `Pour télécharger, cliquez <span><a target="_blank" href="${url}">ici</a></span> puis appuyer sur le bouton <span>"partager"</span>, puis <span>'Enregistrer dans fichiers'</span>`;
+    setDownloadText(
+      <>
+        Pour télécharger, cliquez{' '}
+        <span>
+          <a target="_blank" href={url}>
+            ici
+          </a>
+        </span>{' '}
+        puis appuyer sur le bouton <span>"partager"</span>, puis{' '}
+        <span>'Enregistrer dans fichiers'</span>
+      </>
+    );
   } else {
-    document.querySelector(
-      '.download'
-    )!.innerHTML = `Pour télécharger, cliquez <span><a target="_blank" href="${url}">ici</a></span> puis faites <span>clique droit</span>, puis <span>'Enregistrer la vidéo sous'</span>`;
+    setDownloadText(
+      <>
+        Pour télécharger, cliquez{' '}
+        <span>
+          <a target="_blank" href={url}>
+            ici
+          </a>
+        </span>{' '}
+        puis faites <span>clique droit</span>, puis{' '}
+        <span>'Enregistrer la vidéo sous'</span>
+      </>
+    );
   }
 }
 
@@ -24,7 +42,9 @@ export function toggleCinemaMode(): void {
     ) as HTMLInputElement;
 
     cinemaMode.addEventListener('change', () => {
-      const iframeParent = document.querySelector('.episodes') as HTMLElement;
+      const iframeParent = document.querySelector(
+        '.episodeVideo'
+      ) as HTMLElement;
 
       if (cinemaMode.checked) {
         document.documentElement.requestFullscreen().catch(() => 0);
@@ -47,19 +67,28 @@ export function toggleCinemaMode(): void {
   }
 }
 
-export function clickEvents(lecteur: string[]): void {
+export function clickEvents(
+  lecteur: string[],
+  setVideo: any,
+  setTitle: any,
+  setDownloadText: any
+): void {
   document.querySelectorAll('.episodeList').forEach((episode) => {
     episode.addEventListener('click', () => {
       const episodeId = (episode as HTMLElement).dataset.id;
 
-      Change(episodeId!, lecteur);
+      Change(episodeId!, lecteur, setVideo, setTitle, setDownloadText);
     });
   });
 
   document
     .querySelector('.nextButton')!
-    .addEventListener('click', () => NextEpisode(lecteur));
+    .addEventListener('click', () =>
+      NextEpisode(lecteur, setVideo, setTitle, setDownloadText)
+    );
   document
     .querySelector('.prevButton')!
-    .addEventListener('click', () => PrevEpisode(lecteur));
+    .addEventListener('click', () =>
+      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText)
+    );
 }

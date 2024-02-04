@@ -4,8 +4,13 @@ import { NextSaison, PrevSaison } from './switchSaisons';
 import episodes from './episodes-names';
 import { downloadText } from './utils';
 
-export function Change(indexEpisode: number | string, lecteur: string[]): void {
-  const episodesContainer = document.querySelector('.episodes')!;
+export function Change(
+  indexEpisode: number | string,
+  lecteur: string[],
+  setVideo: any,
+  setEpisodeTitle: any,
+  setDownloadText: any
+): void {
   const isHorsSerie = horsSeries.find(
     ({ saison }) => saison === window.localStorage.getItem('saison')
   );
@@ -22,12 +27,19 @@ export function Change(indexEpisode: number | string, lecteur: string[]): void {
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      downloadText(url);
+      downloadText(url, setDownloadText);
 
-      episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">E-SP${esp}</span>`;
+      setVideo(
+        <iframe
+          className="vid"
+          width="640"
+          height="360"
+          src={url}
+          allowFullScreen
+        ></iframe>
+      );
+
+      setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
       window.localStorage.setItem('episode', String(indexEpisode));
       window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
@@ -51,12 +63,23 @@ export function Change(indexEpisode: number | string, lecteur: string[]): void {
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      downloadText(url);
+      downloadText(url, setDownloadText);
 
-      episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-      document.querySelector(
-        '.episode'
-      )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${title}`;
+      setVideo(
+        <iframe
+          className="vid"
+          width="640"
+          height="360"
+          src={url}
+          allowFullScreen
+        ></iframe>
+      );
+
+      setEpisodeTitle(
+        <>
+          <span className="episodeNumber">{numberEpisode}</span> : {title}
+        </>
+      );
 
       window.localStorage.setItem('episode', String(indexEpisode));
       window.localStorage.removeItem('episodeSpecial');
@@ -68,16 +91,27 @@ export function Change(indexEpisode: number | string, lecteur: string[]): void {
 
     const url = lecteur[Number(indexEpisode) - 1];
 
-    downloadText(url);
+    downloadText(url, setDownloadText);
 
     const episodeTitle = episodes.find(
       ({ index }) => index === String(numberEpisode)
     )!.name;
 
-    episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${url} allowfullscreen></iframe>`;
-    document.querySelector(
-      '.episode'
-    )!.innerHTML = `<span class="episodeNumber">${numberEpisode}</span> : ${episodeTitle}`;
+    setVideo(
+      <iframe
+        className="vid"
+        width="640"
+        height="360"
+        src={url}
+        allowFullScreen
+      ></iframe>
+    );
+
+    setEpisodeTitle(
+      <>
+        <span className="episodeNumber">{numberEpisode}</span> : {episodeTitle}
+      </>
+    );
 
     window.localStorage.setItem('episode', String(indexEpisode));
     window.localStorage.removeItem('episodeSpecial');
@@ -86,7 +120,12 @@ export function Change(indexEpisode: number | string, lecteur: string[]): void {
   window.scrollTo({ top: 332, behavior: 'smooth' });
 }
 
-export function NextEpisode(lecteur: string[]) {
+export function NextEpisode(
+  lecteur: string[],
+  setVideo: any,
+  setEpisodeTitle: any,
+  setDownloadText: any
+) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) + 1;
 
   if (newEpisodeIndex - 1 === lecteur.length) {
@@ -96,11 +135,22 @@ export function NextEpisode(lecteur: string[]) {
 
     NextSaison();
   } else {
-    Change(newEpisodeIndex, lecteur);
+    Change(
+      newEpisodeIndex,
+      lecteur,
+      setVideo,
+      setEpisodeTitle,
+      setDownloadText
+    );
   }
 }
 
-export function PrevEpisode(lecteur: string[]) {
+export function PrevEpisode(
+  lecteur: string[],
+  setVideo: any,
+  setEpisodeTitle: any,
+  setDownloadText: any
+) {
   const newEpisodeIndex = Number(window.localStorage.getItem('episode')) - 1;
 
   if (newEpisodeIndex < 1) {
@@ -109,6 +159,12 @@ export function PrevEpisode(lecteur: string[]) {
     window.localStorage.setItem('episode', '1');
     PrevSaison();
   } else {
-    Change(newEpisodeIndex, lecteur);
+    Change(
+      newEpisodeIndex,
+      lecteur,
+      setVideo,
+      setEpisodeTitle,
+      setDownloadText
+    );
   }
 }

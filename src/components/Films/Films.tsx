@@ -1,76 +1,51 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Films.scss';
 import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { isIOS, getURLFilm } from '../../functions/main';
-import { addScript, appearVideo, getFilms } from './functions';
+import { getURLFilm } from '../../functions/main';
+import { addScript, appearVideo, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search';
 import { windowKeys } from '../interfaces/interface';
 import { Footer, Title } from '../components';
+import { BLACKLIST_URL, SCRIPT_FILM } from './constants.ts';
 
 const Films = () => {
+  const [films, setFilmsFront] = useState<React.ReactNode[]>();
+  const [tips, setTips] = useState<React.ReactNode>();
+  const [video, setVideo] = useState<React.ReactNode>();
+  const [title, setTitle] = useState<React.ReactNode>();
+
+  const [output, setOutput] = useState<React.ReactNode>('');
+
   useEffect(() => {
-    let lastFilm = window.localStorage.getItem('videoId');
+    const lastFilm = window.localStorage.getItem('currentFilm');
 
     if (!window.localStorage.getItem('lang'))
       window.localStorage.setItem('lang', 'vostfr');
 
     const langage = window.localStorage.getItem('lang');
 
-    addScript(
-      `https://anime-sama.fr/catalogue/one-piece/film/${langage}/episodes.js`
-    ).then(() => {
-      const blacklist = 'https://video.sibnet.ru/shell.php?videoid=4736710';
+    addScript(SCRIPT_FILM(langage as string)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
 
-      if (eps1.includes(blacklist)) eps1.splice(eps1.indexOf(blacklist), 1);
+      if (eps1.includes(BLACKLIST_URL))
+        eps1.splice(eps1.indexOf(BLACKLIST_URL), 1);
 
       appearVideo(
         lastFilm
           ? `${getURLFilm(Number(lastFilm))} ${Number(lastFilm)}`
-          : `${getURLFilm(0)} 0`,
-        false
+          : `${getURLFilm(0)} ${
+              window.localStorage.getItem('currentFilm') ?? '0'
+            }`,
+        setTips,
+        setVideo,
+        setTitle
       );
 
-      let tips: string;
-
-      if (!isIOS()) {
-        tips = `Pour télécharger le film, cliquez <span><a target="_blank" href="${getURLFilm(
-          0
-        )}">ici</a></span>, puis clique droit -> '<span>Enregistrer la vidéo sous'</span>.`;
-      } else {
-        tips = `Pour télécharger le film, cliquez <span><a target="_blank" href="${getURLFilm(
-          0
-        )}">ici</a></span> sur <span>SAFARI</span> puis dans le bouton <span>PARTAGER</span> en bas puis <span>'Enregistrer dans fichiers'</span>`;
-      }
-
-      document.querySelector('.tips--films')!.innerHTML = tips;
-
-      getFilms();
-
-      const poster = document.getElementsByClassName('poster');
-
-      for (let i = 0; i < poster.length; i++) {
-        // eslint-disable-next-line no-loop-func
-        poster[i].addEventListener('click', () => {
-          appearVideo(poster[i].id, true);
-
-          if (!isIOS()) {
-            tips = `Pour télécharger le film, cliquez <span><a target="_blank" href="${getURLFilm(
-              i
-            )}">ici</a></span>, puis clique droit -> '<span>Enregistrer la vidéo sous'</span>.`;
-          } else {
-            tips = `Pour télécharger le film, cliquez <span><a target="_blank" href="${getURLFilm(
-              i
-            )}">ici</a></span> sur <span>SAFARI</span> puis dans le bouton <span>PARTAGER</span> en bas puis <span>'Enregistrer dans fichiers'</span>`;
-          }
-
-          document.querySelector('.tips--films')!.innerHTML = tips;
-        });
-      }
+      getFilms(setFilmsFront);
 
       setTimeout(() => {
         window.scrollTo({ top: 580, behavior: 'smooth' });
@@ -78,13 +53,24 @@ const Films = () => {
     });
   }, []);
 
+  setTimeout(() => {
+    const poster = document.querySelectorAll('.poster');
+
+    Array.from([...poster]).map((_, i) => {
+      poster[i].addEventListener('click', () => {
+        appearVideo(poster[i].id, setTips, setVideo, setTitle);
+      });
+    });
+  }, 1000);
+
   return (
     <div className="container--films">
       <Title />
 
-      <div className="film"></div>
-      <div className="video--films"></div>
-      <div className="output--films"></div>
+      <div className="film">{title}</div>
+
+      <div className="video--films">{video}</div>
+      <div className="output--films">{output}</div>
 
       <label className="label--films" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
@@ -95,16 +81,17 @@ const Films = () => {
             initSearchBar(
               document.querySelector('input')!,
               document.getElementsByClassName('container--poster'),
-              'films'
+              'films',
+              setOutput
             )
           }
         />
       </label>
 
-      <div className="tips--films"></div>
-      <div className="films"></div>
+      <div className="tips--films">{tips}</div>
+      <div className="films">{films}</div>
 
-      <Footer />
+      <Footer media />
     </div>
   );
 };

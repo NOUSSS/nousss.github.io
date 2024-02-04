@@ -1,112 +1,103 @@
-import { useEffect } from 'react';
-
-import {
-  getTailleChapitres,
-  nextChapitre,
-  prevChapitre,
-  selectChapter,
-} from './functions';
-
-import { addScript } from '../Films/functions';
-
 import './scans.scss';
 import './responsive.scss';
 
-import uparrow from '../../assets/uparrow.png';
+import React, { useState, useEffect, useCallback } from 'react';
 
+import {
+  getTailleChapitres,
+  selectChapter,
+  clickEvents,
+} from './functions.tsx';
+
+import { addScript } from '../Films/functions';
 import { SCRIPT_URL, CHAPITRE_SPECIAUX } from './constants';
 import { Footer, Title } from '../components';
 
+import uparrow from '../../assets/uparrow.png';
+
 const Scans = () => {
+  const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
+  const [loadingText, setLoadingText] = useState(
+    'Si les chapitres ne chargent pas après 5-10 secondes, cliquez'
+  );
+
+  const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
+
   useEffect(() => {
     addScript(SCRIPT_URL).then(() => {
       let retard = 0;
 
+      const options: string[] = [];
+
       for (let i = 0; i < getTailleChapitres(); i++) {
         if (CHAPITRE_SPECIAUX.includes(i)) {
-          document.querySelector(
-            '.chapitres'
-          )!.innerHTML += `<option id="Chapitre ${
-            i + 1
-          }">Chapitre ONE SHOT</option>`;
+          options.push(`Chapitre ONE SHOT`);
 
           retard++;
         } else {
-          document.querySelector(
-            '.chapitres'
-          )!.innerHTML += `<option id="Chapitre ${i + 1}">Chapitre ${
-            i + 1 - retard
-          }</option>`;
+          options.push(`Chapitre ${i + 1 - retard}`);
         }
       }
 
-      const select = document.querySelector('select')!;
-      const currentChapter = window.localStorage.getItem('chapitre') ?? 1;
+      setLoadingText('');
 
-      selectChapter(currentChapter);
+      setChapitresOptions(options);
+      clickEvents(setScans);
 
-      select.addEventListener('change', (event) => {
-        if (event.target instanceof HTMLSelectElement) {
-          const id = event.target.selectedOptions[0].id
-            .match(/[0-9]/g)!
-            .join('');
-
-          selectChapter(id);
-        }
-      });
-
-      document
-        .querySelectorAll('.prevButton')
-        .forEach((e) => e.addEventListener('click', prevChapitre));
-
-      document
-        .querySelectorAll('.nextButton')
-        .forEach((e) => e.addEventListener('click', nextChapitre));
-
-      document.querySelector('.lastChapter')!.addEventListener('click', () => {
-        selectChapter(
-          document
-            .querySelector('select')!
-            .options[
-              document.querySelector('select')!.options.length - 1
-            ].id.match(/[0-9]/g)!
-            .join('')
-        );
-      });
-
-      document.querySelector('.loading')!.innerHTML = '';
+      setTimeout(() => {
+        setScans(selectChapter(window.localStorage.getItem('chapitre') ?? 1));
+      }, 1000);
     });
+  }, []);
+
+  const onChangeSelect = useCallback((event: any) => {
+    const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
+
+    window.localStorage.setItem('chapitre', id);
+
+    setScans(selectChapter(id));
   }, []);
 
   return (
     <div className="container--scans">
       <Title />
 
-      <select name="chapitres" className="chapitres"></select>
+      <select name="chapitres" className="chapitres" onChange={onChangeSelect}>
+        {chapitresOptions.map((option, index) => (
+          <option key={index} id={`Chapitre ${index + 1}`}>
+            {option}
+          </option>
+        ))}
+      </select>
 
       <div className="container--buttons--scans">
         <button className="lastChapter">Dernier chapitre</button>
 
         <div className="buttons--scans">
-          <button className="prevButton">Chapitre précedent</button>
+          <button className="prevButton">Chapitre précédent</button>
           <button className="nextButton">Chapitre suivant</button>
         </div>
       </div>
 
       <p className="loading">
-        Si les chapitres ne chargent pas apres 5-10 secondes, cliquez{' '}
-        <span
-          style={{ textDecoration: 'underline' }}
-          onClick={() => window.location.reload()}
-        >
-          ici
-        </span>
+        {loadingText && (
+          <>
+            {loadingText}{' '}
+            <span
+              style={{ textDecoration: 'underline', cursor: 'pointer' }}
+              onClick={() => window.location.reload()}
+            >
+              ici
+            </span>
+          </>
+        )}
       </p>
-      <div className="scans"></div>
+
+      <div className="scans">{scans}</div>
 
       <div className="container--buttons--scans">
         <div className="buttons--scans">
-          <button className="prevButton">Chapitre précedent</button>
+          <button className="prevButton">Chapitre précédent</button>
           <button className="nextButton">Chapitre suivant</button>
         </div>
       </div>
@@ -117,8 +108,9 @@ const Scans = () => {
         src={uparrow}
       ></img>
 
-      <Footer />
+      <Footer media />
     </div>
   );
 };
+
 export default Scans;

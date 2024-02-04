@@ -1,8 +1,8 @@
 import './Episodes.scss';
 import './responsive.scss';
 
-import { useEffect, useState } from 'react';
-import { obj } from '../Saisons/saisonsObj';
+import React, { useEffect, useState } from 'react';
+import { obj } from '../Saisons/saisons-names';
 import { addScript } from '../Films/functions';
 import { NextSaison, PrevSaison } from './switchSaisons';
 import { initSearchBar } from '../../functions/search';
@@ -15,13 +15,22 @@ import { Footer, Title } from '../components';
 import searchImg from '../../assets/Search.svg';
 import episodesNames from './episodes-names';
 
-let lecteur: string[];
-
 export default function Episodes() {
   const [saison] = useState({
     name: obj[window.localStorage.getItem('saison') ?? 0].name,
     index: window.localStorage.getItem('saison'),
   });
+
+  const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
+  const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
+  const [video, setVideo] = useState<React.ReactNode>();
+
+  const [loading, setLoading] = useState<React.ReactNode>('');
+  const [textDownload, setDownloadText] = useState<React.ReactNode>('');
+
+  const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
+
+  const [output, setOutput] = useState<React.ReactNode>('');
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -30,22 +39,13 @@ export default function Episodes() {
     const PrevSaisonSelector =
       document.querySelector<HTMLElement>('.PrevSaison')!;
 
+    const lastSaison = Object.keys(allIndex)[Object.keys(allIndex).length - 1];
+    const firstSaison = Object.keys(allIndex)[0];
+
+    if (saison.index === firstSaison) PrevSaisonSelector.style.display = 'none';
+    if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
+
     toggleCinemaMode();
-
-    if (saison.index === Object.keys(allIndex)[0])
-      PrevSaisonSelector.style.display = 'none';
-
-    if (
-      saison.index === Object.keys(allIndex)[Object.keys(allIndex).length - 1]
-    )
-      NextSaisonSelector.style.display = 'none';
-
-    const episodesContainer = document.querySelector('.episodes')!;
-    const list = document.querySelector('.list')!;
-    const buttons = document.querySelector('.buttons')!;
-
-    NextSaisonSelector.addEventListener('click', NextSaison);
-    PrevSaisonSelector.addEventListener('click', PrevSaison);
 
     setTimeout(() => {
       if (window.scrollY <= 50) {
@@ -65,24 +65,39 @@ export default function Episodes() {
       'title'
     )!.textContent = `${saison.name} - Mugiwara-no Streaming`;
 
-    const loading = document.querySelector('.loading')!;
-    loading.innerHTML = `Si les épisodes ne se chargent pas, cliquez <span style="text-decoration: underline" onclick="window.location.reload();">ici</span>`;
+    setLoading(
+      <>
+        Si les épisodes ne se chargent pas, cliquez{' '}
+        <span
+          style={{ textDecoration: 'underline' }}
+          onClick={window.location.reload}
+        >
+          ici
+        </span>
+      </>
+    );
 
     addScript(
       `https://anime-sama.fr/catalogue/one-piece/saison${saison.index}/vostfr/episodes.js`
     ).then(() => {
-      lecteur = (window as windowKeys)['epsAS'];
-      loading.innerHTML = '';
+      const lecteur = (window as windowKeys)['epsAS'];
+      setLoading('');
 
-      const text = document.getElementsByClassName('titleSaison')[0];
-
-      text.innerHTML = `<Link to="/Saisons"><span>${saison.name} (${lecteur.length})</span> [VOSTFR]</Link>`;
-      buttons.innerHTML = `<button class="prevButton">Épisode précedent</button><button class="nextButton" >Épisode suivant</button>`;
+      setSaisonTitle(
+        <>
+          <span>
+            {saison.name} ({lecteur.length})
+          </span>{' '}
+          [VOSTFR]
+        </>
+      );
 
       let episodeIndex = allIndex[saison.index ?? 0];
 
       const episode = window.localStorage.getItem('episode');
       const esp = window.localStorage.getItem('episodeSpecial');
+
+      const listEpisodes: React.ReactNode[] = [];
 
       let retard = 0;
 
@@ -101,14 +116,34 @@ export default function Episodes() {
 
             const title = `E-SP${retard}`;
 
-            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${title}" ><span class="episodeNumber">${title}</span></p>`;
+            listEpisodes.push(
+              <p
+                className="episodeList"
+                data-id={indexEpisode}
+                id={title}
+                key={title}
+              >
+                <span className="episodeNumber">{title}</span>
+              </p>
+            );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
             const episodeTitle = episodesNames.find(
               ({ index }) => index === String(episodeNumber)
             )!.name;
 
-            list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${episodeNumber} ${episodeTitle}" ><span class="episodeNumber">${episodeNumber}</span> : ${episodeTitle}</p>`;
+            const id = `${episodeNumber} ${episodeTitle}`;
+            listEpisodes.push(
+              <p
+                className="episodeList"
+                data-id={indexEpisode}
+                id={id}
+                key={id}
+              >
+                <span className="episodeNumber">{episodeNumber}</span> :{' '}
+                {episodeTitle}
+              </p>
+            );
           }
         } else {
           const episodeNumber = episodeIndex + indexEpisode;
@@ -116,9 +151,18 @@ export default function Episodes() {
             ({ index }) => index === String(episodeNumber)
           )!.name;
 
-          list.innerHTML += `<p class="episodeList" data-id="${indexEpisode}" id="${episodeNumber} ${episodeTitle}" ><span class="episodeNumber">${episodeNumber}</span> : ${episodeTitle}</p>`;
+          const id = `${episodeNumber} ${episodeTitle}`;
+
+          listEpisodes.push(
+            <p className="episodeList" data-id={indexEpisode} id={id} key={id}>
+              <span className="episodeNumber">{episodeNumber}</span> :{' '}
+              {episodeTitle}
+            </p>
+          );
         }
       }
+
+      setEpisodes(listEpisodes);
 
       if (episode !== '1' && !esp) {
         const URL_EPISODE = lecteur[Number(episode) - 1];
@@ -136,25 +180,43 @@ export default function Episodes() {
             index === String(episodeIndex + Number(episode) - retard)
         )!.name;
 
-        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
-        document.querySelector(
-          '.episode'
-        )!.innerHTML = `<span class="episodeNumber">${
-          Number(episodeIndex) + Number(episode) - retard
-        }</span> : ${title}`;
+        setVideo(
+          <iframe
+            className="vid"
+            width="640"
+            height="360"
+            src={URL_EPISODE}
+            allowFullScreen
+          ></iframe>
+        );
 
-        downloadText(URL_EPISODE);
+        setEpisodeTitle(
+          <>
+            <span className="episodeNumber">
+              {Number(episodeIndex) + Number(episode) - retard}
+            </span>{' '}
+            : {title}
+          </>
+        );
+
+        downloadText(URL_EPISODE, setDownloadText);
       }
 
       if (episode !== '1' && esp) {
         const URL_EPISODE = lecteur[Number(episode) - 1];
 
-        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${URL_EPISODE} allowfullscreen></iframe>`;
-        document.querySelector(
-          '.episode'
-        )!.innerHTML = `<span class="episodeNumber">${esp}</span>`;
+        setVideo(
+          <iframe
+            className="vid"
+            width="640"
+            height="360"
+            src={URL_EPISODE}
+            allowFullScreen
+          ></iframe>
+        );
 
-        downloadText(URL_EPISODE);
+        setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
+        downloadText(URL_EPISODE, setDownloadText);
       }
 
       if (episode === '1') {
@@ -164,19 +226,31 @@ export default function Episodes() {
           ({ index }) => index === String(Number(episodeIndex) + 1)
         )!.name;
 
-        episodesContainer.innerHTML = `<iframe class="vid" width=640 height=360 src=${firstEpisode} allowfullscreen></iframe>`;
-        document.querySelector(
-          '.episode'
-        )!.innerHTML = `<span class="episodeNumber">${
-          Number(episodeIndex) + 1
-        }</span> : ${title}`;
+        setVideo(
+          <iframe
+            className="vid"
+            width="640"
+            height="360"
+            src={firstEpisode}
+            allowFullScreen
+          ></iframe>
+        );
+
+        setEpisodeTitle(
+          <>
+            <span className="episodeNumber">{Number(episodeIndex) + 1}</span> :{' '}
+            {title}
+          </>
+        );
 
         window.localStorage.setItem('episode', '1');
 
-        downloadText(firstEpisode);
+        downloadText(firstEpisode, setDownloadText);
       }
 
-      clickEvents(lecteur);
+      setTimeout(() => {
+        clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);
+      }, 1000);
     });
   }, []);
 
@@ -185,24 +259,30 @@ export default function Episodes() {
       <Title />
 
       <Link to="/Saisons">
-        <p className="titleSaison"></p>
+        <p className="titleSaison">{saisonTitle}</p>
       </Link>
 
-      <p className="loading"></p>
+      <p className="loading">{loading}</p>
+      <p className="episodeTitle">{episodeTitle}</p>
 
-      <p className="episode"></p>
-      <div className="episodes"></div>
+      <div className="episodeVideo">{video}</div>
+
       <label className="cinema">
         <p>Mode cinema</p>
         <input type="checkbox"></input>
         <span></span>
       </label>
+
       <div className="container--buttons">
-        <div className="buttons"></div>
+        <div className="buttons">
+          <button className="prevButton">Épisode précedent</button>
+          <button className="nextButton">Épisode suivant</button>
+        </div>
       </div>
-      <div className="output--episodes--cached"></div>
-      <div className="output--episodes"></div>
-      <p className="download"></p>
+
+      <div className="output--episodes">{output}</div>
+
+      <p className="download">{textDownload}</p>
       <label
         className="label--episodes"
         title="Systeme de recherche super cool"
@@ -215,20 +295,26 @@ export default function Episodes() {
             initSearchBar(
               document.querySelector('.label--episodes input')!,
               document.getElementsByClassName('episodeList'),
-              'episodes'
+              'episodes',
+              setOutput
             )
           }
         />
       </label>
       <div className="container--list">
-        <div className="list"></div>
+        <div className="list">{episodes}</div>
       </div>
       <div className="buttonSagaContainer">
-        <button className="PrevSaison">Saga précédente</button>
-        <button className="NextSaison">Saga suivante</button>
+        <button onClick={PrevSaison} className="PrevSaison">
+          Saga précédente
+        </button>
+
+        <button onClick={NextSaison} className="NextSaison">
+          Saga suivante
+        </button>
       </div>
 
-      <Footer />
+      <Footer media />
     </div>
   );
 }

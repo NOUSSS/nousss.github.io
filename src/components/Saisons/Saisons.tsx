@@ -1,32 +1,29 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import './Saisons.scss';
 import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { getSaisons, changeSaison } from './functions';
+import { getSaisons } from './functions';
 import { initSearchBar } from '../../functions/search';
-import { obj } from './saisonsObj';
+import { obj } from './saisons-names';
 import { Footer, Title } from '../components';
+import { changeSaison } from './utils';
 
 const Saisons = () => {
+  const [output, setOutput] = useState<React.ReactNode>();
+
+  const saison = window.localStorage.getItem('saison');
+
   useEffect(() => {
-    const saison = window.localStorage.getItem('saison');
-
     if (saison) {
-      (
-        document.querySelector('.lastSaison') as HTMLElement
-      ).innerHTML = `Historique Saison : <span><a id="${saison}" class="historiqueSaison">${obj[saison].name}</a></span>`;
-
       document
         .querySelector('.historiqueSaison')!
         .addEventListener('click', () => {
           changeSaison(document.querySelector('.historiqueSaison')!.id);
         });
     }
-
-    getSaisons();
 
     setTimeout(() => {
       window.scrollTo({ top: 580, behavior: 'smooth' });
@@ -43,7 +40,8 @@ const Saisons = () => {
     initSearchBar(
       document.querySelector('input')!,
       document.getElementsByClassName('container--poster-saison'),
-      'saisons'
+      'saisons',
+      setOutput
     );
   }, []);
 
@@ -62,17 +60,33 @@ const Saisons = () => {
         Les <span>saisons</span> disponibles.
       </p>
 
-      <p className="lastSaison"></p>
+      <p className="lastSaison">
+        {saison ? (
+          <>
+            Historique Saison :{' '}
+            <span>
+              <a id={saison} className="historiqueSaison">
+                {obj[saison!].name}
+              </a>
+            </span>
+          </>
+        ) : null}
+      </p>
 
-      <div className="output--saisons--cached"></div>
-      <div className="output--saisons"></div>
+      <div className="output--saisons">{output}</div>
 
       <label className="label--saisons" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
         <input type="text" placeholder="Wano ?" onInput={searchBar} />
       </label>
 
-      <div className="saisons"></div>
+      <div className="saisons">
+        {getSaisons().map(({ element, id }) => (
+          <div key={id} id={id} className="container--poster-saison">
+            {element}
+          </div>
+        ))}
+      </div>
 
       <Footer />
     </div>

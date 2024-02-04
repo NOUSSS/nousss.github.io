@@ -21,7 +21,7 @@ export const obj: Season = {
   5: { name: 'Thriller Bark', aliases: ['moria', '5'] },
   6: {
     name: 'Guerre au sommet',
-    aliases: ['marinford', 'sabaody', 'boa hancok', '6'],
+    aliases: ['marinford', 'sabaody', 'boa hancok', '6', 'mort'],
   },
   7: { name: 'Île des hommes poissons', aliases: ['ile', '7'] },
   8: {
@@ -52,6 +52,7 @@ export const obj: Season = {
       '4 empereurs',
       '10',
       'gear 5',
+      'oden',
     ],
   },
   11: {

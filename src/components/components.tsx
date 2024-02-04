@@ -8,16 +8,14 @@ export function Title() {
   );
 }
 
-export function Footer() {
+export function Footer({ media = false }: { media?: boolean }) {
   return (
     <>
-      {!['#/', ''].includes(window.location.hash) ? (
+      {media ? (
         <p className="mark">
           Les vidéos / scans ne sont pas hébergées sur nos serveurs.
         </p>
-      ) : (
-        ''
-      )}
+      ) : null}
       <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
     </>
   );

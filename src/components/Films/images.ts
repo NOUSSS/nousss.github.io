@@ -13,8 +13,6 @@ import douze from '../../assets/Films/11.jpg';
 import treize from '../../assets/Films/12.jpg';
 import quatorze from '../../assets/Films/13.jpg';
 
-type ImageKey = keyof typeof images;
-
 export const images = {
   0: un,
   1: deux,
@@ -32,4 +30,5 @@ export const images = {
   13: quatorze,
 };
 
+export type ImageKey = keyof typeof images;
 export const getImage = (key: ImageKey) => images[key];

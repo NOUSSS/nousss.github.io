@@ -10,8 +10,6 @@ import s9 from '../../assets/Saisons/Saison9.jpeg';
 import s10 from '../../assets/Saisons/Saison10.jpeg';
 import s11 from '../../assets/Saisons/Saison11.jpeg';
 
-type ImageKey = keyof typeof images;
-
 export const images = {
   1: s1,
   2: s2,
@@ -26,4 +24,5 @@ export const images = {
   11: s11,
 };
 
+export type ImageKey = keyof typeof images;
 export const getImage = (key: ImageKey) => images[key];
