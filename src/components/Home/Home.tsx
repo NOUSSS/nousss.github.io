@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { isIOS } from '../../functions/main';
 import { citation } from './citations';
 import { Link } from 'react-router-dom';
@@ -8,11 +8,9 @@ import { Footer } from '../components';
 import './responsive.scss';
 import './Home.scss';
 
-interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
+const Home = () => {
   const [text] = useState<string>('');
-  const interval = useRef<number | null>(null);
+  const interval = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setCitation();
@@ -45,14 +43,16 @@ const Home: React.FC<HomeProps> = () => {
   }
 
   function change(res?: string) {
-    const textElement = document.querySelector('.citation');
+    const textElement = document.querySelector<HTMLElement>('.citation');
+
     if (textElement) {
       textElement.innerHTML = '';
       textElement.removeEventListener('click', changeCitation);
     }
 
     const newRes = res || citation[Math.floor(Math.random() * citation.length)];
-    setTextWithFade(newRes, textElement as HTMLElement);
+
+    setTextWithFade(newRes, textElement);
 
     try {
       textElement?.addEventListener('click', changeCitation);
@@ -101,9 +101,6 @@ const Home: React.FC<HomeProps> = () => {
             </ul>
             <ul>
               <Link to="/Scans">Scans</Link>
-            </ul>
-            <ul>
-              <Link to="/">Musiques</Link>
             </ul>
           </li>
         </div>

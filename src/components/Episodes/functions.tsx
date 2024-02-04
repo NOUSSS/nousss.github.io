@@ -1,5 +1,7 @@
-import { allIndex, horsSeries } from './constants';
+import { EPISODES_OPTIONS } from '../constants';
 import { NextSaison, PrevSaison } from './switchSaisons';
+
+const { allIndex, horsSeries } = EPISODES_OPTIONS;
 
 import episodes from './episodes-names';
 import { downloadText } from './utils';
@@ -46,7 +48,7 @@ export function Change(
     } else {
       let retard = 0;
 
-      document.querySelectorAll('.episodeList').forEach((e, i) => {
+      document.querySelectorAll('.list-episodes').forEach((e, i) => {
         if (i + 1 < Number(indexEpisode)) {
           if (e.id.includes('E-SP')) retard++;
         }

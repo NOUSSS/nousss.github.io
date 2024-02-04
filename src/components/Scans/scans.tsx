@@ -10,8 +10,10 @@ import {
 } from './functions.tsx';
 
 import { addScript } from '../Films/functions';
-import { SCRIPT_URL, CHAPITRE_SPECIAUX } from './constants';
+import { SCANS_OPTIONS } from '../constants.ts';
 import { Footer, Title } from '../components';
+
+const { SCRIPT_URL, CHAPITRE_SPECIAUX } = SCANS_OPTIONS;
 
 import uparrow from '../../assets/uparrow.png';
 

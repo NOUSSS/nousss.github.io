@@ -46,12 +46,12 @@ const App = () => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
       const orangeText = document.querySelector<HTMLElement>('.title h1 span')!;
 
-      whiteText.style.color = 'orange';
+      whiteText.style.color = '#ffa300';
       orangeText.style.color = 'white';
 
       setTimeout(() => {
         whiteText.style.color = 'white';
-        orangeText.style.color = 'orange';
+        orangeText.style.color = '#ffa300';
       }, 1000);
     }, 2000);
 
@@ -78,6 +78,7 @@ const App = () => {
           <span>Mugiwara-no</span> Streaming
         </h1>
       </Link>
+
       <AppRoutes />
     </>
   );

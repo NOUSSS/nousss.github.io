@@ -40,8 +40,13 @@ button,
   transition: all 300ms;
 }
 
-.episodeList {
+.list-episodes {
   cursor: pointer;
+  transition: color 150ms ease-out;
+
+  &:hover {
+    color: #ffa300;
+  }
 }
 
 .NextSaison {
@@ -171,7 +176,7 @@ button,
     }
 
     &:hover {
-      color: orange;
+      color: #ffa300;
 
       span {
         color: white;
@@ -181,10 +186,10 @@ button,
 }
 
 .episodeNumber {
-  color: orange;
+  color: #ffa300;
 }
 
-.episodeList {
+.list-episodes {
   width: 900px;
 }
 
@@ -195,7 +200,7 @@ button,
   span {
     a {
       text-decoration: underline;
-      color: orange;
+      color: #ffa300;
     }
   }
 }

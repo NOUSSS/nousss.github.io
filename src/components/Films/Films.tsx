@@ -15,7 +15,9 @@ import {
 import { initSearchBar } from '../../functions/search';
 import { windowKeys } from '../interfaces/interface';
 import { Footer, Title } from '../components';
-import { BLACKLIST_URL, SCRIPT_FILM } from './constants.ts';
+import { FILM_OPTIONS } from '../constants.ts';
+
+const { BLACKLIST_URL, SCRIPT_URL } = FILM_OPTIONS;
 
 const Films = () => {
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
@@ -33,7 +35,7 @@ const Films = () => {
 
     const langage = window.localStorage.getItem('lang');
 
-    addScript(SCRIPT_FILM(langage as string)).then(() => {
+    addScript(SCRIPT_URL(langage as string)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
 
       if (eps1.includes(BLACKLIST_URL))

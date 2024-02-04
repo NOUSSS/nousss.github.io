@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { windowKeys } from '../interfaces/interface';
-import { CHAPITRE_SPECIAUX, IMAGE_URL } from './constants';
+import { SCANS_OPTIONS } from '../constants';
 import { nextChapitre, prevChapitre } from './switchChapters';
+
+const { CHAPITRE_SPECIAUX, IMAGE_URL } = SCANS_OPTIONS;
 
 export const getTailleChapitres = (): number => {
   let i = 1;

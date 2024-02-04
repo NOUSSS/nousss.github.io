@@ -5,6 +5,15 @@ interface SeasonAndFilm {
   };
 }
 
+export type horsSeriesType = {
+  saison: string;
+  hs: number[];
+};
+
+export interface allIndexType {
+  [key: string]: number;
+}
+
 export interface windowKeys {
   [key: string]: any;
 }

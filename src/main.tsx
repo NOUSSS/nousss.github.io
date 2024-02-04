@@ -9,10 +9,20 @@ import App from './App';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
-root.render(
-  <React.StrictMode>
+const isDevelopment = import.meta.env.MODE === 'development';
+
+if (isDevelopment) {
+  root.render(
     <HashRouter>
       <App />
     </HashRouter>
-  </React.StrictMode>
-);
+  );
+} else {
+  root.render(
+    <React.StrictMode>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </React.StrictMode>
+  );
+}

@@ -1,6 +1,8 @@
 import { obj } from './saisons-names';
 import { ImageKey, getImage } from './images';
-import { allIndex } from '../Episodes/constants';
+import { EPISODES_OPTIONS } from '../constants';
+
+const { allIndex } = EPISODES_OPTIONS;
 
 export function getSaisons() {
   const saisons = [];

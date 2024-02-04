@@ -33,18 +33,16 @@ export function downloadText(url: string, setDownloadText: any): void {
 
 export function toggleCinemaMode(): void {
   if (isIOS()) {
-    const cinemaToggleSwitch = document.querySelector('.cinema') as HTMLElement;
+    const cinemaToggleSwitch = document.querySelector<HTMLElement>('.cinema')!;
 
     cinemaToggleSwitch.style.display = 'none';
   } else if (!isIOS()) {
-    const cinemaMode = document.querySelector(
-      '.cinema input'
-    ) as HTMLInputElement;
+    const cinemaMode =
+      document.querySelector<HTMLInputElement>('.cinema input')!;
 
     cinemaMode.addEventListener('change', () => {
-      const iframeParent = document.querySelector(
-        '.episodeVideo'
-      ) as HTMLElement;
+      const iframeParent =
+        document.querySelector<HTMLElement>('.episodeVideo')!;
 
       if (cinemaMode.checked) {
         document.documentElement.requestFullscreen().catch(() => 0);
@@ -73,9 +71,13 @@ export function clickEvents(
   setTitle: any,
   setDownloadText: any
 ): void {
-  document.querySelectorAll('.episodeList').forEach((episode) => {
+  const episodes = document.querySelectorAll('.list-episodes');
+
+  Array.from([...episodes]).map((_, i) => {
+    const episode = episodes[i] as HTMLElement;
+
     episode.addEventListener('click', () => {
-      const episodeId = (episode as HTMLElement).dataset.id;
+      const episodeId = episode.dataset.id;
 
       Change(episodeId!, lecteur, setVideo, setTitle, setDownloadText);
     });

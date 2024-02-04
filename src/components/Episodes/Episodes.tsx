@@ -7,10 +7,12 @@ import { addScript } from '../Films/functions';
 import { NextSaison, PrevSaison } from './switchSaisons';
 import { initSearchBar } from '../../functions/search';
 import { Link } from 'react-router-dom';
-import { allIndex, horsSeries } from './constants';
+import { EPISODES_OPTIONS } from '../constants';
 import { windowKeys } from '../interfaces/interface';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
 import { Footer, Title } from '../components';
+
+const { allIndex, horsSeries } = EPISODES_OPTIONS;
 
 import searchImg from '../../assets/Search.svg';
 import episodesNames from './episodes-names';
@@ -118,7 +120,7 @@ export default function Episodes() {
 
             listEpisodes.push(
               <p
-                className="episodeList"
+                className="list-episodes"
                 data-id={indexEpisode}
                 id={title}
                 key={title}
@@ -135,7 +137,7 @@ export default function Episodes() {
             const id = `${episodeNumber} ${episodeTitle}`;
             listEpisodes.push(
               <p
-                className="episodeList"
+                className="list-episodes"
                 data-id={indexEpisode}
                 id={id}
                 key={id}
@@ -154,7 +156,12 @@ export default function Episodes() {
           const id = `${episodeNumber} ${episodeTitle}`;
 
           listEpisodes.push(
-            <p className="episodeList" data-id={indexEpisode} id={id} key={id}>
+            <p
+              className="list-episodes"
+              data-id={indexEpisode}
+              id={id}
+              key={id}
+            >
               <span className="episodeNumber">{episodeNumber}</span> :{' '}
               {episodeTitle}
             </p>
@@ -169,7 +176,7 @@ export default function Episodes() {
 
         let retard = 0;
 
-        document.querySelectorAll('.episodeList').forEach((e, i) => {
+        document.querySelectorAll('.list-episodes').forEach((e, i) => {
           if (i + 1 < Number(episode)) {
             if (e.id.includes('E-SP')) retard++;
           }
@@ -294,7 +301,7 @@ export default function Episodes() {
           onInput={() =>
             initSearchBar(
               document.querySelector('.label--episodes input')!,
-              document.getElementsByClassName('episodeList'),
+              document.getElementsByClassName('list-episodes'),
               'episodes',
               setOutput
             )
