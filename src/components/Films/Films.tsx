@@ -6,7 +6,12 @@ import './responsive.scss';
 import searchImg from '../../assets/Search.svg';
 
 import { getURLFilm } from '../../functions/main';
-import { addScript, appearVideo, getFilms } from './functions.tsx';
+import {
+  addScript,
+  appearVideo,
+  changeLangage,
+  getFilms,
+} from './functions.tsx';
 import { initSearchBar } from '../../functions/search';
 import { windowKeys } from '../interfaces/interface';
 import { Footer, Title } from '../components';
@@ -49,6 +54,14 @@ const Films = () => {
 
       setTimeout(() => {
         window.scrollTo({ top: 580, behavior: 'smooth' });
+
+        const langButton = document.querySelectorAll('.langage');
+
+        Array.from([...langButton]).map((_, i) => {
+          langButton[i].addEventListener('click', () => {
+            changeLangage(langButton[i].id);
+          });
+        });
       }, 1000);
     });
   }, []);

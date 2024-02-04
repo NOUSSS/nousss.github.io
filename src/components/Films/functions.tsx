@@ -72,14 +72,6 @@ export async function appearVideo(
     ></iframe>
   );
 
-  const langButton = document.querySelectorAll('.langage');
-
-  for (let i = 0; i < langButton.length; i++) {
-    langButton[i].addEventListener('click', () => {
-      changeLangage(langButton[i].id);
-    });
-  }
-
   if (!isIOS()) {
     setTips(
       <>
