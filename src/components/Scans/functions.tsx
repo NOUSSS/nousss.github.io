@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { windowKeys } from '../interfaces/interface';
+import { windowKeys } from '../../interfaces/interface';
 import { SCANS_OPTIONS } from '../constants';
 import { nextChapitre, prevChapitre } from './switchChapters';
 

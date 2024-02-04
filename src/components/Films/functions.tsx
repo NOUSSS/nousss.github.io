@@ -1,5 +1,5 @@
 import React from 'react';
-import { getURLFilm, isIOS } from '../functions/main';
+import { getURLFilm, isIOS } from '../../functions/main';
 import { films } from './films-names';
 import { getImage, ImageKey } from './images';
 

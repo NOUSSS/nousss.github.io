@@ -1,4 +1,4 @@
-import { allIndexType, horsSeriesType } from './interfaces/interface';
+import { allIndexType, horsSeriesType } from '../interfaces/interface';
 
 export const FILM_OPTIONS = {
   SCRIPT_URL: (langage: string) =>

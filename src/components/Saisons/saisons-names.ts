@@ -1,4 +1,4 @@
-import { Season } from '../interfaces/interface';
+import { Season } from '../../interfaces/interface';
 
 export const obj: Season = {
   1: {

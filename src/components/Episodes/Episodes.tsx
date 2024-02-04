@@ -3,12 +3,12 @@ import './responsive.scss';
 
 import React, { useEffect, useState } from 'react';
 import { obj } from '../Saisons/saisons-names';
-import { addScript } from '../functions/main.ts';
+import { addScript } from '../../functions/main.ts';
 import { NextSaison, PrevSaison } from './switchSaisons';
-import { initSearchBar } from '../functions/search';
+import { initSearchBar } from '../../functions/search.tsx';
 import { Link } from 'react-router-dom';
 import { EPISODES_OPTIONS } from '../constants';
-import { windowKeys } from '../interfaces/interface';
+import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
 import { Footer, Title } from '../components';
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { isIOS } from '../functions/main';
+import { isIOS } from '../../functions/main';
 import { citation } from './citations';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png';

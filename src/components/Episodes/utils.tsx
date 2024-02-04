@@ -1,4 +1,4 @@
-import { isIOS } from '../functions/main';
+import { isIOS } from '../../functions/main';
 import { Change, NextEpisode, PrevEpisode } from './functions';
 
 export function downloadText(url: string, setDownloadText: any): void {

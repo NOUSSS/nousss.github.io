@@ -6,7 +6,7 @@ import './responsive.scss';
 import searchImg from '../../assets/Search.svg';
 
 import { getSaisons } from './functions';
-import { initSearchBar } from '../functions/search';
+import { initSearchBar } from '../../functions/search';
 import { obj } from './saisons-names';
 import { Footer, Title } from '../components';
 import { changeSaison } from './utils';
