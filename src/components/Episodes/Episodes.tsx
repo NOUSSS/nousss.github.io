@@ -9,12 +9,7 @@ import { initSearchBar } from '../../functions/search';
 import { Link } from 'react-router-dom';
 import { EPISODES_OPTIONS } from '../constants';
 import { windowKeys } from '../interfaces/interface';
-import {
-  clickEvents,
-  downloadText,
-  removeClickEvents,
-  toggleCinemaMode,
-} from './utils';
+import { clickEvents, downloadText, toggleCinemaMode } from './utils';
 import { Footer, Title } from '../components';
 
 import searchImg from '../../assets/Search.svg';
@@ -232,8 +227,6 @@ export default function Episodes() {
 
         downloadText(firstEpisode, setDownloadText);
       }
-
-      removeClickEvents();
 
       setTimeout(() => {
         clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);

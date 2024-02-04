@@ -114,6 +114,9 @@ export function clickEvents(
     const handler = () => {
       const episodeId = (episode as HTMLElement).dataset.id;
 
+      episodes.forEach((ep) => ep.classList.remove('select'));
+      episode.classList.add('select');
+
       Change(episodeId!, lecteur, setVideo, setTitle, setDownloadText);
     };
 
