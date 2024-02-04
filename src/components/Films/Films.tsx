@@ -5,14 +5,10 @@ import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { getURLFilm } from '../../functions/main';
-import {
-  addScript,
-  appearVideo,
-  changeLangage,
-  getFilms,
-} from './functions.tsx';
-import { initSearchBar } from '../../functions/search';
+import { getURLFilm } from '../functions/main.ts';
+import { addScript } from '../functions/main.ts';
+import { appearVideo, changeLangage, getFilms } from './functions.tsx';
+import { initSearchBar } from '../functions/search.tsx';
 import { windowKeys } from '../interfaces/interface';
 import { Footer, Title } from '../components';
 import { FILM_OPTIONS } from '../constants.ts';

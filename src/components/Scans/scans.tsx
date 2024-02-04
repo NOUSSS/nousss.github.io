@@ -9,7 +9,7 @@ import {
   clickEvents,
 } from './functions.tsx';
 
-import { addScript } from '../Films/functions';
+import { addScript } from '../functions/main.ts';
 import { SCANS_OPTIONS } from '../constants.ts';
 import { Footer, Title } from '../components';
 

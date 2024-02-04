@@ -16,3 +16,26 @@ export const getURLFilm = (index: number): string => {
 
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
+
+export function addScript(url: string): Promise<boolean> {
+  return new Promise(async (resolve) => {
+    const lastScript = document.querySelector('#Anime-Sama_script');
+
+    if (lastScript) {
+      document.head.removeChild(lastScript);
+    }
+
+    const script = document.createElement('script');
+
+    script.className = 'script';
+    script.id = 'Anime-Sama_script';
+
+    script.setAttribute('src', url);
+
+    script.onload = () => {
+      resolve(true);
+    };
+
+    document.head.appendChild(script);
+  });
+}

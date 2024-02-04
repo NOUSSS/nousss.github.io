@@ -1,30 +1,7 @@
 import React from 'react';
-import { getURLFilm, isIOS } from '../../functions/main';
+import { getURLFilm, isIOS } from '../functions/main';
 import { films } from './films-names';
 import { getImage, ImageKey } from './images';
-
-export function addScript(url: string): Promise<boolean> {
-  return new Promise(async (resolve) => {
-    const lastScript = document.querySelector('#Anime-Sama_Episodes');
-
-    if (lastScript) {
-      document.head.removeChild(lastScript);
-    }
-
-    const script = document.createElement('script');
-
-    script.className = 'script';
-    script.id = 'Anime-Sama_Episodes';
-
-    script.setAttribute('src', url);
-
-    script.onload = () => {
-      resolve(true);
-    };
-
-    document.head.appendChild(script);
-  });
-}
 
 export async function appearVideo(
   id: string,
