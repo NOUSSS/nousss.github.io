@@ -1,46 +1,23 @@
 @media (max-width: 1715px) {
-    .container--Saisons {
-        width: auto;
-    }
-}
-
-@media (max-width: 805px) {
-    video {
-        width: 594px;
-    }
+  .container--Saisons {
+    width: auto;
+  }
 }
 
 @media (max-width: 372px) {
-    input:focus {
-        width: 215px
-    }
+  input:focus {
+    width: 215px;
+  }
 }
 
-@media (max-width: 598px) {
-
-    video {
-        width: 508px;
-    }
+@media (max-width: 550px) {
+  .animeName {
+    margin-bottom: 115px;
+  }
 }
 
 @media (max-width: 506px) {
-    .logo {
-        font-size: 26px;
-    }
-
-    video {
-        width: 396px;
-    }
-}
-
-@media (max-width: 398px) {
-    video {
-        width: 327px;
-    }
-}
-
-@media (max-width: 336px) {
-    video {
-        width: 284px;
-    }
+  .logo {
+    font-size: 26px;
+  }
 }

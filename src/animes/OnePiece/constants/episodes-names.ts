@@ -3377,6 +3377,10 @@ const episodes = [
     index: '1092',
     name: 'Les larmes de Bonney. L’obscurité de l’île futuriste !',
   },
+  {
+    index: '1093',
+    name: 'Le vainqueur rafle la mise. Law contre Barbe Noire ! ',
+  },
 ];
 
 export default episodes;

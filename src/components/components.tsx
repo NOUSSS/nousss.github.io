@@ -1,6 +1,6 @@
 export function Title({ accueil = false }: { accueil?: boolean }) {
   return (
-    <div className="title">
+    <div className="title animeName">
       <h1>
         {accueil
           ? 'Notre catalogue'
