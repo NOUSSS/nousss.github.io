@@ -81,6 +81,7 @@ const Home = () => {
             {window.localStorage
               .getItem('anime')
               ?.replace('-', ' ')
+              .replace('-', ' ')
               .split(' ')
               .map((word) => {
                 return (

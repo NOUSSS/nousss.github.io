@@ -32,6 +32,7 @@ const Accueil = () => {
                 <p>
                   {e
                     .replace('-', ' ')
+                    .replace('-', ' ')
                     .split(' ')
                     .map((word) => {
                       return (
