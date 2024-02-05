@@ -1,9 +1,13 @@
 import React from 'react';
 
 import { windowKeys } from '../../interfaces/interface';
-import { SCANS_OPTIONS } from '../constants';
+import { ANIMES_OPTIONS } from '../constants';
 
-const { CHAPITRE_SPECIAUX, IMAGE_URL } = SCANS_OPTIONS;
+const currentAnime = window.localStorage.getItem('anime')!;
+
+const { CHAPITRE_SPECIAUX, IMAGE_URL } = ANIMES_OPTIONS.find(
+  ({ anime }) => anime === currentAnime
+)!.options.SCANS_OPTIONS;
 
 export const getTailleChapitres = (): number => {
   let i = 1;
@@ -48,7 +52,10 @@ export const selectChapter = (
       const chapterTitle = options[index].innerText;
       const scans = (window as windowKeys)[`eps${newChapter}`];
 
-      window.localStorage.setItem('chapitre', String(Number(newChapter)));
+      window.localStorage.setItem(
+        `${currentAnime}--chapitre`,
+        String(Number(newChapter))
+      );
 
       select.value = chapterTitle;
 
@@ -83,13 +90,17 @@ export const clickEvents = (
 ): void => {
   attachButtonClickEvent('prevButton', () => {
     setScans(
-      selectChapter(Number(window.localStorage.getItem('chapitre')) - 1)
+      selectChapter(
+        Number(window.localStorage.getItem(`${currentAnime}--chapitre`)) - 1
+      )
     );
   });
 
   attachButtonClickEvent('nextButton', () => {
     setScans(
-      selectChapter(Number(window.localStorage.getItem('chapitre')) + 1)
+      selectChapter(
+        Number(window.localStorage.getItem(`${currentAnime}--chapitre`)) + 1
+      )
     );
   });
 

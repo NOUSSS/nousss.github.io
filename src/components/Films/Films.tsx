@@ -11,11 +11,15 @@ import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { Footer, Title } from '../components';
-import { FILM_OPTIONS } from '../constants.ts';
-
-const { BLACKLIST_URL, SCRIPT_URL } = FILM_OPTIONS;
+import { ANIMES_OPTIONS } from '../constants.ts';
 
 const Films = () => {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const { BLACKLIST_URL, SCRIPT_URL } = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!.options.FILM_OPTIONS;
+
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [tips, setTips] = useState<React.ReactNode>();
   const [video, setVideo] = useState<React.ReactNode>();

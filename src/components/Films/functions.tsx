@@ -1,7 +1,10 @@
 import React from 'react';
 import { getURLFilm, isIOS } from '../../functions/main';
-import { films } from './films-names';
-import { getImage, ImageKey } from './images';
+import { films } from '../../animes/OnePiece/constants/films-names';
+import {
+  getImage,
+  ImageKey,
+} from '../../animes/OnePiece/constants/images-films';
 
 export async function appearVideo(
   id: string,

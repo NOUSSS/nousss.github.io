@@ -1,0 +1,45 @@
+.container--accueil {
+  //width: 1750px;
+  background-color: hsl(231, 10%, 14%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 4px;
+
+  .title {
+    font-size: 50px;
+  }
+
+  .catalogue {
+    ul {
+      li {
+        color: white;
+        display: inline-block;
+        margin: 20px;
+
+        cursor: pointer;
+
+        .card {
+          width: 225px;
+          height: 200px;
+          background-color: hsla(240, 10%, 10%, 0.797);
+          border-radius: 5px;
+
+          .affiche {
+            width: 225px;
+          }
+
+          p {
+            position: relative;
+            top: 15px;
+            font-size: 25px;
+          }
+        }
+
+        transition: transform 150ms ease-out;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

@@ -7,13 +7,18 @@ import searchImg from '../../assets/Search.svg';
 
 import { getSaisons } from './functions';
 import { initSearchBar } from '../../functions/search';
-import { obj } from './saisons-names';
+import { ANIMES_OPTIONS } from '../constants';
 import { Footer, Title } from '../components';
 import { changeSaison } from './utils';
 
 const Saisons = () => {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const names = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
+    .options.saisons;
+
   const [output, setOutput] = useState<React.ReactNode>();
-  const saison = window.localStorage.getItem('saison');
+  const saison = window.localStorage.getItem(`${currentAnime}--saison`);
 
   useEffect(() => {
     setTimeout(() => {
@@ -60,7 +65,7 @@ const Saisons = () => {
               style={{ cursor: 'pointer' }}
             >
               <a id={saison} className="historiqueSaison">
-                {obj[saison!].name}
+                {names[saison].name}
               </a>
             </span>
           </>

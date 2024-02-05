@@ -1,8 +1,4 @@
-import { EPISODES_OPTIONS } from '../constants';
-
-const { allIndex, horsSeries } = EPISODES_OPTIONS;
-
-import episodes from './episodes-names';
+import { ANIMES_OPTIONS } from '../constants';
 import { downloadText } from './utils';
 
 export function Change(
@@ -12,8 +8,17 @@ export function Change(
   setEpisodeTitle: any,
   setDownloadText: any
 ): void {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const options = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!.options;
+
+  const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS;
+
   const isHorsSerie = horsSeries.find(
-    ({ saison }) => saison === window.localStorage.getItem('saison')
+    ({ saison }) =>
+      saison === window.localStorage.getItem(`${currentAnime}--saison`)
   );
 
   if (isHorsSerie) {
@@ -34,7 +39,10 @@ export function Change(
 
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
-      window.localStorage.setItem('episode', String(indexEpisode));
+      window.localStorage.setItem(
+        `${currentAnime}--episode`,
+        String(indexEpisode)
+      );
       window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
     } else {
       let retard = 0;
@@ -45,12 +53,12 @@ export function Change(
         }
       });
 
-      const saison = window.localStorage.getItem('saison');
+      const saison = window.localStorage.getItem(`${currentAnime}--saison`);
 
       const numberEpisode =
         Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
 
-      const title = episodes.find(
+      const title = names.find(
         ({ index }) => index === String(numberEpisode)
       )!.name;
 
@@ -66,19 +74,23 @@ export function Change(
         </>
       );
 
-      window.localStorage.setItem('episode', String(indexEpisode));
+      window.localStorage.setItem(
+        `${currentAnime}--episode`,
+        String(indexEpisode)
+      );
       window.localStorage.removeItem('episodeSpecial');
     }
   } else {
     const numberEpisode =
-      Number(allIndex[window.localStorage.getItem('saison') ?? 0]) +
-      Number(indexEpisode);
+      Number(
+        allIndex[window.localStorage.getItem(`${currentAnime}--saison`) ?? 0]
+      ) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
 
     downloadText(url, setDownloadText);
 
-    const episodeTitle = episodes.find(
+    const episodeTitle = names.find(
       ({ index }) => index === String(numberEpisode)
     )!.name;
 
@@ -90,7 +102,10 @@ export function Change(
       </>
     );
 
-    window.localStorage.setItem('episode', String(indexEpisode));
+    window.localStorage.setItem(
+      `${currentAnime}--episode`,
+      String(indexEpisode)
+    );
     window.localStorage.removeItem('episodeSpecial');
   }
 
@@ -103,7 +118,10 @@ export function NextEpisode(
   setEpisodeTitle: any,
   setDownloadText: any
 ) {
-  const newEpisodeIndex = Number(window.localStorage.getItem('episode')) + 1;
+  const currentAnime = window.localStorage.getItem('anime');
+
+  const newEpisodeIndex =
+    Number(window.localStorage.getItem(`${currentAnime}--episode`)) + 1;
 
   if (newEpisodeIndex - 1 === lecteur.length) return;
   else {
@@ -123,7 +141,10 @@ export function PrevEpisode(
   setEpisodeTitle: any,
   setDownloadText: any
 ) {
-  const newEpisodeIndex = Number(window.localStorage.getItem('episode')) - 1;
+  const currentAnime = window.localStorage.getItem('anime');
+
+  const newEpisodeIndex =
+    Number(window.localStorage.getItem(`${currentAnime}--episode`)) - 1;
 
   if (newEpisodeIndex < 1) return;
   else {

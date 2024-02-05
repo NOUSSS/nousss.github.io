@@ -7,6 +7,7 @@ import { Footer } from '../components';
 
 import './responsive.scss';
 import './Home.scss';
+import { ANIMES_OPTIONS } from '../constants';
 
 const Home = () => {
   const [text] = useState<string>('');
@@ -77,7 +78,16 @@ const Home = () => {
         <div className="title">
           <img src={logo} alt="Logo" />
           <h1>
-            One <span>Piece</span>
+            {window.localStorage
+              .getItem('anime')
+              ?.replace('-', ' ')
+              .split(' ')
+              .map((word) => {
+                return (
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                );
+              })
+              .join(' ')}
           </h1>
         </div>
 
@@ -87,12 +97,16 @@ const Home = () => {
 
         <div className="choices">
           <li>
-            <ul>
-              <Link to="/Films">
-                Films
-                <br />
-              </Link>
-            </ul>
+            {ANIMES_OPTIONS.find(
+              ({ anime }) => anime === window.localStorage.getItem('anime')
+            )?.options.FILM_OPTIONS?.names ? (
+              <ul>
+                <Link to="/Films">
+                  Films
+                  <br />
+                </Link>
+              </ul>
+            ) : null}
             <ul>
               <Link to="/Saisons">
                 Saisons

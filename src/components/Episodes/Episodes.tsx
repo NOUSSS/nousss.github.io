@@ -2,26 +2,33 @@ import './Episodes.scss';
 import './responsive.scss';
 
 import React, { useEffect, useState } from 'react';
-import { obj } from '../Saisons/saisons-names';
 import { addScript } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { Link } from 'react-router-dom';
-import { EPISODES_OPTIONS } from '../constants';
+import { ANIMES_OPTIONS } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
 import { Footer, Title } from '../components';
 
 import searchImg from '../../assets/Search.svg';
-import episodesNames from './episodes-names';
-
-const { allIndex, horsSeries, SCRIPT_URL } = EPISODES_OPTIONS;
 
 let lecteur: string[] = [];
 
 export default function Episodes() {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const options = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!.options;
+
+  const { allIndex, horsSeries, SCRIPT_URL, names } = options.EPISODES_OPTIONS;
+  const { saisons } = options;
+
   const [saison, setSaison] = useState({
-    name: obj[window.localStorage.getItem('saison') ?? 0].name,
-    index: window.localStorage.getItem('saison')!,
+    name: saisons[
+      Number(window.localStorage.getItem(`${currentAnime}--saison`)) ?? 0
+    ].name,
+    index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
@@ -91,8 +98,13 @@ export default function Episodes() {
       );
 
       let episodeIndex = allIndex[saison.index ?? 0];
+      let episode = window.localStorage.getItem(`${currentAnime}--episode`);
 
-      const episode = window.localStorage.getItem('episode');
+      if (!episode) {
+        window.localStorage.setItem(`${currentAnime}--episode`, '1');
+        episode = '1';
+      }
+
       const esp = window.localStorage.getItem('episodeSpecial');
 
       const listEpisodes: React.ReactNode[] = [];
@@ -105,7 +117,8 @@ export default function Episodes() {
         indexEpisode++
       ) {
         const isHorsSerie = horsSeries.find(
-          ({ saison }) => saison === window.localStorage.getItem('saison')
+          ({ saison }) =>
+            saison === window.localStorage.getItem(`${currentAnime}--saison`)
         );
 
         if (isHorsSerie) {
@@ -126,7 +139,7 @@ export default function Episodes() {
             );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
-            const episodeTitle = episodesNames.find(
+            const episodeTitle = names.find(
               ({ index }) => index === String(episodeNumber)
             )!.name;
 
@@ -145,7 +158,7 @@ export default function Episodes() {
           }
         } else {
           const episodeNumber = episodeIndex + indexEpisode;
-          const episodeTitle = episodesNames.find(
+          const episodeTitle = names.find(
             ({ index }) => index === String(episodeNumber)
           )!.name;
 
@@ -178,7 +191,7 @@ export default function Episodes() {
           }
         });
 
-        const title = episodesNames.find(
+        const title = names.find(
           ({ index }) =>
             index === String(episodeIndex + Number(episode) - retard)
         )!.name;
@@ -209,7 +222,7 @@ export default function Episodes() {
       if (episode === '1') {
         const [firstEpisode] = lecteur;
 
-        const title = episodesNames.find(
+        const title = names.find(
           ({ index }) => index === String(Number(episodeIndex) + 1)
         )!.name;
 
@@ -222,8 +235,6 @@ export default function Episodes() {
           </>
         );
 
-        window.localStorage.setItem('episode', '1');
-
         downloadText(firstEpisode, setDownloadText);
       }
 
@@ -234,7 +245,8 @@ export default function Episodes() {
   }, [saison]);
 
   useEffect(() => {
-    const episode = window.localStorage.getItem('episode') ?? '1';
+    const episode =
+      window.localStorage.getItem(`${currentAnime}--episode`) ?? '1';
 
     const NextEpisodeSelector =
       document.querySelector<HTMLElement>('.nextButton')!;
@@ -314,11 +326,18 @@ export default function Episodes() {
         <button
           onClick={() => {
             const prevSaison =
-              Number(window.localStorage.getItem('saison')) - 1;
+              Number(window.localStorage.getItem(`${currentAnime}--saison`)) -
+              1;
 
-            window.localStorage.setItem('saison', String(prevSaison));
+            window.localStorage.setItem(
+              `${currentAnime}--saison`,
+              String(prevSaison)
+            );
+
+            window.location.hash = `#S${prevSaison}/Episodes`;
+
             setSaison({
-              name: obj[prevSaison].name,
+              name: saisons[prevSaison].name,
               index: String(prevSaison),
             });
           }}
@@ -329,11 +348,19 @@ export default function Episodes() {
 
         <button
           onClick={() => {
-            const newSaison = Number(window.localStorage.getItem('saison')) + 1;
+            const newSaison =
+              Number(window.localStorage.getItem(`${currentAnime}--saison`)) +
+              1;
 
-            window.localStorage.setItem('saison', String(newSaison));
+            window.localStorage.setItem(
+              `${currentAnime}--saison`,
+              String(newSaison)
+            );
+
+            window.location.hash = `#S${newSaison}/Episodes`;
+
             setSaison({
-              name: obj[newSaison].name,
+              name: saisons[newSaison].name,
               index: String(newSaison),
             });
           }}

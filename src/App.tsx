@@ -6,6 +6,7 @@ import Films from './components/Films/Films';
 import Saisons from './components/Saisons/Saisons';
 import Episodes from './components/Episodes/Episodes';
 import Scans from './components/Scans/scans';
+import Accueil from './components/Accueil/accueil';
 
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
@@ -17,6 +18,10 @@ const AppRoutes = () => {
   let pages = [
     {
       path: '/',
+      element: <Accueil />,
+    },
+    {
+      path: '/Home',
       element: <Home />,
     },
     {
@@ -44,14 +49,11 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
-      const orangeText = document.querySelector<HTMLElement>('.title h1 span')!;
 
-      whiteText.style.color = '#ffa300';
-      orangeText.style.color = 'white';
+      if (whiteText) whiteText.style.color = '#ffa300';
 
       setTimeout(() => {
-        whiteText.style.color = 'white';
-        orangeText.style.color = '#ffa300';
+        if (whiteText) whiteText.style.color = 'white';
       }, 1000);
     }, 2000);
 

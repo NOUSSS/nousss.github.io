@@ -10,14 +10,18 @@ import {
 } from './functions.tsx';
 
 import { addScript } from '../../functions/main.ts';
-import { SCANS_OPTIONS } from '../constants.ts';
+import { ANIMES_OPTIONS } from '../constants.ts';
 import { Footer, Title } from '../components';
-
-const { SCRIPT_URL, CHAPITRE_SPECIAUX } = SCANS_OPTIONS;
 
 import uparrow from '../../assets/uparrow.png';
 
 const Scans = () => {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const { SCRIPT_URL, CHAPITRE_SPECIAUX } = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!.options.SCANS_OPTIONS;
+
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
   const [loadingText, setLoadingText] = useState(
     'Si les chapitres ne chargent pas après 5-10 secondes, cliquez'
@@ -47,7 +51,11 @@ const Scans = () => {
       clickEvents(setScans);
 
       setTimeout(() => {
-        setScans(selectChapter(window.localStorage.getItem('chapitre') ?? 1));
+        setScans(
+          selectChapter(
+            window.localStorage.getItem(`${currentAnime}--chapitre`) ?? 1
+          )
+        );
       }, 1000);
     });
   }, []);
@@ -55,7 +63,7 @@ const Scans = () => {
   const onChangeSelect = useCallback((event: any) => {
     const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
 
-    window.localStorage.setItem('chapitre', id);
+    window.localStorage.setItem(`${currentAnime}--chapitre`, id);
 
     setScans(selectChapter(id));
   }, []);
