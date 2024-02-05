@@ -4,7 +4,6 @@ import './responsive.scss';
 import React, { useEffect, useState } from 'react';
 import { obj } from '../Saisons/saisons-names';
 import { addScript } from '../../functions/main.ts';
-import { NextSaison, PrevSaison } from './switchSaisons';
 import { initSearchBar } from '../../functions/search.tsx';
 import { Link } from 'react-router-dom';
 import { EPISODES_OPTIONS } from '../constants';
@@ -312,11 +311,34 @@ export default function Episodes() {
         <div className="list">{episodes}</div>
       </div>
       <div className="buttons--saisons">
-        <button onClick={() => PrevSaison(setSaison)} className="PrevSaison">
+        <button
+          onClick={() => {
+            const prevSaison =
+              Number(window.localStorage.getItem('saison')) - 1;
+
+            window.localStorage.setItem('saison', String(prevSaison));
+            setSaison({
+              name: obj[prevSaison].name,
+              index: String(prevSaison),
+            });
+          }}
+          className="PrevSaison"
+        >
           Saison précédente
         </button>
 
-        <button onClick={() => NextSaison(setSaison)} className="NextSaison">
+        <button
+          onClick={() => {
+            const newSaison = Number(window.localStorage.getItem('saison')) + 1;
+
+            window.localStorage.setItem('saison', String(newSaison));
+            setSaison({
+              name: obj[newSaison].name,
+              index: String(newSaison),
+            });
+          }}
+          className="NextSaison"
+        >
           Saison suivante
         </button>
       </div>

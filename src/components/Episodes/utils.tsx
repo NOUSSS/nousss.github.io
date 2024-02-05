@@ -5,7 +5,7 @@ export function downloadText(url: string, setDownloadText: any): void {
   if (isIOS()) {
     setDownloadText(
       <>
-        Pour télécharger, cliquez{' '}
+        Pour télécharger l'épisode, cliquez{' '}
         <span>
           <a target="_blank" href={url}>
             ici
@@ -18,7 +18,7 @@ export function downloadText(url: string, setDownloadText: any): void {
   } else {
     setDownloadText(
       <>
-        Pour télécharger, cliquez{' '}
+        Pour télécharger l'épisode, cliquez{' '}
         <span>
           <a target="_blank" href={url}>
             ici

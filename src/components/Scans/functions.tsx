@@ -2,7 +2,6 @@ import React from 'react';
 
 import { windowKeys } from '../../interfaces/interface';
 import { SCANS_OPTIONS } from '../constants';
-import { nextChapitre, prevChapitre } from './switchChapters';
 
 const { CHAPITRE_SPECIAUX, IMAGE_URL } = SCANS_OPTIONS;
 
@@ -83,23 +82,25 @@ export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>
 ): void => {
   attachButtonClickEvent('prevButton', () => {
-    prevChapitre(setScans);
+    setScans(
+      selectChapter(Number(window.localStorage.getItem('chapitre')) - 1)
+    );
   });
 
   attachButtonClickEvent('nextButton', () => {
-    nextChapitre(setScans);
+    setScans(
+      selectChapter(Number(window.localStorage.getItem('chapitre')) + 1)
+    );
   });
 
   document.querySelector('.lastChapter')!.addEventListener('click', () => {
-    setScans(
-      selectChapter(
-        document
-          .querySelector('select')!
-          .options[
-            document.querySelector('select')!.options.length - 1
-          ].id.match(/[0-9]/g)!
-          .join('')
-      )
-    );
+    const lastScan = document
+      .querySelector('select')!
+      .options[document.querySelector('select')!.options.length - 1].id.match(
+        /[0-9]/g
+      )!
+      .join('');
+
+    setScans(selectChapter(lastScan));
   });
 };
