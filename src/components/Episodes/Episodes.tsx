@@ -141,9 +141,9 @@ export default function Episodes() {
             );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
-            const episodeTitle = names.find(
-              ({ index }) => index === String(episodeNumber)
-            )!.name;
+            const episodeTitle =
+              names.find(({ index }) => index === String(episodeNumber))
+                ?.name || '';
 
             const id = `${episodeNumber} ${episodeTitle}`;
             listEpisodes.push(
@@ -160,9 +160,9 @@ export default function Episodes() {
           }
         } else {
           const episodeNumber = episodeIndex + indexEpisode;
-          const episodeTitle = names.find(
-            ({ index }) => index === String(episodeNumber)
-          )!.name;
+          const episodeTitle =
+            names.find(({ index }) => index === String(episodeNumber))?.name ??
+            '';
 
           const id = `${episodeNumber} ${episodeTitle}`;
 
@@ -193,10 +193,11 @@ export default function Episodes() {
           }
         });
 
-        const title = names.find(
-          ({ index }) =>
-            index === String(episodeIndex + Number(episode) - retard)
-        )!.name;
+        const title =
+          names.find(
+            ({ index }) =>
+              index === String(episodeIndex + Number(episode) - retard)
+          )?.name || '';
 
         setVideo(URL_EPISODE);
 
@@ -224,9 +225,9 @@ export default function Episodes() {
       if (episode === '1') {
         const [firstEpisode] = lecteur;
 
-        const title = names.find(
-          ({ index }) => index === String(Number(episodeIndex) + 1)
-        )!.name;
+        const title =
+          names.find(({ index }) => index === String(Number(episodeIndex) + 1))
+            ?.name || '';
 
         setVideo(firstEpisode);
 

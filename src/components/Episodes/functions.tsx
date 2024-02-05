@@ -61,9 +61,9 @@ export function Change(
       const numberEpisode =
         Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
 
-      const title = names.find(
-        ({ index }) => index === String(numberEpisode)
-      )!.name;
+      const title =
+        names.find(({ index }) => index === String(numberEpisode))?.name ||
+        'Episode';
 
       const url = lecteur[Number(indexEpisode) - 1];
 
@@ -93,9 +93,9 @@ export function Change(
 
     downloadText(url, setDownloadText);
 
-    const episodeTitle = names.find(
-      ({ index }) => index === String(numberEpisode)
-    )!.name;
+    const episodeTitle =
+      names.find(({ index }) => index === String(numberEpisode))?.name ||
+      'Episode';
 
     setVideo(url);
 

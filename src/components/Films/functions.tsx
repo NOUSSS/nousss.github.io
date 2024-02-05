@@ -1,10 +1,6 @@
 import React from 'react';
 import { getURLFilm, isIOS } from '../../functions/main';
-import { films } from '../../animes/OnePiece/constants/films-names';
-import {
-  getImage,
-  ImageKey,
-} from '../../animes/OnePiece/constants/images-films';
+import { ANIMES_OPTIONS } from '../constants';
 
 export async function appearVideo(
   id: string,
@@ -14,6 +10,10 @@ export async function appearVideo(
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
+
+  const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
+    .options.FILM_OPTIONS;
+
   const lang = window.localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
@@ -27,12 +27,12 @@ export async function appearVideo(
 
   document.querySelector(
     'title'
-  )!.textContent = `${films[index].name} - Mugiwara-no Streaming`;
+  )!.textContent = `${names[index].name} - Mugiwara-no Streaming`;
 
   if (lang === 'vostfr') {
     setTitle(
       <>
-        <span>{films[index].name}</span> [
+        <span>{names[index].name}</span> [
         <span id="vf" className="langage">
           VOSTFR
         </span>
@@ -42,7 +42,7 @@ export async function appearVideo(
   } else if (lang === 'vf') {
     setTitle(
       <>
-        <span>{films[index].name}</span> [
+        <span>{names[index].name}</span> [
         <span id="vostfr" className="langage">
           VF
         </span>
@@ -99,16 +99,20 @@ export function changeLangage(lang: string, setLang: any): void {
 }
 
 export function getFilms(setFilmsFront: any) {
+  const currentAnime = window.localStorage.getItem('anime');
+  const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
+    .options.FILM_OPTIONS;
+
   const filmsNodes: React.ReactNode[] = [];
 
-  for (let i = 0 as ImageKey; i < Object.keys(films).length; i++) {
+  for (let i = 0; i < Object.keys(names).length; i++) {
     const url = getURLFilm(i);
-    const id = `${films[i].name}|${films[i].aliases?.join(', ')}`;
+    const id = `${names[i].name}|${names[i].aliases?.join(', ')}`;
 
     filmsNodes.push(
       <div id={id} key={id} className="container--poster">
-        <img className="poster" src={getImage(i)} id={`${url} ${i}`} />
-        <p className="text--films">{films[i].name}</p>
+        <img className="poster" src={names[i].image()} id={`${url} ${i}`} />
+        <p className="text--films">{names[i].name}</p>
       </div>
     );
   }
