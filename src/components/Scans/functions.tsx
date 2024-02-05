@@ -3,12 +3,6 @@ import React from 'react';
 import { windowKeys } from '../../interfaces/interface';
 import { ANIMES_OPTIONS } from '../constants';
 
-const currentAnime = window.localStorage.getItem('anime')!;
-
-const { CHAPITRE_SPECIAUX, IMAGE_URL } = ANIMES_OPTIONS.find(
-  ({ anime }) => anime === currentAnime
-)!.options.SCANS_OPTIONS;
-
 export const getTailleChapitres = (): number => {
   let i = 1;
   let tailleChapitres = 0;
@@ -31,6 +25,12 @@ export const getTailleChapitres = (): number => {
 export const selectChapter = (
   newChapter: number | string
 ): React.ReactNode[] | undefined => {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
+  const { CHAPITRE_SPECIAUX, IMAGE_URL } = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!.options.SCANS_OPTIONS;
+
   const scansImages: React.ReactNode[] = [];
   const select = document.querySelector('select');
 
@@ -88,6 +88,8 @@ const attachButtonClickEvent = (
 export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>
 ): void => {
+  const currentAnime = window.localStorage.getItem('anime')!;
+
   attachButtonClickEvent('prevButton', () => {
     setScans(
       selectChapter(

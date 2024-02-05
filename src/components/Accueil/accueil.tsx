@@ -5,7 +5,6 @@ import { Footer, Title } from '../components';
 import { ANIMES_OPTIONS } from '../constants';
 
 const Accueil = () => {
-  window.localStorage.setItem('anime', 'one-piece'); // One piece par défaut
   const catalogues = Array.from(ANIMES_OPTIONS.map(({ anime }) => anime));
 
   return (
