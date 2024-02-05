@@ -43,7 +43,10 @@ export function Change(
         `${currentAnime}--episode`,
         String(indexEpisode)
       );
-      window.localStorage.setItem('episodeSpecial', `E-SP${esp}`);
+      window.localStorage.setItem(
+        `${currentAnime}--episodeSpecial`,
+        `E-SP${esp}`
+      );
     } else {
       let retard = 0;
 

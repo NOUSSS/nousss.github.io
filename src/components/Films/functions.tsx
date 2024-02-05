@@ -13,7 +13,8 @@ export async function appearVideo(
   setVideo: React.Dispatch<React.SetStateAction<React.ReactNode>>,
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  const lang = window.localStorage.getItem('lang');
+  const currentAnime = window.localStorage.getItem('anime');
+  const lang = window.localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
     top: 0,
@@ -22,7 +23,7 @@ export async function appearVideo(
 
   const [url, index] = id.split(' ');
 
-  window.localStorage.setItem('currentFilm', index);
+  window.localStorage.setItem(`${currentAnime}--currentFilm`, index);
 
   document.querySelector(
     'title'
@@ -91,7 +92,9 @@ export async function appearVideo(
 }
 
 export function changeLangage(lang: string, setLang: any): void {
-  window.localStorage.setItem('lang', lang);
+  const currentAnime = window.localStorage.getItem('anime');
+
+  window.localStorage.setItem(`${currentAnime}--lang`, lang);
   setLang(lang);
 }
 

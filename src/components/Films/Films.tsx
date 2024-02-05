@@ -26,16 +26,18 @@ const Films = () => {
   const [title, setTitle] = useState<React.ReactNode>();
 
   const [lang, setLang] = useState<string>(
-    window.localStorage.getItem('lang') ?? 'vostfr'
+    window.localStorage.getItem(`${currentAnime}--lang`) ?? 'vostfr'
   );
 
   const [output, setOutput] = useState<React.ReactNode>('');
 
   useEffect(() => {
-    const lastFilm = window.localStorage.getItem('currentFilm');
+    const lastFilm = window.localStorage.getItem(
+      `${currentAnime}--currentFilm`
+    );
 
-    if (!window.localStorage.getItem('lang'))
-      window.localStorage.setItem('lang', 'vostfr');
+    if (!window.localStorage.getItem(`${currentAnime}--lang`))
+      window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
     addScript(SCRIPT_URL(lang)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
@@ -47,7 +49,7 @@ const Films = () => {
         lastFilm
           ? `${getURLFilm(Number(lastFilm))} ${Number(lastFilm)}`
           : `${getURLFilm(0)} ${
-              window.localStorage.getItem('currentFilm') ?? '0'
+              window.localStorage.getItem(`${currentAnime}--currentFilm`) ?? '0'
             }`,
         setTips,
         setVideo,

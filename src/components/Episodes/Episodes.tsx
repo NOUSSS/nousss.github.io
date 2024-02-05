@@ -105,7 +105,9 @@ export default function Episodes() {
         episode = '1';
       }
 
-      const esp = window.localStorage.getItem('episodeSpecial');
+      const esp = window.localStorage.getItem(
+        `${currentAnime}--episodeSpecial`
+      );
 
       const listEpisodes: React.ReactNode[] = [];
 
