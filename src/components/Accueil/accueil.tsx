@@ -25,8 +25,8 @@ const Accueil = () => {
                 <img
                   className="affiche"
                   src={
-                    ANIMES_OPTIONS.find((obj) => obj.anime === e)?.options
-                      .affiche
+                    ANIMES_OPTIONS.find(({ anime }) => anime === e)?.options
+                      .affiche ?? ''
                   }
                 />
                 <p>
