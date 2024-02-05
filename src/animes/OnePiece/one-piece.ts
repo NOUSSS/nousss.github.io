@@ -1,5 +1,6 @@
 import {
   FilmOptions,
+  ScansOptions,
   allIndexType,
   horsSeriesType,
 } from '../../interfaces/interface';
@@ -114,7 +115,7 @@ export const OnePiece_OPTIONS = {
       `https://s22.anime-sama.fr/s1/scans/One%20Piece/${chapitre}/${index}.jpg`,
 
     CHAPITRE_SPECIAUX: [1045],
-  },
+  } as ScansOptions,
 
   EPISODES_OPTIONS: {
     SCRIPT_URL: (index: string | number) =>

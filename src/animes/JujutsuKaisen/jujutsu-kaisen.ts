@@ -1,5 +1,6 @@
 import {
   FilmOptions,
+  ScansOptions,
   allIndexType,
   horsSeriesType,
 } from '../../interfaces/interface';
@@ -31,6 +32,7 @@ export const JujutsuKaisen_OPTIONS = {
   } as FilmOptions,
 
   SCANS_OPTIONS: {
+    disabled: true,
     SCRIPT_URL:
       'https://anime-sama.fr/catalogue/jujutsu-kaisen/scan/vf/episodes.js',
 
@@ -38,7 +40,7 @@ export const JujutsuKaisen_OPTIONS = {
       `https://s22.anime-sama.fr/s1/scans/Jujutsu%20Kaisen/${chapitre}/${index}.jpg`,
 
     CHAPITRE_SPECIAUX: [],
-  },
+  } as ScansOptions,
 
   EPISODES_OPTIONS: {
     SCRIPT_URL: (index: string | number) =>

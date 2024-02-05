@@ -60,6 +60,25 @@ const Scans = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const chapitre =
+      window.localStorage.getItem(`${currentAnime}--chapitre`) ?? '1';
+
+    const NextchapitreSelector =
+      document.querySelector<HTMLElement>('.nextButton')!;
+
+    const PrevchapitreSelector =
+      document.querySelector<HTMLElement>('.prevButton')!;
+
+    if (!chapitre || chapitre === '1')
+      PrevchapitreSelector.style.display = 'none';
+    else PrevchapitreSelector.style.display = '';
+
+    if (Number(chapitre) === document.querySelector('select')?.options.length)
+      NextchapitreSelector.style.display = 'none';
+    else NextchapitreSelector.style.display = '';
+  }, [scans]);
+
   const onChangeSelect = useCallback((event: any) => {
     const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
 

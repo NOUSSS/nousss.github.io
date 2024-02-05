@@ -26,5 +26,14 @@ export interface FilmOptions {
   names: Film;
 }
 
+export interface ScansOptions {
+  disabled?: boolean;
+  SCRIPT_URL: string;
+
+  IMAGE_URL: (chapitre: string | number, index: string | number) => string;
+
+  CHAPITRE_SPECIAUX: number[];
+}
+
 export interface Season extends SeasonAndFilm {}
 export interface Film extends SeasonAndFilm {}

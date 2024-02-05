@@ -1,5 +1,6 @@
 import {
   FilmOptions,
+  ScansOptions,
   Season,
   allIndexType,
   horsSeriesType,
@@ -28,7 +29,7 @@ export const SoloLeveling_OPTIONS = {
     IMAGE_URL: (chapitre: string | number, index: string | number) =>
       `https://s22.anime-sama.fr/s1/scans/Solo%20Leveling/${chapitre}/${index}.jpg`,
     CHAPITRE_SPECIAUX: [] as number[],
-  },
+  } as ScansOptions,
 
   EPISODES_OPTIONS: {
     SCRIPT_URL: (index: string | number) =>

@@ -113,9 +113,13 @@ const Home = () => {
                 <br />
               </Link>
             </ul>
-            <ul>
-              <Link to="/Scans">Scans</Link>
-            </ul>
+            {!ANIMES_OPTIONS.find(
+              ({ anime }) => anime === window.localStorage.getItem('anime')
+            )?.options.SCANS_OPTIONS?.disabled ? (
+              <ul>
+                <Link to="/Scans">Scans</Link>
+              </ul>
+            ) : null}
           </li>
         </div>
 
