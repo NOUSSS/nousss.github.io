@@ -12,11 +12,16 @@
   .catalogue {
     .category {
       font-size: 50px;
+      text-shadow: black 0 0 10px;
+    }
+
+    div {
+      margin-bottom: 50px;
     }
 
     ul {
       width: 600px;
-      overflow-x: scroll;
+      overflow-x: auto;
       display: flex;
       flex-direction: row;
 
@@ -30,6 +35,7 @@
           width: 218px;
           height: 210px;
           background-color: hsla(240, 10%, 10%, 0.797);
+          box-shadow: black 0 0 10px;
           border-radius: 5px;
 
           .affiche {

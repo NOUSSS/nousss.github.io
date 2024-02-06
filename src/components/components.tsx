@@ -31,7 +31,7 @@ export function Title({
     <div className="title animeName">
       <h1>
         {accueil
-          ? 'Notre catalogue'
+          ? 'Le catalogue'
           : window.localStorage
               .getItem('anime')
               ?.replace('-', ' ')
@@ -53,10 +53,12 @@ export function Footer({ media = false }: { media?: boolean }) {
     <>
       {media ? (
         <p className="mark">
-          Les vidéos / scans ne sont pas hébergées sur nos serveurs.
+          Mugiwara-no Streaming n'héberge aucune vidéo sur son serveur.
+          Contactez directement la plateforme d'hébergement vidéo pour toutes
+          réclamations de droits relatifs aux contenus en question.
         </p>
       ) : null}
-      <footer>© 2022 Mugiwara-no Streaming - Tous droits réservés.</footer>
+      <footer>© 2024 Mugiwara-no Streaming - Tous droits réservés.</footer>
     </>
   );
 }
