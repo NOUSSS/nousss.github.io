@@ -4,6 +4,8 @@
 
     .catalogue {
       ul {
+        width: 424px;
+
         li {
           .card {
             width: 173px;
@@ -29,6 +31,10 @@
 @media (max-width: 430px) {
   .container--accueil {
     .catalogue {
+      ul {
+        width: 378px;
+      }
+
       .category {
         font-size: 30px;
       }

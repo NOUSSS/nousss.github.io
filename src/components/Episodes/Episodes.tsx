@@ -336,8 +336,9 @@ export default function Episodes() {
             allowFullScreen
           ></iframe>
         ) : (
-          <>
-            La video n'est pas disponible dans cette langue, cliquez{' '}
+          <p className="loading">
+            Si vous avez patientez pendant plus de 5 seecondes, alors la video
+            n'est pas disponible dans cette langue, cliquez{' '}
             <span
               onClick={() => {
                 const newLang = 'vostfr';
@@ -353,7 +354,7 @@ export default function Episodes() {
               ici
             </span>{' '}
             pour revenir en vostfr
-          </>
+          </p>
         )}
       </div>
 
