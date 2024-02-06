@@ -141,7 +141,7 @@ export default function Episodes() {
           if (isHorsSerie.hs.includes(indexEpisode - 1)) {
             retard++;
 
-            const title = `Episodes special ${retard}`;
+            const title = `E-SP${retard}`;
 
             listEpisodes.push(
               <p
@@ -203,7 +203,7 @@ export default function Episodes() {
 
         document.querySelectorAll('.list-episodes').forEach((e, i) => {
           if (i + 1 < Number(episode)) {
-            if (e.id.includes('Episodes special ')) retard++;
+            if (e.id.includes('E-SP')) retard++;
           }
         });
 
