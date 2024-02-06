@@ -32,8 +32,8 @@ export const SoloLeveling_OPTIONS = {
   } as ScansOptions,
 
   EPISODES_OPTIONS: {
-    SCRIPT_URL: (index: string | number) =>
-      `https://anime-sama.fr/catalogue/solo-leveling/saison${index}/vostfr/episodes.js`,
+    SCRIPT_URL: (index: string | number, lang: string) =>
+      `https://anime-sama.fr/catalogue/solo-leveling/saison${index}/${lang}/episodes.js`,
 
     horsSeries: [] as horsSeriesType[],
     allIndex: {

@@ -4,7 +4,6 @@ import './responsive.scss';
 import React, { useEffect, useState } from 'react';
 import { addScript } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
-import { Link } from 'react-router-dom';
 import { ANIMES_OPTIONS } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
@@ -30,6 +29,13 @@ export default function Episodes() {
     ].name,
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
+
+  if (!window.localStorage.getItem(`${currentAnime}--lang`))
+    window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
+
+  const [lang, setLang] = useState<string>(
+    window.localStorage.getItem(`${currentAnime}--lang`)!
+  );
 
   let scriptIndex = saison.index;
   let lecteurAS = 'epsAS';
@@ -86,19 +92,20 @@ export default function Episodes() {
       'title'
     )!.textContent = `${saison.name} - Mugiwara-no Streaming`;
 
-    setLoading(
-      <>
-        Si les épisodes ne se chargent pas, cliquez{' '}
-        <span
-          style={{ textDecoration: 'underline' }}
-          onClick={window.location.reload}
-        >
-          ici
-        </span>
-      </>
-    );
+    if (lang !== 'vf')
+      setLoading(
+        <>
+          Si les épisodes ne se chargent pas, cliquez{' '}
+          <span
+            style={{ textDecoration: 'underline' }}
+            onClick={window.location.reload}
+          >
+            ici
+          </span>
+        </>
+      );
 
-    addScript(SCRIPT_URL(scriptIndex)).then(() => {
+    addScript(SCRIPT_URL(scriptIndex, lang)).then(() => {
       lecteur = (window as windowKeys)[lecteurAS];
 
       setLoading('');
@@ -107,7 +114,25 @@ export default function Episodes() {
           <span>
             {saison.name} ({lecteur.length})
           </span>{' '}
-          [VOSTFR]
+          {'['}
+          <span
+            className="langChange"
+            onClick={() => {
+              const newLang =
+                window.localStorage.getItem(`${currentAnime}--lang`) ===
+                'vostfr'
+                  ? 'vf'
+                  : 'vostfr';
+
+              window.localStorage.setItem(`${currentAnime}--lang`, newLang);
+              setLang(newLang);
+            }}
+          >
+            {window.localStorage
+              .getItem(`${currentAnime}--lang`)!
+              .toUpperCase()}
+          </span>
+          {']'}
         </>
       );
 
@@ -259,7 +284,7 @@ export default function Episodes() {
         clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);
       }, 1000);
     });
-  }, [saison]);
+  }, [saison, lang]);
 
   useEffect(() => {
     const episode =
@@ -281,11 +306,9 @@ export default function Episodes() {
 
   return (
     <div className="container--episodes">
-      <Title />
+      <Title link />
 
-      <Link to="/Saisons">
-        <p className="titleSaison">{saisonTitle}</p>
-      </Link>
+      <p className="titleSaison">{saisonTitle}</p>
 
       <p className="loading">{loading}</p>
       <p className="episodeTitle">{episodeTitle}</p>
@@ -299,7 +322,9 @@ export default function Episodes() {
             src={video}
             allowFullScreen
           ></iframe>
-        ) : null}
+        ) : (
+          "La video n'est pas disponible dans cette langue."
+        )}
       </div>
 
       <label className="cinema">

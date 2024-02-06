@@ -4,27 +4,37 @@
   border-radius: 4px;
 
   .title {
-    font-size: 50px;
+    font-size: 90px;
+    height: auto;
+    margin: 50px;
   }
 
   .catalogue {
+    .category {
+      font-size: 50px;
+    }
+
     ul {
+      width: 600px;
+      overflow-x: scroll;
+      display: flex;
+      flex-direction: row;
+
       li {
         color: white;
-        display: inline-block;
         margin: 20px;
 
         cursor: pointer;
 
         .card {
-          width: 252px;
-          height: 238px;
+          width: 218px;
+          height: 210px;
           background-color: hsla(240, 10%, 10%, 0.797);
           border-radius: 5px;
 
           .affiche {
-            width: 252px;
-            height: 147px;
+            width: 217px;
+            height: 118px;
           }
 
           p {

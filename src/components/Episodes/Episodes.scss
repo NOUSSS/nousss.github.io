@@ -54,6 +54,15 @@ button,
   }
 }
 
+.langChange {
+  &:hover {
+    text-decoration: underline;
+  }
+
+  color: white;
+  cursor: pointer;
+}
+
 .select {
   color: #ffa300;
 

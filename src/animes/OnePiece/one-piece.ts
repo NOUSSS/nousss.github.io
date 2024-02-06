@@ -118,8 +118,8 @@ export const OnePiece_OPTIONS = {
   } as ScansOptions,
 
   EPISODES_OPTIONS: {
-    SCRIPT_URL: (index: string | number) =>
-      `https://anime-sama.fr/catalogue/one-piece/saison${index}/vostfr/episodes.js`,
+    SCRIPT_URL: (index: string | number, lang: string) =>
+      `https://anime-sama.fr/catalogue/one-piece/saison${index}/${lang}/episodes.js`,
 
     horsSeries: [
       {
