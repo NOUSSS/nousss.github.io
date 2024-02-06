@@ -31,7 +31,7 @@ export const ANIMES_OPTIONS = [
   {
     anime: 'mashle',
     options: Mashle_OPTIONS,
-    category: 'En cours',
+    category: 'En cours ...',
   },
   {
     anime: "L'attaque des titans",
