@@ -42,8 +42,9 @@ const Films = () => {
     addScript(SCRIPT_URL(lang)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
 
-      if (eps1.includes(BLACKLIST_URL))
-        eps1.splice(eps1.indexOf(BLACKLIST_URL), 1);
+      for (const BLACKLIST of BLACKLIST_URL) {
+        if (eps1.includes(BLACKLIST)) eps1.splice(eps1.indexOf(BLACKLIST), 1);
+      }
 
       appearVideo(
         lastFilm

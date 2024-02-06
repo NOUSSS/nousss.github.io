@@ -103,7 +103,7 @@ export const OnePiece_OPTIONS = {
   FILM_OPTIONS: {
     SCRIPT_URL: (langage: string) =>
       `https://anime-sama.fr/catalogue/one-piece/film/${langage}/episodes.js`,
-    BLACKLIST_URL: 'https://video.sibnet.ru/shell.php?videoid=4736710',
+    BLACKLIST_URL: ['https://video.sibnet.ru/shell.php?videoid=4736710'],
     names: films,
   } as FilmOptions,
 
@@ -146,5 +146,6 @@ export const OnePiece_OPTIONS = {
       11: 1088,
     } as allIndexType,
     names: episodes,
+    lecteur: 'epsAS',
   },
 };

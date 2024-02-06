@@ -76,5 +76,6 @@ export const AttaqueDesTitans_OPTIONS = {
       7: 88,
     } as allIndexType,
     names: [],
+    lecteur: 'epsAS',
   },
 };

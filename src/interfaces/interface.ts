@@ -22,7 +22,7 @@ export interface windowKeys {
 export interface FilmOptions {
   SCRIPT_URL: (langage: string) => string;
 
-  BLACKLIST_URL: string;
+  BLACKLIST_URL: string[];
   names: Film;
 }
 

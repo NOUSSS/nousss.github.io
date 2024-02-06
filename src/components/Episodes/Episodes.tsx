@@ -11,7 +11,7 @@ import { Footer, Title } from '../components';
 
 import searchImg from '../../assets/Search.svg';
 
-let lecteur: string[] = [];
+let LecteurEpisodes: string[] = [];
 
 export default function Episodes() {
   const currentAnime = window.localStorage.getItem('anime')!;
@@ -20,7 +20,9 @@ export default function Episodes() {
     ({ anime }) => anime === currentAnime
   )!.options;
 
-  const { allIndex, horsSeries, SCRIPT_URL, names } = options.EPISODES_OPTIONS;
+  let { allIndex, horsSeries, SCRIPT_URL, names, lecteur } =
+    options.EPISODES_OPTIONS;
+
   const { saisons } = options;
 
   const [saison, setSaison] = useState({
@@ -30,15 +32,17 @@ export default function Episodes() {
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
 
-  if (!window.localStorage.getItem(`${currentAnime}--lang`))
-    window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
+  if (!window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`))
+    window.localStorage.setItem(
+      `${currentAnime}--${saison.index}--lang`,
+      'vostfr'
+    );
 
   const [lang, setLang] = useState<string>(
-    window.localStorage.getItem(`${currentAnime}--lang`)!
+    window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`)!
   );
 
   let scriptIndex = saison.index;
-  let lecteurAS = 'epsAS';
 
   if (currentAnime == "L'attaque des titans") {
     if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) > 4) {
@@ -47,7 +51,7 @@ export default function Episodes() {
       }`;
     }
     if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) >= 4) {
-      lecteurAS = 'eps2';
+      lecteur = 'eps2';
     }
   }
 
@@ -106,30 +110,34 @@ export default function Episodes() {
       );
 
     addScript(SCRIPT_URL(scriptIndex, lang)).then(() => {
-      lecteur = (window as windowKeys)[lecteurAS];
+      LecteurEpisodes = (window as windowKeys)[lecteur];
 
       setLoading('');
       setSaisonTitle(
         <>
           <span>
-            {saison.name} ({lecteur.length})
+            {saison.name} ({LecteurEpisodes.length})
           </span>{' '}
           {'['}
           <span
             className="langChange"
             onClick={() => {
               const newLang =
-                window.localStorage.getItem(`${currentAnime}--lang`) ===
-                'vostfr'
+                window.localStorage.getItem(
+                  `${currentAnime}--${saison.index}--lang`
+                ) === 'vostfr'
                   ? 'vf'
                   : 'vostfr';
 
-              window.localStorage.setItem(`${currentAnime}--lang`, newLang);
+              window.localStorage.setItem(
+                `${currentAnime}--${saison.index}--lang`,
+                newLang
+              );
               setLang(newLang);
             }}
           >
             {window.localStorage
-              .getItem(`${currentAnime}--lang`)!
+              .getItem(`${currentAnime}--${saison.index}--lang`)!
               .toUpperCase()}
           </span>
           {']'}
@@ -154,7 +162,7 @@ export default function Episodes() {
 
       for (
         let indexEpisode = 1;
-        indexEpisode < lecteur.length + 1;
+        indexEpisode < LecteurEpisodes.length + 1;
         indexEpisode++
       ) {
         const isHorsSerie = horsSeries.find(
@@ -222,7 +230,7 @@ export default function Episodes() {
       setEpisodes(listEpisodes);
 
       if (episode !== '1' && !esp) {
-        const URL_EPISODE = lecteur[Number(episode) - 1];
+        const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
         let retard = 0;
 
@@ -253,7 +261,7 @@ export default function Episodes() {
       }
 
       if (episode !== '1' && esp) {
-        const URL_EPISODE = lecteur[Number(episode) - 1];
+        const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
         setVideo(URL_EPISODE);
 
@@ -262,7 +270,7 @@ export default function Episodes() {
       }
 
       if (episode === '1') {
-        const [firstEpisode] = lecteur;
+        const [firstEpisode] = LecteurEpisodes;
 
         const title =
           names.find(({ index }) => index === String(Number(episodeIndex) + 1))
@@ -281,7 +289,12 @@ export default function Episodes() {
       }
 
       setTimeout(() => {
-        clickEvents(lecteur, setVideo, setEpisodeTitle, setDownloadText);
+        clickEvents(
+          LecteurEpisodes,
+          setVideo,
+          setEpisodeTitle,
+          setDownloadText
+        );
       }, 1000);
     });
   }, [saison, lang]);
@@ -299,7 +312,7 @@ export default function Episodes() {
     if (!episode || episode === '1') PrevEpisodeSelector.style.display = 'none';
     else PrevEpisodeSelector.style.display = '';
 
-    if (Number(episode) === lecteur.length)
+    if (Number(episode) === LecteurEpisodes.length)
       NextEpisodeSelector.style.display = 'none';
     else NextEpisodeSelector.style.display = '';
   }, [video]);
@@ -323,7 +336,24 @@ export default function Episodes() {
             allowFullScreen
           ></iframe>
         ) : (
-          "La video n'est pas disponible dans cette langue."
+          <>
+            La video n'est pas disponible dans cette langue, cliquez{' '}
+            <span
+              onClick={() => {
+                const newLang = 'vostfr';
+
+                window.localStorage.setItem(
+                  `${currentAnime}--${saison.index}--lang`,
+                  newLang
+                );
+
+                setLang(newLang);
+              }}
+            >
+              ici
+            </span>{' '}
+            pour revenir en vostfr
+          </>
         )}
       </div>
 

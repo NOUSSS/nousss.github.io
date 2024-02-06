@@ -12,7 +12,6 @@ const Accueil = () => {
   );
 
   const catalogues = groupAnimesByCategory(animes);
-  console.log(catalogues);
 
   return (
     <div className="container--accueil">
@@ -21,7 +20,9 @@ const Accueil = () => {
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
           <div className={category} key={category}>
-            <p className="category">{category}</p>
+            <p style={{ color: '#65adff' }} className="category">
+              {category}
+            </p>
 
             <ul key={category}>
               {names.map((e) => (

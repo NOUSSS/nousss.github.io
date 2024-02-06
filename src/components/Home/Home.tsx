@@ -114,9 +114,9 @@ const Home = () => {
                 <br />
               </Link>
             </ul>
-            {!ANIMES_OPTIONS.find(
+            {ANIMES_OPTIONS.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
-            )?.options.SCANS_OPTIONS?.disabled ? (
+            )?.options.SCANS_OPTIONS.IMAGE_URL ? (
               <ul>
                 <Link to="/Scans">Scans</Link>
               </ul>

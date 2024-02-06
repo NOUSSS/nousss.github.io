@@ -1,5 +1,6 @@
 import { HunterXHunter_OPTIONS } from '../animes/HunterXHunter/hunter-x-hunter';
 import { JujutsuKaisen_OPTIONS } from '../animes/JujutsuKaisen/jujutsu-kaisen';
+import { KurokoBasket_OPTIONS } from '../animes/KurokoBasket/kuroko-basket';
 import { Mashle_OPTIONS } from '../animes/Mashle/mashle';
 import { OnePiece_OPTIONS } from '../animes/OnePiece/one-piece';
 import { SoloLeveling_OPTIONS } from '../animes/SoloLeveling/solo-leveling';
@@ -10,7 +11,12 @@ export const ANIMES_OPTIONS = [
   {
     anime: 'solo-leveling',
     options: SoloLeveling_OPTIONS,
-    category: 'En cours',
+    category: 'En cours ...',
+  },
+  {
+    anime: 'Kuroko Basket',
+    category: 'Sport',
+    options: KurokoBasket_OPTIONS,
   },
   {
     anime: 'jujutsu-kaisen',

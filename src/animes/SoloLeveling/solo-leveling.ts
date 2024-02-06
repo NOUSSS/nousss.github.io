@@ -40,5 +40,6 @@ export const SoloLeveling_OPTIONS = {
       1: 0,
     } as allIndexType,
     names: episodes,
+    lecteur: 'epsAS',
   },
 };

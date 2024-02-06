@@ -49,5 +49,6 @@ export const Mashle_OPTIONS = {
       2: 12,
     } as allIndexType,
     names: [],
+    lecteur: 'epsAS',
   },
 };
