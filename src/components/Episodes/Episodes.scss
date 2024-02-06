@@ -46,11 +46,20 @@ button,
 
   &:hover {
     color: #ffa300;
+
+    span {
+      transition: color 150ms ease-out;
+      color: white;
+    }
   }
 }
 
 .select {
   color: #ffa300;
+
+  span {
+    color: white;
+  }
 }
 
 .NextSaison,

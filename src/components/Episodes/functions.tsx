@@ -37,7 +37,9 @@ export function Change(
 
       setVideo(url);
 
-      setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
+      setEpisodeTitle(
+        <span className="episodeNumber">Episode Special{esp}</span>
+      );
 
       window.localStorage.setItem(
         `${currentAnime}--episode`,
@@ -45,14 +47,14 @@ export function Change(
       );
       window.localStorage.setItem(
         `${currentAnime}--episodeSpecial`,
-        `E-SP${esp}`
+        `Episode Special${esp}`
       );
     } else {
       let retard = 0;
 
       document.querySelectorAll('.list-episodes').forEach((e, i) => {
         if (i + 1 < Number(indexEpisode)) {
-          if (e.id.includes('E-SP')) retard++;
+          if (e.id.includes('Episode Special')) retard++;
         }
       });
 

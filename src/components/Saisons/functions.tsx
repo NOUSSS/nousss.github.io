@@ -7,6 +7,10 @@ export function getSaisons() {
     ({ anime }) => anime === currentAnime
   )!.options;
 
+  const lastEpisode =
+    options.EPISODES_OPTIONS.names[options.EPISODES_OPTIONS.names.length - 1]
+      ?.index || '?';
+
   const { allIndex } = options.EPISODES_OPTIONS;
   const { saisons } = options;
 
@@ -14,7 +18,7 @@ export function getSaisons() {
 
   for (let i: number = 1; i < Object.keys(saisons).length + 1; i++) {
     const intervalEpisodes = `${allIndex[i] + 1} - ${
-      i < Object.keys(saisons).length ? allIndex[i + 1] : '?'
+      i < Object.keys(saisons).length ? allIndex[i + 1] : lastEpisode
     }`;
 
     saisonsList.push({

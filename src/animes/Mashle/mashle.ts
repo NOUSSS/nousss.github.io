@@ -5,7 +5,7 @@ import {
   allIndexType,
   horsSeriesType,
 } from '../../interfaces/interface';
-import { getImage } from './constants/images';
+import { getImage } from './constants/images-saisons';
 
 import Affiche from '../../assets/Animes/Mashle/Affiche.jpeg';
 

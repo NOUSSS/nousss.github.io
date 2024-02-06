@@ -31,6 +31,20 @@ export default function Episodes() {
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
 
+  let scriptIndex = saison.index;
+  let lecteurAS = 'epsAS';
+
+  if (currentAnime == "L'attaque des titans") {
+    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) > 4) {
+      scriptIndex = `4-${
+        Number(window.localStorage.getItem(`${currentAnime}--saison`)) - 3
+      }`;
+    }
+    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) >= 4) {
+      lecteurAS = 'eps2';
+    }
+  }
+
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
   const [video, setVideo] = useState<string>('');
@@ -84,8 +98,8 @@ export default function Episodes() {
       </>
     );
 
-    addScript(SCRIPT_URL(saison.index)).then(() => {
-      lecteur = (window as windowKeys)['epsAS'];
+    addScript(SCRIPT_URL(scriptIndex)).then(() => {
+      lecteur = (window as windowKeys)[lecteurAS];
 
       setLoading('');
       setSaisonTitle(
