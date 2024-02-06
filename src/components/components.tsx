@@ -28,23 +28,25 @@ export function Title({
       </Link>
     </div>
   ) : (
-    <div className="title animeName">
-      <h1>
-        {accueil
-          ? 'Le catalogue'
-          : window.localStorage
-              .getItem('anime')
-              ?.replace('-', ' ')
-              .replace('-', ' ')
-              .split(' ')
-              .map((word) => {
-                return (
-                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                );
-              })
-              .join(' ')}
-      </h1>
-    </div>
+    <Link to="/home">
+      <div className="title animeName">
+        <h1>
+          {accueil
+            ? 'Le catalogue'
+            : window.localStorage
+                .getItem('anime')
+                ?.replace('-', ' ')
+                .replace('-', ' ')
+                .split(' ')
+                .map((word) => {
+                  return (
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                  );
+                })
+                .join(' ')}
+        </h1>
+      </div>
+    </Link>
   );
 }
 

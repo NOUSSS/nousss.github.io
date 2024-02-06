@@ -1,3 +1,4 @@
+import { BlackClover_OPTIONS } from '../animes/BlackClover/black-clover';
 import { HunterXHunter_OPTIONS } from '../animes/HunterXHunter/hunter-x-hunter';
 import { JujutsuKaisen_OPTIONS } from '../animes/JujutsuKaisen/jujutsu-kaisen';
 import { KurokoBasket_OPTIONS } from '../animes/KurokoBasket/kuroko-basket';
@@ -21,8 +22,9 @@ export const ANIMES_OPTIONS = [
   {
     anime: 'jujutsu-kaisen',
     options: JujutsuKaisen_OPTIONS,
-    category: 'À voir',
+    category: 'Magie',
   },
+  { anime: 'black-clover', options: BlackClover_OPTIONS, category: 'Magie' },
   {
     anime: 'hunter-x-hunter',
     options: HunterXHunter_OPTIONS,
