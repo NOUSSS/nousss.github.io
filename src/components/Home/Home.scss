@@ -1,13 +1,14 @@
 .container--home {
   .card {
     width: 500px;
-    height: 770px;
+    height: auto;
     background-color: hsl(231, 10%, 14%);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 7px;
     margin-top: 20%;
     opacity: 0.9;
     transition: all 1s;
+    margin-bottom: 50px;
 
     .choices {
       font-size: 50px;
