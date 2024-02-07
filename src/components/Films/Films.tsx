@@ -94,8 +94,8 @@ const Films = () => {
 
       <div className="film">{title}</div>
       <p id="note">
-        Pour changer de langage cliquez sur la langue entre crochet juste en
-        haut
+        Pour changer de langage cliquez sur la langue entre crochet et patientez
+        juste en haut
       </p>
 
       <div className="video--films">{video}</div>
