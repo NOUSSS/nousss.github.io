@@ -22,7 +22,7 @@ export const ANIMES_OPTIONS = [
     options: VinlandSaga_OPTIONS,
     category: 'Guerre',
     synopsis:
-      "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué son Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
+      "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
   {
     anime: 'one-piece',

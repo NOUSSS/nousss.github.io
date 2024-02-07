@@ -3,11 +3,11 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 4px;
   margin-bottom: 200px;
+  width: calc(100vw - 50px);
 
   .title {
     font-size: 90px;
     height: auto;
-    margin: 50px;
   }
 
   .search--output--accueil {
@@ -19,9 +19,11 @@
     .category {
       font-size: 50px;
       text-shadow: black 0 0 10px;
-      color: #65adff;
+      color: orange;
       text-align: left;
+      font-family: 'Kanit';
       margin-left: 5px;
+      border-top: 1px solid grey;
     }
 
     ul {
@@ -37,15 +39,15 @@
         cursor: pointer;
 
         .card {
-          width: 218px;
-          height: 210px;
+          width: 172px;
+          height: 194px;
           background-color: hsla(240, 10%, 10%, 0.797);
           box-shadow: black 0 0 10px;
           border-radius: 5px;
 
           .affiche {
-            width: 217px;
-            height: 118px;
+            width: 172px;
+            height: 95px;
           }
 
           p {
@@ -58,7 +60,7 @@
         transition: transform 150ms ease-out;
 
         &:hover {
-          transform: scale(1.05);
+          transform: scale(0.95);
         }
       }
     }
