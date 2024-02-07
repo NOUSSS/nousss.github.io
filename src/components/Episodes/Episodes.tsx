@@ -59,7 +59,6 @@ export default function Episodes() {
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
   const [video, setVideo] = useState<string>('');
 
-  const [loading, setLoading] = useState<React.ReactNode>('');
   const [output, setOutput] = useState<React.ReactNode>('');
   const [textDownload, setDownloadText] = useState<React.ReactNode>('');
 
@@ -96,23 +95,9 @@ export default function Episodes() {
       'title'
     )!.textContent = `${saison.name} - Mugiwara-no Streaming`;
 
-    if (lang !== 'vf')
-      setLoading(
-        <>
-          Si les épisodes ne se chargent pas, cliquez{' '}
-          <span
-            style={{ textDecoration: 'underline' }}
-            onClick={() => window.location.reload()}
-          >
-            ici
-          </span>
-        </>
-      );
-
     addScript(SCRIPT_URL(scriptIndex, lang)).then(() => {
       LecteurEpisodes = (window as windowKeys)[lecteur];
 
-      setLoading('');
       setSaisonTitle(
         <>
           <span>
@@ -327,7 +312,6 @@ export default function Episodes() {
         juste en haut
       </p>
 
-      <p className="loading">{loading}</p>
       <p className="episodeTitle">{episodeTitle}</p>
 
       <div className="episodeVideo">
