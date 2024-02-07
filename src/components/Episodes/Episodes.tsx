@@ -308,8 +308,8 @@ export default function Episodes() {
 
       <p className="titleSaison">{saisonTitle}</p>
       <p id="note">
-        Pour changer de langage cliquez sur la langue entre crochet et patientez
-        juste en haut
+        Pour changer de langage cliquez sur la langue entre crochet juste en
+        haut et patientez
       </p>
 
       <p className="episodeTitle">{episodeTitle}</p>
@@ -325,7 +325,7 @@ export default function Episodes() {
           ></iframe>
         ) : (
           <p className="loading">
-            Si vous avez patientez pendant plus de 5 seecondes, alors la video
+            Si vous avez patientez pendant plus de 5 secondes, alors la video
             n'est pas disponible dans cette langue, cliquez{' '}
             <span
               onClick={() => {
