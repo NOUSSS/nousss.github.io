@@ -10,8 +10,8 @@ export function isIOS(): boolean {
   return false;
 }
 
-export const getURLFilm = (index: number): string => {
-  return (window as { [key: string]: any })['eps1'][index];
+export const getURLFilm = (index: number, lecteur: string): string => {
+  return (window as { [key: string]: any })[lecteur][index];
 };
 
 export const toUpper = (param: string): string =>

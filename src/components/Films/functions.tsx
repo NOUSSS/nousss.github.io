@@ -7,7 +7,9 @@ export async function appearVideo(
 
   setTips: React.Dispatch<React.SetStateAction<React.ReactNode>>,
   setVideo: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+
+  lecteur: string
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
@@ -66,7 +68,7 @@ export async function appearVideo(
       <>
         Pour télécharger le film, cliquez{' '}
         <span>
-          <a target="_blank" href={getURLFilm(Number(index))}>
+          <a target="_blank" href={getURLFilm(Number(index), lecteur)}>
             ici
           </a>
         </span>
@@ -78,7 +80,7 @@ export async function appearVideo(
       <>
         Pour télécharger le film, cliquez{' '}
         <span>
-          <a target="_blank" href={getURLFilm(Number(index))}>
+          <a target="_blank" href={getURLFilm(Number(index), lecteur)}>
             ici
           </a>
         </span>{' '}
@@ -98,7 +100,7 @@ export function changeLangage(lang: string, setLang: any): void {
   setLang(lang);
 }
 
-export function getFilms(setFilmsFront: any) {
+export function getFilms(setFilmsFront: any, lecteur: string) {
   const currentAnime = window.localStorage.getItem('anime');
   const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
     .options.FILM_OPTIONS;
@@ -106,7 +108,7 @@ export function getFilms(setFilmsFront: any) {
   const filmsNodes: React.ReactNode[] = [];
 
   for (let i = 0; i < Object.keys(names).length; i++) {
-    const url = getURLFilm(i);
+    const url = getURLFilm(i, lecteur);
     const id = `${names[i].name}|${names[i].aliases?.join(', ')}`;
 
     filmsNodes.push(

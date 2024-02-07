@@ -24,6 +24,7 @@ export interface FilmOptions {
 
   BLACKLIST_URL: string[];
   names: Film;
+  lecteur?: string;
 }
 
 export interface ScansOptions {

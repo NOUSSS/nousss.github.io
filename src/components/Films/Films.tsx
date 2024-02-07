@@ -16,9 +16,11 @@ import { ANIMES_OPTIONS } from '../constants.ts';
 const Films = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const { BLACKLIST_URL, SCRIPT_URL } = ANIMES_OPTIONS.find(
+  const { BLACKLIST_URL, SCRIPT_URL, lecteur } = ANIMES_OPTIONS.find(
     ({ anime }) => anime === currentAnime
   )!.options.FILM_OPTIONS;
+
+  let lecteurString: string;
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [tips, setTips] = useState<React.ReactNode>();
@@ -40,26 +42,29 @@ const Films = () => {
       window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
     addScript(SCRIPT_URL(lang)).then(() => {
-      const eps1 = (window as windowKeys)['eps1'];
+      lecteurString = lecteur ? lecteur : 'eps1';
+      const films_url = (window as windowKeys)[lecteurString];
 
       if (BLACKLIST_URL) {
         for (const BLACKLIST of BLACKLIST_URL) {
-          if (eps1.includes(BLACKLIST)) eps1.splice(eps1.indexOf(BLACKLIST), 1);
+          if (films_url.includes(BLACKLIST))
+            films_url.splice(films_url.indexOf(BLACKLIST), 1);
         }
       }
 
       appearVideo(
         lastFilm
-          ? `${getURLFilm(Number(lastFilm))} ${Number(lastFilm)}`
-          : `${getURLFilm(0)} ${
+          ? `${getURLFilm(Number(lastFilm), lecteurString)} ${Number(lastFilm)}`
+          : `${getURLFilm(0, lecteurString)} ${
               window.localStorage.getItem(`${currentAnime}--currentFilm`) ?? '0'
             }`,
         setTips,
         setVideo,
-        setTitle
+        setTitle,
+        lecteurString
       );
 
-      getFilms(setFilmsFront);
+      getFilms(setFilmsFront, lecteurString);
 
       setTimeout(() => {
         const langButton = document.querySelectorAll('.langage');
@@ -78,7 +83,7 @@ const Films = () => {
 
     Array.from([...poster]).map((_, i) => {
       poster[i].addEventListener('click', () => {
-        appearVideo(poster[i].id, setTips, setVideo, setTitle);
+        appearVideo(poster[i].id, setTips, setVideo, setTitle, lecteurString);
       });
     });
   }, 1000);
