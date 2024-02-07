@@ -36,13 +36,13 @@ export function Change(
       downloadText(url, setDownloadText);
 
       setVideo(url);
-
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
       window.localStorage.setItem(
         `${currentAnime}--episode`,
         String(indexEpisode)
       );
+
       window.localStorage.setItem(
         `${currentAnime}--episodeSpecial`,
         `E-SP${esp}`
@@ -70,7 +70,6 @@ export function Change(
       downloadText(url, setDownloadText);
 
       setVideo(url);
-
       setEpisodeTitle(
         <>
           <span className="episodeNumber">{numberEpisode}</span> : {title}
