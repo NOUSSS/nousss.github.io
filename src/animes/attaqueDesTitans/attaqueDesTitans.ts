@@ -9,6 +9,7 @@ import { getImage } from './constants/image-saisons';
 import { Season } from '../../interfaces/interface';
 
 import Affiche from '../../assets/Animes/AttaqueDesTitans/Affiche.jpg';
+import episodesNames from './constants/episodes-names';
 
 export const AttaqueDesTitans_OPTIONS = {
   affiche: Affiche,
@@ -75,7 +76,7 @@ export const AttaqueDesTitans_OPTIONS = {
       6: 87,
       7: 88,
     } as allIndexType,
-    names: [],
+    names: episodesNames,
     lecteur: 'epsAS',
   },
 };
