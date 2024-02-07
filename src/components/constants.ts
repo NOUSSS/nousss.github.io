@@ -6,6 +6,7 @@ import { Mashle_OPTIONS } from '../animes/Mashle/mashle';
 import { MyHeroAcademia_OPTIONS } from '../animes/MyHeroAcademia/my-hero-academia';
 import { OnePiece_OPTIONS } from '../animes/OnePiece/one-piece';
 import { SoloLeveling_OPTIONS } from '../animes/SoloLeveling/solo-leveling';
+import { VinlandSaga_OPTIONS } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans_OPTIONS } from '../animes/attaqueDesTitans/attaqueDesTitans';
 
 export const ANIMES_OPTIONS = [
@@ -15,6 +16,13 @@ export const ANIMES_OPTIONS = [
     category: 'New gen',
     synopsis:
       'Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d\'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.',
+  },
+  {
+    anime: 'vinland-saga',
+    options: VinlandSaga_OPTIONS,
+    category: 'Guerre',
+    synopsis:
+      "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué son Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
   {
     anime: 'one-piece',

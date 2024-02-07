@@ -102,7 +102,7 @@ export default function Episodes() {
           Si les épisodes ne se chargent pas, cliquez{' '}
           <span
             style={{ textDecoration: 'underline' }}
-            onClick={window.location.reload}
+            onClick={() => window.location.reload()}
           >
             ici
           </span>
