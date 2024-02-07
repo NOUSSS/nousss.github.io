@@ -10,6 +10,7 @@ import { Season } from '../../interfaces/interface';
 import { films } from './constants/films-names';
 
 import Affiche from '../../assets/Animes/JujutsuKaisen/Affiche.jpeg';
+import episodesNames from './constants/episodes-names';
 
 export const JujutsuKaisen_OPTIONS = {
   affiche: Affiche,
@@ -48,9 +49,9 @@ export const JujutsuKaisen_OPTIONS = {
 
     allIndex: {
       1: 0,
-      2: 23,
+      2: 24,
     } as allIndexType,
-    names: [],
+    names: episodesNames,
     lecteur: 'epsAS',
   },
 };
