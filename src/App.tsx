@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Link, useRoutes } from 'react-router-dom';
 
-import Home from './components/Home/Home';
-import Films from './components/Films/Films';
-import Saisons from './components/Saisons/Saisons';
-import Episodes from './components/Episodes/Episodes';
-import Scans from './components/Scans/scans';
-import Accueil from './components/Accueil/accueil';
+const Home = lazy(() => import('./components/Home/Home'));
+const Films = lazy(() => import('./components/Films/Films'));
+const Saisons = lazy(() => import('./components/Saisons/Saisons'));
+const Episodes = lazy(() => import('./components/Episodes/Episodes'));
+const Scans = lazy(() => import('./components/Scans/scans'));
+const Accueil = lazy(() => import('./components/Accueil/accueil'));
 
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
@@ -42,7 +42,9 @@ const AppRoutes = () => {
     },
   ];
 
-  return useRoutes(pages);
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>{useRoutes(pages)}</Suspense>
+  );
 };
 
 const App = () => {

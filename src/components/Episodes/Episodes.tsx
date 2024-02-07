@@ -369,7 +369,7 @@ export default function Episodes() {
         <img src={searchImg} alt="" />
         <input
           type="text"
-          placeholder="1015 ?"
+          placeholder="Episode ?"
           onInput={() =>
             initSearchBar(
               document.querySelector('.label--episodes input')!,

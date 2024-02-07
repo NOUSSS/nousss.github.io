@@ -1,18 +1,28 @@
 @import './reset.scss';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto:wght@300&display=swap');
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: #1d1e20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 
-body::-webkit-scrollbar {
-  width: 16px;
-  background-color: cyan;
-}
+  &::-webkit-scrollbar {
+    width: 16px;
+    background-color: cyan;
+  }
 
-body::-webkit-scrollbar-track {
-  background: #ffa300;
-}
+  &::-webkit-scrollbar-track {
+    background: #ffa300;
+  }
 
-body::-webkit-scrollbar-thumb {
-  background-color: cyan;
-  border-radius: 20px;
-  border: 3px solid #ffa300;
+  &::-webkit-scrollbar-thumb {
+    background-color: cyan;
+    border-radius: 20px;
+    border: 3px solid #ffa300;
+  }
 }
 
 h1,
@@ -22,6 +32,10 @@ p {
 
 span {
   color: #ffa300;
+}
+
+.title {
+  font-size: 65px;
 }
 
 .background {
