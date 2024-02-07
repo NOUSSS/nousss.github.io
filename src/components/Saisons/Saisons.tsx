@@ -43,7 +43,7 @@ const Saisons = () => {
 
   return (
     <div className="container--saisons">
-      <Title />
+      <Title link="Home" />
 
       <p
         style={{

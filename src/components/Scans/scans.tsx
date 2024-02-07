@@ -98,7 +98,7 @@ const Scans = () => {
 
   return (
     <div className="container--scans">
-      <Title />
+      <Title link="Home" />
 
       <select name="chapitres" className="chapitres" onChange={onChangeSelect}>
         {chapitresOptions.map((option, index) => (

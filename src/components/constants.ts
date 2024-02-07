@@ -1,4 +1,5 @@
 import { BlackClover_OPTIONS } from '../animes/BlackClover/black-clover';
+import { DragonBallSuper_OPTIONS } from '../animes/DragonBallSuper/DragonBallSuper';
 import { HunterXHunter_OPTIONS } from '../animes/HunterXHunter/hunter-x-hunter';
 import { JujutsuKaisen_OPTIONS } from '../animes/JujutsuKaisen/jujutsu-kaisen';
 import { KurokoBasket_OPTIONS } from '../animes/KurokoBasket/kuroko-basket';
@@ -10,6 +11,13 @@ import { VinlandSaga_OPTIONS } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans_OPTIONS } from '../animes/attaqueDesTitans/attaqueDesTitans';
 
 export const ANIMES_OPTIONS = [
+  {
+    anime: 'Dragon Ball Super',
+    options: DragonBallSuper_OPTIONS,
+    category: 'Classique',
+    synopsis:
+      'Au début de l’histoire, le monde semble paisible et tout le monde vit librement, mais tout cela ne dure pas longtemps. Un nouvel ennemi a commencé à se cacher et l’entité « Destructeur » appelée le Dieu de la Destruction s’est réveillée de son sommeil. Tout cela a eu un très grand impact sur la terre, tout le monde a commencé à se préparer à une catastrophe encore plus grande. ',
+  },
   {
     anime: 'my-hero-academia',
     options: MyHeroAcademia_OPTIONS,

@@ -304,7 +304,7 @@ export default function Episodes() {
 
   return (
     <div className="container--episodes">
-      <Title link />
+      <Title link="Saisons" />
 
       <p className="titleSaison">{saisonTitle}</p>
       <p id="note">

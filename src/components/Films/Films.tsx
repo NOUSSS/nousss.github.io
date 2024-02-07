@@ -90,7 +90,7 @@ const Films = () => {
 
   return (
     <div className="container--films">
-      <Title />
+      <Title link="Home" />
 
       <div className="film">{title}</div>
       <p id="note">

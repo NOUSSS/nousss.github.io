@@ -148,3 +148,40 @@ footer {
   user-select: none;
   cursor: default;
 }
+
+button,
+.NextSaison,
+.PrevSaison {
+  position: relative;
+  top: -20px;
+  left: 0;
+  right: 0;
+
+  width: 89px;
+  height: 47px;
+
+  font-size: 14px;
+  margin: 17px;
+  transition: all 300ms;
+}
+
+.NextSaison,
+.PrevSaison {
+  margin-top: 64px;
+}
+
+.nextButton,
+.NextSaison {
+  &:hover {
+    position: relative;
+    left: 8px;
+  }
+}
+
+.prevButton,
+.PrevSaison {
+  &:hover {
+    position: relative;
+    left: -8px;
+  }
+}
