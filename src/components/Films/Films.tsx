@@ -42,8 +42,10 @@ const Films = () => {
     addScript(SCRIPT_URL(lang)).then(() => {
       const eps1 = (window as windowKeys)['eps1'];
 
-      for (const BLACKLIST of BLACKLIST_URL) {
-        if (eps1.includes(BLACKLIST)) eps1.splice(eps1.indexOf(BLACKLIST), 1);
+      if (BLACKLIST_URL) {
+        for (const BLACKLIST of BLACKLIST_URL) {
+          if (eps1.includes(BLACKLIST)) eps1.splice(eps1.indexOf(BLACKLIST), 1);
+        }
       }
 
       appearVideo(
@@ -98,7 +100,7 @@ const Films = () => {
         <img src={searchImg} alt="" />
         <input
           type="text"
-          placeholder="Red ?"
+          placeholder="Le film ?"
           onInput={() =>
             initSearchBar(
               document.querySelector('input')!,
