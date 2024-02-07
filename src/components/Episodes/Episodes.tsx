@@ -322,6 +322,10 @@ export default function Episodes() {
       <Title link />
 
       <p className="titleSaison">{saisonTitle}</p>
+      <p id="note">
+        Pour changer de langage cliquez sur la langue entre crochet juste en
+        haut
+      </p>
 
       <p className="loading">{loading}</p>
       <p className="episodeTitle">{episodeTitle}</p>
