@@ -19,16 +19,9 @@ export const toUpper = (param: string): string =>
 
 export function addScript(url: string): Promise<boolean> {
   return new Promise(async (resolve) => {
-    const lastScript = document.querySelector('#Anime-Sama_script');
-
-    if (lastScript) {
-      document.head.removeChild(lastScript);
-    }
-
     const script = document.createElement('script');
 
     script.className = 'script';
-    script.id = 'Anime-Sama_script';
 
     script.setAttribute('src', url);
 
