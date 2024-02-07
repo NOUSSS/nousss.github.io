@@ -10,6 +10,7 @@ import { Season } from '../../interfaces/interface';
 
 import Affiche from '../../assets/Animes/DragonBallSuper/Affiche.jpg';
 import { films } from './constants/films-names';
+import episodesNames from './constants/episodes-names';
 
 export const DragonBallSuper_OPTIONS = {
   affiche: Affiche,
@@ -44,7 +45,7 @@ export const DragonBallSuper_OPTIONS = {
     allIndex: {
       1: 0,
     } as allIndexType,
-    names: [],
+    names: episodesNames,
     lecteur: 'epsAS',
   },
 };
