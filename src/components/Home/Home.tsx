@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { isIOS } from '../../functions/main';
-import { citation } from './citations';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
 import { Footer } from '../components';
@@ -10,18 +9,25 @@ import './Home.scss';
 import { ANIMES_OPTIONS } from '../constants';
 
 const Home = () => {
-  const [text] = useState<string>('');
-  const interval = useRef<NodeJS.Timeout | null>(null);
+  /* const [text] = useState<string>('');
+  const interval = useRef<NodeJS.Timeout | null>(null); */
+
+  const currentAnime = window.localStorage.getItem('anime');
+  const { synopsis } = ANIMES_OPTIONS.find(
+    ({ anime }) => anime === currentAnime
+  )!;
 
   useEffect(() => {
-    setCitation();
+    /* setCitation(); */
 
     if (isIOS()) {
       setTimeout(() => window.scrollTo({ top: 500, behavior: 'smooth' }), 1000);
     }
 
-    return () => clearInterval(interval.current!);
+    /* return () => clearInterval(interval.current!); */
   }, []);
+
+  /*
 
   function setTextWithFade(text: string, citations: HTMLElement | null) {
     if (!citations) return;
@@ -71,6 +77,7 @@ const Home = () => {
       change(res);
     }, 10000);
   }
+  */
 
   return (
     <div className="container--home">
@@ -92,9 +99,11 @@ const Home = () => {
           </h1>
         </div>
 
-        <div className="citation" onClick={changeCitation}>
+        {/* <div className="citation" onClick={changeCitation}>
           {text && <p dangerouslySetInnerHTML={{ __html: text }} />}
-        </div>
+        </div> */}
+
+        <div className="synopsis">{synopsis}</div>
 
         <div className="choices">
           <li>
