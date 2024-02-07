@@ -11,14 +11,14 @@ import {
 
 import { addScript } from '../../functions/main.ts';
 import { ANIMES_OPTIONS } from '../constants.ts';
-import { Footer, Title } from '../components';
+import { Footer, Title } from '../components.tsx';
 
 import uparrow from '../../assets/uparrow.png';
 
 const Scans = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const { SCRIPT_URL, CHAPITRE_SPECIAUX } = ANIMES_OPTIONS.find(
+  let { SCRIPT_URL, CHAPITRE_SPECIAUX, from } = ANIMES_OPTIONS.find(
     ({ anime }) => anime === currentAnime
   )!.options.SCANS_OPTIONS;
 
@@ -32,16 +32,19 @@ const Scans = () => {
   useEffect(() => {
     addScript(SCRIPT_URL).then(() => {
       let retard = 0;
+      if (typeof from === 'undefined') from = 1;
 
       const options: string[] = [];
 
+      console.log(from);
+
       for (let i = 0; i < getTailleChapitres(); i++) {
-        if (CHAPITRE_SPECIAUX.includes(i)) {
+        if (CHAPITRE_SPECIAUX?.includes(i)) {
           options.push(`Chapitre ONE SHOT`);
 
           retard++;
         } else {
-          options.push(`Chapitre ${i + 1 - retard}`);
+          options.push(`Chapitre ${i + Number(from) - retard}`);
         }
       }
 

@@ -10,7 +10,7 @@ import { addScript } from '../../functions/main.ts';
 import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
 import { windowKeys } from '../../interfaces/interface.ts';
-import { Footer, Title } from '../components';
+import { Footer, Title } from '../components.tsx';
 import { ANIMES_OPTIONS } from '../constants.ts';
 
 const Films = () => {

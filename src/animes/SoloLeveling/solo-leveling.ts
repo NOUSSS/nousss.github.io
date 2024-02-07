@@ -23,6 +23,7 @@ export const SoloLeveling_OPTIONS = {
   FILM_OPTIONS: {} as FilmOptions,
 
   SCANS_OPTIONS: {
+    from: 0,
     SCRIPT_URL:
       'https://anime-sama.fr/catalogue/solo-leveling/scan/vf/episodes.js',
 

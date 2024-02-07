@@ -7,7 +7,7 @@ import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES_OPTIONS } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, downloadText, toggleCinemaMode } from './utils';
-import { Footer, Title } from '../components';
+import { Footer, Title } from '../components.tsx';
 
 import searchImg from '../../assets/Search.svg';
 

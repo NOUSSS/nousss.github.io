@@ -34,8 +34,6 @@ export const BlackClover_OPTIONS = {
 
     IMAGE_URL: (chapitre: string | number, index: string | number) =>
       `https://s22.anime-sama.fr/s1/scans/Black%20Clover/${chapitre}/${index}.jpg`,
-
-    CHAPITRE_SPECIAUX: [],
   } as ScansOptions,
 
   EPISODES_OPTIONS: {

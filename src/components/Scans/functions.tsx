@@ -43,7 +43,7 @@ export const selectChapter = (
     for (let i = 0; i <= index; i++) {
       const chapitre = Number(options[i].id.match(/Chapitre (\d+)/)![1]);
 
-      if (CHAPITRE_SPECIAUX.includes(chapitre - 1)) {
+      if (CHAPITRE_SPECIAUX?.includes(chapitre - 1)) {
         retard++;
       }
     }

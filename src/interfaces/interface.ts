@@ -27,7 +27,7 @@ export interface FilmOptions {
 }
 
 export interface ScansOptions {
-  disabled?: boolean;
+  from?: number;
   SCRIPT_URL: string;
 
   IMAGE_URL: (chapitre: string | number, index: string | number) => string;

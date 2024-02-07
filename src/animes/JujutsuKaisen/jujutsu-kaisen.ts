@@ -31,7 +31,14 @@ export const JujutsuKaisen_OPTIONS = {
     names: films,
   } as FilmOptions,
 
-  SCANS_OPTIONS: {} as ScansOptions,
+  SCANS_OPTIONS: {
+    from: 0,
+    SCRIPT_URL:
+      'https://anime-sama.fr/catalogue/jujutsu-kaisen/scan/vf/episodes.js',
+
+    IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      `https://s22.anime-sama.fr/s1/scans/Jujutsu%20Kaisen/${chapitre}/${index}.jpg`,
+  } as ScansOptions,
 
   EPISODES_OPTIONS: {
     SCRIPT_URL: (index: string | number, lang: string) =>
@@ -47,14 +54,3 @@ export const JujutsuKaisen_OPTIONS = {
     lecteur: 'epsAS',
   },
 };
-
-// SCANS
-/*
-    SCRIPT_URL:
-      'https://anime-sama.fr/catalogue/jujutsu-kaisen/scan/vf/episodes.js',
-
-    IMAGE_URL: (chapitre: string | number, index: string | number) =>
-      `https://s22.anime-sama.fr/s1/scans/Jujutsu%20Kaisen/${chapitre}/${index}.jpg`,
-
-    CHAPITRE_SPECIAUX: [],
-    */
