@@ -1,15 +1,13 @@
 @media (max-width: 660px) {
   .container--accueil {
     .catalogue {
-      width: 400px;
-
       .category {
         font-size: 35px;
       }
     }
 
     .title {
-      font-size: 60px;
+      font-size: 45px;
     }
   }
 }
@@ -17,28 +15,20 @@
 @media (max-width: 500px) {
   .container--accueil {
     .catalogue {
-      width: 293px;
-
       ul {
-        width: 277px;
-
         li {
           .card {
-            width: 152px;
-            height: 164px;
-            background-color: hsla(240, 10%, 10%, 0.797);
-            box-shadow: black 0 0 10px;
-            border-radius: 5px;
+            width: 110px;
+            height: 145px;
 
             .affiche {
-              width: 152px;
-              height: 83px;
+              width: 110px;
             }
 
             p {
               position: relative;
               top: 15px;
-              font-size: 18px;
+              font-size: 16px;
             }
           }
         }
