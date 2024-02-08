@@ -42,6 +42,10 @@ export default function Episodes() {
     window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`)!
   );
 
+  const [loadingText, setLoadingText] = useState<React.ReactNode>(
+    <span>Les episodes sont en cours de chargement, veuillez patientez..</span>
+  );
+
   let scriptIndex = saison.index;
 
   if (currentAnime == "L'attaque des titans") {
@@ -95,89 +99,110 @@ export default function Episodes() {
       'title'
     )!.textContent = `${saison.name} - Mugiwara-no Streaming`;
 
-    addScript(SCRIPT_URL(scriptIndex, lang)).then(() => {
-      LecteurEpisodes = (window as windowKeys)[lecteur];
+    addScript(SCRIPT_URL(scriptIndex, lang))
+      .then(() => {
+        LecteurEpisodes = (window as windowKeys)[lecteur];
 
-      setSaisonTitle(
-        <>
-          <span>
-            {saison.name} ({LecteurEpisodes.length})
-          </span>{' '}
-          {'['}
-          <span
-            className="langChange"
-            onClick={() => {
-              const newLang =
-                window.localStorage.getItem(
-                  `${currentAnime}--${saison.index}--lang`
-                ) === 'vostfr'
-                  ? 'vf'
-                  : 'vostfr';
+        setSaisonTitle(
+          <>
+            <span>
+              {saison.name} ({LecteurEpisodes.length})
+            </span>{' '}
+            {'['}
+            <span
+              className="langChange"
+              onClick={() => {
+                const newLang =
+                  window.localStorage.getItem(
+                    `${currentAnime}--${saison.index}--lang`
+                  ) === 'vostfr'
+                    ? 'vf'
+                    : 'vostfr';
 
-              window.localStorage.setItem(
-                `${currentAnime}--${saison.index}--lang`,
-                newLang
-              );
-              setLang(newLang);
-            }}
-          >
-            {window.localStorage
-              .getItem(`${currentAnime}--${saison.index}--lang`)!
-              .toUpperCase()}
-          </span>
-          {']'}
-        </>
-      );
-
-      let episodeIndex = allIndex[saison.index ?? 0];
-      let episode = window.localStorage.getItem(`${currentAnime}--episode`);
-
-      if (!episode) {
-        window.localStorage.setItem(`${currentAnime}--episode`, '1');
-        episode = '1';
-      }
-
-      const esp = window.localStorage.getItem(
-        `${currentAnime}--episodeSpecial`
-      );
-
-      const listEpisodes: React.ReactNode[] = [];
-
-      let retard = 0;
-
-      for (
-        let indexEpisode = 1;
-        indexEpisode < LecteurEpisodes.length + 1;
-        indexEpisode++
-      ) {
-        const isHorsSerie = horsSeries.find(
-          ({ saison }) =>
-            saison === window.localStorage.getItem(`${currentAnime}--saison`)
+                window.localStorage.setItem(
+                  `${currentAnime}--${saison.index}--lang`,
+                  newLang
+                );
+                setLang(newLang);
+              }}
+            >
+              {window.localStorage
+                .getItem(`${currentAnime}--${saison.index}--lang`)!
+                .toUpperCase()}
+            </span>
+            {']'}
+          </>
         );
 
-        if (isHorsSerie) {
-          if (isHorsSerie.hs.includes(indexEpisode - 1)) {
-            retard++;
+        let episodeIndex = allIndex[saison.index ?? 0];
+        let episode = window.localStorage.getItem(`${currentAnime}--episode`);
 
-            const title = `E-SP${retard}`;
+        if (!episode) {
+          window.localStorage.setItem(`${currentAnime}--episode`, '1');
+          episode = '1';
+        }
 
-            listEpisodes.push(
-              <p
-                className="list-episodes"
-                data-id={indexEpisode}
-                id={title}
-                key={title}
-              >
-                <span className="episodeNumber">{title}</span>
-              </p>
-            );
+        const esp = window.localStorage.getItem(
+          `${currentAnime}--episodeSpecial`
+        );
+
+        const listEpisodes: React.ReactNode[] = [];
+
+        let retard = 0;
+
+        for (
+          let indexEpisode = 1;
+          indexEpisode < LecteurEpisodes.length + 1;
+          indexEpisode++
+        ) {
+          const isHorsSerie = horsSeries.find(
+            ({ saison }) =>
+              saison === window.localStorage.getItem(`${currentAnime}--saison`)
+          );
+
+          if (isHorsSerie) {
+            if (isHorsSerie.hs.includes(indexEpisode - 1)) {
+              retard++;
+
+              const title = `E-SP${retard}`;
+
+              listEpisodes.push(
+                <p
+                  className="list-episodes"
+                  data-id={indexEpisode}
+                  id={title}
+                  key={title}
+                >
+                  <span className="episodeNumber">{title}</span>
+                </p>
+              );
+            } else {
+              const episodeNumber = episodeIndex + indexEpisode - retard;
+              const episodeTitle =
+                names.find(({ index }) => index === String(episodeNumber))
+                  ?.name || '';
+
+              const id = `${episodeNumber} ${episodeTitle}`;
+              listEpisodes.push(
+                <p
+                  className="list-episodes"
+                  data-id={indexEpisode}
+                  id={id}
+                  key={id}
+                >
+                  <span className="episodeNumber">{episodeNumber}</span> :{' '}
+                  {episodeTitle}
+                </p>
+              );
+            }
           } else {
-            const episodeNumber = episodeIndex + indexEpisode - retard;
+            const episodeNumber = episodeIndex + indexEpisode;
             const episodeTitle =
               names.find(({ index }) => index === String(episodeNumber))
-                ?.name || '';
+                ?.name ?? '';
 
             const id = `${episodeNumber} ${episodeTitle}`;
+
             listEpisodes.push(
               <p
                 className="list-episodes"
@@ -190,98 +215,88 @@ export default function Episodes() {
               </p>
             );
           }
-        } else {
-          const episodeNumber = episodeIndex + indexEpisode;
-          const episodeTitle =
-            names.find(({ index }) => index === String(episodeNumber))?.name ??
-            '';
-
-          const id = `${episodeNumber} ${episodeTitle}`;
-
-          listEpisodes.push(
-            <p
-              className="list-episodes"
-              data-id={indexEpisode}
-              id={id}
-              key={id}
-            >
-              <span className="episodeNumber">{episodeNumber}</span> :{' '}
-              {episodeTitle}
-            </p>
-          );
         }
-      }
 
-      setEpisodes(listEpisodes);
+        setEpisodes(listEpisodes);
 
-      if (episode !== '1' && !esp) {
-        const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
+        if (episode !== '1' && !esp) {
+          const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
-        let retard = 0;
+          let retard = 0;
 
-        document.querySelectorAll('.list-episodes').forEach((e, i) => {
-          if (i + 1 < Number(episode)) {
-            if (e.id.includes('E-SP')) retard++;
-          }
-        });
+          document.querySelectorAll('.list-episodes').forEach((e, i) => {
+            if (i + 1 < Number(episode)) {
+              if (e.id.includes('E-SP')) retard++;
+            }
+          });
 
-        const title =
-          names.find(
-            ({ index }) =>
-              index === String(episodeIndex + Number(episode) - retard)
-          )?.name || '';
+          const title =
+            names.find(
+              ({ index }) =>
+                index === String(episodeIndex + Number(episode) - retard)
+            )?.name || '';
 
-        setVideo(URL_EPISODE);
+          setVideo(URL_EPISODE);
 
-        setEpisodeTitle(
-          <>
-            <span className="episodeNumber">
-              {Number(episodeIndex) + Number(episode) - retard}
-            </span>{' '}
-            : {title}
-          </>
+          setEpisodeTitle(
+            <>
+              <span className="episodeNumber">
+                {Number(episodeIndex) + Number(episode) - retard}
+              </span>{' '}
+              : {title}
+            </>
+          );
+
+          downloadText(URL_EPISODE, setDownloadText);
+        }
+
+        if (episode !== '1' && esp) {
+          const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
+
+          setVideo(URL_EPISODE);
+
+          setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
+          downloadText(URL_EPISODE, setDownloadText);
+        }
+
+        if (episode === '1') {
+          const [firstEpisode] = LecteurEpisodes;
+
+          const title =
+            names.find(
+              ({ index }) => index === String(Number(episodeIndex) + 1)
+            )?.name || '';
+
+          setVideo(firstEpisode);
+
+          setEpisodeTitle(
+            <>
+              <span className="episodeNumber">{Number(episodeIndex) + 1}</span>{' '}
+              : {title}
+            </>
+          );
+
+          downloadText(firstEpisode, setDownloadText);
+        }
+
+        setLoadingText('');
+
+        setTimeout(() => {
+          clickEvents(
+            LecteurEpisodes,
+            setVideo,
+            setEpisodeTitle,
+            setDownloadText
+          );
+        }, 1000);
+      })
+      .catch(() => {
+        window.localStorage.setItem(
+          `${currentAnime}--${saison.index}--lang`,
+          'vostfr'
         );
-
-        downloadText(URL_EPISODE, setDownloadText);
-      }
-
-      if (episode !== '1' && esp) {
-        const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
-
-        setVideo(URL_EPISODE);
-
-        setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
-        downloadText(URL_EPISODE, setDownloadText);
-      }
-
-      if (episode === '1') {
-        const [firstEpisode] = LecteurEpisodes;
-
-        const title =
-          names.find(({ index }) => index === String(Number(episodeIndex) + 1))
-            ?.name || '';
-
-        setVideo(firstEpisode);
-
-        setEpisodeTitle(
-          <>
-            <span className="episodeNumber">{Number(episodeIndex) + 1}</span> :{' '}
-            {title}
-          </>
-        );
-
-        downloadText(firstEpisode, setDownloadText);
-      }
-
-      setTimeout(() => {
-        clickEvents(
-          LecteurEpisodes,
-          setVideo,
-          setEpisodeTitle,
-          setDownloadText
-        );
-      }, 1000);
-    });
+        setLoadingText(<span>Chargement des episodes pas réussi.</span>);
+      });
   }, [saison, lang]);
 
   useEffect(() => {
@@ -324,25 +339,7 @@ export default function Episodes() {
             allowFullScreen
           ></iframe>
         ) : (
-          <p className="loading">
-            Si vous avez patientez pendant plus de 5 secondes, alors la video
-            n'est pas disponible dans cette langue, cliquez{' '}
-            <span
-              onClick={() => {
-                const newLang = 'vostfr';
-
-                window.localStorage.setItem(
-                  `${currentAnime}--${saison.index}--lang`,
-                  newLang
-                );
-
-                setLang(newLang);
-              }}
-            >
-              ici
-            </span>{' '}
-            pour revenir en vostfr
-          </p>
+          loadingText
         )}
       </div>
 

@@ -17,7 +17,7 @@ export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
 export function addScript(url: string): Promise<boolean> {
-  return new Promise(async (resolve) => {
+  return new Promise(async (resolve, reject) => {
     const script = document.createElement('script');
 
     script.className = 'script';
@@ -26,6 +26,10 @@ export function addScript(url: string): Promise<boolean> {
 
     script.onload = () => {
       resolve(true);
+    };
+
+    script.onerror = () => {
+      reject(false);
     };
 
     document.head.appendChild(script);
