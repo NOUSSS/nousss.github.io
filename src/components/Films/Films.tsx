@@ -26,6 +26,9 @@ const Films = () => {
   const [tips, setTips] = useState<React.ReactNode>();
   const [video, setVideo] = useState<React.ReactNode>();
   const [title, setTitle] = useState<React.ReactNode>();
+  const [loading, setLoading] = useState<React.ReactNode>(
+    <span>Veuillez patientez...</span>
+  );
 
   const [lang, setLang] = useState<string>(
     window.localStorage.getItem(`${currentAnime}--lang`) ?? 'vostfr'
@@ -66,6 +69,8 @@ const Films = () => {
 
       getFilms(setFilmsFront, lecteurString);
 
+      setLoading('');
+
       setTimeout(() => {
         const langButton = document.querySelectorAll('.langage');
 
@@ -97,6 +102,7 @@ const Films = () => {
         Pour changer de langage cliquez sur la langue entre crochet et patientez
         juste en haut
       </p>
+      <p className="loading">{loading}</p>
 
       <div className="video--films">{video}</div>
       <div className="search--output--films">{output}</div>

@@ -295,7 +295,7 @@ export default function Episodes() {
           `${currentAnime}--${saison.index}--lang`,
           'vostfr'
         );
-        setLoadingText(<span>Chargement des episodes pas réussi.</span>);
+        setLoadingText(<span>Chargement des episodes en cours.</span>);
       });
   }, [saison, lang]);
 

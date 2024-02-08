@@ -16,7 +16,7 @@ export const DragonBallSuper_OPTIONS = {
   affiche: Affiche,
   saisons: {
     1: {
-      name: 'Saison 1',
+      name: 'Tout les épisodes',
       aliases: ['beerus', 'zeno'],
       image: () => getImage(1),
     },

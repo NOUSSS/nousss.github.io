@@ -16,7 +16,7 @@ export const BlackClover_OPTIONS = {
   affiche: Affiche,
   saisons: {
     1: {
-      name: 'Saison 1',
+      name: 'Tout les épisodes',
       aliases: ['magie'],
       image: () => getImage(1),
     },
