@@ -7,6 +7,8 @@ import { Mashle_OPTIONS } from '../animes/Mashle/mashle';
 import { MyHeroAcademia_OPTIONS } from '../animes/MyHeroAcademia/my-hero-academia';
 import { OnePiece_OPTIONS } from '../animes/OnePiece/one-piece';
 import { SoloLeveling_OPTIONS } from '../animes/SoloLeveling/solo-leveling';
+import { TheGodOfHighschool_OPTIONS } from '../animes/TheGodOfHighschool/the-god-of-highschool';
+import { TowerOfGod_OPTIONS } from '../animes/TowerOfGod/tower-of-god';
 import { VinlandSaga_OPTIONS } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans_OPTIONS } from '../animes/attaqueDesTitans/attaqueDesTitans';
 
@@ -85,6 +87,20 @@ export const ANIMES_OPTIONS = [
     category: 'Guerre',
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
+  },
+  {
+    anime: 'The god of highschool',
+    options: TheGodOfHighschool_OPTIONS,
+    category: 'Webtoon',
+    synopsis:
+      "Un lycéen et ses amis prennent part à un tournoi épique dans lequel le gagnant verra tous ses vœux s'exaucer. Cependant, les participants découvrent très vite qu'une mystérieuse organisation semble manipuler cette compétition dans l'ombre...",
+  },
+  {
+    anime: 'Tower of god',
+    options: TowerOfGod_OPTIONS,
+    category: 'Webtoon',
+    synopsis:
+      "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
   },
 ];
 

@@ -40,7 +40,7 @@ const Scans = () => {
 
       for (let i = 0; i < getTailleChapitres(); i++) {
         if (CHAPITRE_SPECIAUX?.includes(i)) {
-          options.push(`Chapitre ONE SHOT`);
+          options.push(`Chapitre Special`);
 
           retard++;
         } else {
