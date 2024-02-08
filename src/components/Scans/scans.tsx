@@ -36,8 +36,6 @@ const Scans = () => {
 
       const options: string[] = [];
 
-      console.log(from);
-
       for (let i = 0; i < getTailleChapitres(); i++) {
         if (CHAPITRE_SPECIAUX?.includes(i)) {
           options.push(`Chapitre Special`);

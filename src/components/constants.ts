@@ -1,4 +1,5 @@
 import { BlackClover_OPTIONS } from '../animes/BlackClover/black-clover';
+import { DeathNote_OPTIONS } from '../animes/DeathNote/death-note';
 import { DragonBall_OPTIONS } from '../animes/DragonBall/dragon-ball';
 import { DragonBallSuper_OPTIONS } from '../animes/DragonBallSuper/DragonBallSuper';
 import { DragonBallZ_OPTIONS } from '../animes/DragonBallZ/dragon-ball-z';
@@ -55,7 +56,7 @@ export const ANIMES_OPTIONS = [
   {
     anime: 'vinland-saga',
     options: VinlandSaga_OPTIONS,
-    category: 'Guerre',
+    category: 'Reflexion',
     synopsis:
       "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
@@ -102,9 +103,16 @@ export const ANIMES_OPTIONS = [
   {
     anime: "L'attaque des titans",
     options: AttaqueDesTitans_OPTIONS,
-    category: 'Guerre',
+    category: 'Reflexion',
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
+  },
+  {
+    anime: 'Death Note',
+    options: DeathNote_OPTIONS,
+    category: 'Reflexion',
+    synopsis:
+      "Light Yagami, un jeune étudiant surdoué, ramasse un jour le \"Death Note\", un carnet abandonné par un dieu de la mort, Ryuk, qui apparemment s'ennuyait dans son monde. Il suffit d'écrire le nom d'une personne dans ce carnet, et celle-ci meurt.",
   },
   {
     anime: 'The god of highschool',

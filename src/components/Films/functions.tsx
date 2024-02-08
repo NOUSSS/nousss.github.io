@@ -27,10 +27,6 @@ export async function appearVideo(
 
   window.localStorage.setItem(`${currentAnime}--currentFilm`, index);
 
-  document.querySelector(
-    'title'
-  )!.textContent = `${names[index].name} - Mugiwara-no Streaming`;
-
   if (lang === 'vostfr') {
     setTitle(
       <>
