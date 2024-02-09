@@ -10,6 +10,7 @@ import { Mashle_OPTIONS } from '../animes/Mashle/mashle';
 import { MyHeroAcademia_OPTIONS } from '../animes/MyHeroAcademia/my-hero-academia';
 import { NarutoShippuden_OPTIONS } from '../animes/NarutoShippuden/naruto-shippuden';
 import { OnePiece_OPTIONS } from '../animes/OnePiece/one-piece';
+import { ShangriLaFrontier_OPTIONS } from '../animes/ShangriLaFrontier/shangri-la-frontier';
 import { SoloLeveling_OPTIONS } from '../animes/SoloLeveling/solo-leveling';
 import { TheGodOfHighschool_OPTIONS } from '../animes/TheGodOfHighschool/the-god-of-highschool';
 import { TowerOfGod_OPTIONS } from '../animes/TowerOfGod/tower-of-god';
@@ -141,6 +142,13 @@ export const ANIMES_OPTIONS = [
     category: 'Classique',
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
+  },
+  {
+    anime: 'Shangri-La Frontier',
+    options: ShangriLaFrontier_OPTIONS,
+    category: 'Jeux Videos',
+    synopsis:
+      "Sunraku est un passionné de jeux vidéo, il s'essaye aux pires jeux existants. Un jour il décide de s'attaquer au MMORPG Shangri-La Frontier, jeu aux trente millions de membres inscrits, il va devoir faire affronter de multiples dangers avec un masque ridicule... en forme d'oiseau.",
   },
 ];
 
