@@ -27,7 +27,7 @@ export function Title({
     </div>
   ) : (
     <div className="title animeName">
-      <Link to={link ? '/' + link : '/'} style={{ fontSize: '73px' }}>
+      <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
           {accueil
             ? 'Notre catalogue'

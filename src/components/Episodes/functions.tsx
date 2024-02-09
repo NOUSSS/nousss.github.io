@@ -16,7 +16,7 @@ export function Change(
 
   const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS;
 
-  const isHorsSerie = horsSeries.find(
+  const isHorsSerie = horsSeries?.find(
     ({ saison }) =>
       saison === window.localStorage.getItem(`${currentAnime}--saison`)
   );
@@ -62,7 +62,7 @@ export function Change(
         Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
 
       const title =
-        names.find(({ index }) => index === String(numberEpisode))?.name ||
+        names?.find(({ index }) => index === String(numberEpisode))?.name ||
         'Episode';
 
       const url = lecteur[Number(indexEpisode) - 1];
@@ -93,7 +93,7 @@ export function Change(
     downloadText(url, setDownloadText);
 
     const episodeTitle =
-      names.find(({ index }) => index === String(numberEpisode))?.name ||
+      names?.find(({ index }) => index === String(numberEpisode))?.name ||
       'Episode';
 
     setVideo(url);
