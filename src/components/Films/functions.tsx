@@ -30,7 +30,7 @@ export async function appearVideo(
   if (lang === 'vostfr') {
     setTitle(
       <>
-        <span>{names[index].name}</span> [
+        <span>{names![index].name}</span> [
         <span id="vf" className="langage">
           VOSTFR
         </span>
@@ -40,7 +40,7 @@ export async function appearVideo(
   } else if (lang === 'vf') {
     setTitle(
       <>
-        <span>{names[index].name}</span> [
+        <span>{names![index].name}</span> [
         <span id="vostfr" className="langage">
           VF
         </span>
@@ -103,14 +103,14 @@ export function getFilms(setFilmsFront: any, lecteur: string) {
 
   const filmsNodes: React.ReactNode[] = [];
 
-  for (let i = 0; i < Object.keys(names).length; i++) {
+  for (let i = 0; i < Object.keys(names!).length; i++) {
     const url = getURLFilm(i, lecteur);
-    const id = `${names[i].name}|${names[i].aliases?.join(', ')}`;
+    const id = `${names![i].name}|${names![i].aliases?.join(', ')}`;
 
     filmsNodes.push(
       <div id={id} key={id} className="container--poster">
-        <img className="poster" src={names[i].image()} id={`${url} ${i}`} />
-        <p className="text--films">{names[i].name}</p>
+        <img className="poster" src={names![i].image()} id={`${url} ${i}`} />
+        <p className="text--films">{names![i].name}</p>
       </div>
     );
   }
