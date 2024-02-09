@@ -16,22 +16,31 @@ export const getURLFilm = (index: number, lecteur: string): string =>
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
-export function addScript(url: string): Promise<boolean> {
+export function addScript(
+  url: string | undefined,
+  setLoading: any
+): Promise<boolean> {
   return new Promise(async (resolve, reject) => {
-    const script = document.createElement('script');
+    if (url) {
+      const script = document.createElement('script');
 
-    script.className = 'script';
+      script.className = 'script';
 
-    script.setAttribute('src', url);
+      script.setAttribute('src', url);
 
-    script.onload = () => {
-      resolve(true);
-    };
+      script.onload = () => {
+        resolve(true);
+      };
 
-    script.onerror = () => {
-      reject(false);
-    };
+      script.onerror = () => {
+        setLoading(
+          'Erreur dans le chargement des episodes. Veuillez recharger la page'
+        );
 
-    document.head.appendChild(script);
+        reject(false);
+      };
+
+      document.head.appendChild(script);
+    }
   });
 }

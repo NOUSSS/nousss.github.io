@@ -44,7 +44,7 @@ const Films = () => {
     if (!window.localStorage.getItem(`${currentAnime}--lang`))
       window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
-    addScript(SCRIPT_URL(lang)).then(() => {
+    addScript(SCRIPT_URL!(lang), setLoading).then(() => {
       lecteurString = lecteur ? lecteur : 'eps1';
       const films_url = (window as windowKeys)[lecteurString];
 

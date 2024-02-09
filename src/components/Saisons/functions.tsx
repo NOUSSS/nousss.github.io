@@ -8,7 +8,7 @@ export function getSaisons() {
   )!.options;
 
   const lastEpisode =
-    options.EPISODES_OPTIONS.names[options.EPISODES_OPTIONS.names.length - 1]
+    options.EPISODES_OPTIONS.names?.[options.EPISODES_OPTIONS?.names.length - 1]
       ?.index || '?';
 
   const { allIndex } = options.EPISODES_OPTIONS;

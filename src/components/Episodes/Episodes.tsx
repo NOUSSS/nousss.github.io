@@ -95,11 +95,7 @@ export default function Episodes() {
       }
     }, 4000);
 
-    document.querySelector(
-      'title'
-    )!.textContent = `${saison.name} - Mugiwara-no Streaming`;
-
-    addScript(SCRIPT_URL(scriptIndex, lang))
+    addScript(SCRIPT_URL(scriptIndex, lang), setLoadingText)
       .then(() => {
         LecteurEpisodes = (window as windowKeys)[lecteur];
 
@@ -155,7 +151,7 @@ export default function Episodes() {
           indexEpisode < LecteurEpisodes.length + 1;
           indexEpisode++
         ) {
-          const isHorsSerie = horsSeries.find(
+          const isHorsSerie = horsSeries?.find(
             ({ saison }) =>
               saison === window.localStorage.getItem(`${currentAnime}--saison`)
           );
@@ -179,7 +175,7 @@ export default function Episodes() {
             } else {
               const episodeNumber = episodeIndex + indexEpisode - retard;
               const episodeTitle =
-                names.find(({ index }) => index === String(episodeNumber))
+                names?.find(({ index }) => index === String(episodeNumber))
                   ?.name || '';
 
               const id = `${episodeNumber} ${episodeTitle}`;
@@ -198,7 +194,7 @@ export default function Episodes() {
           } else {
             const episodeNumber = episodeIndex + indexEpisode;
             const episodeTitle =
-              names.find(({ index }) => index === String(episodeNumber))
+              names?.find(({ index }) => index === String(episodeNumber))
                 ?.name ?? '';
 
             const id = `${episodeNumber} ${episodeTitle}`;
@@ -231,7 +227,7 @@ export default function Episodes() {
           });
 
           const title =
-            names.find(
+            names?.find(
               ({ index }) =>
                 index === String(episodeIndex + Number(episode) - retard)
             )?.name || '';
@@ -263,7 +259,7 @@ export default function Episodes() {
           const [firstEpisode] = LecteurEpisodes;
 
           const title =
-            names.find(
+            names?.find(
               ({ index }) => index === String(Number(episodeIndex) + 1)
             )?.name || '';
 

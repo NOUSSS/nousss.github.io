@@ -24,13 +24,13 @@ const Scans = () => {
 
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
   const [loadingText, setLoadingText] = useState(
-    'Si les chapitres ne chargent pas après 5-10 secondes, cliquez'
+    'Les chapitres sont en cours de chargement, veuillez patientez...'
   );
 
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
 
   useEffect(() => {
-    addScript(SCRIPT_URL).then(() => {
+    addScript(SCRIPT_URL, setLoadingText).then(() => {
       let retard = 0;
       if (typeof from === 'undefined') from = 1;
 
@@ -115,20 +115,7 @@ const Scans = () => {
         </div>
       </div>
 
-      <p className="loading">
-        {loadingText && (
-          <>
-            {loadingText}{' '}
-            <span
-              style={{ textDecoration: 'underline', cursor: 'pointer' }}
-              onClick={() => window.location.reload()}
-            >
-              ici
-            </span>
-          </>
-        )}
-      </p>
-
+      <p className="loading">{loadingText}</p>
       <div className="scans">{scans}</div>
 
       <div className="container--buttons--scans">

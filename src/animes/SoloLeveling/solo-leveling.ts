@@ -1,46 +1,43 @@
-import {
-  FilmOptions,
-  ScansOptions,
-  Season,
-  allIndexType,
-  horsSeriesType,
-} from '../../interfaces/interface';
 import { getImage } from './constants/images';
 
 import episodes from './constants/episodes--names';
 import Affiche from '../../assets/Animes/SoloLeveling/Affiche.jpeg';
 
-export const SoloLeveling_OPTIONS = {
-  affiche: Affiche,
-  saisons: {
-    1: {
-      name: 'Saison 1',
-      aliases: ['1'],
-      image: () => getImage(1),
-    },
-  } as Season,
+import { Anime } from '../../class/anime';
 
-  FILM_OPTIONS: {} as FilmOptions,
+export class SoloLeveling_OPTIONS extends Anime {
+  constructor() {
+    super();
 
-  SCANS_OPTIONS: {
-    from: 0,
-    SCRIPT_URL:
-      'https://anime-sama.fr/catalogue/solo-leveling/scan/vf/episodes.js',
+    this.affiche = Affiche;
+    this.saisons = {
+      1: {
+        name: 'Saison 1',
+        aliases: ['1'],
+        image: () => getImage(1),
+      },
+    };
 
-    IMAGE_URL: (chapitre: string | number, index: string | number) =>
-      `https://s22.anime-sama.fr/s1/scans/Solo%20Leveling/${chapitre}/${index}.jpg`,
-    CHAPITRE_SPECIAUX: [] as number[],
-  } as ScansOptions,
+    this.SCANS_OPTIONS = {
+      from: 0,
+      SCRIPT_URL:
+        'https://anime-sama.fr/catalogue/solo-leveling/scan/vf/episodes.js',
 
-  EPISODES_OPTIONS: {
-    SCRIPT_URL: (index: string | number, lang: string) =>
-      `https://anime-sama.fr/catalogue/solo-leveling/saison${index}/${lang}/episodes.js`,
+      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+        `https://s22.anime-sama.fr/s1/scans/Solo%20Leveling/${chapitre}/${index}.jpg`,
+      CHAPITRE_SPECIAUX: [] as number[],
+    };
 
-    horsSeries: [] as horsSeriesType[],
-    allIndex: {
-      1: 0,
-    } as allIndexType,
-    names: episodes,
-    lecteur: 'epsAS',
-  },
-};
+    this.EPISODES_OPTIONS = {
+      SCRIPT_URL: (index: string | number, lang: string) =>
+        `https://anime-sama.fr/catalogue/solo-leveling/saison${index}/${lang}/episodes.js`,
+
+      horsSeries: [],
+      allIndex: {
+        1: 0,
+      },
+      names: episodes,
+      lecteur: 'epsAS',
+    };
+  }
+}
