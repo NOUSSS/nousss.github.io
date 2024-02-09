@@ -3,10 +3,10 @@ import {
   ScansOptions,
   allIndexType,
   horsSeriesType,
-} from '../../interfaces/interface';
+} from '../interfaces/interface';
 
 import { getImage } from './constants/images-saisons';
-import { Season } from '../../interfaces/interface';
+import { Season } from '../interfaces/interface';
 import { films } from './constants/films-names';
 
 import Affiche from '../../assets/Animes/TemplateName/Affiche.jpg';

@@ -11,9 +11,7 @@ import React, { useState } from 'react';
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
-    ANIMES_OPTIONS.map(({ anime, category }) => {
-      return { anime, category };
-    })
+    ANIMES_OPTIONS.map(({ anime, category }) => ({ anime, category }))
   );
 
   const catalogues = groupAnimesByCategory(animes).sort(
@@ -21,21 +19,21 @@ const Accueil = () => {
   );
 
   return (
-    <div className="container--accueil">
+    <div className="container--anime">
       <Title accueil />
 
-      <div className="search--output--accueil">{output}</div>
+      <div className="search--output--anime">{output}</div>
 
-      <label className="label--accueil" title="Systeme de recherche super cool">
+      <label className="label--anime" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
         <input
           type="text"
           placeholder="One Piece ?"
           onInput={() =>
             initSearchBar(
-              document.querySelector('.label--accueil input')!,
+              document.querySelector('.label--anime input')!,
               document.getElementsByClassName('animes-list'),
-              'accueil',
+              'anime',
               setOutput
             )
           }

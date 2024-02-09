@@ -1,4 +1,4 @@
-import { clear, toUpper } from './main.ts';
+import { toUpper } from './main';
 
 export function initSearchBar(
   input: HTMLInputElement,
@@ -10,66 +10,45 @@ export function initSearchBar(
     `.search--output--${component}`
   )!;
 
-  let i = 0;
-
   function updateResults(): void {
     let count = 0;
 
-    Array.from([...div]).map((_, index) => {
-      div[index].style.display = '';
-
-      if (!div[index].id.toLowerCase().includes(input.value.toLowerCase())) {
-        div[index].style.display = 'none';
+    Array.from([...div]).forEach((element, index) => {
+      if (
+        input.value.length === 0 ||
+        element.id.toLowerCase().includes(input.value.toLowerCase())
+      ) {
+        div[index].style.display = '';
+        if (input.value.length !== 0) count++;
       } else {
-        count++;
+        div[index].style.display = 'none';
       }
     });
 
-    output.style.display = '';
+    if (component === 'anime') {
+      const categories = document.querySelectorAll('.catalogue > div');
+
+      categories.forEach((category) => {
+        const items = category.querySelectorAll('li');
+        const isAllHidden = Array.from(items).every(
+          (item) => item.style.display === 'none'
+        );
+
+        (category as HTMLElement).style.display = isAllHidden ? 'none' : '';
+      });
+    }
+
     setOutput(
-      <>
-        {count > 1 ? (
-          <>
-            <span>{count}</span> {toUpper(component)} trouvés.
-          </>
-        ) : (
-          <>
-            <span>{count}</span> {toUpper(component)} trouvé.
-          </>
-        )}
-      </>
+      input.value.length === 0 ? null : (
+        <>
+          <span>{count}</span> {toUpper(component)}{' '}
+          {count > 1 ? 'trouvés' : 'trouvé'}
+        </>
+      )
     );
+
+    output.style.display = input.value.length === 0 ? 'none' : '';
   }
 
-  i++;
-
-  if (input.value.length === 1) {
-    input.addEventListener('keydown', ({ code }) => {
-      if (code === 'Backspace' && input.value.length === 1) {
-        clear(div);
-
-        setOutput('');
-
-        return;
-      }
-
-      if (code === 'Backspace' && input.value.length > 1) {
-        updateResults();
-      }
-    });
-  }
-
-  if (!input.value) {
-    clear(div);
-
-    output.style.display = 'none';
-
-    return;
-  }
-
-  let cacheIndex = i;
-
-  if (cacheIndex === i) {
-    updateResults();
-  }
+  input.addEventListener('input', updateResults);
 }
