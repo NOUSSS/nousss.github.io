@@ -72,7 +72,8 @@ export function Change(
       setVideo(url);
       setEpisodeTitle(
         <>
-          <span className="episodeNumber">{numberEpisode}</span> : {title}
+          <span className="episodeNumber">{numberEpisode}</span> :{' '}
+          <span className="episodeName">{title}</span>
         </>
       );
 
@@ -100,7 +101,8 @@ export function Change(
 
     setEpisodeTitle(
       <>
-        <span className="episodeNumber">{numberEpisode}</span> : {episodeTitle}
+        <span className="episodeNumber">{numberEpisode}</span> :{' '}
+        <span className="episodeName">{episodeTitle}</span>
       </>
     );
 

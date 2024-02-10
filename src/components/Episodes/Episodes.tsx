@@ -2,11 +2,11 @@ import './Episodes.scss';
 import './responsive.scss';
 
 import React, { useEffect, useState } from 'react';
-import { addScript } from '../../functions/main.ts';
+import { addScript, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES_OPTIONS } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
-import { clickEvents, downloadText, toggleCinemaMode } from './utils';
+import { clickEvents, downloadText, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
 import searchImg from '../../assets/Search.svg';
@@ -84,7 +84,13 @@ export default function Episodes() {
     if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
     else NextSaisonSelector.style.display = '';
 
-    toggleCinemaMode();
+    if (isIOS()) {
+      document.querySelector<HTMLElement>(
+        '.hideEpisodesNamesInput'
+      )!.style.display = 'none';
+    } else {
+      toggleHideEpisodesNames();
+    }
 
     setTimeout(() => {
       if (window.scrollY <= 50) {
@@ -187,7 +193,7 @@ export default function Episodes() {
                   key={id}
                 >
                   <span className="episodeNumber">{episodeNumber}</span> :{' '}
-                  {episodeTitle}
+                  <div className="episodeName">{episodeTitle}</div>
                 </p>
               );
             }
@@ -207,7 +213,7 @@ export default function Episodes() {
                 key={id}
               >
                 <span className="episodeNumber">{episodeNumber}</span> :{' '}
-                {episodeTitle}
+                <span className="episodeName">{episodeTitle}</span>
               </p>
             );
           }
@@ -239,7 +245,7 @@ export default function Episodes() {
               <span className="episodeNumber">
                 {Number(episodeIndex) + Number(episode) - retard}
               </span>{' '}
-              : {title}
+              : <span className="episodeName">{title}</span>
             </>
           );
 
@@ -268,7 +274,7 @@ export default function Episodes() {
           setEpisodeTitle(
             <>
               <span className="episodeNumber">{Number(episodeIndex) + 1}</span>{' '}
-              : {title}
+              : <span className="episodeName">{title}</span>
             </>
           );
 
@@ -339,8 +345,8 @@ export default function Episodes() {
         )}
       </div>
 
-      <label className="cinema">
-        <p>Mode cinema</p>
+      <label className="hideEpisodesNames">
+        <p>Cacher le nom des episodes</p>
         <input type="checkbox"></input>
         <span></span>
       </label>

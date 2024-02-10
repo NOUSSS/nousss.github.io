@@ -31,38 +31,28 @@ export function downloadText(url: string, setDownloadText: any): void {
   }
 }
 
-export function toggleCinemaMode(): void {
-  if (isIOS()) {
-    const cinemaToggleSwitch = document.querySelector<HTMLElement>('.cinema')!;
+export function toggleHideEpisodesNames(): void {
+  const hideEpisodesNamesInput = document.querySelector<HTMLInputElement>(
+    '.hideEpisodesNames input'
+  )!;
 
-    cinemaToggleSwitch.style.display = 'none';
-  } else if (!isIOS()) {
-    const cinemaMode =
-      document.querySelector<HTMLInputElement>('.cinema input')!;
+  hideEpisodesNamesInput.addEventListener('change', () => {
+    const check = hideEpisodesNamesInput.checked;
 
-    cinemaMode.addEventListener('change', () => {
-      const iframeParent =
-        document.querySelector<HTMLElement>('.episodeVideo')!;
-
-      if (cinemaMode.checked) {
-        document.documentElement.requestFullscreen().catch(() => 0);
-
-        iframeParent.style.width = '200%';
-        iframeParent.style.height = `${
-          document.querySelector('iframe')!.offsetHeight
-        }px`;
-
-        iframeParent.style.backgroundColor = 'black';
-      } else if (!cinemaMode.checked) {
-        document.exitFullscreen().catch(() => 0);
-
-        iframeParent.style.width = '';
-        iframeParent.style.height = '';
-
-        iframeParent.style.backgroundColor = '';
+    if (check) {
+      for (const episodeName of Array.from([
+        ...document.querySelectorAll('.episodeName'),
+      ])) {
+        (episodeName as HTMLElement).style.filter = 'blur(7px)';
       }
-    });
-  }
+    } else {
+      for (const episodeName of Array.from([
+        ...document.querySelectorAll('.episodeName'),
+      ])) {
+        (episodeName as HTMLElement).style.filter = 'blur(0px)';
+      }
+    }
+  });
 }
 
 type EventHandler = (() => void) | null;

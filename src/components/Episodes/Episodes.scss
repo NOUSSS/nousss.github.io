@@ -24,12 +24,21 @@ body {
   top: 52px;
 }
 
+.episodeName {
+  transition: filter 150ms ease-out;
+  color: white;
+}
+
 .list-episodes {
   cursor: pointer;
   transition: color 150ms ease-out;
 
+  width: 900px;
+
   &:hover {
-    color: #ffa300;
+    .episodeName {
+      color: #ffa300;
+    }
 
     span {
       transition: color 150ms ease-out;
@@ -78,7 +87,7 @@ body {
   }
 }
 
-.cinema {
+.hideEpisodesNames {
   display: flex;
   margin: 20px;
 
@@ -172,10 +181,6 @@ body {
 
 .episodeNumber {
   color: #ffa300;
-}
-
-.list-episodes {
-  width: 900px;
 }
 
 .download {
