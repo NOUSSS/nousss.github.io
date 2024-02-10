@@ -1,4 +1,5 @@
 import { BlackClover_OPTIONS } from '../animes/BlackClover/black-clover';
+import { BlueLock } from '../animes/BlueLock/blue-lock';
 import { ClassroomOfTheElites_OPTIONS } from '../animes/ClassroomOfTheElites/classroom-of-the-elites';
 import { DeathNote_OPTIONS } from '../animes/DeathNote/death-note';
 import { DragonBall_OPTIONS } from '../animes/DragonBall/dragon-ball';
@@ -173,6 +174,13 @@ export const ANIMES_OPTIONS = [
     category: 'Sport',
     synopsis:
       'Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.',
+  },
+  {
+    anime: 'blue-lock',
+    options: new BlueLock(),
+    category: 'Sport',
+    synopsis:
+      'Coupe du monde 2018, l\'équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l\'Union japonaise de football à fonder le "Blue Lock" : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.',
   },
 ];
 
