@@ -373,7 +373,11 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <p className="download">{textDownload}</p>
+      <p className="download">
+        {lecteur === 'epsAS'
+          ? textDownload
+          : "Le telechargement des episodes n'est pas disponible pour cette anime"}
+      </p>
       <label
         className="label--episodes"
         title="Systeme de recherche super cool"
