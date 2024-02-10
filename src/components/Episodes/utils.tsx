@@ -1,39 +1,6 @@
 import React from 'react';
-import { isIOS } from '../../functions/main';
-import { Change, NextEpisode, PrevEpisode } from './functions';
 
-export function downloadText(
-  url: string,
-  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
-): void {
-  if (isIOS()) {
-    setDownloadText(
-      <>
-        Pour télécharger l'épisode, cliquez{' '}
-        <span>
-          <a target="_blank" href={url}>
-            ici
-          </a>
-        </span>{' '}
-        puis appuyer sur le bouton <span>"partager"</span>, puis{' '}
-        <span>'Enregistrer dans fichiers'</span>
-      </>
-    );
-  } else {
-    setDownloadText(
-      <>
-        Pour télécharger l'épisode, cliquez{' '}
-        <span>
-          <a target="_blank" href={url}>
-            ici
-          </a>
-        </span>{' '}
-        puis faites <span>clique droit</span>, puis{' '}
-        <span>'Enregistrer la vidéo sous'</span>
-      </>
-    );
-  }
-}
+import { Change, NextEpisode, PrevEpisode } from './functions';
 
 export function toggleHideEpisodesNames(): void {
   const hideEpisodesNamesInput = document.querySelector<HTMLInputElement>(
@@ -98,8 +65,7 @@ export function clickEvents(
   lecteur: string[],
 
   setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   removeClickEvents();
 
@@ -112,7 +78,7 @@ export function clickEvents(
       episodes.forEach((ep) => ep.classList.remove('select'));
       episode.classList.add('select');
 
-      Change(episodeId!, lecteur, setVideo, setTitle, setDownloadText);
+      Change(episodeId!, lecteur, setVideo, setTitle);
     };
 
     episode.addEventListener('click', handler);
@@ -122,8 +88,7 @@ export function clickEvents(
   const nextButton = document.querySelector('.nextButton');
 
   if (nextButton) {
-    const nextHandler = () =>
-      NextEpisode(lecteur, setVideo, setTitle, setDownloadText);
+    const nextHandler = () => NextEpisode(lecteur, setVideo, setTitle);
 
     nextButton.addEventListener('click', nextHandler);
     eventHandlers.nextButton = nextHandler;
@@ -132,8 +97,7 @@ export function clickEvents(
   const prevButton = document.querySelector('.prevButton');
 
   if (prevButton) {
-    const prevHandler = () =>
-      PrevEpisode(lecteur, setVideo, setTitle, setDownloadText);
+    const prevHandler = () => PrevEpisode(lecteur, setVideo, setTitle);
 
     prevButton.addEventListener('click', prevHandler);
     eventHandlers.prevButton = prevHandler;

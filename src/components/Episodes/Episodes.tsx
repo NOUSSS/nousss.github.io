@@ -6,7 +6,7 @@ import { addScript, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES_OPTIONS } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
-import { clickEvents, downloadText, toggleHideEpisodesNames } from './utils';
+import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
 import searchImg from '../../assets/Search.svg';
@@ -67,7 +67,6 @@ export default function Episodes() {
   const [video, setVideo] = useState<string>('');
 
   const [output, setOutput] = useState<React.ReactNode>('');
-  const [textDownload, setDownloadText] = useState<React.ReactNode>('');
 
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
 
@@ -251,8 +250,6 @@ export default function Episodes() {
               : <span className="episodeName">{title}</span>
             </>
           );
-
-          downloadText(URL_EPISODE, setDownloadText);
         }
 
         if (episode !== '1' && esp) {
@@ -261,7 +258,6 @@ export default function Episodes() {
           setVideo(URL_EPISODE);
 
           setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
-          downloadText(URL_EPISODE, setDownloadText);
         }
 
         if (episode === '1') {
@@ -280,19 +276,12 @@ export default function Episodes() {
               : <span className="episodeName">{title}</span>
             </>
           );
-
-          downloadText(firstEpisode, setDownloadText);
         }
 
         setLoadingText('');
 
         setTimeout(() => {
-          clickEvents(
-            LecteurEpisodes,
-            setVideo,
-            setEpisodeTitle,
-            setDownloadText
-          );
+          clickEvents(LecteurEpisodes, setVideo, setEpisodeTitle);
         }, 1000);
       })
       .catch(() => {
@@ -374,9 +363,14 @@ export default function Episodes() {
       <div className="search--output--episodes">{output}</div>
 
       <p className="download">
-        {lecteur === 'epsAS'
-          ? textDownload
-          : "Le telechargement des episodes n'est pas disponible pour cette anime"}
+        {lecteur === 'epsAS' ? (
+          <>
+            Pour télécharger l'episode, faites <span>clique droit</span> sur
+            celui-ci, puis 'Enregistrer la vidéo sous'
+          </>
+        ) : (
+          "Le telechargement des episodes n'est pas disponible pour cette anime"
+        )}
       </p>
       <label
         className="label--episodes"

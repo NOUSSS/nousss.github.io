@@ -1,13 +1,13 @@
 import React from 'react';
+
 import { ANIMES_OPTIONS } from '../constants';
-import { downloadText } from './utils';
 
 export function Change(
   indexEpisode: number | string,
   lecteur: string[],
+
   setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const currentAnime = window.localStorage.getItem('anime')!;
 
@@ -33,8 +33,6 @@ export function Change(
       });
 
       const url = lecteur[Number(indexEpisode) - 1];
-
-      downloadText(url, setDownloadText);
 
       setVideo(url);
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
@@ -68,8 +66,6 @@ export function Change(
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      downloadText(url, setDownloadText);
-
       setVideo(url);
       setEpisodeTitle(
         <>
@@ -91,8 +87,6 @@ export function Change(
       ) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
-
-    downloadText(url, setDownloadText);
 
     const episodeTitle =
       names?.find(({ index }) => index === String(numberEpisode))?.name ||
@@ -121,8 +115,7 @@ export function NextEpisode(
   lecteur: string[],
 
   setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
@@ -131,21 +124,14 @@ export function NextEpisode(
 
   if (newEpisodeIndex - 1 === lecteur.length) return;
   else {
-    Change(
-      newEpisodeIndex,
-      lecteur,
-      setVideo,
-      setEpisodeTitle,
-      setDownloadText
-    );
+    Change(newEpisodeIndex, lecteur, setVideo, setEpisodeTitle);
   }
 }
 
 export function PrevEpisode(
   lecteur: string[],
   setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
@@ -154,12 +140,6 @@ export function PrevEpisode(
 
   if (newEpisodeIndex < 1) return;
   else {
-    Change(
-      newEpisodeIndex,
-      lecteur,
-      setVideo,
-      setEpisodeTitle,
-      setDownloadText
-    );
+    Change(newEpisodeIndex, lecteur, setVideo, setEpisodeTitle);
   }
 }
