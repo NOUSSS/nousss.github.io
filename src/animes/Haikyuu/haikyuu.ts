@@ -39,15 +39,6 @@ export class Haikyuu extends Anime {
       names: films,
     };
 
-    this.SCANS_OPTIONS = {
-      SCRIPT_URL: 'https://anime-sama.fr/catalogue/haikyuu/scan/vf/episodes.js',
-
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
-        `https://s22.anime-sama.fr/s1/scans/Haikyuu/${chapitre}/${index}.jpg`,
-
-      CHAPITRE_SPECIAUX: [207, 208, 296, 297, 305, 314, 402],
-    };
-
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: (index: string | number, lang: string) =>
         `https://anime-sama.fr/catalogue/haikyuu/saison${index}/${lang}/episodes.js`,
