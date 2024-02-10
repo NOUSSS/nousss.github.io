@@ -35,7 +35,9 @@ const Saisons = () => {
   const searchBar = useCallback(() => {
     initSearchBar(
       document.querySelector('input')!,
-      document.getElementsByClassName('container--poster-saison'),
+      document.getElementsByClassName(
+        'container--poster-saison'
+      ) as HTMLCollectionOf<HTMLElement>,
       'saisons',
       setOutput
     );
