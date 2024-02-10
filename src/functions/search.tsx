@@ -2,9 +2,9 @@ import { toUpper } from './main';
 
 export function initSearchBar(
   input: HTMLInputElement,
-  div: HTMLCollectionOf<any>,
+  div: HTMLCollectionOf<HTMLElement>,
   component: string,
-  setOutput: any
+  setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const output = document.querySelector<HTMLElement>(
     `.search--output--${component}`

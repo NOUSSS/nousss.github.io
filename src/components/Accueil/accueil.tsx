@@ -32,7 +32,9 @@ const Accueil = () => {
           onInput={() =>
             initSearchBar(
               document.querySelector('.label--anime input')!,
-              document.getElementsByClassName('animes-list'),
+              document.getElementsByClassName(
+                'animes-list'
+              ) as HTMLCollectionOf<HTMLElement>,
               'anime',
               setOutput
             )
@@ -57,7 +59,7 @@ const Accueil = () => {
                     .replace('-', ' ')
                     .replace('-', ' ')
                     .split(' ')
-                    .map((word: any) => {
+                    .map((word: string) => {
                       return (
                         word.charAt(0).toUpperCase() +
                         word.slice(1).toLowerCase()
@@ -79,7 +81,7 @@ const Accueil = () => {
                         .replace('-', ' ')
                         .replace('-', ' ')
                         .split(' ')
-                        .map((word: any) => {
+                        .map((word: string) => {
                           return (
                             word.charAt(0).toUpperCase() +
                             word.slice(1).toLowerCase()

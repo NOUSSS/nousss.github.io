@@ -2,7 +2,7 @@ interface SeasonAndFilm {
   [key: string]: {
     name: string;
     aliases: string[];
-    image: () => any;
+    image: () => string;
   };
 }
 
@@ -21,7 +21,7 @@ export interface allIndexType {
 }
 
 export interface windowKeys {
-  [key: string]: any;
+  [key: string]: string[];
 }
 
 export interface FilmOptions {

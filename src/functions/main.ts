@@ -1,5 +1,9 @@
-export const clear = (div: HTMLCollectionOf<any>): void => {
-  Array.from([...div]).map((_, i) => (div[i].style.display = ''));
+import { windowKeys } from '../interfaces/interface';
+
+export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
+  Array.from(div).forEach((element) => {
+    element.style.display = '';
+  });
 };
 
 export function isIOS(): boolean {
@@ -11,16 +15,18 @@ export function isIOS(): boolean {
 }
 
 export const getURLFilm = (index: number, lecteur: string): string =>
-  (window as { [key: string]: any })[lecteur][index];
+  (window as unknown as windowKeys)[lecteur][index];
 
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
 export function addScript(
   url: string | undefined,
-  setLoading: any
+  setLoading:
+    | React.Dispatch<React.SetStateAction<React.ReactNode>>
+    | React.Dispatch<React.SetStateAction<string>>
 ): Promise<boolean> {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (url) {
       const script = document.createElement('script');
 

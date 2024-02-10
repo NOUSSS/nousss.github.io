@@ -1,7 +1,11 @@
+import React from 'react';
 import { isIOS } from '../../functions/main';
 import { Change, NextEpisode, PrevEpisode } from './functions';
 
-export function downloadText(url: string, setDownloadText: any): void {
+export function downloadText(
+  url: string,
+  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
+): void {
   if (isIOS()) {
     setDownloadText(
       <>
@@ -92,9 +96,10 @@ export function removeClickEvents(): void {
 
 export function clickEvents(
   lecteur: string[],
-  setVideo: any,
-  setTitle: any,
-  setDownloadText: any
+
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
+  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   removeClickEvents();
 

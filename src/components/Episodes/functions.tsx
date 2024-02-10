@@ -1,12 +1,13 @@
+import React from 'react';
 import { ANIMES_OPTIONS } from '../constants';
 import { downloadText } from './utils';
 
 export function Change(
   indexEpisode: number | string,
   lecteur: string[],
-  setVideo: any,
-  setEpisodeTitle: any,
-  setDownloadText: any
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const currentAnime = window.localStorage.getItem('anime')!;
 
@@ -118,9 +119,10 @@ export function Change(
 
 export function NextEpisode(
   lecteur: string[],
-  setVideo: any,
-  setEpisodeTitle: any,
-  setDownloadText: any
+
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
@@ -141,9 +143,9 @@ export function NextEpisode(
 
 export function PrevEpisode(
   lecteur: string[],
-  setVideo: any,
-  setEpisodeTitle: any,
-  setDownloadText: any
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
+  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setDownloadText: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 

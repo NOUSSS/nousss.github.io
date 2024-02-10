@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import './Films.scss';
 import './responsive.scss';
@@ -20,8 +20,6 @@ const Films = () => {
     ({ anime }) => anime === currentAnime
   )!.options.FILM_OPTIONS;
 
-  let lecteurString: string;
-
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [tips, setTips] = useState<React.ReactNode>();
   const [video, setVideo] = useState<React.ReactNode>();
@@ -35,6 +33,7 @@ const Films = () => {
   );
 
   const [output, setOutput] = useState<React.ReactNode>('');
+  const lecteurString = useRef<string>('');
 
   useEffect(() => {
     const lastFilm = window.localStorage.getItem(
@@ -45,8 +44,10 @@ const Films = () => {
       window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
     addScript(SCRIPT_URL!(lang), setLoading).then(() => {
-      lecteurString = lecteur ? lecteur : 'eps1';
-      const films_url = (window as windowKeys)[lecteurString];
+      lecteurString.current = lecteur ? lecteur : 'eps1';
+      const films_url = (window as unknown as windowKeys)[
+        lecteurString.current
+      ];
 
       if (BLACKLIST_URL) {
         for (const BLACKLIST of BLACKLIST_URL) {
@@ -57,17 +58,19 @@ const Films = () => {
 
       appearVideo(
         lastFilm
-          ? `${getURLFilm(Number(lastFilm), lecteurString)} ${Number(lastFilm)}`
-          : `${getURLFilm(0, lecteurString)} ${
+          ? `${getURLFilm(Number(lastFilm), lecteurString.current)} ${Number(
+              lastFilm
+            )}`
+          : `${getURLFilm(0, lecteurString.current)} ${
               window.localStorage.getItem(`${currentAnime}--currentFilm`) ?? '0'
             }`,
         setTips,
         setVideo,
         setTitle,
-        lecteurString
+        lecteurString.current
       );
 
-      getFilms(setFilmsFront, lecteurString);
+      getFilms(setFilmsFront, lecteurString.current);
 
       setLoading('');
 
@@ -81,14 +84,20 @@ const Films = () => {
         });
       }, 1000);
     });
-  }, [lang]);
+  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, lecteur]);
 
   setTimeout(() => {
     const poster = document.querySelectorAll('.poster');
 
     Array.from([...poster]).map((_, i) => {
       poster[i].addEventListener('click', () => {
-        appearVideo(poster[i].id, setTips, setVideo, setTitle, lecteurString);
+        appearVideo(
+          poster[i].id,
+          setTips,
+          setVideo,
+          setTitle,
+          lecteurString.current
+        );
       });
     });
   }, 1000);
@@ -115,7 +124,9 @@ const Films = () => {
           onInput={() =>
             initSearchBar(
               document.querySelector('input')!,
-              document.getElementsByClassName('container--poster'),
+              document.getElementsByClassName(
+                'container--poster'
+              ) as HTMLCollectionOf<HTMLElement>,
               'films',
               setOutput
             )

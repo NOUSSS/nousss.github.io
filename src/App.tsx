@@ -15,7 +15,7 @@ const AppRoutes = () => {
   const currentSeason =
     window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1';
 
-  let pages = [
+  const pages = [
     {
       path: '/',
       element: <Accueil />,

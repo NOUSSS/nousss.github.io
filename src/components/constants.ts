@@ -4,6 +4,7 @@ import { DeathNote_OPTIONS } from '../animes/DeathNote/death-note';
 import { DragonBall_OPTIONS } from '../animes/DragonBall/dragon-ball';
 import { DragonBallSuper_OPTIONS } from '../animes/DragonBallSuper/DragonBallSuper';
 import { DragonBallZ_OPTIONS } from '../animes/DragonBallZ/dragon-ball-z';
+import { Haikyuu } from '../animes/Haikyuu/haikyuu';
 import { HunterXHunter_OPTIONS } from '../animes/HunterXHunter/hunter-x-hunter';
 import { JujutsuKaisen_OPTIONS } from '../animes/JujutsuKaisen/jujutsu-kaisen';
 import { KurokoBasket_OPTIONS } from '../animes/KurokoBasket/kuroko-basket';
@@ -165,6 +166,13 @@ export const ANIMES_OPTIONS = [
     category: 'Lycée',
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
+  },
+  {
+    anime: 'haikyuu',
+    options: new Haikyuu(),
+    category: 'Sport',
+    synopsis:
+      'Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.',
   },
 ];
 

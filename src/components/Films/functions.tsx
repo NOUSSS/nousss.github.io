@@ -89,14 +89,22 @@ export async function appearVideo(
   return url;
 }
 
-export function changeLangage(lang: string, setLang: any): void {
+export function changeLangage(
+  lang: string,
+  setLang: React.Dispatch<React.SetStateAction<string>>
+): void {
   const currentAnime = window.localStorage.getItem('anime');
 
   window.localStorage.setItem(`${currentAnime}--lang`, lang);
   setLang(lang);
 }
 
-export function getFilms(setFilmsFront: any, lecteur: string) {
+export function getFilms(
+  setFilmsFront: React.Dispatch<
+    React.SetStateAction<React.ReactNode[] | undefined>
+  >,
+  lecteur: string
+) {
   const currentAnime = window.localStorage.getItem('anime');
   const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
     .options.FILM_OPTIONS;

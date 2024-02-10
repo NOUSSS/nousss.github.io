@@ -20,8 +20,11 @@ export default function Episodes() {
     ({ anime }) => anime === currentAnime
   )!.options;
 
-  let { allIndex, horsSeries, SCRIPT_URL, names, lecteur } =
-    options.EPISODES_OPTIONS;
+  const opts = options.EPISODES_OPTIONS;
+
+  const { allIndex, horsSeries, SCRIPT_URL, names } = opts;
+
+  let { lecteur } = opts;
 
   const { saisons } = options;
 
@@ -103,7 +106,7 @@ export default function Episodes() {
 
     addScript(SCRIPT_URL(scriptIndex, lang), setLoadingText)
       .then(() => {
-        LecteurEpisodes = (window as windowKeys)[lecteur];
+        LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
 
         setSaisonTitle(
           <>
@@ -136,7 +139,7 @@ export default function Episodes() {
           </>
         );
 
-        let episodeIndex = allIndex[saison.index ?? 0];
+        const episodeIndex = allIndex[saison.index ?? 0];
         let episode = window.localStorage.getItem(`${currentAnime}--episode`);
 
         if (!episode) {
@@ -299,7 +302,17 @@ export default function Episodes() {
         );
         setLoadingText(<span>Chargement des episodes en cours.</span>);
       });
-  }, [saison, lang]);
+  }, [
+    saison,
+    lang,
+    names,
+    SCRIPT_URL,
+    allIndex,
+    currentAnime,
+    horsSeries,
+    lecteur,
+    scriptIndex,
+  ]);
 
   useEffect(() => {
     const episode =
@@ -317,7 +330,7 @@ export default function Episodes() {
     if (Number(episode) === LecteurEpisodes.length)
       NextEpisodeSelector.style.display = 'none';
     else NextEpisodeSelector.style.display = '';
-  }, [video]);
+  }, [video, currentAnime]);
 
   return (
     <div className="container--episodes">
@@ -372,7 +385,9 @@ export default function Episodes() {
           onInput={() =>
             initSearchBar(
               document.querySelector('.label--episodes input')!,
-              document.getElementsByClassName('list-episodes'),
+              document.getElementsByClassName(
+                'list-episodes'
+              ) as HTMLCollectionOf<HTMLElement>,
               'episodes',
               setOutput
             )

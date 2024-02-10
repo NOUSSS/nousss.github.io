@@ -7,10 +7,12 @@ export const getTailleChapitres = (): number => {
   let i = 1;
   let tailleChapitres = 0;
 
-  while (true) {
+  const infinite = true;
+
+  while (infinite) {
     const episodeKey = `eps${i}`;
 
-    if (typeof (window as windowKeys)[episodeKey] !== 'undefined') {
+    if (typeof (window as unknown as windowKeys)[episodeKey] !== 'undefined') {
       tailleChapitres++;
     } else {
       break;
@@ -27,30 +29,20 @@ export const selectChapter = (
 ): React.ReactNode[] | undefined => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const { CHAPITRE_SPECIAUX, IMAGE_URL } = ANIMES_OPTIONS.find(
+  const { IMAGE_URL } = ANIMES_OPTIONS.find(
     ({ anime }) => anime === currentAnime
   )!.options.SCANS_OPTIONS;
 
   const scansImages: React.ReactNode[] = [];
   const select = document.querySelector('select');
 
-  let retard = 0;
-
   if (select) {
     const options = select.options;
     const index = Number(newChapter) - 1;
 
-    for (let i = 0; i <= index; i++) {
-      const chapitre = Number(options[i].id.match(/Chapitre (\d+)/)![1]);
-
-      if (CHAPITRE_SPECIAUX?.includes(chapitre - 1)) {
-        retard++;
-      }
-    }
-
     if (index >= 0 && index < options.length) {
       const chapterTitle = options[index].innerText;
-      const scans = (window as windowKeys)[`eps${newChapter}`];
+      const scans = (window as unknown as windowKeys)[`eps${newChapter}`];
 
       window.localStorage.setItem(
         `${currentAnime}--chapitre`,

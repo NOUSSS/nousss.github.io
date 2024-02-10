@@ -1,7 +1,7 @@
 import './scans.scss';
 import './responsive.scss';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 import {
   getTailleChapitres,
@@ -18,9 +18,12 @@ import uparrow from '../../assets/uparrow.png';
 const Scans = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  let { SCRIPT_URL, CHAPITRE_SPECIAUX, from } = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!.options.SCANS_OPTIONS;
+  const options = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
+    .options.SCANS_OPTIONS;
+
+  const from = useRef(options.from);
+
+  const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options;
 
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
   const [loadingText, setLoadingText] = useState(
@@ -32,7 +35,8 @@ const Scans = () => {
   useEffect(() => {
     addScript(SCRIPT_URL, setLoadingText).then(() => {
       let retard = 0;
-      if (typeof from === 'undefined') from = 1;
+
+      if (typeof from.current === 'undefined') from.current = 1;
 
       const options: string[] = [];
 
@@ -42,7 +46,7 @@ const Scans = () => {
 
           retard++;
         } else {
-          options.push(`Chapitre ${i + Number(from) - retard}`);
+          options.push(`Chapitre ${i + Number(from.current) - retard}`);
         }
       }
 
@@ -59,7 +63,7 @@ const Scans = () => {
         );
       }, 1000);
     });
-  }, []);
+  }, [CHAPITRE_SPECIAUX, SCRIPT_URL, currentAnime]);
 
   useEffect(() => {
     const chapitre =
@@ -84,15 +88,18 @@ const Scans = () => {
       );
     else
       Array.from([...NextchapitreSelector]).map((e) => (e.style.display = ''));
-  }, [scans]);
+  }, [scans, currentAnime]);
 
-  const onChangeSelect = useCallback((event: any) => {
-    const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
+  const onChangeSelect = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
 
-    window.localStorage.setItem(`${currentAnime}--chapitre`, id);
+      window.localStorage.setItem(`${currentAnime}--chapitre`, id);
 
-    setScans(selectChapter(id));
-  }, []);
+      setScans(selectChapter(id));
+    },
+    [currentAnime]
+  );
 
   return (
     <div className="container--scans">
