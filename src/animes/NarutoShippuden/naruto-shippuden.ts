@@ -4,7 +4,7 @@ import { films } from './constants/films-names';
 import Affiche from '../../assets/Animes/NarutoShippuden/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class NarutoShippuden_OPTIONS extends Anime {
+export class NarutoShippuden extends Anime {
   constructor() {
     super();
 

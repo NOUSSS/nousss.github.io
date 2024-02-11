@@ -5,7 +5,7 @@ import episodesNames from './constants/episodes-names.ts';
 
 import { Anime } from '../../class/anime.ts';
 
-export class Naruto_OPTIONS extends Anime {
+export class Naruto extends Anime {
   constructor() {
     super();
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 
 export function Change(
   indexEpisode: number | string,
@@ -11,9 +11,7 @@ export function Change(
 ): void {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const options = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!.options;
+  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
 
   const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS;
 

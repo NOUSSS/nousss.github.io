@@ -7,15 +7,15 @@ import searchImg from '../../assets/Search.svg';
 
 import { getSaisons } from './functions';
 import { initSearchBar } from '../../functions/search';
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 import { Footer, Title } from '../components';
 import { changeSaison } from './utils';
 
 const Saisons = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const names = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
-    .options.saisons;
+  const names = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .saisons;
 
   const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);

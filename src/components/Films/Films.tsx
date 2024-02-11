@@ -11,22 +11,23 @@ import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { Footer, Title } from '../components.tsx';
-import { ANIMES_OPTIONS } from '../constants.ts';
+import { ANIMES } from '../constants.ts';
+import DownloadComponent from '../download-component.tsx';
 
 const Films = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const { BLACKLIST_URL, SCRIPT_URL, lecteur } = ANIMES_OPTIONS.find(
+  const { BLACKLIST_URL, SCRIPT_URL, lecteur } = ANIMES.find(
     ({ anime }) => anime === currentAnime
   )!.options.FILM_OPTIONS;
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
-  const [video, setVideo] = useState<React.ReactNode>();
   const [title, setTitle] = useState<React.ReactNode>();
   const [loading, setLoading] = useState<React.ReactNode>(
     <span>Veuillez patientez...</span>
   );
 
+  const [video, setVideo] = useState<string>('');
   const [lang, setLang] = useState<string>(
     window.localStorage.getItem(`${currentAnime}--lang`) ?? 'vostfr'
   );
@@ -104,7 +105,16 @@ const Films = () => {
       </p>
       <p className="loading">{loading}</p>
 
-      <div className="video--films">{video}</div>
+      <div className="video--films">
+        <iframe
+          className="iframeFilm"
+          width="640"
+          height="360"
+          src={video}
+          allowFullScreen
+        ></iframe>
+      </div>
+
       <div className="search--output--films">{output}</div>
 
       <label className="label--films" title="Systeme de recherche super cool">
@@ -125,56 +135,12 @@ const Films = () => {
         />
       </label>
 
-      <div className="tips--films">
-        {video ? (
-          lecteur === 'epsAS' ? (
-            isIOS() ? (
-              <>
-                Pour télécharger l'épisode, cliquez{' '}
-                <a
-                  style={{ color: '#ffa300', textDecoration: 'underline' }}
-                  href={(video as any).props.src}
-                >
-                  ici
-                </a>
-                , puis appuyez sur la bouton partager en bas, puis 'Enregistrer
-                dans fichiers'
-              </>
-            ) : (
-              <>
-                Pour télécharger l'épisode, faites <span>clique droit</span> sur
-                celui-ci, puis 'Enregistrer la vidéo sous'
-              </>
-            )
-          ) : isIOS() ? (
-            <>
-              Pour télécharger l'épisode, cliquez{' '}
-              <a
-                style={{ color: '#ffa300', textDecoration: 'underline' }}
-                target="_blank"
-                href={`https://9xbud.com/${(video as any).props.src}`}
-              >
-                ici
-              </a>
-              ,puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur
-              la bouton partager en bas, puis 'Enregistrer dans fichiers'
-            </>
-          ) : (
-            <>
-              Pour télécharger l'épisode, cliquez{' '}
-              <a
-                style={{ color: '#ffa300', textDecoration: 'underline' }}
-                target="_blank"
-                href={`https://9xbud.com/${(video as any).props.src}`}
-              >
-                ici
-              </a>
-              , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite faites{' '}
-              <span>clique doit</span>, 'Enregistrer la vidéo sous'
-            </>
-          )
-        ) : null}
-      </div>
+      <DownloadComponent
+        lecteur={lecteur ?? 'eps1'}
+        video={video}
+        isIOS={isIOS}
+        className="tips--films"
+      />
       <div className="films">{films}</div>
 
       <Footer media />

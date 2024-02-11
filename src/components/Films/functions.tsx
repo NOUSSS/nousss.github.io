@@ -1,17 +1,17 @@
 import React from 'react';
 import { getURLFilm } from '../../functions/main';
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 
 export async function appearVideo(
   id: string,
 
-  setVideo: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
-  const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
-    .options.FILM_OPTIONS;
+  const { names } = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .FILM_OPTIONS;
 
   const lang = window.localStorage.getItem(`${currentAnime}--lang`);
 
@@ -46,15 +46,7 @@ export async function appearVideo(
     );
   }
 
-  setVideo(
-    <iframe
-      className="iframeFilm"
-      width="640"
-      height="360"
-      src={url}
-      allowFullScreen
-    ></iframe>
-  );
+  setVideo(url);
 
   return url;
 }
@@ -76,8 +68,8 @@ export function getFilms(
   lecteur: string
 ) {
   const currentAnime = window.localStorage.getItem('anime');
-  const { names } = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
-    .options.FILM_OPTIONS;
+  const { names } = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .FILM_OPTIONS;
 
   const filmsNodes: React.ReactNode[] = [];
 

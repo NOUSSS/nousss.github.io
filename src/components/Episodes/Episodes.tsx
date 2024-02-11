@@ -4,21 +4,20 @@ import './responsive.scss';
 import React, { useEffect, useState } from 'react';
 import { addScript, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
 import searchImg from '../../assets/Search.svg';
+import DownloadComponent from '../download-component.tsx';
 
 let LecteurEpisodes: string[] = [];
 
 export default function Episodes() {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const options = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!.options;
+  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
 
   const opts = options.EPISODES_OPTIONS;
 
@@ -363,56 +362,13 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <p className="download">
-        {video ? (
-          lecteur === 'epsAS' ? (
-            isIOS() ? (
-              <>
-                Pour télécharger l'épisode, cliquez{' '}
-                <a
-                  style={{ color: '#ffa300', textDecoration: 'underline' }}
-                  href={video}
-                >
-                  ici
-                </a>
-                , puis appuyez sur la bouton partager en bas, puis 'Enregistrer
-                dans fichiers'
-              </>
-            ) : (
-              <>
-                Pour télécharger l'épisode, faites <span>clique droit</span> sur
-                celui-ci, puis 'Enregistrer la vidéo sous'
-              </>
-            )
-          ) : isIOS() ? (
-            <>
-              Pour télécharger l'épisode, cliquez{' '}
-              <a
-                style={{ color: '#ffa300', textDecoration: 'underline' }}
-                target="_blank"
-                href={`https://9xbud.com/${video}`}
-              >
-                ici
-              </a>
-              ,puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur
-              la bouton partager en bas, puis 'Enregistrer dans fichiers'
-            </>
-          ) : (
-            <>
-              Pour télécharger l'épisode, cliquez{' '}
-              <a
-                style={{ color: '#ffa300', textDecoration: 'underline' }}
-                target="_blank"
-                href={`https://9xbud.com/${video}`}
-              >
-                ici
-              </a>
-              , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite faites{' '}
-              <span>clique doit</span>, 'Enregistrer la vidéo sous'
-            </>
-          )
-        ) : null}
-      </p>
+      <DownloadComponent
+        video={video}
+        lecteur={lecteur}
+        className="download"
+        isIOS={isIOS}
+      />
+
       <label
         className="label--episodes"
         title="Systeme de recherche super cool"

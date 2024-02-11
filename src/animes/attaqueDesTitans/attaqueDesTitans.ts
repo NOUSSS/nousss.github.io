@@ -4,7 +4,7 @@ import Affiche from '../../assets/Animes/AttaqueDesTitans/Affiche.jpg';
 import episodesNames from './constants/episodes-names';
 import { Anime } from '../../class/anime';
 
-export class AttaqueDesTitans_OPTIONS extends Anime {
+export class AttaqueDesTitans extends Anime {
   constructor() {
     super();
 

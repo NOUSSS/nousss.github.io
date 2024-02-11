@@ -2,7 +2,7 @@ import './accueil.scss';
 import './responsive.scss';
 
 import { Footer, Title } from '../components';
-import { ANIMES_OPTIONS, groupAnimesByCategory } from '../constants';
+import { ANIMES, groupAnimesByCategory } from '../constants';
 import { initSearchBar } from '../../functions/search';
 
 import searchImg from '../../assets/Search.svg';
@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
-    ANIMES_OPTIONS.map(({ anime, category }) => ({ anime, category }))
+    ANIMES.map(({ anime, category }) => ({ anime, category }))
   );
 
   const catalogues = groupAnimesByCategory(animes).sort(
@@ -72,8 +72,7 @@ const Accueil = () => {
                     <img
                       className="affiche"
                       src={
-                        ANIMES_OPTIONS.find(({ anime }) => anime === e)?.options
-                          .affiche
+                        ANIMES.find(({ anime }) => anime === e)?.options.affiche
                       }
                     />
                     <p>

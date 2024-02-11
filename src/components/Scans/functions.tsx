@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { windowKeys } from '../../interfaces/interface';
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 
 export const getTailleChapitres = (): number => {
   let i = 1;
@@ -29,9 +29,8 @@ export const selectChapter = (
 ): React.ReactNode[] | undefined => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const { IMAGE_URL } = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!.options.SCANS_OPTIONS;
+  const { IMAGE_URL } = ANIMES.find(({ anime }) => anime === currentAnime)!
+    .options.SCANS_OPTIONS;
 
   const scansImages: React.ReactNode[] = [];
   const select = document.querySelector('select');

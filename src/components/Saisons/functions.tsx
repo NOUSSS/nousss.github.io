@@ -1,11 +1,9 @@
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 
 export function getSaisons() {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const options = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!.options;
+  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
 
   const lastEpisode =
     options.EPISODES_OPTIONS.names?.[options.EPISODES_OPTIONS?.names.length - 1]

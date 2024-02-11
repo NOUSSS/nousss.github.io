@@ -3,7 +3,7 @@ import { getImage } from './constants/images-saisons';
 import Affiche from '../../assets/Animes/VinlandSaga/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class VinlandSaga_OPTIONS extends Anime {
+export class VinlandSaga extends Anime {
   constructor() {
     super();
 

@@ -6,16 +6,14 @@ import { Footer } from '../components';
 
 import './responsive.scss';
 import './Home.scss';
-import { ANIMES_OPTIONS } from '../constants';
+import { ANIMES } from '../constants';
 
 const Home = () => {
   /* const [text] = useState<string>('');
   const interval = useRef<NodeJS.Timeout | null>(null); */
 
   const currentAnime = window.localStorage.getItem('anime');
-  const { synopsis } = ANIMES_OPTIONS.find(
-    ({ anime }) => anime === currentAnime
-  )!;
+  const { synopsis } = ANIMES.find(({ anime }) => anime === currentAnime)!;
 
   useEffect(() => {
     /* setCitation(); */
@@ -107,7 +105,7 @@ const Home = () => {
 
         <div className="choices">
           <li>
-            {ANIMES_OPTIONS.find(
+            {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
             )?.options.FILM_OPTIONS?.names ? (
               <ul>
@@ -123,7 +121,7 @@ const Home = () => {
                 <br />
               </Link>
             </ul>
-            {ANIMES_OPTIONS.find(
+            {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
             )?.options.SCANS_OPTIONS.IMAGE_URL ? (
               <ul>

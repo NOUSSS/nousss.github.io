@@ -4,7 +4,7 @@ import { films } from './constants/films-names';
 import Affiche from '../../assets/Animes/DeathNote/Affiche.webp';
 import { Anime } from '../../class/anime';
 
-export class DeathNote_OPTIONS extends Anime {
+export class DeathNote extends Anime {
   constructor() {
     super();
 

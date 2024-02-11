@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/JujutsuKaisen/Affiche.jpeg';
 import episodesNames from './constants/episodes-names';
 import { Anime } from '../../class/anime';
 
-export class JujutsuKaisen_OPTIONS extends Anime {
+export class JujutsuKaisen extends Anime {
   constructor() {
     super();
 

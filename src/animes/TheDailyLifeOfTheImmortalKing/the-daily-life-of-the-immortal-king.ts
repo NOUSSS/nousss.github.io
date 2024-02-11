@@ -3,7 +3,7 @@ import { Anime } from '../../class/anime';
 
 import Affiche from '../../assets/Animes/TheDailyLifeOfTheImmortalKing/Affiche.jpg';
 
-export class TheDailyLifeOfTheImmortalKing_OPTIONS extends Anime {
+export class TheDailyLifeOfTheImmortalKing extends Anime {
   constructor() {
     super();
 

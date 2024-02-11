@@ -10,7 +10,7 @@ import {
 } from './functions.tsx';
 
 import { addScript } from '../../functions/main.ts';
-import { ANIMES_OPTIONS } from '../constants.ts';
+import { ANIMES } from '../constants.ts';
 import { Footer, Title } from '../components.tsx';
 
 import uparrow from '../../assets/uparrow.png';
@@ -18,8 +18,8 @@ import uparrow from '../../assets/uparrow.png';
 const Scans = () => {
   const currentAnime = window.localStorage.getItem('anime')!;
 
-  const options = ANIMES_OPTIONS.find(({ anime }) => anime === currentAnime)!
-    .options.SCANS_OPTIONS;
+  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .SCANS_OPTIONS;
 
   const from = useRef(options.from);
 

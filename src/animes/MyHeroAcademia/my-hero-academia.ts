@@ -4,7 +4,7 @@ import { films } from './constants/films-names';
 import Affiche from '../../assets/Animes/MyHeroAcademia/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class MyHeroAcademia_OPTIONS extends Anime {
+export class MyHeroAcademia extends Anime {
   constructor() {
     super();
 

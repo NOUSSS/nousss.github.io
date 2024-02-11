@@ -3,7 +3,7 @@ import { getImage } from './constants/images-saisons';
 import Affiche from '../../assets/Animes/TowerOfGod/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class TowerOfGod_OPTIONS extends Anime {
+export class TowerOfGod extends Anime {
   constructor() {
     super();
 
