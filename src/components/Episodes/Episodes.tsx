@@ -87,9 +87,11 @@ export default function Episodes() {
     else NextSaisonSelector.style.display = '';
 
     if (isIOS()) {
-      document.querySelector<HTMLElement>(
-        '.hideEpisodesNamesInput'
-      )!.style.display = 'none';
+      if (document.querySelector<HTMLElement>('.hideEpisodesNamesInput')) {
+        document.querySelector<HTMLElement>(
+          '.hideEpisodesNamesInput'
+        )!.style.display = 'none';
+      }
     } else {
       toggleHideEpisodesNames();
     }

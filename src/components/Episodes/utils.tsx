@@ -5,9 +5,9 @@ import { Change, NextEpisode, PrevEpisode } from './functions';
 export function toggleHideEpisodesNames(): void {
   const hideEpisodesNamesInput = document.querySelector<HTMLInputElement>(
     '.hideEpisodesNames input'
-  )!;
+  );
 
-  hideEpisodesNamesInput.addEventListener('change', () => {
+  hideEpisodesNamesInput?.addEventListener('change', () => {
     const check = hideEpisodesNamesInput.checked;
 
     if (check) {
