@@ -1,3 +1,4 @@
+import { AirGear } from '../animes/AirGear/air-gear';
 import { BlackClover } from '../animes/BlackClover/black-clover';
 import { BlueLock } from '../animes/BlueLock/blue-lock';
 import { ClassroomOfTheElites } from '../animes/ClassroomOfTheElites/classroom-of-the-elites';
@@ -14,6 +15,7 @@ import { MyHeroAcademia } from '../animes/MyHeroAcademia/my-hero-academia';
 import { NarutoShippuden } from '../animes/NarutoShippuden/naruto-shippuden';
 import { OnePiece } from '../animes/OnePiece/one-piece';
 import { ShangriLaFrontier } from '../animes/ShangriLaFrontier/shangri-la-frontier';
+import { SlamDunk } from '../animes/SlamDunk/slam-dunk';
 import { SoloLeveling } from '../animes/SoloLeveling/solo-leveling';
 import { TheDailyLifeOfTheImmortalKing } from '../animes/TheDailyLifeOfTheImmortalKing/the-daily-life-of-the-immortal-king';
 import { TheGodOfHighschool } from '../animes/TheGodOfHighschool/the-god-of-highschool';
@@ -181,6 +183,21 @@ export const ANIMES = [
     category: 'Sport',
     synopsis:
       'Coupe du monde 2018, l\'équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l\'Union japonaise de football à fonder le "Blue Lock" : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.',
+  },
+
+  {
+    anime: 'air-gear',
+    options: new AirGear(),
+    category: 'Sport',
+    synopsis:
+      "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
+  },
+  {
+    anime: 'slam-dunk',
+    options: new SlamDunk(),
+    category: 'Sport',
+    synopsis:
+      'Hanamichi Sakuragi, un jeune homme immature et impopulaire, est bien décidé à en finir avec les déceptions amoureuses lors de son entrée au lycée de Shohoku. Il y rencontre alors Haruko Akagi, une fille dont il tombe amoureux.',
   },
 ];
 
