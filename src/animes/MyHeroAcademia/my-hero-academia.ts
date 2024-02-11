@@ -2,6 +2,8 @@ import { getImage } from './constants/images-saisons';
 import { films } from './constants/films-names';
 
 import Affiche from '../../assets/Animes/MyHeroAcademia/Affiche.jpg';
+import episodes from './constants/episodes-names';
+
 import { Anime } from '../../class/anime';
 
 export class MyHeroAcademia extends Anime {
@@ -73,7 +75,7 @@ export class MyHeroAcademia extends Anime {
         6: 113,
         7: 138,
       },
-      names: [],
+      names: episodes,
       lecteur: 'epsAS',
     };
   }

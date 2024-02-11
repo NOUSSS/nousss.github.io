@@ -1,5 +1,13 @@
+const episodes = [];
+
+document.querySelectorAll('SELECTOR FOR EPISODES').forEach((e) => {
+  if (e.innerText.includes('Épisode')) {
+    episodes.push(convertString(e.innerText.replace('1er', '1')));
+  }
+});
+
 function convertString(episodeStr) {
-  const regex = /Episode (\d+) : (.+) \(\d+ .+\)/;
+  const regex = /Épisode (\d+) : (.+) \(\d+ .+\)/;
   const matches = episodeStr.match(regex);
 
   if (matches) {
@@ -9,3 +17,5 @@ function convertString(episodeStr) {
     };
   }
 }
+
+console.log(JSON.stringify(episodes));
