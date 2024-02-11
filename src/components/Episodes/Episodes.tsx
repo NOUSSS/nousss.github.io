@@ -111,15 +111,6 @@ export default function Episodes() {
       toggleHideEpisodesNames();
     }
 
-    setTimeout(() => {
-      if (window.scrollY <= 50) {
-        window.scrollTo({
-          top: 300,
-          behavior: 'smooth',
-        });
-      }
-    }, 4000);
-
     addScript(SCRIPT_URL(scriptIndex, lang), setLoadingText)
       .then(() => {
         LecteurEpisodes = (window as unknown as windowKeys)[lecteur];

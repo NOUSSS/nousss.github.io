@@ -106,7 +106,10 @@ export function Change(
     window.localStorage.removeItem('episodeSpecial');
   }
 
-  window.scrollTo({ top: 332, behavior: 'smooth' });
+  window.scrollTo({
+    top: document.querySelector('iframe')?.offsetTop,
+    behavior: 'smooth',
+  });
 }
 
 export function NextEpisode(
