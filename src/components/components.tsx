@@ -14,9 +14,7 @@ export function Title({
           ? 'Le catalogue'
           : window.localStorage
               .getItem('anime')
-              ?.replace('-', ' ')
-              .replace('-', ' ')
-              .split(' ')
+              ?.split(' ')
               .map((word) => {
                 return (
                   word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
@@ -33,9 +31,7 @@ export function Title({
             ? 'Notre catalogue'
             : window.localStorage
                 .getItem('anime')
-                ?.replace('-', ' ')
-                .replace('-', ' ')
-                .split(' ')
+                ?.split(' ')
                 .map((word) => {
                   return (
                     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()

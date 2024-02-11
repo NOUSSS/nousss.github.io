@@ -15,7 +15,23 @@ import { ANIMES } from '../constants.ts';
 import DownloadComponent from '../download-component.tsx';
 
 const Films = () => {
-  const currentAnime = window.localStorage.getItem('anime')!;
+  let currentAnime = window.localStorage.getItem('anime')!;
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   const { BLACKLIST_URL, SCRIPT_URL, lecteur } = ANIMES.find(
     ({ anime }) => anime === currentAnime

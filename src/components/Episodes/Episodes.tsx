@@ -15,10 +15,25 @@ import DownloadComponent from '../download-component.tsx';
 let LecteurEpisodes: string[] = [];
 
 export default function Episodes() {
-  const currentAnime = window.localStorage.getItem('anime')!;
+  let currentAnime = window.localStorage.getItem('anime')!;
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
-
   const opts = options.EPISODES_OPTIONS;
 
   const { allIndex, horsSeries, SCRIPT_URL, names } = opts;
@@ -28,7 +43,7 @@ export default function Episodes() {
 
   const [saison, setSaison] = useState({
     name: saisons[
-      Number(window.localStorage.getItem(`${currentAnime}--saison`)) ?? 0
+      Number(window.localStorage.getItem(`${currentAnime}--saison`)) ?? 1
     ].name,
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
@@ -402,7 +417,9 @@ export default function Episodes() {
               String(prevSaison)
             );
 
-            window.location.hash = `#S${prevSaison}/Episodes`;
+            window.location.hash = `#S${prevSaison}/Episodes?anime=${encodeURI(
+              currentAnime
+            )}`;
 
             setSaison({
               name: saisons[prevSaison].name,
@@ -425,7 +442,9 @@ export default function Episodes() {
               String(newSaison)
             );
 
-            window.location.hash = `#S${newSaison}/Episodes`;
+            window.location.hash = `#S${newSaison}/Episodes?anime=${encodeURI(
+              currentAnime
+            )}`;
 
             setSaison({
               name: saisons[newSaison].name,

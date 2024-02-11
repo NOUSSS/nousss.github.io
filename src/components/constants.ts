@@ -26,7 +26,7 @@ import { Naruto } from '../animes/naruto/naruto';
 
 export const ANIMES = [
   {
-    anime: 'one-piece',
+    anime: 'one piece',
     options: new OnePiece(),
     category: 'Classique',
     synopsis:
@@ -54,21 +54,21 @@ export const ANIMES = [
       'Au début de l’histoire, le monde semble paisible et tout le monde vit librement, mais tout cela ne dure pas longtemps. Un nouvel ennemi a commencé à se cacher et l’entité « Destructeur » appelée le Dieu de la Destruction s’est réveillée de son sommeil. Tout cela a eu un très grand impact sur la terre, tout le monde a commencé à se préparer à une catastrophe encore plus grande. ',
   },
   {
-    anime: 'my-hero-academia',
+    anime: 'my hero academia',
     options: new MyHeroAcademia(),
     category: 'New gen',
     synopsis:
       'Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d\'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.',
   },
   {
-    anime: 'vinland-saga',
+    anime: 'vinland saga',
     options: new VinlandSaga(),
     category: 'Reflexion',
     synopsis:
       "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
   {
-    anime: 'solo-leveling',
+    anime: 'solo leveling',
     options: new SoloLeveling(),
     category: 'Du moment',
     synopsis:
@@ -81,20 +81,20 @@ export const ANIMES = [
     synopsis: `Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.`,
   },
   {
-    anime: 'jujutsu-kaisen',
+    anime: 'jujutsu kaisen',
     options: new JujutsuKaisen(),
     category: 'New gen',
     synopsis:
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
   {
-    anime: 'black-clover',
+    anime: 'black clover',
     options: new BlackClover(),
     category: 'Magie',
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
-    anime: 'hunter-x-hunter',
+    anime: 'hunter x hunter',
     options: new HunterXHunter(),
     category: 'Classique',
     synopsis:
@@ -178,7 +178,7 @@ export const ANIMES = [
       'Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.',
   },
   {
-    anime: 'blue-lock',
+    anime: 'Blue Lock',
     options: new BlueLock(),
     category: 'Sport',
     synopsis:
@@ -186,14 +186,14 @@ export const ANIMES = [
   },
 
   {
-    anime: 'air-gear',
+    anime: 'Air Gear',
     options: new AirGear(),
     category: 'Sport',
     synopsis:
       "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
   },
   {
-    anime: 'slam-dunk',
+    anime: 'Slam Dunk',
     options: new SlamDunk(),
     category: 'Sport',
     synopsis:

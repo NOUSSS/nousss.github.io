@@ -23,6 +23,10 @@ const episodes = [
     name: 'The Real Hunt Begins',
     index: '6',
   },
+  {
+    name: "Let's See How Far I Can Go",
+    index: '7',
+  },
 ];
 
 export default episodes;
