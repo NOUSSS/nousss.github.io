@@ -5,7 +5,7 @@ import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { getURLFilm, isIOS } from '../../functions/main.ts';
+import { getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
@@ -138,7 +138,6 @@ const Films = () => {
       <DownloadComponent
         lecteur={lecteur ?? 'eps1'}
         video={video}
-        isIOS={isIOS}
         className="tips--films"
       />
       <div className="films">{films}</div>

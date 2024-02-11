@@ -18,10 +18,10 @@ export function initSearchBar(
         input.value.length === 0 ||
         element.id.toLowerCase().includes(input.value.toLowerCase())
       ) {
-        div[index].style.display = '';
+        div[index].classList.remove('invisible');
         if (input.value.length !== 0) count++;
       } else {
-        div[index].style.display = 'none';
+        div[index].classList.add('invisible');
       }
     });
 
@@ -30,11 +30,13 @@ export function initSearchBar(
 
       categories.forEach((category) => {
         const items = category.querySelectorAll('li');
-        const isAllHidden = Array.from(items).every(
-          (item) => item.style.display === 'none'
+        const isAllHidden = Array.from(items).every((item) =>
+          item.classList.contains('invisible')
         );
 
-        (category as HTMLElement).style.display = isAllHidden ? 'none' : '';
+        isAllHidden
+          ? category.classList.add('invisible')
+          : category.classList.remove('invisible');
       });
     }
 
@@ -47,7 +49,9 @@ export function initSearchBar(
       )
     );
 
-    output.style.display = input.value.length === 0 ? 'none' : '';
+    input.value.length === 0
+      ? output.classList.add('invisible')
+      : output.classList.remove('invisible');
   }
 
   input.addEventListener('input', updateResults);

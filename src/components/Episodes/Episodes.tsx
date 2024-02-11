@@ -78,17 +78,19 @@ export default function Episodes() {
     const lastSaison = Object.keys(allIndex)[Object.keys(allIndex).length - 1];
     const firstSaison = Object.keys(allIndex)[0];
 
-    if (saison.index === firstSaison) PrevSaisonSelector.style.display = 'none';
-    else PrevSaisonSelector.style.display = '';
+    if (saison.index === firstSaison)
+      PrevSaisonSelector.classList.add('invisible');
+    else PrevSaisonSelector.classList.remove('invisible');
 
-    if (saison.index === lastSaison) NextSaisonSelector.style.display = 'none';
-    else NextSaisonSelector.style.display = '';
+    if (saison.index === lastSaison)
+      NextSaisonSelector.classList.add('invisible');
+    else NextSaisonSelector.classList.remove('invisible');
 
     if (isIOS()) {
       if (document.querySelector<HTMLElement>('.hideEpisodesNamesInput')) {
-        document.querySelector<HTMLElement>(
-          '.hideEpisodesNamesInput'
-        )!.style.display = 'none';
+        document
+          .querySelector<HTMLElement>('.hideEpisodesNamesInput')!
+          .classList.add('invisible');
       }
     } else {
       toggleHideEpisodesNames();
@@ -313,12 +315,13 @@ export default function Episodes() {
     const PrevEpisodeSelector =
       document.querySelector<HTMLElement>('.prevButton')!;
 
-    if (!episode || episode === '1') PrevEpisodeSelector.style.display = 'none';
-    else PrevEpisodeSelector.style.display = '';
+    if (!episode || episode === '1')
+      PrevEpisodeSelector.classList.add('invisible');
+    else PrevEpisodeSelector.classList.remove('invisible');
 
     if (Number(episode) === LecteurEpisodes.length)
-      NextEpisodeSelector.style.display = 'none';
-    else NextEpisodeSelector.style.display = '';
+      NextEpisodeSelector.classList.add('invisible');
+    else NextEpisodeSelector.classList.remove('invisible');
   }, [video, currentAnime]);
 
   return (
@@ -362,12 +365,7 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <DownloadComponent
-        video={video}
-        lecteur={lecteur}
-        className="download"
-        isIOS={isIOS}
-      />
+      <DownloadComponent video={video} lecteur={lecteur} className="download" />
 
       <label
         className="label--episodes"

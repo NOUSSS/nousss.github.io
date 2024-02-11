@@ -76,18 +76,22 @@ const Scans = () => {
       document.querySelectorAll<HTMLElement>('.prevButton')!;
 
     if (!chapitre || chapitre === '1')
-      Array.from([...PrevchapitreSelector]).map(
-        (e) => (e.style.display = 'none')
+      Array.from([...PrevchapitreSelector]).map((e) =>
+        e.classList.add('invisible')
       );
     else
-      Array.from([...PrevchapitreSelector]).map((e) => (e.style.display = ''));
+      Array.from([...PrevchapitreSelector]).map((e) =>
+        e.classList.remove('invisible')
+      );
 
     if (Number(chapitre) === document.querySelector('select')?.options.length)
-      Array.from([...NextchapitreSelector]).map(
-        (e) => (e.style.display = 'none')
+      Array.from([...NextchapitreSelector]).map((e) =>
+        e.classList.add('invisible')
       );
     else
-      Array.from([...NextchapitreSelector]).map((e) => (e.style.display = ''));
+      Array.from([...NextchapitreSelector]).map((e) =>
+        e.classList.remove('invisible')
+      );
   }, [scans, currentAnime]);
 
   const onChangeSelect = useCallback(

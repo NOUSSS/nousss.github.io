@@ -2,7 +2,7 @@ import { windowKeys } from '../interfaces/interface';
 
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
   Array.from(div).forEach((element) => {
-    element.style.display = '';
+    element.classList.remove('invisible');
   });
 };
 

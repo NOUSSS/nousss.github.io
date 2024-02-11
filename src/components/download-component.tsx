@@ -1,10 +1,9 @@
 import React from 'react';
+import { isIOS } from '../functions/main';
 
 type DownloadComponentProps = {
   video: string;
   lecteur: string;
-
-  isIOS: () => boolean;
 
   className: string;
 };
@@ -12,7 +11,6 @@ type DownloadComponentProps = {
 const DownloadComponent: React.FC<DownloadComponentProps> = ({
   video,
   lecteur,
-  isIOS,
   className,
 }) => {
   const videoLink = lecteur === 'epsAS' ? video : `https://9xbud.com/${video}`;
