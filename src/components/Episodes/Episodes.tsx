@@ -23,10 +23,9 @@ export default function Episodes() {
   const opts = options.EPISODES_OPTIONS;
 
   const { allIndex, horsSeries, SCRIPT_URL, names } = opts;
+  const { saisons } = options;
 
   let { lecteur } = opts;
-
-  const { saisons } = options;
 
   const [saison, setSaison] = useState({
     name: saisons[
@@ -365,14 +364,54 @@ export default function Episodes() {
       <div className="search--output--episodes">{output}</div>
 
       <p className="download">
-        {lecteur === 'epsAS' ? (
-          <>
-            Pour télécharger l'episode, faites <span>clique droit</span> sur
-            celui-ci, puis 'Enregistrer la vidéo sous'
-          </>
-        ) : (
-          "Le telechargement des episodes n'est pas disponible pour cette anime"
-        )}
+        {video ? (
+          lecteur === 'epsAS' ? (
+            isIOS() ? (
+              <>
+                Pour télécharger l'épisode, cliquez{' '}
+                <a
+                  style={{ color: '#ffa300', textDecoration: 'underline' }}
+                  href={video}
+                >
+                  ici
+                </a>
+                , puis appuyez sur la bouton partager en bas, puis 'Enregistrer
+                dans fichiers'
+              </>
+            ) : (
+              <>
+                Pour télécharger l'épisode, faites <span>clique droit</span> sur
+                celui-ci, puis 'Enregistrer la vidéo sous'
+              </>
+            )
+          ) : isIOS() ? (
+            <>
+              Pour télécharger l'épisode, cliquez{' '}
+              <a
+                style={{ color: '#ffa300', textDecoration: 'underline' }}
+                target="_blank"
+                href={`https://9xbud.com/${video}`}
+              >
+                ici
+              </a>
+              ,puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur
+              la bouton partager en bas, puis 'Enregistrer dans fichiers'
+            </>
+          ) : (
+            <>
+              Pour télécharger l'épisode, cliquez{' '}
+              <a
+                style={{ color: '#ffa300', textDecoration: 'underline' }}
+                target="_blank"
+                href={`https://9xbud.com/${video}`}
+              >
+                ici
+              </a>
+              , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite faites{' '}
+              <span>clique doit</span>, 'Enregistrer la vidéo sous'
+            </>
+          )
+        ) : null}
       </p>
       <label
         className="label--episodes"

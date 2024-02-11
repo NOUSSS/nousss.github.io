@@ -5,7 +5,7 @@ import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { getURLFilm } from '../../functions/main.ts';
+import { getURLFilm, isIOS } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
@@ -21,7 +21,6 @@ const Films = () => {
   )!.options.FILM_OPTIONS;
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
-  const [tips, setTips] = useState<React.ReactNode>();
   const [video, setVideo] = useState<React.ReactNode>();
   const [title, setTitle] = useState<React.ReactNode>();
   const [loading, setLoading] = useState<React.ReactNode>(
@@ -64,10 +63,8 @@ const Films = () => {
           : `${getURLFilm(0, lecteurString.current)} ${
               window.localStorage.getItem(`${currentAnime}--currentFilm`) ?? '0'
             }`,
-        setTips,
         setVideo,
-        setTitle,
-        lecteurString.current
+        setTitle
       );
 
       getFilms(setFilmsFront, lecteurString.current);
@@ -91,13 +88,7 @@ const Films = () => {
 
     Array.from([...poster]).map((_, i) => {
       poster[i].addEventListener('click', () => {
-        appearVideo(
-          poster[i].id,
-          setTips,
-          setVideo,
-          setTitle,
-          lecteurString.current
-        );
+        appearVideo(poster[i].id, setVideo, setTitle);
       });
     });
   }, 1000);
@@ -134,7 +125,56 @@ const Films = () => {
         />
       </label>
 
-      <div className="tips--films">{tips}</div>
+      <div className="tips--films">
+        {video ? (
+          lecteur === 'epsAS' ? (
+            isIOS() ? (
+              <>
+                Pour télécharger l'épisode, cliquez{' '}
+                <a
+                  style={{ color: '#ffa300', textDecoration: 'underline' }}
+                  href={(video as any).props.src}
+                >
+                  ici
+                </a>
+                , puis appuyez sur la bouton partager en bas, puis 'Enregistrer
+                dans fichiers'
+              </>
+            ) : (
+              <>
+                Pour télécharger l'épisode, faites <span>clique droit</span> sur
+                celui-ci, puis 'Enregistrer la vidéo sous'
+              </>
+            )
+          ) : isIOS() ? (
+            <>
+              Pour télécharger l'épisode, cliquez{' '}
+              <a
+                style={{ color: '#ffa300', textDecoration: 'underline' }}
+                target="_blank"
+                href={`https://9xbud.com/${(video as any).props.src}`}
+              >
+                ici
+              </a>
+              ,puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur
+              la bouton partager en bas, puis 'Enregistrer dans fichiers'
+            </>
+          ) : (
+            <>
+              Pour télécharger l'épisode, cliquez{' '}
+              <a
+                style={{ color: '#ffa300', textDecoration: 'underline' }}
+                target="_blank"
+                href={`https://9xbud.com/${(video as any).props.src}`}
+              >
+                ici
+              </a>
+              , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite faites{' '}
+              <span>clique doit</span>, 'Enregistrer la vidéo sous'
+            </>
+          )
+        ) : null}
+      </div>
       <div className="films">{films}</div>
 
       <Footer media />

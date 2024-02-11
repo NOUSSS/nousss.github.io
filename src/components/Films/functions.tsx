@@ -1,15 +1,12 @@
 import React from 'react';
-import { getURLFilm, isIOS } from '../../functions/main';
+import { getURLFilm } from '../../functions/main';
 import { ANIMES_OPTIONS } from '../constants';
 
 export async function appearVideo(
   id: string,
 
-  setTips: React.Dispatch<React.SetStateAction<React.ReactNode>>,
   setVideo: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-
-  lecteur: string
+  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
   const currentAnime = window.localStorage.getItem('anime');
 
@@ -58,33 +55,6 @@ export async function appearVideo(
       allowFullScreen
     ></iframe>
   );
-
-  if (!isIOS()) {
-    setTips(
-      <>
-        Pour télécharger le film, cliquez{' '}
-        <span>
-          <a target="_blank" href={getURLFilm(Number(index), lecteur)}>
-            ici
-          </a>
-        </span>
-        , puis clique droit -{'>'} '<span>Enregistrer la vidéo sous'</span>.
-      </>
-    );
-  } else {
-    setTips(
-      <>
-        Pour télécharger le film, cliquez{' '}
-        <span>
-          <a target="_blank" href={getURLFilm(Number(index), lecteur)}>
-            ici
-          </a>
-        </span>{' '}
-        sur <span>SAFARI</span> puis dans le bouton <span>PARTAGER</span> en bas
-        puis <span>'Enregistrer dans fichiers'</span>
-      </>
-    );
-  }
 
   return url;
 }
