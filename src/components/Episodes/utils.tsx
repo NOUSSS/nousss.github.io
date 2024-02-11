@@ -14,13 +14,13 @@ export function toggleHideEpisodesNames(): void {
       for (const episodeName of Array.from([
         ...document.querySelectorAll('.episodeName'),
       ])) {
-        (episodeName as HTMLElement).style.filter = 'blur(7px)';
+        (episodeName as HTMLElement).classList.add('blurEffect');
       }
     } else {
       for (const episodeName of Array.from([
         ...document.querySelectorAll('.episodeName'),
       ])) {
-        (episodeName as HTMLElement).style.filter = 'blur(0px)';
+        (episodeName as HTMLElement).classList.remove('blurEffect');
       }
     }
   });

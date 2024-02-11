@@ -80,6 +80,11 @@ body {
   }
 }
 
+.blurEffect {
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+}
+
 .historiqueEpisode {
   p {
     color: white;
