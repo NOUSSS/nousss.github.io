@@ -159,7 +159,7 @@ export const ANIMES = [
   {
     anime: 'Classroom of the Elites',
     options: new ClassroomOfTheElites(),
-    category: 'Lycée',
+    category: 'Du moment',
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
