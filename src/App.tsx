@@ -61,9 +61,12 @@ const App = () => {
 
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 35) {
+        document.querySelector<HTMLElement>('.logo')!.style.visibility =
+          'hidden';
         document.querySelector<HTMLElement>('.logo')!.style.opacity = '0';
       } else {
         document.querySelector<HTMLElement>('.logo')!.style.opacity = '';
+        document.querySelector<HTMLElement>('.logo')!.style.visibility = '';
       }
     });
 
