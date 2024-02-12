@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import './Saisons.scss';
 import './responsive.scss';
 
-import searchImg from '../../assets/Search.svg';
+import searchImg from '../../assets/Search.jpg';
 
 import { getSaisons } from './functions';
 import { initSearchBar } from '../../functions/search';

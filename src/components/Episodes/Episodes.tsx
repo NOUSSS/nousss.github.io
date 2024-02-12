@@ -9,7 +9,7 @@ import { windowKeys } from '../../interfaces/interface.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
-import searchImg from '../../assets/Search.svg';
+import searchImg from '../../assets/Search.jpg';
 import DownloadComponent from '../download-component.tsx';
 
 let LecteurEpisodes: string[] = [];
@@ -87,8 +87,6 @@ export default function Episodes() {
       lecteur = 'eps2';
     }
   }
-
-  console.log(scriptIndex);
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();

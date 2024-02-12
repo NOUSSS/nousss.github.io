@@ -5,7 +5,7 @@ import { Footer, Title } from '../components';
 import { ANIMES, groupAnimesByCategory } from '../constants';
 import { initSearchBar } from '../../functions/search';
 
-import searchImg from '../../assets/Search.svg';
+import searchImg from '../../assets/Search.jpg';
 import React, { useState } from 'react';
 import { trim } from '../../functions/main';
 
