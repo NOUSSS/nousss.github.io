@@ -7,6 +7,7 @@ import { initSearchBar } from '../../functions/search';
 
 import searchImg from '../../assets/Search.svg';
 import React, { useState } from 'react';
+import { trim } from '../../functions/main';
 
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
@@ -75,6 +76,16 @@ const Accueil = () => {
                         ANIMES.find(({ anime }) => anime === e)?.options.affiche
                       }
                     />
+
+                    <div className="synopsis">
+                      <p>
+                        {trim(
+                          ANIMES.find(({ anime }) => anime === e)?.synopsis!,
+                          150
+                        )}
+                      </p>
+                    </div>
+
                     <p>
                       {e
                         .replace('-', ' ')

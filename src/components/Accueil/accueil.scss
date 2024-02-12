@@ -31,6 +31,8 @@
 
     ul {
       overflow-x: auto;
+      overflow-y: hidden;
+
       display: flex;
       flex-direction: row;
 
@@ -41,11 +43,34 @@
         cursor: pointer;
 
         .card {
+          position: relative;
+
           width: 130px;
           height: 160px;
           background-color: hsla(240, 10%, 10%, 0.192);
           box-shadow: black 0 0 10px;
           border-radius: 5px;
+
+          transition: transform 150ms ease-out;
+
+          .synopsis {
+            position: absolute;
+            top: 60px;
+            height: 0%;
+
+            z-index: 100;
+
+            transition: height 300ms ease-in-out;
+
+            p {
+              border-radius: 2px;
+              color: black;
+              height: 50%;
+              overflow: hidden;
+              background-color: white;
+              font-size: 9px;
+            }
+          }
 
           .affiche {
             width: 129px;
@@ -53,16 +78,18 @@
 
           p {
             position: relative;
+
             top: 15px;
             font-size: 15px;
+
             color: #ffa300;
           }
-        }
 
-        transition: transform 150ms ease-out;
-
-        &:hover {
-          transform: scale(0.95);
+          &:hover {
+            .synopsis {
+              height: 100%;
+            }
+          }
         }
       }
     }
