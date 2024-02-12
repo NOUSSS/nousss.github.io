@@ -1,5 +1,6 @@
 import { AirGear } from '../animes/AirGear/air-gear';
 import { BlackClover } from '../animes/BlackClover/black-clover';
+import { Bleach } from '../animes/Bleach/bleach';
 import { BlueLock } from '../animes/BlueLock/blue-lock';
 import { ClassroomOfTheElites } from '../animes/ClassroomOfTheElites/classroom-of-the-elites';
 import { DeathNote } from '../animes/DeathNote/death-note';
@@ -206,6 +207,13 @@ export const ANIMES = [
     category: 'New gen',
     synopsis:
       "Les citadins locaux ne s'aventurent jamais dans les bois la nuit à cause de démons mangeurs d'hommes. Un jour, le jeune Tanjiro découvre que sa famille s'est fait massacrer et que la seule survivante, sa sœur Nezuko, est devenue un démon.",
+  },
+  {
+    anime: 'Bleach',
+    options: new Bleach(),
+    category: 'Classique',
+    synopsis:
+      'Adolescent de quinze ans, Ichigo Kurosaki possède un don particulier : celui de voir les esprits. Un jour, il croise la route d\'une belle Shinigami (un être spirituel) en train de pourchasser une "âme perdue", un esprit maléfique qui hante notre monde et n\'arrive pas à trouver le repos.',
   },
 ];
 

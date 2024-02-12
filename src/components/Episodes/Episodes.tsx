@@ -77,6 +77,19 @@ export default function Episodes() {
     }
   }
 
+  if (currentAnime == 'Bleach') {
+    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) > 2) {
+      scriptIndex = `2-${
+        Number(window.localStorage.getItem(`${currentAnime}--saison`)) - 1
+      }`;
+    }
+    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) === 2) {
+      lecteur = 'eps2';
+    }
+  }
+
+  console.log(scriptIndex);
+
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
   const [video, setVideo] = useState<string>('');
