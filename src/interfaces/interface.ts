@@ -11,6 +11,11 @@ interface Episode {
   name: string;
 }
 
+export interface Note {
+  saison: string;
+  message: string;
+}
+
 export interface horsSeriesType {
   saison: string;
   hs: number[];

@@ -2,6 +2,7 @@ import {
   FilmOptions,
   ScansOptions,
   EpisodesOptions,
+  Note,
 } from '../interfaces/interface';
 
 import { Season } from '../interfaces/interface';
@@ -13,6 +14,8 @@ export class Anime {
   public FILM_OPTIONS: FilmOptions;
   public SCANS_OPTIONS: ScansOptions;
   public EPISODES_OPTIONS: EpisodesOptions;
+
+  public note: string | Note[];
 
   constructor() {
     this.affiche = '';
@@ -26,5 +29,7 @@ export class Anime {
       lecteur: '',
       SCRIPT_URL: () => '',
     };
+
+    this.note = '';
   }
 }

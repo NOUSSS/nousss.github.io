@@ -3,6 +3,7 @@ import { BlackClover } from '../animes/BlackClover/black-clover';
 import { BlueLock } from '../animes/BlueLock/blue-lock';
 import { ClassroomOfTheElites } from '../animes/ClassroomOfTheElites/classroom-of-the-elites';
 import { DeathNote } from '../animes/DeathNote/death-note';
+import { DemonSlayer } from '../animes/DemonSlayer/demon-slayer';
 import { DragonBall } from '../animes/DragonBall/dragon-ball';
 import { DragonBallSuper } from '../animes/DragonBallSuper/DragonBallSuper';
 import { DragonBallZ } from '../animes/DragonBallZ/dragon-ball-z';
@@ -198,6 +199,13 @@ export const ANIMES = [
     category: 'Sport',
     synopsis:
       'Hanamichi Sakuragi, un jeune homme immature et impopulaire, est bien décidé à en finir avec les déceptions amoureuses lors de son entrée au lycée de Shohoku. Il y rencontre alors Haruko Akagi, une fille dont il tombe amoureux.',
+  },
+  {
+    anime: 'Demon Slayer',
+    options: new DemonSlayer(),
+    category: 'New gen',
+    synopsis:
+      "Les citadins locaux ne s'aventurent jamais dans les bois la nuit à cause de démons mangeurs d'hommes. Un jour, le jeune Tanjiro découvre que sa famille s'est fait massacrer et que la seule survivante, sa sœur Nezuko, est devenue un démon.",
   },
 ];
 

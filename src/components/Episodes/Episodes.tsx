@@ -1,7 +1,7 @@
 import './Episodes.scss';
 import './responsive.scss';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { addScript, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES } from '../constants';
@@ -47,6 +47,8 @@ export default function Episodes() {
     ].name,
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
+
+  let disclamerMessage = useRef('');
 
   if (!window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`))
     window.localStorage.setItem(
@@ -299,6 +301,18 @@ export default function Episodes() {
         );
         setLoadingText(<span>Chargement des episodes en cours.</span>);
       });
+
+    if (options.note) {
+      if (typeof options.note === 'string') {
+        disclamerMessage.current = options.note;
+      } else {
+        if (options.note.find((obj) => obj.saison === saison.index)) {
+          disclamerMessage!.current = options.note.find(
+            (obj) => obj.saison === saison.index
+          )!.message;
+        }
+      }
+    }
   }, [
     saison,
     lang,
@@ -339,6 +353,10 @@ export default function Episodes() {
         Pour changer de langage cliquez sur la langue entre crochet juste en
         haut et patientez
       </p>
+
+      {disclamerMessage.current ? (
+        <p className="disclamer">{disclamerMessage.current}</p>
+      ) : null}
 
       <p className="episodeTitle">{episodeTitle}</p>
 
