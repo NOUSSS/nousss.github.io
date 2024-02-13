@@ -131,8 +131,6 @@ const Films = () => {
         ></iframe>
       </div>
 
-      <div className="search--output--films">{output}</div>
-
       <label className="label--films" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
         <input
@@ -150,6 +148,8 @@ const Films = () => {
           }
         />
       </label>
+
+      <div className="search--output--films">{output}</div>
 
       <DownloadComponent
         lecteur={lecteur ?? 'eps1'}

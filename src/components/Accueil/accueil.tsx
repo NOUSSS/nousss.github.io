@@ -23,8 +23,6 @@ const Accueil = () => {
     <div className="container--anime">
       <Title accueil />
 
-      <div className="search--output--anime">{output}</div>
-
       <label className="label--anime" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
         <input
@@ -42,6 +40,8 @@ const Accueil = () => {
           }
         />
       </label>
+
+      <div className="search--output--anime">{output}</div>
 
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (

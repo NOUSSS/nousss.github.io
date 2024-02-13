@@ -74,12 +74,12 @@ const Saisons = () => {
         ) : null}
       </p>
 
-      <div className="search--output--saisons">{output}</div>
-
       <label className="label--saisons" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
         <input type="text" placeholder="Wano ?" onInput={searchBar} />
       </label>
+
+      <div className="search--output--saisons">{output}</div>
 
       <div className="saisons">
         {getSaisons().map(({ element, id }) => (

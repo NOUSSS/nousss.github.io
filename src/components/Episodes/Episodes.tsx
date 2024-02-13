@@ -398,8 +398,6 @@ export default function Episodes() {
         </div>
       </div>
 
-      <div className="search--output--episodes">{output}</div>
-
       <DownloadComponent video={video} lecteur={lecteur} className="download" />
 
       <label
@@ -422,6 +420,9 @@ export default function Episodes() {
           }
         />
       </label>
+
+      <div className="search--output--episodes">{output}</div>
+
       <div className="container--list">
         <div className="list">{episodes}</div>
       </div>
