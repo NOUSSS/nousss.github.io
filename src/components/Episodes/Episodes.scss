@@ -32,7 +32,7 @@ body {
 
   &:hover {
     .episodeName {
-      color: #ffa300;
+      color: var(--orange);
     }
 
     span {
@@ -52,7 +52,7 @@ body {
 }
 
 .select {
-  color: #ffa300;
+  color: var(--orange);
 
   span {
     color: white;
@@ -101,7 +101,7 @@ body {
     appearance: none;
 
     &:checked + span {
-      background-color: #ffa300;
+      background-color: var(--orange);
 
       &::before {
         left: 40px;
@@ -146,13 +146,13 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background: #ffa300;
+    background: var(--orange);
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: cyan;
     border-radius: 20px;
-    border: 3px solid #ffa300;
+    border: 3px solid var(--orange);
   }
 }
 
@@ -170,7 +170,7 @@ body {
     }
 
     &:hover {
-      color: #ffa300;
+      color: var(--orange);
 
       span {
         color: white;
@@ -191,7 +191,7 @@ body {
 }
 
 .episodeNumber {
-  color: #ffa300;
+  color: var(--orange);
 }
 
 .download {
@@ -201,7 +201,7 @@ body {
   span {
     a {
       text-decoration: underline;
-      color: #ffa300;
+      color: var(--orange);
     }
   }
 }

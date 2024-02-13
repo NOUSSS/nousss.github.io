@@ -52,7 +52,7 @@ const App = () => {
     const interval = setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
 
-      if (whiteText) whiteText.style.color = '#ffa300';
+      if (whiteText) whiteText.style.color = 'var(--orange)';
 
       setTimeout(() => {
         if (whiteText) whiteText.style.color = 'white';

@@ -24,7 +24,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
           <>
             Pour télécharger l'épisode, cliquez{' '}
             <a
-              style={{ color: '#ffa300', textDecoration: 'underline' }}
+              style={{ color: 'var(--orange)', textDecoration: 'underline' }}
               href={videoLink}
             >
               ici
@@ -42,7 +42,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
         <>
           Pour télécharger l'épisode, cliquez{' '}
           <a
-            style={{ color: '#ffa300', textDecoration: 'underline' }}
+            style={{ color: 'var(--orange)', textDecoration: 'underline' }}
             target="_blank"
             href={videoLink}
           >
@@ -55,7 +55,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
         <>
           Pour télécharger l'épisode, cliquez{' '}
           <a
-            style={{ color: '#ffa300', textDecoration: 'underline' }}
+            style={{ color: 'var(--orange)', textDecoration: 'underline' }}
             target="_blank"
             href={videoLink}
           >

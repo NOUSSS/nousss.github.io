@@ -28,7 +28,7 @@
           position: absolute;
           bottom: 0;
           left: 0;
-          background-color: #ffa300;
+          background-color: var(--orange);
           height: 3px;
           width: 100%;
           transform: scaleX(0);
@@ -62,7 +62,7 @@
         transition-duration: 300ms;
 
         span {
-          color: #ffa300;
+          color: var(--orange);
         }
       }
     }
@@ -97,7 +97,7 @@
   }
 
   span {
-    color: #ffa300;
+    color: var(--orange);
   }
 }
 
