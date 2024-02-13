@@ -189,7 +189,11 @@ body {
   margin-top: 50px;
   font-size: 20px;
   color: red;
-  text-decoration: underline;
+
+  a {
+    color: red;
+    text-decoration: underline;
+  }
 }
 
 .episodeNumber {

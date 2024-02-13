@@ -366,7 +366,10 @@ export default function Episodes() {
       </p>
 
       {disclamerMessage.current ? (
-        <p className="disclamer">{disclamerMessage.current}</p>
+        <p
+          className="disclamer"
+          dangerouslySetInnerHTML={{ __html: disclamerMessage.current }}
+        ></p>
       ) : null}
 
       <p className="episodeTitle">{episodeTitle}</p>
