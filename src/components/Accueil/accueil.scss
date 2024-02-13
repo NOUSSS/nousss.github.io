@@ -5,8 +5,24 @@
   width: calc(100vw - 50px);
 
   .title {
-    font-size: 90px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: lighter;
     height: auto;
+  }
+
+  nav {
+    margin: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 65vw;
+
+    .container--search-bar {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .search--output--anime {

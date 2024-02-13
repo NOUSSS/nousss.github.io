@@ -21,27 +21,34 @@ const Accueil = () => {
 
   return (
     <div className="container--anime">
-      <Title accueil />
+      <nav>
+        <Title accueil />
 
-      <label className="label--anime" title="Systeme de recherche super cool">
-        <img src={searchImg} alt="" />
-        <input
-          type="text"
-          placeholder="One Piece ?"
-          onInput={() =>
-            initSearchBar(
-              document.querySelector('.label--anime input')!,
-              document.getElementsByClassName(
-                'animes-list'
-              ) as HTMLCollectionOf<HTMLElement>,
-              'anime',
-              setOutput
-            )
-          }
-        />
-      </label>
+        <div className="container--search-bar">
+          <label
+            className="label--anime"
+            title="Systeme de recherche super cool"
+          >
+            <img src={searchImg} alt="" />
+            <input
+              type="text"
+              placeholder="One Piece ?"
+              onInput={() =>
+                initSearchBar(
+                  document.querySelector('.label--anime input')!,
+                  document.getElementsByClassName(
+                    'animes-list'
+                  ) as HTMLCollectionOf<HTMLElement>,
+                  'anime',
+                  setOutput
+                )
+              }
+            />
+          </label>
 
-      <div className="search--output--anime">{output}</div>
+          <div className="search--output--anime">{output}</div>
+        </div>
+      </nav>
 
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (

@@ -8,10 +8,10 @@ export function Title({
   link?: string;
 }) {
   return accueil ? (
-    <div className="title animeName">
+    <div className="title accueil">
       <h1>
         {accueil
-          ? 'Le catalogue'
+          ? 'Le catalogue.'
           : window.localStorage
               .getItem('anime')
               ?.split(' ')
@@ -24,11 +24,11 @@ export function Title({
       </h1>
     </div>
   ) : (
-    <div className="title animeName">
+    <div className="title accueil">
       <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
           {accueil
-            ? 'Notre catalogue'
+            ? 'Le catalogue.'
             : window.localStorage
                 .getItem('anime')
                 ?.split(' ')
