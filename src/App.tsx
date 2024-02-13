@@ -10,12 +10,14 @@ const Accueil = lazy(() => import('./components/Accueil/accueil'));
 
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
+import PageNotFound from './components/PageNotFound';
 
 const AppRoutes = () => {
   const currentSeason =
     window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1';
 
   const pages = [
+    { path: '*', element: <PageNotFound /> },
     {
       path: '/',
       element: <Accueil />,
@@ -43,7 +45,15 @@ const AppRoutes = () => {
   ];
 
   return (
-    <Suspense fallback={<div>Chargement...</div>}>{useRoutes(pages)}</Suspense>
+    <Suspense
+      fallback={
+        <div style={{ marginTop: '200px', color: 'white', fontSize: '30px' }}>
+          Chargement du composant en cours...
+        </div>
+      }
+    >
+      {useRoutes(pages)}
+    </Suspense>
   );
 };
 
