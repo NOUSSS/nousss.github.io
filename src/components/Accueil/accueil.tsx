@@ -87,7 +87,8 @@ const Accueil = () => {
                     <div className="synopsis">
                       <p>
                         {trim(
-                          ANIMES.find(({ anime }) => anime === e)?.synopsis!,
+                          ANIMES.find(({ anime }) => anime === e)?.synopsis ??
+                            'Aucun synopsis pour cette anime',
                           150
                         )}
                       </p>

@@ -48,7 +48,7 @@ export default function Episodes() {
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
   });
 
-  let disclamerMessage = useRef('');
+  const disclamerMessage = useRef('');
 
   if (!window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`))
     window.localStorage.setItem(
@@ -334,6 +334,7 @@ export default function Episodes() {
     horsSeries,
     lecteur,
     scriptIndex,
+    options.note,
   ]);
 
   useEffect(() => {
