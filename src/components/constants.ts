@@ -17,9 +17,11 @@ import { Mashle } from '../animes/Mashle/mashle';
 import { MyHeroAcademia } from '../animes/MyHeroAcademia/my-hero-academia';
 import { NarutoShippuden } from '../animes/NarutoShippuden/naruto-shippuden';
 import { OnePiece } from '../animes/OnePiece/one-piece';
+import { OnePunchMan } from '../animes/OnePunchMan/one-punch-man';
 import { ShangriLaFrontier } from '../animes/ShangriLaFrontier/shangri-la-frontier';
 import { SlamDunk } from '../animes/SlamDunk/slam-dunk';
 import { SoloLeveling } from '../animes/SoloLeveling/solo-leveling';
+import { SwordArtOnline } from '../animes/SwordArtOnline/sword-art-online';
 import { TheDailyLifeOfTheImmortalKing } from '../animes/TheDailyLifeOfTheImmortalKing/the-daily-life-of-the-immortal-king';
 import { TheGodOfHighschool } from '../animes/TheGodOfHighschool/the-god-of-highschool';
 import { TowerOfGod } from '../animes/TowerOfGod/tower-of-god';
@@ -30,6 +32,7 @@ import { Naruto } from '../animes/naruto/naruto';
 export const ANIMES = [
   {
     anime: 'one piece',
+    aliases: ['luffy', 'zoro', 'op'],
     options: new OnePiece(),
     category: 'Classique',
     synopsis:
@@ -37,6 +40,7 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball',
+    aliases: ['goku', 'shenron', 'db'],
     options: new DragonBall(),
     category: 'Classique',
     synopsis:
@@ -44,6 +48,7 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball Z',
+    aliases: ['goku', 'vegeta', 'dbz'],
     options: new DragonBallZ(),
     category: 'Classique',
     synopsis:
@@ -51,6 +56,7 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball Super',
+    aliases: ['ultra instinct', 'goku', 'beerus', 'zeno', 'dbs'],
     options: new DragonBallSuper(),
     category: 'Classique',
     synopsis:
@@ -58,6 +64,7 @@ export const ANIMES = [
   },
   {
     anime: 'my hero academia',
+    aliases: ['boku no hero academia', 'izuku', 'all might', 'mha'],
     options: new MyHeroAcademia(),
     category: 'New gen',
     synopsis:
@@ -65,6 +72,7 @@ export const ANIMES = [
   },
   {
     anime: 'vinland saga',
+    aliases: ['ennemi', 'thorfinn', 'thors', 'thorkell'],
     options: new VinlandSaga(),
     category: 'Reflexion',
     synopsis:
@@ -72,6 +80,7 @@ export const ANIMES = [
   },
   {
     anime: 'solo leveling',
+    aliases: ['only i level up'],
     options: new SoloLeveling(),
     category: 'Du moment',
     synopsis:
@@ -79,12 +88,14 @@ export const ANIMES = [
   },
   {
     anime: 'Kuroko Basket',
+    aliases: ['kagami', 'kuroko no basket', 'knb'],
     category: 'Sport',
     options: new KurokoBasket(),
     synopsis: `Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.`,
   },
   {
     anime: 'jujutsu kaisen',
+    aliases: ['itadori', 'gojo', 'sukuna', 'jjk'],
     options: new JujutsuKaisen(),
     category: 'New gen',
     synopsis:
@@ -92,12 +103,14 @@ export const ANIMES = [
   },
   {
     anime: 'black clover',
+    aliases: ['asta', 'yuno', 'bc'],
     options: new BlackClover(),
     category: 'Magie',
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
     anime: 'hunter x hunter',
+    aliases: ['nen', 'hxh', 'gon', 'netero'],
     options: new HunterXHunter(),
     category: 'Classique',
     synopsis:
@@ -105,6 +118,7 @@ export const ANIMES = [
   },
   {
     anime: 'mashle',
+    aliases: ['saitama v2', 'muscle'],
     options: new Mashle(),
     category: 'Du moment',
     synopsis:
@@ -112,6 +126,7 @@ export const ANIMES = [
   },
   {
     anime: "L'attaque des titans",
+    aliases: ['shingeki no kyojin', 'snk', 'eren'],
     options: new AttaqueDesTitans(),
     category: 'Reflexion',
     synopsis:
@@ -119,6 +134,7 @@ export const ANIMES = [
   },
   {
     anime: 'Death Note',
+    aliases: ['light', 'L'],
     options: new DeathNote(),
     category: 'Reflexion',
     synopsis:
@@ -126,6 +142,7 @@ export const ANIMES = [
   },
   {
     anime: 'The god of highschool',
+    aliases: ['tdoh'],
     options: new TheGodOfHighschool(),
     category: 'Webtoon',
     synopsis:
@@ -133,6 +150,7 @@ export const ANIMES = [
   },
   {
     anime: 'Tower of god',
+    aliases: ['tog'],
     options: new TowerOfGod(),
     category: 'Webtoon',
     synopsis:
@@ -140,6 +158,7 @@ export const ANIMES = [
   },
   {
     anime: 'naruto',
+    aliases: ['konoha', 'kurama', 'kyubi'],
     options: new Naruto(),
     category: 'Classique',
     synopsis:
@@ -147,6 +166,7 @@ export const ANIMES = [
   },
   {
     anime: 'naruto shippuden',
+    aliases: ['naruto adulte'],
     options: new NarutoShippuden(),
     category: 'Classique',
     synopsis:
@@ -154,6 +174,7 @@ export const ANIMES = [
   },
   {
     anime: 'Shangri-La Frontier',
+
     options: new ShangriLaFrontier(),
     category: 'Jeux Videos',
     synopsis:
@@ -161,6 +182,7 @@ export const ANIMES = [
   },
   {
     anime: 'Classroom of the Elites',
+    aliases: ['kyotaka', 'ecole'],
     options: new ClassroomOfTheElites(),
     category: 'Du moment',
     synopsis:
@@ -168,13 +190,15 @@ export const ANIMES = [
   },
   {
     anime: 'The Daily Life of the Immortal King',
+    aliases: ['saitama v2'],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: 'Lycée',
+    category: 'Puissance',
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
   {
     anime: 'haikyuu',
+    aliases: ['volley'],
     options: new Haikyuu(),
     category: 'Sport',
     synopsis:
@@ -182,6 +206,7 @@ export const ANIMES = [
   },
   {
     anime: 'Blue Lock',
+    aliases: ['foot'],
     options: new BlueLock(),
     category: 'Sport',
     synopsis:
@@ -197,6 +222,7 @@ export const ANIMES = [
   },
   {
     anime: 'Slam Dunk',
+    aliases: ['basket'],
     options: new SlamDunk(),
     category: 'Sport',
     synopsis:
@@ -204,6 +230,7 @@ export const ANIMES = [
   },
   {
     anime: 'Demon Slayer',
+    aliases: ['kny', 'kimetsu no yaiba'],
     options: new DemonSlayer(),
     category: 'New gen',
     synopsis:
@@ -211,6 +238,7 @@ export const ANIMES = [
   },
   {
     anime: 'Bleach',
+    aliases: ['kurosaki', 'ichigo'],
     options: new Bleach(),
     category: 'Classique',
     synopsis:
@@ -218,10 +246,27 @@ export const ANIMES = [
   },
   {
     anime: 'Boruto',
+    aliases: ['suite', 'code'],
     options: new Boruto(),
     category: 'New gen',
     synopsis:
       "UNE NOUVELLE GÉNÉRATION DE NINJAS DÉBARQUE À KONOHA ! Les grands affrontements dans le monde des ninjas appartiennent désormais au passé. Le village de Konoha est entré dans une ère de paix. Boruto, le fils du 7e Hokage, vit mal d'être dans l'ombre de son imminent paternel.",
+  },
+  {
+    anime: 'Sword Art Online',
+    aliases: ['sao'],
+    options: new SwordArtOnline(),
+    category: 'Jeux Videos',
+    synopsis:
+      "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
+  },
+  {
+    anime: 'One Punch Man',
+    aliases: ['opm'],
+    options: new OnePunchMan(),
+    category: 'Puissance',
+    synopsis:
+      "Histoire de passer le temps, Saitama est devenu un héros. Trois années d'un entraînement spécial lui ont donné un pouvoir le rendant invincible. Mais Saitama est devenu si fort qu'un seul coup de poing lui suffit à terrasser chaque adversaire se présentant, aussi puissant soit- il.",
   },
 ];
 

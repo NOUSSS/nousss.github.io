@@ -76,17 +76,20 @@ const Accueil = () => {
                     window.localStorage.setItem('anime', e);
                     window.location.hash = '/home';
                   }}
-                  id={e
-                    .replace('-', ' ')
-                    .replace('-', ' ')
-                    .split(' ')
-                    .map((word: string) => {
-                      return (
-                        word.charAt(0).toUpperCase() +
-                        word.slice(1).toLowerCase()
-                      );
-                    })
-                    .join(' ')}
+                  id={
+                    e
+                      .replace('-', ' ')
+                      .replace('-', ' ')
+                      .split(' ')
+                      .map((word: string) => {
+                        return (
+                          word.charAt(0).toUpperCase() +
+                          word.slice(1).toLowerCase()
+                        );
+                      })
+                      .join(' ') +
+                    `${ANIMES.find(({ anime }) => anime === e)?.aliases}`
+                  }
                   key={e}
                 >
                   <div className="card">
