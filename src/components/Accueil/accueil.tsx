@@ -50,6 +50,19 @@ const Accueil = () => {
         </div>
       </nav>
 
+      <p>
+        Pour connaitre la date de sortie des différents épisodes / scans, je
+        vous redirige vers le{' '}
+        <a
+          style={{ color: 'var(--orange)', textDecoration: 'underline' }}
+          href="https://anime-sama.fr/planning/"
+          target="_blank"
+        >
+          planning
+        </a>{' '}
+        d'anime-sama
+      </p>
+
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
           <div className={category} key={category}>
