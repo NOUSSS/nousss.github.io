@@ -18,12 +18,6 @@ body {
   color: white;
 }
 
-.label--episodes {
-  margin: 20px;
-  position: relative;
-  top: 52px;
-}
-
 .episodeName {
   transition: all 150ms ease-out;
 
@@ -201,8 +195,7 @@ body {
 }
 
 .download {
-  position: relative;
-  top: 35px;
+  margin-top: 25px;
   color: white;
 
   span {
