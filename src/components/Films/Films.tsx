@@ -9,7 +9,7 @@ import { getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
-import { windowKeys } from '../../interfaces/interface.ts';
+import { windowKeys } from '../../typings/interface.ts';
 import { Footer, Title } from '../components.tsx';
 import { ANIMES } from '../constants.ts';
 import DownloadComponent from '../download-component.tsx';

@@ -1,4 +1,4 @@
-import { windowKeys } from '../interfaces/interface';
+import { windowKeys } from '../typings/interface';
 
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
   Array.from(div).forEach((element) => {

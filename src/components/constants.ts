@@ -270,15 +270,15 @@ export const ANIMES = [
   },
 ];
 
-interface AnimeOption {
+type AnimeOption = {
   anime: string;
   category: string;
-}
+};
 
-interface GroupedAnimes {
+type GroupedAnimes = {
   names: string[];
   category: string;
-}
+};
 
 export const groupAnimesByCategory = (
   animes: AnimeOption[]

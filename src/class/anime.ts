@@ -3,9 +3,9 @@ import {
   ScansOptions,
   EpisodesOptions,
   Note,
-} from '../interfaces/interface';
+} from '../typings/interface';
 
-import { Season } from '../interfaces/interface';
+import { Season } from '../typings/interface';
 
 export class Anime {
   public affiche: string;
