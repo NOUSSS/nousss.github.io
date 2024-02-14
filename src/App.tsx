@@ -59,6 +59,23 @@ const AppRoutes = () => {
 };
 
 const App = () => {
+  const showErrorOverlay = (err: any) => {
+    // must be within function call because that's when the element is defined for sure.
+    const ErrorOverlay = customElements.get('vite-error-overlay');
+    // don't open outside vite environment
+    if (!ErrorOverlay) {
+      return;
+    }
+    console.log(err);
+    const overlay = new ErrorOverlay(err);
+    document.body.appendChild(overlay);
+  };
+
+  window.addEventListener('error', showErrorOverlay);
+  window.addEventListener('unhandledrejection', ({ reason }) =>
+    showErrorOverlay(reason)
+  );
+
   useEffect(() => {
     const interval = setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
