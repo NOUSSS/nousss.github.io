@@ -59,15 +59,15 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  const showErrorOverlay = (err: any) => {
-    // must be within function call because that's when the element is defined for sure.
+  const showErrorOverlay = (err: ErrorEvent) => {
     const ErrorOverlay = customElements.get('vite-error-overlay');
-    // don't open outside vite environment
-    if (!ErrorOverlay) {
-      return;
-    }
+
+    if (!ErrorOverlay) return;
+
     console.log(err);
+
     const overlay = new ErrorOverlay(err);
+
     document.body.appendChild(overlay);
   };
 
