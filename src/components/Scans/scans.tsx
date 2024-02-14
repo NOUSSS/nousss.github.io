@@ -42,14 +42,11 @@ const Scans = () => {
   const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options;
 
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
-  const [loadingText, setLoadingText] = useState(
-    'Les chapitres sont en cours de chargement, veuillez patientez...'
-  );
 
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
 
   useEffect(() => {
-    addScript(SCRIPT_URL, setLoadingText).then(() => {
+    addScript(SCRIPT_URL).then(() => {
       let retard = 0;
 
       if (typeof from.current === 'undefined') from.current = 1;
@@ -65,8 +62,6 @@ const Scans = () => {
           options.push(`Chapitre ${i + Number(from.current) - retard}`);
         }
       }
-
-      setLoadingText('');
 
       setChapitresOptions(options);
       clickEvents(setScans);
@@ -142,7 +137,6 @@ const Scans = () => {
         </div>
       </div>
 
-      <p className="loading">{loadingText}</p>
       <div className="scans">{scans}</div>
 
       <div className="container--buttons--scans">

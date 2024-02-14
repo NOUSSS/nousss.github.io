@@ -11,6 +11,7 @@ const Accueil = lazy(() => import('./components/Accueil/accueil'));
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
 import PageNotFound from './components/PageNotFound';
+import { Toaster } from 'sonner';
 
 const AppRoutes = () => {
   const currentSeason =
@@ -87,6 +88,7 @@ const App = () => {
 
   return (
     <>
+      <Toaster />
       <img className="background" src={background} alt="Fond" />
 
       <Link to="/">

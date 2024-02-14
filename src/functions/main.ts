@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { windowKeys } from '../typings/interface';
 
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
@@ -20,27 +21,35 @@ export const getURLFilm = (index: number, lecteur: string): string =>
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
-export function addScript(
-  url: string | undefined,
-  setLoading:
-    | React.Dispatch<React.SetStateAction<React.ReactNode>>
-    | React.Dispatch<React.SetStateAction<string>>
-): Promise<boolean> {
+export function addScript(url: string | undefined): Promise<boolean> {
   return new Promise((resolve, reject) => {
     if (url) {
       const script = document.createElement('script');
-
       script.className = 'script';
-
       script.setAttribute('src', url);
 
+      const loading = toast.loading('Chargement des sources en cours...');
+
       script.onload = () => {
+        toast.dismiss(loading);
+
+        toast.success('Les sources ont été chargées avec succès !', {
+          style: { color: 'green' },
+        });
+
         resolve(true);
       };
 
       script.onerror = () => {
-        setLoading(
-          'Erreur dans le chargement des episodes. Veuillez recharger la page'
+        toast.dismiss(loading);
+
+        toast.error(
+          'Erreur dans le chargement des sources, veuillez recharger la page.',
+          {
+            style: {
+              color: 'red',
+            },
+          }
         );
 
         reject(false);

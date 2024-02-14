@@ -18,6 +18,35 @@ const Accueil = () => {
     (a, b) => b.names.length - a.names.length
   );
 
+  type Historique = {
+    name: string;
+    episode: string;
+    saison: string;
+  };
+
+  const historiques: Historique[] = [];
+
+  for (const anime of Object.keys(window.localStorage)) {
+    if (
+      anime.includes('--episode') &&
+      window.localStorage.getItem(anime) !== '1'
+    ) {
+      historiques.push({
+        name: anime.replace('--episode', ''),
+        episode: window.localStorage.getItem(anime)!,
+        saison:
+          window.localStorage.getItem(
+            `${anime.replace('--episode', '')}--saison`
+          ) ?? '1',
+      });
+    }
+  }
+
+  catalogues.unshift({
+    category: 'Reprendre',
+    names: historiques.map(({ name }) => name),
+  });
+
   return (
     <div className="container--anime">
       <nav>
@@ -80,15 +109,29 @@ const Accueil = () => {
             <p className="category">{category}</p>
 
             <ul key={category}>
-              {names.map((e) => (
+              {names.map((animeName) => (
                 <li
                   className="animes-list"
                   onClick={() => {
-                    window.localStorage.setItem('anime', e);
-                    window.location.hash = '/home';
+                    if (
+                      historiques.find(({ name }) => name === animeName) &&
+                      category === 'Reprendre'
+                    ) {
+                      const saison = historiques.find(
+                        ({ name }) => name === animeName
+                      )!.saison;
+
+                      window.localStorage.setItem('anime', animeName);
+                      window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
+                        animeName
+                      )}`;
+                    } else {
+                      window.localStorage.setItem('anime', animeName);
+                      window.location.hash = '/home';
+                    }
                   }}
                   id={
-                    e
+                    animeName
                       .replace('-', ' ')
                       .replace('-', ' ')
                       .split(' ')
@@ -99,26 +142,29 @@ const Accueil = () => {
                         );
                       })
                       .join(' ') +
-                    `${ANIMES.find(({ anime }) => anime === e)?.aliases}`
+                    `${
+                      ANIMES.find(({ anime }) => anime === animeName)?.aliases
+                    }`
                   }
-                  key={e}
+                  key={animeName}
                 >
                   <div
                     title={
-                      ANIMES.find(({ anime }) => anime === e)?.synopsis ??
-                      'Aucun synopsis pour cette anime'
+                      ANIMES.find(({ anime }) => anime === animeName)
+                        ?.synopsis ?? 'Aucun synopsis pour cette anime'
                     }
                     className="card"
                   >
                     <img
                       className="affiche"
                       src={
-                        ANIMES.find(({ anime }) => anime === e)?.options.affiche
+                        ANIMES.find(({ anime }) => anime === animeName)?.options
+                          .affiche
                       }
                     />
 
                     <p>
-                      {e
+                      {animeName
                         .replace('-', ' ')
                         .replace('-', ' ')
                         .split(' ')
@@ -129,6 +175,21 @@ const Accueil = () => {
                           );
                         })
                         .join(' ')}
+                      {historiques.find(({ name }) => name === animeName) &&
+                      category === 'Reprendre' ? (
+                        <>
+                          <br />S
+                          {
+                            historiques.find(({ name }) => name === animeName)!
+                              .saison
+                          }{' '}
+                          E
+                          {
+                            historiques.find(({ name }) => name === animeName)!
+                              .episode
+                          }
+                        </>
+                      ) : null}
                     </p>
                   </div>
                 </li>

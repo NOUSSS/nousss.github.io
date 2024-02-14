@@ -60,10 +60,6 @@ export default function Episodes() {
     window.localStorage.getItem(`${currentAnime}--${saison.index}--lang`)!
   );
 
-  const [loadingText, setLoadingText] = useState<React.ReactNode>(
-    <span>Les episodes sont en cours de chargement, veuillez patientez..</span>
-  );
-
   let scriptIndex = saison.index;
 
   if (currentAnime == "L'attaque des titans") {
@@ -124,7 +120,7 @@ export default function Episodes() {
       toggleHideEpisodesNames();
     }
 
-    addScript(SCRIPT_URL(scriptIndex, lang), setLoadingText)
+    addScript(SCRIPT_URL(scriptIndex, lang))
       .then(() => {
         LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
 
@@ -299,8 +295,6 @@ export default function Episodes() {
           );
         }
 
-        setLoadingText('');
-
         setTimeout(() => {
           clickEvents(LecteurEpisodes, setVideo, setEpisodeTitle);
         }, 1000);
@@ -310,7 +304,6 @@ export default function Episodes() {
           `${currentAnime}--${saison.index}--lang`,
           'vostfr'
         );
-        setLoadingText(<span>Chargement des episodes en cours.</span>);
       });
 
     if (options.note) {
@@ -376,7 +369,7 @@ export default function Episodes() {
       <p className="episodeTitle">{episodeTitle}</p>
 
       <div className="episodeVideo">
-        {video ? (
+        {
           <iframe
             className="vid"
             width="640"
@@ -384,9 +377,7 @@ export default function Episodes() {
             src={video}
             allowFullScreen
           ></iframe>
-        ) : (
-          loadingText
-        )}
+        }
       </div>
 
       <label className="hideEpisodesNames">

@@ -39,9 +39,6 @@ const Films = () => {
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [title, setTitle] = useState<React.ReactNode>();
-  const [loading, setLoading] = useState<React.ReactNode>(
-    <span>Veuillez patientez...</span>
-  );
 
   const [video, setVideo] = useState<string>('');
   const [lang, setLang] = useState<string>(
@@ -59,7 +56,7 @@ const Films = () => {
     if (!window.localStorage.getItem(`${currentAnime}--lang`))
       window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
-    addScript(SCRIPT_URL!(lang), setLoading).then(() => {
+    addScript(SCRIPT_URL!(lang)).then(() => {
       lecteurString.current = lecteur ? lecteur : 'eps1';
       const films_url = (window as unknown as windowKeys)[
         lecteurString.current
@@ -85,8 +82,6 @@ const Films = () => {
       );
 
       getFilms(setFilmsFront, lecteurString.current);
-
-      setLoading('');
 
       setTimeout(() => {
         const langButton = document.querySelectorAll('.langage');
@@ -119,7 +114,6 @@ const Films = () => {
         Pour changer de langage cliquez sur la langue entre crochet et patientez
         juste en haut
       </p>
-      <p className="loading">{loading}</p>
 
       <div className="video--films">
         <iframe

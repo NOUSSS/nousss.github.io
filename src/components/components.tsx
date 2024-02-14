@@ -11,7 +11,7 @@ export function Title({
     <div className="title accueil">
       <h1>
         {accueil
-          ? 'Le catalogue.'
+          ? 'Le catalogue'
           : window.localStorage
               .getItem('anime')
               ?.split(' ')
@@ -28,7 +28,7 @@ export function Title({
       <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
           {accueil
-            ? 'Le catalogue.'
+            ? 'Le catalogue'
             : window.localStorage
                 .getItem('anime')
                 ?.split(' ')
