@@ -58,33 +58,16 @@
 
         .card {
           position: relative;
-
           width: 130px;
           height: 160px;
           background-color: hsla(240, 10%, 10%, 0.192);
           box-shadow: black 0 0 10px;
+
           border-radius: 5px;
+          border: 1px solid transparent;
 
           transition: transform 150ms ease-out;
-
-          .synopsis {
-            position: absolute;
-            top: 60px;
-            height: 0%;
-
-            z-index: 100;
-
-            transition: height 300ms ease-in-out;
-
-            p {
-              border-radius: 2px;
-              color: black;
-              height: 50%;
-              overflow: hidden;
-              background-color: white;
-              font-size: 9px;
-            }
-          }
+          transition: border 250ms ease-in-out;
 
           .affiche {
             width: 129px;
@@ -92,17 +75,13 @@
 
           p {
             position: relative;
-
             top: 15px;
             font-size: 15px;
-
             color: var(--orange);
           }
 
           &:hover {
-            .synopsis {
-              height: 100%;
-            }
+            border: 1px solid var(--orange);
           }
         }
       }

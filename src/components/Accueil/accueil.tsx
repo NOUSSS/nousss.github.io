@@ -8,8 +8,6 @@ import { initSearchBar } from '../../functions/search';
 import searchImg from '../../assets/Search.jpg';
 import React, { useState } from 'react';
 
-import { trim } from '../../functions/main';
-
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
@@ -105,23 +103,19 @@ const Accueil = () => {
                   }
                   key={e}
                 >
-                  <div className="card">
+                  <div
+                    title={
+                      ANIMES.find(({ anime }) => anime === e)?.synopsis ??
+                      'Aucun synopsis pour cette anime'
+                    }
+                    className="card"
+                  >
                     <img
                       className="affiche"
                       src={
                         ANIMES.find(({ anime }) => anime === e)?.options.affiche
                       }
                     />
-
-                    <div className="synopsis">
-                      <p>
-                        {trim(
-                          ANIMES.find(({ anime }) => anime === e)?.synopsis ??
-                            'Aucun synopsis pour cette anime',
-                          150
-                        )}
-                      </p>
-                    </div>
 
                     <p>
                       {e

@@ -83,7 +83,12 @@ const Saisons = () => {
 
       <div className="saisons">
         {getSaisons().map(({ element, id }) => (
-          <div key={id} id={id} className="container--poster-saison">
+          <div
+            style={{ cursor: 'pointer' }}
+            key={id}
+            id={id}
+            className="container--poster-saison"
+          >
             {element}
           </div>
         ))}
