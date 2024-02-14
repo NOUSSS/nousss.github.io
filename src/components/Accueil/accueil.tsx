@@ -7,6 +7,7 @@ import { initSearchBar } from '../../functions/search';
 
 import searchImg from '../../assets/Search.jpg';
 import React, { useState } from 'react';
+
 import { trim } from '../../functions/main';
 
 const Accueil = () => {
@@ -62,6 +63,18 @@ const Accueil = () => {
         </a>{' '}
         d'anime-sama
       </p>
+
+      {window.localStorage.getItem('anime') ? (
+        <p>
+          Dernier anime selectionné :{' '}
+          <a
+            style={{ color: 'var(--orange)', textDecoration: 'underline' }}
+            href="/#/home"
+          >
+            {window.localStorage.getItem('anime')}
+          </a>
+        </p>
+      ) : null}
 
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
