@@ -3381,6 +3381,10 @@ const episodes = [
     index: '1093',
     name: 'Le vainqueur rafle la mise. Law contre Barbe Noire ! ',
   },
+  {
+    index: '1094',
+    name: "Le mystère s'épaissit. L'étage du laboratoire d'Egg Head !",
+  },
 ];
 
 export default episodes;
