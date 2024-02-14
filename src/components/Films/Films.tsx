@@ -15,7 +15,7 @@ import { ANIMES } from '../constants.ts';
 import DownloadComponent from '../download-component.tsx';
 
 const Films = () => {
-  let currentAnime = window.localStorage.getItem('anime')!;
+  let currentAnime = window.localStorage.getItem('anime');
 
   const hash = window.location.hash;
   const queryParams = hash.substring(hash.indexOf('?') + 1);
@@ -24,9 +24,16 @@ const Films = () => {
 
   const currentAnimeURL = urlParams.get('anime');
 
+  if (!currentAnimeURL) return (window.location.hash = '/home');
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+
+    currentAnime = window.localStorage.getItem('anime');
+  }
   if (
     currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime.toLowerCase()
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
   ) {
     currentAnime = currentAnimeURL;
 

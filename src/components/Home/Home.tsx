@@ -53,7 +53,9 @@ const Home = () => {
               </ul>
             ) : null}
             <ul>
-              <Link to="/Saisons">Saisons</Link>
+              <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
+                Saisons
+              </Link>
             </ul>
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
