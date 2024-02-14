@@ -15,47 +15,57 @@ export function isIOS(): boolean {
   return false;
 }
 
+export const formatName = (animeName: string) => {
+  return animeName
+    .replace('-', ' ')
+    .replace('-', ' ')
+    .split(' ')
+    .map((word: string) => {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' ');
+};
+
 export const getURLFilm = (index: number, lecteur: string): string =>
   (window as unknown as windowKeys)[lecteur][index];
 
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
-export function addScript(url: string | undefined): Promise<boolean> {
+export function addScript(url: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
-    if (url) {
-      const script = document.createElement('script');
-      script.className = 'script';
-      script.setAttribute('src', url);
+    const script = document.createElement('script');
 
-      const loading = toast.loading('Chargement des sources en cours...');
+    script.className = 'script';
+    script.setAttribute('src', url);
 
-      script.onload = () => {
-        toast.dismiss(loading);
+    const loading = toast.loading('Chargement des sources en cours...');
 
-        toast.success('Les sources ont été chargées avec succès !', {
-          style: { color: 'green' },
-        });
+    script.onload = () => {
+      toast.dismiss(loading);
 
-        resolve(true);
-      };
+      toast.success('Les sources ont été chargées avec succès !', {
+        style: { color: 'green' },
+      });
 
-      script.onerror = () => {
-        toast.dismiss(loading);
+      resolve(true);
+    };
 
-        toast.error(
-          'Erreur dans le chargement des sources, veuillez recharger la page.',
-          {
-            style: {
-              color: 'red',
-            },
-          }
-        );
+    script.onerror = () => {
+      toast.dismiss(loading);
 
-        reject(false);
-      };
+      toast.error(
+        'Erreur dans le chargement des sources, veuillez recharger la page.',
+        {
+          style: {
+            color: 'red',
+          },
+        }
+      );
 
-      document.head.appendChild(script);
-    }
+      reject(false);
+    };
+
+    document.head.appendChild(script);
   });
 }

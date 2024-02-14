@@ -46,34 +46,36 @@ const Scans = () => {
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
 
   useEffect(() => {
-    addScript(SCRIPT_URL).then(() => {
-      let retard = 0;
+    if (SCRIPT_URL) {
+      addScript(SCRIPT_URL).then(() => {
+        let retard = 0;
 
-      if (typeof from.current === 'undefined') from.current = 1;
+        if (typeof from.current === 'undefined') from.current = 1;
 
-      const options: string[] = [];
+        const options: string[] = [];
 
-      for (let i = 0; i < getTailleChapitres(); i++) {
-        if (CHAPITRE_SPECIAUX?.includes(i)) {
-          options.push(`Chapitre Special`);
+        for (let i = 0; i < getTailleChapitres(); i++) {
+          if (CHAPITRE_SPECIAUX?.includes(i)) {
+            options.push(`Chapitre Special`);
 
-          retard++;
-        } else {
-          options.push(`Chapitre ${i + Number(from.current) - retard}`);
+            retard++;
+          } else {
+            options.push(`Chapitre ${i + Number(from.current) - retard}`);
+          }
         }
-      }
 
-      setChapitresOptions(options);
-      clickEvents(setScans);
+        setChapitresOptions(options);
+        clickEvents(setScans);
 
-      setTimeout(() => {
-        setScans(
-          selectChapter(
-            window.localStorage.getItem(`${currentAnime}--chapitre`) ?? 1
-          )
-        );
-      }, 1000);
-    });
+        setTimeout(() => {
+          setScans(
+            selectChapter(
+              window.localStorage.getItem(`${currentAnime}--chapitre`) ?? 1
+            )
+          );
+        }, 1000);
+      });
+    }
   }, [CHAPITRE_SPECIAUX, SCRIPT_URL, currentAnime]);
 
   useEffect(() => {

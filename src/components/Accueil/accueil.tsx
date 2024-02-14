@@ -6,7 +6,9 @@ import { ANIMES, groupAnimesByCategory } from '../constants';
 import { initSearchBar } from '../../functions/search';
 
 import searchImg from '../../assets/Search.jpg';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { formatName } from '../../functions/main';
+import { toast } from 'sonner';
 
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
@@ -14,38 +16,77 @@ const Accueil = () => {
     ANIMES.map(({ anime, category }) => ({ anime, category }))
   );
 
-  const catalogues = groupAnimesByCategory(animes).sort(
-    (a, b) => b.names.length - a.names.length
+  const [historiques, setHistoriques] = useState<
+    { name: string; episode: string; saison: string }[]
+  >(() => {
+    const loadedHistoriques = [];
+
+    for (const key of Object.keys(window.localStorage)) {
+      if (key.includes('--episode')) {
+        const name = key.replace('--episode', '');
+        const episode = window.localStorage.getItem(key)!;
+        const saison = window.localStorage.getItem(`${name}--saison`) ?? '1';
+
+        loadedHistoriques.push({ name, episode, saison });
+      }
+    }
+
+    return loadedHistoriques;
+  });
+
+  const [catalogues, setCatalogues] = useState(() =>
+    groupAnimesByCategory(animes).sort(
+      (a, b) => b.names.length - a.names.length
+    )
   );
 
-  type Historique = {
-    name: string;
-    episode: string;
-    saison: string;
-  };
+  useEffect(() => {
+    const updatedCatalogues = groupAnimesByCategory(
+      ANIMES.map(({ anime, category }) => ({ anime, category }))
+    ).sort((a, b) => b.names.length - a.names.length);
 
-  const historiques: Historique[] = [];
-
-  for (const anime of Object.keys(window.localStorage)) {
-    if (
-      anime.includes('--episode') &&
-      window.localStorage.getItem(anime) !== '1'
-    ) {
-      historiques.push({
-        name: anime.replace('--episode', ''),
-        episode: window.localStorage.getItem(anime)!,
-        saison:
-          window.localStorage.getItem(
-            `${anime.replace('--episode', '')}--saison`
-          ) ?? '1',
+    if (historiques.length > 0) {
+      updatedCatalogues.unshift({
+        category: 'Reprendre',
+        names: historiques.map(({ name }) => name),
       });
     }
-  }
 
-  catalogues.unshift({
-    category: 'Reprendre',
-    names: historiques.map(({ name }) => name),
-  });
+    setCatalogues(updatedCatalogues);
+  }, [historiques]);
+
+  const removeAnimeFromHistorique = (animeName: string) => {
+    window.localStorage.removeItem(`${animeName}--saison`);
+    window.localStorage.removeItem(`${animeName}--episode`);
+
+    setHistoriques(historiques.filter(({ name }) => name !== animeName));
+
+    toast.success(`${animeName} a été retiré de l'historique avec succès`, {
+      style: {
+        color: 'green',
+      },
+    });
+  };
+
+  const getAnimeHistorique = (anime: string) =>
+    historiques.find(({ name }) => name === anime);
+
+  const getAnime = (animeName: string) =>
+    ANIMES.find(({ anime }) => anime === animeName);
+
+  const goToAnime = useCallback((animeName: string, category: string) => {
+    if (getAnimeHistorique(animeName) && category === 'Reprendre') {
+      const saison = historiques.find(({ name }) => name === animeName)!.saison;
+
+      window.localStorage.setItem('anime', animeName);
+      window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
+        animeName
+      )}`;
+    } else {
+      window.localStorage.setItem('anime', animeName);
+      window.location.hash = '/home';
+    }
+  }, []);
 
   return (
     <div className="container--anime">
@@ -109,85 +150,45 @@ const Accueil = () => {
             <p className="category">{category}</p>
 
             <ul key={category}>
-              {names.map((animeName) => (
+              {names.map((animeName: string) => (
                 <li
                   className="animes-list"
-                  onClick={() => {
-                    if (
-                      historiques.find(({ name }) => name === animeName) &&
-                      category === 'Reprendre'
-                    ) {
-                      const saison = historiques.find(
-                        ({ name }) => name === animeName
-                      )!.saison;
-
-                      window.localStorage.setItem('anime', animeName);
-                      window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
-                        animeName
-                      )}`;
-                    } else {
-                      window.localStorage.setItem('anime', animeName);
-                      window.location.hash = '/home';
-                    }
-                  }}
-                  id={
-                    animeName
-                      .replace('-', ' ')
-                      .replace('-', ' ')
-                      .split(' ')
-                      .map((word: string) => {
-                        return (
-                          word.charAt(0).toUpperCase() +
-                          word.slice(1).toLowerCase()
-                        );
-                      })
-                      .join(' ') +
-                    `${
-                      ANIMES.find(({ anime }) => anime === animeName)?.aliases
-                    }`
-                  }
+                  onClick={() => goToAnime(animeName, category)}
+                  id={formatName(animeName) + `${getAnime(animeName)?.aliases}`}
                   key={animeName}
                 >
                   <div
                     title={
-                      ANIMES.find(({ anime }) => anime === animeName)
-                        ?.synopsis ?? 'Aucun synopsis pour cette anime'
+                      getAnime(animeName)?.synopsis ??
+                      'Aucun synopsis pour cette anime'
                     }
                     className="card"
                   >
+                    {getAnimeHistorique(animeName) &&
+                    category === 'Reprendre' ? (
+                      <div
+                        className="historiqueRemove"
+                        onClick={(event) => {
+                          event.stopPropagation();
+
+                          removeAnimeFromHistorique(animeName);
+                        }}
+                      >
+                        X
+                      </div>
+                    ) : null}
                     <img
                       className="affiche"
-                      src={
-                        ANIMES.find(({ anime }) => anime === animeName)?.options
-                          .affiche
-                      }
+                      src={getAnime(animeName)?.options.affiche}
                     />
 
                     <p>
-                      {animeName
-                        .replace('-', ' ')
-                        .replace('-', ' ')
-                        .split(' ')
-                        .map((word: string) => {
-                          return (
-                            word.charAt(0).toUpperCase() +
-                            word.slice(1).toLowerCase()
-                          );
-                        })
-                        .join(' ')}
-                      {historiques.find(({ name }) => name === animeName) &&
+                      {formatName(animeName)}
+                      {getAnimeHistorique(animeName) &&
                       category === 'Reprendre' ? (
                         <>
-                          <br />S
-                          {
-                            historiques.find(({ name }) => name === animeName)!
-                              .saison
-                          }{' '}
-                          E
-                          {
-                            historiques.find(({ name }) => name === animeName)!
-                              .episode
-                          }
+                          <br />S{getAnimeHistorique(animeName)!.saison} E
+                          {getAnimeHistorique(animeName)!.episode}
                         </>
                       ) : null}
                     </p>

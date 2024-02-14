@@ -69,6 +69,30 @@
           transition: transform 150ms ease-out;
           transition: border 250ms ease-in-out;
 
+          .historiqueRemove {
+            background-color: hsla(240, 10%, 10%, 0.472);
+            position: absolute;
+
+            border: 1px solid var(--orange);
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+
+            z-index: 200;
+
+            right: 0;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 2px;
+
+            transition: color 150ms ease-out;
+
+            &:hover {
+              color: red;
+            }
+          }
+
           .affiche {
             width: 129px;
             position: relative;
