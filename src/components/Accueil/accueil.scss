@@ -71,6 +71,8 @@
 
           .affiche {
             width: 129px;
+            position: relative;
+            z-index: -1;
           }
 
           p {
