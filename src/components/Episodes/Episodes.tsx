@@ -24,7 +24,7 @@ export default function Episodes() {
 
   const currentAnimeURL = urlParams.get('anime');
 
-  if (!currentAnimeURL) return (window.location.hash = '/home');
+  if (!currentAnimeURL) window.location.hash = '/';
 
   if (!currentAnime) {
     window.localStorage.setItem('anime', currentAnimeURL!);

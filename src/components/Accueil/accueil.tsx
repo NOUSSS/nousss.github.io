@@ -80,19 +80,27 @@ const Accueil = () => {
   const getAnime = (animeName: string) =>
     ANIMES.find(({ anime }) => anime === animeName);
 
-  const goToAnime = useCallback((animeName: string, category: string) => {
-    if (getAnimeHistorique(animeName) && category === 'Reprendre') {
-      const saison = historiques.find(({ name }) => name === animeName)!.saison;
+  const goToAnime = useCallback(
+    (animeName: string, category: string) => {
+      const getAnimeHistorique = (anime: string) =>
+        historiques.find(({ name }) => name === anime);
 
-      window.localStorage.setItem('anime', animeName);
-      window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
-        animeName
-      )}`;
-    } else {
-      window.localStorage.setItem('anime', animeName);
-      window.location.hash = '/home';
-    }
-  }, []);
+      if (getAnimeHistorique(animeName) && category === 'Reprendre') {
+        const saison = historiques.find(
+          ({ name }) => name === animeName
+        )!.saison;
+
+        window.localStorage.setItem('anime', animeName);
+        window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
+          animeName
+        )}`;
+      } else {
+        window.localStorage.setItem('anime', animeName);
+        window.location.hash = '/home';
+      }
+    },
+    [historiques]
+  );
 
   return (
     <div className="container--anime">
