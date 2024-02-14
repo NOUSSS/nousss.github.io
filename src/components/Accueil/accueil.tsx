@@ -6,9 +6,17 @@ import { ANIMES, groupAnimesByCategory } from '../constants';
 import { initSearchBar } from '../../functions/search';
 
 import searchImg from '../../assets/Search.jpg';
+
 import React, { useCallback, useEffect, useState } from 'react';
+
 import { formatName } from '../../functions/main';
 import { toast } from 'sonner';
+
+type Historique = {
+  name: string;
+  episode: string;
+  saison: string;
+};
 
 const Accueil = () => {
   const [output, setOutput] = useState<React.ReactNode>();
@@ -16,9 +24,7 @@ const Accueil = () => {
     ANIMES.map(({ anime, category }) => ({ anime, category }))
   );
 
-  const [historiques, setHistoriques] = useState<
-    { name: string; episode: string; saison: string }[]
-  >(() => {
+  const [historiques, setHistoriques] = useState<Historique[]>(() => {
     const loadedHistoriques = [];
 
     for (const key of Object.keys(window.localStorage)) {
@@ -63,7 +69,7 @@ const Accueil = () => {
 
     toast.success(`${animeName} a été retiré de l'historique avec succès`, {
       style: {
-        color: 'green',
+        color: 'var(--orange)',
       },
     });
   };
