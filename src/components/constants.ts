@@ -24,6 +24,7 @@ import { SoloLeveling } from '../animes/SoloLeveling/solo-leveling';
 import { SwordArtOnline } from '../animes/SwordArtOnline/sword-art-online';
 import { TheDailyLifeOfTheImmortalKing } from '../animes/TheDailyLifeOfTheImmortalKing/the-daily-life-of-the-immortal-king';
 import { TheGodOfHighschool } from '../animes/TheGodOfHighschool/the-god-of-highschool';
+import { TokyoGhoul } from '../animes/TokyoGhoul/tokyo-ghoul';
 import { TowerOfGod } from '../animes/TowerOfGod/tower-of-god';
 import { VinlandSaga } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans } from '../animes/attaqueDesTitans/attaqueDesTitans';
@@ -267,6 +268,14 @@ export const ANIMES = [
     category: 'Puissance',
     synopsis:
       "Histoire de passer le temps, Saitama est devenu un héros. Trois années d'un entraînement spécial lui ont donné un pouvoir le rendant invincible. Mais Saitama est devenu si fort qu'un seul coup de poing lui suffit à terrasser chaque adversaire se présentant, aussi puissant soit- il.",
+  },
+  {
+    anime: 'Tokyo Ghoul',
+    aliases: ['tg', 're'],
+    options: new TokyoGhoul(),
+    category: 'Reflexion',
+    synopsis:
+      "Dans la ville de Tokyo, des créatures nommées goules sont apparues et se nourrissent de chair humaine pour survivre. Un jour, Ken Kaneki, jeune étudiant, se fait attaquer par l'une d'entre elles et subit une grave blessure.",
   },
 ];
 

@@ -59,25 +59,6 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  try {
-    const showErrorOverlay = (err: ErrorEvent) => {
-      const ErrorOverlay = customElements.get('vite-error-overlay');
-
-      if (!ErrorOverlay) return;
-
-      console.log(err);
-
-      const overlay = new ErrorOverlay(err);
-
-      document.body.appendChild(overlay);
-    };
-
-    window.addEventListener('error', showErrorOverlay);
-    window.addEventListener('unhandledrejection', ({ reason }) =>
-      showErrorOverlay(reason)
-    );
-  } catch {}
-
   useEffect(() => {
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
