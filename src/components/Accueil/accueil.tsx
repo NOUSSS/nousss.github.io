@@ -19,6 +19,10 @@ type Historique = {
 };
 
 const Accueil = () => {
+  for (const key of Object.keys(window.localStorage)) {
+    if (key.includes('episodeSpecial')) window.localStorage.removeItem(key);
+  }
+
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
     ANIMES.map(({ anime, category }) => ({ anime, category }))
