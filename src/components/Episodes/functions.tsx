@@ -40,10 +40,7 @@ export function Change(
         String(indexEpisode)
       );
 
-      window.localStorage.setItem(
-        `${currentAnime}--episodeSpecial`,
-        `E-SP${esp}`
-      );
+      window.localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
     } else {
       let retard = 0;
 
@@ -76,7 +73,8 @@ export function Change(
         `${currentAnime}--episode`,
         String(indexEpisode)
       );
-      window.localStorage.removeItem('episodeSpecial');
+
+      window.localStorage.removeItem(`${currentAnime}--e-sp`);
     }
   } else {
     const numberEpisode =
@@ -103,7 +101,8 @@ export function Change(
       `${currentAnime}--episode`,
       String(indexEpisode)
     );
-    window.localStorage.removeItem('episodeSpecial');
+
+    window.localStorage.removeItem(`${currentAnime}--e-sp`);
   }
 
   window.scrollTo({

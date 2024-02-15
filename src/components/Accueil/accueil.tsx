@@ -64,6 +64,13 @@ const Accueil = () => {
   const removeAnimeFromHistorique = (animeName: string) => {
     window.localStorage.removeItem(`${animeName}--saison`);
     window.localStorage.removeItem(`${animeName}--episode`);
+    window.localStorage.removeItem(`${animeName}--currentFilm`);
+    window.localStorage.removeItem(`${animeName}--chapitre`);
+
+    for (const key of Object.keys(window.localStorage)) {
+      if (key.includes('--lang') && key.includes(animeName))
+        window.localStorage.removeItem(key);
+    }
 
     setHistoriques(historiques.filter(({ name }) => name !== animeName));
 

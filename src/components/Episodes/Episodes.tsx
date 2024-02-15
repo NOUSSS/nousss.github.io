@@ -135,12 +135,10 @@ export default function Episodes() {
           .querySelector<HTMLElement>('.hideEpisodesNamesInput')!
           .classList.add('invisible');
       }
-    } else {
-      toggleHideEpisodesNames();
-    }
+    } else toggleHideEpisodesNames();
 
     addScript(SCRIPT_URL(scriptIndex, lang))
-      .then(() => {
+      .then(async () => {
         LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
 
         setSaisonTitle(
@@ -179,13 +177,11 @@ export default function Episodes() {
 
         if (!episode) {
           window.localStorage.setItem(`${currentAnime}--episode`, '1');
+
           episode = '1';
         }
 
-        const esp = window.localStorage.getItem(
-          `${currentAnime}--episodeSpecial`
-        );
-
+        const e_sp = window.localStorage.getItem(`${currentAnime}--e-sp`);
         const listEpisodes: React.ReactNode[] = [];
 
         let retard = 0;
@@ -219,8 +215,10 @@ export default function Episodes() {
             } else {
               const episodeNumber = episodeIndex + indexEpisode - retard;
               const episodeTitle =
-                names?.find(({ index }) => index === String(episodeNumber))
-                  ?.name || '';
+                names?.find(
+                  ({ index }: { index: string }) =>
+                    index === String(episodeNumber)
+                )?.name || '';
 
               const id = `${episodeNumber} ${episodeTitle}`;
               listEpisodes.push(
@@ -259,7 +257,9 @@ export default function Episodes() {
 
         setEpisodes(listEpisodes);
 
-        if (episode !== '1' && !esp) {
+        if (episode !== '1' && !e_sp) {
+          await new Promise((res) => setTimeout(res, 50, true));
+
           const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
           let retard = 0;
@@ -288,12 +288,11 @@ export default function Episodes() {
           );
         }
 
-        if (episode !== '1' && esp) {
+        if (episode !== '1' && e_sp) {
           const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
           setVideo(URL_EPISODE);
-
-          setEpisodeTitle(<span className="episodeNumber">{esp}</span>);
+          setEpisodeTitle(<span className="episodeNumber">{e_sp}</span>);
         }
 
         if (episode === '1') {
