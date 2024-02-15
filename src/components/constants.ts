@@ -31,6 +31,7 @@ import { VinlandSaga } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans } from '../animes/attaqueDesTitans/attaqueDesTitans';
 import { Naruto } from '../animes/naruto/naruto';
 import { HellsParadise } from '../animes/HellsParadise/hells-paradise';
+import { FairyTail } from '../animes/FairyTail/fairy-tail';
 
 export const ANIMES = [
   {
@@ -294,6 +295,13 @@ export const ANIMES = [
     options: new HellsParadise(),
     synopsis:
       "Gabimaru, « Le Vide », le plus célèbre et puissant des assassins a été capturé et croupit en prison. Affirmant n'avoir plus aucune raison de vivre, il attend désespérément qu'un bourreau parvienne à lui ôter la vie car son entraînement surhumain lui permet de résister aux pires des châtiments.",
+  },
+  {
+    anime: 'Fairy Tail',
+    options: new FairyTail(),
+    category: 'Magie',
+    synopsis:
+      "Lucy, une jeune fille, rêve de devenir magicienne. Un jour, elle rencontre Natsu, un magicien maîtrisant le feu, ce dernier l'invite alors à rejoindre sa guilde. Il s'agit de la célèbre Fairy Tail, le sujet de tous les rêves de Lucy. Mais celle-ci est bien mystérieuse et semble être à l'origine de nombreux scandales.",
   },
 ];
 
