@@ -97,6 +97,22 @@ const App = () => {
         document.querySelector<HTMLElement>('.logo')!.style.visibility = '';
       }
     });
+
+    console.clear();
+
+    console.log(
+      "%c Salut, c'est NouSs !",
+      [
+        'font-size: 12px',
+        'color: #ffa300',
+        'font-family: monospace',
+        'background: #1d1e20',
+        'display: inline-block',
+        'padding: 1rem 3rem',
+        'border: 1px solid #ffa300',
+        'border-radius: 2px;',
+      ].join(';')
+    );
   }, []);
 
   return (
