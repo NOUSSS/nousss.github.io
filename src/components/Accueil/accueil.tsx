@@ -181,7 +181,11 @@ const Accueil = () => {
                   onClick={() => goToAnime(animeName, category)}
                   id={
                     formatName(animeName) +
-                    `${getAnime(animeName)?.aliases ?? ''}`
+                    `${
+                      typeof getAnime(animeName)?.aliases === 'undefined'
+                        ? ''
+                        : getAnime(animeName)?.aliases
+                    }`
                   }
                   key={animeName}
                 >

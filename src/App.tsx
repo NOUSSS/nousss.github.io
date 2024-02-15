@@ -77,7 +77,7 @@ const App = () => {
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
 
       if (whiteText) whiteText.style.color = 'var(--orange)';
@@ -97,10 +97,6 @@ const App = () => {
         document.querySelector<HTMLElement>('.logo')!.style.visibility = '';
       }
     });
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
   return (

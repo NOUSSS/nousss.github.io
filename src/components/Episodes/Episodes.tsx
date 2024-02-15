@@ -229,7 +229,7 @@ export default function Episodes() {
                   key={id}
                 >
                   <span className="episodeNumber">{episodeNumber}</span> :{' '}
-                  <div className="episodeName">{episodeTitle}</div>
+                  <span className="episodeName">{episodeTitle}</span>
                 </p>
               );
             }
@@ -369,7 +369,11 @@ export default function Episodes() {
 
   return (
     <div className="container--episodes">
-      <Title link="Saisons" />
+      <Title
+        link={
+          currentAnime ? `Saisons?anime=${encodeURI(currentAnime)}` : 'Saisons'
+        }
+      />
 
       <p className="titleSaison">{saisonTitle}</p>
       <p id="note">
