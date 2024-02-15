@@ -16,6 +16,7 @@ import { KurokoBasket } from '../animes/KurokoBasket/kuroko-basket';
 import { Mashle } from '../animes/Mashle/mashle';
 import { MyHeroAcademia } from '../animes/MyHeroAcademia/my-hero-academia';
 import { NarutoShippuden } from '../animes/NarutoShippuden/naruto-shippuden';
+import { ChainsawMan } from '../animes/ChainsawMan/chainsaw-man';
 import { OnePiece } from '../animes/OnePiece/one-piece';
 import { OnePunchMan } from '../animes/OnePunchMan/one-punch-man';
 import { ShangriLaFrontier } from '../animes/ShangriLaFrontier/shangri-la-frontier';
@@ -29,6 +30,7 @@ import { TowerOfGod } from '../animes/TowerOfGod/tower-of-god';
 import { VinlandSaga } from '../animes/VinlandSaga/vinland-saga';
 import { AttaqueDesTitans } from '../animes/attaqueDesTitans/attaqueDesTitans';
 import { Naruto } from '../animes/naruto/naruto';
+import { HellsParadise } from '../animes/HellsParadise/hells-paradise';
 
 export const ANIMES = [
   {
@@ -276,6 +278,22 @@ export const ANIMES = [
     category: 'Reflexion',
     synopsis:
       "Dans la ville de Tokyo, des créatures nommées goules sont apparues et se nourrissent de chair humaine pour survivre. Un jour, Ken Kaneki, jeune étudiant, se fait attaquer par l'une d'entre elles et subit une grave blessure.",
+  },
+  {
+    anime: 'Chainsaw Man',
+    aliases: ['cm', 'denji'],
+    category: 'New gen',
+    options: new ChainsawMan(),
+    synopsis:
+      "Denji est un jeune homme sans argent qui travaille comme Devil Hunter auprès d'un mafieux. Avec l'aide de Pochita, son chien-démon-tronçonneuse, il continue de rembourser les dettes de son père. Cependant, après s'être fait trahir, il fusionne avec Pochita et devient un homme-tronçonneuse.",
+  },
+  {
+    anime: "Hell's Paradise",
+    aliases: ['gabimaru'],
+    category: 'New gen',
+    options: new HellsParadise(),
+    synopsis:
+      "Gabimaru, « Le Vide », le plus célèbre et puissant des assassins a été capturé et croupit en prison. Affirmant n'avoir plus aucune raison de vivre, il attend désespérément qu'un bourreau parvienne à lui ôter la vie car son entraînement surhumain lui permet de résister aux pires des châtiments.",
   },
 ];
 
