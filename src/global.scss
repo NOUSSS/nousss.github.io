@@ -129,6 +129,10 @@ button {
   margin-bottom: 30px;
   margin-top: 15px;
 
+  border: 1px solid transparent;
+
+  transition: border 150ms ease-out;
+
   img {
     mix-blend-mode: multiply;
     width: 80px;
@@ -145,6 +149,10 @@ button {
 
     position: relative;
     left: -15px;
+  }
+
+  &:hover {
+    border: 1px solid var(--orange);
   }
 }
 
