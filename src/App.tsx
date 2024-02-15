@@ -59,22 +59,24 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  const showErrorOverlay = (err: ErrorEvent) => {
-    const ErrorOverlay = customElements.get('vite-error-overlay');
+  try {
+    const showErrorOverlay = (err: ErrorEvent) => {
+      const ErrorOverlay = customElements.get('vite-error-overlay');
 
-    if (!ErrorOverlay) return;
+      if (!ErrorOverlay) return;
 
-    console.log(err);
+      console.log(err);
 
-    const overlay = new ErrorOverlay(err);
+      const overlay = new ErrorOverlay(err);
 
-    document.body.appendChild(overlay);
-  };
+      document.body.appendChild(overlay);
+    };
 
-  window.addEventListener('error', showErrorOverlay);
-  window.addEventListener('unhandledrejection', ({ reason }) =>
-    showErrorOverlay(reason)
-  );
+    window.addEventListener('error', showErrorOverlay);
+    window.addEventListener('unhandledrejection', ({ reason }) =>
+      showErrorOverlay(reason)
+    );
+  } catch {}
 
   useEffect(() => {
     setInterval(() => {

@@ -14,8 +14,12 @@ import { toast } from 'sonner';
 
 type Historique = {
   name: string;
-  episode: string;
-  saison: string;
+  redirect: string;
+
+  chapitre?: string;
+  episode?: string;
+  saison?: string;
+  film?: string;
 };
 
 const Accueil = () => {
@@ -37,7 +41,21 @@ const Accueil = () => {
         const episode = window.localStorage.getItem(key)!;
         const saison = window.localStorage.getItem(`${name}--saison`) ?? '1';
 
-        loadedHistoriques.push({ name, episode, saison });
+        loadedHistoriques.push({ name, redirect: 'Episodes', episode, saison });
+      }
+
+      if (key.includes('--chapitre')) {
+        const name = key.replace('--chapitre', '');
+        const chapitre = window.localStorage.getItem(key)!;
+
+        loadedHistoriques.push({ name, redirect: 'Scans', chapitre });
+      }
+
+      if (key.includes('--currentFilm')) {
+        const name = key.replace('--currentFilm', '');
+        const film = window.localStorage.getItem(key)!;
+
+        loadedHistoriques.push({ name, redirect: 'Films', film });
       }
     }
 
@@ -65,46 +83,76 @@ const Accueil = () => {
     setCatalogues(updatedCatalogues);
   }, [historiques]);
 
-  const removeAnimeFromHistorique = (animeName: string) => {
-    window.localStorage.removeItem(`${animeName}--saison`);
-    window.localStorage.removeItem(`${animeName}--episode`);
-    window.localStorage.removeItem(`${animeName}--currentFilm`);
-    window.localStorage.removeItem(`${animeName}--chapitre`);
+  const removeAnimeFromHistorique = (
+    animeName: string,
+    redirectAnime: string
+  ) => {
+    if (redirectAnime === 'Episodes') {
+      window.localStorage.removeItem(`${animeName}--saison`);
+      window.localStorage.removeItem(`${animeName}--episode`);
 
-    for (const key of Object.keys(window.localStorage)) {
-      if (key.includes('--lang') && key.includes(animeName))
-        window.localStorage.removeItem(key);
+      for (const key of Object.keys(window.localStorage)) {
+        if (key.includes('--lang') && key.includes(animeName))
+          window.localStorage.removeItem(key);
+      }
+    } else if (redirectAnime === 'Scans') {
+      window.localStorage.removeItem(`${animeName}--chapitre`);
+    } else if (redirectAnime === 'Films') {
+      window.localStorage.removeItem(`${animeName}--currentFilm`);
+
+      for (const key of Object.keys(window.localStorage)) {
+        if (key.includes('--lang') && key.includes(animeName))
+          window.localStorage.removeItem(key);
+      }
     }
 
-    setHistoriques(historiques.filter(({ name }) => name !== animeName));
+    setHistoriques(
+      historiques.filter(
+        (historique) =>
+          !(
+            historique.name === animeName &&
+            historique.redirect === redirectAnime
+          )
+      )
+    );
 
-    toast.success(`${animeName} a été retiré de l'historique avec succès`, {
-      style: {
-        color: 'var(--orange)',
-      },
-    });
+    toast.success(
+      `Les ${redirectAnime} de ${animeName} ont été retiré de l'historique avec succès`,
+      {
+        style: {
+          color: 'var(--orange)',
+        },
+      }
+    );
   };
-
-  const getAnimeHistorique = (anime: string) =>
-    historiques.find(({ name }) => name === anime);
 
   const getAnime = (animeName: string) =>
     ANIMES.find(({ anime }) => anime === animeName);
 
   const goToAnime = useCallback(
-    (animeName: string, category: string) => {
-      const getAnimeHistorique = (anime: string) =>
-        historiques.find(({ name }) => name === anime);
-
-      if (getAnimeHistorique(animeName) && category === 'Reprendre') {
-        const saison = historiques.find(
-          ({ name }) => name === animeName
-        )!.saison;
+    (animeName: string, category: string, index: number) => {
+      if (historiques[index] && category === 'Reprendre') {
+        const historique = historiques[index];
 
         window.localStorage.setItem('anime', animeName);
-        window.location.hash = `/S${saison}/Episodes?anime=${encodeURI(
-          animeName
-        )}`;
+
+        if (historique?.redirect === 'Episodes') {
+          window.location.hash = `/S${historique.saison}/${
+            historique.redirect
+          }?anime=${encodeURI(animeName)}`;
+        }
+
+        if (historique?.redirect === 'Scans') {
+          window.location.hash = `/${historique.redirect}?anime=${encodeURI(
+            animeName
+          )}`;
+        }
+
+        if (historique?.redirect === 'Films') {
+          window.location.hash = `/${historique.redirect}?anime=${encodeURI(
+            animeName
+          )}`;
+        }
       } else {
         window.localStorage.setItem('anime', animeName);
         window.location.hash = '/home';
@@ -175,10 +223,10 @@ const Accueil = () => {
             <p className="category">{category}</p>
 
             <ul key={category}>
-              {names.map((animeName: string) => (
+              {names.map((animeName: string, i) => (
                 <li
                   className="animes-list"
-                  onClick={() => goToAnime(animeName, category)}
+                  onClick={() => goToAnime(animeName, category, i)}
                   id={
                     formatName(animeName) +
                     `${
@@ -187,7 +235,11 @@ const Accueil = () => {
                         : getAnime(animeName)?.aliases
                     }`
                   }
-                  key={animeName}
+                  key={
+                    historiques[i]?.redirect
+                      ? animeName + historiques[i]?.redirect
+                      : animeName
+                  }
                 >
                   <div
                     title={
@@ -196,14 +248,16 @@ const Accueil = () => {
                     }
                     className="card"
                   >
-                    {getAnimeHistorique(animeName) &&
-                    category === 'Reprendre' ? (
+                    {historiques[i] && category === 'Reprendre' ? (
                       <div
                         className="historiqueRemove"
                         onClick={(event) => {
                           event.stopPropagation();
 
-                          removeAnimeFromHistorique(animeName);
+                          removeAnimeFromHistorique(
+                            animeName,
+                            historiques[i]!.redirect
+                          );
                         }}
                       >
                         X
@@ -216,13 +270,28 @@ const Accueil = () => {
 
                     <p>
                       {formatName(animeName)}
-                      {getAnimeHistorique(animeName) &&
-                      category === 'Reprendre' ? (
+                      {historiques[i] && category === 'Reprendre' && (
                         <>
-                          <br />S{getAnimeHistorique(animeName)!.saison} E
-                          {getAnimeHistorique(animeName)!.episode}
+                          {historiques[i]?.chapitre && (
+                            <>
+                              <br />
+                              Chapitre {historiques[i]?.chapitre}
+                            </>
+                          )}
+                          {historiques[i]?.film && (
+                            <>
+                              <br />
+                              Film {Number(historiques[i]?.film) + 1}
+                            </>
+                          )}
+                          {historiques[i]?.episode && (
+                            <>
+                              <br />S{historiques[i]?.saison} E
+                              {historiques[i]?.episode}
+                            </>
+                          )}
                         </>
-                      ) : null}
+                      )}
                     </p>
                   </div>
                 </li>
