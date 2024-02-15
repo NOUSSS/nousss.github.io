@@ -6,7 +6,7 @@ import Affiche from '../../assets/Animes/FairyTail/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class FairyTail extends Anime {
+export default class FairyTail extends Anime {
   constructor() {
     super();
 

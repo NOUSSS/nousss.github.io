@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/ChainsawMan/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class ChainsawMan extends Anime {
+export default class ChainsawMan extends Anime {
   constructor() {
     super();
 

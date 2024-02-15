@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/SwordArtOnline/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class SwordArtOnline extends Anime {
+export default class SwordArtOnline extends Anime {
   constructor() {
     super();
 

@@ -3,7 +3,7 @@ import Affiche from '../../assets/Animes/BlueLock/Affiche.jpg';
 import { Anime } from '../../class/anime';
 import { getImage } from './constants/images-saisons';
 
-export class BlueLock extends Anime {
+export default class BlueLock extends Anime {
   constructor() {
     super();
 

@@ -3,7 +3,7 @@ import { Anime } from '../../class/anime';
 
 import Affiche from '../../assets/Animes/SlamDunk/Affiche.webp';
 
-export class SlamDunk extends Anime {
+export default class SlamDunk extends Anime {
   constructor() {
     super();
 

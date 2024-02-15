@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/DemonSlayer/Affiche.webp';
 
 import { Anime } from '../../class/anime';
 
-export class DemonSlayer extends Anime {
+export default class DemonSlayer extends Anime {
   constructor() {
     super();
 

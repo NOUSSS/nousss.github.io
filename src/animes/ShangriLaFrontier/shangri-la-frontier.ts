@@ -3,7 +3,7 @@ import { getImage } from './constants/images-saisons';
 import Affiche from '../../assets/Animes/ShangriLaFrontier/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class ShangriLaFrontier extends Anime {
+export default class ShangriLaFrontier extends Anime {
   constructor() {
     super();
 

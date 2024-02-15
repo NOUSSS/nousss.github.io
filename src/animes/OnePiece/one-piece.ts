@@ -6,7 +6,7 @@ import Affiche from '../../assets/Animes/OnePiece/Affiche.jpeg';
 
 import { Anime } from '../../class/anime';
 
-export class OnePiece extends Anime {
+export default class OnePiece extends Anime {
   constructor() {
     super();
 

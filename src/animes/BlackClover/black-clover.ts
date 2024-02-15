@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/BlackClover/Affiche.jpg';
 import episodes from './constants/episodes-names';
 import { Anime } from '../../class/anime';
 
-export class BlackClover extends Anime {
+export default class BlackClover extends Anime {
   constructor() {
     super();
 

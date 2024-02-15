@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/HellsParadise/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class HellsParadise extends Anime {
+export default class HellsParadise extends Anime {
   constructor() {
     super();
 

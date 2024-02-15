@@ -6,7 +6,7 @@ import Affiche from '../../assets/Animes/Boruto/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class Boruto extends Anime {
+export default class Boruto extends Anime {
   constructor() {
     super();
 

@@ -6,7 +6,7 @@ import Affiche from '../../assets/Animes/Bleach/Affiche.png';
 
 import { Anime } from '../../class/anime';
 
-export class Bleach extends Anime {
+export default class Bleach extends Anime {
   constructor() {
     super();
 

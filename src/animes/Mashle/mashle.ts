@@ -3,7 +3,7 @@ import { getImage } from './constants/images-saisons';
 import Affiche from '../../assets/Animes/Mashle/Affiche.jpeg';
 import { Anime } from '../../class/anime';
 
-export class Mashle extends Anime {
+export default class Mashle extends Anime {
   constructor() {
     super();
 

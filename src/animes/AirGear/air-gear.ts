@@ -3,7 +3,7 @@ import { Anime } from '../../class/anime';
 
 import Affiche from '../../assets/Animes/AirGear/Affiche.jpg';
 
-export class AirGear extends Anime {
+export default class AirGear extends Anime {
   constructor() {
     super();
 

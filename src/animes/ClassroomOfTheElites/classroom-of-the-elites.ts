@@ -3,7 +3,7 @@ import { getImage } from './constants/images-saisons';
 import Affiche from '../../assets/Animes/ClassroomOfTheElites/Affiche.webp';
 import { Anime } from '../../class/anime';
 
-export class ClassroomOfTheElites extends Anime {
+export default class ClassroomOfTheElites extends Anime {
   constructor() {
     super();
 

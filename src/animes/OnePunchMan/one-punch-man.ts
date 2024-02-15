@@ -3,7 +3,7 @@ import { Anime } from '../../class/anime';
 
 import Affiche from '../../assets/Animes/OnePunchMan/Affiche.jpg';
 
-export class OnePunchMan extends Anime {
+export default class OnePunchMan extends Anime {
   constructor() {
     super();
 

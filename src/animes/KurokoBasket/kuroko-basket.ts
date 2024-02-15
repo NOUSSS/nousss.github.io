@@ -4,7 +4,7 @@ import { films } from './constants/films-names';
 import Affiche from '../../assets/Animes/KurokoBasket/Affiche.jpg';
 import { Anime } from '../../class/anime';
 
-export class KurokoBasket extends Anime {
+export default class KurokoBasket extends Anime {
   constructor() {
     super();
 

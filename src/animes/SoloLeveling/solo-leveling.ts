@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/SoloLeveling/Affiche.jpeg';
 
 import { Anime } from '../../class/anime';
 
-export class SoloLeveling extends Anime {
+export default class SoloLeveling extends Anime {
   constructor() {
     super();
 

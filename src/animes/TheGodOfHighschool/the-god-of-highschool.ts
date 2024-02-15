@@ -3,7 +3,7 @@ import { Anime } from '../../class/anime';
 
 import Affiche from '../../assets/Animes/TheGodOfHighschool/Affiche.jpg';
 
-export class TheGodOfHighschool extends Anime {
+export default class TheGodOfHighschool extends Anime {
   constructor() {
     super();
 

@@ -4,7 +4,7 @@ import { Anime } from '../../class/anime';
 import { getImage } from './constants/images-saisons';
 import { films } from './constants/film-names';
 
-export class Haikyuu extends Anime {
+export default class Haikyuu extends Anime {
   constructor() {
     super();
 

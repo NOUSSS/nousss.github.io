@@ -5,7 +5,7 @@ import Affiche from '../../assets/Animes/HunterXHunter/Affiche.jpeg';
 import episodes from './constants/episodes-names';
 import { Anime } from '../../class/anime';
 
-export class HunterXHunter extends Anime {
+export default class HunterXHunter extends Anime {
   constructor() {
     super();
 

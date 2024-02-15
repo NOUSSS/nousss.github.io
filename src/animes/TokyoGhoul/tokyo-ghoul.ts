@@ -3,7 +3,7 @@ import Affiche from '../../assets/Animes/TokyoGhoul/Affiche.jpg';
 
 import { Anime } from '../../class/anime';
 
-export class TokyoGhoul extends Anime {
+export default class TokyoGhoul extends Anime {
   constructor() {
     super();
 

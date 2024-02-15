@@ -6,7 +6,7 @@ import episodes from './constants/episodes-names';
 
 import { Anime } from '../../class/anime';
 
-export class MyHeroAcademia extends Anime {
+export default class MyHeroAcademia extends Anime {
   constructor() {
     super();
 
