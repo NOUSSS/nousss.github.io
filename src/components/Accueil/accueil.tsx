@@ -117,7 +117,7 @@ const Accueil = () => {
     );
 
     toast.success(
-      `Les ${redirectAnime} de ${animeName} ont été retiré de l'historique avec succès`,
+      `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
       {
         style: {
           color: 'var(--orange)',
@@ -215,6 +215,25 @@ const Accueil = () => {
             {window.localStorage.getItem('anime')}
           </a>
         </p>
+      ) : null}
+
+      {historiques.length > 0 ? (
+        <button
+          className="removeAllHistorique"
+          onClick={() => {
+            setHistoriques([]);
+
+            window.localStorage.clear();
+
+            toast.success("L'historique a bien été vidé", {
+              style: {
+                color: 'var(--orange)',
+              },
+            });
+          }}
+        >
+          Supprimer tout l'historique
+        </button>
       ) : null}
 
       <div className="catalogue">

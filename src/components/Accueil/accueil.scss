@@ -25,6 +25,17 @@
     }
   }
 
+  .removeAllHistorique {
+    width: 200px;
+    margin: 50px 0;
+    transition: all 250ms ease-out;
+
+    &:hover {
+      color: red;
+      border: 1px solid red;
+    }
+  }
+
   .search--output--anime {
     color: white;
     font-size: 20px;
