@@ -179,7 +179,10 @@ const Accueil = () => {
                 <li
                   className="animes-list"
                   onClick={() => goToAnime(animeName, category)}
-                  id={formatName(animeName) + `${getAnime(animeName)?.aliases}`}
+                  id={
+                    formatName(animeName) +
+                    `${getAnime(animeName)?.aliases ?? ''}`
+                  }
                   key={animeName}
                 >
                   <div
