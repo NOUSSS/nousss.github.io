@@ -16,7 +16,7 @@ export async function appearVideo(
   const lang = window.localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
-    top: 0,
+    top: document.querySelector('iframe')?.offsetTop,
     behavior: 'smooth',
   });
 
