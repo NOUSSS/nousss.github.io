@@ -27,6 +27,17 @@ const Accueil = () => {
     if (key.includes('episodeSpecial')) window.localStorage.removeItem(key);
   }
 
+  const color = getComputedStyle(document.body).getPropertyValue('--mainColor');
+
+  const changeColor = (event: React.ChangeEvent<HTMLInputElement>) => {
+    document.documentElement.style.setProperty(
+      '--mainColor',
+      event.target.value
+    );
+
+    window.localStorage.setItem('color', event.target.value);
+  };
+
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
     ANIMES.map(({ anime, category }) => ({ anime, category }))
@@ -235,6 +246,21 @@ const Accueil = () => {
           Supprimer tout l'historique
         </button>
       ) : null}
+
+      <div style={{ display: 'none' }} className="color-picker">
+        <input onChange={changeColor} value={color} type="color" />
+        <button
+          onClick={() => {
+            document.documentElement.style.setProperty(
+              '--mainColor',
+              '#ffa300'
+            );
+            window.localStorage.removeItem('color');
+          }}
+        >
+          Réinisialiser
+        </button>
+      </div>
 
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (

@@ -64,6 +64,12 @@ const App = () => {
       toast.error('Une erreur est survenue, veuillez recharger la page.');
     });
 
+    const mainColor = window.localStorage.getItem('color');
+
+    if (mainColor) {
+      document.documentElement.style.setProperty('--mainColor', mainColor);
+    }
+
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;
 
