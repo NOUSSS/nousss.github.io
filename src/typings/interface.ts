@@ -47,7 +47,11 @@ export interface ScansOptions {
 }
 
 export interface EpisodesOptions {
-  SCRIPT_URL: (index: string | number, lang: string) => string;
+  SCRIPT_URL: (
+    index: string | number,
+    lang: string,
+    maxEpisode?: string
+  ) => string;
 
   horsSeries?: horsSeriesType[];
   names?: Episode[];

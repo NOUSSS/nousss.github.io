@@ -138,7 +138,10 @@ export default function Episodes() {
     } else toggleHideEpisodesNames();
 
     addScript({
-      url: SCRIPT_URL(scriptIndex, lang),
+      url:
+        currentAnime === 'one piece'
+          ? SCRIPT_URL(scriptIndex, lang, names![names!.length - 1]!.index)
+          : SCRIPT_URL(scriptIndex, lang),
       currentAnime: currentAnime!,
       saisonIndex: saison.index,
 

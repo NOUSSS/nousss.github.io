@@ -116,8 +116,10 @@ export default class OnePiece extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
-        `https://anime-sama.fr/catalogue/one-piece/saison${index}/${lang}/episodes.js`,
+      SCRIPT_URL: (index: string | number, lang: string, maxEpisode?: string) =>
+        `https://anime-sama.fr/catalogue/one-piece/saison${index}/${lang}/episodes.js${
+          maxEpisode ? '?filever=' + maxEpisode : ''
+        }`,
 
       horsSeries: [
         {
