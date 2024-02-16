@@ -2,6 +2,7 @@
   .episode {
     width: 500px;
   }
+
   iframe {
     width: 947px;
     height: 532px;
@@ -12,6 +13,18 @@
   iframe {
     width: 769px;
     height: 440px;
+  }
+}
+
+@media (max-width: 880px) {
+  .episodeTitle {
+    width: 700px;
+  }
+}
+
+@media (max-width: 688px) {
+  .episodeTitle {
+    width: 500px;
   }
 }
 
@@ -38,7 +51,7 @@
   }
 }
 
-@media (max-width: 506px) {
+@media (max-width: 550px) {
   .logo {
     font-size: 26px;
   }
@@ -49,6 +62,11 @@
 
   .titleSaison {
     font-size: 23px;
+  }
+
+  .episodeTitle {
+    font-size: 25px;
+    width: 450px;
   }
 }
 
@@ -68,6 +86,10 @@
   iframe {
     width: 325px;
     height: 185px;
+  }
+
+  .episodeTitle {
+    width: 300px;
   }
 }
 
