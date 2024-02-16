@@ -132,6 +132,7 @@ const Accueil = () => {
       {
         style: {
           color: 'var(--mainColor)',
+          fontFamily: 'Fredoka',
         },
       }
     );
@@ -239,6 +240,7 @@ const Accueil = () => {
             toast.success("L'historique a bien été vidé", {
               style: {
                 color: 'var(--mainColor)',
+                fontFamily: 'Fredoka',
               },
             });
           }}

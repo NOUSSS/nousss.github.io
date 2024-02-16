@@ -53,13 +53,17 @@ export function addScript({
     script.className = 'script';
     script.setAttribute('src', url);
 
-    const loading = toast.loading('Chargement des sources en cours...');
+    const loading = toast.loading('Chargement des sources en cours...', {
+      style: {
+        fontFamily: 'Fredoka',
+      },
+    });
 
     script.onload = () => {
       toast.dismiss(loading);
 
       toast.success('Les sources ont bien été chargées !', {
-        style: { color: 'var(--mainColor)' },
+        style: { color: 'var(--mainColor)', fontFamily: 'Fredoka' },
       });
 
       resolve(true);
@@ -87,6 +91,7 @@ export function addScript({
         {
           style: {
             color: 'red',
+            fontFamily: 'Fredoka',
           },
         }
       );
