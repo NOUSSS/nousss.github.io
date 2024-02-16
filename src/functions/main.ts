@@ -56,6 +56,7 @@ export function addScript({
     const loading = toast.loading('Chargement des sources en cours...', {
       style: {
         fontFamily: 'Fredoka',
+        fontSize: '15px',
       },
     });
 
@@ -63,7 +64,11 @@ export function addScript({
       toast.dismiss(loading);
 
       toast.success('Les sources ont bien été chargées !', {
-        style: { color: 'var(--mainColor)', fontFamily: 'Fredoka' },
+        style: {
+          color: 'var(--mainColor)',
+          fontFamily: 'Fredoka',
+          fontSize: '15px',
+        },
       });
 
       resolve(true);
@@ -92,6 +97,7 @@ export function addScript({
           style: {
             color: 'red',
             fontFamily: 'Fredoka',
+            fontSize: '15px',
           },
         }
       );

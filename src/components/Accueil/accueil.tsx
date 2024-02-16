@@ -23,6 +23,14 @@ type Historique = {
 };
 
 const Accueil = () => {
+  toast.success('Hello World', {
+    style: {
+      color: 'var(--mainColor)',
+      fontFamily: 'Fredoka',
+      fontSize: '15px',
+    },
+  });
+
   for (const key of Object.keys(window.localStorage)) {
     if (key.includes('episodeSpecial')) window.localStorage.removeItem(key);
   }
@@ -133,6 +141,7 @@ const Accueil = () => {
         style: {
           color: 'var(--mainColor)',
           fontFamily: 'Fredoka',
+          fontSize: '15px',
         },
       }
     );
@@ -241,6 +250,7 @@ const Accueil = () => {
               style: {
                 color: 'var(--mainColor)',
                 fontFamily: 'Fredoka',
+                fontSize: '15px',
               },
             });
           }}
