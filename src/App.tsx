@@ -59,11 +59,11 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  useEffect(() => {
-    window.addEventListener('error', () => {
-      toast.error('Une erreur est survenue, veuillez recharger la page.');
-    });
+  window.addEventListener('error', () => {
+    toast.error('Une erreur est survenue, veuillez recharger la page.');
+  });
 
+  useEffect(() => {
     const mainColor = window.localStorage.getItem('color');
 
     if (mainColor) {
