@@ -43,12 +43,18 @@
   .catalogue {
     width: 100%;
 
+    div {
+      margin-bottom: 5px;
+    }
+
     .category {
       font-size: 50px;
       text-shadow: black 0 0 10px;
       font-weight: bold;
       text-align: left;
+
       margin-left: 10px;
+
       border-bottom: 1px solid grey;
       width: 65vw;
     }
