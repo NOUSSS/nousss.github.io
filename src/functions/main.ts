@@ -45,7 +45,7 @@ export function addScript(url: string): Promise<boolean> {
       toast.dismiss(loading);
 
       toast.success('Les sources ont bien été chargées !', {
-        style: { color: 'var(--orange)' },
+        style: { color: 'var(--mainColor)' },
       });
 
       resolve(true);

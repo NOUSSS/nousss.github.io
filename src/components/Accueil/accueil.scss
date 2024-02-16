@@ -89,7 +89,7 @@
             background-color: hsla(240, 10%, 10%, 0.472);
             position: absolute;
 
-            border: 1px solid var(--orange);
+            border: 1px solid var(--mainColor);
             height: 30px;
 
             display: flex;
@@ -117,11 +117,11 @@
             position: relative;
             top: 15px;
             font-size: 15px;
-            color: var(--orange);
+            color: var(--mainColor);
           }
 
           &:hover {
-            border: 1px solid var(--orange);
+            border: 1px solid var(--mainColor);
           }
         }
       }

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
 
 :root {
-  --orange: #ffa300;
+  --mainColor: #ffa300;
 }
 
 iframe {
@@ -29,13 +29,13 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--orange);
+    background: var(--mainColor);
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: cyan;
     border-radius: 20px;
-    border: 3px solid var(--orange);
+    border: 3px solid var(--mainColor);
   }
 }
 
@@ -49,7 +49,7 @@ p {
 }
 
 span {
-  color: var(--orange);
+  color: var(--mainColor);
 }
 
 .title {
@@ -95,9 +95,9 @@ input {
 
 button {
   background-color: hsl(231deg 13% 10%);
-  color: var(--orange);
+  color: var(--mainColor);
 
-  border: var(--orange) 1px solid;
+  border: var(--mainColor) 1px solid;
   border-radius: 3px;
 }
 
@@ -161,7 +161,7 @@ button {
   }
 
   &:hover {
-    border: 1px solid var(--orange);
+    border: 1px solid var(--mainColor);
   }
 }
 
@@ -237,6 +237,6 @@ button,
     text-decoration: underline;
     cursor: pointer;
 
-    color: var(--orange);
+    color: var(--mainColor);
   }
 }

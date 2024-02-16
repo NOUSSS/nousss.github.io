@@ -120,7 +120,7 @@ const Accueil = () => {
       `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
       {
         style: {
-          color: 'var(--orange)',
+          color: 'var(--mainColor)',
         },
       }
     );
@@ -196,7 +196,7 @@ const Accueil = () => {
         Pour connaitre la date de sortie des différents épisodes / scans, je
         vous redirige vers le{' '}
         <a
-          style={{ color: 'var(--orange)', textDecoration: 'underline' }}
+          style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
           href="https://anime-sama.fr/planning/"
           target="_blank"
         >
@@ -209,7 +209,7 @@ const Accueil = () => {
         <p>
           Dernier anime selectionné :{' '}
           <a
-            style={{ color: 'var(--orange)', textDecoration: 'underline' }}
+            style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
             href="/#/home"
           >
             {window.localStorage.getItem('anime')}
@@ -227,7 +227,7 @@ const Accueil = () => {
 
             toast.success("L'historique a bien été vidé", {
               style: {
-                color: 'var(--orange)',
+                color: 'var(--mainColor)',
               },
             });
           }}
