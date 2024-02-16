@@ -97,12 +97,12 @@ const App = () => {
       "%c Salut, c'est NouSs !",
       [
         'font-size: 12px',
-        'color: #ffa300',
+        'color: #04fbb7',
         'font-family: monospace',
         'background: #1d1e20',
         'display: inline-block',
         'padding: 1rem 3rem',
-        'border: 1px solid #ffa300',
+        'border: 1px solid #04fbb7',
         'border-radius: 2px;',
       ].join(';')
     );

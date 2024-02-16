@@ -257,7 +257,7 @@ const Accueil = () => {
           onClick={() => {
             document.documentElement.style.setProperty(
               '--mainColor',
-              '#ffa300'
+              '#04fbb7'
             );
             window.localStorage.removeItem('color');
           }}
