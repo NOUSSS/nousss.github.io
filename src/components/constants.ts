@@ -32,6 +32,7 @@ import AttaqueDesTitans from '../animes/attaqueDesTitans/attaqueDesTitans';
 import Naruto from '../animes/naruto/naruto';
 import HellsParadise from '../animes/HellsParadise/hells-paradise';
 import FairyTail from '../animes/FairyTail/fairy-tail';
+import EminenceInShadow from '../animes/EminenceInShadow/eminence-in-shadow';
 
 export const ANIMES = [
   {
@@ -302,6 +303,13 @@ export const ANIMES = [
     category: 'Magie',
     synopsis:
       "Lucy, une jeune fille, rêve de devenir magicienne. Un jour, elle rencontre Natsu, un magicien maîtrisant le feu, ce dernier l'invite alors à rejoindre sa guilde. Il s'agit de la célèbre Fairy Tail, le sujet de tous les rêves de Lucy. Mais celle-ci est bien mystérieuse et semble être à l'origine de nombreux scandales.",
+  },
+  {
+    anime: 'The Eminence in Shadow',
+    options: new EminenceInShadow(),
+    category: 'Puissance',
+    synopsis:
+      "L'histoire suit les péripéties de Cid, un jeune garçon transporté dans un autre monde. Souffrant du syndrome du chūnibyō, il parvient à convaincre son nouvel entourage qu'il est le chef d'une société secrète recrutant de puissants individus et visant à influencer le cours des événements.",
   },
 ];
 
