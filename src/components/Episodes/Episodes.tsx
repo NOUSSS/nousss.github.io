@@ -137,7 +137,7 @@ export default function Episodes() {
       }
     } else toggleHideEpisodesNames();
 
-    addScript(SCRIPT_URL(scriptIndex, lang))
+    addScript(SCRIPT_URL(scriptIndex, lang), setLang)
       .then(async () => {
         LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
 

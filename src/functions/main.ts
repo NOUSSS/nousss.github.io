@@ -1,6 +1,8 @@
 import { toast } from 'sonner';
 import { windowKeys } from '../typings/interface';
 
+import React from 'react';
+
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
   Array.from(div).forEach((element) => {
     element.classList.remove('invisible');
@@ -32,7 +34,11 @@ export const getURLFilm = (index: number, lecteur: string): string =>
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
-export function addScript(url: string): Promise<boolean> {
+export function addScript(
+  url: string,
+
+  setLang?: React.Dispatch<React.SetStateAction<string>>
+): Promise<boolean> {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
 
@@ -52,6 +58,8 @@ export function addScript(url: string): Promise<boolean> {
     };
 
     script.onerror = () => {
+      if (setLang) setLang('vostfr');
+
       toast.dismiss(loading);
 
       toast.error(
