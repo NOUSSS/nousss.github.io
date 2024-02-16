@@ -137,7 +137,13 @@ export default function Episodes() {
       }
     } else toggleHideEpisodesNames();
 
-    addScript(SCRIPT_URL(scriptIndex, lang), setLang)
+    addScript({
+      url: SCRIPT_URL(scriptIndex, lang),
+      currentAnime: currentAnime!,
+      saisonIndex: saison.index,
+
+      setLang,
+    })
       .then(async () => {
         LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
 
@@ -378,7 +384,8 @@ export default function Episodes() {
       <p className="titleSaison">{saisonTitle}</p>
       <p id="note">
         Pour changer de langage cliquez sur la langue entre crochet juste en
-        haut et patientez
+        haut et patientez, si la VOSTFR persiste, c'est que la VF n'est pas
+        disponible
       </p>
 
       {disclamerMessage.current ? (

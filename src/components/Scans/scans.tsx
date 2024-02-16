@@ -54,7 +54,10 @@ const Scans = () => {
 
   useEffect(() => {
     if (SCRIPT_URL) {
-      addScript(SCRIPT_URL).then(() => {
+      addScript({
+        url: SCRIPT_URL,
+        currentAnime: currentAnime!,
+      }).then(() => {
         let retard = 0;
 
         if (typeof from.current === 'undefined') from.current = 1;

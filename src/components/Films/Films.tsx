@@ -63,7 +63,11 @@ const Films = () => {
     if (!window.localStorage.getItem(`${currentAnime}--lang`))
       window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
 
-    addScript(SCRIPT_URL!(lang), setLang).then(() => {
+    addScript({
+      url: SCRIPT_URL!(lang),
+      currentAnime: currentAnime!,
+      setLang,
+    }).then(() => {
       lecteurString.current = lecteur ? lecteur : 'eps1';
       const films_url = (window as unknown as windowKeys)[
         lecteurString.current
@@ -119,7 +123,8 @@ const Films = () => {
       <div className="film">{title}</div>
       <p id="note">
         Pour changer de langage cliquez sur la langue entre crochet et patientez
-        juste en haut
+        juste en haut, si la VOSTFR persiste, c'est que la VF n'est pas
+        disponible
       </p>
 
       <div className="video--films">

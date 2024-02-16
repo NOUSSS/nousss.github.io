@@ -34,11 +34,19 @@ export const getURLFilm = (index: number, lecteur: string): string =>
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 
-export function addScript(
-  url: string,
+export function addScript({
+  url,
 
-  setLang?: React.Dispatch<React.SetStateAction<string>>
-): Promise<boolean> {
+  currentAnime,
+  saisonIndex,
+
+  setLang,
+}: {
+  url: string;
+  currentAnime: string;
+  saisonIndex?: string;
+  setLang?: React.Dispatch<React.SetStateAction<string>>;
+}): Promise<boolean> {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
 
@@ -58,9 +66,21 @@ export function addScript(
     };
 
     script.onerror = () => {
-      if (setLang) setLang('vostfr');
-
       toast.dismiss(loading);
+
+      if (setLang) {
+        setLang('vostfr');
+        toast.dismiss(loading);
+
+        if (saisonIndex) {
+          window.localStorage.setItem(
+            `${currentAnime}--${saisonIndex}--lang`,
+            'vostfr'
+          );
+        } else {
+          window.localStorage.setItem(`${currentAnime}--lang`, 'vostfr');
+        }
+      }
 
       toast.error(
         'Erreur dans le chargement des sources, veuillez recharger la page.',
