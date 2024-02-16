@@ -33,6 +33,7 @@ import Naruto from '../animes/naruto/naruto';
 import HellsParadise from '../animes/HellsParadise/hells-paradise';
 import FairyTail from '../animes/FairyTail/fairy-tail';
 import EminenceInShadow from '../animes/EminenceInShadow/eminence-in-shadow';
+import MobPsycho100 from '../animes/MobPsycho100/mob-psycho-100';
 
 export const ANIMES = [
   {
@@ -310,6 +311,13 @@ export const ANIMES = [
     category: 'Puissance',
     synopsis:
       "L'histoire suit les péripéties de Cid, un jeune garçon transporté dans un autre monde. Souffrant du syndrome du chūnibyō, il parvient à convaincre son nouvel entourage qu'il est le chef d'une société secrète recrutant de puissants individus et visant à influencer le cours des événements.",
+  },
+  {
+    anime: 'Mob Psycho 100',
+    options: new MobPsycho100(),
+    category: 'New gen',
+    synopsis:
+      "L'histoire suit Kageyama Shigeo, un élève de quatrième possédant des pouvoirs psychiques. Il peut plier et soulever n'importe quel objet avec son esprit. Cependant, il s'est lentement refusé d'exercer ses capacités en public car sa trop grande puissance peut infliger des conséquences négatives aux humains \"normaux\".",
   },
 ];
 
