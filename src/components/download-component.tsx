@@ -29,7 +29,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
             >
               ici
             </a>
-            , puis appuyez sur la bouton partager en bas, puis 'Enregistrer dans
+            , puis appuyez sur le bouton partager en bas, puis 'Enregistrer dans
             fichiers'
           </>
         ) : (
@@ -48,7 +48,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
           >
             ici
           </a>
-          , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur la
+          , puis cliquez sur <span>'DOWNLOAD NOW'</span> ensuite appuyez sur le
           bouton partager en bas, puis 'Enregistrer dans fichiers'
         </>
       ) : (
