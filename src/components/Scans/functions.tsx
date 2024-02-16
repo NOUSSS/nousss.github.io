@@ -27,6 +27,8 @@ export const getTailleChapitres = (): number => {
 export const selectChapter = (
   newChapter: number | string
 ): React.ReactNode[] | undefined => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
   const currentAnime = window.localStorage.getItem('anime')!;
 
   const { IMAGE_URL } = ANIMES.find(({ anime }) => anime === currentAnime)!
