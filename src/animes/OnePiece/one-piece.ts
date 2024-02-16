@@ -97,6 +97,7 @@ export default class OnePiece extends Anime {
         image: () => getImage(11),
       },
     };
+
     this.FILM_OPTIONS = {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/one-piece/film/${langage}/episodes.js`,
@@ -106,7 +107,7 @@ export default class OnePiece extends Anime {
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:
-        'https://anime-sama.fr/catalogue/one-piece/scan_noir-et-blanc/vf/episodes.js',
+        'https://anime-sama.fr/catalogue/one-piece/scan_noir-et-blanc/vf/episodes.js?filever=1728957',
 
       IMAGE_URL: (chapitre: string | number, index: string | number) =>
         `https://s22.anime-sama.fr/s1/scans/One%20Piece/${chapitre}/${index}.jpg`,
