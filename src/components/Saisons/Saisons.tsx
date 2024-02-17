@@ -100,7 +100,7 @@ const Saisons = () => {
 
       <label className="label--saisons" title="Systeme de recherche super cool">
         <img src={searchImg} alt="" />
-        <input type="text" placeholder="Wano ?" onInput={searchBar} />
+        <input type="text" placeholder="La saison ?" onInput={searchBar} />
       </label>
 
       <div className="search--output--saisons">{output}</div>
