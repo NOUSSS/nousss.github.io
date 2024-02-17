@@ -35,6 +35,7 @@ import FairyTail from '../animes/FairyTail/fairy-tail';
 import EminenceInShadow from '../animes/EminenceInShadow/eminence-in-shadow';
 import MobPsycho100 from '../animes/MobPsycho100/mob-psycho-100';
 import HajimeNoIppo from '../animes/HajimeNoIppo/hajime-no-ippo';
+import TokyoRevengers from '../animes/TokyoRevengers/tokyo-revengers';
 
 export const ANIMES = [
   {
@@ -326,6 +327,13 @@ export const ANIMES = [
     category: 'Sport',
     synopsis:
       "Ippo Makunouchi est un enfant doux et maladroit. Sa mère l'élève seule depuis qu'il est tout petit, et il l'aide dans son commerce de bateau de pêche. Au printemps de sa deuxième année de lycée, Ippo est martyrisé par le trio de brutes qui l'attaque régulièrement.",
+  },
+  {
+    anime: 'Tokyo Revengers',
+    options: new TokyoRevengers(),
+    category: 'New gen',
+    synopsis:
+      "À 26 ans, Takemichi a le sentiment d'avoir déjà raté sa vie. Vivotant de petits boulots ingrats tout juste bons à payer le loyer d'un studio miteux, il se lamente sur le désert de sa vie amoureuse lorsqu'il apprend la mort de Hinata, la seule petite amie qu'il ait eue...",
   },
 ];
 

@@ -465,6 +465,8 @@ export default function Episodes() {
               String(prevSaison)
             );
 
+            window.localStorage.setItem(`${currentAnime}--episode`, '1');
+
             window.location.hash = `#S${prevSaison}/Episodes?anime=${encodeURI(
               currentAnime!
             )}`;
@@ -489,6 +491,8 @@ export default function Episodes() {
               `${currentAnime}--saison`,
               String(newSaison)
             );
+
+            window.localStorage.setItem(`${currentAnime}--episode`, '1');
 
             window.location.hash = `#S${newSaison}/Episodes?anime=${encodeURI(
               currentAnime!
