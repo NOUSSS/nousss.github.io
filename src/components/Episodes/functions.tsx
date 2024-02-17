@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ANIMES } from '../constants';
+import { getAnime } from '../../functions/getAnime';
 
 export function Change(
   indexEpisode: number | string,
@@ -9,45 +10,8 @@ export function Change(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
-  let currentAnime = window.localStorage.getItem('anime');
-
-  const hash = window.location.hash;
-  const queryParams = hash.substring(hash.indexOf('?') + 1);
-
-  const urlParams = new URLSearchParams(queryParams);
-
-  const currentAnimeURL = urlParams.get('anime');
-
-  if (!currentAnimeURL) window.location.hash = '/';
-
-  if (!currentAnime) {
-    window.localStorage.setItem('anime', currentAnimeURL!);
-    currentAnime = window.localStorage.getItem('anime');
-
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (currentAnime && !window.localStorage.getItem(`${currentAnime}--saison`)) {
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (
-    currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
-  ) {
-    currentAnime = currentAnimeURL;
-
-    window.localStorage.setItem('anime', currentAnimeURL);
-  }
-
+  const currentAnime = getAnime({ wSaison: true });
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
-
   const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS;
 
   const isHorsSerie = horsSeries?.find(
@@ -152,42 +116,7 @@ export function NextEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  let currentAnime = window.localStorage.getItem('anime');
-
-  const hash = window.location.hash;
-  const queryParams = hash.substring(hash.indexOf('?') + 1);
-
-  const urlParams = new URLSearchParams(queryParams);
-
-  const currentAnimeURL = urlParams.get('anime');
-
-  if (!currentAnimeURL) window.location.hash = '/';
-
-  if (!currentAnime) {
-    window.localStorage.setItem('anime', currentAnimeURL!);
-    currentAnime = window.localStorage.getItem('anime');
-
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (currentAnime && !window.localStorage.getItem(`${currentAnime}--saison`)) {
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (
-    currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
-  ) {
-    currentAnime = currentAnimeURL;
-
-    window.localStorage.setItem('anime', currentAnimeURL);
-  }
+  const currentAnime = getAnime({ wSaison: true });
 
   const newEpisodeIndex =
     Number(window.localStorage.getItem(`${currentAnime}--episode`)) + 1;
@@ -204,42 +133,7 @@ export function PrevEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  let currentAnime = window.localStorage.getItem('anime');
-
-  const hash = window.location.hash;
-  const queryParams = hash.substring(hash.indexOf('?') + 1);
-
-  const urlParams = new URLSearchParams(queryParams);
-
-  const currentAnimeURL = urlParams.get('anime');
-
-  if (!currentAnimeURL) window.location.hash = '/';
-
-  if (!currentAnime) {
-    window.localStorage.setItem('anime', currentAnimeURL!);
-    currentAnime = window.localStorage.getItem('anime');
-
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (currentAnime && !window.localStorage.getItem(`${currentAnime}--saison`)) {
-    window.localStorage.setItem(
-      `${currentAnime}--saison`,
-      window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1'
-    );
-  }
-
-  if (
-    currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
-  ) {
-    currentAnime = currentAnimeURL;
-
-    window.localStorage.setItem('anime', currentAnimeURL);
-  }
+  const currentAnime = getAnime({ wSaison: true });
 
   const newEpisodeIndex =
     Number(window.localStorage.getItem(`${currentAnime}--episode`)) - 1;

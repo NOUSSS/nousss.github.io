@@ -12,33 +12,12 @@ import { initSearchBar } from '../../functions/search.tsx';
 import { windowKeys } from '../../typings/types.ts';
 import { Footer, Title } from '../components.tsx';
 import { ANIMES } from '../constants.ts';
+import { getAnime } from '../../functions/getAnime.ts';
+
 import DownloadComponent from '../download-component.tsx';
 
 const Films = () => {
-  let currentAnime = window.localStorage.getItem('anime');
-
-  const hash = window.location.hash;
-  const queryParams = hash.substring(hash.indexOf('?') + 1);
-
-  const urlParams = new URLSearchParams(queryParams);
-
-  const currentAnimeURL = urlParams.get('anime');
-
-  if (!currentAnimeURL) window.location.hash = '/';
-
-  if (!currentAnime) {
-    window.localStorage.setItem('anime', currentAnimeURL!);
-
-    currentAnime = window.localStorage.getItem('anime');
-  }
-  if (
-    currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
-  ) {
-    currentAnime = currentAnimeURL;
-
-    window.localStorage.setItem('anime', currentAnimeURL);
-  }
+  const currentAnime = getAnime({ wSaison: false });
 
   const { BLACKLIST_URL, SCRIPT_URL, lecteur } = ANIMES.find(
     ({ anime }) => anime === currentAnime

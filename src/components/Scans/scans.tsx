@@ -14,32 +14,10 @@ import { ANIMES } from '../constants.ts';
 import { Footer, Title } from '../components.tsx';
 
 import uparrow from '../../assets/uparrow.png';
+import { getAnime } from '../../functions/getAnime.ts';
 
 const Scans = () => {
-  let currentAnime = window.localStorage.getItem('anime');
-
-  const hash = window.location.hash;
-  const queryParams = hash.substring(hash.indexOf('?') + 1);
-
-  const urlParams = new URLSearchParams(queryParams);
-
-  const currentAnimeURL = urlParams.get('anime');
-
-  if (!currentAnimeURL) window.location.hash = '/';
-
-  if (!currentAnime) {
-    window.localStorage.setItem('anime', currentAnimeURL!);
-    currentAnime = window.localStorage.getItem('anime');
-  }
-
-  if (
-    currentAnimeURL &&
-    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
-  ) {
-    currentAnime = currentAnimeURL;
-
-    window.localStorage.setItem('anime', currentAnimeURL);
-  }
+  const currentAnime = getAnime({ wSaison: false });
 
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
     .SCANS_OPTIONS;
