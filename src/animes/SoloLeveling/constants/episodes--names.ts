@@ -27,6 +27,10 @@ const episodes = [
     name: "Let's See How Far I Can Go",
     index: '7',
   },
+  {
+    name: 'This Is Frustrating',
+    index: '8',
+  },
 ];
 
 export default episodes;
