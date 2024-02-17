@@ -8,12 +8,11 @@ const Episodes = lazy(() => import('./components/Episodes/Episodes'));
 const Scans = lazy(() => import('./components/Scans/scans'));
 const Accueil = lazy(() => import('./components/Accueil/accueil'));
 
-import background from './assets/Background.jpg';
+import background from './assets/Background3.jpg';
 import logo from '/Logo.png';
 import PageNotFound from './components/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
-
 import { Toaster, toast } from 'sonner';
 
 const AppRoutes = () => {
