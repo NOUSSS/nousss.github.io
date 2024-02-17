@@ -62,16 +62,16 @@ const AppRoutes = () => {
 };
 
 const App = () => {
-  window.addEventListener('error', () => {
-    toast.error('Une erreur est survenue, veuillez recharger la page.', {
-      style: {
-        fontSize: '15px',
-        fontFamily: 'Fredoka',
-      },
-    });
-  });
-
   useEffect(() => {
+    window.addEventListener('error', () => {
+      toast.error('Une erreur est survenue, veuillez recharger la page.', {
+        style: {
+          fontSize: '15px',
+          fontFamily: 'Fredoka',
+        },
+      });
+    });
+
     const mainColor = window.localStorage.getItem('color');
 
     if (mainColor) {
