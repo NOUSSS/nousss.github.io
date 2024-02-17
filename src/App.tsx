@@ -11,6 +11,9 @@ const Accueil = lazy(() => import('./components/Accueil/accueil'));
 import background from './assets/Background2.png';
 import accueil from './assets/accueil.png';
 import PageNotFound from './components/PageNotFound';
+
+import { InfinitySpin } from 'react-loader-spinner';
+
 import { Toaster, toast } from 'sonner';
 
 const AppRoutes = () => {
@@ -48,8 +51,8 @@ const AppRoutes = () => {
   return (
     <Suspense
       fallback={
-        <div style={{ marginTop: '200px', color: 'white', fontSize: '30px' }}>
-          Chargement du composant en cours...
+        <div style={{ marginTop: '200px' }}>
+          <InfinitySpin width="200" color="var(--mainColor" />
         </div>
       }
     >
