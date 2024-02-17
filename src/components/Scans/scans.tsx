@@ -1,7 +1,7 @@
 import './scans.scss';
 import './responsive.scss';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import {
   getTailleChapitres,
@@ -49,7 +49,6 @@ const Scans = () => {
   const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options;
 
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
-
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
 
   useEffect(() => {
@@ -99,40 +98,35 @@ const Scans = () => {
       document.querySelectorAll<HTMLElement>('.prevButton')!;
 
     if (!chapitre || chapitre === '1')
-      Array.from([...PrevchapitreSelector]).map((e) =>
-        e.classList.add('invisible')
-      );
-    else
-      Array.from([...PrevchapitreSelector]).map((e) =>
-        e.classList.remove('invisible')
-      );
+      PrevchapitreSelector.forEach((e) => e.classList.add('invisible'));
+    else PrevchapitreSelector.forEach((e) => e.classList.remove('invisible'));
 
     if (Number(chapitre) === document.querySelector('select')?.options.length)
-      Array.from([...NextchapitreSelector]).map((e) =>
-        e.classList.add('invisible')
-      );
-    else
-      Array.from([...NextchapitreSelector]).map((e) =>
-        e.classList.remove('invisible')
-      );
+      NextchapitreSelector.forEach((e) => e.classList.add('invisible'));
+    else NextchapitreSelector.forEach((e) => e.classList.remove('invisible'));
   }, [scans, currentAnime]);
-
-  const onChangeSelect = useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const id = event.target.selectedOptions[0].id.match(/[0-9]/g)!.join('');
-
-      window.localStorage.setItem(`${currentAnime}--chapitre`, id);
-
-      setScans(selectChapter(id));
-    },
-    [currentAnime]
-  );
 
   return (
     <div className="container--scans">
       <Title link="Home" />
 
-      <select name="chapitres" className="chapitres" onChange={onChangeSelect}>
+      <select
+        name="chapitres"
+        className="chapitres"
+        onChange={(event) => {
+          const {
+            target: {
+              selectedOptions: [{ id }],
+            },
+          } = event;
+
+          const chapterId = id.match(/[0-9]/g)!.join('');
+
+          window.localStorage.setItem(`${currentAnime}--chapitre`, chapterId);
+
+          setScans(selectChapter(chapterId));
+        }}
+      >
         {chapitresOptions.map((option, index) => (
           <option key={index} id={`Chapitre ${index + 1}`}>
             {option}
