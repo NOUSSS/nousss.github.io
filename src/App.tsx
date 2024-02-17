@@ -9,7 +9,7 @@ const Scans = lazy(() => import('./components/Scans/scans'));
 const Accueil = lazy(() => import('./components/Accueil/accueil'));
 
 import background from './assets/Background2.png';
-import accueil from './assets/accueil.png';
+import logo from '/Logo.png';
 import PageNotFound from './components/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
@@ -123,7 +123,7 @@ const App = () => {
 
       <Link to="/">
         <h1 className="logo">
-          <img src={accueil} alt="Maison" />
+          <img src={logo} alt="Maison" />
           <span>Mugiwara-no</span> Streaming
         </h1>
       </Link>
