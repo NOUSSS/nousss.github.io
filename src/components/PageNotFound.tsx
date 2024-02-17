@@ -6,7 +6,7 @@ const PageNotFound = () => {
         <p style={{ margin: '50px' }}>
           Mais tant que t'es là, j'en profite pour te donner une petite astuce,
           si tu vas dans <a href="/#">l'accueil</a> et que dans la barre de
-          recherche tu écris "colorpicker" tu pourras changer la couleur theme
+          recherche tu écris "nouss prime" tu pourras changer la couleur theme
           du site !
         </p>
       </div>

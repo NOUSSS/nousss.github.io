@@ -8,7 +8,7 @@ export function initSearchBar(
 ): void {
   const colorpicker = document.querySelector('.color-picker') as HTMLDivElement;
 
-  if (input.value === 'colorpicker') {
+  if (input.value.toLowerCase() === 'nouss prime') {
     if (colorpicker) {
       colorpicker.style.display = '';
     }
