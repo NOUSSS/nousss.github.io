@@ -52,7 +52,7 @@ const AppRoutes = () => {
     <Suspense
       fallback={
         <div style={{ marginTop: '200px' }}>
-          <InfinitySpin width="200" color="var(--mainColor" />
+          <InfinitySpin width="200" color="var(--mainColor)" />
         </div>
       }
     >
