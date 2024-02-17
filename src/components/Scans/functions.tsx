@@ -29,7 +29,30 @@ export const selectChapter = (
 ): React.ReactNode[] | undefined => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const currentAnime = window.localStorage.getItem('anime')!;
+  let currentAnime = window.localStorage.getItem('anime');
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (!currentAnimeURL) window.location.hash = '/';
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+    currentAnime = window.localStorage.getItem('anime');
+  }
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   const { IMAGE_URL } = ANIMES.find(({ anime }) => anime === currentAnime)!
     .options.SCANS_OPTIONS;
@@ -81,7 +104,30 @@ const attachButtonClickEvent = (
 export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>
 ): void => {
-  const currentAnime = window.localStorage.getItem('anime')!;
+  let currentAnime = window.localStorage.getItem('anime');
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (!currentAnimeURL) window.location.hash = '/';
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+    currentAnime = window.localStorage.getItem('anime');
+  }
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   attachButtonClickEvent('prevButton', () => {
     setScans(

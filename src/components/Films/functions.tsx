@@ -8,7 +8,30 @@ export async function appearVideo(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  const currentAnime = window.localStorage.getItem('anime');
+  let currentAnime = window.localStorage.getItem('anime');
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (!currentAnimeURL) window.location.hash = '/';
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+    currentAnime = window.localStorage.getItem('anime');
+  }
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   const { names } = ANIMES.find(({ anime }) => anime === currentAnime)!.options
     .FILM_OPTIONS;
@@ -55,7 +78,30 @@ export function changeLangage(
   lang: string,
   setLang: React.Dispatch<React.SetStateAction<string>>
 ): void {
-  const currentAnime = window.localStorage.getItem('anime');
+  let currentAnime = window.localStorage.getItem('anime');
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (!currentAnimeURL) window.location.hash = '/';
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+    currentAnime = window.localStorage.getItem('anime');
+  }
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
 
   window.localStorage.setItem(`${currentAnime}--lang`, lang);
   setLang(lang);
@@ -67,7 +113,32 @@ export function getFilms(
   >,
   lecteur: string
 ) {
-  const currentAnime = window.localStorage.getItem('anime');
+  let currentAnime = window.localStorage.getItem('anime');
+
+  const hash = window.location.hash;
+  const queryParams = hash.substring(hash.indexOf('?') + 1);
+
+  const urlParams = new URLSearchParams(queryParams);
+
+  const currentAnimeURL = urlParams.get('anime');
+
+  if (!currentAnimeURL) window.location.hash = '/';
+
+  if (!currentAnime) {
+    window.localStorage.setItem('anime', currentAnimeURL!);
+
+    currentAnime = window.localStorage.getItem('anime');
+  }
+
+  if (
+    currentAnimeURL &&
+    currentAnimeURL.toLowerCase() !== currentAnime!.toLowerCase()
+  ) {
+    currentAnime = currentAnimeURL;
+
+    window.localStorage.setItem('anime', currentAnimeURL);
+  }
+
   const { names } = ANIMES.find(({ anime }) => anime === currentAnime)!.options
     .FILM_OPTIONS;
 
