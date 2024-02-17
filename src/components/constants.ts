@@ -36,6 +36,7 @@ import EminenceInShadow from '../animes/EminenceInShadow/eminence-in-shadow';
 import MobPsycho100 from '../animes/MobPsycho100/mob-psycho-100';
 import HajimeNoIppo from '../animes/HajimeNoIppo/hajime-no-ippo';
 import TokyoRevengers from '../animes/TokyoRevengers/tokyo-revengers';
+import BlueExorcist from '../animes/BlueExorcist/blue-exorcist';
 
 export const ANIMES = [
   {
@@ -334,6 +335,13 @@ export const ANIMES = [
     category: 'New gen',
     synopsis:
       "À 26 ans, Takemichi a le sentiment d'avoir déjà raté sa vie. Vivotant de petits boulots ingrats tout juste bons à payer le loyer d'un studio miteux, il se lamente sur le désert de sa vie amoureuse lorsqu'il apprend la mort de Hinata, la seule petite amie qu'il ait eue...",
+  },
+  {
+    anime: 'Blue Exorcist',
+    options: new BlueExorcist(),
+    category: 'Du moment',
+    synopsis:
+      "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
   },
 ];
 
