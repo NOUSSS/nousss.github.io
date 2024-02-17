@@ -371,6 +371,8 @@ export default function Episodes() {
     lecteur,
     scriptIndex,
     options.note,
+    oav,
+    saisons,
   ]);
 
   useEffect(() => {
