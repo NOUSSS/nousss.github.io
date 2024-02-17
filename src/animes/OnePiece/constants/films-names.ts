@@ -1,4 +1,4 @@
-import { Film } from '../../../typings/interface';
+import { Film } from '../../../typings/types';
 import { getImage } from './images-films';
 
 export const films: Film = {

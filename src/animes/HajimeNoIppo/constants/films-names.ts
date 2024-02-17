@@ -2,14 +2,10 @@ import { Film } from '../../../typings/types';
 import { getImage } from './images-films';
 
 export const films: Film = {
-  0: {
-    name: 'RELIGHT 1',
-    aliases: [''],
-    image: () => getImage(0),
-  },
+  0: { name: 'Champion Road', aliases: ['1'], image: () => getImage(0) },
   1: {
-    name: 'RELIGHT 2',
-    aliases: [''],
+    name: 'Mashiba VF Kimura',
+    aliases: ['2'],
     image: () => getImage(1),
   },
 };

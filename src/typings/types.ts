@@ -1,52 +1,52 @@
-interface SeasonAndFilm {
+type SeasonAndFilm = {
   [key: string]: {
     name: string;
     aliases: string[];
     image: () => string;
   };
-}
+};
 
-interface Episode {
+type Episode = {
   index: string;
   name: string;
-}
+};
 
-export interface Note {
+export type Note = {
   saison: string;
   message: string;
-}
+};
 
-export interface horsSeriesType {
+export type horsSeriesType = {
   saison: string;
   hs: number[];
-}
+};
 
-export interface allIndexType {
+export type allIndexType = {
   [key: string]: number;
-}
+};
 
-export interface windowKeys {
+export type windowKeys = {
   [key: string]: string[];
-}
+};
 
-export interface FilmOptions {
+export type FilmOptions = {
   SCRIPT_URL?: (langage: string) => string;
 
   BLACKLIST_URL?: string[];
   names?: Film;
   lecteur?: string;
-}
+};
 
-export interface ScansOptions {
+export type ScansOptions = {
   from?: number;
   SCRIPT_URL?: string;
 
   IMAGE_URL?: (chapitre: string | number, index: string | number) => string;
 
   CHAPITRE_SPECIAUX?: number[];
-}
+};
 
-export interface EpisodesOptions {
+export type EpisodesOptions = {
   SCRIPT_URL: (
     index: string | number,
     lang: string,
@@ -58,7 +58,7 @@ export interface EpisodesOptions {
 
   allIndex: allIndexType;
   lecteur: string;
-}
+};
 
-export interface Season extends SeasonAndFilm {}
-export interface Film extends SeasonAndFilm {}
+export type Season = SeasonAndFilm;
+export type Film = SeasonAndFilm;

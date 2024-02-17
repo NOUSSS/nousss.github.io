@@ -1,5 +1,5 @@
 import { toast } from 'sonner';
-import { windowKeys } from '../typings/interface';
+import { windowKeys } from '../typings/types';
 
 import React from 'react';
 

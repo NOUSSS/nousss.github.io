@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { windowKeys } from '../../typings/interface';
+import { windowKeys } from '../../typings/types';
 import { ANIMES } from '../constants';
 
 export const getTailleChapitres = (): number => {

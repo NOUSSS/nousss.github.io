@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { addScript, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES } from '../constants';
-import { windowKeys } from '../../typings/interface.ts';
+import { windowKeys } from '../../typings/types.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
