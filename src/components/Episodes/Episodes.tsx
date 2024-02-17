@@ -428,12 +428,6 @@ export default function Episodes() {
         }
       </div>
 
-      <label className="hideEpisodesNames">
-        <p>Cacher le nom des episodes</p>
-        <input type="checkbox"></input>
-        <span></span>
-      </label>
-
       <div className="container--buttons">
         <div className="buttons">
           <button className="prevButton">Épisode précedent</button>
@@ -465,6 +459,12 @@ export default function Episodes() {
       </label>
 
       <div className="search--output--episodes">{output}</div>
+
+      <label className="hideEpisodesNames">
+        <p>Cacher le nom des episodes</p>
+        <input type="checkbox"></input>
+        <span></span>
+      </label>
 
       <div className="container--list">
         <div className="list">{episodes}</div>
