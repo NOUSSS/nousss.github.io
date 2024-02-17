@@ -15,7 +15,7 @@ export class Anime {
   public SCANS_OPTIONS: ScansOptions;
   public EPISODES_OPTIONS: EpisodesOptions;
 
-  public note: string | Note[];
+  public note: string | Note[] | undefined;
 
   constructor() {
     this.affiche = '';
@@ -29,7 +29,5 @@ export class Anime {
       lecteur: '',
       SCRIPT_URL: () => '',
     };
-
-    this.note = '';
   }
 }

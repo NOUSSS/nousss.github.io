@@ -45,6 +45,11 @@ export default class AttaqueDesTitans extends Anime {
         aliases: ['grand terrassement', 'vrai fin'],
         image: () => getImage(7),
       },
+      8: {
+        name: 'OAV',
+        aliases: ['hs'],
+        image: () => getImage(8),
+      },
     };
 
     this.SCANS_OPTIONS = {
@@ -56,8 +61,16 @@ export default class AttaqueDesTitans extends Anime {
       CHAPITRE_SPECIAUX: [],
     };
 
+    this.note = [
+      {
+        saison: '8',
+        message:
+          "Ce sont des episodes speciaux, ils ne sont donc pas important pour l'histoire voir inutile.",
+      },
+    ];
+
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/shingeki-no-kyojin/saison${index}/${lang}/episodes.js`,
 
       allIndex: {
@@ -68,9 +81,12 @@ export default class AttaqueDesTitans extends Anime {
         5: 75,
         6: 87,
         7: 88,
+        8: 89,
       },
       names: episodesNames,
       lecteur: 'epsAS',
+
+      oav: true,
     };
   }
 }

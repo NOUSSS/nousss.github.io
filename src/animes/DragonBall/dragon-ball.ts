@@ -27,7 +27,7 @@ export default class DragonBall extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/dragon-ball/saison${index}/${lang}/episodes.js`,
 
       horsSeries: [],

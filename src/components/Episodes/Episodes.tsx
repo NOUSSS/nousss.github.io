@@ -55,7 +55,7 @@ export default function Episodes() {
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
   const opts = options.EPISODES_OPTIONS;
 
-  const { allIndex, horsSeries, SCRIPT_URL, names } = opts;
+  const { allIndex, horsSeries, SCRIPT_URL, names, oav } = opts;
   const { saisons } = options;
 
   let { lecteur } = opts;
@@ -137,11 +137,25 @@ export default function Episodes() {
       }
     } else toggleHideEpisodesNames();
 
+    const isOAV = Number(saison.index) === Object.keys(saisons).length && oav;
+
     addScript({
       url:
         currentAnime === 'one piece'
-          ? SCRIPT_URL(scriptIndex, lang, names![names!.length - 1]!.index)
-          : SCRIPT_URL(scriptIndex, lang),
+          ? SCRIPT_URL({
+              index: scriptIndex,
+              lang,
+              maxEpisode: names![names!.length - 1]!.index,
+            })
+          : oav
+          ? isOAV
+            ? SCRIPT_URL({ index: scriptIndex, lang }).replace(
+                /saison\d+(-\d+)?/g,
+                'oav'
+              )
+            : SCRIPT_URL({ index: scriptIndex, lang })
+          : SCRIPT_URL({ index: scriptIndex, lang }),
+
       currentAnime: currentAnime!,
       saisonIndex: saison.index,
 
@@ -341,6 +355,8 @@ export default function Episodes() {
           disclamerMessage!.current = options.note.find(
             (obj) => obj.saison === saison.index
           )!.message;
+        } else {
+          disclamerMessage!.current = '';
         }
       }
     }

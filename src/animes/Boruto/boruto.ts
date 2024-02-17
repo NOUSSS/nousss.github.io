@@ -36,7 +36,7 @@ export default class Boruto extends Anime {
       'Je conseille d\'aller sur <a href="https://furansujapon.com/actualite/boruto-liste-episode/" target="_blank">ce site</a> pour voir les hors series';
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/boruto/saison${index}/${lang}/episodes.js`,
 
       allIndex: {

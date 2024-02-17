@@ -17,6 +17,11 @@ export default class FairyTail extends Anime {
         aliases: [''],
         image: () => getImage(1),
       },
+      2: {
+        name: 'OAV',
+        aliases: [''],
+        image: () => getImage(2),
+      },
     };
 
     this.FILM_OPTIONS = {
@@ -35,12 +40,23 @@ export default class FairyTail extends Anime {
       CHAPITRE_SPECIAUX: [425, 451, 464, 492],
     };
 
+    this.note = [
+      {
+        saison: '2',
+        message:
+          "Ce sont des episodes speciaux, ils ne sont donc pas important pour l'histoire voir inutile.",
+      },
+    ];
+
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/fairy-tail/saison${index}/${lang}/episodes.js`,
+
+      oav: true,
 
       allIndex: {
         1: 0,
+        2: 328,
       },
 
       names: episodes,

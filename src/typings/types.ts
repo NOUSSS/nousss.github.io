@@ -47,14 +47,19 @@ export type ScansOptions = {
 };
 
 export type EpisodesOptions = {
-  SCRIPT_URL: (
-    index: string | number,
-    lang: string,
-    maxEpisode?: string
-  ) => string;
+  SCRIPT_URL: ({
+    index,
+    lang,
+    maxEpisode,
+  }: {
+    index: number | string;
+    lang: string;
+    maxEpisode?: string;
+  }) => string;
 
   horsSeries?: horsSeriesType[];
   names?: Episode[];
+  oav?: boolean;
 
   allIndex: allIndexType;
   lecteur: string;

@@ -17,7 +17,7 @@ export default class AirGear extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string) =>
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/air-gear/saison${index}/${lang}/episodes.js`,
 
       horsSeries: [{ saison: '1', hs: [21] }],

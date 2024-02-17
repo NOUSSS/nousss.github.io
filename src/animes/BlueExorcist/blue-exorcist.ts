@@ -45,7 +45,15 @@ export default class BlueExorcist extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: (index: string | number, lang: string, maxEpisode?: string) =>
+      SCRIPT_URL: ({
+        index,
+        lang,
+        maxEpisode,
+      }: {
+        index: number | string;
+        lang: string;
+        maxEpisode?: string;
+      }) =>
         `https://anime-sama.fr/catalogue/blue-exorcist/saison${index}/${lang}/episodes.js${
           maxEpisode ? '?filever=' + maxEpisode : ''
         }`,
