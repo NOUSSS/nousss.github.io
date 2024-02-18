@@ -75,11 +75,8 @@ export function addScript({
     };
 
     script.onerror = () => {
-      toast.dismiss(loading);
-
       if (setLang) {
         setLang('vostfr');
-        toast.dismiss(loading);
 
         if (saisonIndex) {
           window.localStorage.setItem(
@@ -103,6 +100,7 @@ export function addScript({
         }
       );
 
+      toast.dismiss(loading);
       reject(false);
     };
 

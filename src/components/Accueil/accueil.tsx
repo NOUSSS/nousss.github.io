@@ -174,6 +174,34 @@ const Accueil = () => {
     [historiques]
   );
 
+  const getCurrentEpisode = (animeName: string, index: number) => {
+    if (window.localStorage.getItem(`${animeName}--e-sp`)) {
+      return window.localStorage.getItem(`${animeName}--e-sp`)!;
+    } else {
+      if (getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries) {
+        if (
+          getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length! > 0
+        ) {
+          const horsSeries = getAnime(
+            animeName
+          )!.options.EPISODES_OPTIONS?.horsSeries!.find(
+            ({ saison }) => saison === historiques?.[index].saison
+          )?.hs;
+
+          let retard = 0;
+
+          for (const horsSerie of horsSeries!) {
+            if (Number(historiques[index]!.episode) > horsSerie + 1) retard++;
+          }
+
+          return `E${String(Number(historiques[index].episode) - retard)}`;
+        }
+      } else {
+        return `E${historiques[index].episode}`;
+      }
+    }
+  };
+
   return (
     <div className="container--anime">
       <nav>
@@ -287,7 +315,7 @@ const Accueil = () => {
                   key={
                     historiques[i]?.redirect
                       ? animeName + historiques[i]?.redirect
-                      : animeName
+                      : animeName + historiques[i]?.name
                   }
                 >
                   <div
@@ -335,8 +363,8 @@ const Accueil = () => {
                           )}
                           {historiques[i]?.episode && (
                             <>
-                              <br />S{historiques[i]?.saison} E
-                              {historiques[i]?.episode}
+                              <br />S{historiques[i]?.saison}{' '}
+                              {getCurrentEpisode(animeName, i)}
                             </>
                           )}
                         </>
