@@ -39,6 +39,7 @@ import TokyoRevengers from '../animes/TokyoRevengers/tokyo-revengers';
 import BlueExorcist from '../animes/BlueExorcist/blue-exorcist';
 import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
 import CaptainTsubasa from '../animes/CaptainTsubasa/captain-tsubasa';
+import Monster103 from '../animes/Monster103/monster-103';
 
 export const ANIMES = [
   {
@@ -384,6 +385,14 @@ export const ANIMES = [
     aliases: ['olive et tom', 'saisons'],
     category: 'Sport',
     options: new CaptainTsubasa(),
+  },
+  {
+    anime: 'Monster 103 Mercies Dragon Damnation',
+    synopsis:
+      "Ryuma, un samouraï nomade sans le sou, est sauvé d'une mort certaine par Flare, une généreuse serveuse, dont l'admiration envers Cyrano, un escrimeur émérite, est sans faille. Cependant, lorsque ce dernier porte atteinte à l'honneur de Ryuma, le jeune homme se voit contraint de le provoquer en duel. Mais ce geste pourtant anodin pourrait bien avoir des conséquences irrémédiables.",
+    options: new Monster103(),
+    aliases: ['saisons', 'one piece', 'op'],
+    category: 'New gen',
   },
 ];
 

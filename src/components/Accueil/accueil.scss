@@ -4,11 +4,6 @@
   margin-bottom: 200px;
   width: calc(100vw - 50px);
 
-  .title {
-    font-weight: lighter;
-    height: auto;
-  }
-
   .color-picker {
     margin: 50px;
   }
@@ -46,6 +41,20 @@
 
   .catalogue {
     width: 100%;
+
+    div {
+      &:first-of-type {
+        ul {
+          li {
+            .card {
+              p {
+                top: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
 
     div {
       margin-bottom: 5px;
