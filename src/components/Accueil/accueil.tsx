@@ -204,6 +204,40 @@ const Accueil = () => {
     }
   };
 
+  const getCurrentChapitre = (animeName: string, index: number) => {
+    if (
+      getAnime(animeName)?.options?.SCANS_OPTIONS!.CHAPITRE_SPECIAUX?.includes(
+        Number(window.localStorage.getItem(`${animeName}--chapitre`)) - 1
+      )
+    ) {
+      return `Chapitre Special`;
+    } else {
+      if (
+        getAnime(animeName)?.options.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.length! >
+        0
+      ) {
+        const horsSeries =
+          getAnime(animeName)!.options.SCANS_OPTIONS?.CHAPITRE_SPECIAUX;
+
+        if (horsSeries) {
+          let retard = 0;
+
+          for (const horsSerie of horsSeries) {
+            if (Number(historiques[index]!.chapitre) > horsSerie + 1) retard++;
+          }
+
+          return `Chapitre ${String(
+            Number(historiques[index].chapitre) - retard
+          )}`;
+        } else {
+          return `Chapitre ${historiques[index].chapitre}`;
+        }
+      } else {
+        return `Chapitre ${historiques[index].chapitre}`;
+      }
+    }
+  };
+
   return (
     <div className="container--anime">
       <nav>
@@ -354,7 +388,7 @@ const Accueil = () => {
                           {historiques[i]?.chapitre && (
                             <>
                               <br />
-                              Chapitre {historiques[i]?.chapitre}
+                              {getCurrentChapitre(animeName, i)}
                             </>
                           )}
                           {historiques[i]?.film && (
