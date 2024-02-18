@@ -38,6 +38,7 @@ import HajimeNoIppo from '../animes/HajimeNoIppo/hajime-no-ippo';
 import TokyoRevengers from '../animes/TokyoRevengers/tokyo-revengers';
 import BlueExorcist from '../animes/BlueExorcist/blue-exorcist';
 import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
+import CaptainTsubasa from '../animes/CaptainTsubasa/captain-tsubasa';
 
 export const ANIMES = [
   {
@@ -375,6 +376,14 @@ export const ANIMES = [
     options: new KaguraBachi(),
     category: 'New gen',
     aliases: ['scans'],
+  },
+  {
+    anime: 'Captain Tsubasa',
+    synopsis:
+      "Tsubasa Ozora est déjà un petit génie du ballon rond malgré son jeune âge. Son rêve est d'offrir la Coupe du monde de football au Japon. Roberto Hongô, son mentor, est un joueur de légende revenu du Brésil et Tsubasa suit un entraînement particulièrement rigoureux.",
+    aliases: ['olive et tom', 'saisons'],
+    category: 'Sport',
+    options: new CaptainTsubasa(),
   },
 ];
 
