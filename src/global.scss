@@ -52,6 +52,25 @@ span {
 
 .title {
   font-size: 65px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--mainColor);
+    height: 2px;
+    width: 0%;
+
+    transition: width 250ms ease-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 60%;
+    }
+  }
 }
 
 .accueil {
@@ -84,6 +103,24 @@ span {
     position: relative;
     top: 7px;
     left: -15px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    background-color: var(--mainColor);
+    height: 2px;
+    width: 0%;
+
+    transition: width 250ms ease-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 60%;
+    }
   }
 }
 
