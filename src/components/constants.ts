@@ -42,7 +42,7 @@ import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
 export const ANIMES = [
   {
     anime: 'one piece',
-    aliases: ['luffy', 'zoro', 'op'],
+    aliases: ['luffy', 'zoro', 'op', 'films', 'saisons', 'scans'],
     options: new OnePiece(),
     category: 'Classique',
     synopsis:
@@ -50,7 +50,7 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball',
-    aliases: ['goku', 'shenron', 'db'],
+    aliases: ['goku', 'shenron', 'db', 'films', 'saisons'],
     options: new DragonBall(),
     category: 'Classique',
     synopsis:
@@ -58,7 +58,7 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball Z',
-    aliases: ['goku', 'vegeta', 'dbz'],
+    aliases: ['goku', 'vegeta', 'dbz', 'saisons', 'films'],
     options: new DragonBallZ(),
     category: 'Classique',
     synopsis:
@@ -66,7 +66,16 @@ export const ANIMES = [
   },
   {
     anime: 'Dragon Ball Super',
-    aliases: ['ultra instinct', 'goku', 'beerus', 'zeno', 'dbs'],
+    aliases: [
+      'ultra instinct',
+      'goku',
+      'beerus',
+      'zeno',
+      'dbs',
+      'films',
+      'scans',
+      'saisons',
+    ],
     options: new DragonBallSuper(),
     category: 'Classique',
     synopsis:
@@ -74,7 +83,15 @@ export const ANIMES = [
   },
   {
     anime: 'my hero academia',
-    aliases: ['boku no hero academia', 'izuku', 'all might', 'mha'],
+    aliases: [
+      'boku no hero academia',
+      'izuku',
+      'all might',
+      'mha',
+      'films',
+      'saisons',
+      'scans',
+    ],
     options: new MyHeroAcademia(),
     category: 'New gen',
     synopsis:
@@ -82,7 +99,7 @@ export const ANIMES = [
   },
   {
     anime: 'vinland saga',
-    aliases: ['ennemi', 'thorfinn', 'thors', 'thorkell'],
+    aliases: ['ennemi', 'thorfinn', 'thors', 'thorkell', 'saisons', 'scans'],
     options: new VinlandSaga(),
     category: 'Reflexion',
     synopsis:
@@ -90,7 +107,7 @@ export const ANIMES = [
   },
   {
     anime: 'solo leveling',
-    aliases: ['only i level up'],
+    aliases: ['only i level up', 'saisons', 'scans'],
     options: new SoloLeveling(),
     category: 'Du moment',
     synopsis:
@@ -98,14 +115,14 @@ export const ANIMES = [
   },
   {
     anime: 'Kuroko Basket',
-    aliases: ['kagami', 'kuroko no basket', 'knb'],
+    aliases: ['kagami', 'kuroko no basket', 'knb', 'films', 'saisons'],
     category: 'Sport',
     options: new KurokoBasket(),
     synopsis: `Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.`,
   },
   {
     anime: 'jujutsu kaisen',
-    aliases: ['itadori', 'gojo', 'sukuna', 'jjk'],
+    aliases: ['itadori', 'gojo', 'sukuna', 'jjk', 'films', 'saisons', 'scans'],
     options: new JujutsuKaisen(),
     category: 'New gen',
     synopsis:
@@ -113,14 +130,14 @@ export const ANIMES = [
   },
   {
     anime: 'black clover',
-    aliases: ['asta', 'yuno', 'bc'],
+    aliases: ['asta', 'yuno', 'bc', 'films', 'saisons', 'scans'],
     options: new BlackClover(),
     category: 'Magie',
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
     anime: 'hunter x hunter',
-    aliases: ['nen', 'hxh', 'gon', 'netero'],
+    aliases: ['nen', 'hxh', 'gon', 'netero', 'films', 'saisons', 'scans'],
     options: new HunterXHunter(),
     category: 'Classique',
     synopsis:
@@ -128,7 +145,7 @@ export const ANIMES = [
   },
   {
     anime: 'mashle',
-    aliases: ['saitama v2', 'muscle'],
+    aliases: ['saitama v2', 'muscle', 'saisons', 'scans'],
     options: new Mashle(),
     category: 'Du moment',
     synopsis:
@@ -136,7 +153,7 @@ export const ANIMES = [
   },
   {
     anime: "L'attaque des titans",
-    aliases: ['shingeki no kyojin', 'snk', 'eren'],
+    aliases: ['shingeki no kyojin', 'snk', 'eren', 'saisons', 'scans'],
     options: new AttaqueDesTitans(),
     category: 'Reflexion',
     synopsis:
@@ -144,7 +161,7 @@ export const ANIMES = [
   },
   {
     anime: 'Death Note',
-    aliases: ['light', 'L'],
+    aliases: ['light', 'L', 'films', 'saisons', 'scans'],
     options: new DeathNote(),
     category: 'Reflexion',
     synopsis:
@@ -152,7 +169,7 @@ export const ANIMES = [
   },
   {
     anime: 'The god of highschool',
-    aliases: ['tdoh'],
+    aliases: ['tdoh', 'scans', 'saisons'],
     options: new TheGodOfHighschool(),
     category: 'Webtoon',
     synopsis:
@@ -160,7 +177,7 @@ export const ANIMES = [
   },
   {
     anime: 'Tower of god',
-    aliases: ['tog'],
+    aliases: ['tog', 'scans', 'saisons'],
     options: new TowerOfGod(),
     category: 'Webtoon',
     synopsis:
@@ -168,7 +185,7 @@ export const ANIMES = [
   },
   {
     anime: 'naruto',
-    aliases: ['konoha', 'kurama', 'kyubi'],
+    aliases: ['konoha', 'kurama', 'kyubi', 'scans', 'saisons'],
     options: new Naruto(),
     category: 'Classique',
     synopsis:
@@ -176,7 +193,7 @@ export const ANIMES = [
   },
   {
     anime: 'naruto shippuden',
-    aliases: ['naruto adulte'],
+    aliases: ['naruto adulte', 'films', 'saisons'],
     options: new NarutoShippuden(),
     category: 'Classique',
     synopsis:
@@ -184,7 +201,7 @@ export const ANIMES = [
   },
   {
     anime: 'Shangri-La Frontier',
-
+    aliases: ['scans', 'saisons'],
     options: new ShangriLaFrontier(),
     category: 'Jeux Videos',
     synopsis:
@@ -192,7 +209,7 @@ export const ANIMES = [
   },
   {
     anime: 'Classroom of the Elites',
-    aliases: ['kyotaka', 'ecole'],
+    aliases: ['kyotaka', 'ecole', 'scans', 'saisons'],
     options: new ClassroomOfTheElites(),
     category: 'Du moment',
     synopsis:
@@ -200,7 +217,7 @@ export const ANIMES = [
   },
   {
     anime: 'The Daily Life of the Immortal King',
-    aliases: ['saitama v2'],
+    aliases: ['saitama v2', 'saisons'],
     options: new TheDailyLifeOfTheImmortalKing(),
     category: 'Puissance',
     synopsis:
@@ -208,7 +225,7 @@ export const ANIMES = [
   },
   {
     anime: 'haikyuu',
-    aliases: ['volley'],
+    aliases: ['volley', 'films', 'scans', 'saisons'],
     options: new Haikyuu(),
     category: 'Sport',
     synopsis:
@@ -216,7 +233,7 @@ export const ANIMES = [
   },
   {
     anime: 'Blue Lock',
-    aliases: ['foot'],
+    aliases: ['foot', 'scans', 'saisons'],
     options: new BlueLock(),
     category: 'Sport',
     synopsis:
@@ -227,12 +244,13 @@ export const ANIMES = [
     anime: 'Air Gear',
     options: new AirGear(),
     category: 'Sport',
+    aliases: ['saisons'],
     synopsis:
       "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
   },
   {
     anime: 'Slam Dunk',
-    aliases: ['basket'],
+    aliases: ['basket', 'saisons'],
     options: new SlamDunk(),
     category: 'Sport',
     synopsis:
@@ -240,7 +258,7 @@ export const ANIMES = [
   },
   {
     anime: 'Demon Slayer',
-    aliases: ['kny', 'kimetsu no yaiba'],
+    aliases: ['kny', 'kimetsu no yaiba', 'films', 'scans', 'saisons'],
     options: new DemonSlayer(),
     category: 'New gen',
     synopsis:
@@ -248,7 +266,7 @@ export const ANIMES = [
   },
   {
     anime: 'Bleach',
-    aliases: ['kurosaki', 'ichigo'],
+    aliases: ['kurosaki', 'ichigo', 'films', 'scans', 'saisons'],
     options: new Bleach(),
     category: 'Classique',
     synopsis:
@@ -256,7 +274,7 @@ export const ANIMES = [
   },
   {
     anime: 'Boruto',
-    aliases: ['suite', 'code'],
+    aliases: ['suite', 'code', 'scans', 'saisons', 'films'],
     options: new Boruto(),
     category: 'New gen',
     synopsis:
@@ -264,7 +282,7 @@ export const ANIMES = [
   },
   {
     anime: 'Sword Art Online',
-    aliases: ['sao'],
+    aliases: ['sao', 'films', 'saisons'],
     options: new SwordArtOnline(),
     category: 'Jeux Videos',
     synopsis:
@@ -272,7 +290,7 @@ export const ANIMES = [
   },
   {
     anime: 'One Punch Man',
-    aliases: ['opm'],
+    aliases: ['opm', 'scans', 'saisons'],
     options: new OnePunchMan(),
     category: 'Puissance',
     synopsis:
@@ -280,7 +298,7 @@ export const ANIMES = [
   },
   {
     anime: 'Tokyo Ghoul',
-    aliases: ['tg', 're'],
+    aliases: ['tg', 're', 'scans', 'saisons'],
     options: new TokyoGhoul(),
     category: 'Reflexion',
     synopsis:
@@ -288,7 +306,7 @@ export const ANIMES = [
   },
   {
     anime: 'Chainsaw Man',
-    aliases: ['cm', 'denji'],
+    aliases: ['cm', 'denji', 'scans', 'saisons'],
     category: 'New gen',
     options: new ChainsawMan(),
     synopsis:
@@ -296,7 +314,7 @@ export const ANIMES = [
   },
   {
     anime: "Hell's Paradise",
-    aliases: ['gabimaru'],
+    aliases: ['gabimaru', 'scans', 'saisons'],
     category: 'New gen',
     options: new HellsParadise(),
     synopsis:
@@ -308,6 +326,7 @@ export const ANIMES = [
     category: 'Magie',
     synopsis:
       "Lucy, une jeune fille, rêve de devenir magicienne. Un jour, elle rencontre Natsu, un magicien maîtrisant le feu, ce dernier l'invite alors à rejoindre sa guilde. Il s'agit de la célèbre Fairy Tail, le sujet de tous les rêves de Lucy. Mais celle-ci est bien mystérieuse et semble être à l'origine de nombreux scandales.",
+    aliases: ['films', 'scans', 'saisons'],
   },
   {
     anime: 'The Eminence in Shadow',
@@ -315,6 +334,7 @@ export const ANIMES = [
     category: 'Puissance',
     synopsis:
       "L'histoire suit les péripéties de Cid, un jeune garçon transporté dans un autre monde. Souffrant du syndrome du chūnibyō, il parvient à convaincre son nouvel entourage qu'il est le chef d'une société secrète recrutant de puissants individus et visant à influencer le cours des événements.",
+    aliases: ['scans', 'saisons'],
   },
   {
     anime: 'Mob Psycho 100',
@@ -322,6 +342,7 @@ export const ANIMES = [
     category: 'New gen',
     synopsis:
       "L'histoire suit Kageyama Shigeo, un élève de quatrième possédant des pouvoirs psychiques. Il peut plier et soulever n'importe quel objet avec son esprit. Cependant, il s'est lentement refusé d'exercer ses capacités en public car sa trop grande puissance peut infliger des conséquences négatives aux humains \"normaux\".",
+    aliases: ['scans', 'saisons'],
   },
   {
     anime: 'Hajime no Ippo',
@@ -329,6 +350,7 @@ export const ANIMES = [
     category: 'Sport',
     synopsis:
       "Ippo Makunouchi est un enfant doux et maladroit. Sa mère l'élève seule depuis qu'il est tout petit, et il l'aide dans son commerce de bateau de pêche. Au printemps de sa deuxième année de lycée, Ippo est martyrisé par le trio de brutes qui l'attaque régulièrement.",
+    aliases: ['films', 'scans', 'saisons'],
   },
   {
     anime: 'Tokyo Revengers',
@@ -336,6 +358,7 @@ export const ANIMES = [
     category: 'New gen',
     synopsis:
       "À 26 ans, Takemichi a le sentiment d'avoir déjà raté sa vie. Vivotant de petits boulots ingrats tout juste bons à payer le loyer d'un studio miteux, il se lamente sur le désert de sa vie amoureuse lorsqu'il apprend la mort de Hinata, la seule petite amie qu'il ait eue...",
+    aliases: ['films', 'scans', 'saisons'],
   },
   {
     anime: 'Blue Exorcist',
@@ -343,6 +366,7 @@ export const ANIMES = [
     category: 'Du moment',
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
+    aliases: ['films', 'scans', 'saisons'],
   },
   {
     anime: 'Kagura Bachi',
@@ -350,6 +374,7 @@ export const ANIMES = [
       "Kagura Bachi suit Chihiro, un jeune forgeron subitement devenu épéiste pour des raisons encore inconnues pour le moment. Le protagoniste évolue dans un univers fantaisiste où la magie existe, et peut renforcer des armes comme le katana qu'il manie. Chihiro traque un ennemi inconnu pour le moment.",
     options: new KaguraBachi(),
     category: 'New gen',
+    aliases: ['scans'],
   },
 ];
 
