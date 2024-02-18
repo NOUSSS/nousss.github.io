@@ -88,17 +88,14 @@ export function addScript({
         }
       }
 
-      toast.error(
-        'Erreur dans le chargement des sources, veuillez recharger la page.',
-        {
-          dismissible: false,
-          style: {
-            color: 'red',
-            fontFamily: 'Fredoka',
-            fontSize: '15px',
-          },
-        }
-      );
+      toast.error('Erreur dans le chargement des sources', {
+        dismissible: false,
+        style: {
+          color: 'red',
+          fontFamily: 'Fredoka',
+          fontSize: '15px',
+        },
+      });
 
       toast.dismiss(loading);
       reject(false);

@@ -140,7 +140,7 @@ const Accueil = () => {
   };
 
   const getAnime = (animeName: string) =>
-    ANIMES.find(({ anime }) => anime === animeName);
+    ANIMES.find(({ anime }) => anime.toLowerCase() === animeName.toLowerCase());
 
   const goToAnime = useCallback(
     (animeName: string, category: string, index: number) => {
@@ -292,7 +292,12 @@ const Accueil = () => {
         d'anime-sama
       </p>
 
-      {window.localStorage.getItem('anime') ? (
+      {window.localStorage.getItem('anime') &&
+      ANIMES.find(
+        ({ anime }) =>
+          anime.toLowerCase() ===
+          window.localStorage.getItem('anime')?.toLowerCase()
+      ) ? (
         <p>
           Dernier anime selectionné :{' '}
           <a

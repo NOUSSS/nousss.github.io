@@ -12,8 +12,9 @@ export async function appearVideo(
   const currentAnime = getAnime({ wSaison: false });
 
   const { names } =
-    ANIMES.find(({ anime }) => anime === currentAnime)!.options.FILM_OPTIONS ||
-    {};
+    ANIMES.find(
+      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+    )!.options.FILM_OPTIONS || {};
 
   const lang = window.localStorage.getItem(`${currentAnime}--lang`);
 
@@ -72,8 +73,9 @@ export function getFilms(
   const currentAnime = getAnime({ wSaison: false });
 
   const { names } =
-    ANIMES.find(({ anime }) => anime === currentAnime)!.options.FILM_OPTIONS ||
-    {};
+    ANIMES.find(
+      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+    )!.options.FILM_OPTIONS || {};
 
   const filmsNodes: React.ReactNode[] = [];
 

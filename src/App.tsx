@@ -63,7 +63,7 @@ const AppRoutes = () => {
 const App = () => {
   useEffect(() => {
     window.addEventListener('error', () => {
-      toast.error('Une erreur est survenue, veuillez recharger la page.', {
+      toast.error('Une erreur est survenue', {
         style: {
           fontSize: '15px',
           fontFamily: 'Fredoka',

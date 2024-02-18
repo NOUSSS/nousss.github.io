@@ -15,8 +15,9 @@ import { getAnime } from '../../functions/getAnime';
 const Saisons = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const names = ANIMES.find(({ anime }) => anime === currentAnime)!.options
-    .saisons;
+  const names = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!.options.saisons;
 
   if (!names) window.location.hash = '/home';
 

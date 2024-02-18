@@ -19,8 +19,9 @@ import DownloadComponent from '../download-component.tsx';
 const Films = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
-    .FILM_OPTIONS;
+  const options = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!.options.FILM_OPTIONS;
 
   if (!options) window.location.hash = '/home';
 

@@ -14,7 +14,9 @@ import { getAnime } from '../../functions/getAnime';
 
 const Home = () => {
   const currentAnime = getAnime({ wSaison: false });
-  const { synopsis } = ANIMES.find(({ anime }) => anime === currentAnime)!;
+  const { synopsis } = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!;
 
   useEffect(() => {
     if (isIOS()) {
@@ -47,7 +49,9 @@ const Home = () => {
         <div className="choices">
           <li>
             {ANIMES.find(
-              ({ anime }) => anime === window.localStorage.getItem('anime')
+              ({ anime }) =>
+                anime.toLowerCase() ===
+                window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.FILM_OPTIONS ? (
               <ul>
                 <Link to={`/Films?anime=${encodeURI(currentAnime)}`}>
@@ -56,7 +60,9 @@ const Home = () => {
               </ul>
             ) : null}
             {ANIMES.find(
-              ({ anime }) => anime === window.localStorage.getItem('anime')
+              ({ anime }) =>
+                anime.toLowerCase() ===
+                window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.EPISODES_OPTIONS ? (
               <ul>
                 <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
@@ -65,7 +71,9 @@ const Home = () => {
               </ul>
             ) : null}
             {ANIMES.find(
-              ({ anime }) => anime === window.localStorage.getItem('anime')
+              ({ anime }) =>
+                anime.toLowerCase() ===
+                window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.SCANS_OPTIONS ? (
               <ul>
                 <Link to={`/Scans?anime=${encodeURI(currentAnime)}`}>

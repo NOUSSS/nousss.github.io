@@ -11,7 +11,9 @@ export function Change(
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const currentAnime = getAnime({ wSaison: true });
-  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
+  const options = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!.options;
   const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS || {};
 
   const isHorsSerie = horsSeries?.find(

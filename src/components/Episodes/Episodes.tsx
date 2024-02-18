@@ -19,7 +19,10 @@ let LecteurEpisodes: string[] = [];
 export default function Episodes() {
   const currentAnime = getAnime({ wSaison: true });
 
-  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
+  const options = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!.options;
+
   const opts = options?.EPISODES_OPTIONS;
 
   if (!opts) window.location.hash = '/home';
@@ -85,8 +88,6 @@ export default function Episodes() {
   );
 
   useEffect(() => {
-    console.log(5);
-
     const NextSaisonSelector =
       document.querySelector<HTMLElement>('.NextSaison')!;
 
@@ -152,8 +153,6 @@ export default function Episodes() {
     })
       .then(async () => {
         LecteurEpisodes = (window as unknown as windowKeys)[currentLecteur];
-
-        console.log(LecteurEpisodes);
 
         setSaisonTitle(
           <>
@@ -379,8 +378,6 @@ export default function Episodes() {
     if (!episode || episode === '1')
       PrevEpisodeSelector.classList.add('invisible');
     else PrevEpisodeSelector.classList.remove('invisible');
-
-    console.log(LecteurEpisodes);
 
     if (Number(episode) === LecteurEpisodes.length)
       NextEpisodeSelector.classList.add('invisible');

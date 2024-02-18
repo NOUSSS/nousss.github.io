@@ -18,8 +18,9 @@ import { getAnime } from '../../functions/getAnime.ts';
 const Scans = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
-    .SCANS_OPTIONS;
+  const options = ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+  )!.options.SCANS_OPTIONS;
 
   if (!options) window.location.hash = '/home';
 
@@ -134,11 +135,11 @@ const Scans = () => {
       <svg
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         xmlns="http://www.w3.org/2000/svg"
-        shape-rendering="geometricPrecision"
-        text-rendering="geometricPrecision"
-        image-rendering="optimizeQuality"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        shapeRendering="geometricPrecision"
+        textRendering="geometricPrecision"
+        imageRendering="optimizeQuality"
+        fillRule="evenodd"
+        clipRule="evenodd"
         viewBox="0 0 512 512"
       >
         <path

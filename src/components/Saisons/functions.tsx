@@ -5,7 +5,9 @@ export function getSaisons() {
   const currentAnime = getAnime({ wSaison: false });
 
   const options =
-    ANIMES.find(({ anime }) => anime === currentAnime)!.options || {};
+    ANIMES.find(
+      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+    )!.options || {};
 
   const lastEpisode =
     options.EPISODES_OPTIONS?.names?.[
