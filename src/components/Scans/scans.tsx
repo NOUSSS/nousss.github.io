@@ -22,9 +22,9 @@ const Scans = () => {
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
     .SCANS_OPTIONS;
 
-  const from = useRef(options.from);
+  const from = useRef(options!.from);
 
-  const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options;
+  const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options || {};
 
   const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);

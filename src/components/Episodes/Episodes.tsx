@@ -19,15 +19,16 @@ export default function Episodes() {
   const currentAnime = getAnime({ wSaison: true });
 
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
-  const opts = options.EPISODES_OPTIONS;
+  const opts = options?.EPISODES_OPTIONS;
 
-  const { allIndex, horsSeries, SCRIPT_URL, names, oav } = opts;
+  const { allIndex, horsSeries, SCRIPT_URL, names, oav } =
+    options?.EPISODES_OPTIONS || {};
   const { saisons } = options;
 
-  let { lecteur } = opts;
+  let { lecteur } = opts || {};
 
   const [saison, setSaison] = useState({
-    name: saisons[
+    name: saisons?.[
       Number(window.localStorage.getItem(`${currentAnime}--saison`)) ?? 1
     ].name,
     index: window.localStorage.getItem(`${currentAnime}--saison`)!,
@@ -84,8 +85,10 @@ export default function Episodes() {
     const PrevSaisonSelector =
       document.querySelector<HTMLElement>('.PrevSaison')!;
 
-    const lastSaison = Object.keys(allIndex)[Object.keys(allIndex).length - 1];
-    const firstSaison = Object.keys(allIndex)[0];
+    const lastSaison = Object.keys(allIndex!)[
+      Object.keys(allIndex!).length - 1
+    ];
+    const firstSaison = Object.keys(allIndex!)[0];
 
     if (saison.index === firstSaison)
       PrevSaisonSelector.classList.add('invisible');
@@ -103,24 +106,24 @@ export default function Episodes() {
       }
     } else toggleHideEpisodesNames();
 
-    const isOAV = Number(saison.index) === Object.keys(saisons).length && oav;
+    const isOAV = Number(saison.index) === Object.keys(saisons!).length && oav;
 
     addScript({
       url:
         currentAnime === 'one piece'
-          ? SCRIPT_URL({
+          ? SCRIPT_URL!({
               index: scriptIndex,
               lang,
               maxEpisode: names![names!.length - 1]!.index,
             })
           : oav
           ? isOAV
-            ? SCRIPT_URL({ index: scriptIndex, lang }).replace(
+            ? SCRIPT_URL!({ index: scriptIndex, lang }).replace(
                 /saison\d+(-\d+)?/g,
                 'oav'
               )
-            : SCRIPT_URL({ index: scriptIndex, lang })
-          : SCRIPT_URL({ index: scriptIndex, lang }),
+            : SCRIPT_URL!({ index: scriptIndex, lang })
+          : SCRIPT_URL!({ index: scriptIndex, lang }),
 
       currentAnime: currentAnime!,
       saisonIndex: saison.index,
@@ -128,7 +131,7 @@ export default function Episodes() {
       setLang,
     })
       .then(async () => {
-        LecteurEpisodes = (window as unknown as windowKeys)[lecteur];
+        LecteurEpisodes = (window as unknown as windowKeys)[lecteur!];
 
         setSaisonTitle(
           <>
@@ -161,7 +164,7 @@ export default function Episodes() {
           </>
         );
 
-        const episodeIndex = allIndex[saison.index ?? 0];
+        const episodeIndex = allIndex![saison.index ?? 0];
         let episode = window.localStorage.getItem(`${currentAnime}--episode`);
 
         if (!episode) {
@@ -403,7 +406,11 @@ export default function Episodes() {
         </div>
       </div>
 
-      <DownloadComponent video={video} lecteur={lecteur} className="download" />
+      <DownloadComponent
+        video={video}
+        lecteur={lecteur!}
+        className="download"
+      />
 
       <label
         className="label--episodes"
@@ -456,7 +463,7 @@ export default function Episodes() {
             )}`;
 
             setSaison({
-              name: saisons[prevSaison].name,
+              name: saisons?.[prevSaison].name,
               index: String(prevSaison),
             });
           }}
@@ -483,7 +490,7 @@ export default function Episodes() {
             )}`;
 
             setSaison({
-              name: saisons[newSaison].name,
+              name: saisons?.[newSaison].name,
               index: String(newSaison),
             });
           }}

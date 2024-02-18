@@ -15,8 +15,8 @@ import { getAnime } from '../../functions/getAnime';
 const Saisons = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const names = ANIMES.find(({ anime }) => anime === currentAnime)!.options
-    .saisons;
+  const names =
+    ANIMES.find(({ anime }) => anime === currentAnime)!.options.saisons || {};
 
   const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);

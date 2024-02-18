@@ -33,8 +33,9 @@ export type FilmOptions = {
   SCRIPT_URL: (langage: string) => string;
 
   BLACKLIST_URL?: string[];
+  lecteur?: string;
+
   names: Film;
-  lecteur: string;
 };
 
 export type ScansOptions = {

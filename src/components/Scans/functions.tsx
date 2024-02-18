@@ -32,8 +32,9 @@ export const selectChapter = (
 
   const currentAnime = getAnime({ wSaison: false });
 
-  const { IMAGE_URL } = ANIMES.find(({ anime }) => anime === currentAnime)!
-    .options.SCANS_OPTIONS;
+  const { IMAGE_URL } =
+    ANIMES.find(({ anime }) => anime === currentAnime)!.options.SCANS_OPTIONS ||
+    {};
 
   const scansImages: React.ReactNode[] = [];
   const select = document.querySelector('select');
