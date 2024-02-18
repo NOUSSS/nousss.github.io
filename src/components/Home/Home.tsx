@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { isIOS } from '../../functions/main';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/Logo.png';
+import logo from '/Logo.png';
 import { Footer } from '../components';
 
 import './responsive.scss';
@@ -54,7 +54,7 @@ const Home = () => {
             ) : null}
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
-            )?.options.EPISODES_OPTIONS ? (
+            )?.options.EPISODES_OPTIONS.lecteur ? (
               <ul>
                 <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
                   Saisons

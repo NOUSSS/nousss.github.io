@@ -37,6 +37,7 @@ import MobPsycho100 from '../animes/MobPsycho100/mob-psycho-100';
 import HajimeNoIppo from '../animes/HajimeNoIppo/hajime-no-ippo';
 import TokyoRevengers from '../animes/TokyoRevengers/tokyo-revengers';
 import BlueExorcist from '../animes/BlueExorcist/blue-exorcist';
+import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
 
 export const ANIMES = [
   {
@@ -342,6 +343,13 @@ export const ANIMES = [
     category: 'Du moment',
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
+  },
+  {
+    anime: 'Kagura Bachi',
+    synopsis:
+      "Kagura Bachi suit Chihiro, un jeune forgeron subitement devenu épéiste pour des raisons encore inconnues pour le moment. Le protagoniste évolue dans un univers fantaisiste où la magie existe, et peut renforcer des armes comme le katana qu'il manie. Chihiro traque un ennemi inconnu pour le moment.",
+    options: new KaguraBachi(),
+    category: 'New gen',
   },
 ];
 

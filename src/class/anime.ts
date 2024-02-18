@@ -25,8 +25,8 @@ export class Anime {
     this.SCANS_OPTIONS = {};
     this.EPISODES_OPTIONS = {
       allIndex: {},
+      lecteur: null,
 
-      lecteur: '',
       SCRIPT_URL: () => '',
     };
   }
