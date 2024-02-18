@@ -40,6 +40,7 @@ import BlueExorcist from '../animes/BlueExorcist/blue-exorcist';
 import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
 import CaptainTsubasa from '../animes/CaptainTsubasa/captain-tsubasa';
 import Monster103 from '../animes/Monster103/monster-103';
+import Monster from '../animes/Monster/monster';
 
 export const ANIMES = [
   {
@@ -393,6 +394,14 @@ export const ANIMES = [
     options: new Monster103(),
     aliases: ['saisons', 'one piece', 'op'],
     category: 'New gen',
+  },
+  {
+    anime: 'Monster',
+    category: 'Reflexion',
+    aliases: ['saisons'],
+    synopsis:
+      "Talentueux, respecté et fiancé à une belle jeune femme, le Dr Kenzo Tenma est un neurochirurgien japonais qui exerce en Allemagne. Tout lui sourit jusqu'au jour où il décide de suivre son coeur et de sauver en priorité la vie d'un petit réfugié d'Allemagne de l'Est plutôt que celle du maire de Düsseldorf.",
+    options: new Monster(),
   },
 ];
 
