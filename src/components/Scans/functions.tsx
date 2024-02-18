@@ -59,7 +59,7 @@ export const selectChapter = (
           <img
             alt={`Image ${i}`}
             key={`Image ${i}`}
-            src={IMAGE_URL!(newChapter, i)}
+            src={IMAGE_URL!({ chapitre: newChapter, index: i })}
           ></img>
         );
       }
