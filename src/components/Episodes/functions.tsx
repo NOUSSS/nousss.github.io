@@ -12,7 +12,7 @@ export function Change(
 ): void {
   const currentAnime = getAnime({ wSaison: true });
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
-  const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS;
+  const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS || {};
 
   const isHorsSerie = horsSeries?.find(
     ({ saison }) =>
@@ -52,7 +52,7 @@ export function Change(
       const saison = window.localStorage.getItem(`${currentAnime}--saison`);
 
       const numberEpisode =
-        Number(allIndex[saison ?? 0]) + Number(indexEpisode) - retard;
+        Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
 
       const title =
         names?.find(({ index }) => index === String(numberEpisode))?.name ||
@@ -78,7 +78,7 @@ export function Change(
   } else {
     const numberEpisode =
       Number(
-        allIndex[window.localStorage.getItem(`${currentAnime}--saison`) ?? 0]
+        allIndex?.[window.localStorage.getItem(`${currentAnime}--saison`) ?? 0]
       ) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
