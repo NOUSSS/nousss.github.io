@@ -47,20 +47,21 @@ body {
   cursor: pointer;
 }
 
-.select {
-  color: var(--mainColor);
-
-  span {
-    color: white;
-  }
-}
-
 .search--output--episodes {
   color: white;
   font-size: 20px;
   position: relative;
   top: -15px;
   margin: 10px;
+}
+
+select {
+  border: 1px solid white;
+  padding: 15px;
+  margin: 20px;
+  position: relative;
+  top: -10px;
+  color: white;
 }
 
 .titleSaison {

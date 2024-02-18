@@ -69,7 +69,7 @@ export type EpisodesOptions = {
   oav?: boolean;
 
   allIndex: allIndexType;
-  lecteur: string | null;
+  lecteur: string | string[] | null;
 };
 
 export type Season = SeasonAndFilm;

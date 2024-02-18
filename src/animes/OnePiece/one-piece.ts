@@ -160,7 +160,7 @@ export default class OnePiece extends Anime {
         11: 1088,
       },
       names: episodes,
-      lecteur: 'epsAS',
+      lecteur: ['epsAS', 'eps2'],
     };
   }
 }

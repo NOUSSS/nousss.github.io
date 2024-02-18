@@ -179,7 +179,8 @@ const Accueil = () => {
       return window.localStorage.getItem(`${animeName}--e-sp`)!;
     } else {
       if (
-        getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length! > 0
+        getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length ??
+        0 > 0
       ) {
         const horsSeries = getAnime(
           animeName
@@ -213,8 +214,9 @@ const Accueil = () => {
       return `Chapitre Special`;
     } else {
       if (
-        getAnime(animeName)?.options.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.length! >
-        0
+        getAnime(animeName)?.options?.SCANS_OPTIONS?.CHAPITRE_SPECIAUX
+          ?.length ??
+        0 > 0
       ) {
         const horsSeries =
           getAnime(animeName)!.options.SCANS_OPTIONS?.CHAPITRE_SPECIAUX;

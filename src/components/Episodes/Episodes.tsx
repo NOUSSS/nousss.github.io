@@ -11,6 +11,7 @@ import { Footer, Title } from '../components.tsx';
 
 import searchImg from '../../assets/Search.jpg';
 import DownloadComponent from '../download-component.tsx';
+
 import { getAnime } from '../../functions/getAnime.ts';
 
 let LecteurEpisodes: string[] = [];
@@ -78,10 +79,14 @@ export default function Episodes() {
   const [video, setVideo] = useState<string>('');
 
   const [output, setOutput] = useState<React.ReactNode>('');
-
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
+  const [currentLecteur, setCurrentLecteur] = useState(
+    typeof lecteur === 'string' ? lecteur : lecteur ? lecteur[0] : 'eps1'
+  );
 
   useEffect(() => {
+    console.log(5);
+
     const NextSaisonSelector =
       document.querySelector<HTMLElement>('.NextSaison')!;
 
@@ -109,7 +114,19 @@ export default function Episodes() {
       }
     } else toggleHideEpisodesNames();
 
-    const isOAV = Number(saison.index) === Object.keys(saisons!).length && oav;
+    const saisonsEntries = Object.keys(saisons!);
+    const saisonsValues = Object.values(saisons!);
+
+    const oavIndex = saisonsValues.findIndex(({ name }) => name === 'OAV');
+
+    const isOAV = saison.index === saisonsEntries[oavIndex] && oav;
+
+    if (saison.index > saisonsEntries[oavIndex]) {
+      const newIndexSaison = String(Number(saison.index) - 1);
+
+      window.localStorage.setItem(`${currentAnime}--saison`, newIndexSaison);
+      saison.index = newIndexSaison;
+    }
 
     addScript({
       url:
@@ -134,7 +151,9 @@ export default function Episodes() {
       setLang,
     })
       .then(async () => {
-        LecteurEpisodes = (window as unknown as windowKeys)[lecteur!];
+        LecteurEpisodes = (window as unknown as windowKeys)[currentLecteur];
+
+        console.log(LecteurEpisodes);
 
         setSaisonTitle(
           <>
@@ -339,8 +358,8 @@ export default function Episodes() {
     SCRIPT_URL,
     allIndex,
     currentAnime,
+    currentLecteur,
     horsSeries,
-    lecteur,
     scriptIndex,
     options.note,
     oav,
@@ -360,6 +379,8 @@ export default function Episodes() {
     if (!episode || episode === '1')
       PrevEpisodeSelector.classList.add('invisible');
     else PrevEpisodeSelector.classList.remove('invisible');
+
+    console.log(LecteurEpisodes);
 
     if (Number(episode) === LecteurEpisodes.length)
       NextEpisodeSelector.classList.add('invisible');
@@ -390,6 +411,16 @@ export default function Episodes() {
 
       <p className="episodeTitle">{episodeTitle}</p>
 
+      {typeof lecteur !== 'string' ? (
+        <select onChange={({ target: { value } }) => setCurrentLecteur(value)}>
+          {(lecteur as string[]).map((l, i) => (
+            <option value={l} key={i}>
+              Lecteur {i + 1}
+            </option>
+          ))}
+        </select>
+      ) : null}
+
       <div className="episodeVideo">
         {
           <iframe
@@ -411,7 +442,7 @@ export default function Episodes() {
 
       <DownloadComponent
         video={video}
-        lecteur={lecteur!}
+        lecteur={currentLecteur}
         className="download"
       />
 
