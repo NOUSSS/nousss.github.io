@@ -26,7 +26,13 @@ export default class EminenceInShadow extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/the-eminence-in-shadow/scan/vf/episodes.js',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/The%20Eminence%20in%20Shadow/${chapitre}/${index}.jpg`,
     };
 

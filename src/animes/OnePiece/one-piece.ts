@@ -109,7 +109,13 @@ export default class OnePiece extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/one-piece/scan_noir-et-blanc/vf/episodes.js?filever=1728957',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/One%20Piece/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [1045],

@@ -38,7 +38,13 @@ export default class HajimeNoIppo extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/hajime-no-ippo/scan/vf/episodes.js?filever=1728957',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/Hajime%20no%20Ippo/${chapitre}/${index}.jpg`,
     };
 

@@ -42,7 +42,13 @@ export type ScansOptions = {
   from?: number;
   SCRIPT_URL: string;
 
-  IMAGE_URL: (chapitre: string | number, index: string | number) => string;
+  IMAGE_URL: ({
+    chapitre,
+    index,
+  }: {
+    chapitre: string | number;
+    index: string | number;
+  }) => string;
 
   CHAPITRE_SPECIAUX?: number[];
 };

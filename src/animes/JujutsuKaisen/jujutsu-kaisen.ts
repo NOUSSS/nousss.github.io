@@ -34,7 +34,13 @@ export default class JujutsuKaisen extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/jujutsu-kaisen/scan/vf/episodes.js',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/Jujutsu%20Kaisen/${chapitre}/${index}.jpg`,
     };
 

@@ -20,7 +20,13 @@ export default class ShangriLaFrontier extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/shangri-la-frontier/scan/vf/episodes.js',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/Shangri-La%20Frontier/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [],
     };

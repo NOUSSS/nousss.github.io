@@ -34,7 +34,13 @@ export default class FairyTail extends Anime {
       SCRIPT_URL:
         'https://anime-sama.fr/catalogue/fairy-tail/scan/vf/episodes.js',
 
-      IMAGE_URL: (chapitre: string | number, index: string | number) =>
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
         `https://s22.anime-sama.fr/s1/scans/Fairy%20Tail/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [425, 451, 464, 492],
