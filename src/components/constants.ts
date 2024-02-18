@@ -155,7 +155,7 @@ export const ANIMES = [
     anime: "L'attaque des titans",
     aliases: ['shingeki no kyojin', 'snk', 'eren', 'saisons', 'scans'],
     options: new AttaqueDesTitans(),
-    category: 'Reflexion',
+    category: 'Classique',
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
   },
