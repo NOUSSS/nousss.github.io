@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Link, useRoutes } from 'react-router-dom';
 
 const Home = lazy(() => import('./components/Home/Home'));
@@ -18,8 +18,6 @@ import { Toaster, toast } from 'sonner';
 const AppRoutes = () => {
   const currentSeason =
     window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1';
-
-  const [loadingTime, setLoadingTime] = useState<null | number>(null);
 
   const pages = [
     { path: '*', element: <PageNotFound /> },
@@ -48,26 +46,6 @@ const AppRoutes = () => {
       element: <Episodes />,
     },
   ];
-
-  useEffect(() => {
-    const startTime = performance.now();
-
-    const calculateLoadingTime = () => {
-      const endTime = performance.now();
-
-      setLoadingTime(endTime - startTime);
-    };
-
-    window.addEventListener('load', calculateLoadingTime);
-
-    return () => {
-      window.removeEventListener('load', calculateLoadingTime);
-    };
-  }, []);
-
-  console.log(
-    'Chargé en ' + String((loadingTime! / 1000).toFixed(2)) + ' seconde(s)'
-  );
 
   return (
     <Suspense

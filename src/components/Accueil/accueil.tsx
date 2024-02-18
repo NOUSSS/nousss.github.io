@@ -181,7 +181,6 @@ const Accueil = () => {
       if (
         getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length! > 0
       ) {
-        console.log(animeName);
         const horsSeries = getAnime(
           animeName
         )!.options.EPISODES_OPTIONS?.horsSeries!.find(
