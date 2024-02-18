@@ -30,18 +30,18 @@ export type windowKeys = {
 };
 
 export type FilmOptions = {
-  SCRIPT_URL?: (langage: string) => string;
+  SCRIPT_URL: (langage: string) => string;
 
   BLACKLIST_URL?: string[];
-  names?: Film;
-  lecteur?: string;
+  names: Film;
+  lecteur: string;
 };
 
 export type ScansOptions = {
   from?: number;
-  SCRIPT_URL?: string;
+  SCRIPT_URL: string;
 
-  IMAGE_URL?: (chapitre: string | number, index: string | number) => string;
+  IMAGE_URL: (chapitre: string | number, index: string | number) => string;
 
   CHAPITRE_SPECIAUX?: number[];
 };

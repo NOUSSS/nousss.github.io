@@ -45,7 +45,7 @@ const Home = () => {
           <li>
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
-            )?.options.FILM_OPTIONS?.names ? (
+            )?.options.FILM_OPTIONS ? (
               <ul>
                 <Link to={`/Films?anime=${encodeURI(currentAnime)}`}>
                   Films
@@ -54,7 +54,7 @@ const Home = () => {
             ) : null}
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
-            )?.options.EPISODES_OPTIONS.lecteur ? (
+            )?.options.EPISODES_OPTIONS ? (
               <ul>
                 <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
                   Saisons
@@ -63,7 +63,7 @@ const Home = () => {
             ) : null}
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
-            )?.options.SCANS_OPTIONS.IMAGE_URL ? (
+            )?.options.SCANS_OPTIONS ? (
               <ul>
                 <Link to={`/Scans?anime=${encodeURI(currentAnime)}`}>
                   Scans
