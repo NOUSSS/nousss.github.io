@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
 import { isIOS } from '../../functions/main';
 import { Link } from 'react-router-dom';
+
 import logo from '/Logo.png';
+
 import { Footer } from '../components';
 
 import './responsive.scss';
 import './Home.scss';
+
 import { ANIMES } from '../constants';
+import { getAnime } from '../../functions/getAnime';
 
 const Home = () => {
-  const currentAnime = window.localStorage.getItem('anime')!;
-
+  const currentAnime = getAnime({ wSaison: false });
   const { synopsis } = ANIMES.find(({ anime }) => anime === currentAnime)!;
 
   useEffect(() => {
