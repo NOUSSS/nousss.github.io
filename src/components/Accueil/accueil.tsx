@@ -229,13 +229,21 @@ const Accueil = () => {
           }
 
           return `Chapitre ${String(
-            Number(historiques[index].chapitre) - retard
+            Number(historiques[index].chapitre) -
+              retard -
+              (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
           )}`;
         } else {
-          return `Chapitre ${historiques[index].chapitre}`;
+          return `Chapitre ${
+            Number(historiques[index].chapitre) -
+            (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
+          }`;
         }
       } else {
-        return `Chapitre ${historiques[index].chapitre}`;
+        return `Chapitre ${
+          Number(historiques[index].chapitre) -
+          (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
+        }`;
       }
     }
   };
