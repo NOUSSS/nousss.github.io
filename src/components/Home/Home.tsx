@@ -52,11 +52,15 @@ const Home = () => {
                 </Link>
               </ul>
             ) : null}
-            <ul>
-              <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
-                Saisons
-              </Link>
-            </ul>
+            {ANIMES.find(
+              ({ anime }) => anime === window.localStorage.getItem('anime')
+            )?.options.EPISODES_OPTIONS ? (
+              <ul>
+                <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
+                  Saisons
+                </Link>
+              </ul>
+            ) : null}
             {ANIMES.find(
               ({ anime }) => anime === window.localStorage.getItem('anime')
             )?.options.SCANS_OPTIONS.IMAGE_URL ? (
