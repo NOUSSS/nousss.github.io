@@ -15,8 +15,10 @@ import { getAnime } from '../../functions/getAnime';
 const Saisons = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const names =
-    ANIMES.find(({ anime }) => anime === currentAnime)!.options.saisons || {};
+  const names = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .saisons;
+
+  if (!names) window.location.hash = '/home';
 
   const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);
@@ -68,7 +70,7 @@ const Saisons = () => {
               style={{ cursor: 'pointer' }}
             >
               <a id={saison} className="historiqueSaison">
-                {names[saison].name}
+                {names?.[saison].name}
               </a>
             </span>
           </>

@@ -21,8 +21,11 @@ export default function Episodes() {
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options;
   const opts = options?.EPISODES_OPTIONS;
 
+  if (!opts) window.location.hash = '/home';
+
   const { allIndex, horsSeries, SCRIPT_URL, names, oav } =
     options?.EPISODES_OPTIONS || {};
+
   const { saisons } = options;
 
   let { lecteur } = opts || {};

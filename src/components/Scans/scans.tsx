@@ -22,6 +22,8 @@ const Scans = () => {
   const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
     .SCANS_OPTIONS;
 
+  if (!options) window.location.hash = '/home';
+
   const from = useRef(options!.from);
 
   const { SCRIPT_URL, CHAPITRE_SPECIAUX } = options || {};

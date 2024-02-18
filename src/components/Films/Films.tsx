@@ -19,9 +19,12 @@ import DownloadComponent from '../download-component.tsx';
 const Films = () => {
   const currentAnime = getAnime({ wSaison: false });
 
-  const { BLACKLIST_URL, SCRIPT_URL, lecteur } =
-    ANIMES.find(({ anime }) => anime === currentAnime)!.options.FILM_OPTIONS ||
-    {};
+  const options = ANIMES.find(({ anime }) => anime === currentAnime)!.options
+    .FILM_OPTIONS;
+
+  if (!options) window.location.hash = '/home';
+
+  const { BLACKLIST_URL, SCRIPT_URL, lecteur } = options || {};
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [title, setTitle] = useState<React.ReactNode>();
