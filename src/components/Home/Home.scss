@@ -10,6 +10,12 @@
     transition: all 1s;
     margin-bottom: 50px;
 
+    .title {
+      &::after {
+        content: none;
+      }
+    }
+
     .choices {
       font-size: 50px;
       margin-top: 75px;
