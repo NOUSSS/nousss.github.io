@@ -9,27 +9,13 @@ export function Title({
 }) {
   return accueil ? (
     <div className="title accueil">
-      <h1>
-        {accueil
-          ? 'Le catalogue'
-          : window.localStorage
-              .getItem('anime')
-              ?.split(' ')
-              .map((word) => {
-                return (
-                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                );
-              })
-              .join(' ')}
-      </h1>
+      <h1>Le catalogue</h1>
     </div>
   ) : (
     <div className="title accueil">
       <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
-          {accueil
-            ? 'Le catalogue'
-            : window.localStorage
+          {window.localStorage
                 .getItem('anime')
                 ?.split(' ')
                 .map((word) => {
