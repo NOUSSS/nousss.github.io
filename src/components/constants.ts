@@ -41,6 +41,7 @@ import KaguraBachi from '../animes/KaguraBachi/kagura-bachi';
 import CaptainTsubasa from '../animes/CaptainTsubasa/captain-tsubasa';
 import Monster103 from '../animes/Monster103/monster-103';
 import Monster from '../animes/Monster/monster';
+import FireForce from '../animes/FireForce/fire-force';
 
 export const ANIMES = [
   {
@@ -402,6 +403,14 @@ export const ANIMES = [
     synopsis:
       "Talentueux, respecté et fiancé à une belle jeune femme, le Dr Kenzo Tenma est un neurochirurgien japonais qui exerce en Allemagne. Tout lui sourit jusqu'au jour où il décide de suivre son coeur et de sauver en priorité la vie d'un petit réfugié d'Allemagne de l'Est plutôt que celle du maire de Düsseldorf.",
     options: new Monster(),
+  },
+  {
+    anime: 'Fire Force',
+    category: 'New gen',
+    aliases: ['feu'],
+    synopsis:
+      "L'humanité est terrifiée par le phénomène de combustion humaine. Des brigades spéciales Fire Force ont donc été mises en place avec pour mission de trouver la cause de ce mystérieux phénomène ! Le jeune Shinra, nouvelle recrue surnommée le Démon, rêve de devenir un héros.",
+    options: new FireForce(),
   },
 ];
 

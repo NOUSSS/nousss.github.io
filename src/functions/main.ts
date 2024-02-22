@@ -127,6 +127,7 @@ export const getLecteur = (): LecteurReturnType => {
     }
 
     return {
+      epsAS: window.epsAS,
       eps1: window.eps1,
     };
   } else {
@@ -146,6 +147,8 @@ export const getLecteur = (): LecteurReturnType => {
 
     if (Object.keys(lecteurs).length === 0 || (lecteurs.eps2 && !lecteurs.eps1))
       lecteurs['eps1'] = window.eps1;
+
+    lecteurs['epsAS'] = window.epsAS;
 
     return lecteurs;
   }
