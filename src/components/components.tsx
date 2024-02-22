@@ -9,7 +9,13 @@ export function Title({
 }) {
   return accueil ? (
     <div className="title">
-      <h1>Le catalogue</h1>
+      <h1
+        style={{
+          marginTop: '20px',
+        }}
+      >
+        Le catalogue
+      </h1>
     </div>
   ) : (
     <div className="title">
