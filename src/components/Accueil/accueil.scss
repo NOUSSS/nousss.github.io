@@ -49,19 +49,21 @@
   .catalogue {
     width: 100%;
 
-    .Reprendre ul {
-      li {
-        .card {
-          width: 162px;
-          height: 150px;
+    .Reprendre {
+      ul {
+        li {
+          .card {
+            width: 162px;
+            height: 150px;
 
-          img {
-            width: 160px;
-            height: 90px;
-          }
+            img {
+              width: 160px;
+              height: 90px;
+            }
 
-          p {
-            top: 5px;
+            p {
+              top: 5px;
+            }
           }
         }
       }
@@ -76,12 +78,11 @@
       text-shadow: black 0 0 10px;
       font-weight: bold;
       text-align: left;
-
-      margin-left: 10px;
-      margin-top: 25px;
-      margin-bottom: 4px;
-
+      margin-left: 13px;
+      margin-top: 27px;
+      margin-bottom: -8px;
       width: 65vw;
+      font-size: 35px;
     }
 
     ul {
