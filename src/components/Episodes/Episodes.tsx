@@ -1,7 +1,13 @@
 import './Episodes.scss';
 import './responsive.scss';
 
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+
 import React, { useEffect, useRef, useState } from 'react';
+
 import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES } from '../constants';
@@ -170,23 +176,7 @@ export default function Episodes() {
               {saison.name} ({LecteurEpisodes.length})
             </span>{' '}
             {'['}
-            <span
-              className="langChange"
-              onClick={() => {
-                const newLang =
-                  window.localStorage.getItem(
-                    `${currentAnime}--${saison.index}--lang`
-                  ) === 'vostfr'
-                    ? 'vf'
-                    : 'vostfr';
-
-                window.localStorage.setItem(
-                  `${currentAnime}--${saison.index}--lang`,
-                  newLang
-                );
-                setLang(newLang);
-              }}
-            >
+            <span style={{ color: 'white' }}>
               {window.localStorage
                 .getItem(`${currentAnime}--${saison.index}--lang`)!
                 .toUpperCase()}
@@ -412,6 +402,50 @@ export default function Episodes() {
       ) : null}
 
       <p className="episodeTitle">{episodeTitle}</p>
+
+      <Menu menuButton={<MenuButton>Changer de langue</MenuButton>} transition>
+        <MenuItem
+          onClick={({ value }) => {
+            window.localStorage.setItem(
+              `${currentAnime}--${saison.index}--lang`,
+              value
+            );
+
+            setLang(value);
+          }}
+          value="vostfr"
+          disabled={
+            window.localStorage.getItem(
+              `${currentAnime}--${saison.index}--lang`
+            ) === 'vostfr'
+              ? true
+              : false
+          }
+        >
+          VOSTFR
+        </MenuItem>
+
+        <MenuItem
+          onClick={({ value }) => {
+            window.localStorage.setItem(
+              `${currentAnime}--${saison.index}--lang`,
+              value
+            );
+
+            setLang(value);
+          }}
+          value="vf"
+          disabled={
+            window.localStorage.getItem(
+              `${currentAnime}--${saison.index}--lang`
+            ) === 'vostfr'
+              ? false
+              : true
+          }
+        >
+          VF
+        </MenuItem>
+      </Menu>
 
       {Lecteurs ? (
         Object.keys(Lecteurs).length > 1 ? (
