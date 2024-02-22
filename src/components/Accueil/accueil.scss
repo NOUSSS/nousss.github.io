@@ -8,6 +8,13 @@
     margin: 50px;
   }
 
+  .footer {
+    &::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+
   nav {
     margin: 20px;
     margin-bottom: 50px;

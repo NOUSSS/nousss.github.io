@@ -200,15 +200,29 @@ button {
   }
 }
 
-.mark,
-footer {
-  margin-top: 100px;
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 200px;
+
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 5000%;
+    height: 2px;
+    background-color: var(--mainColor);
+    top: -50px;
+    left: -500%;
+  }
 }
 
 .mark {
   width: 350px;
-  color: black;
-  text-decoration: underline;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 footer {

@@ -16,14 +16,12 @@ export function Title({
       <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
           {window.localStorage
-                .getItem('anime')
-                ?.split(' ')
-                .map((word) => {
-                  return (
-                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                  );
-                })
-                .join(' ')}
+            .getItem('anime')
+            ?.split(' ')
+            .map((word) => {
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            })
+            .join(' ')}
         </h1>
       </Link>
     </div>
@@ -32,7 +30,7 @@ export function Title({
 
 export function Footer({ media = false }: { media?: boolean }) {
   return (
-    <>
+    <div className="footer">
       {media ? (
         <p className="mark">
           Les URL des vidéos / scans présentent sur Mugiwara-no Streaming sont
@@ -43,6 +41,6 @@ export function Footer({ media = false }: { media?: boolean }) {
         </p>
       ) : null}
       <footer>© 2024 Mugiwara-no Streaming - Tous droits réservés.</footer>
-    </>
+    </div>
   );
 }
