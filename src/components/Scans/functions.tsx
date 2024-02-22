@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { windowKeys } from '../../typings/types';
 import { ANIMES } from '../constants';
 import { getAnime } from '../../functions/getAnime';
+
+type windowKeys = {
+  [key: string]: string;
+};
 
 export const getTailleChapitres = (): number => {
   let i = 1;
