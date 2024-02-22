@@ -5,11 +5,10 @@ import './responsive.scss';
 
 import searchImg from '../../assets/Search.svg';
 
-import { getURLFilm } from '../../functions/main.ts';
+import { getLecteur, getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, changeLangage, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
-import { windowKeys } from '../../typings/types.ts';
 import { Footer, Title } from '../components.tsx';
 import { ANIMES } from '../constants.ts';
 import { getAnime } from '../../functions/getAnime.ts';
@@ -25,7 +24,7 @@ const Films = () => {
 
   if (!options) window.location.hash = '/home';
 
-  const { BLACKLIST_URL, SCRIPT_URL, lecteur } = options || {};
+  const { BLACKLIST_URL, SCRIPT_URL } = options || {};
 
   const [films, setFilmsFront] = useState<React.ReactNode[]>();
   const [title, setTitle] = useState<React.ReactNode>();
@@ -36,7 +35,7 @@ const Films = () => {
   );
 
   const [output, setOutput] = useState<React.ReactNode>('');
-  const lecteurString = useRef<string>('');
+  const lecteurString = useRef<'' | 'eps1' | 'eps2'>('');
 
   useEffect(() => {
     const lastFilm = window.localStorage.getItem(
@@ -51,10 +50,11 @@ const Films = () => {
       currentAnime: currentAnime!,
       setLang,
     }).then(() => {
-      lecteurString.current = lecteur ? lecteur : 'eps1';
-      const films_url = (window as unknown as windowKeys)[
-        lecteurString.current
-      ];
+      const lecteurs = getLecteur();
+
+      lecteurString.current = 'eps1';
+
+      const films_url = lecteurs[lecteurString.current]!;
 
       if (BLACKLIST_URL) {
         for (const BLACKLIST of BLACKLIST_URL) {
@@ -87,7 +87,7 @@ const Films = () => {
         });
       }, 1000);
     });
-  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, lecteur]);
+  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime]);
 
   setTimeout(() => {
     const poster = document.querySelectorAll('.poster');
@@ -104,11 +104,6 @@ const Films = () => {
       <Title link="Home" />
 
       <div className="film">{title}</div>
-      <p id="note">
-        Pour changer de langage cliquez sur la langue entre crochet et patientez
-        juste en haut, si la VOSTFR persiste, c'est que la VF n'est pas
-        disponible
-      </p>
 
       <div className="video--films">
         <iframe
@@ -141,10 +136,11 @@ const Films = () => {
       <div className="search--output--films">{output}</div>
 
       <DownloadComponent
-        lecteur={lecteur ?? 'eps1'}
+        lecteur={'eps1'}
         video={video}
         className="tips--films"
       />
+
       <div className="films">{films}</div>
 
       <Footer media />

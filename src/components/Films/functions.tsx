@@ -80,7 +80,7 @@ export function getFilms(
   const filmsNodes: React.ReactNode[] = [];
 
   for (let i = 0; i < Object.keys(names!).length; i++) {
-    const url = getURLFilm(i, lecteur);
+    const url = getURLFilm(i, lecteur as 'eps1' | 'eps2');
     const id = `${names![i].name}|${names![i].aliases?.join(', ')}`;
 
     filmsNodes.push(

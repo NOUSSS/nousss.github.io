@@ -403,11 +403,6 @@ export default function Episodes() {
       />
 
       <p className="titleSaison">{saisonTitle}</p>
-      <p id="note">
-        Pour changer de langage cliquez sur la langue entre crochet juste en
-        haut et patientez, si la VOSTFR persiste, c'est que la VF n'est pas
-        disponible
-      </p>
 
       {disclamerMessage.current ? (
         <p
