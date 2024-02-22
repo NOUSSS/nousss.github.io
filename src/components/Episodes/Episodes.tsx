@@ -143,11 +143,7 @@ export default function Episodes() {
       setLang,
     })
       .then(async () => {
-        console.log(5);
-
         Lecteurs = getLecteur();
-
-        console.log(Lecteurs);
 
         if (currentLecteur) {
           LecteurEpisodes =
@@ -425,10 +421,7 @@ export default function Episodes() {
       {Lecteurs ? (
         Object.keys(Lecteurs).length > 1 ? (
           <select
-            onChange={({ target: { value } }) => {
-              console.log(value);
-              setCurrentLecteur(value);
-            }}
+            onChange={({ target: { value } }) => setCurrentLecteur(value)}
           >
             {Object.keys(Lecteurs).map((l, i) => (
               <option value={l} key={i}>
