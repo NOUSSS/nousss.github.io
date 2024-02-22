@@ -8,11 +8,11 @@ export function Title({
   link?: string;
 }) {
   return accueil ? (
-    <div className="title accueil">
+    <div className="title">
       <h1>Le catalogue</h1>
     </div>
   ) : (
-    <div className="title accueil">
+    <div className="title">
       <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
         <h1>
           {window.localStorage

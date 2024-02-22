@@ -5,12 +5,14 @@
     background-color: hsl(231, 10%, 14%);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 7px;
-    margin-top: 20%;
+    margin-top: 30%;
     opacity: 0.9;
     transition: all 1s;
     margin-bottom: 23px;
 
-    .title {
+    .footer {
+      margin-top: 90px;
+
       &::after {
         content: none;
       }
@@ -71,45 +73,17 @@
     }
 
     .title {
-      letter-spacing: 3px;
       font-size: 20px;
       color: white;
-
-      img {
-        position: relative;
-        left: 50%;
-        transform: translate(-50%);
-        animation: spin 1s;
-        width: auto;
-        height: 70px;
-        transition: transform 1s;
-
-        &:hover {
-          transform: translate(-50%) rotate(360deg);
-        }
-      }
+      position: relative;
 
       h1 {
         font-size: 35px;
       }
+
+      &::after {
+        content: none;
+      }
     }
-  }
-
-  h1 {
-    color: white;
-  }
-
-  span {
-    color: var(--mainColor);
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: translate(-50%) rotate(0deg);
-  }
-
-  to {
-    transform: translate(-50%) rotate(360deg);
   }
 }

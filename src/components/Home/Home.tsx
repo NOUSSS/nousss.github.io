@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
 import { isIOS } from '../../functions/main';
 import { Link } from 'react-router-dom';
-
-import logo from '/Logo.png';
-
-import { Footer } from '../components';
+import { Footer, Title } from '../components';
 
 import './responsive.scss';
 import './Home.scss';
@@ -27,22 +24,7 @@ const Home = () => {
   return (
     <div className="container--home">
       <div className="card">
-        <div className="title">
-          <img src={logo} alt="Logo" />
-          <h1>
-            {window.localStorage
-              .getItem('anime')
-              ?.replace('-', ' ')
-              .replace('-', ' ')
-              .split(' ')
-              .map((word) => {
-                return (
-                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                );
-              })
-              .join(' ')}
-          </h1>
-        </div>
+        <Title link="#" />
 
         <div className="synopsis">{synopsis}</div>
 
