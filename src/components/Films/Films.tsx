@@ -3,11 +3,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Films.scss';
 import './responsive.scss';
 
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+
 import searchImg from '../../assets/Search.svg';
 
 import { getLecteur, getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
-import { appearVideo, changeLangage, getFilms } from './functions.tsx';
+import { appearVideo, getFilms } from './functions.tsx';
 import { initSearchBar } from '../../functions/search.tsx';
 import { Footer, Title } from '../components.tsx';
 import { ANIMES } from '../constants.ts';
@@ -76,16 +81,6 @@ const Films = () => {
       );
 
       getFilms(setFilmsFront, lecteurString.current);
-
-      setTimeout(() => {
-        const langButton = document.querySelectorAll('.langage');
-
-        Array.from([...langButton]).map((_, i) => {
-          langButton[i].addEventListener('click', () => {
-            changeLangage(langButton[i].id, setLang);
-          });
-        });
-      }, 1000);
     });
   }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime]);
 
@@ -104,6 +99,40 @@ const Films = () => {
       <Title link="Home" />
 
       <div className="film">{title}</div>
+
+      <Menu menuButton={<MenuButton>Changer de langue</MenuButton>} transition>
+        <MenuItem
+          onClick={({ value }) => {
+            window.localStorage.setItem(`${currentAnime}--lang`, value);
+
+            setLang(value);
+          }}
+          value="vostfr"
+          disabled={
+            window.localStorage.getItem(`${currentAnime}--lang`) === 'vostfr'
+              ? true
+              : false
+          }
+        >
+          VOSTFR
+        </MenuItem>
+
+        <MenuItem
+          onClick={({ value }) => {
+            window.localStorage.setItem(`${currentAnime}--lang`, value);
+
+            setLang(value);
+          }}
+          value="vf"
+          disabled={
+            window.localStorage.getItem(`${currentAnime}--lang`) === 'vostfr'
+              ? false
+              : true
+          }
+        >
+          VF
+        </MenuItem>
+      </Menu>
 
       <div className="video--films">
         <iframe

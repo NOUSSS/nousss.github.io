@@ -31,20 +31,14 @@ export async function appearVideo(
     setTitle(
       <>
         <span>{names![index].name}</span> [
-        <span id="vf" className="langage">
-          VOSTFR
-        </span>
-        ]
+        <span style={{ color: 'white' }}>VOSTFR</span>]
       </>
     );
   } else if (lang === 'vf') {
     setTitle(
       <>
         <span>{names![index].name}</span> [
-        <span id="vostfr" className="langage">
-          VF
-        </span>
-        ]
+        <span style={{ color: 'white' }}>VF</span>]
       </>
     );
   }
@@ -52,16 +46,6 @@ export async function appearVideo(
   setVideo(url);
 
   return url;
-}
-
-export function changeLangage(
-  lang: string,
-  setLang: React.Dispatch<React.SetStateAction<string>>
-): void {
-  const currentAnime = getAnime({ wSaison: false });
-
-  window.localStorage.setItem(`${currentAnime}--lang`, lang);
-  setLang(lang);
 }
 
 export function getFilms(
