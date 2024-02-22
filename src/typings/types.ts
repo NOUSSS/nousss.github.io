@@ -6,10 +6,8 @@ type SeasonAndFilm = {
   };
 };
 
-type Episode = {
-  index: string;
-  name: string;
-};
+export type Season = SeasonAndFilm;
+export type Film = SeasonAndFilm;
 
 export type Note = {
   saison: string;
@@ -68,11 +66,11 @@ export type EpisodesOptions = {
   }) => string;
 
   horsSeries?: horsSeriesType[];
-  names?: Episode[];
+  names?: {
+    index: string;
+    name: string;
+  }[];
   oav?: boolean;
 
   allIndex: allIndexType;
 };
-
-export type Season = SeasonAndFilm;
-export type Film = SeasonAndFilm;
