@@ -94,6 +94,7 @@ export default function Episodes() {
     const lastSaison = Object.keys(allIndex!)[
       Object.keys(allIndex!).length - 1
     ];
+
     const firstSaison = Object.keys(allIndex!)[0];
 
     if (saison.index === firstSaison)
@@ -469,7 +470,9 @@ export default function Episodes() {
           src={video}
           allowFullScreen
         ></iframe>
-        <iframe className="ambiance" height="360" src={video}></iframe>
+        {currentLecteur !== 'epsAS' ? (
+          <iframe className="ambiance" height="360" src={video}></iframe>
+        ) : null}
       </div>
 
       <div className="container--buttons">

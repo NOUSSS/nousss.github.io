@@ -127,28 +127,30 @@ export const getLecteur = (): LecteurReturnType => {
     }
 
     return {
-      epsAS: window.epsAS,
       eps1: window.eps1,
     };
   } else {
-    const lecteurs: LecteurReturnType = {};
+    const lecteursExt: LecteurReturnType = {};
 
     if (window.eps1) {
       for (const str of window.eps1) {
-        if (str.includes('sibnet')) lecteurs['eps1'] = window.eps1;
+        if (str.includes('sibnet')) lecteursExt['eps1'] = window.eps1;
       }
     }
 
     if (window.eps2) {
       for (const str of window.eps2) {
-        if (str.includes('sibnet')) lecteurs['eps2'] = window.eps2;
+        if (str.includes('sibnet')) lecteursExt['eps2'] = window.eps2;
       }
     }
 
-    if (Object.keys(lecteurs).length === 0 || (lecteurs.eps2 && !lecteurs.eps1))
-      lecteurs['eps1'] = window.eps1;
+    if (
+      Object.keys(lecteursExt).length === 0 ||
+      (lecteursExt.eps2 && !lecteursExt.eps1)
+    )
+      lecteursExt['eps1'] = window.eps1;
 
-    lecteurs['epsAS'] = window.epsAS;
+    const lecteurs = { epsAS: window.epsAS, ...lecteursExt };
 
     return lecteurs;
   }
