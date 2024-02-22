@@ -113,6 +113,7 @@ const Films = () => {
           src={video}
           allowFullScreen
         ></iframe>
+        <iframe className="ambiance" height="360" src={video}></iframe>
       </div>
 
       <label className="label--films" title="Systeme de recherche super cool">

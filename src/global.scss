@@ -145,6 +145,15 @@ button {
   transition: left 300ms;
 }
 
+.ambiance {
+  position: absolute;
+  top: 495px;
+  z-index: -1;
+  width: 100%;
+  transform: scale(1.1);
+  filter: blur(100px);
+}
+
 .container--episodes,
 .container--films,
 .container--saisons,

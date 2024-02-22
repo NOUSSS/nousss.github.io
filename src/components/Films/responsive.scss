@@ -7,7 +7,8 @@
 @media (max-width: 654px) {
   .container--films {
     .video--films {
-      iframe {
+      .iframeFilm,
+      .ambiance {
         width: 508px;
         height: 288px;
       }
@@ -22,7 +23,8 @@
 
   .container--films {
     .video--films {
-      iframe {
+      .iframeFilm,
+      .ambiance {
         width: 396px;
         height: 225px;
       }
@@ -33,7 +35,8 @@
 @media (max-width: 398px) {
   .container--films {
     .video--films {
-      iframe {
+      .iframeFilm,
+      .ambiance {
         width: 327px;
       }
     }
@@ -49,7 +52,8 @@
 @media (max-width: 336px) {
   .container--films {
     .video--films {
-      iframe {
+      .iframeFilm,
+      .ambiance {
         width: 284px;
         height: 186px;
       }
