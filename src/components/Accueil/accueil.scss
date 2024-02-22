@@ -42,23 +42,19 @@
   .catalogue {
     width: 100%;
 
-    div {
-      &:first-of-type {
-        ul {
-          li {
-            .card {
-              width: 162px;
-              height: 150px;
+    .Reprendre ul {
+      li {
+        .card {
+          width: 162px;
+          height: 150px;
 
-              img {
-                width: 160px;
-                height: 90px;
-              }
+          img {
+            width: 160px;
+            height: 90px;
+          }
 
-              p {
-                top: 5px;
-              }
-            }
+          p {
+            top: 5px;
           }
         }
       }

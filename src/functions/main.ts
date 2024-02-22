@@ -107,19 +107,23 @@ export function addScript({
 
 export const getLecteur = (): LecteurReturnType => {
   if (typeof window.epsAS === 'undefined') {
-    for (const str of window.eps1) {
-      if (str.includes('sibnet'))
-        return {
-          eps1: window.eps1,
-        };
+    if (window.eps1) {
+      for (const str of window.eps1) {
+        if (str.includes('sibnet'))
+          return {
+            eps1: window.eps1,
+          };
+      }
     }
 
-    for (const str of window.eps2) {
-      if (str.includes('sibnet'))
-        return {
-          eps1: window.eps1,
-          eps2: window.eps2,
-        };
+    if (window.eps2) {
+      for (const str of window.eps2) {
+        if (str.includes('sibnet'))
+          return {
+            eps1: window.eps1,
+            eps2: window.eps2,
+          };
+      }
     }
 
     return {
@@ -128,15 +132,19 @@ export const getLecteur = (): LecteurReturnType => {
   } else {
     const lecteurs: LecteurReturnType = {};
 
-    for (const str of window.eps1) {
-      if (str.includes('sibnet')) lecteurs['eps1'] = window.eps1;
+    if (window.eps1) {
+      for (const str of window.eps1) {
+        if (str.includes('sibnet')) lecteurs['eps1'] = window.eps1;
+      }
     }
 
-    for (const str of window.eps2) {
-      if (str.includes('sibnet')) lecteurs['eps2'] = window.eps2;
+    if (window.eps2) {
+      for (const str of window.eps2) {
+        if (str.includes('sibnet')) lecteurs['eps2'] = window.eps2;
+      }
     }
 
-    if (Object.keys(lecteurs).length === 0 || lecteurs.eps2)
+    if (Object.keys(lecteurs).length === 0 || (lecteurs.eps2 && !lecteurs.eps1))
       lecteurs['eps1'] = window.eps1;
 
     return lecteurs;

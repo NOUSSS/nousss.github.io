@@ -24,18 +24,16 @@
 @media (max-width: 500px) {
   .container--anime {
     .catalogue {
-      div {
-        &:first-of-type {
-          ul {
-            li {
-              .card {
-                width: 159px;
-                height: 130px;
+      .Reprendre {
+        ul {
+          li {
+            .card {
+              width: 159px;
+              height: 130px;
 
-                img {
-                  width: 157px;
-                  height: 80px;
-                }
+              img {
+                width: 157px;
+                height: 80px;
               }
             }
           }
@@ -52,6 +50,7 @@
 
             .affiche {
               width: 110px;
+              height: 90px;
             }
 
             p {
