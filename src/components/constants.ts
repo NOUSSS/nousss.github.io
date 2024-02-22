@@ -42,8 +42,15 @@ import CaptainTsubasa from '../animes/CaptainTsubasa/captain-tsubasa';
 import Monster103 from '../animes/Monster103/monster-103';
 import Monster from '../animes/Monster/monster';
 import FireForce from '../animes/FireForce/fire-force';
+import { Anime } from '../class/anime';
 
-export const ANIMES = [
+export const ANIMES: {
+  anime: string;
+  aliases?: string[];
+  options: Anime;
+  category: string;
+  synopsis: string;
+}[] = [
   {
     anime: 'one piece',
     aliases: ['luffy', 'zoro', 'op', 'films', 'saisons', 'scans'],
