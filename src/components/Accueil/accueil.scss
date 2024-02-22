@@ -1,5 +1,4 @@
 .container--anime {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 4px;
   margin-bottom: 200px;
   width: calc(100vw - 50px);
@@ -22,7 +21,7 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 65vw;
+    width: 98%;
 
     .container--search-bar {
       display: flex;
