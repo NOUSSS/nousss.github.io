@@ -14,6 +14,17 @@ body {
   top: 17px;
 }
 
+.videoContainer {
+  .ambiance {
+    position: absolute;
+    top: 495px;
+    z-index: -1;
+    width: 100%;
+    transform: scale(1.1);
+    filter: blur(100px);
+  }
+}
+
 .episodeName {
   transition: all 150ms ease-out;
 

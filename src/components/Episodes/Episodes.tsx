@@ -461,16 +461,15 @@ export default function Episodes() {
         ) : null
       ) : null}
 
-      <div className="episodeVideo">
-        {
-          <iframe
-            className="vid"
-            width="640"
-            height="360"
-            src={video}
-            allowFullScreen
-          ></iframe>
-        }
+      <div className="videoContainer">
+        <iframe
+          className="vid"
+          width="640"
+          height="360"
+          src={video}
+          allowFullScreen
+        ></iframe>
+        <iframe className="ambiance" height="360" src={video}></iframe>
       </div>
 
       <div className="container--buttons">
