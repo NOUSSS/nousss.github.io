@@ -8,7 +8,7 @@ import { ANIMES } from '../constants';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
-import searchImg from '../../assets/Search.jpg';
+import searchImg from '../../assets/Search.svg';
 import DownloadComponent from '../download-component.tsx';
 
 import { getAnime } from '../../functions/getAnime.ts';

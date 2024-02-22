@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Films.scss';
 import './responsive.scss';
 
-import searchImg from '../../assets/Search.jpg';
+import searchImg from '../../assets/Search.svg';
 
 import { getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';

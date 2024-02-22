@@ -178,9 +178,9 @@ button {
   transition: border 150ms ease-out;
 
   img {
-    mix-blend-mode: multiply;
-    width: 80px;
-    transform: translate3d(0, 0, 0);
+    width: 32px;
+    margin-left: 10px;
+    margin-right: 20px;
   }
 
   input {

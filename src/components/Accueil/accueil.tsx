@@ -5,7 +5,7 @@ import { Footer, Title } from '../components';
 import { ANIMES, groupAnimesByCategory } from '../constants';
 import { initSearchBar } from '../../functions/search';
 
-import searchImg from '../../assets/Search.jpg';
+import searchImg from '../../assets/Search.svg';
 
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -252,6 +252,7 @@ const Accueil = () => {
     <div className="container--anime">
       <nav>
         <Title accueil />
+        <i className="ri-search-line"></i>
 
         <div className="container--search-bar">
           <label
@@ -261,7 +262,7 @@ const Accueil = () => {
             <img src={searchImg} alt="" />
             <input
               type="text"
-              placeholder="One Piece ?"
+              placeholder="Votre recherche"
               onInput={() =>
                 initSearchBar(
                   document.querySelector('.label--anime input')!,
