@@ -45,7 +45,6 @@ export default class OnePunchMan extends Anime {
         3: 24,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

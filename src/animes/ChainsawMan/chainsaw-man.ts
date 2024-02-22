@@ -42,7 +42,6 @@ export default class ChainsawMan extends Anime {
       },
 
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

@@ -38,8 +38,6 @@ export default class BlueLock extends Anime {
         1: 0,
         2: 24,
       },
-
-      lecteur: 'epsAS',
     };
   }
 }

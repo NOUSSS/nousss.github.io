@@ -21,7 +21,6 @@ export default class NarutoShippuden extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/naruto-shippuden/film/${langage}/episodes.js`,
       names: films,
-      lecteur: 'eps1',
     };
 
     this.EPISODES_OPTIONS = {
@@ -34,7 +33,6 @@ export default class NarutoShippuden extends Anime {
         1: 0,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

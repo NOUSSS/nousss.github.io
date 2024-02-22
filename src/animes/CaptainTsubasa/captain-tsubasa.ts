@@ -29,7 +29,6 @@ export default class CaptainTsubasa extends Anime {
         1: 0,
         2: 52,
       },
-      lecteur: 'eps2',
     };
   }
 }

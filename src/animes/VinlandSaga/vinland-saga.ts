@@ -48,7 +48,6 @@ export default class VinlandSaga extends Anime {
         3: 48,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

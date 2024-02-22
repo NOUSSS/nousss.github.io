@@ -22,7 +22,6 @@ export default class DragonBallZ extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/dragon-ball-z/film/${langage}/episodes.js`,
       names: films,
-      lecteur: 'eps2',
     };
 
     this.EPISODES_OPTIONS = {
@@ -35,7 +34,6 @@ export default class DragonBallZ extends Anime {
         1: 0,
       },
       names: episodesNames,
-      lecteur: 'eps1',
     };
   }
 }

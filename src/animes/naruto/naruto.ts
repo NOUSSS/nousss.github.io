@@ -42,7 +42,6 @@ export default class Naruto extends Anime {
         1: 0,
       },
       names: episodesNames,
-      lecteur: 'epsAS',
     };
   }
 }

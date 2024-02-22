@@ -48,7 +48,6 @@ export default class MyHeroAcademia extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/my-hero-academia/film/${langage}/episodes.js`,
       names: films,
-      lecteur: 'eps2',
     };
 
     this.SCANS_OPTIONS = {
@@ -82,7 +81,6 @@ export default class MyHeroAcademia extends Anime {
         7: 138,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

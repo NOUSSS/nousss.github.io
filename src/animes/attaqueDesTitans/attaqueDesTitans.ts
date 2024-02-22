@@ -90,7 +90,6 @@ export default class AttaqueDesTitans extends Anime {
         8: 89,
       },
       names: episodesNames,
-      lecteur: 'epsAS',
 
       oav: true,
     };

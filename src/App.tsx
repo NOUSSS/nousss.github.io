@@ -121,7 +121,28 @@ const App = () => {
       <img className="background" src={background} alt="Fond" />
 
       <Link to="/">
-        <h1 className="logo">
+        <h1
+          className="logo"
+          onClick={() => {
+            const input = document.querySelector('input');
+
+            if (input) {
+              input.value = '';
+
+              input.dispatchEvent(
+                new KeyboardEvent('keydown', {
+                  key: 'Backspace',
+                  code: 'Backspace',
+                  keyCode: 8,
+                  charCode: 8,
+                  bubbles: true,
+                })
+              );
+
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+          }}
+        >
           <img src={logo} alt="Maison" />
           <span>Mugiwara-no</span> Streaming
         </h1>

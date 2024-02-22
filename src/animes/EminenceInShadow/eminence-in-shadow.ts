@@ -46,7 +46,6 @@ export default class EminenceInShadow extends Anime {
         3: 32,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

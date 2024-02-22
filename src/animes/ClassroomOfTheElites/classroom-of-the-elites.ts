@@ -52,8 +52,6 @@ export default class ClassroomOfTheElites extends Anime {
         2: 12,
         3: 25,
       },
-
-      lecteur: 'epsAS',
     };
   }
 }

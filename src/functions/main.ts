@@ -1,7 +1,7 @@
 import { toast } from 'sonner';
-import { windowKeys } from '../typings/types';
 
 import React from 'react';
+import { LecteurReturnType } from '../typings/types';
 
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
   Array.from(div).forEach((element) => {
@@ -28,8 +28,8 @@ export const formatName = (animeName: string) => {
     .join(' ');
 };
 
-export const getURLFilm = (index: number, lecteur: string): string =>
-  (window as unknown as windowKeys)[lecteur][index];
+export const getURLFilm = (index: number, lecteur: 'eps1' | 'eps2'): string =>
+  getLecteur()[lecteur]![index];
 
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
@@ -104,3 +104,41 @@ export function addScript({
     document.head.appendChild(script);
   });
 }
+
+export const getLecteur = (): LecteurReturnType => {
+  if (typeof window.epsAS === 'undefined') {
+    for (const str of window.eps1) {
+      if (str.includes('sibnet'))
+        return {
+          eps1: window.eps1,
+        };
+    }
+
+    for (const str of window.eps2) {
+      if (str.includes('sibnet'))
+        return {
+          eps1: window.eps1,
+          eps2: window.eps2,
+        };
+    }
+
+    return {
+      eps1: window.eps1,
+    };
+  } else {
+    const lecteurs: LecteurReturnType = {};
+
+    for (const str of window.eps1) {
+      if (str.includes('sibnet')) lecteurs['eps1'] = window.eps1;
+    }
+
+    for (const str of window.eps2) {
+      if (str.includes('sibnet')) lecteurs['eps2'] = window.eps2;
+    }
+
+    if (Object.keys(lecteurs).length === 0 || lecteurs.eps2)
+      lecteurs['eps1'] = window.eps1;
+
+    return lecteurs;
+  }
+};

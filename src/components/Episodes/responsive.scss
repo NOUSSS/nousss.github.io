@@ -14,6 +14,10 @@
     width: 769px;
     height: 440px;
   }
+
+  .download {
+    width: 500px;
+  }
 }
 
 @media (max-width: 880px) {
@@ -67,6 +71,10 @@
   .episodeTitle {
     font-size: 25px;
     width: 450px;
+  }
+
+  .download {
+    width: 300px;
   }
 }
 

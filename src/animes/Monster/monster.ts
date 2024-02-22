@@ -23,8 +23,6 @@ export default class Monster extends Anime {
       allIndex: {
         1: 0,
       },
-
-      lecteur: ['epsAS', 'eps1'],
     };
   }
 }

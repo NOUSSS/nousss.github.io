@@ -59,7 +59,6 @@ export default class HajimeNoIppo extends Anime {
         4: 127,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

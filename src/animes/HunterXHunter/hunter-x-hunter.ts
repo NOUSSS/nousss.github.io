@@ -60,7 +60,6 @@ export default class HunterXHunter extends Anime {
         1: 0,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

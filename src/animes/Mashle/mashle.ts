@@ -50,7 +50,6 @@ export default class Mashle extends Anime {
         2: 12,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

@@ -21,7 +21,6 @@ export default class DeathNote extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/death-note/film/${langage}/episodes.js`,
       names: films,
-      lecteur: 'eps1',
     };
 
     this.SCANS_OPTIONS = {
@@ -49,7 +48,6 @@ export default class DeathNote extends Anime {
         1: 0,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

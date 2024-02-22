@@ -44,8 +44,6 @@ export default class TheDailyLifeOfTheImmortalKing extends Anime {
         3: 27,
         4: 39,
       },
-
-      lecteur: 'eps2',
     };
   }
 }

@@ -55,7 +55,6 @@ export default class MobPsycho100 extends Anime {
         4: 37,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

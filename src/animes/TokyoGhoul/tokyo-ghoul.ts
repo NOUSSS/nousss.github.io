@@ -58,7 +58,6 @@ export default class TokyoGhoul extends Anime {
         11: 1088,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

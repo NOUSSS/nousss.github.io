@@ -2,10 +2,9 @@ import './Episodes.scss';
 import './responsive.scss';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { addScript, isIOS } from '../../functions/main.ts';
+import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { initSearchBar } from '../../functions/search.tsx';
 import { ANIMES } from '../constants';
-import { windowKeys } from '../../typings/types.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../components.tsx';
 
@@ -13,8 +12,10 @@ import searchImg from '../../assets/Search.jpg';
 import DownloadComponent from '../download-component.tsx';
 
 import { getAnime } from '../../functions/getAnime.ts';
+import { LecteurReturnType } from '../../typings/types.ts';
 
 let LecteurEpisodes: string[] = [];
+let Lecteurs: LecteurReturnType;
 
 export default function Episodes() {
   const currentAnime = getAnime({ wSaison: true });
@@ -31,8 +32,6 @@ export default function Episodes() {
     options?.EPISODES_OPTIONS || {};
 
   const { saisons } = options;
-
-  let { lecteur } = opts || {};
 
   const [saison, setSaison] = useState({
     name: saisons?.[
@@ -61,9 +60,6 @@ export default function Episodes() {
         Number(window.localStorage.getItem(`${currentAnime}--saison`)) - 3
       }`;
     }
-    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) >= 4) {
-      lecteur = 'eps2';
-    }
   }
 
   if (currentAnime == 'Bleach') {
@@ -71,9 +67,6 @@ export default function Episodes() {
       scriptIndex = `2-${
         Number(window.localStorage.getItem(`${currentAnime}--saison`)) - 1
       }`;
-    }
-    if (Number(window.localStorage.getItem(`${currentAnime}--saison`)) === 2) {
-      lecteur = 'eps2';
     }
   }
 
@@ -83,9 +76,7 @@ export default function Episodes() {
 
   const [output, setOutput] = useState<React.ReactNode>('');
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
-  const [currentLecteur, setCurrentLecteur] = useState(
-    typeof lecteur === 'string' ? lecteur : lecteur ? lecteur[0] : 'eps1'
-  );
+  const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -152,7 +143,30 @@ export default function Episodes() {
       setLang,
     })
       .then(async () => {
-        LecteurEpisodes = (window as unknown as windowKeys)[currentLecteur];
+        console.log(5);
+
+        Lecteurs = getLecteur();
+
+        console.log(Lecteurs);
+
+        if (currentLecteur) {
+          LecteurEpisodes =
+            Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+        } else {
+          if (Lecteurs.epsAS) {
+            setCurrentLecteur('epsAS');
+            LecteurEpisodes = Lecteurs.epsAS;
+          } else {
+            const lecteur = Object.keys(Lecteurs)[0] as
+              | 'eps1'
+              | 'eps2'
+              | 'epsAS';
+
+            setCurrentLecteur(lecteur);
+
+            LecteurEpisodes = Lecteurs[lecteur]!;
+          }
+        }
 
         setSaisonTitle(
           <>
@@ -408,14 +422,21 @@ export default function Episodes() {
 
       <p className="episodeTitle">{episodeTitle}</p>
 
-      {typeof lecteur !== 'string' ? (
-        <select onChange={({ target: { value } }) => setCurrentLecteur(value)}>
-          {(lecteur as string[]).map((l, i) => (
-            <option value={l} key={i}>
-              Lecteur {i + 1}
-            </option>
-          ))}
-        </select>
+      {Lecteurs ? (
+        Object.keys(Lecteurs).length > 1 ? (
+          <select
+            onChange={({ target: { value } }) => {
+              console.log(value);
+              setCurrentLecteur(value);
+            }}
+          >
+            {Object.keys(Lecteurs).map((l, i) => (
+              <option value={l} key={i}>
+                Lecteur {i + 1}
+              </option>
+            ))}
+          </select>
+        ) : null
       ) : null}
 
       <div className="episodeVideo">
@@ -439,7 +460,7 @@ export default function Episodes() {
 
       <DownloadComponent
         video={video}
-        lecteur={currentLecteur}
+        lecteur={currentLecteur!}
         className="download"
       />
 

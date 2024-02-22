@@ -50,7 +50,6 @@ export default class KurokoBasket extends Anime {
         3: 52,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

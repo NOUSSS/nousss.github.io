@@ -42,7 +42,6 @@ export default class TowerOfGod extends Anime {
         2: 13,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

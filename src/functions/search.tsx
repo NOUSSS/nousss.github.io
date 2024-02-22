@@ -4,6 +4,7 @@ export function initSearchBar(
   input: HTMLInputElement,
   div: HTMLCollectionOf<HTMLElement>,
   component: string,
+
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const colorpicker = document.querySelector('.color-picker') as HTMLDivElement;

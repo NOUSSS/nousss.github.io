@@ -66,7 +66,6 @@ export default class FairyTail extends Anime {
       },
 
       names: episodes,
-      lecteur: 'eps1',
     };
   }
 }

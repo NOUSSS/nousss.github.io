@@ -49,7 +49,6 @@ export default class DragonBallSuper extends Anime {
         1: 0,
       },
       names: episodesNames,
-      lecteur: 'epsAS',
     };
   }
 }

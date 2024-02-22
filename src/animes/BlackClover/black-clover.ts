@@ -55,7 +55,6 @@ export default class BlackClover extends Anime {
       },
 
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

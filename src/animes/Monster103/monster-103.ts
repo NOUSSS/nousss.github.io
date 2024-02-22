@@ -33,7 +33,6 @@ export default class Monster103 extends Anime {
         1: 0,
       },
       names: episodes,
-      lecteur: 'eps2',
     };
   }
 }

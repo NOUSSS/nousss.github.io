@@ -23,7 +23,6 @@ export default class DragonBall extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/dragon-ball/film/${langage}/episodes.js`,
       names: films,
-      lecteur: 'eps1',
     };
 
     this.EPISODES_OPTIONS = {
@@ -36,7 +35,6 @@ export default class DragonBall extends Anime {
         1: 0,
       },
       names: episodesNames,
-      lecteur: 'eps1',
     };
   }
 }

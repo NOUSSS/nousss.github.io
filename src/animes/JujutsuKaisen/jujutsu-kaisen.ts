@@ -55,7 +55,6 @@ export default class JujutsuKaisen extends Anime {
         2: 24,
       },
       names: episodesNames,
-      lecteur: 'epsAS',
     };
   }
 }

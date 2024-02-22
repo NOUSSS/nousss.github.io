@@ -65,8 +65,6 @@ export default class Haikyuu extends Anime {
         4: 60,
         5: 85,
       },
-
-      lecteur: 'eps2',
     };
   }
 }

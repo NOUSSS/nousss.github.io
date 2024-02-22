@@ -42,7 +42,6 @@ export default class TheGodOfHighschool extends Anime {
         2: 13,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

@@ -49,7 +49,6 @@ export default class Boruto extends Anime {
         1: 0,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

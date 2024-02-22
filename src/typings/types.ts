@@ -25,8 +25,11 @@ export type allIndexType = {
   [key: string]: number;
 };
 
-export type windowKeys = {
-  [key: string]: string[];
+export type LecteurReturnType = {
+  epsAS?: string[];
+
+  eps1?: string[];
+  eps2?: string[];
 };
 
 export type FilmOptions = {
@@ -69,7 +72,6 @@ export type EpisodesOptions = {
   oav?: boolean;
 
   allIndex: allIndexType;
-  lecteur: string | string[] | null;
 };
 
 export type Season = SeasonAndFilm;

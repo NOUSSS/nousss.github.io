@@ -70,7 +70,6 @@ export default class BlueExorcist extends Anime {
         3: 37,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

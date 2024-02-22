@@ -61,7 +61,6 @@ export default class TokyoRevengers extends Anime {
       },
 
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

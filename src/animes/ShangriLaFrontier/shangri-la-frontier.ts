@@ -40,7 +40,6 @@ export default class ShangriLaFrontier extends Anime {
         1: 0,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

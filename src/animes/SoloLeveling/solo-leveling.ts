@@ -43,7 +43,6 @@ export default class SoloLeveling extends Anime {
         1: 0,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

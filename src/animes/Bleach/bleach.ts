@@ -60,7 +60,6 @@ export default class Bleach extends Anime {
         4: 392,
       },
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

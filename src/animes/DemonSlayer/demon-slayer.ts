@@ -70,7 +70,6 @@ export default class DemonSlayer extends Anime {
         4: 48,
       },
       names: [],
-      lecteur: 'epsAS',
     };
   }
 }

@@ -12,6 +12,10 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
   video,
   lecteur,
   className,
+}: {
+  video: string;
+  lecteur: string;
+  className: string;
 }) => {
   const videoLink = lecteur === 'epsAS' ? video : `https://9xbud.com/${video}`;
 

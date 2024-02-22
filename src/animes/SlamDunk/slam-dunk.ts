@@ -24,7 +24,6 @@ export default class SlamDunk extends Anime {
         1: 0,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

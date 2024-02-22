@@ -44,7 +44,6 @@ export default class HellsParadise extends Anime {
       },
 
       names: episodes,
-      lecteur: 'epsAS',
     };
   }
 }

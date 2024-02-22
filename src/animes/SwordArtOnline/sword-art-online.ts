@@ -64,7 +64,6 @@ export default class SwordArtOnline extends Anime {
         6: 109,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }

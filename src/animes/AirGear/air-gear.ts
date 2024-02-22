@@ -25,7 +25,6 @@ export default class AirGear extends Anime {
         1: 0,
       },
       names: [],
-      lecteur: 'eps2',
     };
   }
 }
