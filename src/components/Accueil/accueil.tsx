@@ -195,12 +195,14 @@ const Accueil = () => {
             if (Number(historiques[index]!.episode) > horsSerie + 1) retard++;
           }
 
-          return `E${String(Number(historiques[index].episode) - retard)}`;
+          return `Episode ${String(
+            Number(historiques[index].episode) - retard
+          )}`;
         } else {
-          return `E${historiques[index].episode}`;
+          return `Episode ${historiques[index].episode}`;
         }
       } else {
-        return `E${historiques[index].episode}`;
+        return `Episode ${historiques[index].episode}`;
       }
     }
   };
@@ -415,7 +417,9 @@ const Accueil = () => {
                           )}
                           {historiques[i]?.episode && (
                             <>
-                              <br />S{historiques[i]?.saison}{' '}
+                              <br />
+                              Saison {historiques[i]?.saison}
+                              {', '}
                               {getCurrentEpisode(animeName, i)}
                             </>
                           )}

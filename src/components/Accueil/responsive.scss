@@ -24,6 +24,24 @@
 @media (max-width: 500px) {
   .container--anime {
     .catalogue {
+      div {
+        &:first-of-type {
+          ul {
+            li {
+              .card {
+                width: 159px;
+                height: 130px;
+
+                img {
+                  width: 157px;
+                  height: 80px;
+                }
+              }
+            }
+          }
+        }
+      }
+
       ul {
         li {
           margin: 10px;
