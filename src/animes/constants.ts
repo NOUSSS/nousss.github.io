@@ -120,7 +120,7 @@ export const ANIMES: {
     anime: 'solo leveling',
     aliases: ['only i level up', 'saisons', 'scans'],
     options: new SoloLeveling(),
-    category: 'Du moment',
+    category: 'En ce moment',
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -158,7 +158,7 @@ export const ANIMES: {
     anime: 'mashle',
     aliases: ['saitama v2', 'muscle', 'saisons', 'scans'],
     options: new Mashle(),
-    category: 'Du moment',
+    category: 'En ce moment',
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -222,7 +222,7 @@ export const ANIMES: {
     anime: 'Classroom of the Elites',
     aliases: ['kyotaka', 'ecole', 'scans', 'saisons'],
     options: new ClassroomOfTheElites(),
-    category: 'Du moment',
+    category: 'En ce moment',
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -374,7 +374,7 @@ export const ANIMES: {
   {
     anime: 'Blue Exorcist',
     options: new BlueExorcist(),
-    category: 'Du moment',
+    category: 'En ce moment',
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ['films', 'scans', 'saisons'],
