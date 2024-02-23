@@ -1,5 +1,6 @@
 import './Episodes.scss';
 import './responsive.scss';
+import 'plyr-react/plyr.css';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 
@@ -10,6 +11,7 @@ import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../utils/components.tsx';
 
+import Plyr from 'plyr-react';
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
 
@@ -25,10 +27,6 @@ export default function Episodes() {
   const options = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!.options;
-
-  const opts = options?.EPISODES_OPTIONS;
-
-  if (!opts) window.location.hash = '/home';
 
   const { allIndex, horsSeries, SCRIPT_URL, names, oav } =
     options?.EPISODES_OPTIONS || {};
@@ -462,10 +460,46 @@ export default function Episodes() {
           </select>
         ) : null
       ) : null}
-
       <div className="videoContainer">
         {currentLecteur === 'epsAS' ? (
-          <iframe width="640" height="360" src={video} allowFullScreen></iframe>
+          <>
+            <div className="vid">
+              <Plyr
+                options={{
+                  autoplay: true,
+                }}
+                source={{
+                  type: 'video',
+                  sources: [
+                    {
+                      src: video,
+                    },
+                  ],
+                }}
+              />
+            </div>
+            <div className="ambiance">
+              <Plyr
+                options={{
+                  muted: true,
+                  volume: 0,
+                  controls: [],
+                  autoplay: true,
+                  loop: {
+                    active: true,
+                  },
+                }}
+                source={{
+                  type: 'video',
+                  sources: [
+                    {
+                      src: video,
+                    },
+                  ],
+                }}
+              />
+            </div>
+          </>
         ) : (
           <>
             <iframe

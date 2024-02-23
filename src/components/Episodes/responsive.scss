@@ -3,14 +3,18 @@
     width: 500px;
   }
 
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 947px;
     height: 532px;
   }
 }
 
 @media (max-width: 962px) {
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 769px;
     height: 440px;
   }
@@ -33,7 +37,9 @@
 }
 
 @media (max-width: 782px) {
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 600px;
     height: 337px;
   }
@@ -84,14 +90,18 @@
     width: 322px;
   }
 
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 450px;
     height: 258px;
   }
 }
 
 @media (max-width: 458px) {
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 325px;
     height: 185px;
   }
@@ -102,7 +112,9 @@
 }
 
 @media (max-width: 358px) {
-  iframe {
+  iframe,
+  .vid,
+  .ambiance {
     width: 265px;
     height: 153px;
   }

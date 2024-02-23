@@ -110,7 +110,9 @@ export function Change(
   }
 
   window.scrollTo({
-    top: document.querySelector('iframe')?.offsetTop,
+    top:
+      document.querySelector('iframe')?.offsetTop ||
+      (document.querySelector('.vid') as HTMLElement)?.offsetTop,
     behavior: 'smooth',
   });
 }

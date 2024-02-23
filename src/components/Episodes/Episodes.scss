@@ -4,8 +4,16 @@
   padding: 26px;
 }
 
-body {
-  overflow-x: hidden;
+.videoContainer {
+  button {
+    top: 0;
+    margin: 0;
+    height: auto;
+  }
+
+  .plyr__control--overlaid {
+    top: 50%;
+  }
 }
 
 .buttons {

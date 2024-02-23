@@ -3,9 +3,11 @@
 
 :root {
   --mainColor: #ff7300;
+  --plyr-color-main: var(--mainColor);
 }
 
-iframe {
+iframe,
+.vid {
   border: 0;
   position: relative;
   width: 1206px;
