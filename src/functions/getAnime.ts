@@ -1,4 +1,4 @@
-import { ANIMES } from '../components/constants';
+import { ANIMES } from '../animes/constants';
 
 export const getAnime = ({ wSaison }: { wSaison: boolean }): string => {
   const hash = window.location.hash;

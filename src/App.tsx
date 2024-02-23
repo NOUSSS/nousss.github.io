@@ -10,7 +10,7 @@ const Accueil = lazy(() => import('./components/Accueil/accueil'));
 
 import background from './assets/Background3.jpg';
 import logo from '/Logo.png';
-import PageNotFound from './components/PageNotFound';
+import PageNotFound from './components/utils/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
 import { Toaster, toast } from 'react-hot-toast';

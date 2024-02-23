@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Saisons.scss';
 import './responsive.scss';
 
-import searchImg from '../../assets/Search.svg';
-
 import { getSaisons } from './functions';
-import { initSearchBar } from '../../functions/search';
-import { ANIMES } from '../constants';
-import { Footer, Title } from '../components';
+import { ANIMES } from '../../animes/constants';
+import { Footer, Title } from '../utils/components';
 import { changeSaison } from './utils';
 import { getAnime } from '../../functions/getAnime';
+
+import SearchBar from '../utils/searchBar';
 
 const Saisons = () => {
   const currentAnime = getAnime({ wSaison: false });
@@ -34,17 +33,6 @@ const Saisons = () => {
         changeSaison(String(i + 1));
       });
     });
-  }, []);
-
-  const searchBar = useCallback(() => {
-    initSearchBar(
-      document.querySelector('input')!,
-      document.getElementsByClassName(
-        'container--poster-saison'
-      ) as HTMLCollectionOf<HTMLElement>,
-      'saisons',
-      setOutput
-    );
   }, []);
 
   return (
@@ -78,10 +66,11 @@ const Saisons = () => {
         ) : null}
       </p>
 
-      <label className="label--saisons" title="Systeme de recherche super cool">
-        <img src={searchImg} alt="" />
-        <input type="text" placeholder="La saison ?" onInput={searchBar} />
-      </label>
+      <SearchBar
+        component="saisons"
+        container="container--poster-saison"
+        setOutput={setOutput}
+      />
 
       <div className="search--output--saisons">{output}</div>
 

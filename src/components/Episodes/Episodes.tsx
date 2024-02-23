@@ -3,19 +3,15 @@ import './responsive.scss';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 
-import '@szhsin/react-menu/dist/index.css';
-import '@szhsin/react-menu/dist/transitions/slide.css';
-
 import React, { useEffect, useRef, useState } from 'react';
 
 import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
-import { initSearchBar } from '../../functions/search.tsx';
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
-import { Footer, Title } from '../components.tsx';
+import { Footer, Title } from '../utils/components.tsx';
 
-import searchImg from '../../assets/Search.svg';
-import DownloadComponent from '../download-component.tsx';
+import DownloadComponent from '../utils/download-component.tsx';
+import SearchBar from '../utils/searchBar.tsx';
 
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
@@ -84,8 +80,7 @@ export default function Episodes() {
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
 
   const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
-
-  const lecteurChange = useRef<boolean>(false);
+  const [lecteurChange, setLecteurChange] = useState<boolean>(false);
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -358,7 +353,7 @@ export default function Episodes() {
     currentAnime,
     horsSeries,
     allIndex,
-    lecteurChange.current,
+    lecteurChange,
     options.note,
     saisons,
     saison,
@@ -456,7 +451,7 @@ export default function Episodes() {
           <select
             onChange={({ target: { value } }) => {
               setCurrentLecteur(value);
-              lecteurChange.current = !lecteurChange.current;
+              setLecteurChange(!lecteurChange);
             }}
           >
             {Object.keys(Lecteurs).map((l, i) => (
@@ -469,16 +464,19 @@ export default function Episodes() {
       ) : null}
 
       <div className="videoContainer">
-        <iframe
-          className="vid"
-          width="640"
-          height="360"
-          src={video}
-          allowFullScreen
-        ></iframe>
-        {currentLecteur !== 'epsAS' ? (
-          <iframe className="ambiance" height="360" src={video}></iframe>
-        ) : null}
+        {currentLecteur === 'epsAS' ? (
+          <iframe width="640" height="360" src={video} allowFullScreen></iframe>
+        ) : (
+          <>
+            <iframe
+              width="640"
+              height="360"
+              src={video}
+              allowFullScreen
+            ></iframe>
+            <iframe className="ambiance" height="360" src={video}></iframe>
+          </>
+        )}
       </div>
 
       <div className="container--buttons">
@@ -494,26 +492,11 @@ export default function Episodes() {
         className="download"
       />
 
-      <label
-        className="label--episodes"
-        title="Systeme de recherche super cool"
-      >
-        <img src={searchImg} alt="" />
-        <input
-          type="text"
-          placeholder="Episode ?"
-          onInput={() =>
-            initSearchBar(
-              document.querySelector('.label--episodes input')!,
-              document.getElementsByClassName(
-                'list-episodes'
-              ) as HTMLCollectionOf<HTMLElement>,
-              'episodes',
-              setOutput
-            )
-          }
-        />
-      </label>
+      <SearchBar
+        component="episodes"
+        container="list-episodes"
+        setOutput={setOutput}
+      />
 
       <div className="search--output--episodes">{output}</div>
 

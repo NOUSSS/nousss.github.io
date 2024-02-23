@@ -1,6 +1,6 @@
 import React from 'react';
 import { getURLFilm } from '../../functions/main';
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
 
 export async function appearVideo(

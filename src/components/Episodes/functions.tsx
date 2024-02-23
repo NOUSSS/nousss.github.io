@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
 
 export function Change(
@@ -11,6 +11,9 @@ export function Change(
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
   const currentAnime = getAnime({ wSaison: true });
+
+  window.localStorage.setItem(`${currentAnime}--currentTime`, '0');
+
   const options = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!.options;

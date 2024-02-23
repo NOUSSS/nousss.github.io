@@ -1,5 +1,5 @@
 import React from 'react';
-import { isIOS } from '../functions/main';
+import { isIOS } from '../../functions/main';
 
 type DownloadComponentProps = {
   video: string;

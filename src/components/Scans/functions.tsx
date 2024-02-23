@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
 
 type windowKeys = {

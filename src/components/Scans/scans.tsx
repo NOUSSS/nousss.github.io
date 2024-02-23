@@ -10,8 +10,8 @@ import {
 } from './functions.tsx';
 
 import { addScript } from '../../functions/main.ts';
-import { ANIMES } from '../constants.ts';
-import { Footer, Title } from '../components.tsx';
+import { ANIMES } from '../../animes/constants.ts';
+import { Footer, Title } from '../utils/components.tsx';
 
 import { getAnime } from '../../functions/getAnime.ts';
 

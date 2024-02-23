@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { isIOS } from '../../functions/main';
 import { Link } from 'react-router-dom';
-import { Footer, Title } from '../components';
+import { Footer, Title } from '../utils/components';
 
 import './responsive.scss';
 import './Home.scss';
 
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
 
 const Home = () => {

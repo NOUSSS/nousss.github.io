@@ -8,17 +8,15 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
-import searchImg from '../../assets/Search.svg';
-
 import { getLecteur, getURLFilm } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, getFilms } from './functions.tsx';
-import { initSearchBar } from '../../functions/search.tsx';
-import { Footer, Title } from '../components.tsx';
-import { ANIMES } from '../constants.ts';
+import { Footer, Title } from '../utils/components.tsx';
+import { ANIMES } from '../../animes/constants.ts';
 import { getAnime } from '../../functions/getAnime.ts';
 
-import DownloadComponent from '../download-component.tsx';
+import DownloadComponent from '../utils/download-component.tsx';
+import SearchBar from '../utils/searchBar.tsx';
 
 const Films = () => {
   const currentAnime = getAnime({ wSaison: false });
@@ -145,23 +143,11 @@ const Films = () => {
         <iframe className="ambiance" height="360" src={video}></iframe>
       </div>
 
-      <label className="label--films" title="Systeme de recherche super cool">
-        <img src={searchImg} alt="" />
-        <input
-          type="text"
-          placeholder="Le film ?"
-          onInput={() =>
-            initSearchBar(
-              document.querySelector('input')!,
-              document.getElementsByClassName(
-                'container--poster'
-              ) as HTMLCollectionOf<HTMLElement>,
-              'films',
-              setOutput
-            )
-          }
-        />
-      </label>
+      <SearchBar
+        component="films"
+        container="container--poster"
+        setOutput={setOutput}
+      />
 
       <div className="search--output--films">{output}</div>
 

@@ -1,5 +1,5 @@
 import { getAnime } from '../../functions/getAnime';
-import { ANIMES } from '../constants';
+import { ANIMES } from '../../animes/constants';
 
 export function getSaisons() {
   const currentAnime = getAnime({ wSaison: false });

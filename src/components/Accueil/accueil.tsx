@@ -1,13 +1,11 @@
 import './accueil.scss';
 import './responsive.scss';
 
-import { Footer, Title } from '../components';
-import { ANIMES, groupAnimesByCategory } from '../constants';
-import { initSearchBar } from '../../functions/search';
-
-import searchImg from '../../assets/Search.svg';
+import { Footer, Title } from '../utils/components';
+import { ANIMES, groupAnimesByCategory } from '../../animes/constants';
 
 import React, { useCallback, useEffect, useState } from 'react';
+import SearchBar from '../utils/searchBar';
 
 import { formatName } from '../../functions/main';
 import { toast } from 'react-hot-toast';
@@ -256,29 +254,13 @@ const Accueil = () => {
     <div className="container--anime">
       <nav>
         <Title accueil />
-        <i className="ri-search-line"></i>
 
         <div className="container--search-bar">
-          <label
-            className="label--anime"
-            title="Systeme de recherche super cool"
-          >
-            <img src={searchImg} alt="" />
-            <input
-              type="text"
-              placeholder="Votre recherche"
-              onInput={() =>
-                initSearchBar(
-                  document.querySelector('.label--anime input')!,
-                  document.getElementsByClassName(
-                    'animes-list'
-                  ) as HTMLCollectionOf<HTMLElement>,
-                  'anime',
-                  setOutput
-                )
-              }
-            />
-          </label>
+          <SearchBar
+            container="animes-list"
+            component="anime"
+            setOutput={setOutput}
+          />
 
           <div className="search--output--anime">{output}</div>
         </div>
