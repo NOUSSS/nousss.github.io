@@ -22,7 +22,7 @@ const Scans = () => {
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!.options.SCANS_OPTIONS;
 
-  if (!options) window.location.hash = '/home';
+  if (!options) window.location.hash = `/home?anime=${encodeURI(currentAnime)}`;
 
   const from = useRef(options!.from);
 
@@ -88,7 +88,7 @@ const Scans = () => {
 
   return (
     <div className="container--scans">
-      <Title link="Home" />
+      <Title link={`Home?anime=${encodeURI(currentAnime)}`} />
 
       <select
         name="chapitres"

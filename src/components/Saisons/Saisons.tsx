@@ -18,7 +18,7 @@ const Saisons = () => {
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!.options.saisons;
 
-  if (!names) window.location.hash = '/home';
+  if (!names) window.location.hash = `/home?anime=${encodeURI(currentAnime)}`;
 
   const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);
@@ -37,7 +37,7 @@ const Saisons = () => {
 
   return (
     <div className="container--saisons">
-      <Title link="Home" />
+      <Title link={`Home?anime=${encodeURI(currentAnime)}`} />
 
       <p
         style={{

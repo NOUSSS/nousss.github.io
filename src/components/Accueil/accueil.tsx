@@ -168,7 +168,7 @@ const Accueil = () => {
         }
       } else {
         window.localStorage.setItem('anime', animeName);
-        window.location.hash = '/home';
+        window.location.hash = `/home?anime=${encodeURI(animeName)}`;
       }
     },
     [historiques]
@@ -289,7 +289,9 @@ const Accueil = () => {
           Dernier anime selectionné :{' '}
           <a
             style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
-            href="/#/home"
+            href={`/#/home?anime=${encodeURI(
+              window.localStorage.getItem('anime')!
+            )}`}
           >
             {window.localStorage.getItem('anime')}
           </a>

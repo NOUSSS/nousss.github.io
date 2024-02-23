@@ -29,7 +29,7 @@ const Films = () => {
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!.options.FILM_OPTIONS;
 
-  if (!options) window.location.hash = '/home';
+  if (!options) window.location.hash = `/home?anime=${encodeURI(currentAnime)}`;
 
   const { BLACKLIST_URL, SCRIPT_URL } = options || {};
 
@@ -114,7 +114,7 @@ const Films = () => {
 
   return (
     <div className="container--films">
-      <Title link="Home" />
+      <Title link={`Home?anime=${encodeURI(currentAnime)}`} />
 
       <div className="film">{title}</div>
 
