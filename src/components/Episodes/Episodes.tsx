@@ -1,22 +1,24 @@
 import './Episodes.scss';
 import './responsive.scss';
-import 'plyr-react/plyr.css';
+
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
-
-import React, { useEffect, useRef, useState } from 'react';
-
 import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents, toggleHideEpisodesNames } from './utils';
 import { Footer, Title } from '../utils/components.tsx';
-
-import Plyr from 'plyr-react';
-import DownloadComponent from '../utils/download-component.tsx';
-import SearchBar from '../utils/searchBar.tsx';
-
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
+
+import ReactPlayer from 'react-player/lazy';
+import BaseReactPlayer from 'react-player/base';
+
+import DownloadComponent from '../utils/download-component.tsx';
+import SearchBar from '../utils/searchBar.tsx';
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -79,6 +81,9 @@ export default function Episodes() {
 
   const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
   const [lecteurChange, setLecteurChange] = useState<boolean>(false);
+
+  const videoRef = useRef(null) as RefObject<BaseReactPlayer<any>>;
+  const ambianceRef = useRef(null) as RefObject<BaseReactPlayer<any>>;
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -460,43 +465,48 @@ export default function Episodes() {
           </select>
         ) : null
       ) : null}
+
       <div className="videoContainer">
         {currentLecteur === 'epsAS' ? (
           <>
             <div className="vid">
-              <Plyr
-                options={{
-                  autoplay: true,
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                controls
+                ref={videoRef}
+                url={video}
+                playing={true}
+                onStart={() => {
+                  const savedSeconds = window.localStorage.getItem(
+                    `${currentAnime}--currentTime`
+                  );
+
+                  if (savedSeconds) {
+                    videoRef.current?.seekTo(Number(savedSeconds), 'seconds');
+                  }
                 }}
-                source={{
-                  type: 'video',
-                  sources: [
-                    {
-                      src: video,
-                    },
-                  ],
+                onProgress={({ playedSeconds }) => {
+                  setTimeout(() => {
+                    window.localStorage.setItem(
+                      `${currentAnime}--currentTime`,
+                      String(playedSeconds)
+                    );
+
+                    ambianceRef.current?.seekTo(playedSeconds, 'seconds');
+                  }, 1000);
                 }}
               />
             </div>
             <div className="ambiance">
-              <Plyr
-                options={{
-                  muted: true,
-                  volume: 0,
-                  controls: [],
-                  autoplay: true,
-                  loop: {
-                    active: true,
-                  },
-                }}
-                source={{
-                  type: 'video',
-                  sources: [
-                    {
-                      src: video,
-                    },
-                  ],
-                }}
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                controls
+                muted
+                loop={true}
+                ref={ambianceRef}
+                url={video}
               />
             </div>
           </>

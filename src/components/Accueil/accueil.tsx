@@ -1,14 +1,14 @@
 import './accueil.scss';
 import './responsive.scss';
 
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { Footer, Title } from '../utils/components';
 import { ANIMES, groupAnimesByCategory } from '../../animes/constants';
-
-import React, { useCallback, useEffect, useState } from 'react';
-import SearchBar from '../utils/searchBar';
-
-import { formatName } from '../../functions/main';
 import { toast } from 'react-hot-toast';
+import { formatName } from '../../functions/main';
+
+import SearchBar from '../utils/searchBar';
 
 type Historique = {
   name: string;
