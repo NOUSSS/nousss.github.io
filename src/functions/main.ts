@@ -28,9 +28,6 @@ export const formatName = (animeName: string) => {
     .join(' ');
 };
 
-export const getURLFilm = (index: number, lecteur: 'eps1' | 'eps2'): string =>
-  getLecteur()[lecteur]![index];
-
 export const toUpper = (param: string): string =>
   param[0].toUpperCase() + param.slice(1);
 

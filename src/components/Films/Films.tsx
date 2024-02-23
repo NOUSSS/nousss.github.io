@@ -8,7 +8,7 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
-import { getLecteur, getURLFilm } from '../../functions/main.ts';
+import { getLecteur } from '../../functions/main.ts';
 import { addScript } from '../../functions/main.ts';
 import { appearVideo, getFilms } from './functions.tsx';
 import { Footer, Title } from '../utils/components.tsx';
@@ -17,6 +17,10 @@ import { getAnime } from '../../functions/getAnime.ts';
 
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
+import { LecteurReturnType } from '../../typings/types.ts';
+
+let LecteursFilms: string[] = [];
+let Lecteurs: LecteurReturnType;
 
 const Films = () => {
   const currentAnime = getAnime({ wSaison: false });
@@ -37,6 +41,9 @@ const Films = () => {
     window.localStorage.getItem(`${currentAnime}--lang`) ?? 'vostfr'
   );
 
+  const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
+  const [lecteurChange, setLecteurChange] = useState<boolean>(false);
+
   const [output, setOutput] = useState<React.ReactNode>('');
   const lecteurString = useRef<'' | 'eps1' | 'eps2'>('');
 
@@ -53,11 +60,26 @@ const Films = () => {
       currentAnime: currentAnime!,
       setLang,
     }).then(() => {
-      const lecteurs = getLecteur();
+      Lecteurs = getLecteur();
+
+      if (currentLecteur) {
+        LecteursFilms = Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+      } else {
+        if (Lecteurs.epsAS) {
+          setCurrentLecteur('epsAS');
+          LecteursFilms = Lecteurs.epsAS;
+        } else {
+          const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
+
+          setCurrentLecteur(lecteur);
+
+          LecteursFilms = Lecteurs[lecteur]!;
+        }
+      }
 
       lecteurString.current = 'eps1';
 
-      const films_url = lecteurs[lecteurString.current]!;
+      const films_url = Lecteurs[lecteurString.current]!;
 
       if (BLACKLIST_URL) {
         for (const BLACKLIST of BLACKLIST_URL) {
@@ -68,19 +90,17 @@ const Films = () => {
 
       appearVideo(
         lastFilm
-          ? `${getURLFilm(Number(lastFilm), lecteurString.current)} ${Number(
-              lastFilm
-            )}`
-          : `${getURLFilm(0, lecteurString.current)} ${
+          ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
+          : `${LecteursFilms[0]} ${
               window.localStorage.getItem(`${currentAnime}--currentFilm`) ?? '0'
             }`,
         setVideo,
         setTitle
       );
 
-      getFilms(setFilmsFront, lecteurString.current);
+      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur);
     });
-  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime]);
+  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, lecteurChange]);
 
   setTimeout(() => {
     const poster = document.querySelectorAll('.poster');
@@ -131,6 +151,23 @@ const Films = () => {
           VF
         </MenuItem>
       </Menu>
+
+      {Lecteurs ? (
+        Object.keys(Lecteurs).length > 1 ? (
+          <select
+            onChange={({ target: { value } }) => {
+              setCurrentLecteur(value);
+              setLecteurChange(!lecteurChange);
+            }}
+          >
+            {Object.keys(Lecteurs).map((l, i) => (
+              <option value={l} key={i}>
+                Lecteur {i + 1}
+              </option>
+            ))}
+          </select>
+        ) : null
+      ) : null}
 
       <div className="video--films">
         <iframe

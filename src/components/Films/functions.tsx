@@ -1,7 +1,9 @@
 import React from 'react';
-import { getURLFilm } from '../../functions/main';
+
 import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
+import { LecteurReturnType } from '../../typings/types';
+import { getLecteur } from '../../functions/main';
 
 export async function appearVideo(
   id: string,
@@ -54,8 +56,12 @@ export function getFilms(
   setFilmsFront: React.Dispatch<
     React.SetStateAction<React.ReactNode[] | undefined>
   >,
-  lecteur: string
+  setCurrentLecteur: React.Dispatch<React.SetStateAction<string | null>>,
+  currentLecteur: string | null
 ) {
+  let LecteursFilms: string[] = [];
+  let Lecteurs: LecteurReturnType;
+
   const currentAnime = getAnime({ wSaison: false });
 
   const { names } =
@@ -65,8 +71,25 @@ export function getFilms(
 
   const filmsNodes: React.ReactNode[] = [];
 
+  Lecteurs = getLecteur();
+
+  if (currentLecteur) {
+    LecteursFilms = Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+  } else {
+    if (Lecteurs.epsAS) {
+      setCurrentLecteur('epsAS');
+      LecteursFilms = Lecteurs.epsAS;
+    } else {
+      const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
+
+      setCurrentLecteur(lecteur);
+
+      LecteursFilms = Lecteurs[lecteur]!;
+    }
+  }
+
   for (let i = 0; i < Object.keys(names!).length; i++) {
-    const url = getURLFilm(i, lecteur as 'eps1' | 'eps2');
+    const url = LecteursFilms[i];
     const id = `${names![i].name}|${names![i].aliases?.join(', ')}`;
 
     filmsNodes.push(
