@@ -1,4 +1,4 @@
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 import React from 'react';
 import { LecteurReturnType } from '../typings/types';
@@ -54,6 +54,8 @@ export function addScript({
     script.setAttribute('src', url);
 
     const loading = toast.loading('Chargement des sources en cours...', {
+      position: 'bottom-right',
+
       style: {
         fontFamily: 'Fredoka',
         fontSize: '15px',
@@ -64,6 +66,8 @@ export function addScript({
       toast.dismiss(loading);
 
       toast.success('Les sources ont bien été chargées !', {
+        position: 'bottom-right',
+
         style: {
           color: 'var(--mainColor)',
           fontFamily: 'Fredoka',
@@ -89,7 +93,8 @@ export function addScript({
       }
 
       toast.error('Erreur dans le chargement des sources', {
-        dismissible: false,
+        position: 'bottom-right',
+
         style: {
           color: 'red',
           fontFamily: 'Fredoka',

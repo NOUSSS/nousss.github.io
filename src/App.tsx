@@ -13,7 +13,7 @@ import logo from '/Logo.png';
 import PageNotFound from './components/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
-import { Toaster, toast } from 'sonner';
+import { Toaster, toast } from 'react-hot-toast';
 
 const AppRoutes = () => {
   const currentSeason =
@@ -64,6 +64,8 @@ const App = () => {
   useEffect(() => {
     window.addEventListener('error', () => {
       toast.error('Une erreur est survenue', {
+        position: 'bottom-right',
+
         style: {
           fontSize: '15px',
           fontFamily: 'Fredoka',
@@ -97,8 +99,6 @@ const App = () => {
         document.querySelector<HTMLElement>('.logo')!.style.visibility = '';
       }
     });
-
-    console.clear();
 
     console.log(
       "%c Salut, c'est NouSs !",

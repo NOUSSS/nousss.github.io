@@ -82,7 +82,10 @@ export default function Episodes() {
 
   const [output, setOutput] = useState<React.ReactNode>('');
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
+
   const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
+
+  const lecteurChange = useRef<boolean>(false);
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -352,18 +355,18 @@ export default function Episodes() {
       }
     }
   }, [
-    saison,
-    lang,
-    names,
-    SCRIPT_URL,
-    allIndex,
     currentAnime,
-    currentLecteur,
     horsSeries,
-    scriptIndex,
+    allIndex,
+    lecteurChange.current,
     options.note,
-    oav,
     saisons,
+    saison,
+    names,
+    lang,
+    oav,
+    scriptIndex,
+    SCRIPT_URL,
   ]);
 
   useEffect(() => {
@@ -451,7 +454,10 @@ export default function Episodes() {
       {Lecteurs ? (
         Object.keys(Lecteurs).length > 1 ? (
           <select
-            onChange={({ target: { value } }) => setCurrentLecteur(value)}
+            onChange={({ target: { value } }) => {
+              setCurrentLecteur(value);
+              lecteurChange.current = !lecteurChange.current;
+            }}
           >
             {Object.keys(Lecteurs).map((l, i) => (
               <option value={l} key={i}>

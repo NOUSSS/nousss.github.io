@@ -10,7 +10,7 @@ import searchImg from '../../assets/Search.svg';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { formatName } from '../../functions/main';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 type Historique = {
   name: string;
@@ -130,6 +130,8 @@ const Accueil = () => {
     toast.success(
       `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
       {
+        position: 'bottom-right',
+
         style: {
           color: 'var(--mainColor)',
           fontFamily: 'Fredoka',
@@ -321,6 +323,8 @@ const Accueil = () => {
             window.localStorage.clear();
 
             toast.success("L'historique a bien été vidé", {
+              position: 'bottom-right',
+
               style: {
                 color: 'var(--mainColor)',
                 fontFamily: 'Fredoka',
