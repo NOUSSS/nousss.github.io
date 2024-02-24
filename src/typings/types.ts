@@ -1,7 +1,7 @@
 type SeasonAndFilm = {
   [key: string]: {
     name: string;
-    aliases: string[];
+    aliases?: string[];
     image: () => string;
   };
 };

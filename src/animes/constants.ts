@@ -42,7 +42,9 @@ import CaptainTsubasa from './CaptainTsubasa/captain-tsubasa';
 import Monster103 from './Monster103/monster-103';
 import Monster from './Monster/monster';
 import FireForce from './FireForce/fire-force';
+
 import { Anime } from '../class/anime';
+import AssassinationClassroom from './AssassinationClassroom/assassination-classroom';
 
 export const ANIMES: {
   anime: string;
@@ -230,7 +232,7 @@ export const ANIMES: {
     anime: 'The Daily Life of the Immortal King',
     aliases: ['saitama v2', 'saisons'],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: 'Puissance',
+    category: 'School Life',
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
@@ -418,6 +420,14 @@ export const ANIMES: {
     synopsis:
       "L'humanité est terrifiée par le phénomène de combustion humaine. Des brigades spéciales Fire Force ont donc été mises en place avec pour mission de trouver la cause de ce mystérieux phénomène ! Le jeune Shinra, nouvelle recrue surnommée le Démon, rêve de devenir un héros.",
     options: new FireForce(),
+  },
+  {
+    anime: 'Assassination Classroom',
+    category: 'School Life',
+    aliases: ['koro', 'sensei'],
+    synopsis:
+      "Koro Sensei devient enseignant de la classe 3-E de l'école de Kunugigaoka. Après avoir détruit la Lune et promis de faire exploser la Terre, ses élèves tentent de l'arrêter. Unis par un lien mystérieux, ils ont un an pour achever leur mission.",
+    options: new AssassinationClassroom(),
   },
 ];
 
