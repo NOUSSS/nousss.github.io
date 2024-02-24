@@ -14,10 +14,10 @@ import { appearVideo, getFilms } from './functions.tsx';
 import { Footer, Title } from '../utils/components.tsx';
 import { ANIMES } from '../../animes/constants.ts';
 import { getAnime } from '../../functions/getAnime.ts';
+import { LecteurReturnType } from '../../typings/types.ts';
 
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
-import { LecteurReturnType } from '../../typings/types.ts';
 import BaseReactPlayer from 'react-player/base';
 import ReactPlayer from 'react-player';
 

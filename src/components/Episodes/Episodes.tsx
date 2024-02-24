@@ -563,11 +563,8 @@ export default function Episodes() {
               '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
                 backgroundColor: 'var(--mainColor)',
               },
-              '& .MuiSwitch-switchBase': {
-                color: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du bouton
-              },
               '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                backgroundColor: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du fond
+                backgroundColor: 'hsla(231, 14%, 10%, 1)',
               },
             }}
           />
