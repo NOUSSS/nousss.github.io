@@ -45,6 +45,7 @@ import FireForce from './FireForce/fire-force';
 
 import { Anime } from '../class/anime';
 import AssassinationClassroom from './AssassinationClassroom/assassination-classroom';
+import AoAshi from './AoAshi/ao-ashi';
 
 export const ANIMES: {
   anime: string;
@@ -428,6 +429,13 @@ export const ANIMES: {
     synopsis:
       "Koro Sensei devient enseignant de la classe 3-E de l'école de Kunugigaoka. Après avoir détruit la Lune et promis de faire exploser la Terre, ses élèves tentent de l'arrêter. Unis par un lien mystérieux, ils ont un an pour achever leur mission.",
     options: new AssassinationClassroom(),
+  },
+  {
+    anime: 'Ao Ashi',
+    synopsis:
+      "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
+    category: ['Sport'],
+    options: new AoAshi(),
   },
 ];
 
