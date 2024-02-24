@@ -448,7 +448,7 @@ export const ANIMES: {
   },
   {
     anime: 'Gurren Lagann',
-    category: ['Aventure', 'Puissance', 'Comédie'],
+    category: ['Aventure', 'Puissance', 'Humour'],
     options: new GurrenLagann(),
     aliases: ['anti spiral'],
     synopsis:
