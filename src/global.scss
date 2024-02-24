@@ -24,8 +24,7 @@ body {
   overflow-x: hidden;
 }
 
-body,
-ul {
+* {
   &::-webkit-scrollbar {
     background-color: transparent;
   }
