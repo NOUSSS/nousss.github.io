@@ -9,6 +9,16 @@
   font-size: 34px;
 }
 
+select {
+  border: 1px solid white;
+  padding: 15px;
+  margin: 20px;
+  position: relative;
+  top: -10px;
+  color: white;
+  border-radius: 50px;
+}
+
 .video--films {
   .ambiance {
     top: 241px;

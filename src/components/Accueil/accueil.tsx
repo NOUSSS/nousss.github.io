@@ -304,7 +304,9 @@ const Accueil = () => {
           onClick={() => {
             setHistoriques([]);
 
-            window.localStorage.clear();
+            for (const key of Object.keys(window.localStorage)) {
+              if (key !== 'color') window.localStorage.removeItem(key);
+            }
 
             toast.success("L'historique a bien été vidé", {
               position: 'bottom-right',
@@ -329,6 +331,7 @@ const Accueil = () => {
               '--mainColor',
               '#ff7300'
             );
+
             window.localStorage.removeItem('color');
           }}
         >
