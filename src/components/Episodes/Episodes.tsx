@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { ANIMES } from '../../animes/constants.ts';
-import { clickEvents } from './utils';
+import { clickEvents } from './eventHandlers.tsx';
 import { Footer, Title } from '../utils/components.tsx';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
@@ -536,12 +536,12 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <label style={{ display: `${isIOS() ? 'none' : ''}` }}>
+      <label
+        className="hideEpisodesNames"
+        style={{ display: `${isIOS() ? 'none' : ''}` }}
+      >
         <p>Cacher le nom des épisodes</p>
         <Switch
-          style={{
-            transform: 'scale(1.3)',
-          }}
           onChange={({ target }) => {
             if (target.checked) {
               for (const episodeName of document.querySelectorAll(

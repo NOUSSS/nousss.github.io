@@ -13,6 +13,7 @@ const eventHandlers = {
 
 export function removeClickEvents(): void {
   const episodes = document.querySelectorAll('.list-episodes');
+
   episodes.forEach((episode, index) => {
     const handler = eventHandlers.episodes[index];
 
@@ -22,11 +23,13 @@ export function removeClickEvents(): void {
   });
 
   const nextButton = document.querySelector('.nextButton');
+
   if (nextButton && typeof eventHandlers.nextButton === 'function') {
     nextButton.removeEventListener('click', eventHandlers.nextButton);
   }
 
   const prevButton = document.querySelector('.prevButton');
+
   if (prevButton && typeof eventHandlers.prevButton === 'function') {
     prevButton.removeEventListener('click', eventHandlers.prevButton);
   }
