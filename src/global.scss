@@ -131,7 +131,7 @@ input {
 }
 
 button {
-  background-color: hsl(231deg 13% 10%);
+  background-color: hsla(231, 14%, 10%, 0.5);
   color: var(--mainColor);
 
   border: var(--mainColor) 1px solid;
@@ -186,11 +186,12 @@ button {
 .label--saisons,
 .label--episodes,
 .label--anime {
-  background-color: hsla(231, 14%, 10%, 0.598);
+  background-color: hsla(231, 14%, 10%, 0.5);
   border-radius: 4px;
   display: flex;
   align-items: center;
-
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
   width: 220px;
   height: 45px;
 
