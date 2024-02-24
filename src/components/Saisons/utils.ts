@@ -7,6 +7,7 @@ export function changeSaison(index: string) {
 
   if (window.localStorage.getItem(`${currentAnime}--saison`) !== index) {
     window.localStorage.setItem(`${currentAnime}--episode`, '1');
+    window.localStorage.removeItem(`${currentAnime}--currentTime`);
   }
 
   window.localStorage.setItem(`${currentAnime}--saison`, index);
