@@ -53,25 +53,29 @@ span {
   color: var(--mainColor);
 }
 
-.title h1 {
+.title {
   font-size: 65px;
   position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: var(--mainColor);
-    height: 2px;
-    width: 0%;
+  h1 {
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: var(--mainColor);
+      height: 2px;
+      width: 0%;
 
-    transition: width 250ms ease-out;
+      transition: width 250ms ease-out;
+    }
   }
 
   &:hover {
-    &::after {
-      width: 60%;
+    h1 {
+      &::after {
+        width: 60%;
+      }
     }
   }
 }

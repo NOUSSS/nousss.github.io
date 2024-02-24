@@ -72,17 +72,17 @@
       }
     }
 
-    .title h1 {
+    .title {
       font-size: 20px;
       color: white;
       position: relative;
 
       h1 {
         font-size: 35px;
-      }
 
-      &::after {
-        content: none;
+        &::after {
+          content: none;
+        }
       }
     }
   }

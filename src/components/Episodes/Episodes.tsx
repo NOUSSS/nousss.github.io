@@ -504,6 +504,7 @@ export default function Episodes() {
               <ReactPlayer
                 width="100%"
                 height="100%"
+                playing={false}
                 muted={true}
                 ref={ambianceRef}
                 url={video}
