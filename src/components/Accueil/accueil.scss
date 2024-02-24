@@ -3,6 +3,14 @@
   margin-bottom: 200px;
   width: calc(100vw - 50px);
 
+  .title {
+    h1 {
+      &::after {
+        content: none;
+      }
+    }
+  }
+
   .color-picker {
     margin: 50px;
   }
