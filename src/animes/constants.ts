@@ -47,6 +47,7 @@ import { Anime } from '../class/anime';
 import AssassinationClassroom from './AssassinationClassroom/assassination-classroom';
 import AoAshi from './AoAshi/ao-ashi';
 import DemonSlave from './DemonSlave/demon-slave';
+import GurrenLagann from './GurrenLagann/gurren-lagann';
 
 export const ANIMES: {
   anime: string;
@@ -92,7 +93,7 @@ export const ANIMES: {
       'saisons',
     ],
     options: new DragonBallSuper(),
-    category: ['Classique', 'Aventure'],
+    category: ['Classique', 'Aventure', 'Puissance'],
     synopsis:
       'Au début de l’histoire, le monde semble paisible et tout le monde vit librement, mais tout cela ne dure pas longtemps. Un nouvel ennemi a commencé à se cacher et l’entité « Destructeur » appelée le Dieu de la Destruction s’est réveillée de son sommeil. Tout cela a eu un très grand impact sur la terre, tout le monde a commencé à se préparer à une catastrophe encore plus grande. ',
   },
@@ -444,6 +445,14 @@ export const ANIMES: {
     options: new DemonSlave(),
     synopsis:
       "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
+  },
+  {
+    anime: 'Gurren Lagann',
+    category: ['Aventure', 'Puissance', 'Comédie'],
+    options: new GurrenLagann(),
+    aliases: ['anti spiral'],
+    synopsis:
+      "Tengen toppa Gurren-Lagann se déroule dans un futur lointain où l'humanité a été forcée de vivre sous terre, créant des civilisations souterraines isolées. Ces cités n'ont aucun contact avec la surface ni avec les autres villages souterrains. Les tremblements de terre sont fréquents et causent des dégâts aux villages.",
   },
 ];
 
