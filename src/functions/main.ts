@@ -48,6 +48,8 @@ export function addScript({
     const script = document.createElement('script');
 
     script.className = 'script';
+    script.async = true;
+
     script.setAttribute('src', url);
 
     const loading = toast.loading('Chargement des sources en cours...', {
