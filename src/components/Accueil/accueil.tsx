@@ -266,37 +266,39 @@ const Accueil = () => {
         </div>
       </nav>
 
-      <p>
-        Pour connaitre la date de sortie des différents épisodes / scans, je
-        vous redirige vers le{' '}
-        <a
-          style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
-          href="https://anime-sama.fr/planning/"
-          target="_blank"
-        >
-          planning
-        </a>{' '}
-        d'anime-sama
-      </p>
-
-      {window.localStorage.getItem('anime') &&
-      ANIMES.find(
-        ({ anime }) =>
-          anime.toLowerCase() ===
-          window.localStorage.getItem('anime')?.toLowerCase()
-      ) ? (
+      <div style={{ textAlign: 'left' }}>
         <p>
-          Dernier anime selectionné :{' '}
+          Pour connaitre la date de sortie des différents épisodes / scans, je
+          vous redirige vers le{' '}
           <a
             style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
-            href={`/#/home?anime=${encodeURI(
-              window.localStorage.getItem('anime')!
-            )}`}
+            href="https://anime-sama.fr/planning/"
+            target="_blank"
           >
-            {window.localStorage.getItem('anime')}
-          </a>
+            planning
+          </a>{' '}
+          d'anime-sama
         </p>
-      ) : null}
+
+        {window.localStorage.getItem('anime') &&
+        ANIMES.find(
+          ({ anime }) =>
+            anime.toLowerCase() ===
+            window.localStorage.getItem('anime')?.toLowerCase()
+        ) ? (
+          <p>
+            Dernier anime selectionné :{' '}
+            <a
+              style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
+              href={`/#/home?anime=${encodeURI(
+                window.localStorage.getItem('anime')!
+              )}`}
+            >
+              {window.localStorage.getItem('anime')}
+            </a>
+          </p>
+        ) : null}
+      </div>
 
       {historiques.length > 0 ? (
         <button
