@@ -80,7 +80,7 @@ const App = () => {
     }
 
     setInterval(() => {
-      const whiteText = document.querySelector<HTMLElement>('.title h1')!;
+      const whiteText = document.querySelector<HTMLElement>('.title h1 h1')!;
 
       if (whiteText) whiteText.style.color = 'var(--mainColor)';
 

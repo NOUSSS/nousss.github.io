@@ -16,6 +16,13 @@ export function Title({
       >
         Le catalogue
       </h1>
+      <p
+        style={{
+          fontSize: '15px',
+        }}
+      >
+        made by sneizz
+      </p>
     </div>
   ) : (
     <div className="title">
