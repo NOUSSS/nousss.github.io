@@ -2,30 +2,6 @@ import React from 'react';
 
 import { Change, NextEpisode, PrevEpisode } from './functions';
 
-export function toggleHideEpisodesNames(): void {
-  const hideEpisodesNamesInput = document.querySelector<HTMLInputElement>(
-    '.hideEpisodesNames input'
-  );
-
-  hideEpisodesNamesInput?.addEventListener('change', () => {
-    const check = hideEpisodesNamesInput.checked;
-
-    if (check) {
-      for (const episodeName of Array.from([
-        ...document.querySelectorAll('.episodeName'),
-      ])) {
-        (episodeName as HTMLElement).classList.add('blurEffect');
-      }
-    } else {
-      for (const episodeName of Array.from([
-        ...document.querySelectorAll('.episodeName'),
-      ])) {
-        (episodeName as HTMLElement).classList.remove('blurEffect');
-      }
-    }
-  });
-}
-
 type EventHandler = (() => void) | null;
 
 const eventHandlers = {

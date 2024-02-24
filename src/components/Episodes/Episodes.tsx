@@ -7,16 +7,16 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
-import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
+import { addScript, getLecteur } from '../../functions/main.ts';
 import { ANIMES } from '../../animes/constants.ts';
-import { clickEvents, toggleHideEpisodesNames } from './utils';
+import { clickEvents } from './utils';
 import { Footer, Title } from '../utils/components.tsx';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
 
+import Switch from '@mui/material/Switch';
 import ReactPlayer from 'react-player/lazy';
 import BaseReactPlayer from 'react-player/base';
-
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
 
@@ -105,14 +105,6 @@ export default function Episodes() {
     if (saison.index === lastSaison)
       NextSaisonSelector.classList.add('invisible');
     else NextSaisonSelector.classList.remove('invisible');
-
-    if (isIOS()) {
-      if (document.querySelector<HTMLElement>('.hideEpisodesNamesInput')) {
-        document
-          .querySelector<HTMLElement>('.hideEpisodesNamesInput')!
-          .classList.add('invisible');
-      }
-    } else toggleHideEpisodesNames();
 
     const saisonsEntries = Object.keys(saisons!);
     const saisonsValues = Object.values(saisons!);
@@ -545,9 +537,39 @@ export default function Episodes() {
       <div className="search--output--episodes">{output}</div>
 
       <label className="hideEpisodesNames">
-        <p>Cacher le nom des episodes</p>
-        <input type="checkbox"></input>
-        <span></span>
+        <p>Cacher le nom des épisodes</p>
+        <Switch
+          onChange={({ target }) => {
+            if (target.checked) {
+              for (const episodeName of document.querySelectorAll(
+                '.episodeName'
+              )) {
+                (episodeName as HTMLElement).classList.add('blurEffect');
+              }
+            } else {
+              for (const episodeName of document.querySelectorAll(
+                '.episodeName'
+              )) {
+                (episodeName as HTMLElement).classList.remove('blurEffect');
+              }
+            }
+          }}
+          inputProps={{ 'aria-label': 'controlled' }}
+          sx={{
+            '& .MuiSwitch-switchBase.Mui-checked': {
+              color: 'var(--mainColor)',
+            },
+            '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+              backgroundColor: 'var(--mainColor)',
+            },
+            '& .MuiSwitch-switchBase': {
+              color: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du bouton
+            },
+            '& .MuiSwitch-switchBase + .MuiSwitch-track': {
+              backgroundColor: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du fond
+            },
+          }}
+        />
       </label>
 
       <div className="container--list">
