@@ -536,44 +536,43 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <label
-        className="hideEpisodesNames"
-        style={{ display: `${isIOS() ? 'none' : ''}` }}
-      >
-        <p>Cacher le nom des épisodes</p>
-        <Switch
-          onChange={({ target }) => {
-            if (target.checked) {
-              for (const episodeName of document.querySelectorAll(
-                '.episodeName'
-              )) {
-                (episodeName as HTMLElement).classList.add('blurEffect');
+      {isIOS() ? null : (
+        <label className="hideEpisodesNames">
+          <p>Cacher le nom des épisodes</p>
+          <Switch
+            onChange={({ target }) => {
+              if (target.checked) {
+                for (const episode of document.querySelectorAll(
+                  '.episodeName'
+                )) {
+                  (episode as HTMLElement).classList.add('blurEffect');
+                }
+              } else {
+                for (const episode of document.querySelectorAll(
+                  '.episodeName'
+                )) {
+                  (episode as HTMLElement).classList.remove('blurEffect');
+                }
               }
-            } else {
-              for (const episodeName of document.querySelectorAll(
-                '.episodeName'
-              )) {
-                (episodeName as HTMLElement).classList.remove('blurEffect');
-              }
-            }
-          }}
-          inputProps={{ 'aria-label': 'controlled' }}
-          sx={{
-            '& .MuiSwitch-switchBase.Mui-checked': {
-              color: 'var(--mainColor)',
-            },
-            '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-              backgroundColor: 'var(--mainColor)',
-            },
-            '& .MuiSwitch-switchBase': {
-              color: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du bouton
-            },
-            '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-              backgroundColor: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du fond
-            },
-          }}
-        />
-      </label>
+            }}
+            inputProps={{ 'aria-label': 'controlled' }}
+            sx={{
+              '& .MuiSwitch-switchBase.Mui-checked': {
+                color: 'var(--mainColor)',
+              },
+              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                backgroundColor: 'var(--mainColor)',
+              },
+              '& .MuiSwitch-switchBase': {
+                color: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du bouton
+              },
+              '& .MuiSwitch-switchBase + .MuiSwitch-track': {
+                backgroundColor: 'hsla(231, 14%, 10%, 1)', // Ici, définit la couleur du fond
+              },
+            }}
+          />
+        </label>
+      )}
 
       <div className="container--list">
         <div className="list">{episodes}</div>
