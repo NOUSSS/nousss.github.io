@@ -46,6 +46,7 @@ import FireForce from './FireForce/fire-force';
 import { Anime } from '../class/anime';
 import AssassinationClassroom from './AssassinationClassroom/assassination-classroom';
 import AoAshi from './AoAshi/ao-ashi';
+import DemonSlave from './DemonSlave/demon-slave';
 
 export const ANIMES: {
   anime: string;
@@ -436,6 +437,13 @@ export const ANIMES: {
       "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
     category: ['Sport'],
     options: new AoAshi(),
+  },
+  {
+    anime: 'Demon Slave',
+    category: ['New gen', 'En ce moment', 'Magie', 'Ecchi'],
+    options: new DemonSlave(),
+    synopsis:
+      "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
   },
 ];
 
