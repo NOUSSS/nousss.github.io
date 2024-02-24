@@ -31,7 +31,7 @@ export const getTailleChapitres = (): number => {
 export const selectChapter = (
   newChapter: number | string
 ): React.ReactNode[] | undefined => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 5, behavior: 'smooth' });
 
   const currentAnime = getAnime({ wSaison: false });
 
