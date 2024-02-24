@@ -4,42 +4,9 @@
   }
 }
 
-@media (max-width: 654px) {
-  .container--films {
-    .video--films {
-      .iframeFilm,
-      .ambiance {
-        width: 508px;
-        height: 288px;
-      }
-    }
-  }
-}
-
 @media (max-width: 506px) {
   .logo {
     font-size: 26px;
-  }
-
-  .container--films {
-    .video--films {
-      .iframeFilm,
-      .ambiance {
-        width: 396px;
-        height: 225px;
-      }
-    }
-  }
-}
-
-@media (max-width: 398px) {
-  .container--films {
-    .video--films {
-      .iframeFilm,
-      .ambiance {
-        width: 327px;
-      }
-    }
   }
 }
 
@@ -49,14 +16,50 @@
   }
 }
 
-@media (max-width: 336px) {
-  .container--films {
-    .video--films {
-      .iframeFilm,
-      .ambiance {
-        width: 284px;
-        height: 186px;
-      }
-    }
+@media (max-width: 1216px) {
+  iframe,
+  .ambiance {
+    width: 947px;
+    height: 532px;
+  }
+}
+
+@media (max-width: 962px) {
+  iframe,
+  .ambiance {
+    width: 769px;
+    height: 440px;
+  }
+}
+
+@media (max-width: 782px) {
+  iframe,
+  .ambiance {
+    width: 600px;
+    height: 337px;
+  }
+}
+
+@media (max-width: 649px) {
+  iframe,
+  .ambiance {
+    width: 450px;
+    height: 258px;
+  }
+}
+
+@media (max-width: 458px) {
+  iframe,
+  .ambiance {
+    width: 325px;
+    height: 185px;
+  }
+}
+
+@media (max-width: 358px) {
+  iframe,
+  .ambiance {
+    width: 265px;
+    height: 153px;
   }
 }

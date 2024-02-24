@@ -18,6 +18,8 @@ import { getAnime } from '../../functions/getAnime.ts';
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
 import { LecteurReturnType } from '../../typings/types.ts';
+import BaseReactPlayer from 'react-player/base';
+import ReactPlayer from 'react-player';
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -43,6 +45,9 @@ const Films = () => {
 
   const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
   const [lecteurChange, setLecteurChange] = useState<boolean>(false);
+
+  const videoRef = useRef<BaseReactPlayer<any>>(null);
+  const ambianceRef = useRef<BaseReactPlayer<any>>(null);
 
   const [output, setOutput] = useState<React.ReactNode>('');
   const lecteurString = useRef<'' | 'eps1' | 'eps2'>('');
@@ -170,14 +175,59 @@ const Films = () => {
       ) : null}
 
       <div className="video--films">
-        <iframe
-          className="iframeFilm"
-          width="640"
-          height="360"
-          src={video}
-          allowFullScreen
-        ></iframe>
-        <iframe className="ambiance" height="360" src={video}></iframe>
+        {currentLecteur === 'epsAS' ? (
+          <>
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              controls
+              ref={videoRef}
+              url={video}
+              playing={true}
+              onStart={() => {
+                const savedSeconds = window.localStorage.getItem(
+                  `${currentAnime}--currentTime`
+                );
+
+                if (savedSeconds) {
+                  videoRef.current?.seekTo(Number(savedSeconds), 'seconds');
+                }
+              }}
+              onProgress={({ playedSeconds }) => {
+                if (playedSeconds !== 0) {
+                  setTimeout(() => {
+                    window.localStorage.setItem(
+                      `${currentAnime}--currentTime`,
+                      String(playedSeconds)
+                    );
+
+                    ambianceRef.current?.seekTo(playedSeconds, 'seconds');
+                  }, 1000);
+                }
+              }}
+            />
+            <div className="ambiance">
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                playing={false}
+                muted={true}
+                ref={ambianceRef}
+                url={video}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <iframe
+              width="640"
+              height="360"
+              src={video}
+              allowFullScreen
+            ></iframe>
+            <iframe className="ambiance" height="360" src={video}></iframe>
+          </>
+        )}
       </div>
 
       <SearchBar

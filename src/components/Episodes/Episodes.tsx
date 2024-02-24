@@ -4,7 +4,7 @@ import './responsive.scss';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
@@ -82,8 +82,8 @@ export default function Episodes() {
   const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
   const [lecteurChange, setLecteurChange] = useState<boolean>(false);
 
-  const videoRef = useRef(null) as RefObject<BaseReactPlayer<any>>;
-  const ambianceRef = useRef(null) as RefObject<BaseReactPlayer<any>>;
+  const videoRef = useRef<BaseReactPlayer<any>>(null);
+  const ambianceRef = useRef<BaseReactPlayer<any>>(null);
 
   useEffect(() => {
     const NextSaisonSelector =
