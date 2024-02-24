@@ -48,6 +48,7 @@ import AssassinationClassroom from './AssassinationClassroom/assassination-class
 import AoAshi from './AoAshi/ao-ashi';
 import DemonSlave from './DemonSlave/demon-slave';
 import GurrenLagann from './GurrenLagann/gurren-lagann';
+import SevenDeadlySins from './SevenDeadlySins/seven-deadly-sins';
 
 export const ANIMES: {
   anime: string;
@@ -300,7 +301,7 @@ export const ANIMES: {
     anime: 'Sword Art Online',
     aliases: ['sao', 'films', 'saisons'],
     options: new SwordArtOnline(),
-    category: ['Jeux Videos'],
+    category: ['Jeux Videos', 'Isekai'],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -453,6 +454,14 @@ export const ANIMES: {
     aliases: ['anti spiral'],
     synopsis:
       "Tengen toppa Gurren-Lagann se déroule dans un futur lointain où l'humanité a été forcée de vivre sous terre, créant des civilisations souterraines isolées. Ces cités n'ont aucun contact avec la surface ni avec les autres villages souterrains. Les tremblements de terre sont fréquents et causent des dégâts aux villages.",
+  },
+  {
+    anime: 'Seven Deadly Sins',
+    category: ['Aventure', 'Ecchi', 'Puissance'],
+    options: new SevenDeadlySins(),
+    aliases: ['meliodas'],
+    synopsis:
+      "Il y a dix ans, un groupe de Chevaliers Sacrés renégats appelé les Seven Deadly Sins s'est rebellé contre les Chevaliers Sacrés, la garde du royaume. Depuis, ils ont disparu et personne ne sait ce qu'ils sont devenus.",
   },
 ];
 
