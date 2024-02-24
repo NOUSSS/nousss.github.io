@@ -486,16 +486,15 @@ export default function Episodes() {
                     videoRef.current?.seekTo(Number(savedSeconds), 'seconds');
                   }
                 }}
+                progressInterval={100}
                 onProgress={({ playedSeconds }) => {
                   if (playedSeconds !== 0) {
-                    setTimeout(() => {
-                      window.localStorage.setItem(
-                        `${currentAnime}--currentTime`,
-                        String(playedSeconds)
-                      );
+                    window.localStorage.setItem(
+                      `${currentAnime}--currentTime`,
+                      String(playedSeconds)
+                    );
 
-                      ambianceRef.current?.seekTo(playedSeconds, 'seconds');
-                    }, 1000);
+                    ambianceRef.current?.seekTo(playedSeconds, 'seconds');
                   }
                 }}
               />
