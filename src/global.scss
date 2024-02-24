@@ -125,10 +125,6 @@ span {
   }
 }
 
-input {
-  text-indent: 10px;
-}
-
 button {
   background-color: hsla(231, 14%, 10%, 0.5);
   color: var(--mainColor);
@@ -214,14 +210,15 @@ button {
     height: 30px;
     width: 144px;
     transition: width 0.5s;
+    text-indent: 10px;
 
     position: relative;
     left: -15px;
   }
+}
 
-  &:hover {
-    border: 1px solid var(--mainColor);
-  }
+.focus {
+  border: 1px solid var(--mainColor);
 }
 
 .footer {

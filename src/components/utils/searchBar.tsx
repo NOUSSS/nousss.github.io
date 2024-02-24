@@ -32,6 +32,12 @@ export default function SearchBar({
             setOutput
           )
         }
+        onFocus={({ target }) => {
+          target.parentElement?.classList.add('focus');
+        }}
+        onBlur={({ target }) => {
+          target.parentElement?.classList.remove('focus');
+        }}
       />
     </label>
   );
