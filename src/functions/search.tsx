@@ -16,11 +16,11 @@ export function initSearchBar(
     input.value.toLowerCase() === ' nouss prime'
   ) {
     if (colorpicker) {
-      colorpicker.style.display = '';
+      colorpicker.classList.remove('invisible');
     }
   } else {
     if (colorpicker) {
-      colorpicker.style.display = 'none';
+      colorpicker.classList.add('invisible');
     }
   }
 

@@ -321,7 +321,7 @@ const Accueil = () => {
         </button>
       ) : null}
 
-      <div style={{ display: 'none' }} className="color-picker">
+      <div className="color-picker invisible">
         <input onChange={changeColor} value={color} type="color" />
         <button
           onClick={() => {
