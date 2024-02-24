@@ -45,7 +45,12 @@ export default class SoloLeveling extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/solo-leveling/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [],
+      horsSeries: [
+        {
+          saison: '1',
+          hs: [7],
+        },
+      ],
       allIndex: {
         1: 0,
       },
