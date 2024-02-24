@@ -28,9 +28,11 @@ export function getSaisons() {
     }`;
 
     saisonsList.push({
-      id: `${saisons?.[i].name}|${saisons?.[i].aliases?.join(
-        ', '
-      )} ${intervalEpisodes}`,
+      id: `${saisons?.[i].name}|${
+        typeof saisons?.[i].aliases === 'undefined'
+          ? ''
+          : saisons?.[i].aliases?.join(', ')
+      } ${intervalEpisodes}`,
       element: (
         <>
           <img

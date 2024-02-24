@@ -90,7 +90,11 @@ export function getFilms(
 
   for (let i = 0; i < Object.keys(names!).length; i++) {
     const url = LecteursFilms[i];
-    const id = `${names![i].name}|${names![i].aliases?.join(', ')}`;
+    const id = `${names![i].name}|${
+      typeof names![i].aliases === 'undefined'
+        ? ''
+        : names![i].aliases?.join(', ')
+    }`;
 
     filmsNodes.push(
       <div id={id} key={id} className="container--poster">
