@@ -7,7 +7,7 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
-import { addScript, getLecteur } from '../../functions/main.ts';
+import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents } from './utils';
 import { Footer, Title } from '../utils/components.tsx';
@@ -536,9 +536,12 @@ export default function Episodes() {
 
       <div className="search--output--episodes">{output}</div>
 
-      <label className="hideEpisodesNames">
+      <label style={{ display: `${isIOS() ? 'none' : ''}` }}>
         <p>Cacher le nom des épisodes</p>
         <Switch
+          style={{
+            transform: 'scale(1.3)',
+          }}
           onChange={({ target }) => {
             if (target.checked) {
               for (const episodeName of document.querySelectorAll(
