@@ -6,7 +6,7 @@ import './responsive.scss';
 import { getSaisons } from './getSaisons';
 import { ANIMES } from '../../animes/constants';
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 import { changeSaison } from './changeSaison';
 import { getAnime } from '../../functions/getAnime';
 

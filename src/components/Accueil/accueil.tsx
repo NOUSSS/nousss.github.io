@@ -4,7 +4,7 @@ import './responsive.scss';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 import { ANIMES, groupAnimesByCategory } from '../../animes/constants';
 import { toast } from 'react-hot-toast';
 import { formatName } from '../../functions/formatName';
@@ -146,39 +146,18 @@ export default function Accueil() {
         </div>
       </nav>
 
-      <div style={{ textAlign: 'left' }}>
-        <p>
-          Pour connaitre la date de sortie des différents épisodes / scans, je
-          vous redirige vers le{' '}
-          <a
-            style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
-            href="https://anime-sama.fr/planning/"
-            target="_blank"
-          >
-            planning
-          </a>{' '}
-          d'anime-sama
-        </p>
-
-        {window.localStorage.getItem('anime') &&
-        ANIMES.find(
-          ({ anime }) =>
-            anime.toLowerCase() ===
-            window.localStorage.getItem('anime')?.toLowerCase()
-        ) ? (
-          <p>
-            Dernier anime selectionné :{' '}
-            <a
-              style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
-              href={`/#/home?anime=${encodeURI(
-                window.localStorage.getItem('anime')!
-              )}`}
-            >
-              {window.localStorage.getItem('anime')}
-            </a>
-          </p>
-        ) : null}
-      </div>
+      <p style={{ textAlign: 'left' }}>
+        Pour connaitre la date de sortie des différents épisodes / scans, je
+        vous redirige vers le{' '}
+        <a
+          style={{ color: 'var(--mainColor)', textDecoration: 'underline' }}
+          href="https://anime-sama.fr/planning/"
+          target="_blank"
+        >
+          planning
+        </a>{' '}
+        d'anime-sama
+      </p>
 
       {historiques.length > 0 ? (
         <button

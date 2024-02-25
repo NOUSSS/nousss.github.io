@@ -9,7 +9,7 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 import { ANIMES } from '../../animes/constants.ts';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';

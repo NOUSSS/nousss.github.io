@@ -7,7 +7,7 @@ import { getTailleChapitres, selectChapter } from './chapterManager.tsx';
 import { addScript } from '../../functions/addScript.ts';
 import { ANIMES } from '../../animes/constants.ts';
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 import { getAnime } from '../../functions/getAnime.ts';
 import { clickEvents } from './eventHandler';
 

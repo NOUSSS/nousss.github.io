@@ -10,7 +10,7 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents } from './eventHandlers.tsx';
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
 import { addScript } from '../../functions/addScript.ts';

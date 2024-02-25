@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Footer } from '../utils/Footer';
-import { Title } from '../utils/title';
+import { Title } from '../utils/Title';
 
 import './responsive.scss';
 import './Home.scss';
