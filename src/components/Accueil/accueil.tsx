@@ -99,6 +99,7 @@ const Accueil = () => {
     if (redirectAnime === 'Episodes') {
       window.localStorage.removeItem(`${animeName}--saison`);
       window.localStorage.removeItem(`${animeName}--episode`);
+      window.localStorage.removeItem(`${animeName}--currentTime`);
 
       for (const key of Object.keys(window.localStorage)) {
         if (key.includes('--lang') && key.includes(animeName))
@@ -108,6 +109,7 @@ const Accueil = () => {
       window.localStorage.removeItem(`${animeName}--chapitre`);
     } else if (redirectAnime === 'Films') {
       window.localStorage.removeItem(`${animeName}--currentFilm`);
+      window.localStorage.removeItem(`${animeName}--currentTime`);
 
       for (const key of Object.keys(window.localStorage)) {
         if (key.includes('--lang') && key.includes(animeName))
