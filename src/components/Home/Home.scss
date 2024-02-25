@@ -1,15 +1,12 @@
-body,
-html {
-  height: 100%;
-}
-
 .container--home {
   .card {
     padding: 15px;
     width: 500px;
-    background-color: #17171c;
+    background-color: #17171c7a;
     box-shadow: #00000026 0 15px 25px, #0000000d 0 5px 10px;
     border-radius: 7px;
+    top: 130px;
+    position: relative;
 
     .footer {
       margin-top: 90px;
