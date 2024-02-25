@@ -29,41 +29,41 @@ const Home = () => {
         <div className="synopsis">{synopsis}</div>
 
         <div className="choices">
-          <li>
+          <ul>
             {ANIMES.find(
               ({ anime }) =>
                 anime.toLowerCase() ===
                 window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.FILM_OPTIONS ? (
-              <ul>
+              <li>
                 <Link to={`/Films?anime=${encodeURI(currentAnime)}`}>
                   Films
                 </Link>
-              </ul>
+              </li>
             ) : null}
             {ANIMES.find(
               ({ anime }) =>
                 anime.toLowerCase() ===
                 window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.EPISODES_OPTIONS ? (
-              <ul>
+              <li>
                 <Link to={`/Saisons?anime=${encodeURI(currentAnime)}`}>
                   Saisons
                 </Link>
-              </ul>
+              </li>
             ) : null}
             {ANIMES.find(
               ({ anime }) =>
                 anime.toLowerCase() ===
                 window.localStorage.getItem('anime')?.toLowerCase()
             )?.options.SCANS_OPTIONS ? (
-              <ul>
+              <li>
                 <Link to={`/Scans?anime=${encodeURI(currentAnime)}`}>
                   Scans
                 </Link>
-              </ul>
+              </li>
             ) : null}
-          </li>
+          </ul>
         </div>
 
         <Footer />

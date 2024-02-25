@@ -9,7 +9,7 @@
     position: relative;
 
     .footer {
-      margin-top: 90px;
+      margin-top: 50px;
 
       &::after {
         content: none;
@@ -22,8 +22,7 @@
       a {
         text-shadow: 0 0 20px black;
         position: relative;
-        color: #65adff;
-        cursor: pointer;
+        color: #6791c0;
         font-size: 43px;
 
         &::after {
@@ -41,7 +40,7 @@
 
         &:hover {
           &::after {
-            transform: scaleX(1);
+            transform: scaleX(0.6);
           }
         }
       }
@@ -52,22 +51,7 @@
       position: relative;
       margin: 50px 0;
       color: white;
-
-      .visible {
-        opacity: 1;
-      }
-
-      p {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition-duration: 300ms;
-
-        span {
-          color: var(--mainColor);
-        }
-      }
+      text-align: left;
     }
 
     .title {
