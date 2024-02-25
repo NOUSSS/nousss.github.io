@@ -140,7 +140,7 @@ const Accueil = () => {
     toast.success(
       `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
       {
-        position: 'bottom-right',
+        position: 'bottom-center',
 
         style: {
           color: 'var(--mainColor)',
@@ -323,7 +323,7 @@ const Accueil = () => {
             }
 
             toast.success("L'historique a bien été vidé", {
-              position: 'bottom-right',
+              position: 'bottom-center',
 
               style: {
                 color: 'var(--mainColor)',

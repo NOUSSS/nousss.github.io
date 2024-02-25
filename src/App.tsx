@@ -64,7 +64,7 @@ const App = () => {
   useEffect(() => {
     window.addEventListener('error', () => {
       toast.error('Une erreur est survenue', {
-        position: 'bottom-right',
+        position: 'bottom-center',
 
         style: {
           fontSize: '15px',

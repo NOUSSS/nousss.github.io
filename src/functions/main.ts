@@ -53,7 +53,7 @@ export function addScript({
     script.setAttribute('src', url);
 
     const loading = toast.loading('Chargement des sources en cours...', {
-      position: 'bottom-right',
+      position: 'bottom-center',
 
       style: {
         fontFamily: 'Fredoka',
@@ -65,7 +65,7 @@ export function addScript({
       toast.dismiss(loading);
 
       toast.success('Les sources ont bien été chargées !', {
-        position: 'bottom-right',
+        position: 'bottom-center',
 
         style: {
           color: 'var(--mainColor)',
@@ -92,7 +92,7 @@ export function addScript({
       }
 
       toast.error('Erreur dans le chargement des sources', {
-        position: 'bottom-right',
+        position: 'bottom-center',
 
         style: {
           color: 'red',
