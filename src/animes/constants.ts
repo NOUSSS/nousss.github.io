@@ -164,7 +164,7 @@ export const ANIMES: {
     anime: 'mashle',
     aliases: ['saitama v2', 'muscle', 'saisons', 'scans'],
     options: new Mashle(),
-    category: ['En ce moment', 'Humour'],
+    category: ['En ce moment', 'Humour', 'Magie'],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
