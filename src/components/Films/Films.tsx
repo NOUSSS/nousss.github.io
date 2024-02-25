@@ -75,11 +75,14 @@ const Films = () => {
       } else {
         if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: 'epsAS' });
+
           LecteursFilms = Lecteurs.epsAS;
         } else {
           const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
 
-          setCurrentLecteur({ lecteur });
+          setCurrentLecteur({ lecteur: lecteur });
+
+          console.log(lecteur);
 
           LecteursFilms = Lecteurs[lecteur]!;
         }
@@ -106,7 +109,7 @@ const Films = () => {
         setTitle
       );
 
-      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur!.lecteur);
+      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur!);
     });
   }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, currentLecteur?.change]);
 

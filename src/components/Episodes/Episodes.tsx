@@ -169,8 +169,6 @@ export default function Episodes() {
           }
         }
 
-        console.log(currentLecteur);
-
         setSaisonTitle(
           <>
             <span>

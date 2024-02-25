@@ -60,7 +60,10 @@ export function getFilms(
     React.SetStateAction<{ lecteur: string; change?: boolean } | null>
   >,
 
-  currentLecteur: string | null
+  currentLecteur: {
+    lecteur: string;
+    change?: boolean;
+  }
 ) {
   let LecteursFilms: string[] = [];
 
@@ -75,7 +78,8 @@ export function getFilms(
   const filmsNodes: React.ReactNode[] = [];
 
   if (currentLecteur) {
-    LecteursFilms = Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+    LecteursFilms =
+      Lecteurs[currentLecteur.lecteur as 'epsAS' | 'eps1' | 'eps2']!;
   } else {
     if (Lecteurs.epsAS) {
       setCurrentLecteur({ lecteur: 'epsAS' });

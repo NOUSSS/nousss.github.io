@@ -15,7 +15,7 @@ export class Anime {
   public SCANS_OPTIONS: ScansOptions | null;
   public EPISODES_OPTIONS: EpisodesOptions | null;
 
-  public note: string | Note[] | undefined;
+  public note: Note[] | string | undefined;
 
   constructor() {
     this.affiche = '';
