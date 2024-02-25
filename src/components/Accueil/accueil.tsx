@@ -78,9 +78,19 @@ const Accueil = () => {
   );
 
   useEffect(() => {
-    const updatedCatalogues = groupAnimesByCategory(
+    let updatedCatalogues = groupAnimesByCategory(
       ANIMES.map(({ anime, category }) => ({ anime, category }))
     ).sort((a, b) => b.names.length - a.names.length);
+
+    const momentIndex = updatedCatalogues.findIndex(
+      ({ category }) => category === 'En ce moment'
+    );
+
+    if (momentIndex !== -1) {
+      const [momentItem] = updatedCatalogues.splice(momentIndex, 1);
+
+      updatedCatalogues.splice(1, 0, momentItem);
+    }
 
     if (historiques.length > 0) {
       updatedCatalogues.unshift({
