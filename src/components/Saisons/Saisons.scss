@@ -9,7 +9,7 @@
 
 .search--output--saisons {
   color: white;
-  font-size: 36px;
+  font-size: 25px;
 }
 
 .saisons {
@@ -19,7 +19,21 @@
 
   div {
     display: inline-flex;
+    flex-direction: column;
     margin: 33px;
+    width: 89px;
+
+    &:hover {
+      img {
+        transform: rotate(10deg);
+      }
+    }
+
+    p {
+      font-size: 15px;
+      position: relative;
+      top: 10px;
+    }
 
     img {
       width: 89px;
@@ -30,16 +44,6 @@
   }
 }
 
-.text--saisons {
-  width: 134px;
-  color: white;
-  margin-left: -109px;
-}
-
-a {
-  font-size: 20px;
-}
-
 .image {
   max-width: 48px;
   opacity: 0.6;
@@ -48,17 +52,5 @@ a {
   &:hover {
     opacity: 1;
     transform: scale(1.05);
-  }
-}
-
-.poster-saison {
-  transition: tranform 300ms;
-}
-
-.container--poster-saison {
-  &:hover {
-    .poster-saison {
-      transform: rotate(10deg);
-    }
   }
 }

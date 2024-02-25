@@ -30,7 +30,15 @@ select {
 
   div {
     display: inline-flex;
+    flex-direction: column;
     margin: 33px;
+    width: 89px;
+
+    p {
+      position: relative;
+      top: 10px;
+      font-size: 15px;
+    }
 
     img {
       width: 89px;
@@ -39,16 +47,6 @@ select {
       opacity: 1;
     }
   }
-}
-
-.text--films {
-  width: 134px;
-  color: white;
-  margin-left: -109px;
-}
-
-a {
-  font-size: 20px;
 }
 
 .image {

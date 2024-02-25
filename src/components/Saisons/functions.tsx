@@ -42,6 +42,7 @@ export function getSaisons() {
           />
           <p className="text--saisons">
             <span>{saisons?.[i].name}</span>
+            <br />
             {isOAV ? '' : ' (' + intervalEpisodes + ')'}
           </p>
         </>
