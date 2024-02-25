@@ -98,7 +98,7 @@ select {
   position: relative;
   top: 30px;
   overflow-y: auto;
-  height: 400px;
+  max-height: 400px;
   margin: 21px;
 }
 
