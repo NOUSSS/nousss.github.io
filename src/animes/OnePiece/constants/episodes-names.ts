@@ -3385,6 +3385,10 @@ const episodes = [
     index: '1094',
     name: "Le mystère s'épaissit. L'étage du laboratoire d'Egg Head !",
   },
+  {
+    index: '1095',
+    name: "Le cerveau d'un génie. Les six Végapunk !",
+  },
 ];
 
 export default episodes;
