@@ -18,7 +18,7 @@ import { LecteurReturnType } from '../../typings/types.ts';
 
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
-import BaseReactPlayer from 'react-player/base';
+import BaseReactPlayer, { BaseReactPlayerProps } from 'react-player/base';
 import ReactPlayer from 'react-player';
 
 let LecteursFilms: string[] = [];
@@ -43,11 +43,13 @@ const Films = () => {
     window.localStorage.getItem(`${currentAnime}--lang`) ?? 'vostfr'
   );
 
-  const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
-  const [lecteurChange, setLecteurChange] = useState<boolean>(false);
+  const [currentLecteur, setCurrentLecteur] = useState<{
+    lecteur: string;
+    change?: boolean;
+  } | null>(null);
 
-  const videoRef = useRef<BaseReactPlayer<any>>(null);
-  const ambianceRef = useRef<BaseReactPlayer<any>>(null);
+  const videoRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
+  const ambianceRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
 
   const [output, setOutput] = useState<React.ReactNode>('');
   const lecteurString = useRef<'' | 'eps1' | 'eps2'>('');
@@ -67,16 +69,17 @@ const Films = () => {
     }).then(() => {
       Lecteurs = getLecteur();
 
-      if (currentLecteur) {
-        LecteursFilms = Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+      if (currentLecteur?.lecteur) {
+        LecteursFilms =
+          Lecteurs[currentLecteur.lecteur as 'epsAS' | 'eps1' | 'eps2']!;
       } else {
         if (Lecteurs.epsAS) {
-          setCurrentLecteur('epsAS');
+          setCurrentLecteur({ lecteur: 'epsAS' });
           LecteursFilms = Lecteurs.epsAS;
         } else {
           const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
 
-          setCurrentLecteur(lecteur);
+          setCurrentLecteur({ lecteur });
 
           LecteursFilms = Lecteurs[lecteur]!;
         }
@@ -103,9 +106,9 @@ const Films = () => {
         setTitle
       );
 
-      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur);
+      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur!.lecteur);
     });
-  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, lecteurChange]);
+  }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, currentLecteur?.change]);
 
   setTimeout(() => {
     const poster = document.querySelectorAll('.poster');
@@ -161,8 +164,10 @@ const Films = () => {
         Object.keys(Lecteurs).length > 1 ? (
           <select
             onChange={({ target: { value } }) => {
-              setCurrentLecteur(value);
-              setLecteurChange(!lecteurChange);
+              setCurrentLecteur({
+                lecteur: value,
+                change: !currentLecteur?.change,
+              });
             }}
           >
             {Object.keys(Lecteurs).map((l, i) => (
@@ -175,7 +180,7 @@ const Films = () => {
       ) : null}
 
       <div className="video--films">
-        {currentLecteur === 'epsAS' ? (
+        {currentLecteur?.lecteur === 'epsAS' ? (
           <>
             <ReactPlayer
               width="100%"
@@ -237,11 +242,13 @@ const Films = () => {
 
       <div className="search--output--films">{output}</div>
 
-      <DownloadComponent
-        lecteur={'eps1'}
-        video={video}
-        className="tips--films"
-      />
+      {currentLecteur?.lecteur ? (
+        <DownloadComponent
+          lecteur={currentLecteur.lecteur}
+          video={video}
+          className="tips--films"
+        />
+      ) : null}
 
       <div className="films">{films}</div>
 

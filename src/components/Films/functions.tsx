@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ANIMES } from '../../animes/constants';
 import { getAnime } from '../../functions/getAnime';
-import { LecteurReturnType } from '../../typings/types';
 import { getLecteur } from '../../functions/main';
 
 export async function appearVideo(
@@ -56,13 +55,17 @@ export function getFilms(
   setFilmsFront: React.Dispatch<
     React.SetStateAction<React.ReactNode[] | undefined>
   >,
-  setCurrentLecteur: React.Dispatch<React.SetStateAction<string | null>>,
+
+  setCurrentLecteur: React.Dispatch<
+    React.SetStateAction<{ lecteur: string; change?: boolean } | null>
+  >,
+
   currentLecteur: string | null
 ) {
   let LecteursFilms: string[] = [];
-  let Lecteurs: LecteurReturnType;
 
   const currentAnime = getAnime({ wSaison: false });
+  const Lecteurs = getLecteur();
 
   const { names } =
     ANIMES.find(
@@ -71,18 +74,16 @@ export function getFilms(
 
   const filmsNodes: React.ReactNode[] = [];
 
-  Lecteurs = getLecteur();
-
   if (currentLecteur) {
     LecteursFilms = Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
   } else {
     if (Lecteurs.epsAS) {
-      setCurrentLecteur('epsAS');
+      setCurrentLecteur({ lecteur: 'epsAS' });
       LecteursFilms = Lecteurs.epsAS;
     } else {
       const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
 
-      setCurrentLecteur(lecteur);
+      setCurrentLecteur({ lecteur });
 
       LecteursFilms = Lecteurs[lecteur]!;
     }

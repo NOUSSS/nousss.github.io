@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast';
+import { LecteurReturnType } from '../typings/types';
 
 import React from 'react';
-import { LecteurReturnType } from '../typings/types';
 
 export const clear = (div: HTMLCollectionOf<HTMLElement>): void => {
   Array.from(div).forEach((element) => {
@@ -43,7 +43,7 @@ export function addScript({
   currentAnime: string;
   saisonIndex?: string;
   setLang?: React.Dispatch<React.SetStateAction<string>>;
-}): Promise<boolean> {
+}): Promise<() => void> {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
 
@@ -74,7 +74,7 @@ export function addScript({
         },
       });
 
-      resolve(true);
+      resolve(() => document.head.removeChild(script));
     };
 
     script.onerror = () => {
@@ -102,7 +102,7 @@ export function addScript({
       });
 
       toast.dismiss(loading);
-      reject(false);
+      reject(() => document.head.removeChild(script));
     };
 
     document.head.appendChild(script);

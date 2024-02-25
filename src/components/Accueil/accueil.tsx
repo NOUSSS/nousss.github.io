@@ -78,7 +78,7 @@ const Accueil = () => {
   );
 
   useEffect(() => {
-    let updatedCatalogues = groupAnimesByCategory(
+    const updatedCatalogues = groupAnimesByCategory(
       ANIMES.map(({ anime, category }) => ({ anime, category }))
     ).sort((a, b) => b.names.length - a.names.length);
 

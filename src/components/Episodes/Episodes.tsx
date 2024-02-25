@@ -16,7 +16,7 @@ import { LecteurReturnType } from '../../typings/types.ts';
 
 import Switch from '@mui/material/Switch';
 import ReactPlayer from 'react-player/lazy';
-import BaseReactPlayer from 'react-player/base';
+import BaseReactPlayer, { BaseReactPlayerProps } from 'react-player/base';
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
 
@@ -79,11 +79,15 @@ export default function Episodes() {
   const [output, setOutput] = useState<React.ReactNode>('');
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
 
-  const [currentLecteur, setCurrentLecteur] = useState<string | null>(null);
-  const [lecteurChange, setLecteurChange] = useState<boolean>(false);
+  const [currentLecteur, setCurrentLecteur] = useState<{
+    lecteur: string;
+    change?: boolean;
+  } | null>(null);
 
-  const videoRef = useRef<BaseReactPlayer<any>>(null);
-  const ambianceRef = useRef<BaseReactPlayer<any>>(null);
+  const videoRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
+  const ambianceRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
+
+  const removeScriptFunction = useRef<() => void>();
 
   useEffect(() => {
     const NextSaisonSelector =
@@ -142,15 +146,16 @@ export default function Episodes() {
 
       setLang,
     })
-      .then(async () => {
+      .then(async (removeScript) => {
+        removeScriptFunction.current = removeScript;
         Lecteurs = getLecteur();
 
-        if (currentLecteur) {
+        if (currentLecteur?.lecteur) {
           LecteurEpisodes =
-            Lecteurs[currentLecteur as 'epsAS' | 'eps1' | 'eps2']!;
+            Lecteurs[currentLecteur.lecteur as 'epsAS' | 'eps1' | 'eps2']!;
         } else {
           if (Lecteurs.epsAS) {
-            setCurrentLecteur('epsAS');
+            setCurrentLecteur({ lecteur: 'epsAS' });
             LecteurEpisodes = Lecteurs.epsAS;
           } else {
             const lecteur = Object.keys(Lecteurs)[0] as
@@ -158,11 +163,13 @@ export default function Episodes() {
               | 'eps2'
               | 'epsAS';
 
-            setCurrentLecteur(lecteur);
+            setCurrentLecteur({ lecteur });
 
             LecteurEpisodes = Lecteurs[lecteur]!;
           }
         }
+
+        console.log(currentLecteur);
 
         setSaisonTitle(
           <>
@@ -344,11 +351,17 @@ export default function Episodes() {
         }
       }
     }
+
+    return () => {
+      if (removeScriptFunction.current) {
+        removeScriptFunction.current();
+      }
+    };
   }, [
     currentAnime,
     horsSeries,
     allIndex,
-    lecteurChange,
+    currentLecteur?.change,
     options.note,
     saisons,
     saison,
@@ -445,8 +458,10 @@ export default function Episodes() {
         Object.keys(Lecteurs).length > 1 ? (
           <select
             onChange={({ target: { value } }) => {
-              setCurrentLecteur(value);
-              setLecteurChange(!lecteurChange);
+              setCurrentLecteur({
+                lecteur: value,
+                change: !currentLecteur?.change,
+              });
             }}
           >
             {Object.keys(Lecteurs).map((l, i) => (
@@ -459,7 +474,7 @@ export default function Episodes() {
       ) : null}
 
       <div className="videoContainer">
-        {currentLecteur === 'epsAS' ? (
+        {currentLecteur?.lecteur === 'epsAS' ? (
           <>
             <div className="vid">
               <ReactPlayer
@@ -522,11 +537,13 @@ export default function Episodes() {
         </div>
       </div>
 
-      <DownloadComponent
-        video={video}
-        lecteur={currentLecteur!}
-        className="download"
-      />
+      {currentLecteur?.lecteur ? (
+        <DownloadComponent
+          video={video}
+          lecteur={currentLecteur.lecteur}
+          className="download"
+        />
+      ) : null}
 
       <SearchBar
         component="episodes"
