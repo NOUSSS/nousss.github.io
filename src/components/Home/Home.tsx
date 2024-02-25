@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { isIOS } from '../../functions/main';
 import { Link } from 'react-router-dom';
-import { Footer, Title } from '../utils/components';
+import { Footer } from '../utils/Footer';
+import { Title } from '../utils/title';
 
 import './responsive.scss';
 import './Home.scss';
@@ -14,12 +13,6 @@ const Home = () => {
   const { synopsis } = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!;
-
-  useEffect(() => {
-    if (isIOS()) {
-      setTimeout(() => window.scrollTo({ top: 500, behavior: 'smooth' }), 1000);
-    }
-  }, []);
 
   return (
     <div className="container--home">

@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import './Saisons.scss';
 import './responsive.scss';
 
-import { getSaisons } from './functions';
+import { getSaisons } from './getSaisons';
 import { ANIMES } from '../../animes/constants';
-import { Footer, Title } from '../utils/components';
-import { changeSaison } from './utils';
+import { Footer } from '../utils/Footer';
+import { Title } from '../utils/title';
+import { changeSaison } from './changeSaison';
 import { getAnime } from '../../functions/getAnime';
 
 import SearchBar from '../utils/searchBar';

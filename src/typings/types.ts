@@ -72,3 +72,13 @@ export type EpisodesOptions = {
 
   allIndex: allIndexType;
 };
+
+export type Historique = {
+  name: string;
+  redirect: string;
+
+  chapitre?: string;
+  episode?: string;
+  saison?: string;
+  film?: string;
+};

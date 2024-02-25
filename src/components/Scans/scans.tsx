@@ -3,17 +3,13 @@ import './responsive.scss';
 
 import React, { useState, useEffect, useRef } from 'react';
 
-import {
-  getTailleChapitres,
-  selectChapter,
-  clickEvents,
-} from './functions.tsx';
-
-import { addScript } from '../../functions/main.ts';
+import { getTailleChapitres, selectChapter } from './chapterManager.tsx';
+import { addScript } from '../../functions/addScript.ts';
 import { ANIMES } from '../../animes/constants.ts';
-import { Footer, Title } from '../utils/components.tsx';
-
+import { Footer } from '../utils/Footer';
+import { Title } from '../utils/title';
 import { getAnime } from '../../functions/getAnime.ts';
+import { clickEvents } from './eventHandler';
 
 const Scans = () => {
   const currentAnime = getAnime({ wSaison: false });

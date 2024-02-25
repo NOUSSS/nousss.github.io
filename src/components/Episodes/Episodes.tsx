@@ -7,12 +7,15 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
-import { addScript, getLecteur, isIOS } from '../../functions/main.ts';
 import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents } from './eventHandlers.tsx';
-import { Footer, Title } from '../utils/components.tsx';
+import { Footer } from '../utils/Footer';
+import { Title } from '../utils/title';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
+import { addScript } from '../../functions/addScript.ts';
+import { getLecteur } from '../../functions/getLecteur.ts';
+import { isIOS } from '../../functions/isIOS.ts';
 
 import Switch from '@mui/material/Switch';
 import ReactPlayer from 'react-player/lazy';

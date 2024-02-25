@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Change, NextEpisode, PrevEpisode } from './functions';
+import { Change, NextEpisode, PrevEpisode } from './episodeManager';
 
 type EventHandler = (() => void) | null;
 

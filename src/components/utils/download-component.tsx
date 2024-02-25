@@ -1,5 +1,5 @@
 import React from 'react';
-import { isIOS } from '../../functions/main';
+import { isIOS } from '../../functions/isIOS';
 
 type DownloadComponentProps = {
   video: string;
@@ -22,7 +22,7 @@ const DownloadComponent: React.FC<DownloadComponentProps> = ({
   if (!video) return null;
 
   return (
-    <div className={className}>
+    <div style={{ textAlign: 'left' }} className={className}>
       {lecteur === 'epsAS' ? (
         isIOS() ? (
           <>

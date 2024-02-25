@@ -1,4 +1,4 @@
-import { initSearchBar } from '../../functions/search';
+import { initSearchBar } from '../../functions/initSearchBar';
 
 import searchImg from '../../assets/Search.svg';
 

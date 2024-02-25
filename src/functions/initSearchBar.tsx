@@ -1,4 +1,5 @@
-import { toUpper } from './main';
+const toUpper = (param: string): string =>
+  param[0].toUpperCase() + param.slice(1);
 
 export function initSearchBar(
   input: HTMLInputElement,

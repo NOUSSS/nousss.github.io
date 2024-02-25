@@ -8,13 +8,15 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
-import { getLecteur } from '../../functions/main.ts';
-import { addScript } from '../../functions/main.ts';
-import { appearVideo, getFilms } from './functions.tsx';
-import { Footer, Title } from '../utils/components.tsx';
+import { Footer } from '../utils/Footer';
+import { Title } from '../utils/title';
 import { ANIMES } from '../../animes/constants.ts';
 import { getAnime } from '../../functions/getAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
+import { appearVideo } from './appearVideo.tsx';
+import { getFilms } from './getFilms.tsx';
+import { getLecteur } from '../../functions/getLecteur.ts';
+import { addScript } from '../../functions/addScript.ts';
 
 import DownloadComponent from '../utils/download-component.tsx';
 import SearchBar from '../utils/searchBar.tsx';
