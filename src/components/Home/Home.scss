@@ -1,14 +1,15 @@
+body,
+html {
+  height: 100%;
+}
+
 .container--home {
   .card {
+    padding: 15px;
     width: 500px;
-    height: auto;
-    background-color: hsl(231, 10%, 14%);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #17171c;
+    box-shadow: #00000026 0 15px 25px, #0000000d 0 5px 10px;
     border-radius: 7px;
-    margin-top: 30%;
-    opacity: 0.9;
-    transition: all 1s;
-    margin-bottom: 23px;
 
     .footer {
       margin-top: 90px;
@@ -37,8 +38,8 @@
           height: 2px;
           width: 100%;
           transform: scaleX(0);
-          transform-origin: center;
-          transition: transform 350ms ease-out;
+          transform-origin: left;
+          transition: transform 300ms ease-out;
         }
 
         &:hover {
