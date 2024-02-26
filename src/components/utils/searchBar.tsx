@@ -3,19 +3,19 @@ import { initSearchBar } from '../../functions/initSearchBar';
 import searchImg from '../../assets/Search.svg';
 
 export default function SearchBar({
-  component,
   container,
 
+  output,
   setOutput,
 }: {
-  component: string;
   container: string;
+  output: string;
 
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;
 }) {
   return (
     <label
-      className={`label--${component}`}
+      className={`label--search-bar`}
       title="Systeme de recherche super cool"
     >
       <img src={searchImg} alt="" />
@@ -28,7 +28,7 @@ export default function SearchBar({
             document.getElementsByClassName(
               container
             ) as HTMLCollectionOf<HTMLElement>,
-            component,
+            output,
             setOutput
           )
         }

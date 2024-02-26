@@ -138,7 +138,7 @@ export default function Accueil() {
         <div className="container--search-bar">
           <SearchBar
             container="animes-list"
-            component="anime"
+            output="search--output--anime"
             setOutput={setOutput}
           />
 

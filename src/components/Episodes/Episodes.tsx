@@ -547,8 +547,8 @@ export default function Episodes() {
       ) : null}
 
       <SearchBar
-        component="episodes"
         container="list-episodes"
+        output="search--output--episodes"
         setOutput={setOutput}
       />
 

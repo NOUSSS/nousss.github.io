@@ -70,8 +70,14 @@
     font-size: 26px;
   }
 
-  .list-episodes {
-    width: 361px;
+  .container--list {
+    top: 13px;
+
+    .list {
+      .list-episodes {
+        width: 361px;
+      }
+    }
   }
 
   .titleSaison {

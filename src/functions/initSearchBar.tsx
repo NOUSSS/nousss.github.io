@@ -1,10 +1,8 @@
-const toUpper = (param: string): string =>
-  param[0].toUpperCase() + param.slice(1);
-
 export function initSearchBar(
   input: HTMLInputElement,
   div: HTMLCollectionOf<HTMLElement>,
-  component: string,
+
+  output: string,
 
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
@@ -25,14 +23,10 @@ export function initSearchBar(
     }
   }
 
-  const output = document.querySelector<HTMLElement>(
-    `.search--output--${component}`
-  )!;
-
   function updateResults(): void {
     let count = 0;
 
-    Array.from([...div]).forEach((element, index) => {
+    Array.from(div).forEach((element, index) => {
       if (
         input.value.length === 0 ||
         element.id.toLowerCase().includes(input.value.toLowerCase())
@@ -44,7 +38,9 @@ export function initSearchBar(
       }
     });
 
-    if (component === 'anime') {
+    const outputElement = document.querySelector(`.${output}`)!;
+
+    if (outputElement.className.includes('anime')) {
       const categories = document.querySelectorAll('.catalogue > div');
 
       categories.forEach((category) => {
@@ -62,15 +58,15 @@ export function initSearchBar(
     setOutput(
       input.value.length === 0 ? null : (
         <>
-          <span>{count}</span> {toUpper(component)}{' '}
-          {count > 1 ? 'trouvés' : 'trouvé'}
+          <span>{count}</span>{' '}
+          {count > 1 ? 'résultats trouvés' : 'résultat trouvé'}
         </>
       )
     );
 
     input.value.length === 0
-      ? output.classList.add('invisible')
-      : output.classList.remove('invisible');
+      ? outputElement.classList.add('invisible')
+      : outputElement.classList.remove('invisible');
   }
 
   input.addEventListener('input', updateResults);

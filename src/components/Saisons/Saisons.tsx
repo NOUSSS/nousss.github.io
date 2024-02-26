@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import './Saisons.scss';
 import './responsive.scss';
@@ -23,18 +23,6 @@ const Saisons = () => {
 
   const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);
-
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo({ top: 580, behavior: 'smooth' });
-    }, 1000);
-
-    document.querySelectorAll('.container--poster-saison').forEach((e, i) => {
-      e.addEventListener('click', () => {
-        changeSaison(String(i + 1));
-      });
-    });
-  }, []);
 
   return (
     <div className="container--saisons">
@@ -68,7 +56,7 @@ const Saisons = () => {
       </p>
 
       <SearchBar
-        component="saisons"
+        output="search--output--saisons"
         container="container--poster-saison"
         setOutput={setOutput}
       />
@@ -76,12 +64,13 @@ const Saisons = () => {
       <div className="search--output--saisons">{output}</div>
 
       <div className="saisons">
-        {getSaisons().map(({ element, id }) => (
+        {getSaisons().map(({ element, id }, index) => (
           <div
             style={{ cursor: 'pointer' }}
             key={id}
             id={id}
             className="container--poster-saison"
+            onClick={() => changeSaison(String(index + 1))}
           >
             {element}
           </div>

@@ -240,8 +240,8 @@ const Films = () => {
       </div>
 
       <SearchBar
-        component="films"
         container="container--poster"
+        output="search--output--films"
         setOutput={setOutput}
       />
 
