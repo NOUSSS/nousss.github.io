@@ -110,19 +110,16 @@ const Films = () => {
         setTitle
       );
 
-      getFilms(setFilmsFront, setCurrentLecteur, currentLecteur!);
+      getFilms(
+        setFilmsFront,
+        setCurrentLecteur,
+        setTitle,
+        setVideo,
+
+        currentLecteur!
+      );
     });
   }, [lang, BLACKLIST_URL, SCRIPT_URL, currentAnime, currentLecteur?.change]);
-
-  setTimeout(() => {
-    const poster = document.querySelectorAll('.poster');
-
-    Array.from([...poster]).map((_, i) => {
-      poster[i].addEventListener('click', () => {
-        appearVideo(poster[i].id, setVideo, setTitle);
-      });
-    });
-  }, 1000);
 
   return (
     <div className="container--films">

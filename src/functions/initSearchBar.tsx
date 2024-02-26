@@ -20,15 +20,12 @@ export function initSearchBar(
   }
 
   function updateResults(): void {
-    let count = 0;
-
     Array.from(container).forEach((element, index) => {
       if (
         input.value.length === 0 ||
         element.id.toLowerCase().includes(input.value.toLowerCase())
       ) {
         container[index].classList.remove('invisible');
-        if (input.value.length !== 0) count++;
       } else {
         container[index].classList.add('invisible');
       }

@@ -1,4 +1,4 @@
-import { ANIMES } from '../animes/constants';
+import { getAnime } from './getAnime';
 
 export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
   const hash = window.location.hash;
@@ -10,6 +10,8 @@ export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
   let storedAnime = window.localStorage.getItem('anime');
 
   if (!currentAnimeURL && !storedAnime) window.location.hash = '/';
+  if (currentAnimeURL && !getAnime(currentAnimeURL!))
+    window.location.hash = '/';
 
   if (!storedAnime) {
     window.localStorage.setItem('anime', currentAnimeURL!);
@@ -40,13 +42,6 @@ export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
 
     window.localStorage.setItem('anime', currentAnimeURL);
   }
-
-  if (
-    !ANIMES.find(
-      ({ anime }) => anime.toLowerCase() === storedAnime!.toLowerCase()
-    )
-  )
-    window.location.hash = '/';
 
   return storedAnime;
 };

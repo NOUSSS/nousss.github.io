@@ -11,6 +11,7 @@ export function addScript({
   url: string;
   currentAnime: string;
   saisonIndex?: string;
+
   setLang?: React.Dispatch<React.SetStateAction<string>>;
 }): Promise<() => void> {
   return new Promise((resolve, reject) => {
@@ -71,6 +72,7 @@ export function addScript({
       });
 
       toast.dismiss(loading);
+
       reject(() => document.head.removeChild(script));
     };
 

@@ -1,14 +1,6 @@
-import React from 'react';
 import { isIOS } from '../../functions/isIOS';
 
-type DownloadComponentProps = {
-  video: string;
-  lecteur: string;
-
-  className: string;
-};
-
-const DownloadComponent: React.FC<DownloadComponentProps> = ({
+const DownloadComponent = ({
   video,
   lecteur,
   className,

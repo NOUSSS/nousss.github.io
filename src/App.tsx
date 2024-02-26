@@ -13,7 +13,7 @@ import logo from '/Logo.png';
 import PageNotFound from './components/utils/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const AppRoutes = () => {
   const currentSeason =
@@ -62,22 +62,10 @@ const AppRoutes = () => {
 
 const App = () => {
   useEffect(() => {
-    window.addEventListener('error', () => {
-      toast.error('Une erreur est survenue', {
-        position: 'bottom-center',
-
-        style: {
-          fontSize: '15px',
-          fontFamily: 'Fredoka',
-        },
-      });
-    });
-
     const mainColor = window.localStorage.getItem('color');
 
-    if (mainColor) {
+    if (mainColor)
       document.documentElement.style.setProperty('--mainColor', mainColor);
-    }
 
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>('.title h1')!;

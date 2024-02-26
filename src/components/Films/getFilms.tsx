@@ -2,6 +2,7 @@ import { ANIMES } from '../../animes/constants';
 
 import { getCurrentAnime } from '../../functions/getCurrentAnime';
 import { getLecteur } from '../../functions/getLecteur';
+import { appearVideo } from './appearVideo';
 
 export function getFilms(
   setFilmsFront: React.Dispatch<
@@ -11,6 +12,9 @@ export function getFilms(
   setCurrentLecteur: React.Dispatch<
     React.SetStateAction<{ lecteur: string; change?: boolean } | null>
   >,
+
+  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setVideo: React.Dispatch<React.SetStateAction<string>>,
 
   currentLecteur: {
     lecteur: string;
@@ -35,6 +39,7 @@ export function getFilms(
   } else {
     if (Lecteurs.epsAS) {
       setCurrentLecteur({ lecteur: 'epsAS' });
+
       LecteursFilms = Lecteurs.epsAS;
     } else {
       const lecteur = Object.keys(Lecteurs)[0] as 'eps1' | 'eps2' | 'epsAS';
@@ -55,7 +60,14 @@ export function getFilms(
 
     filmsNodes.push(
       <div id={id} key={id} className="list-poster">
-        <img className="poster" src={names![i].image()} id={`${url} ${i}`} />
+        <img
+          className="poster"
+          src={names![i].image()}
+          id={`${url} ${i}`}
+          onClick={() => {
+            appearVideo(`${url} ${i}`, setVideo, setTitle);
+          }}
+        />
         <p className="text--films">{names![i].name}</p>
       </div>
     );
