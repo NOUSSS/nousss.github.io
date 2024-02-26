@@ -27,9 +27,6 @@ export async function appearVideo(
 
   window.localStorage.setItem(`${currentAnime}--currentFilm`, index);
 
-  console.log(names);
-  console.log(index);
-
   if (lang === 'vostfr') {
     setTitle(
       <>
