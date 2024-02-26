@@ -12,15 +12,20 @@
 
 .episodeName {
   transition: all 150ms ease-out;
-
-  color: white;
 }
 
 .list-episodes {
   cursor: pointer;
-  transition: color 150ms ease-out;
 
   width: 900px;
+
+  span {
+    transition: color 250ms ease-out;
+  }
+
+  .episodeName {
+    color: white;
+  }
 
   &:hover {
     .episodeName {
@@ -28,24 +33,9 @@
     }
 
     span {
-      transition: color 150ms ease-out;
       color: white;
     }
   }
-}
-
-.search--output--episodes {
-  color: white;
-  font-size: 20px;
-  position: relative;
-  top: -15px;
-  margin: 10px;
-}
-
-.szh-menu-button {
-  width: 160px;
-  height: 47px;
-  top: 5px;
 }
 
 select {
@@ -59,19 +49,14 @@ select {
   border: var(--mainColor) 1px solid;
   color: var(--mainColor);
   height: 47px;
-
-  option {
-    color: white;
-  }
 }
 
 .titleSaison {
   margin: 46px;
-  color: white;
+
   font-size: 36px;
 
   a {
-    color: white;
     font-size: 56px;
   }
 }
@@ -89,7 +74,6 @@ select {
 
 .historiqueEpisode {
   p {
-    color: white;
     margin: -15px;
   }
 }
@@ -104,7 +88,6 @@ select {
 
 .title {
   font-size: 66px;
-  color: white;
 
   img {
     width: auto;
@@ -117,10 +100,6 @@ select {
 
     &:hover {
       color: var(--mainColor);
-
-      span {
-        color: white;
-      }
     }
   }
 }
@@ -142,7 +121,6 @@ select {
 
 .download {
   margin-top: 25px;
-  color: white;
 
   span {
     a {
@@ -156,4 +134,8 @@ select {
   font-size: 30px;
   margin: 29px;
   margin-top: 50px;
+
+  .episodeName {
+    color: white;
+  }
 }

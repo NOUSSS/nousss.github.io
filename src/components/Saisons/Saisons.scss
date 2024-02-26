@@ -1,15 +1,10 @@
 .lastSaison {
   margin: 50px;
-  color: white;
 
   a {
     text-decoration: underline;
+    color: var(--mainColor);
   }
-}
-
-.search--output--saisons {
-  color: white;
-  font-size: 25px;
 }
 
 .saisons {

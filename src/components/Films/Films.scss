@@ -1,18 +1,6 @@
 .film {
-  color: white;
   margin: 46px;
   font-size: 36px;
-}
-
-.search--output--films {
-  color: white;
-  font-size: 34px;
-}
-
-.szh-menu-button {
-  width: 160px;
-  height: 47px;
-  top: 5px;
 }
 
 select {
@@ -26,10 +14,6 @@ select {
   border: var(--mainColor) 1px solid;
   color: var(--mainColor);
   height: 47px;
-
-  option {
-    color: white;
-  }
 }
 
 .video--films {
@@ -74,7 +58,6 @@ select {
 }
 
 .tips--films {
-  color: white;
   margin: 29px;
   margin-top: 70px;
 
