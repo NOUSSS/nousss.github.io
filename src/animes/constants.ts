@@ -49,6 +49,7 @@ import AoAshi from './AoAshi/ao-ashi';
 import DemonSlave from './DemonSlave/demon-slave';
 import GurrenLagann from './GurrenLagann/gurren-lagann';
 import SevenDeadlySins from './SevenDeadlySins/seven-deadly-sins';
+import RagnaCrimson from './RagnaCrimson/ragna-crimson';
 
 export const ANIMES: {
   anime: string;
@@ -462,6 +463,13 @@ export const ANIMES: {
     aliases: ['meliodas'],
     synopsis:
       "Il y a dix ans, un groupe de Chevaliers Sacrés renégats appelé les Seven Deadly Sins s'est rebellé contre les Chevaliers Sacrés, la garde du royaume. Depuis, ils ont disparu et personne ne sait ce qu'ils sont devenus.",
+  },
+  {
+    anime: 'Ragna Crimson',
+    category: ['Aventure'],
+    options: new RagnaCrimson(),
+    synopsis:
+      "Les chasseurs de dragons tuent leurs proies avec leur épée d'argent afin de toucher une récompense. Parmi eux, il y a Ragna, un jeune homme plutôt faible faisant équipe avec Léonica, une chasseuse de génie qui peut se vanter d'avoir tué bien plus de dragons que n'importe quel autre chasseur.",
   },
 ];
 
