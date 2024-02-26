@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import './Saisons.scss';
 import './responsive.scss';
 
