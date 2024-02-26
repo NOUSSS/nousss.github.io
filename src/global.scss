@@ -96,10 +96,16 @@ span {
   position: fixed;
   left: 0;
   top: 0;
-  margin: 15px 30px;
+  margin-top: 20px;
+  margin-left: 25px;
 
   display: flex;
   align-items: center;
+
+  p {
+    position: relative;
+    top: 6px;
+  }
 
   img {
     width: 50px;
@@ -113,7 +119,7 @@ span {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -13px;
     background-color: var(--mainColor);
     height: 2px;
     width: 0%;
@@ -123,7 +129,7 @@ span {
 
   &:hover {
     &::after {
-      width: 60%;
+      width: 100%;
     }
   }
 }
@@ -296,10 +302,11 @@ footer {
   }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 550px) {
   .logo {
     justify-content: center;
     width: 100%;
+    margin: 0;
 
     &::after {
       content: none;
@@ -307,6 +314,16 @@ footer {
 
     *:not(img) {
       display: none;
+    }
+
+    img {
+      position: relative;
+      left: 0;
+      transition: transform 0.7s ease-out;
+
+      &:hover {
+        transform: rotate(360deg);
+      }
     }
   }
 }
