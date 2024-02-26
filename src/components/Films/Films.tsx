@@ -53,7 +53,6 @@ const Films = () => {
   const videoRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
   const ambianceRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
 
-  const [output, setOutput] = useState<React.ReactNode>('');
   const lecteurString = useRef<'' | 'eps1' | 'eps2'>('');
 
   useEffect(() => {
@@ -239,13 +238,7 @@ const Films = () => {
         )}
       </div>
 
-      <SearchBar
-        container="container--poster"
-        output="search--output--films"
-        setOutput={setOutput}
-      />
-
-      <div className="search--output--films">{output}</div>
+      <SearchBar container="list-poster" />
 
       {currentLecteur?.lecteur ? (
         <DownloadComponent

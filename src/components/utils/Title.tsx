@@ -7,29 +7,28 @@ export function Title({
   accueil?: boolean;
   link?: string;
 }) {
-  return accueil ? (
-    <div className="title">
-      <h1
-        style={{
-          marginTop: '20px',
-        }}
-      >
-        Le catalogue
-      </h1>
-    </div>
+  const text = accueil ? (
+    <h1
+      style={{
+        marginTop: '20px',
+        textAlign: 'left',
+      }}
+    >
+      Le catalogue
+    </h1>
   ) : (
-    <div className="title">
-      <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
-        <h1>
-          {window.localStorage
-            .getItem('anime')
-            ?.split(' ')
-            .map((word) => {
-              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-            })
-            .join(' ')}
-        </h1>
-      </Link>
-    </div>
+    <Link to={link ? '/' + link : '/'} style={{ fontSize: '60px' }}>
+      <h1>
+        {window.localStorage
+          .getItem('anime')
+          ?.split(' ')
+          .map((word) => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          })
+          .join(' ')}
+      </h1>
+    </Link>
   );
+
+  return <div className="title">{text}</div>;
 }

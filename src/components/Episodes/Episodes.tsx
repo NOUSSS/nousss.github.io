@@ -77,10 +77,10 @@ export default function Episodes() {
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
-  const [video, setVideo] = useState<string>('');
 
-  const [output, setOutput] = useState<React.ReactNode>('');
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
+
+  const [video, setVideo] = useState<string>('');
 
   const [currentLecteur, setCurrentLecteur] = useState<{
     lecteur: string;
@@ -546,13 +546,7 @@ export default function Episodes() {
         />
       ) : null}
 
-      <SearchBar
-        container="list-episodes"
-        output="search--output--episodes"
-        setOutput={setOutput}
-      />
-
-      <div className="search--output--episodes">{output}</div>
+      <SearchBar container="list-episodes" />
 
       {isIOS() ? null : (
         <label className="hideEpisodesNames">

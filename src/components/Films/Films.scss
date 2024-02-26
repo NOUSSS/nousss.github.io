@@ -91,7 +91,7 @@ select {
   transition: tranform 300ms;
 }
 
-.container--poster {
+.list-poster {
   &:hover {
     .poster {
       transform: rotate(10deg);

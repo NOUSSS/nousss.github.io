@@ -17,7 +17,6 @@ import { getAnime } from '../../functions/getAnime';
 import SearchBar from '../utils/searchBar';
 
 export default function Accueil() {
-  const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
     ANIMES.map(({ anime, category }) => ({ anime, category }))
   );
@@ -121,13 +120,7 @@ export default function Accueil() {
         <Title accueil />
 
         <div className="container--search-bar">
-          <SearchBar
-            container="animes-list"
-            output="search--output--anime"
-            setOutput={setOutput}
-          />
-
-          <div className="search--output--anime">{output}</div>
+          <SearchBar container="animes-list" />
         </div>
       </nav>
 

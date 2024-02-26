@@ -2,17 +2,7 @@ import { initSearchBar } from '../../functions/initSearchBar';
 
 import searchImg from '../../assets/Search.svg';
 
-export default function SearchBar({
-  container,
-
-  output,
-  setOutput,
-}: {
-  container: string;
-  output: string;
-
-  setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-}) {
+export default function SearchBar({ container }: { container: string }) {
   return (
     <label
       className={`label--search-bar`}
@@ -27,9 +17,7 @@ export default function SearchBar({
             document.querySelector('input')!,
             document.getElementsByClassName(
               container
-            ) as HTMLCollectionOf<HTMLElement>,
-            output,
-            setOutput
+            ) as HTMLCollectionOf<HTMLElement>
           )
         }
         onFocus={({ target }) => {

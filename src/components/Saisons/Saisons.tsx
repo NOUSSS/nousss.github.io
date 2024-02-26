@@ -21,7 +21,6 @@ const Saisons = () => {
 
   if (!names) window.location.hash = `/home?anime=${encodeURI(currentAnime)}`;
 
-  const [output, setOutput] = useState<React.ReactNode>();
   const saison = window.localStorage.getItem(`${currentAnime}--saison`);
 
   return (
@@ -55,13 +54,7 @@ const Saisons = () => {
         ) : null}
       </p>
 
-      <SearchBar
-        output="search--output--saisons"
-        container="container--poster-saison"
-        setOutput={setOutput}
-      />
-
-      <div className="search--output--saisons">{output}</div>
+      <SearchBar container="list-poster-saison" />
 
       <div className="saisons">
         {getSaisons().map(({ element, id }, index) => (
@@ -69,7 +62,7 @@ const Saisons = () => {
             style={{ cursor: 'pointer' }}
             key={id}
             id={id}
-            className="container--poster-saison"
+            className="list-poster-saison"
             onClick={() => changeSaison(String(index + 1))}
           >
             {element}

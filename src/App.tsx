@@ -90,7 +90,7 @@ const App = () => {
     }, 2000);
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 35) {
+      if (window.scrollY >= 30) {
         document.querySelector<HTMLElement>('.logo')!.style.visibility =
           'hidden';
         document.querySelector<HTMLElement>('.logo')!.style.opacity = '0';
@@ -144,7 +144,9 @@ const App = () => {
           }}
         >
           <img src={logo} alt="Maison" />
-          <span>Mugiwara-no</span> Streaming
+          <p>
+            <span>Mugiwara-no</span> Streaming
+          </p>
         </h1>
       </Link>
 

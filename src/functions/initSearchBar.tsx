@@ -1,10 +1,6 @@
 export function initSearchBar(
   input: HTMLInputElement,
-  div: HTMLCollectionOf<HTMLElement>,
-
-  output: string,
-
-  setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  container: HTMLCollectionOf<HTMLElement>
 ): void {
   const colorpicker = document.querySelector('.color-picker') as HTMLDivElement;
 
@@ -26,21 +22,19 @@ export function initSearchBar(
   function updateResults(): void {
     let count = 0;
 
-    Array.from(div).forEach((element, index) => {
+    Array.from(container).forEach((element, index) => {
       if (
         input.value.length === 0 ||
         element.id.toLowerCase().includes(input.value.toLowerCase())
       ) {
-        div[index].classList.remove('invisible');
+        container[index].classList.remove('invisible');
         if (input.value.length !== 0) count++;
       } else {
-        div[index].classList.add('invisible');
+        container[index].classList.add('invisible');
       }
     });
 
-    const outputElement = document.querySelector(`.${output}`)!;
-
-    if (outputElement.className.includes('anime')) {
+    if (window.location.hash === '#/' || window.location.hash === '') {
       const categories = document.querySelectorAll('.catalogue > div');
 
       categories.forEach((category) => {
@@ -54,19 +48,6 @@ export function initSearchBar(
           : category.classList.remove('invisible');
       });
     }
-
-    setOutput(
-      input.value.length === 0 ? null : (
-        <>
-          <span>{count}</span>{' '}
-          {count > 1 ? 'résultats trouvés' : 'résultat trouvé'}
-        </>
-      )
-    );
-
-    input.value.length === 0
-      ? outputElement.classList.add('invisible')
-      : outputElement.classList.remove('invisible');
   }
 
   input.addEventListener('input', updateResults);

@@ -54,7 +54,7 @@ export function getFilms(
     }`;
 
     filmsNodes.push(
-      <div id={id} key={id} className="container--poster">
+      <div id={id} key={id} className="list-poster">
         <img className="poster" src={names![i].image()} id={`${url} ${i}`} />
         <p className="text--films">{names![i].name}</p>
       </div>
