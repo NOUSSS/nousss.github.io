@@ -1,13 +1,11 @@
 type SeasonAndFilm = {
-  [key: string]: {
-    name: string;
-    aliases?: string[];
-    image: () => string;
-  };
+  name: string;
+  aliases?: string[];
+  image: () => string;
 };
 
-export type Season = SeasonAndFilm;
-export type Film = SeasonAndFilm;
+export type Season = Record<string, SeasonAndFilm>;
+export type Film = Record<string, SeasonAndFilm>;
 
 export type Note = {
   saison: string;
@@ -19,9 +17,7 @@ export type horsSeriesType = {
   hs: number[];
 };
 
-export type allIndexType = {
-  [key: string]: number;
-};
+export type allIndexType = Record<string, number>;
 
 export type LecteurReturnType = {
   epsAS?: string[];
