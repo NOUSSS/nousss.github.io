@@ -1,6 +1,6 @@
 import { ANIMES } from '../../animes/constants';
 
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 import { getLecteur } from '../../functions/getLecteur';
 
 export function getFilms(
@@ -19,7 +19,7 @@ export function getFilms(
 ) {
   let LecteursFilms: string[] = [];
 
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
   const Lecteurs = getLecteur();
 
   const { names } =

@@ -6,10 +6,10 @@ import './responsive.scss';
 import './Home.scss';
 
 import { ANIMES } from '../../animes/constants';
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 const Home = () => {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
   const { synopsis } = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
   )!;

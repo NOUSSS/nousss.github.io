@@ -1,7 +1,7 @@
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 export function changeSaison(index: string) {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   window.location.hash = `S${index}/Episodes?anime=${encodeURI(currentAnime!)}`;
 

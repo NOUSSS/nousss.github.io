@@ -1,5 +1,5 @@
 import { Historique } from '../../typings/types';
-import { fetchAnime } from '../../functions/fetchAnime';
+import { getAnime } from '../../functions/getAnime';
 
 export const getCurrentEpisode = (
   animeName: string,
@@ -10,10 +10,10 @@ export const getCurrentEpisode = (
     return window.localStorage.getItem(`${animeName}--e-sp`)!;
   } else {
     if (
-      fetchAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length ??
+      getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length ??
       0 > 0
     ) {
-      const horsSeries = fetchAnime(
+      const horsSeries = getAnime(
         animeName
       )!.options.EPISODES_OPTIONS?.horsSeries!.find(
         ({ saison }) => saison === historiques?.[index].saison

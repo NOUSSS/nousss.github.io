@@ -12,26 +12,11 @@ import { Historique } from '../../typings/types';
 import { removeAnimeFromHistorique } from './historiqueManager';
 import { getCurrentChapitre } from './getCurrentChapitre';
 import { getCurrentEpisode } from './getCurrentEpisode';
-import { fetchAnime } from '../../functions/fetchAnime';
+import { getAnime } from '../../functions/getAnime';
 
 import SearchBar from '../utils/searchBar';
 
 export default function Accueil() {
-  for (const key of Object.keys(window.localStorage)) {
-    if (key.includes('episodeSpecial')) window.localStorage.removeItem(key);
-  }
-
-  const color = getComputedStyle(document.body).getPropertyValue('--mainColor');
-
-  const changeColor = (event: React.ChangeEvent<HTMLInputElement>) => {
-    document.documentElement.style.setProperty(
-      '--mainColor',
-      event.target.value
-    );
-
-    window.localStorage.setItem('color', event.target.value);
-  };
-
   const [output, setOutput] = useState<React.ReactNode>();
   const animes = Array.from(
     ANIMES.map(({ anime, category }) => ({ anime, category }))
@@ -185,7 +170,20 @@ export default function Accueil() {
       ) : null}
 
       <div className="color-picker invisible">
-        <input onChange={changeColor} value={color} type="color" />
+        <input
+          value={getComputedStyle(document.body).getPropertyValue(
+            '--mainColor'
+          )}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            document.documentElement.style.setProperty(
+              '--mainColor',
+              event.target.value
+            );
+
+            window.localStorage.setItem('color', event.target.value);
+          }}
+          type="color"
+        />
         <button
           onClick={() => {
             document.documentElement.style.setProperty(
@@ -213,9 +211,9 @@ export default function Accueil() {
                   id={
                     formatName(animeName) +
                     `${
-                      typeof fetchAnime(animeName)?.aliases === 'undefined'
+                      typeof getAnime(animeName)?.aliases === 'undefined'
                         ? ''
-                        : fetchAnime(animeName)?.aliases
+                        : getAnime(animeName)?.aliases
                     }`
                   }
                   key={
@@ -226,7 +224,7 @@ export default function Accueil() {
                 >
                   <div
                     title={
-                      fetchAnime(animeName)?.synopsis ??
+                      getAnime(animeName)?.synopsis ??
                       'Aucun synopsis pour cette anime'
                     }
                     className="card"
@@ -250,7 +248,7 @@ export default function Accueil() {
                     ) : null}
                     <img
                       className="affiche"
-                      src={fetchAnime(animeName)?.options.affiche}
+                      src={getAnime(animeName)?.options.affiche}
                     />
 
                     <p>

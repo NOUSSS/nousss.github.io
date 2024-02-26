@@ -1,5 +1,5 @@
 import { ANIMES } from '../../animes/constants';
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 export async function appearVideo(
   id: string,
@@ -7,7 +7,7 @@ export async function appearVideo(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const { names } =
     ANIMES.find(

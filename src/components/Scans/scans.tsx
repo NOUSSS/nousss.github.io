@@ -8,11 +8,11 @@ import { addScript } from '../../functions/addScript.ts';
 import { ANIMES } from '../../animes/constants.ts';
 import { Footer } from '../utils/Footer';
 import { Title } from '../utils/Title';
-import { getAnime } from '../../functions/getAnime.ts';
+import { getCurrentAnime } from '../../functions/getCurrentAnime.ts';
 import { clickEvents } from './eventHandler';
 
 const Scans = () => {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const options = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()

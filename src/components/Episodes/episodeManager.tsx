@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ANIMES } from '../../animes/constants';
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 export function Change(
   indexEpisode: number | string,
@@ -10,7 +10,7 @@ export function Change(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ): void {
-  const currentAnime = getAnime({ wSaison: true });
+  const currentAnime = getCurrentAnime({ wSaison: true });
 
   window.localStorage.setItem(`${currentAnime}--currentTime`, '0');
 
@@ -123,7 +123,7 @@ export function NextEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  const currentAnime = getAnime({ wSaison: true });
+  const currentAnime = getCurrentAnime({ wSaison: true });
 
   const newEpisodeIndex =
     Number(window.localStorage.getItem(`${currentAnime}--episode`)) + 1;
@@ -140,7 +140,7 @@ export function PrevEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>
 ) {
-  const currentAnime = getAnime({ wSaison: true });
+  const currentAnime = getCurrentAnime({ wSaison: true });
 
   const newEpisodeIndex =
     Number(window.localStorage.getItem(`${currentAnime}--episode`)) - 1;

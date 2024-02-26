@@ -1,4 +1,4 @@
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 import { selectChapter } from './chapterManager';
 
 const attachButtonClickEvent = (
@@ -13,7 +13,7 @@ const attachButtonClickEvent = (
 export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>
 ): void => {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   attachButtonClickEvent('prevButton', () => {
     setScans(

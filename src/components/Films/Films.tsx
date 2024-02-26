@@ -11,7 +11,7 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import { Footer } from '../utils/Footer';
 import { Title } from '../utils/Title';
 import { ANIMES } from '../../animes/constants.ts';
-import { getAnime } from '../../functions/getAnime.ts';
+import { getCurrentAnime } from '../../functions/getCurrentAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
 import { appearVideo } from './appearVideo.tsx';
 import { getFilms } from './getFilms.tsx';
@@ -27,7 +27,7 @@ let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 const Films = () => {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const options = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()

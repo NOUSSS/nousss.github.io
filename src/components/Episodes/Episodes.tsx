@@ -11,7 +11,7 @@ import { ANIMES } from '../../animes/constants.ts';
 import { clickEvents } from './eventHandlers.tsx';
 import { Footer } from '../utils/Footer';
 import { Title } from '../utils/Title';
-import { getAnime } from '../../functions/getAnime.ts';
+import { getCurrentAnime } from '../../functions/getCurrentAnime.ts';
 import { LecteurReturnType } from '../../typings/types.ts';
 import { addScript } from '../../functions/addScript.ts';
 import { getLecteur } from '../../functions/getLecteur.ts';
@@ -27,7 +27,7 @@ let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 export default function Episodes() {
-  const currentAnime = getAnime({ wSaison: true });
+  const currentAnime = getCurrentAnime({ wSaison: true });
 
   const options = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()

@@ -8,12 +8,12 @@ import { ANIMES } from '../../animes/constants';
 import { Footer } from '../utils/Footer';
 import { Title } from '../utils/Title';
 import { changeSaison } from './changeSaison';
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 import SearchBar from '../utils/searchBar';
 
 const Saisons = () => {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const names = ANIMES.find(
     ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()

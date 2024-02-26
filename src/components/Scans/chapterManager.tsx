@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ANIMES } from '../../animes/constants';
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 
 type windowKeys = {
   [key: string]: string;
@@ -33,7 +33,7 @@ export const selectChapter = (
 ): React.ReactNode[] | undefined => {
   window.scrollTo({ top: 5, behavior: 'smooth' });
 
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const { IMAGE_URL } =
     ANIMES.find(

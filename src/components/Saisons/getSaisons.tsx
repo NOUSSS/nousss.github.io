@@ -1,8 +1,8 @@
-import { getAnime } from '../../functions/getAnime';
+import { getCurrentAnime } from '../../functions/getCurrentAnime';
 import { ANIMES } from '../../animes/constants';
 
 export function getSaisons() {
-  const currentAnime = getAnime({ wSaison: false });
+  const currentAnime = getCurrentAnime({ wSaison: false });
 
   const options =
     ANIMES.find(
