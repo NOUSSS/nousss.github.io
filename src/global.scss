@@ -275,11 +275,10 @@ button {
 
 .ambiance {
   position: absolute;
-  top: 495px;
+  top: 0;
   z-index: -1;
-  width: 100%;
   transform: scale(1.1);
-  filter: blur(100px);
+  filter: blur(75px);
 }
 
 .szh-menu-button {

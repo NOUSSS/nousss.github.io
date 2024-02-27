@@ -83,8 +83,6 @@ const Films = () => {
 
           setCurrentLecteur({ lecteur: lecteur });
 
-          console.log(lecteur);
-
           LecteursFilms = Lecteurs[lecteur]!;
         }
       }

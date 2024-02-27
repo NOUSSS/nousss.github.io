@@ -16,12 +16,6 @@ select {
   height: 47px;
 }
 
-.video--films {
-  .ambiance {
-    top: 241px;
-  }
-}
-
 .films {
   overflow-x: auto;
 
@@ -55,6 +49,10 @@ select {
     opacity: 1;
     transform: scale(1.05);
   }
+}
+
+.video--films {
+  position: relative;
 }
 
 .tips--films {

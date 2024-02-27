@@ -182,7 +182,7 @@ const App = () => {
                     <li
                       key={anime}
                       onClick={() => {
-                        setIsVisible(false);
+                        setIsVisible(!isVisible);
 
                         window.location.hash =
                           '/Home?anime=' + encodeURI(formatName(anime));
