@@ -479,6 +479,7 @@ export default function Episodes() {
           <>
             <div className="vid">
               <ReactPlayer
+                style={{ border: 0 }}
                 width="100%"
                 height="100%"
                 controls
@@ -509,6 +510,7 @@ export default function Episodes() {
             </div>
             <div className="ambiance">
               <ReactPlayer
+                style={{ border: 0 }}
                 width="100%"
                 height="100%"
                 playing={false}
