@@ -90,14 +90,22 @@ iframe,
   height: 678px;
 }
 
-body {
-  font-family: 'Fredoka', sans-serif;
-  background-color: #1d1e20;
+body,
+.container--episodes,
+.container--films,
+.container--saisons,
+.container--scans {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   flex-direction: column;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background-color: #1d1e20;
+
+  text-align: center;
   overflow-x: hidden;
 }
 
@@ -199,16 +207,6 @@ button {
 
 .szh-menu__item {
   color: black;
-}
-
-.container--episodes,
-.container--films,
-.container--saisons,
-.container--scans {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .label--search-bar {
