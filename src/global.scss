@@ -5,14 +5,21 @@
   --mainColor: #ff7300;
 }
 
+main {
+  position: relative;
+  top: 150px;
+}
+
 header {
+  z-index: 2024;
+
   height: 90px;
   width: 100%;
 
-  position: absolute;
+  position: fixed;
   left: 0;
 
-  background-color: #1d1e209f;
+  background-color: #212325;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 
@@ -198,23 +205,18 @@ button {
 .container--films,
 .container--saisons,
 .container--scans {
-  position: relative;
-  top: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.container--anime {
-  position: relative;
-  top: 150px;
-}
-
 .label--search-bar {
   border-radius: 4px;
   display: flex;
   align-items: center;
+
+  cursor: pointer;
 
   width: auto;
   height: 45px;

@@ -139,7 +139,9 @@ const App = () => {
         </nav>
       </header>
 
-      <AppRoutes />
+      <main>
+        <AppRoutes />
+      </main>
     </>
   );
 };
