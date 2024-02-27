@@ -1,3 +1,5 @@
+import { Anime } from '../class/anime';
+
 import AirGear from './AirGear/air-gear';
 import BlackClover from './BlackClover/black-clover';
 import Bleach from './Bleach/bleach';
@@ -42,8 +44,6 @@ import CaptainTsubasa from './CaptainTsubasa/captain-tsubasa';
 import Monster103 from './Monster103/monster-103';
 import Monster from './Monster/monster';
 import FireForce from './FireForce/fire-force';
-
-import { Anime } from '../class/anime';
 import AssassinationClassroom from './AssassinationClassroom/assassination-classroom';
 import AoAshi from './AoAshi/ao-ashi';
 import DemonSlave from './DemonSlave/demon-slave';
