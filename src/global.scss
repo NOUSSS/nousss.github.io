@@ -23,6 +23,8 @@ header {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 
+  border-bottom: 1px solid rgb(60 60 60 / 1);
+
   display: flex;
   justify-content: center;
 
@@ -64,22 +66,103 @@ header {
         }
       }
     }
+  }
+}
 
-    svg {
-      width: 40px;
-      transition: fill 250ms ease-out;
+.search--container {
+  width: 599px;
+  height: 420px;
 
-      cursor: pointer;
+  position: fixed;
 
-      &:hover {
-        fill: var(--mainColor);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgb(60, 60, 60);
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  border-radius: 0.25rem;
+
+  z-index: 2026;
+  overflow-y: auto;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+
+  font-size: 20px;
+
+  input {
+    border-bottom: 1px solid rgb(60 60 60 / 1);
+
+    width: 100%;
+    height: 60px;
+
+    padding: 15px;
+  }
+
+  .results {
+    ul {
+      margin-top: 10px;
+
+      li {
+        cursor: pointer;
+        opacity: 0.6;
+
+        transition: opacity 200ms ease-out;
+
+        text-align: left;
+        display: flex;
+        margin-bottom: 15px;
+
+        .left {
+          img {
+            width: 160px;
+          }
+        }
+
+        .right {
+          h1 {
+            margin-left: 10px;
+            font-size: 25px;
+          }
+
+          p {
+            margin-left: 15px;
+            font-size: 11px;
+            opacity: 0.75;
+          }
+        }
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
 }
 
+.SearchBar {
+  display: flex;
+  border: 1px solid rgb(60 60 60 / 1);
+  padding: 5px 10px;
+  border-radius: 0.35rem;
+  cursor: pointer;
+
+  span {
+    display: flex;
+    align-items: center;
+
+    color: white;
+  }
+
+  svg {
+    margin-right: 15px;
+    width: 30px;
+  }
+}
+
 option {
-  color: white;
+  color: black;
 }
 
 iframe,
@@ -331,21 +414,21 @@ footer {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 610px) {
+  .search--container {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 730px) {
   header {
     nav {
-      justify-content: center;
-
       a {
         .logo {
           p {
-            font-size: 23px;
+            display: none;
           }
         }
-      }
-
-      svg {
-        display: none;
       }
     }
   }

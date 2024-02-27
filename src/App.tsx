@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { ReactNode, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Link, useRoutes } from 'react-router-dom';
 
 const Home = lazy(() => import('./components/Home/Home'));
@@ -14,12 +14,16 @@ import PageNotFound from './components/utils/PageNotFound';
 
 import { InfinitySpin } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
+import { ANIMES } from './animes/constants';
+import { formatName } from './functions/formatName';
+
+let pages: { path: string; element: ReactNode }[];
 
 const AppRoutes = () => {
   const currentSeason =
     window.location.href.match(/S10|S11|S[0-9]/)?.[0].slice(1) ?? '1';
 
-  const pages = [
+  pages = [
     { path: '*', element: <PageNotFound /> },
     {
       path: '/',
@@ -61,6 +65,8 @@ const AppRoutes = () => {
 };
 
 const App = () => {
+  const [output, setOutput] = useState<React.ReactNode>();
+
   useEffect(() => {
     const mainColor = window.localStorage.getItem('color');
 
@@ -92,10 +98,141 @@ const App = () => {
     );
   }, []);
 
+  const [isVisible, setIsVisible] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  const toggleSearchContainer = () => {
+    setIsVisible(!isVisible);
+
+    document.body.style.overflow = isVisible ? '' : 'hidden';
+
+    const background = document.querySelector('.background') as HTMLElement;
+
+    if (background) {
+      background.style.filter = isVisible ? 'blur(5px)' : 'blur(0px)';
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setIsVisible(false);
+
+        document.body.style.overflow = '';
+
+        const background = document.querySelector('.background') as HTMLElement;
+
+        if (background) {
+          background.style.filter = 'blur(5px)';
+        }
+      }
+    };
+
+    const handleKeyDown = (event: any) => {
+      if (event.key === 'Escape') {
+        setIsVisible(false);
+
+        document.body.style.overflow = '';
+
+        const background = document.querySelector('.background') as HTMLElement;
+
+        if (background) {
+          background.style.filter = 'blur(5px)';
+        }
+      } else if (event.ctrlKey && event.key === 'k') {
+        event.preventDefault();
+
+        toggleSearchContainer();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isVisible]);
+
   return (
     <>
       <Toaster />
       <img className="background" src={background} alt="Fond" />
+
+      <div
+        className={`search--container ${isVisible ? '' : 'invisible'}`}
+        ref={searchContainerRef}
+      >
+        <input
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const inputValue = e.target.value;
+
+            if (inputValue.length === 0)
+              return setOutput(<p>Aucun résultat trouvé</p>);
+
+            const filteredAnimes = ANIMES.filter(({ anime, aliases }) => {
+              const value = inputValue.toLowerCase();
+              return (
+                formatName(anime).toLowerCase().includes(value) ||
+                (aliases &&
+                  aliases.some((alias) => alias.toLowerCase().includes(value)))
+              );
+            });
+
+            if (filteredAnimes.length === 0) {
+              setOutput(<p>Aucun résultat trouvé.</p>);
+            } else if (filteredAnimes.length > 0) {
+              setOutput(
+                <ul>
+                  {filteredAnimes.map(({ options, anime, synopsis }) => (
+                    <li
+                      key={anime}
+                      onClick={() => {
+                        const SearchContainer =
+                          document.querySelector<HTMLElement>(
+                            '.search--container'
+                          )!;
+
+                        const Background =
+                          document.querySelector<HTMLElement>('.background')!;
+
+                        SearchContainer.classList.add('invisible');
+                        Background.style.filter = 'blur(5px)';
+                        document.body.style.overflow = '';
+
+                        window.location.hash =
+                          '/Home?anime=' + encodeURI(formatName(anime));
+                      }}
+                    >
+                      <div className="left">
+                        <img src={options.affiche} alt={anime} />
+                      </div>
+                      <div className="right">
+                        <h1>
+                          {formatName(anime).length > 30
+                            ? `${formatName(anime).substring(0, 30)}...`
+                            : formatName(anime)}
+                        </h1>
+                        <p>{synopsis}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+          }}
+          type="text"
+          placeholder="Recherche rapide..."
+        />
+
+        <div className="results">
+          <ul>{output ? output : 'Aucun résultat trouvé.'}</ul>
+        </div>
+      </div>
 
       <header>
         <nav>
@@ -129,13 +266,44 @@ const App = () => {
             </h1>
           </Link>
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="grey"
+          <div
+            onClick={() => {
+              const SearchContainer =
+                document.querySelector<HTMLElement>('.search--container')!;
+
+              const Background =
+                document.querySelector<HTMLElement>('.background')!;
+
+              const Appear = SearchContainer.classList.contains('invisible');
+
+              Appear
+                ? (() => {
+                    SearchContainer.classList.remove('invisible');
+                    document.body.style.overflow = 'hidden';
+                    Background.style.filter = 'blur(0px)';
+
+                    setIsVisible(true);
+                  })()
+                : (() => {
+                    SearchContainer.classList.add('invisible');
+                    Background.style.filter = 'blur(5px)';
+                    document.body.style.overflow = '';
+
+                    setIsVisible(false);
+                  })();
+            }}
+            className="SearchBar"
           >
-            <path d="M8.68637 4.00008L11.293 1.39348C11.6835 1.00295 12.3167 1.00295 12.7072 1.39348L15.3138 4.00008H19.0001C19.5524 4.00008 20.0001 4.4478 20.0001 5.00008V8.68637L22.6067 11.293C22.9972 11.6835 22.9972 12.3167 22.6067 12.7072L20.0001 15.3138V19.0001C20.0001 19.5524 19.5524 20.0001 19.0001 20.0001H15.3138L12.7072 22.6067C12.3167 22.9972 11.6835 22.9972 11.293 22.6067L8.68637 20.0001H5.00008C4.4478 20.0001 4.00008 19.5524 4.00008 19.0001V15.3138L1.39348 12.7072C1.00295 12.3167 1.00295 11.6835 1.39348 11.293L4.00008 8.68637V5.00008C4.00008 4.4478 4.4478 4.00008 5.00008 4.00008H8.68637ZM6.00008 6.00008V9.5148L3.5148 12.0001L6.00008 14.4854V18.0001H9.5148L12.0001 20.4854L14.4854 18.0001H18.0001V14.4854L20.4854 12.0001L18.0001 9.5148V6.00008H14.4854L12.0001 3.5148L9.5148 6.00008H6.00008ZM12.0001 16.0001C9.79094 16.0001 8.00008 14.2092 8.00008 12.0001C8.00008 9.79094 9.79094 8.00008 12.0001 8.00008C14.2092 8.00008 16.0001 9.79094 16.0001 12.0001C16.0001 14.2092 14.2092 16.0001 12.0001 16.0001ZM12.0001 14.0001C13.1047 14.0001 14.0001 13.1047 14.0001 12.0001C14.0001 10.8955 13.1047 10.0001 12.0001 10.0001C10.8955 10.0001 10.0001 10.8955 10.0001 12.0001C10.0001 13.1047 10.8955 14.0001 12.0001 14.0001Z"></path>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="grey"
+            >
+              <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path>
+            </svg>
+
+            <span>Recherche rapide (Ctrl + K)</span>
+          </div>
         </nav>
       </header>
 

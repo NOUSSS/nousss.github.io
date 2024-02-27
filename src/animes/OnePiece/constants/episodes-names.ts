@@ -1642,7 +1642,10 @@ const episodes = [
     index: '493',
     name: 'Luffy et Ace —L’histoire de la rencontre des frères !',
   },
-  { index: '494', name: 'Sabo entre en scène ! Le garçon du Grey Terminal' },
+  {
+    index: '494',
+    name: 'Sabo entre en scène ! Le garçon du rgb(60 60 60 / 1) Terminal',
+  },
   { index: '495', name: 'Je ne fuirai pas — L’Opération de sauvetage d’Ace' },
   {
     index: '496',
