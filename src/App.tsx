@@ -11,11 +11,10 @@ const Accueil = lazy(() => import('./components/Accueil/accueil'));
 import background from './assets/Background3.jpg';
 import logo from '/Logo.png';
 import PageNotFound from './components/utils/PageNotFound';
+import FastSearchBar from './FastSearch-bar';
 
 import { InfinitySpin } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
-import { ANIMES } from './animes/constants';
-import { formatName } from './functions/formatName';
 
 const AppRoutes = () => {
   const currentSeason =
@@ -100,57 +99,6 @@ const App = () => {
   const [isVisible, setIsVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
-  const toggleSearchContainer = () => {
-    setIsVisible(!isVisible);
-    console.log(document.body.style);
-
-    document.body.style.overflow = isVisible ? 'hidden' : '';
-
-    const background = document.querySelector('.background') as HTMLElement;
-
-    if (background)
-      background.style.filter = isVisible ? 'blur(5px)' : 'blur(0px)';
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(event.target as Node)
-      ) {
-        setIsVisible(false);
-
-        document.body.style.overflow = '';
-
-        const background = document.querySelector('.background') as HTMLElement;
-        if (background) background.style.filter = 'blur(5px)';
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsVisible(false);
-
-        document.body.style.overflow = '';
-
-        const background = document.querySelector('.background') as HTMLElement;
-        if (background) background.style.filter = 'blur(5px)';
-      } else if (event.ctrlKey && event.key === 'k') {
-        event.preventDefault();
-
-        toggleSearchContainer();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isVisible]);
-
   return (
     <>
       <Toaster />
@@ -169,57 +117,11 @@ const App = () => {
             <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path>
           </svg>
 
-          <input
-            onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const inputValue = e.target.value;
-
-              const filteredAnimes = ANIMES.filter(({ anime, aliases }) => {
-                const value = inputValue.toLowerCase();
-
-                return (
-                  formatName(anime).toLowerCase().includes(value) ||
-                  (aliases &&
-                    aliases.some((alias) =>
-                      alias.toLowerCase().includes(value)
-                    ))
-                );
-              });
-
-              if (filteredAnimes.length === 0) {
-                setOutput(<p>Aucun résultat trouvé.</p>);
-              } else if (filteredAnimes.length > 0) {
-                setOutput(
-                  <ul>
-                    {filteredAnimes.map(({ options, anime, synopsis }) => (
-                      <li
-                        key={anime}
-                        onClick={() => {
-                          setIsVisible(!isVisible);
-
-                          window.location.hash =
-                            '/Home?anime=' + encodeURI(formatName(anime));
-                        }}
-                      >
-                        <div className="left">
-                          <img src={options.affiche} alt={anime} />
-                        </div>
-                        <div className="right">
-                          <h1>
-                            {formatName(anime).length > 30
-                              ? `${formatName(anime).substring(0, 30)}...`
-                              : formatName(anime)}
-                          </h1>
-
-                          <p>{synopsis}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-            }}
-            type="text"
-            placeholder="Recherche rapide..."
+          <FastSearchBar
+            setOutput={setOutput}
+            setIsVisible={setIsVisible}
+            isVisible={isVisible}
+            searchContainerRef={searchContainerRef}
           />
         </div>
 
@@ -232,7 +134,9 @@ const App = () => {
             <h1
               className="logo"
               onClick={() => {
-                const input = document.querySelector('input');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                const input = document.querySelectorAll('input')[1];
 
                 if (input) {
                   input.value = '';
