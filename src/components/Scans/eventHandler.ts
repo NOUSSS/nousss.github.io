@@ -32,11 +32,10 @@ export const clickEvents = (
   });
 
   document.querySelector('.lastChapter')!.addEventListener('click', () => {
-    const lastScan = document
-      .querySelector('select')!
-      .options[document.querySelector('select')!.options.length - 1].id.match(
-        /[0-9]/g
-      )!
+    const allChapitres = document.querySelector('select')!.options;
+
+    const lastScan = allChapitres[allChapitres.length - 1].id
+      .match(/[0-9]/g)!
       .join('');
 
     setScans(selectChapter(lastScan));
