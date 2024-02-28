@@ -14,19 +14,25 @@ header {
   z-index: 2024;
 
   height: 90px;
-  width: 100%;
+  width: 95%;
 
   position: fixed;
-  left: 0;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 15px;
 
   background-color: #212325;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 
-  border-bottom: 1px solid rgb(60 60 60 / 1);
+  border: 1px solid rgb(60, 60, 60);
 
   display: flex;
   justify-content: center;
+
+  border-radius: 0.35rem;
 
   nav {
     display: flex;
@@ -39,6 +45,8 @@ header {
         display: flex;
         align-items: center;
         transition: all 0.3s ease-out;
+
+        letter-spacing: 3px;
 
         p {
           position: relative;
@@ -70,7 +78,7 @@ header {
 }
 
 .search--container {
-  width: 599px;
+  width: 600px;
   height: 420px;
 
   position: fixed;
@@ -82,7 +90,6 @@ header {
   border-radius: 0.25rem;
 
   z-index: 2026;
-  overflow-y: auto;
 
   left: 50%;
   top: 50%;
@@ -91,16 +98,29 @@ header {
 
   font-size: 20px;
 
-  input {
+  .input {
+    display: flex;
+
     border-bottom: 1px solid rgb(60 60 60 / 1);
+    background-color: #212325b5;
 
-    width: 100%;
     height: 60px;
+    padding: 10px;
 
-    padding: 15px;
+    svg {
+      width: 30px;
+    }
+
+    input {
+      width: 100%;
+      text-indent: 18px;
+    }
   }
 
   .results {
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+
     ul {
       li {
         cursor: pointer;
@@ -113,6 +133,9 @@ header {
 
         padding-bottom: 7.5px;
         padding-top: 7.5px;
+
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
 
         .left {
           img {
@@ -135,6 +158,10 @@ header {
 
         &:hover {
           opacity: 1;
+
+          border-top: 1px solid rgb(60 60 60 / 1);
+          border-bottom: 1px solid rgb(60 60 60 / 1);
+
           background-color: #1d1e2070;
         }
       }
@@ -420,7 +447,7 @@ footer {
   }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 800px) {
   header {
     nav {
       a {

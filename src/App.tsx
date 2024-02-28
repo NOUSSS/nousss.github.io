@@ -102,8 +102,9 @@ const App = () => {
 
   const toggleSearchContainer = () => {
     setIsVisible(!isVisible);
+    console.log(document.body.style);
 
-    document.body.style.overflow = isVisible ? '' : 'hidden';
+    document.body.style.overflow = isVisible ? 'hidden' : '';
 
     const background = document.querySelector('.background') as HTMLElement;
 
@@ -159,56 +160,68 @@ const App = () => {
         className={`search--container ${isVisible ? '' : 'invisible'}`}
         ref={searchContainerRef}
       >
-        <input
-          onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const inputValue = e.target.value;
+        <div className="input">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path>
+          </svg>
 
-            const filteredAnimes = ANIMES.filter(({ anime, aliases }) => {
-              const value = inputValue.toLowerCase();
+          <input
+            onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const inputValue = e.target.value;
 
-              return (
-                formatName(anime).toLowerCase().includes(value) ||
-                (aliases &&
-                  aliases.some((alias) => alias.toLowerCase().includes(value)))
-              );
-            });
+              const filteredAnimes = ANIMES.filter(({ anime, aliases }) => {
+                const value = inputValue.toLowerCase();
 
-            if (filteredAnimes.length === 0) {
-              setOutput(<p>Aucun résultat trouvé.</p>);
-            } else if (filteredAnimes.length > 0) {
-              setOutput(
-                <ul>
-                  {filteredAnimes.map(({ options, anime, synopsis }) => (
-                    <li
-                      key={anime}
-                      onClick={() => {
-                        setIsVisible(!isVisible);
+                return (
+                  formatName(anime).toLowerCase().includes(value) ||
+                  (aliases &&
+                    aliases.some((alias) =>
+                      alias.toLowerCase().includes(value)
+                    ))
+                );
+              });
 
-                        window.location.hash =
-                          '/Home?anime=' + encodeURI(formatName(anime));
-                      }}
-                    >
-                      <div className="left">
-                        <img src={options.affiche} alt={anime} />
-                      </div>
-                      <div className="right">
-                        <h1>
-                          {formatName(anime).length > 30
-                            ? `${formatName(anime).substring(0, 30)}...`
-                            : formatName(anime)}
-                        </h1>
+              if (filteredAnimes.length === 0) {
+                setOutput(<p>Aucun résultat trouvé.</p>);
+              } else if (filteredAnimes.length > 0) {
+                setOutput(
+                  <ul>
+                    {filteredAnimes.map(({ options, anime, synopsis }) => (
+                      <li
+                        key={anime}
+                        onClick={() => {
+                          setIsVisible(!isVisible);
 
-                        <p>{synopsis}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              );
-            }
-          }}
-          type="text"
-          placeholder="Recherche rapide..."
-        />
+                          window.location.hash =
+                            '/Home?anime=' + encodeURI(formatName(anime));
+                        }}
+                      >
+                        <div className="left">
+                          <img src={options.affiche} alt={anime} />
+                        </div>
+                        <div className="right">
+                          <h1>
+                            {formatName(anime).length > 30
+                              ? `${formatName(anime).substring(0, 30)}...`
+                              : formatName(anime)}
+                          </h1>
+
+                          <p>{synopsis}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }
+            }}
+            type="text"
+            placeholder="Recherche rapide..."
+          />
+        </div>
 
         <div className="results">{output}</div>
       </div>
