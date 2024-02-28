@@ -102,17 +102,17 @@ header {
 
   .results {
     ul {
-      margin-top: 10px;
-
       li {
         cursor: pointer;
         opacity: 0.6;
 
-        transition: opacity 100ms ease-out;
+        transition: all 150ms ease-out;
 
         text-align: left;
         display: flex;
-        padding-bottom: 15px;
+
+        padding-bottom: 7.5px;
+        padding-top: 7.5px;
 
         .left {
           img {
@@ -135,6 +135,7 @@ header {
 
         &:hover {
           opacity: 1;
+          background-color: #1d1e2070;
         }
       }
     }
