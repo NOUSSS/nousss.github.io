@@ -210,9 +210,7 @@ const App = () => {
           placeholder="Recherche rapide..."
         />
 
-        <div className="results">
-          <ul>{output}</ul>
-        </div>
+        <div className="results">{output}</div>
       </div>
 
       <header>
