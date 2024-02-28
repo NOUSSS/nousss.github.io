@@ -1,14 +1,16 @@
+import { icons } from 'lucide-react';
 import { initSearchBar } from '../../functions/initSearchBar';
 
-import searchImg from '../../assets/Search.svg';
-
 export default function SearchBar({ container }: { container: string }) {
+  const SearchIcon = icons['Search'];
+
   return (
     <label
       className={`label--search-bar`}
       title="Systeme de recherche super cool"
     >
-      <img src={searchImg} alt="" />
+      <SearchIcon size="25px" />
+
       <input
         type="text"
         placeholder="Votre recherche..."
