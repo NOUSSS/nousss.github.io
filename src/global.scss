@@ -79,7 +79,24 @@ header {
   }
 }
 
+@keyframes appear {
+  0% {
+    opacity: 0;
+    left: 49%;
+  }
+
+  100% {
+    opacity: 1;
+    left: 50%;
+  }
+}
+
 .search--container {
+  animation: appear 250ms ease-out;
+
+  transition: opacity 100ms ease-out;
+  transition: left 25ms ease-out;
+
   width: 600px;
   height: 420px;
 
