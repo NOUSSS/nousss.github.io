@@ -88,29 +88,45 @@ const Scans = () => {
     <div className="container--scans">
       <Title link={`Home?anime=${encodeURI(currentAnime)}`} />
 
-      <select
-        name="chapitres"
-        className="chapitres"
-        onChange={(event) => {
-          const {
-            target: {
-              selectedOptions: [{ id }],
-            },
-          } = event;
+      <div className="select-container">
+        <select
+          onFocus={() =>
+            setTimeout(
+              () =>
+                (
+                  document.querySelector('.select-container') as HTMLElement
+                ).classList.add('selectFocus'),
+              100
+            )
+          }
+          onBlur={() =>
+            (
+              document.querySelector('.select-container') as HTMLElement
+            ).classList.remove('selectFocus')
+          }
+          name="chapitres"
+          className="chapitres"
+          onChange={(event) => {
+            const {
+              target: {
+                selectedOptions: [{ id }],
+              },
+            } = event;
 
-          const chapterId = id.match(/[0-9]/g)!.join('');
+            const chapterId = id.match(/[0-9]/g)!.join('');
 
-          window.localStorage.setItem(`${currentAnime}--chapitre`, chapterId);
+            window.localStorage.setItem(`${currentAnime}--chapitre`, chapterId);
 
-          setScans(selectChapter(chapterId));
-        }}
-      >
-        {chapitresOptions.map((option, index) => (
-          <option key={index} id={`Chapitre ${index + 1}`}>
-            {option}
-          </option>
-        ))}
-      </select>
+            setScans(selectChapter(chapterId));
+          }}
+        >
+          {chapitresOptions.map((option, index) => (
+            <option key={index} id={`Chapitre ${index + 1}`}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="container--buttons--scans">
         <button className="lastChapter">Dernier chapitre</button>

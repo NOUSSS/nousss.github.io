@@ -16,15 +16,42 @@
     }
   }
 
-  select {
-    cursor: pointer;
-    border: 1px solid rgb(60 60 60 / 1);
-    color: white;
-    padding: 10px;
+  .select-container {
     position: relative;
-    top: 50px;
-    border-radius: 0.35rem;
-    background-color: rgba(22, 23, 29, 0.5019607843);
+
+    select {
+      cursor: pointer;
+      border: 1px solid rgb(60 60 60 / 1);
+      color: white;
+      padding: 10px;
+      top: 50px;
+      border-radius: 0.35rem;
+      background-color: rgba(22, 23, 29, 0.5019607843);
+      appearance: none;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+
+      width: 10px;
+      height: 10px;
+
+      border-top: 1px solid white;
+      border-left: 1px solid white;
+
+      bottom: -15px;
+      right: 30px;
+
+      transform: rotate(45deg);
+      transition: transform 300ms;
+    }
+  }
+
+  .selectFocus {
+    &::before {
+      transform: translateY(-5px) rotate(225deg);
+    }
   }
 
   .scans {
