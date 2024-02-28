@@ -2,24 +2,24 @@ import React, { RefObject } from 'react';
 import { ANIMES } from './animes/constants';
 import { formatName } from './functions/formatName';
 
-const FastSearchBar = ({
-  setOutput,
-  setIsVisible,
-
-  isVisible,
-  searchContainerRef,
-}: {
+interface FastSearchBarProps {
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 
   searchContainerRef: RefObject<HTMLDivElement>;
-
   isVisible: boolean;
+}
+
+const FastSearchBar: React.FC<FastSearchBarProps> = ({
+  setOutput,
+  setIsVisible,
+
+  searchContainerRef,
+  isVisible,
 }) => {
   React.useEffect(() => {
     const toggleSearchContainer = () => {
       setIsVisible(!isVisible);
-      console.log(document.body.style);
 
       document.body.style.overflow = isVisible ? 'hidden' : '';
 

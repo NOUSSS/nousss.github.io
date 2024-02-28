@@ -13,7 +13,7 @@ import logo from '/Logo.png';
 import PageNotFound from './components/utils/PageNotFound';
 import FastSearchBar from './FastSearch-bar';
 
-import { InfinitySpin } from 'react-loader-spinner';
+import { Puff } from 'react-loader-spinner';
 import { Toaster } from 'react-hot-toast';
 
 const AppRoutes = () => {
@@ -52,7 +52,7 @@ const AppRoutes = () => {
     <Suspense
       fallback={
         <div>
-          <InfinitySpin width="200" color="var(--mainColor)" />
+          <Puff width="200" color="var(--mainColor)" />
         </div>
       }
     >

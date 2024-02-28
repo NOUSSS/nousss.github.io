@@ -13,21 +13,18 @@
     .lastChapter {
       position: relative;
       top: 15px;
-
-      &:hover {
-        position: relative;
-        top: 8px;
-      }
     }
   }
 
   select {
+    cursor: pointer;
     border: 1px solid rgb(60 60 60 / 1);
-
+    color: white;
     padding: 10px;
     position: relative;
     top: 50px;
-    border-radius: 3px;
+    border-radius: 0.35rem;
+    background-color: rgba(22, 23, 29, 0.5019607843);
   }
 
   .scans {
