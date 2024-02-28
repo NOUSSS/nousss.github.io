@@ -173,7 +173,7 @@ const App = () => {
               );
             });
 
-            if (filteredAnimes.length === 0 || inputValue.length === 0) {
+            if (filteredAnimes.length === 0) {
               setOutput(<p>Aucun résultat trouvé.</p>);
             } else if (filteredAnimes.length > 0) {
               setOutput(
