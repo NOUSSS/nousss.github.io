@@ -18,13 +18,6 @@ export default class SoloLeveling extends Anime {
       },
     };
 
-    this.note = [
-      {
-        saison: '1',
-        message: "L'épisode 8 est reporté jusqu'au 2 mars",
-      },
-    ];
-
     this.SCANS_OPTIONS = {
       from: 0,
       SCRIPT_URL:
