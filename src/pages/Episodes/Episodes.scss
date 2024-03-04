@@ -1,0 +1,146 @@
+.container--buttons {
+  display: flex;
+  justify-content: center;
+  padding: 26px;
+}
+
+.videoContainer {
+  position: relative;
+}
+
+.buttons {
+  border-bottom: rgb(60 60 60 / 1) solid 1px;
+  position: relative;
+  top: 17px;
+}
+
+.episodeName {
+  transition: all 150ms ease-out;
+}
+
+.list-episodes {
+  cursor: pointer;
+  text-align: left;
+
+  span {
+    transition: color 250ms ease-out;
+  }
+
+  .episodeName {
+    transition: all 250ms ease-out;
+
+    color: white;
+  }
+
+  &:hover {
+    .episodeName {
+      color: var(--mainColor);
+    }
+
+    span {
+      color: white;
+    }
+  }
+}
+
+select {
+  padding: 0 20px;
+  margin: 20px;
+  position: relative;
+  top: -20px;
+  border-radius: 3px;
+  width: 160px;
+  background-color: #16171d80;
+  border: var(--mainColor) 1px solid;
+  color: var(--mainColor);
+  height: 47px;
+}
+
+.titleSaison {
+  margin: 46px;
+
+  font-size: 36px;
+
+  a {
+    font-size: 56px;
+  }
+}
+
+.hideEpisodesNames {
+  .MuiSwitch-root {
+    transform: scale(1.3);
+  }
+}
+
+.blurEffect {
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+}
+
+.historiqueEpisode {
+  p {
+    margin: -15px;
+  }
+}
+
+.container--list {
+  position: relative;
+  top: 30px;
+  overflow-y: auto;
+  max-height: 400px;
+  margin: 21px;
+}
+
+.title {
+  font-size: 66px;
+
+  img {
+    width: auto;
+    height: 70px;
+    transition: transform 1s;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+
+    &:hover {
+      color: var(--mainColor);
+    }
+  }
+}
+
+.disclamer {
+  margin-top: 50px;
+  font-size: 20px;
+  color: red;
+
+  a {
+    color: red;
+    text-decoration: underline;
+  }
+}
+
+.episodeNumber {
+  color: var(--mainColor);
+}
+
+.download {
+  margin-top: 25px;
+
+  span {
+    a {
+      text-decoration: underline;
+      color: var(--mainColor);
+    }
+  }
+}
+
+.episodeTitle {
+  font-size: 30px;
+  margin: 29px;
+  margin-top: 50px;
+
+  .episodeName {
+    color: white;
+  }
+}

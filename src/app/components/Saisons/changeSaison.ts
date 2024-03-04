@@ -1,0 +1,29 @@
+import { NextRouter } from "next/router";
+
+export function changeSaison(
+  index: string,
+  currentAnime: string,
+  router: NextRouter
+) {
+  router.push({
+    pathname: `/Episodes`,
+    query: { anime: currentAnime, saison: index },
+  });
+
+  if (localStorage.getItem(`${currentAnime}--saison`) !== index) {
+    for (const key of Object.keys(localStorage)) {
+      if (
+        key.includes(currentAnime) &&
+        key.includes("--lang") &&
+        key.match(/[0-9]/g)
+      ) {
+        localStorage.removeItem(key);
+      }
+    }
+
+    localStorage.setItem(`${currentAnime}--episode`, "1");
+    localStorage.removeItem(`${currentAnime}--currentTime`);
+  }
+
+  localStorage.setItem(`${currentAnime}--saison`, index);
+}

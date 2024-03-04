@@ -1,0 +1,36 @@
+@media (max-width: 520px) {
+  main {
+    .container--home {
+      .card {
+        width: 376px;
+      }
+    }
+  }
+}
+
+@media (max-width: 474px) {
+  a {
+    h1 {
+      font-size: 9vw;
+    }
+  }
+
+  main {
+    .container--home {
+      .card {
+        width: 356px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    .container--home {
+      .card {
+        width: 261px;
+        height: auto;
+      }
+    }
+  }
+}

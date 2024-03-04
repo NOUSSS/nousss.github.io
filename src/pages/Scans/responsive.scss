@@ -1,0 +1,27 @@
+@media (max-width: 871px) {
+  .scans {
+    img {
+      width: 600px !important;
+    }
+  }
+}
+
+@media (max-width: 603px) {
+  .scans {
+    img {
+      width: 460px !important;
+    }
+  }
+}
+
+@media (max-width: 467px) {
+  .scans {
+    img {
+      width: 350px !important;
+    }
+  }
+
+  footer {
+    font-size: 13px;
+  }
+}

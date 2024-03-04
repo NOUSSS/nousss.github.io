@@ -1,0 +1,54 @@
+@media (max-width: 660px) {
+  .container--anime {
+    .title {
+      font-size: 45px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container--anime {
+    .catalogue {
+      .Reprendre {
+        ul {
+          li {
+            .card {
+              width: 159px;
+              height: 159px;
+
+              img {
+                width: 157px;
+                height: 80px;
+              }
+            }
+          }
+        }
+      }
+
+      .category {
+        margin-left: 0;
+      }
+
+      ul {
+        li {
+          margin: 20px 0 0 15px;
+
+          .card {
+            width: 110px;
+            height: 145px;
+
+            .affiche {
+              width: 110px;
+              height: 62px;
+            }
+
+            p {
+              position: relative;
+              top: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

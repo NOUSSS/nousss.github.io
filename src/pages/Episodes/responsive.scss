@@ -1,0 +1,113 @@
+@media (max-width: 1216px) {
+  .episode {
+    width: 500px;
+  }
+
+  iframe,
+  .vid,
+  .ambiance {
+    width: 947px;
+    height: 532px;
+  }
+}
+
+@media (max-width: 962px) {
+  iframe,
+  .vid,
+  .ambiance {
+    width: 769px;
+    height: 440px;
+  }
+
+  .download {
+    width: 500px;
+  }
+}
+
+@media (max-width: 880px) {
+  .episodeTitle {
+    width: 700px;
+  }
+}
+
+@media (max-width: 688px) {
+  .episodeTitle {
+    width: 500px;
+  }
+}
+
+@media (max-width: 782px) {
+  iframe,
+  .vid,
+  .ambiance {
+    width: 600px;
+    height: 337px;
+  }
+
+  .disclamer {
+    width: 375px;
+  }
+}
+
+@media (max-width: 372px) {
+  input:focus {
+    width: 215px;
+  }
+}
+
+@media (max-width: 409px) {
+  .download {
+    width: 350px;
+  }
+}
+
+@media (max-width: 550px) {
+  .titleSaison {
+    font-size: 23px;
+  }
+
+  .episodeTitle {
+    font-size: 25px;
+    width: 450px;
+  }
+
+  .download {
+    width: 300px;
+  }
+}
+
+@media (max-width: 649px) {
+  .episode {
+    font-size: 21px;
+    width: 322px;
+  }
+
+  iframe,
+  .vid,
+  .ambiance {
+    width: 450px;
+    height: 258px;
+  }
+}
+
+@media (max-width: 458px) {
+  iframe,
+  .vid,
+  .ambiance {
+    width: 325px;
+    height: 185px;
+  }
+
+  .episodeTitle {
+    width: 300px;
+  }
+}
+
+@media (max-width: 358px) {
+  iframe,
+  .vid,
+  .ambiance {
+    width: 265px;
+    height: 153px;
+  }
+}

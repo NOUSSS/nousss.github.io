@@ -1,0 +1,60 @@
+.container--scans {
+  .container--buttons--scans {
+    position: relative;
+    top: 100px;
+    margin-bottom: 230px;
+
+    .buttons--scans {
+      border-bottom: rgb(60 60 60 / 1) solid 1px;
+      position: relative;
+      top: 17px;
+    }
+
+    .lastChapter {
+      position: relative;
+      top: 15px;
+    }
+  }
+
+  .select-container {
+    position: relative;
+
+    select {
+      cursor: pointer;
+
+      position: relative;
+
+      border: 1px solid rgb(60 60 60 / 1);
+      color: white;
+
+      padding: 10px;
+      top: 50px;
+
+      width: 175px;
+
+      border-radius: 0.35rem;
+      background-color: rgba(22, 23, 29, 0.5019607843);
+    }
+  }
+
+  .scans {
+    position: relative;
+    top: -60px;
+    margin-bottom: -130px;
+
+    img {
+      width: 850px;
+    }
+  }
+
+  svg {
+    transition: color 250ms ease-out;
+    margin-top: -80px;
+
+    cursor: pointer;
+
+    &:hover {
+      color: var(--mainColor);
+    }
+  }
+}
