@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
 
   env: {
-    NETLIFY_NEXT_PLUGIN_SKIP: true,
+    NETLIFY_NEXT_PLUGIN_SKIP: "true",
   },
 
   images: {
