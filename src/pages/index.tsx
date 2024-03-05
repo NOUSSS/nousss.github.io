@@ -180,7 +180,7 @@ export default function Accueil() {
         >
           planning
         </a>{" "}
-        d&apos;anime-sama
+        d'anime-sama
       </p>
 
       <div className="color-picker invisible">
@@ -231,7 +231,7 @@ export default function Accueil() {
                       toast.success("L'historique a bien été vidé");
                     }}
                   >
-                    Supprimer tout l&apos;historique
+                    Supprimer tout l'historique
                   </button>
                 </>
               ) : (

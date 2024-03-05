@@ -18,25 +18,25 @@ const DownloadComponent = ({
       {lecteur === "epsAS" ? (
         isIOS() ? (
           <>
-            Pour télécharger l&apos;épisode, cliquez{" "}
+            Pour télécharger l'épisode, cliquez{" "}
             <a
               style={{ color: "var(--mainColor)", textDecoration: "underline" }}
               href={videoLink}
             >
               ici
             </a>
-            , puis appuyez sur le bouton partager en bas, puis &apos;Enregistrer
-            dans fichiers&apos;
+            , puis appuyez sur le bouton partager en bas, puis 'Enregistrer dans
+            fichiers'
           </>
         ) : (
           <>
-            Pour télécharger l&apos;épisode, faites <span>clique droit</span>{" "}
-            sur celui-ci, puis &apos;Enregistrer la vidéo sous&apos;
+            Pour télécharger l'épisode, faites <span>clique droit</span> sur
+            celui-ci, puis 'Enregistrer la vidéo sous'
           </>
         )
       ) : isIOS() ? (
         <>
-          Pour télécharger l&apos;épisode, cliquez{" "}
+          Pour télécharger l'épisode, cliquez{" "}
           <a
             style={{ color: "var(--mainColor)", textDecoration: "underline" }}
             target="_blank"
@@ -44,12 +44,12 @@ const DownloadComponent = ({
           >
             ici
           </a>
-          , puis cliquez sur &apos;DOWNLOAD NOW&apos; ensuite appuyez sur le
-          bouton partager en bas, puis &apos;Enregistrer dans fichiers&apos;
+          , puis cliquez sur 'DOWNLOAD NOW' ensuite appuyez sur le bouton
+          partager en bas, puis 'Enregistrer dans fichiers'
         </>
       ) : (
         <>
-          Pour télécharger l&apos;épisode, cliquez{" "}
+          Pour télécharger l'épisode, cliquez{" "}
           <a
             style={{ color: "var(--mainColor)", textDecoration: "underline" }}
             target="_blank"
@@ -57,8 +57,8 @@ const DownloadComponent = ({
           >
             ici
           </a>
-          , puis cliquez sur &apos;DOWNLOAD NOW&apos; ensuite faites{" "}
-          <span>clique droit</span>, &apos;Enregistrer la vidéo sous&apos;
+          , puis cliquez sur 'DOWNLOAD NOW' ensuite faites{" "}
+          <span>clique droit</span>, 'Enregistrer la vidéo sous'
         </>
       )}
     </div>
