@@ -14,15 +14,14 @@
   }
 
   nav {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
   .removeAllHistorique {
-    width: 200px;
-    margin: 50px 0;
+    min-width: 200px;
     transition: all 250ms ease-out;
 
     &:hover {
@@ -35,6 +34,16 @@
     width: 100%;
 
     .Reprendre {
+      .category {
+        display: flex;
+        height: 45px;
+
+        *:not(button) {
+          border-right: 1px solid rgb(60 60 60 / 1);
+          padding-right: 15px;
+        }
+      }
+
       ul {
         li {
           .card {
@@ -88,7 +97,7 @@
           background-color: hsla(240, 10%, 10%, 0.1);
           box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
             rgba(0, 0, 0, 0.05) 0px 5px 10px;
-          border-radius: 4px;
+          border-radius: 14px;
           border: 1px solid transparent;
 
           transition: transform 150ms ease-out;
@@ -121,6 +130,8 @@
             height: 70px;
             position: relative;
             z-index: -1;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
           }
 
           p {

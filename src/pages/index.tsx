@@ -183,23 +183,6 @@ export default function Accueil() {
         d&apos;anime-sama
       </p>
 
-      {historiques.length > 0 ? (
-        <button
-          className="removeAllHistorique"
-          onClick={() => {
-            setHistoriques([]);
-
-            for (const key of Object.keys(localStorage)) {
-              if (key !== "color") localStorage.removeItem(key);
-            }
-
-            toast.success("L'historique a bien été vidé");
-          }}
-        >
-          Supprimer tout l&apos;historique
-        </button>
-      ) : null}
-
       <div className="color-picker invisible">
         <input
           value={mainColor}
@@ -231,7 +214,30 @@ export default function Accueil() {
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
           <div className={category} key={category}>
-            <p className="category">{category}</p>
+            <p className="category">
+              {category === "Reprendre" ? (
+                <>
+                  <p>{category}</p>
+
+                  <button
+                    className="removeAllHistorique"
+                    onClick={() => {
+                      setHistoriques([]);
+
+                      for (const key of Object.keys(localStorage)) {
+                        if (key !== "color") localStorage.removeItem(key);
+                      }
+
+                      toast.success("L'historique a bien été vidé");
+                    }}
+                  >
+                    Supprimer tout l&apos;historique
+                  </button>
+                </>
+              ) : (
+                category
+              )}
+            </p>
 
             <ul key={category}>
               {names.map((animeName: string, i) => (

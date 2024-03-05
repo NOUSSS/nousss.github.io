@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         "font-size: 12px",
         "color: #04fbb7",
         "font-family: monospace",
-        "background: #1d1e20",
+        "background: rgb(33 35 37)",
         "display: inline-block",
         "padding: 1rem 3rem",
         "border: 1px solid #04fbb7",
