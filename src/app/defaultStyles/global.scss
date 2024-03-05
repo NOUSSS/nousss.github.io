@@ -483,7 +483,7 @@ footer {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   header {
     nav {
       a {
@@ -493,6 +493,15 @@ footer {
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  header {
+    nav {
+      justify-content: space-between;
+      width: 95%;
     }
   }
 }
