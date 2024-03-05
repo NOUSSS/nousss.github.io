@@ -2,11 +2,6 @@
 
 const nextConfig = {
   output: "export",
-  reactStrictMode: true,
-
-  env: {
-    NETLIFY_NEXT_PLUGIN_SKIP: "true",
-  },
 
   images: {
     unoptimized: true,
