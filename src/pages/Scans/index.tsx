@@ -53,6 +53,28 @@ const Scans = () => {
     } else {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       setAnime(currentAnime);
+
+      const scrollUp = document.querySelector(".scrollUp") as HTMLElement;
+      const target = document.querySelector(".footer");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              scrollUp.style.position = "relative";
+              scrollUp.style.margin = "-50px";
+            } else {
+              scrollUp.style.position = "fixed";
+              scrollUp.style.margin = "50px";
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      if (target) observer.observe(target);
     }
   }, []);
 
@@ -186,10 +208,12 @@ const Scans = () => {
           </div>
         </div>
 
-        <UpArrow
-          size="50px"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        />
+        <div className="scrollUp">
+          <UpArrow
+            size="50px"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
+        </div>
 
         <Footer media />
       </div>
