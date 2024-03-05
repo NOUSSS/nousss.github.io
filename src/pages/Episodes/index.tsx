@@ -25,8 +25,7 @@ import { useScript } from "usehooks-ts";
 import { changeSaison } from "../../app/components/Saisons/changeSaison";
 
 import Switch from "@mui/material/Switch";
-import ReactPlayer from "react-player/lazy";
-import BaseReactPlayer, { BaseReactPlayerProps } from "react-player/base";
+import Plyr from "plyr";
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
 import Head from "next/head";
@@ -143,9 +142,6 @@ const Episodes = () => {
   } | null>(null);
 
   const [lang, setLang] = useState<string | null>(null);
-
-  const videoRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
-  const ambianceRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
 
   const saisonsEntries = (isClient &&
     AnimeInfo &&
@@ -476,6 +472,12 @@ const Episodes = () => {
 
   useEffect(() => {
     if (AnimeInfo?.anime) {
+      const player = new Plyr(".vid video");
+
+      if (player) {
+        console.log(player);
+      }
+
       const episode =
         localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--episode`) ??
         "1";
@@ -576,49 +578,17 @@ const Episodes = () => {
         <div className="videoContainer">
           {currentLecteur?.lecteur === "epsAS" ? (
             <>
+              <link
+                rel="stylesheet"
+                href="https://cdn.plyr.io/3.7.8/plyr.css"
+              />
+
               <div className="vid">
-                <ReactPlayer
-                  style={{ border: 0 }}
-                  width="100%"
-                  height="100%"
-                  controls
-                  ref={videoRef}
-                  key={lang}
-                  url={video}
-                  playing={true}
-                  onStart={() => {
-                    const savedSeconds = localStorage.getItem(
-                      `${formatName(AnimeInfo!.anime!)}--currentTime`
-                    );
-
-                    if (savedSeconds) {
-                      videoRef.current?.seekTo(Number(savedSeconds), "seconds");
-                    }
-                  }}
-                  progressInterval={100}
-                  onProgress={({ playedSeconds }) => {
-                    if (playedSeconds !== 0) {
-                      localStorage.setItem(
-                        `${formatName(AnimeInfo!.anime!)}--currentTime`,
-                        String(playedSeconds)
-                      );
-
-                      ambianceRef.current?.seekTo(playedSeconds, "seconds");
-                    }
-                  }}
-                />
+                <video controls src={video} />
               </div>
+
               <div className="ambiance">
-                <ReactPlayer
-                  style={{ border: 0 }}
-                  width="100%"
-                  key={lang}
-                  height="100%"
-                  playing={false}
-                  muted={true}
-                  ref={ambianceRef}
-                  url={video}
-                />
+                <video src={video} />
               </div>
             </>
           ) : (
@@ -654,6 +624,7 @@ const Episodes = () => {
         {isIOS() ? null : (
           <label className="hideEpisodesNames">
             <p>Cacher le nom des épisodes</p>
+
             <Switch
               onChange={({ target }) => {
                 if (target.checked) {

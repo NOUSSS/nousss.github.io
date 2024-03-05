@@ -21,13 +21,11 @@ import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
+import { useRouter } from "next/router";
 
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
-import BaseReactPlayer, { BaseReactPlayerProps } from "react-player/base";
-import ReactPlayer from "react-player";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -50,9 +48,6 @@ const Films = () => {
     lecteur: string;
     change?: boolean;
   } | null>(null);
-
-  const videoRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
-  const ambianceRef = useRef<BaseReactPlayer<BaseReactPlayerProps>>(null);
 
   const lecteurString = useRef<"" | "eps1" | "eps2">("");
 
@@ -247,46 +242,15 @@ const Films = () => {
         <div className="video--films">
           {currentLecteur?.lecteur === "epsAS" ? (
             <>
-              <ReactPlayer
-                style={{ border: 0 }}
-                width="100%"
-                height="100%"
-                controls
-                ref={videoRef}
-                url={video}
-                playing={true}
-                onStart={() => {
-                  const savedSeconds = localStorage.getItem(
-                    `${formatName(currentAnime)}--currentTime`
-                  );
-
-                  if (savedSeconds) {
-                    videoRef.current?.seekTo(Number(savedSeconds), "seconds");
-                  }
-                }}
-                progressInterval={100}
-                onProgress={({ playedSeconds }) => {
-                  if (playedSeconds !== 0) {
-                    localStorage.setItem(
-                      `${formatName(currentAnime)}--currentTime`,
-                      String(playedSeconds)
-                    );
-
-                    ambianceRef.current?.seekTo(playedSeconds, "seconds");
-                  }
-                }}
+              <link
+                rel="stylesheet"
+                href="https://cdn.plyr.io/3.7.8/plyr.css"
               />
 
+              <video controls src={video} />
+
               <div className="ambiance">
-                <ReactPlayer
-                  style={{ border: 0 }}
-                  width="100%"
-                  height="100%"
-                  playing={false}
-                  muted={true}
-                  ref={ambianceRef}
-                  url={video}
-                />
+                <video src={video} />
               </div>
             </>
           ) : (
