@@ -46,6 +46,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isVisible && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isVisible]);
+
   return (
     <>
       <Head>
@@ -64,6 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </Head>
 
       <Image className="background" src={background} alt="Fond" />
+
       <div
         className={`search--container ${isVisible ? "" : "invisible"}`}
         ref={searchContainerRef}
@@ -76,6 +85,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             setIsVisible={setIsVisible}
             isVisible={isVisible}
             searchContainerRef={searchContainerRef}
+            inputRef={inputRef}
           />
         </div>
 

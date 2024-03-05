@@ -14,6 +14,8 @@ interface FastSearchBarProps {
 
   searchContainerRef: RefObject<HTMLDivElement>;
   isVisible: boolean;
+
+  inputRef: RefObject<HTMLInputElement>;
 }
 
 const FastSearchBar: React.FC<FastSearchBarProps> = ({
@@ -22,6 +24,8 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   searchContainerRef,
   isVisible,
+
+  inputRef,
 }) => {
   const router = useRouter();
 
@@ -77,6 +81,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   return (
     <input
+      ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
 

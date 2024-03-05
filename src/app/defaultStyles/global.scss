@@ -1,13 +1,26 @@
-@import './reset.scss';
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
+@import "./reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap");
 
 :root {
   --mainColor: #ff7300;
+  --plyr-color-main: var(--mainColor);
 }
 
 main {
   position: relative;
   top: 150px;
+}
+
+.plyr {
+  button {
+    margin: 0;
+    top: 0;
+    right: auto;
+  }
+
+  .plyr__control--overlaid {
+    top: 50%;
+  }
 }
 
 header {
@@ -82,12 +95,12 @@ header {
 @keyframes appear {
   0% {
     opacity: 0;
-    margin-left: -20px;
+    transform: translateX(-50%) translateY(-50%) scale(0.975);
   }
 
   100% {
     opacity: 1;
-    margin-left: 0;
+    transform: translateX(-50%) translateY(-50%) scale(1);
   }
 }
 
@@ -231,7 +244,7 @@ body,
 }
 
 body {
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
   background-color: #1d1e20;
 
   text-align: center;
@@ -267,7 +280,7 @@ span {
 
   h1 {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -317,6 +330,10 @@ button {
   font-size: 14px;
   margin: 17px;
   transition: all 300ms;
+
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 .ambiance {
@@ -397,7 +414,7 @@ button {
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 2px;
