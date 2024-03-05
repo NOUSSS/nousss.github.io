@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.11",
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@szhsin/react-menu": "^4.1.0",
     "lucide-react": "^0.343.0",
     "next": "14.1.0",
