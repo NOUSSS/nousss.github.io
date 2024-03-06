@@ -13,7 +13,7 @@ export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
   let anime = localStorage.getItem("anime");
 
   if (
-    ((currentAnimeURL === "null" || !currentAnimeURL) && !anime) ||
+    (!currentAnimeURL && !anime) ||
     (currentAnimeURL && !getAnime(currentAnimeURL!))
   )
     window.location.hash = "/";
