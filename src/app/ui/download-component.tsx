@@ -1,4 +1,4 @@
-import { isIOS } from "../lib/isIOS";
+import { isMobile } from "../lib/isMobile";
 
 const DownloadComponent = ({
   video,
@@ -16,7 +16,7 @@ const DownloadComponent = ({
   return (
     <div style={{ textAlign: "left" }} className={className}>
       {lecteur === "epsAS" ? (
-        isIOS() ? (
+        isMobile() ? (
           <>
             Pour télécharger l'épisode, cliquez{" "}
             <a
@@ -34,7 +34,7 @@ const DownloadComponent = ({
             celui-ci, puis 'Enregistrer la vidéo sous'
           </>
         )
-      ) : isIOS() ? (
+      ) : isMobile() ? (
         <>
           Pour télécharger l'épisode, cliquez{" "}
           <a

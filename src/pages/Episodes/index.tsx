@@ -16,7 +16,7 @@ import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { LecteurReturnType, SeasonAndFilm } from "../../typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
-import { isIOS } from "@/app/lib/isIOS";
+import { isMobile } from "@/app/lib/isMobile";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
@@ -621,7 +621,7 @@ const Episodes = () => {
 
         <SearchBar container="list-episodes" />
 
-        {isIOS() ? null : (
+        {isMobile() ? null : (
           <label className="hideEpisodesNames">
             <p>Cacher le nom des épisodes</p>
 
