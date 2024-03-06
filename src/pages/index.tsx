@@ -214,7 +214,7 @@ export default function Accueil() {
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
           <div className={category} key={category}>
-            <p className="category">
+            <div className="category">
               {category === "Reprendre" ? (
                 <>
                   <p>{category}</p>
@@ -235,9 +235,9 @@ export default function Accueil() {
                   </button>
                 </>
               ) : (
-                category
+                <p>{category}</p>
               )}
-            </p>
+            </div>
 
             <ul key={category}>
               {names.map((animeName: string, i) => (

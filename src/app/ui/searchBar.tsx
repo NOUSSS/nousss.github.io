@@ -16,7 +16,9 @@ export default function SearchBar({ container }: { container: string }) {
         placeholder="Votre recherche..."
         onInput={() =>
           initSearchBar(
-            document.querySelectorAll("input")[1]!,
+            document.querySelector(
+              ".label--search-bar input"
+            ) as HTMLInputElement,
             document.getElementsByClassName(
               container
             ) as HTMLCollectionOf<HTMLElement>
