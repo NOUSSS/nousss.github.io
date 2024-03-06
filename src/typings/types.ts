@@ -1,41 +1,41 @@
 import { StaticImageData } from "next/image";
 
-export type SeasonAndFilm = {
+export interface SeasonAndFilm {
   name: string;
   aliases?: string[];
   image: () => StaticImageData;
-};
+}
 
 export type Season = Record<string, SeasonAndFilm>;
 export type Film = Record<string, SeasonAndFilm>;
 
-export type Note = {
+export interface Note {
   saison: string;
   message: string;
-};
+}
 
-export type horsSeriesType = {
+export interface horsSeriesType {
   saison: string;
   hs: number[];
-};
+}
 
 export type allIndexType = Record<string, number>;
 
-export type LecteurReturnType = {
+export interface LecteurReturnType {
   epsAS?: string[];
 
   eps1?: string[];
   eps2?: string[];
-};
+}
 
-export type FilmOptions = {
+export interface FilmOptions {
   SCRIPT_URL: (langage: string) => string;
 
   BLACKLIST_URL?: string[];
   names: Film;
-};
+}
 
-export type ScansOptions = {
+export interface ScansOptions {
   from?: number;
   SCRIPT_URL: string;
 
@@ -48,9 +48,9 @@ export type ScansOptions = {
   }) => string;
 
   CHAPITRE_SPECIAUX?: number[];
-};
+}
 
-export type EpisodesOptions = {
+export interface EpisodesOptions {
   SCRIPT_URL: ({
     index,
     lang,
@@ -69,9 +69,9 @@ export type EpisodesOptions = {
   oav?: boolean;
 
   allIndex: allIndexType;
-};
+}
 
-export type Historique = {
+export interface Historique {
   name: string;
   redirect: string;
 
@@ -79,4 +79,4 @@ export type Historique = {
   episode?: string;
   saison?: string;
   film?: string;
-};
+}

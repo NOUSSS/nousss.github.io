@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import { getAnime } from "@/app/lib/getAnime";
 
-type windowKeys = {
+interface windowKeys {
   [key: string]: string;
-};
+}
 
 export const getTailleChapitres = (): number => {
   let i = 1;

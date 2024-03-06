@@ -51,13 +51,13 @@ import GurrenLagann from "./GurrenLagann/gurren-lagann";
 import SevenDeadlySins from "./SevenDeadlySins/seven-deadly-sins";
 import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
 
-export type AnimesType = {
+export interface AnimesType {
   anime: string;
   aliases?: string[];
   options: Anime;
   category: string[];
   synopsis: string;
-};
+}
 
 export const ANIMES: AnimesType[] = [
   {
@@ -475,15 +475,15 @@ export const ANIMES: AnimesType[] = [
   },
 ];
 
-type AnimeOption = {
+interface AnimeOption {
   anime: string;
   category: string[];
-};
+}
 
-type GroupedAnimes = {
+interface GroupedAnimes {
   names: string[];
   category: string;
-};
+}
 
 export const groupAnimesByCategory = (
   animes: AnimeOption[]
