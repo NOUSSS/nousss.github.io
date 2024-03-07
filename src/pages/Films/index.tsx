@@ -142,32 +142,30 @@ const Films = () => {
         }
       }
 
-      setTimeout(() => {
-        appearVideo(
-          lastFilm
-            ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
-            : `${LecteursFilms[0]} ${
-                localStorage.getItem(
-                  `${formatName(currentAnime)}--currentFilm`
-                ) ?? "0"
-              }`,
+      appearVideo(
+        lastFilm
+          ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
+          : `${LecteursFilms[0]} ${
+              localStorage.getItem(
+                `${formatName(currentAnime)}--currentFilm`
+              ) ?? "0"
+            }`,
 
-          setVideo,
-          setTitle,
+        setVideo,
+        setTitle,
 
-          formatName(currentAnime)
-        );
+        formatName(currentAnime)
+      );
 
-        getFilms(
-          setFilmsFront,
-          setCurrentLecteur,
-          setTitle,
-          setVideo,
+      getFilms(
+        setFilmsFront,
+        setCurrentLecteur,
+        setTitle,
+        setVideo,
 
-          currentLecteur!,
-          currentAnime
-        );
-      }, 100);
+        currentLecteur!,
+        currentAnime
+      );
     }
   }, [
     currentLecteur?.change,
@@ -192,44 +190,46 @@ const Films = () => {
 
         <div className="film">{title}</div>
 
-        <Select
-          placeholder="Changer de langue"
-          items={[
-            {
-              name: "VostFR",
-              value: "vostfr",
-              disabled: lang === "vostfr" ? true : false,
-            },
-            {
-              name: "VF",
-              value: "vf",
-              disabled: lang === "vostfr" ? false : true,
-            },
-          ]}
-          onSelect={({ value }) => {
-            setLang(value);
+        <div className="selects">
+          <Select
+            placeholder="Changer de langue"
+            items={[
+              {
+                name: "VostFR",
+                value: "vostfr",
+                disabled: lang === "vostfr" ? true : false,
+              },
+              {
+                name: "VF",
+                value: "vf",
+                disabled: lang === "vostfr" ? false : true,
+              },
+            ]}
+            onSelect={({ value }) => {
+              setLang(value);
 
-            router.reload();
-          }}
-        />
+              router.reload();
+            }}
+          />
 
-        {Lecteurs ? (
-          Object.keys(Lecteurs).length > 1 ? (
-            <Select
-              placeholder="Changer de lecteur"
-              onSelect={({ value }) => {
-                setCurrentLecteur({
-                  lecteur: value,
-                  change: !currentLecteur?.change,
-                });
-              }}
-              items={Object.keys(Lecteurs).map((l, i) => ({
-                name: `Lecteur ${i + 1}`,
-                value: l,
-              }))}
-            />
-          ) : null
-        ) : null}
+          {Lecteurs ? (
+            Object.keys(Lecteurs).length > 1 ? (
+              <Select
+                placeholder="Changer de lecteur"
+                onSelect={({ value }) => {
+                  setCurrentLecteur({
+                    lecteur: value,
+                    change: !currentLecteur?.change,
+                  });
+                }}
+                items={Object.keys(Lecteurs).map((l, i) => ({
+                  name: `Lecteur ${i + 1}`,
+                  value: l,
+                }))}
+              />
+            ) : null
+          ) : null}
+        </div>
 
         <div className="video--films">
           {currentLecteur?.lecteur === "epsAS" ? (
