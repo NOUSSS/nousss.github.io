@@ -80,6 +80,15 @@ const Scans = () => {
     }
   }, []);
 
+  const options = (isClient && anime?.options?.SCANS_OPTIONS) as ScansOptions;
+  const from = isClient && options?.from === 0 ? options.from : 1;
+
+  const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
+
+  const status = useScript(SCRIPT_URL, {
+    removeOnUnmount: true,
+  });
+
   useEffect(() => {
     if (anime) {
       const chapitre =
@@ -91,7 +100,7 @@ const Scans = () => {
       const PrevchapitreSelector =
         document.querySelectorAll<HTMLElement>(".prevButton")!;
 
-      if (!chapitre || chapitre === "1")
+      if (!chapitre || chapitre === from.toString())
         PrevchapitreSelector.forEach((e) => e.classList.add("invisible"));
       else PrevchapitreSelector.forEach((e) => e.classList.remove("invisible"));
 
@@ -100,15 +109,6 @@ const Scans = () => {
       else NextchapitreSelector.forEach((e) => e.classList.remove("invisible"));
     }
   }, [scans, anime]);
-
-  const options = (isClient && anime?.options?.SCANS_OPTIONS) as ScansOptions;
-  const from = isClient && options?.from === 0 ? options.from : 1;
-
-  const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
-
-  const status = useScript(SCRIPT_URL, {
-    removeOnUnmount: true,
-  });
 
   useEffect(() => {
     if (status === "error") {
@@ -130,14 +130,14 @@ const Scans = () => {
         if (CHAPITRE_SPECIAUX?.includes(i)) {
           options.push({
             name: "Chapitre Special",
-            value: (i + Number(from)).toString(),
+            value: (i + from).toString(),
           });
 
           retard++;
         } else {
           options.push({
-            name: `Chapitre ${i + Number(from) - retard}`,
-            value: (i + Number(from)).toString(),
+            name: `Chapitre ${i + from - retard}`,
+            value: (i + 1).toString(),
           });
         }
       }
@@ -152,8 +152,8 @@ const Scans = () => {
               Number(
                 localStorage.getItem(
                   `${formatName(anime!.anime!)}--chapitre`
-                ) ?? 1
-              ) - 1
+                ) ?? from
+              ) - from
             ],
             formatName(anime!.anime!),
             options

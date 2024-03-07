@@ -38,34 +38,31 @@ export const selectChapter = (
   const { IMAGE_URL } = getAnime(currentAnime)?.options.SCANS_OPTIONS || {};
 
   const scansImages: React.ReactNode[] = [];
-  const index = Number(item.value) - 1;
   const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
   if (items) {
-    if (index >= 0 && index < items.length) {
-      if (placeholder) placeholder.innerText = item.name;
+    if (placeholder) placeholder.innerText = item.name;
 
-      const scans = (window as unknown as windowKeys)[`eps${item.value}`];
+    const scans = (window as unknown as windowKeys)[`eps${item.value}`];
 
-      localStorage.setItem(
-        `${currentAnime}--chapitre`,
-        String(Number(item.value))
+    localStorage.setItem(
+      `${currentAnime}--chapitre`,
+      String(Number(item.value))
+    );
+
+    for (let i = 1; i <= scans.length; i++) {
+      scansImages.push(
+        <Image
+          alt={`Image ${i}`}
+          key={`Image ${i}`}
+          width="1000"
+          height="1000"
+          src={IMAGE_URL!({ chapitre: item.value, index: i })}
+        ></Image>
       );
-
-      for (let i = 1; i <= scans.length; i++) {
-        scansImages.push(
-          <Image
-            alt={`Image ${i}`}
-            key={`Image ${i}`}
-            width="1000"
-            height="1000"
-            src={IMAGE_URL!({ chapitre: item.value, index: i })}
-          ></Image>
-        );
-      }
-
-      return scansImages;
     }
+
+    return scansImages;
   }
 
   return undefined;
