@@ -469,11 +469,7 @@ const Episodes = () => {
 
   useEffect(() => {
     if (AnimeInfo?.anime) {
-      const player = new Plyr(".vid video");
-
-      if (player) {
-        console.log(player);
-      }
+      new Plyr(".vid video");
 
       const episode =
         localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--episode`) ??
@@ -493,7 +489,7 @@ const Episodes = () => {
         NextEpisodeSelector.classList.add("invisible");
       else NextEpisodeSelector.classList.remove("invisible");
     }
-  }, [video, AnimeInfo?.anime, router, AnimeInfo]);
+  }, [video, AnimeInfo]);
 
   return (
     <>
