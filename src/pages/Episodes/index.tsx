@@ -559,6 +559,7 @@ const Episodes = () => {
                 items={Object.keys(Lecteurs).map((l, i) => ({
                   name: `Lecteur ${i + 1}`,
                   value: l,
+                  disabled: currentLecteur?.lecteur === l ? true : false,
                 }))}
               />
             ) : null
