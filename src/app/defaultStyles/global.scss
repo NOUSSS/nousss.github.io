@@ -423,6 +423,78 @@ button {
   }
 }
 
+.label-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  border: 1px solid rgb(60 60 60 / 1);
+  color: white;
+
+  padding: 10px;
+  position: relative;
+
+  width: 250px;
+  margin-bottom: 50px;
+
+  border-radius: 0.35rem;
+  background-color: rgba(22, 23, 29, 0.5019607843);
+
+  svg {
+    transition: transform 250ms ease-out;
+  }
+
+  &.active {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .menu {
+    animation: menuAppear 250ms ease-out;
+    position: absolute;
+
+    top: 60px;
+    left: 0;
+
+    width: 100%;
+    max-height: 275px;
+
+    overflow-y: auto;
+    z-index: 1;
+
+    background-color: #1b1d21;
+    border: 1px solid rgb(60 60 60 / 1);
+
+    ul {
+      li {
+        transition: background-color 250ms ease-out;
+        padding: 5px;
+
+        cursor: pointer;
+
+        &:hover {
+          background-color: #212325;
+        }
+      }
+    }
+  }
+}
+
+@keyframes menuAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .mark {
   width: 350px;
   margin-bottom: 20px;

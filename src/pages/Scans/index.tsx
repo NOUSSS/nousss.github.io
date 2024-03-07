@@ -9,6 +9,7 @@ import {
   getTailleChapitres,
   selectChapter,
 } from "../../app/components/Scans/chapterManager";
+
 import { AnimesType } from "../../animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
@@ -20,16 +21,17 @@ import { getAnime } from "@/app/lib/getAnime";
 import { ScansOptions } from "@/typings/types";
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
+import { useRouter } from "next/router";
 
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Select, { ItemsProps } from "@/app/ui/Select";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
 
   const [anime, setAnime] = useState<AnimesType | null>(null);
   const [isClient, setIsClient] = useState(false);
-  const [chapitresOptions, setChapitresOptions] = useState<string[]>([]);
+  const [chapitresOptions, setChapitresOptions] = useState<ItemsProps[]>([]);
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null
@@ -93,7 +95,7 @@ const Scans = () => {
         PrevchapitreSelector.forEach((e) => e.classList.add("invisible"));
       else PrevchapitreSelector.forEach((e) => e.classList.remove("invisible"));
 
-      if (Number(chapitre) === document.querySelector("select")?.options.length)
+      if (Number(chapitre) === chapitresOptions.length)
         NextchapitreSelector.forEach((e) => e.classList.add("invisible"));
       else NextchapitreSelector.forEach((e) => e.classList.remove("invisible"));
     }
@@ -122,29 +124,42 @@ const Scans = () => {
 
       let retard = 0;
 
-      const options: string[] = [];
+      const options: ItemsProps[] = [];
 
       for (let i = 0; i < getTailleChapitres(); i++) {
         if (CHAPITRE_SPECIAUX?.includes(i)) {
-          options.push(`Chapitre Special`);
+          options.push({
+            name: "Chapitre Special",
+            value: (i + Number(from)).toString(),
+          });
 
           retard++;
         } else {
-          options.push(`Chapitre ${i + Number(from) - retard}`);
+          options.push({
+            name: `Chapitre ${i + Number(from) - retard}`,
+            value: (i + Number(from)).toString(),
+          });
         }
       }
 
-      setChapitresOptions(options);
-      clickEvents(setScans, anime!.anime!);
-
       setTimeout(() => {
+        setChapitresOptions(options);
+        clickEvents(setScans, formatName(anime!.anime!), options);
+
         setScans(
           selectChapter(
-            localStorage.getItem(`${formatName(anime!.anime!)}--chapitre`) ?? 1,
-            formatName(anime!.anime!)
+            options[
+              Number(
+                localStorage.getItem(
+                  `${formatName(anime!.anime!)}--chapitre`
+                ) ?? 1
+              ) - 1
+            ],
+            formatName(anime!.anime!),
+            options
           )
         );
-      }, 1000);
+      }, 100);
     }
   }, [status, CHAPITRE_SPECIAUX, anime, from, loadingToast]);
 
@@ -167,27 +182,27 @@ const Scans = () => {
         />
 
         <div className="select-container">
-          <select
-            name="chapitres"
-            className="chapitres"
-            onChange={(event) => {
-              const id = event.target.selectedOptions[0].id;
-              const chapterId = id.match(/[0-9]/g)!.join("");
+          {chapitresOptions.length > 0 ? (
+            <Select
+              onSelect={(item) => {
+                localStorage.setItem(
+                  `${formatName(anime!.anime!)}--chapitre`,
+                  item.value
+                );
 
-              localStorage.setItem(
-                `${formatName(anime!.anime!)}--chapitre`,
-                chapterId
-              );
+                setScans(
+                  selectChapter(
+                    item,
 
-              setScans(selectChapter(chapterId, formatName(anime!.anime!)));
-            }}
-          >
-            {chapitresOptions.map((option, index) => (
-              <option key={index} id={`Chapitre ${index + 1}`}>
-                {option}
-              </option>
-            ))}
-          </select>
+                    formatName(anime!.anime!),
+                    chapitresOptions
+                  )
+                );
+              }}
+              items={chapitresOptions}
+              placeholder="Selectionnez un chapitre"
+            />
+          ) : null}
         </div>
 
         <div className="container--buttons--scans">

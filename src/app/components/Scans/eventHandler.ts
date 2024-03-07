@@ -1,5 +1,5 @@
-import { formatName } from "@/app/lib/formatName";
 import { selectChapter } from "./chapterManager";
+import { ItemsProps } from "@/app/ui/Select";
 
 const attachButtonClickEvent = (
   className: string,
@@ -12,14 +12,15 @@ const attachButtonClickEvent = (
 
 export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>,
-  currentAnime: string
+  currentAnime: string,
+  items: ItemsProps[]
 ): void => {
   attachButtonClickEvent("prevButton", () => {
     setScans(
       selectChapter(
-        Number(localStorage.getItem(`${formatName(currentAnime)}--chapitre`)) -
-          1,
-        currentAnime
+        items[Number(localStorage.getItem(`${currentAnime}--chapitre`)) - 2],
+        currentAnime,
+        items
       )
     );
   });
@@ -27,20 +28,18 @@ export const clickEvents = (
   attachButtonClickEvent("nextButton", () => {
     setScans(
       selectChapter(
-        Number(localStorage.getItem(`${formatName(currentAnime)}--chapitre`)) +
-          1,
-        formatName(currentAnime)
+        items[Number(localStorage.getItem(`${currentAnime}--chapitre`))],
+        currentAnime,
+        items
       )
     );
   });
 
   document.querySelector(".lastChapter")!.addEventListener("click", () => {
-    const allChapitres = document.querySelector("select")!.options;
+    if (items) {
+      const lastScan = items[items.length - 1];
 
-    const lastScan = allChapitres[allChapitres.length - 1].id
-      .match(/[0-9]/g)!
-      .join("");
-
-    setScans(selectChapter(lastScan, formatName(currentAnime)));
+      setScans(selectChapter(lastScan, currentAnime, items));
+    }
   });
 };

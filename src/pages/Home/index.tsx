@@ -47,7 +47,7 @@ const Home = () => {
         pathname: "/",
       });
     }
-  }, [query.anime, router]);
+  }, [query.anime]);
 
   return (
     <>

@@ -26,6 +26,7 @@ import { useRouter } from "next/router";
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
 import Head from "next/head";
+import Select from "@/app/ui/Select";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -222,20 +223,19 @@ const Films = () => {
 
         {Lecteurs ? (
           Object.keys(Lecteurs).length > 1 ? (
-            <select
-              onChange={({ target: { value } }) =>
+            <Select
+              placeholder="Changer de lecteur"
+              onSelect={({ value }) => {
                 setCurrentLecteur({
                   lecteur: value,
                   change: !currentLecteur?.change,
-                })
-              }
-            >
-              {Object.keys(Lecteurs).map((l, i) => (
-                <option value={l} key={i}>
-                  Lecteur {i + 1}
-                </option>
-              ))}
-            </select>
+                });
+              }}
+              items={Object.keys(Lecteurs).map((l, i) => ({
+                name: `Lecteur ${i + 1}`,
+                value: l,
+              }))}
+            />
           ) : null
         ) : null}
 
