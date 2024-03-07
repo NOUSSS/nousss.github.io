@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { icons } from "lucide-react";
 
 export interface ItemsProps {
@@ -15,6 +15,7 @@ interface SelectProps {
 
 export default function Select({ items, placeholder, onSelect }: SelectProps) {
   const UpArrow = icons["ChevronUp"];
+
   const labelRef = useRef<HTMLLabelElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -26,6 +27,21 @@ export default function Select({ items, placeholder, onSelect }: SelectProps) {
       } else {
         labelRef.current.classList.add("active");
         menuRef.current.classList.remove("invisible");
+
+        const lastItem = menuRef.current.childNodes[
+          menuRef.current.childNodes.length - 1
+        ] as HTMLElement;
+
+        if (
+          lastItem.innerText ===
+          (labelRef.current.querySelector(".placeholder") as HTMLElement)
+            ?.innerText
+        ) {
+          menuRef.current.scrollTo({
+            top: menuRef.current.scrollHeight,
+            behavior: "smooth",
+          });
+        }
       }
     }
   };
@@ -62,6 +78,7 @@ export default function Select({ items, placeholder, onSelect }: SelectProps) {
       const placeholderElement = labelRef.current.querySelector(
         ".placeholder"
       ) as HTMLElement;
+
       placeholderElement.innerText = item.name;
     }
   };
