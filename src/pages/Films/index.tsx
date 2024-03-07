@@ -5,10 +5,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Films.scss";
 import "./responsive.scss";
 
-import "@szhsin/react-menu/dist/index.css";
-import "@szhsin/react-menu/dist/transitions/slide.css";
-
-import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { AnimesType } from "../../animes/constants";
@@ -146,30 +142,32 @@ const Films = () => {
         }
       }
 
-      appearVideo(
-        lastFilm
-          ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
-          : `${LecteursFilms[0]} ${
-              localStorage.getItem(
-                `${formatName(currentAnime)}--currentFilm`
-              ) ?? "0"
-            }`,
+      setTimeout(() => {
+        appearVideo(
+          lastFilm
+            ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
+            : `${LecteursFilms[0]} ${
+                localStorage.getItem(
+                  `${formatName(currentAnime)}--currentFilm`
+                ) ?? "0"
+              }`,
 
-        setVideo,
-        setTitle,
+          setVideo,
+          setTitle,
 
-        formatName(currentAnime)
-      );
+          formatName(currentAnime)
+        );
 
-      getFilms(
-        setFilmsFront,
-        setCurrentLecteur,
-        setTitle,
-        setVideo,
+        getFilms(
+          setFilmsFront,
+          setCurrentLecteur,
+          setTitle,
+          setVideo,
 
-        currentLecteur!,
-        currentAnime
-      );
+          currentLecteur!,
+          currentAnime
+        );
+      }, 100);
     }
   }, [
     currentLecteur?.change,
@@ -194,32 +192,26 @@ const Films = () => {
 
         <div className="film">{title}</div>
 
-        <Menu
-          menuButton={<MenuButton>Changer de langue</MenuButton>}
-          transition
-        >
-          <MenuItem
-            onClick={() => {
-              setLang("vostfr");
+        <Select
+          placeholder="Changer de langue"
+          items={[
+            {
+              name: "VostFR",
+              value: "vostfr",
+              disabled: lang === "vostfr" ? true : false,
+            },
+            {
+              name: "VF",
+              value: "vf",
+              disabled: lang === "vostfr" ? false : true,
+            },
+          ]}
+          onSelect={({ value }) => {
+            setLang(value);
 
-              router.reload();
-            }}
-            disabled={lang === "vostfr" ? true : false}
-          >
-            VOSTFR
-          </MenuItem>
-
-          <MenuItem
-            onClick={() => {
-              setLang("vf");
-
-              router.reload();
-            }}
-            disabled={lang === "vostfr" ? false : true}
-          >
-            VF
-          </MenuItem>
-        </Menu>
+            router.reload();
+          }}
+        />
 
         {Lecteurs ? (
           Object.keys(Lecteurs).length > 1 ? (

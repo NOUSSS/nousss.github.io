@@ -1,44 +1,43 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { icons } from "lucide-react";
 
 export interface ItemsProps {
   name: string;
   value: string;
+  disabled?: boolean;
 }
 
 interface SelectProps {
   items: ItemsProps[];
   placeholder: string;
-
   onSelect: (value: ItemsProps) => void;
 }
 
 export default function Select({ items, placeholder, onSelect }: SelectProps) {
   const UpArrow = icons["ChevronUp"];
-  const labelRef = React.useRef<HTMLLabelElement | null>(null);
+  const labelRef = useRef<HTMLLabelElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   const appear = () => {
-    const target = document.querySelector(".label-select") as HTMLLabelElement;
-    const menu = document.querySelector(".label-select .menu") as HTMLElement;
-
-    if (target.classList.contains("active")) {
-      target.classList.remove("active");
-      menu.classList.add("invisible");
-    } else {
-      target.classList.add("active");
-      menu.classList.remove("invisible");
+    if (labelRef.current && menuRef.current) {
+      if (labelRef.current.classList.contains("active")) {
+        labelRef.current.classList.remove("active");
+        menuRef.current.classList.add("invisible");
+      } else {
+        labelRef.current.classList.add("active");
+        menuRef.current.classList.remove("invisible");
+      }
     }
   };
 
   const disappear = () => {
-    const target = document.querySelector(".label-select") as HTMLLabelElement;
-    const menu = document.querySelector(".label-select .menu") as HTMLElement;
-
-    menu.classList.add("invisible");
-    target.classList.remove("active");
+    if (labelRef.current && menuRef.current) {
+      menuRef.current.classList.add("invisible");
+      labelRef.current.classList.remove("active");
+    }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         labelRef.current &&
@@ -55,15 +54,16 @@ export default function Select({ items, placeholder, onSelect }: SelectProps) {
     };
   }, []);
 
-  const handleSelect = ({ value, name }: ItemsProps) => {
-    onSelect({ value, name });
+  const handleSelect = (item: ItemsProps) => {
+    onSelect(item);
     disappear();
 
-    const placeholder = document.querySelector(
-      ".label-select .placeholder"
-    ) as HTMLElement;
-
-    placeholder.innerText = name;
+    if (labelRef.current) {
+      const placeholderElement = labelRef.current.querySelector(
+        ".placeholder"
+      ) as HTMLElement;
+      placeholderElement.innerText = item.name;
+    }
   };
 
   return (
@@ -73,14 +73,17 @@ export default function Select({ items, placeholder, onSelect }: SelectProps) {
 
         <UpArrow />
 
-        <div className="menu invisible">
+        <div ref={menuRef} className="menu invisible">
           {items.map((item, index) => (
             <ul key={index}>
               <li
                 onClick={() => {
-                  handleSelect(item);
-                  appear();
+                  if (!item.disabled) {
+                    handleSelect(item);
+                    appear();
+                  }
                 }}
+                className={item.disabled ? "disabled" : ""}
               >
                 {item.name}
               </li>

@@ -220,10 +220,6 @@ header {
   }
 }
 
-option {
-  color: white;
-}
-
 iframe,
 .vid {
   border: 0;
@@ -342,16 +338,6 @@ button {
   z-index: -1;
   transform: scale(1.1);
   filter: blur(150px);
-}
-
-.szh-menu-button {
-  width: 160px;
-  height: 47px;
-  top: 5px;
-}
-
-.szh-menu__item {
-  color: black;
 }
 
 .label--search-bar {
@@ -477,6 +463,15 @@ button {
 
         &:hover {
           background-color: #212325;
+        }
+
+        &.disabled {
+          cursor: default;
+          color: grey;
+
+          &:hover {
+            background-color: transparent;
+          }
         }
       }
     }

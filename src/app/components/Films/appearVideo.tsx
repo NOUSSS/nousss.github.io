@@ -16,7 +16,7 @@ export async function appearVideo(
   const lang = localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
-    top: (document.querySelector(".szh-menu-button") as HTMLElement).offsetTop,
+    top: (document.querySelector(".label-select") as HTMLElement).offsetTop,
     behavior: "smooth",
   });
 

@@ -161,7 +161,7 @@ const Scans = () => {
         );
       }, 100);
     }
-  }, [status, CHAPITRE_SPECIAUX, anime, from, loadingToast]);
+  }, [status, anime, loadingToast]);
 
   return (
     <>

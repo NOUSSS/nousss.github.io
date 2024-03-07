@@ -3,12 +3,8 @@
 import "./Episodes.scss";
 import "./responsive.scss";
 
-import "@szhsin/react-menu/dist/index.css";
-import "@szhsin/react-menu/dist/transitions/slide.css";
-
 import React, { useEffect, useRef, useState } from "react";
 
-import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import { formatName } from "@/app/lib/formatName";
 import { clickEvents } from "../../app/components/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
@@ -528,52 +524,46 @@ const Episodes = () => {
 
         <p className="episodeTitle">{episodeTitle}</p>
 
-        <Menu
-          menuButton={<MenuButton>Changer de langue</MenuButton>}
-          transition
-        >
-          <MenuItem
-            onClick={({ value }) => {
+        <div className="selects">
+          <Select
+            placeholder="Changer de langue"
+            items={[
+              {
+                name: "VostFR",
+                value: "vostfr",
+                disabled: lang === "vostfr" ? true : false,
+              },
+              {
+                name: "VF",
+                value: "vf",
+                disabled: lang === "vostfr" ? false : true,
+              },
+            ]}
+            onSelect={({ value }) => {
               setLang(value);
 
               router.reload();
             }}
-            value="vostfr"
-            disabled={lang && lang === "vostfr" ? true : false}
-          >
-            VOSTFR
-          </MenuItem>
+          />
 
-          <MenuItem
-            onClick={({ value }) => {
-              setLang(value);
-
-              router.reload();
-            }}
-            value="vf"
-            disabled={lang && lang === "vostfr" ? false : true}
-          >
-            VF
-          </MenuItem>
-        </Menu>
-
-        {Lecteurs ? (
-          Object.keys(Lecteurs).length > 1 ? (
-            <Select
-              placeholder="Changer de lecteur"
-              onSelect={({ value }) => {
-                setCurrentLecteur({
-                  lecteur: value,
-                  change: !currentLecteur?.change,
-                });
-              }}
-              items={Object.keys(Lecteurs).map((l, i) => ({
-                name: `Lecteur ${i + 1}`,
-                value: l,
-              }))}
-            />
-          ) : null
-        ) : null}
+          {Lecteurs ? (
+            Object.keys(Lecteurs).length > 1 ? (
+              <Select
+                placeholder="Changer de lecteur"
+                onSelect={({ value }) => {
+                  setCurrentLecteur({
+                    lecteur: value,
+                    change: !currentLecteur?.change,
+                  });
+                }}
+                items={Object.keys(Lecteurs).map((l, i) => ({
+                  name: `Lecteur ${i + 1}`,
+                  value: l,
+                }))}
+              />
+            ) : null
+          ) : null}
+        </div>
 
         <div className="videoContainer">
           {currentLecteur?.lecteur === "epsAS" ? (

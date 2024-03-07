@@ -100,7 +100,7 @@ export function Change(
   }
 
   window.scrollTo({
-    top: (document.querySelector(".szh-menu-button") as HTMLElement).offsetTop,
+    top: (document.querySelector(".label-select") as HTMLElement).offsetTop,
     behavior: "smooth",
   });
 }
