@@ -1,9 +1,9 @@
 import { getImage } from "./constants/image-saisons";
+import { films } from "./constants/films-names";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "../../assets/Animes/DragonBallSuper/Affiche.jpg";
-import { films } from "./constants/films-names";
 import episodesNames from "./constants/episodes-names";
-import { Anime } from "@/app/class/anime";
 
 class DragonBallSuper extends Anime {
   constructor() {
@@ -35,7 +35,7 @@ class DragonBallSuper extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Dragon%20Ball%20Super/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Dragon Ball super/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [],
     };
 
