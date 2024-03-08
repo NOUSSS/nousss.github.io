@@ -74,8 +74,7 @@ export const ANIMES: AnimesType[] = [
     aliases: ["goku", "shenron", "db", "films", "saisons"],
     options: new DragonBall(),
     category: ["Classique", "Aventure"],
-    synopsis:
-      "L'histoire de Dragon Ball suit la vie de Son Goku, un garçon à la queue de singe inspiré du conte traditionnel chinois La Pérégrination vers l'Ouest. Son Goku est un jeune garçon simple d'esprit et pur doté d'une queue de singe et d'une force extraordinaire.",
+    synopsis: "Akira Toriyama - Paix à son âme.",
   },
   {
     anime: "Dragon Ball Z",
