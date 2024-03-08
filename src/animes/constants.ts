@@ -446,7 +446,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Demon Slave",
-    category: ["New gen", "Nouveutées", "Magie", "Ecchi"],
+    category: ["New gen", "Nouveautées", "Magie", "Ecchi"],
     options: new DemonSlave(),
     synopsis:
       "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
