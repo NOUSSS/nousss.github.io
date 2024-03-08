@@ -19,33 +19,33 @@ export function initSearchBar(
     }
   }
 
-  function updateResults(): void {
-    Array.from(container).forEach((element, index) => {
-      if (
-        input.value.length === 0 ||
-        element.id.toLowerCase().includes(input.value.toLowerCase())
-      ) {
-        container[index].classList.remove("invisible");
-      } else {
-        container[index].classList.add("invisible");
-      }
-    });
-
-    if (window.location.hash === "") {
-      const categories = document.querySelectorAll(".catalogue > div");
-
-      categories.forEach((category) => {
-        const items = category.querySelectorAll("li");
-        const isAllHidden = Array.from(items).every((item) =>
-          item.classList.contains("invisible")
-        );
-
-        isAllHidden
-          ? category.classList.add("invisible")
-          : category.classList.remove("invisible");
-      });
+  Array.from(container).forEach((element, index) => {
+    if (
+      input.value.length === 0 ||
+      element.id
+        .toLowerCase()
+        .replaceAll("é", "e")
+        .includes(input.value.toLowerCase().replaceAll("é", "e"))
+    ) {
+      container[index].classList.remove("invisible");
+    } else {
+      container[index].classList.add("invisible");
     }
-  }
+  });
 
-  input.addEventListener("input", updateResults);
+  if (window.location.hash === "") {
+    const categories = document.querySelectorAll(".catalogue > div");
+
+    categories.forEach((category) => {
+      const items = category.querySelectorAll("li");
+
+      const isAllHidden = Array.from(items).every((item) =>
+        item.classList.contains("invisible")
+      );
+
+      isAllHidden
+        ? category.classList.add("invisible")
+        : category.classList.remove("invisible");
+    });
+  }
 }
