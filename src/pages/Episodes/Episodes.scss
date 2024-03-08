@@ -27,6 +27,11 @@
 .list-episodes {
   cursor: pointer;
   text-align: left;
+  padding: 6px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgb(60 60 60 / 1);
+  }
 
   span {
     transition: color 250ms ease-out;
