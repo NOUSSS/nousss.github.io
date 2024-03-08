@@ -7,7 +7,7 @@ export const getCurrentChapitre = (
   historiques: Historique[]
 ) => {
   if (
-    getAnime(animeName)?.options?.SCANS_OPTIONS!.CHAPITRE_SPECIAUX?.includes(
+    getAnime(animeName)?.options?.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.includes(
       Number(localStorage.getItem(`${animeName}--chapitre`)) - 1
     )
   ) {
