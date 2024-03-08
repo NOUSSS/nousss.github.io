@@ -328,8 +328,13 @@ const Episodes = () => {
                 id={id}
                 key={id}
               >
-                <span className="episodeNumber">{episodeNumber}</span> :{" "}
-                <span className="episodeName">{episodeTitle}</span>
+                <span className="episodeNumber">
+                  {episodeNumber}{" "}
+                  {AnimeInfo?.saison === "1"
+                    ? ""
+                    : `(${indexEpisode - retard})`}
+                </span>{" "}
+                : <span className="episodeName">{episodeTitle}</span>
               </p>
             );
           }
@@ -348,8 +353,11 @@ const Episodes = () => {
               id={id}
               key={id}
             >
-              <span className="episodeNumber">{episodeNumber}</span> :{" "}
-              <span className="episodeName">{episodeTitle}</span>
+              <span className="episodeNumber">
+                {episodeNumber}{" "}
+                {AnimeInfo?.saison === "1" ? "" : `(${indexEpisode})`}
+              </span>{" "}
+              : <span className="episodeName">{episodeTitle}</span>
             </p>
           );
         }
@@ -382,7 +390,10 @@ const Episodes = () => {
           setEpisodeTitle(
             <>
               <span className="episodeNumber">
-                {Number(episodeIndex) + Number(episode) - retard}
+                {Number(episodeIndex) + Number(episode) - retard}{" "}
+                {AnimeInfo?.saison === "1"
+                  ? ""
+                  : `(${Number(episode) - retard})`}
               </span>{" "}
               : <span className="episodeName">{title}</span>
             </>
@@ -408,8 +419,11 @@ const Episodes = () => {
 
         setEpisodeTitle(
           <>
-            <span className="episodeNumber">{Number(episodeIndex) + 1}</span> :{" "}
-            <span className="episodeName">{title}</span>
+            <span className="episodeNumber">
+              {Number(episodeIndex) + 1}{" "}
+              {AnimeInfo?.saison === "1" ? "" : `(1)`}
+            </span>{" "}
+            : <span className="episodeName">{title}</span>
           </>
         );
       }

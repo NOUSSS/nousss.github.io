@@ -14,6 +14,7 @@ export function Change(
   localStorage.removeItem(`${currentAnime}--currentTime`);
 
   const options = getAnime(currentAnime)!.options;
+  const saison = localStorage.getItem(`${currentAnime}--saison`);
 
   const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS || {};
 
@@ -63,8 +64,11 @@ export function Change(
       setVideo(url);
       setEpisodeTitle(
         <>
-          <span className="episodeNumber">{numberEpisode}</span> :{" "}
-          <span className="episodeName">{title}</span>
+          <span className="episodeNumber">
+            {numberEpisode}{" "}
+            {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
+          </span>{" "}
+          : <span className="episodeName">{title}</span>
         </>
       );
 
@@ -87,8 +91,10 @@ export function Change(
 
     setEpisodeTitle(
       <>
-        <span className="episodeNumber">{numberEpisode}</span> :{" "}
-        <span className="episodeName">{episodeTitle}</span>
+        <span className="episodeNumber">
+          {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
+        </span>{" "}
+        : <span className="episodeName">{episodeTitle}</span>
       </>
     );
 
