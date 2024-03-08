@@ -38,7 +38,6 @@ export function Change(
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
       localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
-
       localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
     } else {
       let retard = 0;
@@ -70,7 +69,6 @@ export function Change(
       );
 
       localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
-
       localStorage.removeItem(`${currentAnime}--e-sp`);
     }
   } else {
@@ -95,7 +93,6 @@ export function Change(
     );
 
     localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
-
     localStorage.removeItem(`${currentAnime}--e-sp`);
   }
 
