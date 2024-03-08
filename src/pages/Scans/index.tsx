@@ -155,8 +155,7 @@ const Scans = () => {
                 ) ?? from
               ) - from
             ],
-            formatName(anime!.anime!),
-            options
+            formatName(anime!.anime!)
           )
         );
       }, 100);
@@ -190,14 +189,7 @@ const Scans = () => {
                   item.value
                 );
 
-                setScans(
-                  selectChapter(
-                    item,
-
-                    formatName(anime!.anime!),
-                    chapitresOptions
-                  )
-                );
+                setScans(selectChapter(item, formatName(anime!.anime!)));
               }}
               items={chapitresOptions}
               placeholder="Selectionnez un chapitre"

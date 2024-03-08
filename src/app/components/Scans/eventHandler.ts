@@ -19,8 +19,7 @@ export const clickEvents = (
     setScans(
       selectChapter(
         items[Number(localStorage.getItem(`${currentAnime}--chapitre`)) - 2],
-        currentAnime,
-        items
+        currentAnime
       )
     );
   });
@@ -29,8 +28,7 @@ export const clickEvents = (
     setScans(
       selectChapter(
         items[Number(localStorage.getItem(`${currentAnime}--chapitre`))],
-        currentAnime,
-        items
+        currentAnime
       )
     );
   });
@@ -39,7 +37,7 @@ export const clickEvents = (
     if (items) {
       const lastScan = items[items.length - 1];
 
-      setScans(selectChapter(lastScan, currentAnime, items));
+      setScans(selectChapter(lastScan, currentAnime));
     }
   });
 };

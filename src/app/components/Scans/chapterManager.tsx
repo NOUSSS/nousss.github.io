@@ -29,9 +29,7 @@ export const getTailleChapitres = (): number => {
 
 export const selectChapter = (
   item: ItemsProps,
-  currentAnime: string,
-
-  items: ItemsProps[]
+  currentAnime: string
 ): React.ReactNode[] | undefined => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -40,7 +38,7 @@ export const selectChapter = (
   const scansImages: React.ReactNode[] = [];
   const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
-  if (items) {
+  if (item?.name && item?.value) {
     if (placeholder) placeholder.innerText = item.name;
 
     const scans = (window as unknown as windowKeys)[`eps${item.value}`];
