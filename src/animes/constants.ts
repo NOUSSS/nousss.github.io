@@ -50,6 +50,7 @@ import DemonSlave from "./DemonSlave/demon-slave";
 import GurrenLagann from "./GurrenLagann/gurren-lagann";
 import SevenDeadlySins from "./SevenDeadlySins/seven-deadly-sins";
 import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
+import NinjaKamui from "./NinjaKamui/ninja-kamui";
 
 export interface AnimesType {
   anime: string;
@@ -472,6 +473,13 @@ export const ANIMES: AnimesType[] = [
     options: new RagnaCrimson(),
     synopsis:
       "Les chasseurs de dragons tuent leurs proies avec leur épée d'argent afin de toucher une récompense. Parmi eux, il y a Ragna, un jeune homme plutôt faible faisant équipe avec Léonica, une chasseuse de génie qui peut se vanter d'avoir tué bien plus de dragons que n'importe quel autre chasseur.",
+  },
+  {
+    anime: "Ninja Kamui",
+    category: ["Nouveautées"],
+    options: new NinjaKamui(),
+    synopsis:
+      "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
   },
 ];
 
