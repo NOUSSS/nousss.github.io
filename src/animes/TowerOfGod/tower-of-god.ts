@@ -1,6 +1,6 @@
 import { getImage } from "./constants/images-saisons";
 
-import Affiche from "../../assets/Animes/TowerOfGod/Affiche.jpg";
+import Affiche from "@/assets/Animes/TowerOfGod/Affiche.jpg";
 import { Anime } from "@/app/class/anime";
 
 export default class TowerOfGod extends Anime {

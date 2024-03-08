@@ -1,5 +1,5 @@
-import s1 from '../../../assets/Animes/Mashle/Saisons/Saison1.jpg';
-import s2 from '../../../assets/Animes/Mashle/Saisons/Saison2.jpeg';
+import s1 from "@/assets/Animes/Mashle/Saisons/Saison1.jpg";
+import s2 from "@/assets/Animes/Mashle/Saisons/Saison2.jpeg";
 
 const images = {
   1: s1,

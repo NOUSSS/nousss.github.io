@@ -1,6 +1,6 @@
-import s1 from "../../../assets/Animes/TokyoGhoul/Saisons/Saison1.jpg";
-import s2 from "../../../assets/Animes/TokyoGhoul/Saisons/Saison2.webp";
-import s3 from "../../../assets/Animes/TokyoGhoul/Saisons/Saison3.webp";
+import s1 from "@/assets/Animes/TokyoGhoul/Saisons/Saison1.jpg";
+import s2 from "@/assets/Animes/TokyoGhoul/Saisons/Saison2.webp";
+import s3 from "@/assets/Animes/TokyoGhoul/Saisons/Saison3.webp";
 
 const images = {
   1: s1,

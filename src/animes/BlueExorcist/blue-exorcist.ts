@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
-import Affiche from "../../assets/Animes/BlueExorcist/Affiche.jpg";
+import Affiche from "@/assets/Animes/BlueExorcist/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
 

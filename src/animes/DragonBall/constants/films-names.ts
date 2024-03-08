@@ -1,27 +1,27 @@
-import { Film } from '../../../typings/types';
-import { getImage } from './images-films';
+import { Film } from "@/typings/types";
+import { getImage } from "./images-films";
 
 export const films: Film = {
   0: {
-    name: 'La légende de Shenron',
-    aliases: [''],
+    name: "La légende de Shenron",
+    aliases: [""],
     image: () => getImage(0),
   },
 
   1: {
-    name: 'Le chateau du demon',
-    aliases: [''],
+    name: "Le chateau du demon",
+    aliases: [""],
     image: () => getImage(1),
   },
 
   2: {
     name: "L'aventure mystique",
-    aliases: [''],
+    aliases: [""],
     image: () => getImage(2),
   },
   3: {
     name: "L'armée du ruban rouge",
-    aliases: [''],
+    aliases: [""],
     image: () => getImage(3),
   },
 };

@@ -1,7 +1,7 @@
 import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/AttaqueDesTitans/Affiche.jpg";
+import Affiche from "@/assets/Animes/AttaqueDesTitans/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
 
 class AttaqueDesTitans extends Anime {

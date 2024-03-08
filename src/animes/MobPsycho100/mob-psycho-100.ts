@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "../../assets/Animes/MobPsycho100/Affiche.webp";
+import Affiche from "@/assets/Animes/MobPsycho100/Affiche.webp";
 
 class MobPsycho100 extends Anime {
   constructor() {

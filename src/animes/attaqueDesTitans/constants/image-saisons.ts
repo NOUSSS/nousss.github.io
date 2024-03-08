@@ -1,11 +1,11 @@
-import s1 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison1.jpg';
-import s2 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison2.jpeg';
-import s3 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison3.jpg';
-import s4 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison4.jpeg';
-import s5 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison4-2.png';
-import s6 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison4-3.jpeg';
-import s7 from '../../../assets/Animes/AttaqueDesTitans/Saisons/Saison4-4.jpeg';
-import s8 from '../../../assets/Animes/AttaqueDesTitans/Saisons/OAV.jpg';
+import s1 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison1.jpg";
+import s2 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison2.jpeg";
+import s3 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison3.jpg";
+import s4 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison4.jpeg";
+import s5 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison4-2.png";
+import s6 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison4-3.jpeg";
+import s7 from "@/assets/Animes/AttaqueDesTitans/Saisons/Saison4-4.jpeg";
+import s8 from "@/assets/Animes/AttaqueDesTitans/Saisons/OAV.jpg";
 
 const images = {
   1: s1,

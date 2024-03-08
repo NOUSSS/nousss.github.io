@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/Naruto/Affiche.jpg";
+import Affiche from "@/assets/Animes/Naruto/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
 
 class Naruto extends Anime {

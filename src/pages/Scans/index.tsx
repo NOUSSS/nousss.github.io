@@ -8,18 +8,19 @@ import React, { useState, useEffect } from "react";
 import {
   getTailleChapitres,
   selectChapter,
-} from "../../app/components/Scans/chapterManager";
+} from "@/app/components/Scans/chapterManager";
 
-import { AnimesType } from "../../animes/constants";
+import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { clickEvents } from "../../app/components/Scans/eventHandler";
-import { icons } from "lucide-react";
+import { clickEvents } from "@/app/components/Scans/eventHandler";
 import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 import { ScansOptions } from "@/typings/types";
+
 import { toast } from "sonner";
+import { icons } from "lucide-react";
 import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 

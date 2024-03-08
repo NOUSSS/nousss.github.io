@@ -6,26 +6,29 @@ import "./responsive.scss";
 import React, { useEffect, useRef, useState } from "react";
 
 import { formatName } from "@/app/lib/formatName";
-import { clickEvents } from "../../app/components/Episodes/eventHandlers";
+import { clickEvents } from "@/app/components/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { LecteurReturnType, SeasonAndFilm } from "../../typings/types";
+import { LecteurReturnType, SeasonAndFilm } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { isMobile } from "@/app/lib/isMobile";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
+import { changeSaison } from "@/app/components/Saisons/changeSaison";
+
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
-import { changeSaison } from "../../app/components/Saisons/changeSaison";
 
 import Switch from "@mui/material/Switch";
 import Plyr from "plyr";
+
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
-import Head from "next/head";
 import Select from "@/app/ui/Select";
+
+import Head from "next/head";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;

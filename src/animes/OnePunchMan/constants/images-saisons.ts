@@ -1,5 +1,5 @@
-import s1 from '../../../assets/Animes/OnePunchMan/Saisons/Saison1.webp';
-import s2 from '../../../assets/Animes/OnePunchMan/Saisons/Saison2.webp';
+import s1 from "@/assets/Animes/OnePunchMan/Saisons/Saison1.webp";
+import s2 from "@/assets/Animes/OnePunchMan/Saisons/Saison2.webp";
 
 const images = {
   1: s1,

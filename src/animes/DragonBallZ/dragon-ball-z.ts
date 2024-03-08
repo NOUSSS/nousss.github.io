@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
-import Affiche from "../../assets/Animes/DragonBallZ/Affiche.webp";
+import Affiche from "@/assets/Animes/DragonBallZ/Affiche.webp";
 import episodesNames from "./constants/episodes-names";
 import { Anime } from "@/app/class/anime";
 

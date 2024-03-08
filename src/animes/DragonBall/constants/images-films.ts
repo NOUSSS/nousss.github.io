@@ -1,7 +1,7 @@
-import F1 from '../../../assets/Animes/DragonBall/Films/0.webp';
-import F2 from '../../../assets/Animes/DragonBall/Films/1.jpg';
-import F3 from '../../../assets/Animes/DragonBall/Films/2.webp';
-import F4 from '../../../assets/Animes/DragonBall/Films/3.webp';
+import F1 from "@/assets/Animes/DragonBall/Films/0.webp";
+import F2 from "@/assets/Animes/DragonBall/Films/1.jpg";
+import F3 from "@/assets/Animes/DragonBall/Films/2.webp";
+import F4 from "@/assets/Animes/DragonBall/Films/3.webp";
 
 export const images = {
   0: F1,

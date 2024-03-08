@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/TheDailyLifeOfTheImmortalKing/Affiche.jpg";
+import Affiche from "@/assets/Animes/TheDailyLifeOfTheImmortalKing/Affiche.jpg";
 
 export default class TheDailyLifeOfTheImmortalKing extends Anime {
   constructor() {

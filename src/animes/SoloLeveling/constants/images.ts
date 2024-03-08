@@ -1,4 +1,4 @@
-import s1 from '../../../assets/Animes/SoloLeveling/Saisons/Saison1.jpeg';
+import s1 from "@/assets/Animes/SoloLeveling/Saisons/Saison1.jpeg";
 
 const images = {
   1: s1,

@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/JujutsuKaisen/Affiche.jpeg";
+import Affiche from "@/assets/Animes/JujutsuKaisen/Affiche.jpeg";
 import episodesNames from "./constants/episodes-names";
 
 class JujutsuKaisen extends Anime {

@@ -2,7 +2,7 @@ import { getImage } from "./constants/images";
 import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes--names";
-import Affiche from "../../assets/Animes/SoloLeveling/Affiche.jpeg";
+import Affiche from "@/assets/Animes/SoloLeveling/Affiche.jpeg";
 
 class SoloLeveling extends Anime {
   constructor() {

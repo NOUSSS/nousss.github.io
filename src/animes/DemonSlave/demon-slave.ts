@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/DemonSlave/Affiche.jpg";
+import Affiche from "@/assets/Animes/DemonSlave/Affiche.jpg";
 
 export default class DemonSlave extends Anime {
   constructor() {

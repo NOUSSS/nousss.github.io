@@ -1,5 +1,5 @@
-import F1 from '../../../assets/Animes/HunterXHunter/Films/1.jpeg';
-import F2 from '../../../assets/Animes/HunterXHunter/Films/2.jpeg';
+import F1 from "@/assets/Animes/HunterXHunter/Films/1.jpeg";
+import F2 from "@/assets/Animes/HunterXHunter/Films/2.jpeg";
 
 export const images = {
   0: F1,

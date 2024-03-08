@@ -1,4 +1,4 @@
-import Affiche from "../../assets/Animes/KaguraBachi/Affiche.jpg";
+import Affiche from "@/assets/Animes/KaguraBachi/Affiche.jpg";
 import { Anime } from "@/app/class/anime";
 
 export default class KaguraBachi extends Anime {

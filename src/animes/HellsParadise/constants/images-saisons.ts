@@ -1,4 +1,4 @@
-import s1 from '../../../assets/Animes/HellsParadise/Saisons/Saison1.webp';
+import s1 from "@/assets/Animes/HellsParadise/Saisons/Saison1.webp";
 
 const images = {
   1: s1,

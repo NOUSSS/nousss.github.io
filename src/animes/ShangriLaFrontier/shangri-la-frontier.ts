@@ -1,6 +1,6 @@
 import { getImage } from "./constants/images-saisons";
 
-import Affiche from "../../assets/Animes/ShangriLaFrontier/Affiche.jpg";
+import Affiche from "@/assets/Animes/ShangriLaFrontier/Affiche.jpg";
 import { Anime } from "@/app/class/anime";
 
 export default class ShangriLaFrontier extends Anime {

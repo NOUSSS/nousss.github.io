@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/FireForce/Affiche.webp";
+import Affiche from "@/assets/Animes/FireForce/Affiche.webp";
 
 export default class FireForce extends Anime {
   constructor() {

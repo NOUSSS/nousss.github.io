@@ -1,4 +1,4 @@
-import Affiche from "../../assets/Animes/Haikyuu/Affiche.jpg";
+import Affiche from "@/assets/Animes/Haikyuu/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
 import { getImage } from "./constants/images-saisons";

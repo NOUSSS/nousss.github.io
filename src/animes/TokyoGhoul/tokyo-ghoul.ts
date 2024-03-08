@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/TokyoGhoul/Affiche.jpg";
+import Affiche from "@/assets/Animes/TokyoGhoul/Affiche.jpg";
 
 export default class TokyoGhoul extends Anime {
   constructor() {

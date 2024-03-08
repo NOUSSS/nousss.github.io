@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/CaptainTsubasa/Affiche.avif";
+import Affiche from "@/assets/Animes/CaptainTsubasa/Affiche.avif";
 
 export default class CaptainTsubasa extends Anime {
   constructor() {

@@ -1,5 +1,5 @@
 import { icons } from "lucide-react";
-import { initSearchBar } from "../lib/initSearchBar";
+import { initSearchBar } from "@/app/lib/initSearchBar";
 
 interface SearchBarProps {
   container: string;

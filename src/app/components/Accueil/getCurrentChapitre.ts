@@ -1,4 +1,4 @@
-import { Historique } from "../../../typings/types";
+import { Historique } from "@/typings/types";
 import { getAnime } from "@/app/lib/getAnime";
 
 export const getCurrentChapitre = (

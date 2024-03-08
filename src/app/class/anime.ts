@@ -4,9 +4,9 @@ import {
   ScansOptions,
   EpisodesOptions,
   Note,
-} from "../../typings/types";
+} from "@/typings/types";
 
-import { Season } from "../../typings/types";
+import { Season } from "@/typings/types";
 
 export class Anime {
   public affiche: StaticImageData | null;

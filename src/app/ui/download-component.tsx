@@ -1,4 +1,4 @@
-import { isMobile } from "../lib/isMobile";
+import { isMobile } from "@/app/lib/isMobile";
 
 const DownloadComponent = ({
   video,

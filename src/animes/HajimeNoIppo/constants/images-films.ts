@@ -1,5 +1,5 @@
-import F1 from '../../../assets/Animes/HajimeNoIppo/Films/0.jpg';
-import F2 from '../../../assets/Animes/HajimeNoIppo/Films/1.jpg';
+import F1 from "@/assets/Animes/HajimeNoIppo/Films/0.jpg";
+import F2 from "@/assets/Animes/HajimeNoIppo/Films/1.jpg";
 
 export const images = {
   0: F1,

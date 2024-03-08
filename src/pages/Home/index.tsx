@@ -3,18 +3,18 @@
 import Link from "next/link";
 import Head from "next/head";
 
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { useRouter } from "next/router";
 
 import "./responsive.scss";
 import "./Home.scss";
 
-import { AnimesType } from "../../animes/constants";
+import { Footer } from "@/app/ui/Footer";
+import { Title } from "@/app/ui/Title";
+import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { useEffect, useState } from "react";
 import { getAnime } from "@/app/lib/getAnime";
 import { formatName } from "@/app/lib/formatName";
-import { useRouter } from "next/router";
 
 import NavMotion from "@/app/lib/navMotion";
 

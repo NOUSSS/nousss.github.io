@@ -2,8 +2,8 @@
 
 import React, { RefObject } from "react";
 
-import { ANIMES } from "../../animes/constants";
-import { formatName } from "../lib/formatName";
+import { ANIMES } from "@/animes/constants";
+import { formatName } from "@/app/lib/formatName";
 import { useRouter } from "next/router";
 
 import Image from "next/image";

@@ -3,19 +3,20 @@
 import "./Saisons.scss";
 import "./responsive.scss";
 
-import { getSaisons } from "../../app/components/Saisons/getSaisons";
-import { AnimesType } from "../../animes/constants";
+import { getSaisons } from "@/app/components/Saisons/getSaisons";
+import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
-import { changeSaison } from "../../app/components/Saisons/changeSaison";
+import { changeSaison } from "@/app/components/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 
-import SearchBar from "@/app/ui/searchBar";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 import Head from "next/head";
+import SearchBar from "@/app/ui/searchBar";
 
 const Saisons = () => {
   const router = useRouter();

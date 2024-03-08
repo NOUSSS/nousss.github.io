@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
-import { getCurrentAnime } from "../lib/getCurrentAnime";
-import { formatName } from "../lib/formatName";
+import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
+import { formatName } from "@/app/lib/formatName";
 import { useRouter } from "next/router";
 
 export function Title({

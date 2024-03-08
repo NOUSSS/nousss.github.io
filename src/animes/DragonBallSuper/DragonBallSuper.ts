@@ -2,7 +2,7 @@ import { getImage } from "./constants/image-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/DragonBallSuper/Affiche.jpg";
+import Affiche from "@/assets/Animes/DragonBallSuper/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
 
 class DragonBallSuper extends Anime {

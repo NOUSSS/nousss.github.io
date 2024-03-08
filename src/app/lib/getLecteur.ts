@@ -1,4 +1,4 @@
-import { LecteurReturnType } from "../../typings/types";
+import { LecteurReturnType } from "@/typings/types";
 
 export const getLecteur = (): LecteurReturnType => {
   if (typeof window.epsAS === "undefined") {

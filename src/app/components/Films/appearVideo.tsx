@@ -1,4 +1,4 @@
-import { ANIMES } from "../../../animes/constants";
+import { ANIMES } from "@/animes/constants";
 
 export async function appearVideo(
   id: string,

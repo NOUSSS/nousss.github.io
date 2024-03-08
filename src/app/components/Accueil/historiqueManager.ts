@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "sonner";
 
-import { Historique } from "../../../typings/types";
+import { Historique } from "@/typings/types";
 
 export const removeAnimeFromHistorique = (
   animeName: string,

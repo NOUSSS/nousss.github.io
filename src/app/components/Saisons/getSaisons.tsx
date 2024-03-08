@@ -1,5 +1,5 @@
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { ANIMES } from "../../../animes/constants";
+import { ANIMES } from "@/animes/constants";
 
 import Image from "next/image";
 

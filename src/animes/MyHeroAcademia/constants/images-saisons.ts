@@ -1,9 +1,9 @@
-import s1 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison1.webp';
-import s2 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison2.webp';
-import s3 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison3.webp';
-import s4 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison4.webp';
-import s5 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison5.webp';
-import s6 from '../../../assets/Animes/MyHeroAcademia/Saisons/Saison6.webp';
+import s1 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison1.webp";
+import s2 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison2.webp";
+import s3 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison3.webp";
+import s4 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison4.webp";
+import s5 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison5.webp";
+import s6 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison6.webp";
 
 const images = {
   1: s1,

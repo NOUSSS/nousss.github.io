@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "../../assets/Animes/ChainsawMan/Affiche.jpg";
+import Affiche from "@/assets/Animes/ChainsawMan/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
 

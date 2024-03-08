@@ -3,7 +3,7 @@ import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "../../assets/Animes/TokyoRevengers/Affiche.jpg";
+import Affiche from "@/assets/Animes/TokyoRevengers/Affiche.jpg";
 
 class TokyoRevengers extends Anime {
   constructor() {

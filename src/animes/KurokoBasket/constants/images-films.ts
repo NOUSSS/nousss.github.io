@@ -1,4 +1,4 @@
-import F1 from '../../../assets/Animes/KurokoBasket/Films/1.jpeg';
+import F1 from "@/assets/Animes/KurokoBasket/Films/1.jpeg";
 
 export const images = {
   0: F1,

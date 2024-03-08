@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/ClassroomOfTheElites/Affiche.webp";
+import Affiche from "@/assets/Animes/ClassroomOfTheElites/Affiche.webp";
 import episodes from "./constants/episodes-names";
 
 export default class ClassroomOfTheElites extends Anime {

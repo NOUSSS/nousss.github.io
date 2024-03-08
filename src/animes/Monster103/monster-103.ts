@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "../../assets/Animes/Monster103/Affiche.webp";
+import Affiche from "@/assets/Animes/Monster103/Affiche.webp";
 
 import { Anime } from "@/app/class/anime";
 

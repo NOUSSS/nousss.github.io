@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import background from "../../assets/Background3.jpg";
+import background from "@/assets/Background3.jpg";
 
 import { icons } from "lucide-react";
 

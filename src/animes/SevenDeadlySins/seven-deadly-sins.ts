@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/SevenDeadlySins/Affiche.jpg";
+import Affiche from "@/assets/Animes/SevenDeadlySins/Affiche.jpg";
 
 export default class SevenDeadlySins extends Anime {
   constructor() {

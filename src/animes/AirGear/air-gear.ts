@@ -1,7 +1,7 @@
 import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/AirGear/Affiche.jpg";
+import Affiche from "@/assets/Animes/AirGear/Affiche.jpg";
 
 export default class AirGear extends Anime {
   constructor() {

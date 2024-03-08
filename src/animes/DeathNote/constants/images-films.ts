@@ -1,5 +1,5 @@
-import F1 from '../../../assets/Animes/DeathNote/Films/0.jpg';
-import F2 from '../../../assets/Animes/DeathNote/Films/1.webp';
+import F1 from "@/assets/Animes/DeathNote/Films/0.jpg";
+import F2 from "@/assets/Animes/DeathNote/Films/1.webp";
 
 export const images = {
   0: F1,

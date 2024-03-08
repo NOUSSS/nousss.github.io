@@ -10,13 +10,13 @@ import Image from "next/image";
 
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
-import { ANIMES, groupAnimesByCategory } from "../animes/constants";
+import { ANIMES, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { formatName } from "@/app/lib/formatName";
-import { Historique } from "../typings/types";
-import { removeAnimeFromHistorique } from "../app/components/Accueil/historiqueManager";
-import { getCurrentChapitre } from "../app/components/Accueil/getCurrentChapitre";
-import { getCurrentEpisode } from "../app/components/Accueil/getCurrentEpisode";
+import { Historique } from "@/typings/types";
+import { removeAnimeFromHistorique } from "@/app/components/Accueil/historiqueManager";
+import { getCurrentChapitre } from "@/app/components/Accueil/getCurrentChapitre";
+import { getCurrentEpisode } from "@/app/components/Accueil/getCurrentEpisode";
 import { getAnime } from "@/app/lib/getAnime";
 import { useRouter } from "next/router";
 

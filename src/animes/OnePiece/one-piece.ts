@@ -3,7 +3,7 @@ import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "../../assets/Animes/OnePiece/Affiche.jpeg";
+import Affiche from "@/assets/Animes/OnePiece/Affiche.jpeg";
 
 class OnePiece extends Anime {
   constructor() {

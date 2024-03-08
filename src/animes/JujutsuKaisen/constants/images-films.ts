@@ -1,4 +1,4 @@
-import F1 from '../../../assets/Animes/JujutsuKaisen/Films/0.jpeg';
+import F1 from "@/assets/Animes/JujutsuKaisen/Films/0.jpeg";
 
 export const images = {
   0: F1,

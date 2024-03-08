@@ -1,6 +1,6 @@
 import { getImage } from "./constants/images-saisons";
 
-import Affiche from "../../assets/Animes/EminenceInShadow/Affiche.jpg";
+import Affiche from "@/assets/Animes/EminenceInShadow/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
 

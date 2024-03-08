@@ -1,7 +1,7 @@
 import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/NinjaKamui/Affiche.webp";
+import Affiche from "@/assets/Animes/NinjaKamui/Affiche.webp";
 
 export default class NinjaKamui extends Anime {
   constructor() {

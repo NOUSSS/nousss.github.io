@@ -7,22 +7,24 @@ import "./responsive.scss";
 
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
-import { AnimesType } from "../../animes/constants";
+import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { FilmOptions, LecteurReturnType } from "../../typings/types";
-import { appearVideo } from "../../app/components/Films/appearVideo";
-import { getFilms } from "../../app/components/Films/getFilms";
+import { FilmOptions, LecteurReturnType } from "@/typings/types";
+import { appearVideo } from "@/app/components/Films/appearVideo";
+import { getFilms } from "@/app/components/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
+
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
-import Head from "next/head";
 import Select from "@/app/ui/Select";
+
+import Head from "next/head";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;

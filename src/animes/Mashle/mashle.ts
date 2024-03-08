@@ -1,6 +1,6 @@
 import { getImage } from "./constants/images-saisons";
 
-import Affiche from "../../assets/Animes/Mashle/Affiche.jpeg";
+import Affiche from "@/assets/Animes/Mashle/Affiche.jpeg";
 import { Anime } from "@/app/class/anime";
 
 export default class Mashle extends Anime {

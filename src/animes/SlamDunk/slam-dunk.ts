@@ -1,7 +1,7 @@
 import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "../../assets/Animes/SlamDunk/Affiche.webp";
+import Affiche from "@/assets/Animes/SlamDunk/Affiche.webp";
 
 export default class SlamDunk extends Anime {
   constructor() {
