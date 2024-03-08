@@ -166,7 +166,10 @@ export default function Accueil() {
         <Title accueil />
 
         <div className="container--search-bar">
-          <SearchBar container="animes-list" />
+          <SearchBar
+            placeholder="Rechercher un anime"
+            container="animes-list"
+          />
         </div>
       </nav>
 

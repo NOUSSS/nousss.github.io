@@ -1,7 +1,12 @@
 import { icons } from "lucide-react";
 import { initSearchBar } from "../lib/initSearchBar";
 
-export default function SearchBar({ container }: { container: string }) {
+interface SearchBarProps {
+  container: string;
+  placeholder: string;
+}
+
+export default function SearchBar({ container, placeholder }: SearchBarProps) {
   const SearchIcon = icons["Search"];
 
   return (
@@ -13,7 +18,7 @@ export default function SearchBar({ container }: { container: string }) {
 
       <input
         type="text"
-        placeholder="Votre recherche..."
+        placeholder={placeholder}
         onInput={() =>
           initSearchBar(
             document.querySelector(
@@ -24,12 +29,6 @@ export default function SearchBar({ container }: { container: string }) {
             ) as HTMLCollectionOf<HTMLElement>
           )
         }
-        onFocus={({ target }) => {
-          target.parentElement?.classList.add("focus");
-        }}
-        onBlur={({ target }) => {
-          target.parentElement?.classList.remove("focus");
-        }}
       />
     </label>
   );

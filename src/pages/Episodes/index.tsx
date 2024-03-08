@@ -606,7 +606,10 @@ const Episodes = () => {
           />
         ) : null}
 
-        <SearchBar container="list-episodes" />
+        <SearchBar
+          placeholder="Rechercher un épisode"
+          container="list-episodes"
+        />
 
         {isMobile() ? null : (
           <label className="hideEpisodesNames">

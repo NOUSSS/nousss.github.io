@@ -260,7 +260,7 @@ const Films = () => {
           )}
         </div>
 
-        <SearchBar container="list-poster" />
+        <SearchBar placeholder="Rechercher un film" container="list-poster" />
 
         {currentLecteur?.lecteur ? (
           <DownloadComponent

@@ -97,7 +97,10 @@ const Saisons = () => {
           ) : null}
         </p>
 
-        <SearchBar container="list-poster-saison" />
+        <SearchBar
+          placeholder="Rechercher une saison"
+          container="list-poster-saison"
+        />
 
         <div className="saisons">
           {saisons?.map(({ element, id }, index) => (

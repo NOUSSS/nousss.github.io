@@ -347,20 +347,14 @@ button {
 
   cursor: pointer;
 
-  width: auto;
   height: 45px;
+
   justify-content: flex-end;
   margin: 15px;
 
-  border: 1px solid transparent;
+  border: 1px solid rgb(60 60 60 / 1);
 
   transition: all 350ms ease-out;
-
-  &:hover {
-    svg {
-      color: var(--mainColor);
-    }
-  }
 
   svg {
     transition: color 150ms ease-out;
@@ -372,22 +366,18 @@ button {
   input {
     border: none;
     border-radius: 4px;
+
     height: 30px;
-    width: 0;
+
     transition: width 0.5s;
     text-indent: 10px;
 
     position: relative;
     left: -15px;
-  }
-}
 
-.focus {
-  border: 1px solid var(--mainColor);
-  background-color: rgba(22, 23, 29, 0.5019607843);
-
-  input {
-    width: 150px;
+    &::placeholder {
+      color: white;
+    }
   }
 }
 
