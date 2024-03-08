@@ -129,7 +129,7 @@ export const ANIMES: AnimesType[] = [
     anime: "solo leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
-    category: ["En ce moment", "Webtoon"],
+    category: ["Nouveautées", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -159,7 +159,7 @@ export const ANIMES: AnimesType[] = [
     anime: "hunter x hunter",
     aliases: ["nen", "hxh", "gon", "netero", "films", "saisons", "scans"],
     options: new HunterXHunter(),
-    category: ["Aventure"],
+    category: ["Aventure", "Classique"],
     synopsis:
       "Abandonné par son père qui est un Hunter, à la fois un aventurier et un chasseur de primes, Gon décide à l'âge de 12 ans de partir pour devenir un Hunter. Cela ne sera pas chose aisée, il devra passer une suite de tests et examens en compagnie de milliers d'autres prétendants au titre de Hunter.",
   },
@@ -167,7 +167,7 @@ export const ANIMES: AnimesType[] = [
     anime: "mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
-    category: ["En ce moment", "Humour", "Magie"],
+    category: ["Nouveautées", "Humour", "Magie"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -231,7 +231,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Classroom of the Elites",
     aliases: ["kyotaka", "ecole", "scans", "saisons"],
     options: new ClassroomOfTheElites(),
-    category: ["En ce moment", "School Life"],
+    category: ["Nouveautées", "School Life"],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -383,7 +383,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["En ce moment", "Magie"],
+    category: ["Nouveautées", "Magie"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["films", "scans", "saisons"],
@@ -445,7 +445,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Demon Slave",
-    category: ["New gen", "En ce moment", "Magie", "Ecchi"],
+    category: ["New gen", "Nouveutées", "Magie", "Ecchi"],
     options: new DemonSlave(),
     synopsis:
       "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
