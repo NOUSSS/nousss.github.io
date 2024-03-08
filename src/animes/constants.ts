@@ -51,6 +51,7 @@ import GurrenLagann from "./GurrenLagann/gurren-lagann";
 import SevenDeadlySins from "./SevenDeadlySins/seven-deadly-sins";
 import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
 import NinjaKamui from "./NinjaKamui/ninja-kamui";
+import YuyuHakusho from "./YuyuHakusho/yuyu-hakusho";
 
 export interface AnimesType {
   anime: string;
@@ -479,6 +480,13 @@ export const ANIMES: AnimesType[] = [
     options: new NinjaKamui(),
     synopsis:
       "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
+  },
+  {
+    anime: "Yuyu Hakusho",
+    category: ["Classique", "Aventure"],
+    options: new YuyuHakusho(),
+    synopsis:
+      "Yusuke Urameshi est un jeune vaurien de 14 ans. Il va pourtant sauver la vie d'un petit garçon et se faire écraser... Il y laisse sa vie. Pourtant, sa mort, imprévue, pose problème à Enma Jr, le fils du Juge des Enfers. Il décide alors de lui faire passer un test, pour juger de ses qualités. S'il réussit ce test, il pourra ressusciter et deviendra un détective du monde des esprits, afin de combattre avec son guide spirituel Botan, tous les démons trouvés sur Terre pour y faire du mal.",
   },
 ];
 
