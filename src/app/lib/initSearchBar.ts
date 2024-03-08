@@ -19,17 +19,26 @@ export function initSearchBar(
     }
   }
 
+  const visible: string[] = [];
+
   Array.from(container).forEach((element, index) => {
     if (
       input.value.length === 0 ||
-      element.id
+      (element.id
         .toLowerCase()
         .replaceAll("é", "e")
-        .includes(input.value.toLowerCase().replaceAll("é", "e"))
+        .includes(input.value.toLowerCase().replaceAll("é", "e")) &&
+        !visible.includes(element.id))
     ) {
       container[index].classList.remove("invisible");
+      visible.push(element.id);
     } else {
       container[index].classList.add("invisible");
+    }
+  });
+
+  Array.from(container).forEach((e) => {
+    if (!e.classList.contains("invisible")) {
     }
   });
 
