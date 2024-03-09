@@ -608,11 +608,9 @@ const Episodes = () => {
           )}
         </div>
 
-        <div className="container--buttons">
-          <div className="buttons">
-            <button className="prevButton">Épisode précedent</button>
-            <button className="nextButton">Épisode suivant</button>
-          </div>
+        <div className="buttons episodes">
+          <button className="prevButton">Épisode précedent</button>
+          <button className="nextButton">Épisode suivant</button>
         </div>
 
         {currentLecteur?.lecteur ? (
@@ -668,7 +666,7 @@ const Episodes = () => {
           <ul className="list">{episodes}</ul>
         </div>
 
-        <div className="buttons--saisons">
+        <div className="buttons saisons">
           <button
             onClick={() => {
               const prevSaison =

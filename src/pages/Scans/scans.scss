@@ -3,11 +3,29 @@
     position: relative;
     top: 100px;
     margin-bottom: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     .buttons--scans {
-      border-bottom: rgb(60 60 60 / 1) solid 1px;
       position: relative;
       top: 17px;
+
+      display: flex;
+      gap: 15px;
+
+      &::after {
+        content: "";
+        position: absolute;
+
+        width: 100%;
+        height: 1px;
+
+        bottom: -25px;
+        left: 0;
+
+        background-color: rgb(60 60 60 / 1);
+      }
     }
 
     .lastChapter {

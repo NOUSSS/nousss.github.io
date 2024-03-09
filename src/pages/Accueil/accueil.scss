@@ -20,27 +20,32 @@
     flex-direction: column;
   }
 
-  .removeAllHistorique {
-    min-width: 200px;
-    transition: all 250ms ease-out;
-
-    &:hover {
-      color: red;
-      border: 1px solid red;
-    }
-  }
-
   .catalogue {
     width: 100%;
 
     .Reprendre {
       .category {
         display: flex;
+        align-items: center;
+
         height: 45px;
 
         *:not(button) {
           border-right: 1px solid rgb(60 60 60 / 1);
           padding-right: 15px;
+        }
+
+        .removeAllHistorique {
+          min-width: 200px;
+          transition: all 250ms ease-out;
+
+          position: relative;
+          left: 15px;
+
+          &:hover {
+            color: red;
+            border: 1px solid red;
+          }
         }
       }
 
