@@ -1,7 +1,7 @@
 import "./report.scss";
 
-import React from "react";
 import { toast } from "sonner";
+import React from "react";
 
 export default function Report() {
   const [message, setMessage] = React.useState("");
@@ -9,15 +9,25 @@ export default function Report() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await fetch("/api/report", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message,
-      }),
-    });
+    const response = await fetch(
+      "https://discord.com/api/webhooks/1216077905470296114/XMz_pdqVyvszZp3xKRA1uIZAt8iKwqfrm4BUjsijri5VeXSnaIz7Rt5yvaQK5C4-Ay4o",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: "Nouveau signalement",
+          embeds: [
+            {
+              description: message,
+              color: 0x04fbb7,
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        }),
+      }
+    );
 
     if (response.ok) {
       toast.success("Signalement envoyé avec succès !");
