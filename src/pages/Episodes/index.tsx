@@ -322,7 +322,10 @@ const Episodes = () => {
                   index === String(episodeNumber)
               )?.name || "";
 
-            const id = `${episodeNumber} ${episodeTitle}`;
+            const indexId =
+              AnimeInfo?.saison === "1" ? "" : `(${indexEpisode - retard})`;
+
+            const id = `${episodeNumber} ${indexId} ${episodeTitle}`;
 
             listEpisodes.push(
               <li
@@ -332,10 +335,7 @@ const Episodes = () => {
                 key={id}
               >
                 <span className="episodeNumber">
-                  {episodeNumber}{" "}
-                  {AnimeInfo?.saison === "1"
-                    ? ""
-                    : `(${indexEpisode - retard})`}
+                  {episodeNumber} {indexId}
                 </span>{" "}
                 : <span className="episodeName">{episodeTitle}</span>
               </li>
@@ -347,7 +347,8 @@ const Episodes = () => {
             names?.find(({ index }) => index === String(episodeNumber))?.name ??
             "";
 
-          const id = `${episodeNumber} ${episodeTitle}`;
+          const indexId = AnimeInfo?.saison === "1" ? "" : `(${indexEpisode})`;
+          const id = `${episodeNumber} ${indexId} ${episodeTitle}`;
 
           listEpisodes.push(
             <li
@@ -357,8 +358,7 @@ const Episodes = () => {
               key={id}
             >
               <span className="episodeNumber">
-                {episodeNumber}{" "}
-                {AnimeInfo?.saison === "1" ? "" : `(${indexEpisode})`}
+                {episodeNumber} {indexId}
               </span>{" "}
               : <span className="episodeName">{episodeTitle}</span>
             </li>
