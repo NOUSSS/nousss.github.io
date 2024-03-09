@@ -397,6 +397,12 @@ button {
     background-color: var(--mainColor);
     top: -50px;
   }
+
+  .report {
+    font-size: 15px;
+    color: var(--mainColor);
+    text-decoration: underline;
+  }
 }
 
 .selects {

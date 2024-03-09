@@ -1,6 +1,17 @@
+import Link from "next/link";
+
 export function Footer({ media = false }: { media?: boolean }) {
   return (
     <div className="footer">
+      <Link
+        className="report"
+        href={{
+          pathname: "Report",
+        }}
+      >
+        Signaler un problème ?
+      </Link>
+
       {media ? (
         <p className="mark">
           Les URL des vidéos / scans présentent sur Mugiwara-no Streaming sont
