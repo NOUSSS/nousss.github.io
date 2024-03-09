@@ -22,8 +22,7 @@ export default class Mashle extends Anime {
     };
 
     this.SCANS_OPTIONS = {
-      SCRIPT_URL:
-        "https://anime-sama.fr/catalogue/mashle/scan/vf/episodes.js?filever=1667",
+      SCRIPT_URL: "https://anime-sama.fr/catalogue/mashle/scan/vf/episodes.js",
 
       IMAGE_URL: ({
         chapitre,
@@ -38,7 +37,7 @@ export default class Mashle extends Anime {
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
-        `https://anime-sama.fr/catalogue/mashle/saison${index}/${lang}/episodes.js`,
+        `https://anime-sama.fr/catalogue/mashle/saison${index}/${lang}/episodes.js?filever=1667`,
 
       horsSeries: [
         {
