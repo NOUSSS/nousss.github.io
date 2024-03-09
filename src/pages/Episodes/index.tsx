@@ -305,14 +305,14 @@ const Episodes = () => {
             const title = `E-SP${retard}`;
 
             listEpisodes.push(
-              <p
+              <li
                 className="list-episodes"
                 data-id={indexEpisode}
                 id={title}
                 key={title}
               >
                 <span className="episodeNumber">{title}</span>
-              </p>
+              </li>
             );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
@@ -325,7 +325,7 @@ const Episodes = () => {
             const id = `${episodeNumber} ${episodeTitle}`;
 
             listEpisodes.push(
-              <p
+              <li
                 className="list-episodes"
                 data-id={indexEpisode}
                 id={id}
@@ -338,7 +338,7 @@ const Episodes = () => {
                     : `(${indexEpisode - retard})`}
                 </span>{" "}
                 : <span className="episodeName">{episodeTitle}</span>
-              </p>
+              </li>
             );
           }
         } else {
@@ -350,7 +350,7 @@ const Episodes = () => {
           const id = `${episodeNumber} ${episodeTitle}`;
 
           listEpisodes.push(
-            <p
+            <li
               className="list-episodes"
               data-id={indexEpisode}
               id={id}
@@ -361,7 +361,7 @@ const Episodes = () => {
                 {AnimeInfo?.saison === "1" ? "" : `(${indexEpisode})`}
               </span>{" "}
               : <span className="episodeName">{episodeTitle}</span>
-            </p>
+            </li>
           );
         }
       }
@@ -665,7 +665,7 @@ const Episodes = () => {
         )}
 
         <div className="container--list">
-          <div className="list">{episodes}</div>
+          <ul className="list">{episodes}</ul>
         </div>
 
         <div className="buttons--saisons">
