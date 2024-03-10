@@ -9,12 +9,12 @@
   div {
     display: inline-flex;
     flex-direction: column;
+    gap: 10px;
+
     margin: 33px;
     width: 89px;
 
     p {
-      position: relative;
-      top: 10px;
       font-size: 15px;
     }
 

@@ -9,12 +9,12 @@
 
 .saisons {
   overflow-x: auto;
-  position: relative;
-  top: -20px;
 
   div {
     display: inline-flex;
     flex-direction: column;
+    gap: 10px;
+
     margin: 33px;
     width: 89px;
 
@@ -26,8 +26,6 @@
 
     p {
       font-size: 15px;
-      position: relative;
-      top: 10px;
     }
 
     img {

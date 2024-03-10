@@ -58,15 +58,14 @@ header {
       .logo {
         display: flex;
         align-items: center;
+        gap: 13px;
+
         transition: all 0.3s ease-out;
 
         letter-spacing: 3px;
 
         p {
-          position: relative;
           font-size: 30px;
-          top: 3px;
-          left: 10px;
 
           span {
             transition: color 200ms ease-in-out;
@@ -337,8 +336,12 @@ button {
 
 .label--search-bar {
   border-radius: 4px;
+
   display: flex;
   align-items: center;
+
+  gap: 15px;
+  padding: 10px;
 
   cursor: pointer;
 
@@ -353,9 +356,6 @@ button {
 
   svg {
     transition: color 150ms ease-out;
-
-    margin-left: 10px;
-    margin-right: 20px;
   }
 
   input {
@@ -365,10 +365,6 @@ button {
     height: 30px;
 
     transition: width 0.5s;
-    text-indent: 10px;
-
-    position: relative;
-    left: -15px;
 
     &::placeholder {
       color: white;
