@@ -1,7 +1,6 @@
 "use client";
 
 import "./Saisons.scss";
-import "./responsive.scss";
 
 import { getSaisons } from "@/app/components/Saisons/getSaisons";
 import { AnimesType } from "@/animes/constants";

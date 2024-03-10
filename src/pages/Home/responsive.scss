@@ -7,12 +7,6 @@
 }
 
 @media (max-width: 474px) {
-  a {
-    h1 {
-      font-size: 9vw;
-    }
-  }
-
   main {
     .container--home {
       width: 356px;
@@ -24,7 +18,6 @@
   main {
     .container--home {
       width: 261px;
-      height: auto;
     }
   }
 }

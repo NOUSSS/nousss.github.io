@@ -50,6 +50,11 @@ export interface ScansOptions {
   CHAPITRE_SPECIAUX?: number[];
 }
 
+interface NameProps {
+  index: string;
+  name: string;
+}
+
 export interface EpisodesOptions {
   SCRIPT_URL: ({
     index,
@@ -62,10 +67,7 @@ export interface EpisodesOptions {
   }) => string;
 
   horsSeries?: horsSeriesType[];
-  names?: {
-    index: string;
-    name: string;
-  }[];
+  names?: NameProps[];
   oav?: boolean;
 
   allIndex: allIndexType;

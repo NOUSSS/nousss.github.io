@@ -1,3 +1,5 @@
+@import "./responsive.scss";
+
 .container--scans {
   .container--buttons--scans {
     position: relative;
@@ -68,13 +70,13 @@
     }
   }
 
+  img {
+    width: 850px;
+  }
+
   .scans {
     position: relative;
     top: -60px;
     margin-bottom: -130px;
-
-    img {
-      width: 850px;
-    }
   }
 }

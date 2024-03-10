@@ -1,27 +1,29 @@
 @media (max-width: 871px) {
-  .scans {
-    img {
-      width: 600px !important;
+  .container--scans {
+    .scans {
+      img {
+        width: 600px;
+      }
     }
   }
 }
 
 @media (max-width: 603px) {
-  .scans {
-    img {
-      width: 460px !important;
+  .container--scans {
+    .scans {
+      img {
+        width: 460px;
+      }
     }
   }
 }
 
 @media (max-width: 467px) {
-  .scans {
-    img {
-      width: 350px !important;
+  .container--scans {
+    .scans {
+      img {
+        width: 350px;
+      }
     }
-  }
-
-  footer {
-    font-size: 13px;
   }
 }

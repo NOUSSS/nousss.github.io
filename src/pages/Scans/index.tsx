@@ -1,7 +1,6 @@
 "use client";
 
 import "./scans.scss";
-import "./responsive.scss";
 
 import React, { useState, useEffect } from "react";
 

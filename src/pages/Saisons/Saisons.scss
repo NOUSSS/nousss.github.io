@@ -1,49 +1,50 @@
-.lastSaison {
-  margin: 50px;
+.container--saisons {
+  .lastSaison {
+    margin: 50px;
 
-  a {
-    text-decoration: underline;
-    color: var(--mainColor);
+    a {
+      text-decoration: underline;
+      color: var(--mainColor);
+    }
   }
-}
 
-.saisons {
-  overflow-x: auto;
+  .saisons {
+    overflow-x: auto;
 
-  div {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 10px;
+    div {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 33px;
+      width: 89px;
 
-    margin: 33px;
-    width: 89px;
+      &:hover {
+        img {
+          transform: rotate(10deg);
+        }
+      }
 
-    &:hover {
+      p {
+        font-size: 15px;
+      }
+
       img {
-        transform: rotate(10deg);
+        width: 89px;
+        height: 108px;
+        transition: all 0.5s;
+        opacity: 1;
       }
     }
-
-    p {
-      font-size: 15px;
-    }
-
-    img {
-      width: 89px;
-      height: 108px;
-      transition: all 0.5s;
-      opacity: 1;
-    }
   }
-}
 
-.image {
-  max-width: 48px;
-  opacity: 0.6;
-  transition: all 0.5s;
+  .image {
+    max-width: 48px;
+    opacity: 0.6;
+    transition: all 0.5s;
 
-  &:hover {
-    opacity: 1;
-    transform: scale(1.05);
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
   }
 }
