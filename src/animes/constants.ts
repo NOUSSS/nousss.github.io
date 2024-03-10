@@ -52,6 +52,7 @@ import SevenDeadlySins from "./SevenDeadlySins/seven-deadly-sins";
 import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
 import NinjaKamui from "./NinjaKamui/ninja-kamui";
 import YuyuHakusho from "./YuyuHakusho/yuyu-hakusho";
+import Frieren from "./Frieren/frieren";
 
 export interface AnimesType {
   anime: string;
@@ -487,6 +488,13 @@ export const ANIMES: AnimesType[] = [
     options: new YuyuHakusho(),
     synopsis:
       "Yusuke Urameshi est un jeune vaurien de 14 ans. Il va pourtant sauver la vie d'un petit garçon et se faire écraser... Il y laisse sa vie. Pourtant, sa mort, imprévue, pose problème à Enma Jr, le fils du Juge des Enfers. Il décide alors de lui faire passer un test, pour juger de ses qualités. S'il réussit ce test, il pourra ressusciter et deviendra un détective du monde des esprits, afin de combattre avec son guide spirituel Botan, tous les démons trouvés sur Terre pour y faire du mal.",
+  },
+  {
+    anime: "Frieren",
+    category: ["Nouveautées"],
+    options: new Frieren(),
+    synopsis:
+      "L'histoire suit l'elfe magicienne Frieren, une ancienne membre du groupe d'aventuriers qui a vaincu le roi des démons et restauré l'harmonie du monde après une quête de 10 ans. Ce groupe comptait : l'elfe magicienne Frieren, le héros humain Himmel, le guerrier nain Eisen et le prêtre humain Heiter.",
   },
 ];
 
