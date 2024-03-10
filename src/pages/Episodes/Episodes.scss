@@ -20,7 +20,7 @@ main {
         width: 100%;
         height: 1px;
         bottom: -25px;
-        background-color: rgb(60 60 60 / 1);
+        background-color: var(--grey);
       }
     }
   }
@@ -124,7 +124,7 @@ main {
         padding: 6px;
 
         &:not(:last-child) {
-          border-bottom: 1px solid rgb(60 60 60 / 1);
+          border-bottom: 1px solid var(--grey);
         }
 
         span {

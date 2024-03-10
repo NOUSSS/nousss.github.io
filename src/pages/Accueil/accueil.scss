@@ -29,7 +29,7 @@ main {
         align-items: center;
 
         *:not(button) {
-          border-right: 1px solid rgb(60 60 60 / 1);
+          border-right: 1px solid var(--grey);
           padding-right: 15px;
         }
 

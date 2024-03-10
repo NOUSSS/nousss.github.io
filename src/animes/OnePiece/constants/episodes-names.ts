@@ -1644,7 +1644,7 @@ const episodes = [
   },
   {
     index: "494",
-    name: "Sabo entre en scène ! Le garçon du rgb(60 60 60 / 1) Terminal",
+    name: "Sabo entre en scène ! Le garçon du Grey Terminal",
   },
   { index: "495", name: "Je ne fuirai pas — L’Opération de sauvetage d’Ace" },
   {
