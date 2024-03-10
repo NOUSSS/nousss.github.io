@@ -161,7 +161,7 @@ export default function Accueil() {
   );
 
   return (
-    <div className="container--anime">
+    <>
       <nav>
         <Title accueil />
 
@@ -334,6 +334,6 @@ export default function Accueil() {
         ))}
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

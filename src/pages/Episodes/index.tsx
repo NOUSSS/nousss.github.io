@@ -519,202 +519,193 @@ const Episodes = () => {
         ) : null}
       </Head>
 
-      <div className="container--episodes">
-        <Title
-          link={{
-            pathname: "/Saisons",
-            query: { anime: AnimeInfo?.anime! },
+      <Title
+        link={{
+          pathname: "/Saisons",
+          query: { anime: AnimeInfo?.anime! },
+        }}
+      />
+
+      <p className="titleSaison">{saisonTitle}</p>
+
+      {disclamerMessage.current ? (
+        <p
+          className="disclamer"
+          dangerouslySetInnerHTML={{ __html: disclamerMessage.current }}
+        ></p>
+      ) : null}
+
+      <p className="episodeTitle">{episodeTitle}</p>
+
+      <div className="selects">
+        <Select
+          placeholder="Changer de langue"
+          items={[
+            {
+              name: "VostFR",
+              value: "vostfr",
+              disabled: lang === "vostfr" ? true : false,
+            },
+            {
+              name: "VF",
+              value: "vf",
+              disabled: lang === "vostfr" ? false : true,
+            },
+          ]}
+          onSelect={({ value }) => {
+            setLang(value);
+
+            router.reload();
           }}
         />
 
-        <p className="titleSaison">{saisonTitle}</p>
-
-        {disclamerMessage.current ? (
-          <p
-            className="disclamer"
-            dangerouslySetInnerHTML={{ __html: disclamerMessage.current }}
-          ></p>
-        ) : null}
-
-        <p className="episodeTitle">{episodeTitle}</p>
-
-        <div className="selects">
-          <Select
-            placeholder="Changer de langue"
-            items={[
-              {
-                name: "VostFR",
-                value: "vostfr",
-                disabled: lang === "vostfr" ? true : false,
-              },
-              {
-                name: "VF",
-                value: "vf",
-                disabled: lang === "vostfr" ? false : true,
-              },
-            ]}
-            onSelect={({ value }) => {
-              setLang(value);
-
-              router.reload();
-            }}
-          />
-
-          {Lecteurs ? (
-            Object.keys(Lecteurs).length > 1 ? (
-              <Select
-                placeholder="Changer de lecteur"
-                onSelect={({ value }) => {
-                  setCurrentLecteur({
-                    lecteur: value,
-                    change: !currentLecteur?.change,
-                  });
-                }}
-                items={Object.keys(Lecteurs).map((l, i) => ({
-                  name: `Lecteur ${i + 1}`,
-                  value: l,
-                  disabled: currentLecteur?.lecteur === l ? true : false,
-                }))}
-              />
-            ) : null
-          ) : null}
-        </div>
-
-        <div className="videoContainer">
-          {currentLecteur?.lecteur === "epsAS" ? (
-            <>
-              <link
-                rel="stylesheet"
-                href="https://cdn.plyr.io/3.7.8/plyr.css"
-              />
-
-              <div className="vid">
-                <video controls src={video} />
-              </div>
-
-              <div className="ambiance">
-                <video src={video} />
-              </div>
-            </>
-          ) : (
-            <>
-              <iframe
-                width="640"
-                height="360"
-                src={video}
-                allowFullScreen
-              ></iframe>
-              <iframe className="ambiance" height="360" src={video}></iframe>
-            </>
-          )}
-        </div>
-
-        <div className="buttons episodes">
-          <button className="prevButton">Épisode précedent</button>
-          <button className="nextButton">Épisode suivant</button>
-        </div>
-
-        {currentLecteur?.lecteur ? (
-          <DownloadComponent
-            video={video}
-            lecteur={currentLecteur.lecteur}
-            className="download"
-          />
-        ) : null}
-
-        <SearchBar
-          placeholder="Rechercher un épisode"
-          container="list-episodes"
-        />
-
-        {isMobile() ? null : (
-          <label className="hideEpisodesNames">
-            <p>Cacher le nom des épisodes</p>
-
-            <Switch
-              onChange={({ target }) => {
-                if (target.checked) {
-                  for (const episode of Array.from(
-                    document.querySelectorAll(".episodeName")
-                  )) {
-                    (episode as HTMLElement).classList.add("blurEffect");
-                  }
-                } else {
-                  for (const episode of Array.from(
-                    document.querySelectorAll(".episodeName")
-                  )) {
-                    (episode as HTMLElement).classList.remove("blurEffect");
-                  }
-                }
+        {Lecteurs ? (
+          Object.keys(Lecteurs).length > 1 ? (
+            <Select
+              placeholder="Changer de lecteur"
+              onSelect={({ value }) => {
+                setCurrentLecteur({
+                  lecteur: value,
+                  change: !currentLecteur?.change,
+                });
               }}
-              inputProps={{ "aria-label": "controlled" }}
-              sx={{
-                "& .MuiSwitch-switchBase.Mui-checked": {
-                  color: "var(--mainColor)",
-                },
-                "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-                  backgroundColor: "var(--mainColor)",
-                },
-                "& .MuiSwitch-switchBase + .MuiSwitch-track": {
-                  backgroundColor: "hsla(231, 14%, 10%, 1)",
-                },
-              }}
+              items={Object.keys(Lecteurs).map((l, i) => ({
+                name: `Lecteur ${i + 1}`,
+                value: l,
+                disabled: currentLecteur?.lecteur === l ? true : false,
+              }))}
             />
-          </label>
-        )}
-
-        <div className="container--list">
-          <ul className="list">{episodes}</ul>
-        </div>
-
-        <div className="buttons saisons">
-          <button
-            onClick={() => {
-              const prevSaison =
-                Number(
-                  localStorage.getItem(
-                    `${formatName(AnimeInfo!.anime!)}--saison`
-                  )
-                ) - 1;
-
-              changeSaison(
-                prevSaison.toString(),
-                formatName(AnimeInfo!.anime!),
-                router
-              );
-
-              router.reload();
-            }}
-            className="PrevSaison"
-          >
-            Saison précédente
-          </button>
-
-          <button
-            onClick={() => {
-              const newSaison =
-                Number(
-                  localStorage.getItem(
-                    `${formatName(AnimeInfo!.anime!)}--saison`
-                  )
-                ) + 1;
-
-              changeSaison(
-                newSaison.toString(),
-                formatName(AnimeInfo!.anime!),
-                router
-              );
-
-              router.reload();
-            }}
-            className="NextSaison"
-          >
-            Saison suivante
-          </button>
-        </div>
-
-        <Footer media />
+          ) : null
+        ) : null}
       </div>
+
+      <div className="videoContainer">
+        {currentLecteur?.lecteur === "epsAS" ? (
+          <>
+            <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+            <div className="vid">
+              <video controls src={video} />
+            </div>
+
+            <div className="ambiance">
+              <video src={video} />
+            </div>
+          </>
+        ) : (
+          <>
+            <iframe
+              width="640"
+              height="360"
+              src={video}
+              allowFullScreen
+            ></iframe>
+            <iframe className="ambiance" height="360" src={video}></iframe>
+          </>
+        )}
+      </div>
+
+      <div className="buttons episodes">
+        <button className="prevButton">Épisode précedent</button>
+        <button className="nextButton">Épisode suivant</button>
+      </div>
+
+      {currentLecteur?.lecteur ? (
+        <DownloadComponent
+          video={video}
+          lecteur={currentLecteur.lecteur}
+          className="download"
+        />
+      ) : null}
+
+      <SearchBar
+        placeholder="Rechercher un épisode"
+        container="list-episodes"
+      />
+
+      {isMobile() ? null : (
+        <label className="hideEpisodesNames">
+          <p>Cacher le nom des épisodes</p>
+
+          <Switch
+            onChange={({ target }) => {
+              if (target.checked) {
+                for (const episode of Array.from(
+                  document.querySelectorAll(".episodeName")
+                )) {
+                  (episode as HTMLElement).classList.add("blurEffect");
+                }
+              } else {
+                for (const episode of Array.from(
+                  document.querySelectorAll(".episodeName")
+                )) {
+                  (episode as HTMLElement).classList.remove("blurEffect");
+                }
+              }
+            }}
+            inputProps={{ "aria-label": "controlled" }}
+            sx={{
+              "& .MuiSwitch-switchBase.Mui-checked": {
+                color: "var(--mainColor)",
+              },
+              "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                backgroundColor: "var(--mainColor)",
+              },
+              "& .MuiSwitch-switchBase + .MuiSwitch-track": {
+                backgroundColor: "hsla(231, 14%, 10%, 1)",
+              },
+            }}
+          />
+        </label>
+      )}
+
+      <div className="container--list">
+        <ul className="list">{episodes}</ul>
+      </div>
+
+      <div className="buttons saisons">
+        <button
+          onClick={() => {
+            const prevSaison =
+              Number(
+                localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)
+              ) - 1;
+
+            changeSaison(
+              prevSaison.toString(),
+              formatName(AnimeInfo!.anime!),
+              router
+            );
+
+            router.reload();
+          }}
+          className="PrevSaison"
+        >
+          Saison précédente
+        </button>
+
+        <button
+          onClick={() => {
+            const newSaison =
+              Number(
+                localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)
+              ) + 1;
+
+            changeSaison(
+              newSaison.toString(),
+              formatName(AnimeInfo!.anime!),
+              router
+            );
+
+            router.reload();
+          }}
+          className="NextSaison"
+        >
+          Saison suivante
+        </button>
+      </div>
+
+      <Footer media />
     </>
   );
 };

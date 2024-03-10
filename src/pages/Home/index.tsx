@@ -59,58 +59,56 @@ const Home = () => {
         ) : null}
       </Head>
 
-      <div className="container--home">
-        <Title
-          link={{
-            pathname: "/",
-          }}
-        />
+      <Title
+        link={{
+          pathname: "/",
+        }}
+      />
 
-        <div className="synopsis">{anime?.synopsis}</div>
+      <div className="synopsis">{anime?.synopsis}</div>
 
-        <div className="choices">
-          <ul>
-            {isClient && anime?.options.FILM_OPTIONS ? (
-              <li>
-                <Link
-                  href={{
-                    pathname: "/Films",
-                    query: { anime: anime?.anime },
-                  }}
-                >
-                  Films
-                </Link>
-              </li>
-            ) : null}
-            {isClient && anime?.options.EPISODES_OPTIONS ? (
-              <li>
-                <Link
-                  href={{
-                    pathname: "/Saisons",
-                    query: { anime: anime?.anime },
-                  }}
-                >
-                  Saisons
-                </Link>
-              </li>
-            ) : null}
-            {isClient && anime?.options.SCANS_OPTIONS ? (
-              <li>
-                <Link
-                  href={{
-                    pathname: "/Scans",
-                    query: { anime: anime?.anime },
-                  }}
-                >
-                  Scans
-                </Link>
-              </li>
-            ) : null}
-          </ul>
-        </div>
-
-        <Footer />
+      <div className="choices">
+        <ul>
+          {isClient && anime?.options.FILM_OPTIONS ? (
+            <li>
+              <Link
+                href={{
+                  pathname: "/Films",
+                  query: { anime: anime?.anime },
+                }}
+              >
+                Films
+              </Link>
+            </li>
+          ) : null}
+          {isClient && anime?.options.EPISODES_OPTIONS ? (
+            <li>
+              <Link
+                href={{
+                  pathname: "/Saisons",
+                  query: { anime: anime?.anime },
+                }}
+              >
+                Saisons
+              </Link>
+            </li>
+          ) : null}
+          {isClient && anime?.options.SCANS_OPTIONS ? (
+            <li>
+              <Link
+                href={{
+                  pathname: "/Scans",
+                  query: { anime: anime?.anime },
+                }}
+              >
+                Scans
+              </Link>
+            </li>
+          ) : null}
+        </ul>
       </div>
+
+      <Footer />
     </>
   );
 };

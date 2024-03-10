@@ -172,58 +172,56 @@ const Scans = () => {
         ) : null}
       </Head>
 
-      <div className="container--scans">
-        <Title
-          link={{
-            pathname: "/Home",
-            query: { anime: anime?.anime! },
-          }}
-        />
+      <Title
+        link={{
+          pathname: "/Home",
+          query: { anime: anime?.anime! },
+        }}
+      />
 
-        <div className="select-container">
-          {chapitresOptions.length > 0 ? (
-            <Select
-              onSelect={(item) => {
-                localStorage.setItem(
-                  `${formatName(anime!.anime!)}--chapitre`,
-                  item.value
-                );
+      <div className="select-container">
+        {chapitresOptions.length > 0 ? (
+          <Select
+            onSelect={(item) => {
+              localStorage.setItem(
+                `${formatName(anime!.anime!)}--chapitre`,
+                item.value
+              );
 
-                setScans(selectChapter(item, formatName(anime!.anime!)));
-              }}
-              items={chapitresOptions}
-              placeholder="Selectionnez un chapitre"
-            />
-          ) : null}
-        </div>
-
-        <div className="container--buttons--scans">
-          <button className="lastChapter">Dernier chapitre</button>
-
-          <div className="buttons--scans">
-            <button className="prevButton">Chapitre précédent</button>
-            <button className="nextButton">Chapitre suivant</button>
-          </div>
-        </div>
-
-        <div className="scans">{scans}</div>
-
-        <div className="container--buttons--scans">
-          <div className="buttons--scans">
-            <button className="prevButton">Chapitre précédent</button>
-            <button className="nextButton">Chapitre suivant</button>
-          </div>
-        </div>
-
-        <div className="scrollUp">
-          <UpArrow
-            size="50px"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              setScans(selectChapter(item, formatName(anime!.anime!)));
+            }}
+            items={chapitresOptions}
+            placeholder="Selectionnez un chapitre"
           />
-        </div>
-
-        <Footer media />
+        ) : null}
       </div>
+
+      <div className="container--buttons--scans">
+        <button className="lastChapter">Dernier chapitre</button>
+
+        <div className="buttons--scans">
+          <button className="prevButton">Chapitre précédent</button>
+          <button className="nextButton">Chapitre suivant</button>
+        </div>
+      </div>
+
+      <div className="scans">{scans}</div>
+
+      <div className="container--buttons--scans">
+        <div className="buttons--scans">
+          <button className="prevButton">Chapitre précédent</button>
+          <button className="nextButton">Chapitre suivant</button>
+        </div>
+      </div>
+
+      <div className="scrollUp">
+        <UpArrow
+          size="50px"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        />
+      </div>
+
+      <Footer media />
     </>
   );
 };

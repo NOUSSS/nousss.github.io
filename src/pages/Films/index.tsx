@@ -187,95 +187,90 @@ const Films = () => {
         ) : null}
       </Head>
 
-      <div className="container--films">
-        <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
+      <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
 
-        <div className="film">{title}</div>
+      <div className="film">{title}</div>
 
-        <div className="selects">
-          <Select
-            placeholder="Changer de langue"
-            items={[
-              {
-                name: "VostFR",
-                value: "vostfr",
-                disabled: lang === "vostfr" ? true : false,
-              },
-              {
-                name: "VF",
-                value: "vf",
-                disabled: lang === "vostfr" ? false : true,
-              },
-            ]}
-            onSelect={({ value }) => {
-              setLang(value);
+      <div className="selects">
+        <Select
+          placeholder="Changer de langue"
+          items={[
+            {
+              name: "VostFR",
+              value: "vostfr",
+              disabled: lang === "vostfr" ? true : false,
+            },
+            {
+              name: "VF",
+              value: "vf",
+              disabled: lang === "vostfr" ? false : true,
+            },
+          ]}
+          onSelect={({ value }) => {
+            setLang(value);
 
-              router.reload();
-            }}
-          />
+            router.reload();
+          }}
+        />
 
-          {Lecteurs ? (
-            Object.keys(Lecteurs).length > 1 ? (
-              <Select
-                placeholder="Changer de lecteur"
-                onSelect={({ value }) => {
-                  setCurrentLecteur({
-                    lecteur: value,
-                    change: !currentLecteur?.change,
-                  });
-                }}
-                items={Object.keys(Lecteurs).map((l, i) => ({
-                  name: `Lecteur ${i + 1}`,
-                  value: l,
-                  disabled: currentLecteur?.lecteur === l ? true : false,
-                }))}
-              />
-            ) : null
-          ) : null}
-        </div>
-
-        <div className="video--films">
-          {currentLecteur?.lecteur === "epsAS" ? (
-            <>
-              <link
-                rel="stylesheet"
-                href="https://cdn.plyr.io/3.7.8/plyr.css"
-              />
-
-              <video controls src={video} />
-
-              <div className="ambiance">
-                <video src={video} />
-              </div>
-            </>
-          ) : (
-            <>
-              <iframe
-                width="640"
-                height="360"
-                src={video}
-                allowFullScreen
-              ></iframe>
-
-              <iframe className="ambiance" height="360" src={video}></iframe>
-            </>
-          )}
-        </div>
-
-        <SearchBar placeholder="Rechercher un film" container="list-poster" />
-
-        {currentLecteur?.lecteur ? (
-          <DownloadComponent
-            lecteur={currentLecteur.lecteur}
-            video={video}
-            className="tips--films"
-          />
+        {Lecteurs ? (
+          Object.keys(Lecteurs).length > 1 ? (
+            <Select
+              placeholder="Changer de lecteur"
+              onSelect={({ value }) => {
+                setCurrentLecteur({
+                  lecteur: value,
+                  change: !currentLecteur?.change,
+                });
+              }}
+              items={Object.keys(Lecteurs).map((l, i) => ({
+                name: `Lecteur ${i + 1}`,
+                value: l,
+                disabled: currentLecteur?.lecteur === l ? true : false,
+              }))}
+            />
+          ) : null
         ) : null}
-
-        <div className="films">{films}</div>
-
-        <Footer media />
       </div>
+
+      <div className="video--films">
+        {currentLecteur?.lecteur === "epsAS" ? (
+          <>
+            <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+            <video controls src={video} />
+
+            <div className="ambiance">
+              <video src={video} />
+            </div>
+          </>
+        ) : (
+          <>
+            <iframe
+              width="640"
+              height="360"
+              src={video}
+              allowFullScreen
+            ></iframe>
+
+            <iframe className="ambiance" height="360" src={video}></iframe>
+          </>
+        )}
+      </div>
+
+      <SearchBar placeholder="Rechercher un film" container="list-poster" />
+
+      {currentLecteur?.lecteur ? (
+        <DownloadComponent
+          lecteur={currentLecteur.lecteur}
+          video={video}
+          className="tips--films"
+        />
+      ) : null}
+
+      <div className="films">{films}</div>
+
+      <Footer media />
     </>
   );
 };

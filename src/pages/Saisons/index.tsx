@@ -60,70 +60,68 @@ const Saisons = () => {
         ) : null}
       </Head>
 
-      <div className="container--saisons">
-        <Title
-          link={{
-            pathname: "/Home",
-            query: { anime: anime?.anime! },
-          }}
-        />
+      <Title
+        link={{
+          pathname: "/Home",
+          query: { anime: anime?.anime! },
+        }}
+      />
 
-        <p
-          style={{
-            position: "relative",
-            top: "35px",
-            color: "white",
-            fontSize: "50px",
-          }}
-        >
-          Les <span>saisons</span> disponibles.
-        </p>
+      <p
+        style={{
+          position: "relative",
+          top: "35px",
+          color: "white",
+          fontSize: "50px",
+        }}
+      >
+        Les <span>saisons</span> disponibles.
+      </p>
 
-        <p className="lastSaison">
-          {saison ? (
-            <>
-              Historique Saison :{" "}
-              <span
-                onClick={() =>
-                  changeSaison(saison, formatName(anime?.anime!), router)
-                }
-                style={{ cursor: "pointer" }}
-              >
-                <a id={saison} className="historiqueSaison">
-                  {anime?.options.saisons?.[saison].name}
-                </a>
-              </span>
-            </>
-          ) : null}
-        </p>
-
-        <SearchBar
-          placeholder="Rechercher une saison"
-          container="list-poster-saison"
-        />
-
-        <div className="saisons">
-          {saisons?.map(({ element, id }, index) => (
-            <div
-              style={{ cursor: "pointer" }}
-              key={id}
-              id={id}
-              className="list-poster-saison"
+      <p className="lastSaison">
+        {saison ? (
+          <>
+            Historique Saison :{" "}
+            <span
               onClick={() =>
-                changeSaison(
-                  (index + 1).toString(),
-                  formatName(anime?.anime!),
-                  router
-                )
+                changeSaison(saison, formatName(anime?.anime!), router)
               }
+              style={{ cursor: "pointer" }}
             >
-              {element}
-            </div>
-          ))}
-        </div>
+              <a id={saison} className="historiqueSaison">
+                {anime?.options.saisons?.[saison].name}
+              </a>
+            </span>
+          </>
+        ) : null}
+      </p>
 
-        <Footer />
+      <SearchBar
+        placeholder="Rechercher une saison"
+        container="list-poster-saison"
+      />
+
+      <div className="saisons">
+        {saisons?.map(({ element, id }, index) => (
+          <div
+            style={{ cursor: "pointer" }}
+            key={id}
+            id={id}
+            className="list-poster-saison"
+            onClick={() =>
+              changeSaison(
+                (index + 1).toString(),
+                formatName(anime?.anime!),
+                router
+              )
+            }
+          >
+            {element}
+          </div>
+        ))}
       </div>
+
+      <Footer />
     </>
   );
 };

@@ -38,20 +38,18 @@ export default function Report() {
 
   return (
     <>
-      <div className="container--report">
-        <h1>Signaler un problème</h1>
+      <h1>Signaler un problème</h1>
 
-        <form onSubmit={handleSubmit}>
-          <textarea
-            value={message}
-            onChange={({ target: { value } }) => setMessage(value)}
-            placeholder="Ton site il est guez"
-            required
-          />
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={message}
+          onChange={({ target: { value } }) => setMessage(value)}
+          placeholder="Ton site il est guez"
+          required
+        />
 
-          <button type="submit">Envoyer</button>
-        </form>
-      </div>
+        <button type="submit">Envoyer</button>
+      </form>
     </>
   );
 }
