@@ -21,9 +21,7 @@ import { changeSaison } from "@/app/components/Saisons/changeSaison";
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 
-import Switch from "@mui/material/Switch";
 import Plyr from "plyr";
-
 import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
@@ -627,33 +625,31 @@ const Episodes = () => {
         <label className="hideEpisodesNames">
           <p>Cacher le nom des épisodes</p>
 
-          <Switch
+          <span></span>
+          <input
+            type="checkbox"
             onChange={({ target }) => {
+              const label = document.querySelector(
+                ".hideEpisodesNames"
+              ) as HTMLElement;
+
+              const names = Array.from(
+                document.querySelectorAll(".episodeName")
+              );
+
               if (target.checked) {
-                for (const episode of Array.from(
-                  document.querySelectorAll(".episodeName")
-                )) {
+                label.classList.add("active");
+
+                for (const episode of names) {
                   (episode as HTMLElement).classList.add("blurEffect");
                 }
               } else {
-                for (const episode of Array.from(
-                  document.querySelectorAll(".episodeName")
-                )) {
+                label.classList.remove("active");
+
+                for (const episode of names) {
                   (episode as HTMLElement).classList.remove("blurEffect");
                 }
               }
-            }}
-            inputProps={{ "aria-label": "controlled" }}
-            sx={{
-              "& .MuiSwitch-switchBase.Mui-checked": {
-                color: "var(--mainColor)",
-              },
-              "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-                backgroundColor: "var(--mainColor)",
-              },
-              "& .MuiSwitch-switchBase + .MuiSwitch-track": {
-                backgroundColor: "hsla(231, 14%, 10%, 1)",
-              },
             }}
           />
         </label>
