@@ -3396,6 +3396,10 @@ const episodes = [
     index: "1096",
     name: "L'histoire censurée. La thèse d'un royaume oublié !",
   },
+  {
+    index: "1097",
+    name: "La volonté d'Ohara. Recherches en héritage !",
+  },
 ];
 
 export default episodes;
