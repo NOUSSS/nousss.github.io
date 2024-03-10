@@ -59,16 +59,16 @@ main {
       position: absolute;
 
       width: 40px;
-      height: 5px;
+      height: 10px;
 
       border-radius: 50px;
-      background-color: rgb(60, 60, 60);
+      background-color: #3c3c3c;
 
-      bottom: 10px;
+      bottom: 7px;
       right: -47px;
 
       z-index: -1;
-      transition: all 250ms ease-out;
+      transition: all 0.25s ease-out;
     }
 
     &.active {
