@@ -53,6 +53,7 @@ import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
 import NinjaKamui from "./NinjaKamui/ninja-kamui";
 import YuyuHakusho from "./YuyuHakusho/yuyu-hakusho";
 import Frieren from "./Frieren/frieren";
+import Vagabond from "./Vagabond/vagabond";
 
 export interface AnimesType {
   anime: string;
@@ -495,6 +496,13 @@ export const ANIMES: AnimesType[] = [
     options: new Frieren(),
     synopsis:
       "L'histoire suit l'elfe magicienne Frieren, une ancienne membre du groupe d'aventuriers qui a vaincu le roi des démons et restauré l'harmonie du monde après une quête de 10 ans. Ce groupe comptait : l'elfe magicienne Frieren, le héros humain Himmel, le guerrier nain Eisen et le prêtre humain Heiter.",
+  },
+  {
+    anime: "Vagabond",
+    category: ["Reflexion"],
+    options: new Vagabond(),
+    synopsis:
+      "En 1600 a lieu la terrible bataille de Sekigahara, qui assied le pouvoir du shôgun Tokugawa. Parmi les combattants se trouve Musashi, le fils d'un grand samurai, qui est prêt à tout pour survivre. Alors qu'il revient dans son village natal, il est pourchassé pour avoir déserté, et se trouve rejeté par les habitants. Commence alors pour lui une longue errance, avec un unique objectif : améliorer sa maitrise de la lame, et devenir le meilleur samurai du Japon.",
   },
 ];
 
