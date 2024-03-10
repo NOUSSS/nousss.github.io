@@ -35,6 +35,10 @@ const episodes = [
     name: "You've Been Hiding Your Skills",
     index: "9",
   },
+  {
+    name: "What Is This, a Picnic?",
+    index: "10",
+  },
 ];
 
 export default episodes;
