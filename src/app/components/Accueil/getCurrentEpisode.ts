@@ -26,7 +26,7 @@ export const getCurrentEpisode = (
           if (Number(historiques[index]!.episode) > horsSerie + 1) retard++;
         }
 
-        return `Episode ${String(Number(historiques[index].episode) - retard)}`;
+        return `Episode ${Number(historiques[index].episode) - retard}`;
       } else {
         return `Episode ${historiques[index].episode}`;
       }

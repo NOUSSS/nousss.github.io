@@ -112,7 +112,7 @@ const Saisons = () => {
               className="list-poster-saison"
               onClick={() =>
                 changeSaison(
-                  String(index + 1),
+                  (index + 1).toString(),
                   formatName(anime?.anime!),
                   router
                 )

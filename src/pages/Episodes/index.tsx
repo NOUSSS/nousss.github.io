@@ -241,7 +241,7 @@ const Episodes = () => {
       else NextSaisonSelector.classList.remove("invisible");
 
       if (AnimeInfo!.saison > saisonsEntries[oavIndex]) {
-        const newIndexSaison = String(Number(AnimeInfo?.saison) - 1);
+        const newIndexSaison = (Number(AnimeInfo?.saison) - 1).toString();
 
         localStorage.setItem(
           `${formatName(AnimeInfo!.anime!)}--saison`,
@@ -319,7 +319,7 @@ const Episodes = () => {
             const episodeTitle =
               names?.find(
                 ({ index }: { index: string }) =>
-                  index === String(episodeNumber)
+                  index === episodeNumber.toString()
               )?.name || "";
 
             const indexId =
@@ -344,8 +344,8 @@ const Episodes = () => {
         } else {
           const episodeNumber = episodeIndex + indexEpisode;
           const episodeTitle =
-            names?.find(({ index }) => index === String(episodeNumber))?.name ??
-            "";
+            names?.find(({ index }) => index === episodeNumber.toString())
+              ?.name ?? "";
 
           const indexId = AnimeInfo?.saison === "1" ? "" : `(${indexEpisode})`;
           const id = `${episodeNumber} ${indexId} ${episodeTitle}`;
@@ -385,7 +385,7 @@ const Episodes = () => {
           const title =
             names?.find(
               ({ index }) =>
-                index === String(episodeIndex + Number(episode) - retard)
+                index === (episodeIndex + Number(episode) - retard).toString()
             )?.name || "";
 
           setVideo(URL_EPISODE);
@@ -415,8 +415,9 @@ const Episodes = () => {
         const [firstEpisode] = LecteurEpisodes;
 
         const title =
-          names?.find(({ index }) => index === String(Number(episodeIndex) + 1))
-            ?.name || "";
+          names?.find(
+            ({ index }) => index === (Number(episodeIndex) + 1).toString()
+          )?.name || "";
 
         setVideo(firstEpisode);
 
@@ -677,7 +678,7 @@ const Episodes = () => {
                 ) - 1;
 
               changeSaison(
-                String(prevSaison),
+                prevSaison.toString(),
                 formatName(AnimeInfo!.anime!),
                 router
               );
@@ -699,7 +700,7 @@ const Episodes = () => {
                 ) + 1;
 
               changeSaison(
-                String(newSaison),
+                newSaison.toString(),
                 formatName(AnimeInfo!.anime!),
                 router
               );

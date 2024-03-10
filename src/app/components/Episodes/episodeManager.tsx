@@ -38,7 +38,7 @@ export function Change(
       setVideo(url);
       setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
 
-      localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
+      localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
       localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
     } else {
       let retard = 0;
@@ -56,7 +56,7 @@ export function Change(
 
       const title =
         names?.find(
-          ({ index }: { index: string }) => index === String(numberEpisode)
+          ({ index }: { index: string }) => index === numberEpisode.toString()
         )?.name || "Episode";
 
       const url = lecteur[Number(indexEpisode) - 1];
@@ -72,7 +72,7 @@ export function Change(
         </>
       );
 
-      localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
+      localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
       localStorage.removeItem(`${currentAnime}--e-sp`);
     }
   } else {
@@ -84,7 +84,7 @@ export function Change(
 
     const episodeTitle =
       names?.find(
-        ({ index }: { index: string }) => index === String(numberEpisode)
+        ({ index }: { index: string }) => index === numberEpisode.toString()
       )?.name || "Episode";
 
     setVideo(url);
@@ -98,7 +98,7 @@ export function Change(
       </>
     );
 
-    localStorage.setItem(`${currentAnime}--episode`, String(indexEpisode));
+    localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
     localStorage.removeItem(`${currentAnime}--e-sp`);
   }
 

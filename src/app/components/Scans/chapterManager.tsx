@@ -43,10 +43,7 @@ export const selectChapter = (
 
     const scans = (window as unknown as windowKeys)[`eps${item.value}`];
 
-    localStorage.setItem(
-      `${currentAnime}--chapitre`,
-      String(Number(item.value))
-    );
+    localStorage.setItem(`${currentAnime}--chapitre`, item.value);
 
     for (let i = 1; i <= scans.length; i++) {
       scansImages.push(

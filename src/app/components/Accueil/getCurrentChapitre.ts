@@ -27,11 +27,11 @@ export const getCurrentChapitre = (
           if (Number(historiques[index]!.chapitre) > horsSerie + 1) retard++;
         }
 
-        return `Chapitre ${String(
+        return `Chapitre ${
           Number(historiques[index].chapitre) -
-            retard -
-            (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
-        )}`;
+          retard -
+          (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
+        }`;
       } else {
         return `Chapitre ${
           Number(historiques[index].chapitre) -

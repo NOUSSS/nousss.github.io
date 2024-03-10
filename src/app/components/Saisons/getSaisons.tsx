@@ -40,7 +40,7 @@ export function getSaisons() {
           <Image
             className="poster-saison"
             src={saisons?.[i].image()!}
-            id={String(i)}
+            id={i.toString()}
             alt="poster de saison"
           />
           <p className="text--saisons">
