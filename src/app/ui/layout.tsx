@@ -78,10 +78,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       />
 
       <div
-        className={`${isVisible ? "" : "hidden"} animate-appearCenter fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 border border-[var(--grey)] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
+        className={`${isVisible ? "" : "hidden"} animate-appearCenter fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 border border-[--grey] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
         ref={searchContainerRef}
       >
-        <div className="flex h-16 items-center border-b border-[var(--grey)] bg-[rgba(_22,_23,_29,_0.5)] p-2">
+        <div className="flex h-16 items-center border-b border-[--grey] bg-[rgba(_22,_23,_29,_0.5)] p-2">
           <SearchIcon size="35px" />
 
           <FastSearchBar
@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-[var(--grey)] bg-[#2123259f] shadow-lg backdrop-blur-3xl">
+      <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-[--grey] bg-[#2123259f] shadow-lg backdrop-blur-3xl">
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
           <Link href="/">
             <h1
@@ -145,7 +145,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
           <div
             onClick={() => setIsVisible(!isVisible)}
-            className="flex cursor-pointer rounded-md border border-[var(--grey)] bg-[rgba(22,_23,_29,_0.5019607843)] p-2"
+            className="flex cursor-pointer rounded-md border border-[--grey] bg-[rgba(22,_23,_29,_0.5019607843)] p-2"
           >
             <SearchIcon className="mr-4 w-6" />
 

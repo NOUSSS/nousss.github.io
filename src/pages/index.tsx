@@ -174,7 +174,7 @@ export default function Accueil() {
         Pour connaitre la date de sortie des différents épisodes / scans, je
         vous redirige vers le{" "}
         <a
-          className="text-[var(--mainColor)] underline"
+          className="text-[--mainColor] underline"
           href="https://anime-sama.fr/planning/"
           target="_blank"
         >
@@ -222,7 +222,7 @@ export default function Accueil() {
                 <>
                   <p>{category}</p>
 
-                  <span className="m-4 h-8 border-r border-r-[var(--grey)]"></span>
+                  <span className="m-4 h-8 border-r border-r-[--grey]"></span>
 
                   <div className="overlay fixed inset-0 z-40 hidden bg-black bg-opacity-50"></div>
 
@@ -325,11 +325,11 @@ export default function Accueil() {
                       getAnime(animeName)?.synopsis ??
                       "Aucun synopsis pour cette anime"
                     }
-                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-[var(--mainColor)] before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
+                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-[--mainColor] before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
                   >
                     {historiques[i] && category === "Reprendre" ? (
                       <div
-                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-[var(--mainColor)] bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
+                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-[--mainColor] bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
                         onClick={(event) => {
                           event.stopPropagation();
 
@@ -351,7 +351,7 @@ export default function Accueil() {
                       alt="affiche d'un anime"
                     />
 
-                    <p className="relative top-2 text-sm text-[var(--mainColor)] max-sm:text-xs">
+                    <p className="relative top-2 text-sm text-[--mainColor] max-sm:text-xs">
                       {formatName(animeName)}
                       {historiques[i] && category === "Reprendre" && (
                         <>

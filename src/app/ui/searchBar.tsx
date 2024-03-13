@@ -12,7 +12,7 @@ export default function SearchBar({ container, placeholder }: SearchBarProps) {
 
   return (
     <label
-      className="label--search-bar m-8 flex h-11 cursor-pointer items-center gap-4 rounded-md border border-[var(--grey)] p-2.5"
+      className="label--search-bar m-8 flex h-11 cursor-pointer items-center gap-4 rounded-md border border-[--grey] p-2.5"
       title="Système de recherche super cool"
     >
       <SearchIcon size="25" />

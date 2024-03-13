@@ -10,7 +10,7 @@ const NotFound = () => {
           Mais tant que t'es là, j'en profite pour te donner une petite astuce,
           si tu vas dans{" "}
           <Link
-            className="cursor-pointer text-[var(--mainColor)] underline"
+            className="cursor-pointer text-[--mainColor] underline"
             href="/"
           >
             l'accueil

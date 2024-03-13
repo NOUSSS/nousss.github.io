@@ -65,7 +65,7 @@ const Saisons = () => {
               onClick={() =>
                 changeSaison(saison, formatName(anime?.anime!), router)
               }
-              className="text-mainColor cursor-pointer underline"
+              className="cursor-pointer underline"
             >
               {anime?.options.saisons?.[saison].name}
             </span>

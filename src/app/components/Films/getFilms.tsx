@@ -78,7 +78,7 @@ export function getFilms(
           alt="poster de saison"
         />
 
-        <p className="text--films text-xs">{names![i].name}</p>
+        <p className="text-sm">{names![i].name}</p>
       </div>,
     );
   }

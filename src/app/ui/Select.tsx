@@ -94,7 +94,7 @@ export default function Select({
     <div>
       <label
         ref={labelRef}
-        className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-[var(--grey)] bg-[rgba(22,_23,_29,_0.5019607843)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
+        className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-[--grey] bg-[rgba(22,_23,_29,_0.5019607843)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
         onClick={appear}
       >
         <p className="placeholder">{placeholder}</p>
@@ -106,7 +106,7 @@ export default function Select({
 
         <div
           ref={menuRef}
-          className="absolute left-0 top-16 z-[1] hidden max-h-64 w-full animate-appear overflow-y-auto border border-[var(--grey)] bg-[#1b1d21] transition-all duration-300 ease-in-out"
+          className="absolute left-0 top-16 z-[1] hidden max-h-64 w-full animate-appear overflow-y-auto border border-[--grey] bg-[#1b1d21] transition-all duration-300 ease-in-out"
         >
           {items.map((item, index) => (
             <ul key={index}>

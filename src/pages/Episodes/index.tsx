@@ -299,12 +299,12 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-[var(--grey)] p-1.5 text-left last:border-0"
+              className="list-episodes group cursor-pointer border-b border-[--grey] p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               id={title}
               key={title}
             >
-              <span className="episodeNumber transition-all duration-200 ease-out group-hover:text-white">
+              <span className="transition-all duration-200 ease-out group-hover:text-white">
                 {title}
               </span>
             </li>,
@@ -324,16 +324,16 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-[var(--grey)] p-1.5 text-left last:border-0"
+              className="list-episodes group cursor-pointer border-b border-[--grey] p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               id={id}
               key={id}
             >
-              <span className="episodeNumber transition-all duration-200 ease-out group-hover:text-white">
+              <span className="transition-all duration-200 ease-out group-hover:text-white">
                 {episodeNumber} {indexId}
               </span>{" "}
               :{" "}
-              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[var(--mainColor)] group-hover:text-[var(--mainColor)]">
+              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor] group-hover:text-[--mainColor]">
                 {episodeTitle}
               </span>
             </li>,
@@ -367,14 +367,14 @@ const Episodes = () => {
 
           setEpisodeTitle(
             <>
-              <span className="episodeNumber transition-all duration-200 ease-out">
+              <span className="transition-all duration-200 ease-out">
                 {Number(episodeIndex) + Number(episode) - retard}{" "}
                 {AnimeInfo?.saison === "1"
                   ? ""
                   : `(${Number(episode) - retard})`}
               </span>{" "}
               :{" "}
-              <span className="episodeName hover:text-[var(--mainColor]) text-white transition-all duration-200 ease-out">
+              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor]">
                 {title}
               </span>
             </>,
@@ -387,9 +387,7 @@ const Episodes = () => {
 
         setVideo(URL_EPISODE);
         setEpisodeTitle(
-          <span className="episodeNumber transition-all duration-200 ease-out">
-            {e_sp}
-          </span>,
+          <span className="transition-all duration-200 ease-out">{e_sp}</span>,
         );
       }
 
@@ -405,12 +403,12 @@ const Episodes = () => {
 
         setEpisodeTitle(
           <>
-            <span className="episodeNumber transition-all duration-200 ease-out">
+            <span className="transition-all duration-200 ease-out">
               {Number(episodeIndex) + 1}{" "}
               {AnimeInfo?.saison === "1" ? "" : `(1)`}
             </span>{" "}
             :{" "}
-            <span className="episodeName hover:text-[var(--mainColor]) text-white transition-all duration-200 ease-out">
+            <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor]">
               {title}
             </span>
           </>,
@@ -585,7 +583,7 @@ const Episodes = () => {
         )}
       </div>
 
-      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-[var(--grey)]">
+      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-[--grey]">
         <button className="btn back prevButton">Épisode précedent</button>
         <button className="btn next nextButton">Épisode suivant</button>
       </div>
@@ -599,7 +597,7 @@ const Episodes = () => {
         <label className="hideEpisodesNames relative -left-5 flex cursor-pointer transition-all duration-300 ease-out before:absolute before:-right-12 before:bottom-2 before:h-[10px] before:w-10 before:rounded-full before:bg-[#3c3c3c] before:transition-all before:duration-200">
           <p>Cacher le nom des épisodes</p>
 
-          <span className="Toggle relative left-6 h-6 w-6 rounded-full bg-[var(--mainColor)] transition-all duration-200"></span>
+          <span className="Toggle relative left-6 h-6 w-6 rounded-full bg-[--mainColor] transition-all duration-200"></span>
           <input
             type="checkbox"
             className="appearance-none"
@@ -621,7 +619,7 @@ const Episodes = () => {
               if (target.checked) {
                 toggleSpan.classList.add("left-[52px]");
 
-                label.classList.add("before:bg-[var(--mainColor)]");
+                label.classList.add("before:bg-[--mainColor]");
                 label.classList.add("before:brightness-[.55]");
 
                 for (const episode of names) {
@@ -630,7 +628,7 @@ const Episodes = () => {
               } else {
                 toggleSpan.classList.remove("left-[52px]");
 
-                label.classList.remove("before:bg-[var(--mainColor)]");
+                label.classList.remove("before:bg-[--mainColor]");
                 label.classList.remove("before:brightness-[.55]");
 
                 for (const episode of names) {
@@ -643,7 +641,7 @@ const Episodes = () => {
       )}
 
       <div className="m-5 max-h-96 overflow-y-auto">
-        <ul className="list">{episodes}</ul>
+        <ul>{episodes}</ul>
       </div>
 
       <div className="relative top-12 flex gap-5">

@@ -9,7 +9,7 @@ export function Change(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
-  currentAnime: string
+  currentAnime: string,
 ): void {
   localStorage.removeItem(`${currentAnime}--currentTime`);
 
@@ -20,7 +20,7 @@ export function Change(
 
   const isHorsSerie = horsSeries?.find(
     ({ saison }: { saison: string }) =>
-      saison === localStorage.getItem(`${currentAnime}--saison`)
+      saison === localStorage.getItem(`${currentAnime}--saison`),
   );
 
   if (isHorsSerie) {
@@ -36,7 +36,7 @@ export function Change(
       const url = lecteur[Number(indexEpisode) - 1];
 
       setVideo(url);
-      setEpisodeTitle(<span className="episodeNumber">E-SP{esp}</span>);
+      setEpisodeTitle(<span>E-SP{esp}</span>);
 
       localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
       localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
@@ -56,7 +56,7 @@ export function Change(
 
       const title =
         names?.find(
-          ({ index }: { index: string }) => index === numberEpisode.toString()
+          ({ index }: { index: string }) => index === numberEpisode.toString(),
         )?.name || "Episode";
 
       const url = lecteur[Number(indexEpisode) - 1];
@@ -64,12 +64,12 @@ export function Change(
       setVideo(url);
       setEpisodeTitle(
         <>
-          <span className="episodeNumber">
+          <span>
             {numberEpisode}{" "}
             {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
           </span>{" "}
           : <span className="episodeName">{title}</span>
-        </>
+        </>,
       );
 
       localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
@@ -84,18 +84,18 @@ export function Change(
 
     const episodeTitle =
       names?.find(
-        ({ index }: { index: string }) => index === numberEpisode.toString()
+        ({ index }: { index: string }) => index === numberEpisode.toString(),
       )?.name || "Episode";
 
     setVideo(url);
 
     setEpisodeTitle(
       <>
-        <span className="episodeNumber">
+        <span>
           {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
         </span>{" "}
         : <span className="episodeName">{episodeTitle}</span>
-      </>
+      </>,
     );
 
     localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
@@ -114,7 +114,7 @@ export function NextEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
-  currentAnime: string
+  currentAnime: string,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${currentAnime}--episode`)) + 1;
@@ -128,7 +128,7 @@ export function PrevEpisode(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
-  currentAnime: string
+  currentAnime: string,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${currentAnime}--episode`)) - 1;

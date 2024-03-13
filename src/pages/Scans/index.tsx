@@ -200,7 +200,7 @@ const Scans = () => {
           Dernier chapitre
         </button>
 
-        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[var(--grey)]">
+        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[--grey]">
           <button className="btn back">Chapitre précédent</button>
           <button className="btn next">Chapitre suivant</button>
         </div>
@@ -209,13 +209,13 @@ const Scans = () => {
       <div className="relative -top-16 -mb-32">{scans}</div>
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
-        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[var(--grey)]">
+        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[--grey]">
           <button className="btn back">Chapitre précédent</button>
           <button className="btn next">Chapitre suivant</button>
         </div>
       </div>
 
-      <div className="scrollUp fixed bottom-0 right-0 m-12 cursor-pointer rounded border border-[var(--mainColor)] bg-[hsla(231,_14%,_10%,_0.429)] p-2 transition-all duration-200 ease-out hover:bg-[hsla(231,_14%,_10%,_1)]">
+      <div className="scrollUp fixed bottom-0 right-0 m-12 cursor-pointer rounded border border-[--mainColor] bg-[hsla(231,_14%,_10%,_0.429)] p-2 transition-all duration-200 ease-out hover:bg-[hsla(231,_14%,_10%,_1)]">
         <UpArrow
           size="50px"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
