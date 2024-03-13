@@ -45,7 +45,7 @@ export default class HajimeNoIppo extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Hajime%20no%20Ippo/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Hajime%20no%20Ippo/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

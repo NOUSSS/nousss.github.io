@@ -1,6 +1,6 @@
 export function initSearchBar(
   input: HTMLInputElement,
-  container: HTMLCollectionOf<HTMLElement>
+  container: HTMLCollectionOf<HTMLElement>,
 ): void {
   const colorpicker = document.querySelector(".color-picker") as HTMLDivElement;
 
@@ -11,11 +11,11 @@ export function initSearchBar(
     input.value.toLowerCase() === " nouss prime"
   ) {
     if (colorpicker) {
-      colorpicker.classList.remove("invisible");
+      colorpicker.classList.remove("hidden");
     }
   } else {
     if (colorpicker) {
-      colorpicker.classList.add("invisible");
+      colorpicker.classList.add("hidden");
     }
   }
 
@@ -30,15 +30,15 @@ export function initSearchBar(
         .includes(input.value.toLowerCase().replaceAll("é", "e")) &&
         !visible.includes(element.id))
     ) {
-      container[index].classList.remove("invisible");
+      container[index].classList.remove("hidden");
       visible.push(element.id);
     } else {
-      container[index].classList.add("invisible");
+      container[index].classList.add("hidden");
     }
   });
 
   Array.from(container).forEach((e) => {
-    if (!e.classList.contains("invisible")) {
+    if (!e.classList.contains("hidden")) {
     }
   });
 
@@ -49,12 +49,12 @@ export function initSearchBar(
       const items = category.querySelectorAll("li");
 
       const isAllHidden = Array.from(items).every((item) =>
-        item.classList.contains("invisible")
+        item.classList.contains("hidden"),
       );
 
       isAllHidden
-        ? category.classList.add("invisible")
-        : category.classList.remove("invisible");
+        ? category.classList.add("hidden")
+        : category.classList.remove("hidden");
     });
   }
 }

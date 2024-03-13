@@ -29,7 +29,7 @@ export const getTailleChapitres = (): number => {
 
 export const selectChapter = (
   item: ItemsProps,
-  currentAnime: string
+  currentAnime: string,
 ): React.ReactNode[] | undefined => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -52,8 +52,9 @@ export const selectChapter = (
           key={`Image ${i}`}
           width="1000"
           height="1000"
+          className="w-[750px] max-md:w-full"
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
-        ></Image>
+        ></Image>,
       );
     }
 

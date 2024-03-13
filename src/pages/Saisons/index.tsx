@@ -1,7 +1,5 @@
 "use client";
 
-import "./Saisons.scss";
-
 import { getSaisons } from "@/app/components/Saisons/getSaisons";
 import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
@@ -19,45 +17,33 @@ import SearchBar from "@/app/ui/searchBar";
 
 const Saisons = () => {
   const router = useRouter();
-
   const [anime, setAnime] = useState<AnimesType | null>(null);
-  const [_, setIsClient] = useState(false);
-
   const [saison, setSaison] = useState<null | string>(null);
   const [saisons, setSaisons] = useState<
     null | { id: string; element: React.ReactNode }[]
   >(null);
 
   useEffect(() => {
-    setIsClient(true);
-
-    const currentAnime = getAnime(
-      getCurrentAnime({
-        wSaison: false,
-      })
-    );
-
+    const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
     if (!currentAnime || !currentAnime.options.saisons) {
-      router.push({
-        pathname: "/",
-      });
+      router.push("/");
     } else {
       setAnime(currentAnime);
       setSaisons(getSaisons());
       setSaison(
-        localStorage.getItem(`${formatName(currentAnime?.anime!)}--saison`)
+        localStorage.getItem(`${formatName(currentAnime?.anime!)}--saison`),
       );
     }
   }, [router]);
 
   return (
-    <>
+    <main>
       <Head>
-        {anime?.anime ? (
+        {anime?.anime && (
           <title>
             {formatName(anime.anime)} - Saisons - Mugiwara-no Streaming
           </title>
-        ) : null}
+        )}
       </Head>
 
       <Title
@@ -67,33 +53,24 @@ const Saisons = () => {
         }}
       />
 
-      <p
-        style={{
-          position: "relative",
-          top: "35px",
-          color: "white",
-          fontSize: "50px",
-        }}
-      >
+      <p className="relative top-9 text-5xl text-white">
         Les <span>saisons</span> disponibles.
       </p>
 
-      <p className="lastSaison">
-        {saison ? (
+      <p className="my-12">
+        {saison && (
           <>
             Historique Saison :{" "}
             <span
               onClick={() =>
                 changeSaison(saison, formatName(anime?.anime!), router)
               }
-              style={{ cursor: "pointer" }}
+              className="text-mainColor cursor-pointer underline"
             >
-              <a id={saison} className="historiqueSaison">
-                {anime?.options.saisons?.[saison].name}
-              </a>
+              {anime?.options.saisons?.[saison].name}
             </span>
           </>
-        ) : null}
+        )}
       </p>
 
       <SearchBar
@@ -101,18 +78,17 @@ const Saisons = () => {
         container="list-poster-saison"
       />
 
-      <div className="saisons">
+      <div className="overflow-x-auto">
         {saisons?.map(({ element, id }, index) => (
           <div
-            style={{ cursor: "pointer" }}
             key={id}
             id={id}
-            className="list-poster-saison"
+            className="list-poster-saison m-8 inline-flex w-20 cursor-pointer flex-col gap-2.5"
             onClick={() =>
               changeSaison(
                 (index + 1).toString(),
                 formatName(anime?.anime!),
-                router
+                router,
               )
             }
           >
@@ -120,9 +96,8 @@ const Saisons = () => {
           </div>
         ))}
       </div>
-
       <Footer />
-    </>
+    </main>
   );
 };
 

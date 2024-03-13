@@ -25,8 +25,7 @@ class AoAshi extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) =>
-        `https://s22.anime-sama.fr/s1/scans/Ao%20Ashi/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s1/scans/Ao%20Ashi/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

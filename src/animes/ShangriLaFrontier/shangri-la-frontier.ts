@@ -27,7 +27,7 @@ export default class ShangriLaFrontier extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Shangri-La%20Frontier/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Shangri-La%20Frontier/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [],
     };
 

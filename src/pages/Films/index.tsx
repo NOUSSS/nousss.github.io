@@ -2,9 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import "./Films.scss";
-import "./responsive.scss";
-
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { AnimesType } from "@/animes/constants";
@@ -20,7 +17,6 @@ import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 
-import DownloadComponent from "@/app/ui/download-component";
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
 
@@ -51,7 +47,7 @@ const Films = () => {
   const lecteurString = useRef<"" | "eps1" | "eps2">("");
 
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
-    null
+    null,
   );
 
   const status = useScript(
@@ -60,7 +56,7 @@ const Films = () => {
       : false) as string,
     {
       removeOnUnmount: true,
-    }
+    },
   );
 
   const router = useRouter();
@@ -71,7 +67,7 @@ const Films = () => {
     const currentAnime = getAnime(
       getCurrentAnime({
         wSaison: false,
-      })
+      }),
     );
 
     if (!currentAnime || !currentAnime.options.FILM_OPTIONS) {
@@ -82,7 +78,7 @@ const Films = () => {
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
       setLang(
         localStorage.getItem(`${formatName(currentAnime.anime)}--lang`) ??
-          "vostfr"
+          "vostfr",
       );
 
       setAnime(currentAnime);
@@ -111,7 +107,7 @@ const Films = () => {
   useEffect(() => {
     if (status === "ready") {
       const lastFilm = localStorage.getItem(
-        `${formatName(currentAnime)}--currentFilm`
+        `${formatName(currentAnime)}--currentFilm`,
       );
 
       Lecteurs = getLecteur();
@@ -149,14 +145,14 @@ const Films = () => {
           ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
           : `${LecteursFilms[0]} ${
               localStorage.getItem(
-                `${formatName(currentAnime)}--currentFilm`
+                `${formatName(currentAnime)}--currentFilm`,
               ) ?? "0"
             }`,
 
         setVideo,
         setTitle,
 
-        formatName(currentAnime)
+        formatName(currentAnime),
       );
 
       getFilms(
@@ -166,7 +162,7 @@ const Films = () => {
         setVideo,
 
         currentLecteur!,
-        currentAnime
+        currentAnime,
       );
     }
   }, [
@@ -178,7 +174,7 @@ const Films = () => {
   ]);
 
   return (
-    <>
+    <main className="flex flex-col items-center">
       <Head>
         {currentAnime ? (
           <title>
@@ -189,9 +185,9 @@ const Films = () => {
 
       <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
 
-      <div className="film">{title}</div>
+      <div className="film m-11 text-3xl">{title}</div>
 
-      <div className="selects">
+      <div className="mb-8 flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
           items={[
@@ -233,45 +229,31 @@ const Films = () => {
         ) : null}
       </div>
 
-      <div className="video--films">
+      <div className="container">
         {currentLecteur?.lecteur === "epsAS" ? (
           <>
             <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
             <video controls src={video} />
 
-            <div className="ambiance">
+            <div className="video">
               <video src={video} />
             </div>
           </>
         ) : (
           <>
-            <iframe
-              width="640"
-              height="360"
-              src={video}
-              allowFullScreen
-            ></iframe>
-
-            <iframe className="ambiance" height="360" src={video}></iframe>
+            <iframe className="video" src={video} allowFullScreen></iframe>
+            <iframe className="ambiance" src={video}></iframe>
           </>
         )}
       </div>
 
       <SearchBar placeholder="Rechercher un film" container="list-poster" />
 
-      {currentLecteur?.lecteur ? (
-        <DownloadComponent
-          lecteur={currentLecteur.lecteur}
-          video={video}
-          className="tips--films"
-        />
-      ) : null}
-
-      <div className="films">{films}</div>
+      <div className="overflow-x-auto">{films}</div>
 
       <Footer media />
-    </>
+    </main>
   );
 };
 

@@ -25,21 +25,12 @@ export function Title({
   }, [anime, query.anime]);
 
   const text = accueil ? (
-    <>
-      <h1
-        style={{
-          marginTop: "20px",
-          textAlign: "left",
-        }}
-      >
-        Le catalogue
-      </h1>
-    </>
+    <h1 className="title">Le catalogue</h1>
   ) : (
-    <Link href={link ? link : "/"} style={{ fontSize: "60px" }}>
+    <Link href={link ? link : "/"} className="title text-6xl">
       <h1>{formatName(anime)}</h1>
     </Link>
   );
 
-  return <div className="title">{text}</div>;
+  return <div className="text-6xl">{text}</div>;
 }

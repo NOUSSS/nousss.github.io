@@ -29,7 +29,7 @@ class ChainsawMan extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Chainsaw%20Man/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Chainsaw%20Man/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

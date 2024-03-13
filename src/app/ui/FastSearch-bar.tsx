@@ -16,6 +16,7 @@ interface FastSearchBarProps {
   isVisible: boolean;
 
   inputRef: RefObject<HTMLInputElement>;
+  className?: string;
 }
 
 const FastSearchBar: React.FC<FastSearchBarProps> = ({
@@ -26,6 +27,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
   isVisible,
 
   inputRef,
+  className,
 }) => {
   const router = useRouter();
 
@@ -81,6 +83,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   return (
     <input
+      className={`${className ?? ""}`}
       ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
@@ -102,6 +105,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
             <ul>
               {filteredAnimes.map(({ options, anime, synopsis }) => (
                 <li
+                  className="hover:bg-[rgb(33 35 37) 70] flex cursor-pointer py-2 text-left opacity-60 transition-all duration-200 ease-out hover:opacity-100"
                   key={anime}
                   onClick={() => {
                     setIsVisible(!isVisible);
@@ -112,21 +116,26 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
                     });
                   }}
                 >
-                  <div className="left">
-                    <Image src={options.affiche!} alt={anime} />
+                  <div>
+                    <Image
+                      src={options.affiche!}
+                      alt={anime}
+                      className="min-w-40 max-w-40"
+                    />
                   </div>
-                  <div className="right">
-                    <h1>
+
+                  <div>
+                    <h1 className="mx-3 text-2xl">
                       {formatName(anime).length > 30
                         ? `${formatName(anime).substring(0, 30)}...`
                         : formatName(anime)}
                     </h1>
 
-                    <p>{synopsis}</p>
+                    <p className="mx-4 text-xs opacity-75">{synopsis}</p>
                   </div>
                 </li>
               ))}
-            </ul>
+            </ul>,
           );
         }
       }}

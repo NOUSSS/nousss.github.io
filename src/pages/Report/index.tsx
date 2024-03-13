@@ -1,5 +1,3 @@
-import "./report.scss";
-
 import { toast } from "sonner";
 import React from "react";
 
@@ -26,7 +24,7 @@ export default function Report() {
             },
           ],
         }),
-      }
+      },
     );
 
     if (response.ok) {
@@ -37,19 +35,25 @@ export default function Report() {
   };
 
   return (
-    <>
-      <h1>Signaler un problème</h1>
+    <main className="mx-auto w-[500px] rounded-md bg-[#17171c7a] p-4 shadow-lg max-md:w-auto">
+      <h1 className="mb-20 text-4xl">Signaler un problème</h1>
 
       <form onSubmit={handleSubmit}>
         <textarea
+          className="mb-16 h-64 w-full border border-[var(--grey)] bg-transparent p-2 focus:outline-none"
           value={message}
           onChange={({ target: { value } }) => setMessage(value)}
           placeholder="Ton site il est guez"
           required
         />
 
-        <button type="submit">Envoyer</button>
+        <button
+          className="btn w-full border hover:border-green-500 hover:text-green-500"
+          type="submit"
+        >
+          Envoyer
+        </button>
       </form>
-    </>
+    </main>
   );
 }

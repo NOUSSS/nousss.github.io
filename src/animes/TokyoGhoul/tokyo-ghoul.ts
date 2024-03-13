@@ -37,7 +37,7 @@ export default class TokyoGhoul extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Tokyo%20Ghoul/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Tokyo%20Ghoul/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

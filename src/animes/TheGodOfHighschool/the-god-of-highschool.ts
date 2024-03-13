@@ -27,7 +27,7 @@ export default class TheGodOfHighschool extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/The%20God%20of%20High%20School/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/The God of High School/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [307],
     };
 

@@ -61,7 +61,7 @@ export default class MyHeroAcademia extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/My%20Hero%20Academia/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/My%20Hero%20Academia/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [] as number[],
     };
 

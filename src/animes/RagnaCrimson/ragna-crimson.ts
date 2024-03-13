@@ -25,7 +25,7 @@ export default class RagnaCrimson extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Ragna%20Crimson/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Ragna%20Crimson/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [1, 2, 15, 16],
     };

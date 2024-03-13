@@ -29,7 +29,7 @@ class SoloLeveling extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Solo%20Leveling/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Solo%20Leveling/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [] as number[],
     };
 

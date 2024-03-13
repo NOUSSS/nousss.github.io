@@ -115,7 +115,7 @@ class OnePiece extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/One%20Piece/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/One%20Piece/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [1045],
     };

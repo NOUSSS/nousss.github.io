@@ -45,7 +45,7 @@ export default class BlueExorcist extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Blue%20Exorcist/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Blue%20Exorcist/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [37, 47, 48, 76, 87, 104],
     };

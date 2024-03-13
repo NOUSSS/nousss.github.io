@@ -22,7 +22,7 @@ export function getFilms(
     change?: boolean;
   },
 
-  currentAnime: string
+  currentAnime: string,
 ) {
   let LecteursFilms: string[] = [];
 
@@ -58,9 +58,13 @@ export function getFilms(
     }`;
 
     filmsNodes.push(
-      <div id={id} key={id} className="list-poster">
+      <div
+        id={id}
+        key={id}
+        className="list-poster group m-8 inline-flex w-20 flex-col gap-3"
+      >
         <Image
-          className="poster"
+          className="h-[109px] w-[89px] transition-all duration-300 group-hover:rotate-12"
           src={names![i].image()}
           id={`${url} ${i}`}
           onClick={() => {
@@ -68,13 +72,14 @@ export function getFilms(
               `${url} ${i}`,
               setVideo,
               setTitle,
-              formatName(currentAnime)
+              formatName(currentAnime),
             );
           }}
           alt="poster de saison"
         />
-        <p className="text--films">{names![i].name}</p>
-      </div>
+
+        <p className="text--films text-xs">{names![i].name}</p>
+      </div>,
     );
   }
 

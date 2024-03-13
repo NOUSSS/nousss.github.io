@@ -1,10 +1,20 @@
 import Link from "next/link";
 
-export function Footer({ media = false }: { media?: boolean }) {
+export function Footer({
+  media = false,
+  margin,
+  className,
+}: {
+  media?: boolean;
+  className?: string;
+  margin?: boolean;
+}) {
   return (
-    <div className="footer">
+    <div
+      className={`${margin ? "mt-16" : "mt-52"} footer relative ml-2 flex flex-col justify-center after:absolute after:-top-12 after:h-[2px] after:w-full after:bg-[var(--mainColor)] ${className}`}
+    >
       <Link
-        className="report"
+        className="text-sm text-[var(--mainColor)] underline"
         href={{
           pathname: "Report",
         }}
@@ -13,7 +23,7 @@ export function Footer({ media = false }: { media?: boolean }) {
       </Link>
 
       {media ? (
-        <p className="mark">
+        <p className="mb-5 w-[350px] text-left">
           Les URL des vidéos / scans présentent sur Mugiwara-no Streaming sont
           prise directement du site anime-sama.fr. De plus, contactez
           directement la plateforme d'hébergement vidéo (sibnet pour la plupart

@@ -33,7 +33,7 @@ export default class EminenceInShadow extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/The%20Eminence%20in%20Shadow/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/The%20Eminence%20in%20Shadow/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

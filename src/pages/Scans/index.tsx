@@ -1,7 +1,5 @@
 "use client";
 
-import "./scans.scss";
-
 import React, { useState, useEffect } from "react";
 
 import {
@@ -34,7 +32,7 @@ const Scans = () => {
   const [chapitresOptions, setChapitresOptions] = useState<ItemsProps[]>([]);
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
-    null
+    null,
   );
 
   const router = useRouter();
@@ -45,7 +43,7 @@ const Scans = () => {
     const currentAnime = getAnime(
       getCurrentAnime({
         wSaison: false,
-      })
+      }),
     );
 
     if (!currentAnime || !currentAnime.options.SCANS_OPTIONS) {
@@ -73,7 +71,7 @@ const Scans = () => {
         },
         {
           threshold: 0.5,
-        }
+        },
       );
 
       if (target) observer.observe(target);
@@ -101,12 +99,12 @@ const Scans = () => {
         document.querySelectorAll<HTMLElement>(".prevButton")!;
 
       if (!chapitre || chapitre === from.toString())
-        PrevchapitreSelector.forEach((e) => e.classList.add("invisible"));
-      else PrevchapitreSelector.forEach((e) => e.classList.remove("invisible"));
+        PrevchapitreSelector.forEach((e) => e.classList.add("hidden"));
+      else PrevchapitreSelector.forEach((e) => e.classList.remove("hidden"));
 
       if (Number(chapitre) === chapitresOptions.length)
-        NextchapitreSelector.forEach((e) => e.classList.add("invisible"));
-      else NextchapitreSelector.forEach((e) => e.classList.remove("invisible"));
+        NextchapitreSelector.forEach((e) => e.classList.add("hidden"));
+      else NextchapitreSelector.forEach((e) => e.classList.remove("hidden"));
     }
   }, [scans, anime]);
 
@@ -151,19 +149,19 @@ const Scans = () => {
             options[
               Number(
                 localStorage.getItem(
-                  `${formatName(anime!.anime!)}--chapitre`
-                ) ?? from
+                  `${formatName(anime!.anime!)}--chapitre`,
+                ) ?? from,
               ) - from
             ],
-            formatName(anime!.anime!)
-          )
+            formatName(anime!.anime!),
+          ),
         );
       }, 100);
     }
   }, [status, anime, loadingToast]);
 
   return (
-    <>
+    <main className="flex flex-col items-center">
       <Head>
         {anime?.anime ? (
           <title>
@@ -179,13 +177,14 @@ const Scans = () => {
         }}
       />
 
-      <div className="select-container">
+      <div className="relative">
         {chapitresOptions.length > 0 ? (
           <Select
+            className="top-12"
             onSelect={(item) => {
               localStorage.setItem(
                 `${formatName(anime!.anime!)}--chapitre`,
-                item.value
+                item.value,
               );
 
               setScans(selectChapter(item, formatName(anime!.anime!)));
@@ -196,25 +195,27 @@ const Scans = () => {
         ) : null}
       </div>
 
-      <div className="container--buttons--scans">
-        <button className="lastChapter">Dernier chapitre</button>
+      <div className="relative top-24 mb-60 flex flex-col gap-4">
+        <button className="btn lastChapter next relative top-4">
+          Dernier chapitre
+        </button>
 
-        <div className="buttons--scans">
-          <button className="prevButton">Chapitre précédent</button>
-          <button className="nextButton">Chapitre suivant</button>
+        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[var(--grey)]">
+          <button className="btn back">Chapitre précédent</button>
+          <button className="btn next">Chapitre suivant</button>
         </div>
       </div>
 
-      <div className="scans">{scans}</div>
+      <div className="relative -top-16 -mb-32">{scans}</div>
 
-      <div className="container--buttons--scans">
-        <div className="buttons--scans">
-          <button className="prevButton">Chapitre précédent</button>
-          <button className="nextButton">Chapitre suivant</button>
+      <div className="relative top-24 mb-60 flex flex-col gap-4">
+        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[var(--grey)]">
+          <button className="btn back">Chapitre précédent</button>
+          <button className="btn next">Chapitre suivant</button>
         </div>
       </div>
 
-      <div className="scrollUp">
+      <div className="scrollUp fixed bottom-0 right-0 m-12 cursor-pointer rounded border border-[var(--mainColor)] bg-[hsla(231,_14%,_10%,_0.429)] p-2 transition-all duration-200 ease-out hover:bg-[hsla(231,_14%,_10%,_1)]">
         <UpArrow
           size="50px"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -222,7 +223,7 @@ const Scans = () => {
       </div>
 
       <Footer media />
-    </>
+    </main>
   );
 };
 

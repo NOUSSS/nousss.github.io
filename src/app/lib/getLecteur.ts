@@ -15,8 +15,8 @@ export const getLecteur = (): LecteurReturnType => {
       for (const str of window.eps2) {
         if (str.includes("sibnet"))
           return {
-            eps1: window.eps1,
             eps2: window.eps2,
+            eps1: window.eps1,
           };
       }
     }

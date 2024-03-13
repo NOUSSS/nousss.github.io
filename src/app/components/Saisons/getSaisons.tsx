@@ -8,7 +8,7 @@ export function getSaisons() {
 
   const options =
     ANIMES.find(
-      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase(),
     )!.options || {};
 
   const lastEpisode =
@@ -38,12 +38,12 @@ export function getSaisons() {
       element: (
         <>
           <Image
-            className="poster-saison"
             src={saisons?.[i].image()!}
             id={i.toString()}
             alt="poster de saison"
+            className="h-[108px] w-[89px] duration-300 hover:rotate-12"
           />
-          <p className="text--saisons">
+          <p className="text-sm">
             <span>{saisons?.[i].name}</span>
             <br />
             {isOAV ? "" : " (" + intervalEpisodes + ")"}

@@ -26,7 +26,7 @@ export default class DemonSlave extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Demon%20Slave/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Demon%20Slave/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [24, 25, 41, 42, 51, 61],
     };

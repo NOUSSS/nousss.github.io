@@ -27,7 +27,7 @@ export default class TowerOfGod extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Tower%20Of%20God/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Tower%20Of%20God/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [78],
     };
 

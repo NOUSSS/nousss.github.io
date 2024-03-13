@@ -1,8 +1,5 @@
 "use client";
 
-import "./Accueil/accueil.scss";
-import "./Accueil/responsive.scss";
-
 import React, { useCallback, useEffect, useState } from "react";
 
 import SearchBar from "@/app/ui/searchBar";
@@ -22,13 +19,13 @@ import { useRouter } from "next/router";
 
 export default function Accueil() {
   const animes = Array.from(
-    ANIMES.map(({ anime, category }) => ({ anime, category }))
+    ANIMES.map(({ anime, category }) => ({ anime, category })),
   );
 
   const router = useRouter();
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
-  const [mainColor, setMainColor] = useState("#ff7300");
+  const [mainColor, setMainColor] = useState("#ffea00");
 
   useEffect(() => {
     const keys = Object.keys(localStorage);
@@ -51,7 +48,7 @@ export default function Accueil() {
 
     const color =
       getComputedStyle(document.body).getPropertyValue("--mainColor").trim() ||
-      "#ff7300";
+      "#ffea00";
 
     setMainColor(color);
 
@@ -96,17 +93,17 @@ export default function Accueil() {
 
   const [catalogues, setCatalogues] = useState(() =>
     groupAnimesByCategory(animes).sort(
-      (a, b) => b.names.length - a.names.length
-    )
+      (a, b) => b.names.length - a.names.length,
+    ),
   );
 
   useEffect(() => {
     const updatedCatalogues = groupAnimesByCategory(
-      ANIMES.map(({ anime, category }) => ({ anime, category }))
+      ANIMES.map(({ anime, category }) => ({ anime, category })),
     ).sort((a, b) => b.names.length - a.names.length);
 
     const momentIndex = updatedCatalogues.findIndex(
-      ({ category }) => category === "Nouveautées"
+      ({ category }) => category === "Nouveautées",
     );
 
     if (momentIndex !== -1) {
@@ -157,12 +154,12 @@ export default function Accueil() {
         });
       }
     },
-    [historiques, router]
+    [historiques, router],
   );
 
   return (
-    <>
-      <nav>
+    <main>
+      <nav className="mb-16">
         <Title accueil />
 
         <div className="container--search-bar">
@@ -173,11 +170,11 @@ export default function Accueil() {
         </div>
       </nav>
 
-      <p style={{ textAlign: "left" }}>
+      <p>
         Pour connaitre la date de sortie des différents épisodes / scans, je
         vous redirige vers le{" "}
         <a
-          style={{ color: "var(--mainColor)", textDecoration: "underline" }}
+          className="text-[var(--mainColor)] underline"
           href="https://anime-sama.fr/planning/"
           target="_blank"
         >
@@ -186,13 +183,13 @@ export default function Accueil() {
         d'anime-sama
       </p>
 
-      <div className="color-picker invisible">
+      <div className="color-picker m-12 hidden">
         <input
           value={mainColor}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             document.documentElement.style.setProperty(
               "--mainColor",
-              event.target.value
+              event.target.value,
             );
             localStorage.setItem("color", event.target.value);
 
@@ -201,10 +198,11 @@ export default function Accueil() {
           type="color"
         />
         <button
+          className="btn"
           onClick={() => {
             document.documentElement.style.setProperty(
               "--mainColor",
-              "#ff7300"
+              "#ffea00",
             );
 
             localStorage.removeItem("color");
@@ -216,14 +214,18 @@ export default function Accueil() {
 
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
-          <div className={category} key={category}>
-            <div className="category">
+          <div className={`${category} mb-3`} key={category}>
+            <div
+              className={`category ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl font-bold tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
+            >
               {category === "Reprendre" ? (
                 <>
                   <p>{category}</p>
 
+                  <span className="m-4 h-8 border-r border-r-[var(--grey)]"></span>
+
                   <button
-                    className="removeAllHistorique"
+                    className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36"
                     onClick={() => {
                       setHistoriques([]);
 
@@ -242,10 +244,13 @@ export default function Accueil() {
               )}
             </div>
 
-            <ul key={category}>
+            <ul
+              key={category}
+              className="ml-3 flex cursor-pointer overflow-x-auto"
+            >
               {names.map((animeName: string, i) => (
                 <li
-                  className="animes-list"
+                  className="animes-list ml-5 max-sm:m-2"
                   onClick={() => goToAnime(formatName(animeName), category, i)}
                   id={
                     formatName(animeName) +
@@ -266,11 +271,11 @@ export default function Accueil() {
                       getAnime(animeName)?.synopsis ??
                       "Aucun synopsis pour cette anime"
                     }
-                    className="card"
+                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-[var(--mainColor)] before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
                   >
                     {historiques[i] && category === "Reprendre" ? (
                       <div
-                        className="historiqueRemove"
+                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-[var(--mainColor)] bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
                         onClick={(event) => {
                           event.stopPropagation();
 
@@ -278,20 +283,21 @@ export default function Accueil() {
                             formatName(animeName),
                             historiques[i]!.redirect,
                             historiques,
-                            setHistoriques
+                            setHistoriques,
                           );
                         }}
                       >
                         X
                       </div>
                     ) : null}
+
                     <Image
-                      className="affiche"
+                      className={`relative top-1 z-[-1] h-[${category === "Reprendre" ? "90px" : "70px"}] w-[${category === "Reprendre" ? "160px" : "130px"}] scale-90 rounded-t-xl`}
                       src={getAnime(animeName)?.options.affiche!}
                       alt="affiche d'un anime"
                     />
 
-                    <p>
+                    <p className="relative top-2 text-sm text-[var(--mainColor)] max-sm:text-xs">
                       {formatName(animeName)}
                       {historiques[i] && category === "Reprendre" && (
                         <>
@@ -301,7 +307,7 @@ export default function Accueil() {
                               {getCurrentChapitre(
                                 formatName(animeName),
                                 i,
-                                historiques
+                                historiques,
                               )}
                             </>
                           )}
@@ -319,7 +325,7 @@ export default function Accueil() {
                               {getCurrentEpisode(
                                 formatName(animeName),
                                 i,
-                                historiques
+                                historiques,
                               )}
                             </>
                           )}
@@ -334,6 +340,6 @@ export default function Accueil() {
         ))}
       </div>
       <Footer />
-    </>
+    </main>
   );
 }

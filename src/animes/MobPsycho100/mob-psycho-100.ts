@@ -38,7 +38,7 @@ class MobPsycho100 extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://s22.anime-sama.fr/s1/scans/Mob%20Psycho%20100/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Mob%20Psycho%20100/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [9, 18, 45, 77, 87, 93, 96, 102, 105, 108, 109],
     };
