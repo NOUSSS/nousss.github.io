@@ -201,8 +201,8 @@ const Scans = () => {
         </button>
 
         <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[--grey]">
-          <button className="btn back">Chapitre précédent</button>
-          <button className="btn next">Chapitre suivant</button>
+          <button className="btn prevButton back">Chapitre précédent</button>
+          <button className="btn nextButton next">Chapitre suivant</button>
         </div>
       </div>
 
@@ -210,8 +210,8 @@ const Scans = () => {
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
         <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-[--grey]">
-          <button className="btn back">Chapitre précédent</button>
-          <button className="btn next">Chapitre suivant</button>
+          <button className="btn prevButton back">Chapitre précédent</button>
+          <button className="btn nextButton next">Chapitre suivant</button>
         </div>
       </div>
 
