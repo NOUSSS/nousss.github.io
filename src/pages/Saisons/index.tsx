@@ -53,7 +53,7 @@ const Saisons = () => {
         }}
       />
 
-      <p className="relative top-9 text-5xl text-white">
+      <p className="m-4 text-5xl">
         Les <span>saisons</span> disponibles.
       </p>
 

@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       />
 
       <div
-        className={`${isVisible ? "" : "hidden"} fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 animate-appear border border-[var(--grey)] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
+        className={`${isVisible ? "" : "hidden"} animate-appearCenter fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 border border-[var(--grey)] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
         ref={searchContainerRef}
       >
         <div className="flex h-16 items-center border-b border-[var(--grey)] bg-[rgba(_22,_23,_29,_0.5)] p-2">

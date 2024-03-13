@@ -9,7 +9,7 @@ module.exports = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
-        appearContainer: {
+        appearCenter: {
           from: {
             opacity: 0,
             transform: "translateX(-50%) translateY(-50%) scale(0.9)",
@@ -19,10 +19,21 @@ module.exports = {
             transform: "translateX(-50%) translateY(-50%) scale(1)",
           },
         },
+        appear: {
+          from: {
+            opacity: 0,
+            transform: "scale(0.9)",
+          },
+          to: {
+            opacity: 1,
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         spin: "borderAnime 2.5s linear infinite",
-        appear: "appearContainer 250ms ease-out",
+        appearCenter: "appearCenter 250ms ease-out",
+        appear: "appear 250ms ease-out",
       },
     },
   },

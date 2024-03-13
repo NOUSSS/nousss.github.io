@@ -235,7 +235,7 @@ export default function Accueil() {
                       </p>
                     </div>
 
-                    <div className="flex w-full justify-end gap-8 bg-slate-200 p-2 text-sm text-white *:w-28 *:rounded-lg *:p-2">
+                    <div className="flex w-full justify-end gap-8 rounded-lg bg-slate-200 p-2 text-sm text-white *:w-28 *:rounded-lg *:p-2">
                       <button
                         className="bg-green-500 hover:bg-green-600"
                         onClick={() => {
