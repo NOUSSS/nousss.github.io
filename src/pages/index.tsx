@@ -224,16 +224,70 @@ export default function Accueil() {
 
                   <span className="m-4 h-8 border-r border-r-[var(--grey)]"></span>
 
+                  <div className="overlay fixed inset-0 z-40 hidden bg-black bg-opacity-50"></div>
+
+                  <div className="confirm fixed left-2/4 top-2/4 z-50 hidden -translate-x-2/4 -translate-y-2/4 rounded-lg bg-white text-black">
+                    <div className="p-5">
+                      <div>Confirmez vous ?</div>
+
+                      <p className="mb-12 text-xs opacity-50">
+                        Vous êtes sur le point de supprimer tout l'historique
+                      </p>
+                    </div>
+
+                    <div className="flex w-full justify-end gap-8 bg-slate-200 p-2 text-sm text-white *:w-28 *:rounded-lg *:p-2">
+                      <button
+                        className="bg-green-500"
+                        onClick={() => {
+                          setHistoriques([]);
+
+                          for (const key of Object.keys(localStorage)) {
+                            if (key !== "color") localStorage.removeItem(key);
+                          }
+
+                          toast.success("L'historique a bien été vidé");
+                        }}
+                      >
+                        Oui
+                      </button>
+                      <button
+                        className="bg-red-500"
+                        onClick={() => {
+                          const confirm = document.querySelector(
+                            ".confirm",
+                          )! as HTMLElement;
+
+                          const overlay = document.querySelector(
+                            ".overlay",
+                          )! as HTMLElement;
+
+                          confirm.classList.add("hidden");
+                          overlay.classList.add("hidden");
+                        }}
+                      >
+                        Annuler
+                      </button>
+                    </div>
+                  </div>
+
                   <button
                     className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
                     onClick={() => {
-                      setHistoriques([]);
+                      const confirm = document.querySelector(
+                        ".confirm",
+                      )! as HTMLElement;
 
-                      for (const key of Object.keys(localStorage)) {
-                        if (key !== "color") localStorage.removeItem(key);
-                      }
+                      const overlay = document.querySelector(
+                        ".overlay",
+                      )! as HTMLElement;
 
-                      toast.success("L'historique a bien été vidé");
+                      confirm.classList.contains("hidden")
+                        ? confirm.classList.remove("hidden")
+                        : confirm.classList.add("hidden");
+
+                      overlay.classList.contains("hidden")
+                        ? overlay.classList.remove("hidden")
+                        : overlay.classList.add("hidden");
                     }}
                   >
                     Supprimer tout l'historique
