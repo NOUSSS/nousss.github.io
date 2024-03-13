@@ -225,7 +225,7 @@ export default function Accueil() {
                   <span className="m-4 h-8 border-r border-r-[var(--grey)]"></span>
 
                   <button
-                    className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36"
+                    className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
                     onClick={() => {
                       setHistoriques([]);
 
