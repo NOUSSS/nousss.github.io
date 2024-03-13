@@ -226,8 +226,8 @@ export default function Accueil() {
 
                   <div className="overlay fixed inset-0 z-40 hidden bg-black bg-opacity-50"></div>
 
-                  <div className="confirm fixed left-2/4 top-2/4 z-50 hidden -translate-x-2/4 -translate-y-2/4 rounded-lg bg-white text-black">
-                    <div className="p-5">
+                  <div className="confirm fixed left-2/4 top-2/4 z-50 hidden w-96 -translate-x-2/4 -translate-y-2/4 rounded-lg bg-white text-black max-sm:w-full">
+                    <div className="p-5 tracking-normal">
                       <div>Confirmez vous ?</div>
 
                       <p className="mb-12 text-xs opacity-50">
@@ -237,7 +237,7 @@ export default function Accueil() {
 
                     <div className="flex w-full justify-end gap-8 bg-slate-200 p-2 text-sm text-white *:w-28 *:rounded-lg *:p-2">
                       <button
-                        className="bg-green-500"
+                        className="bg-green-500 hover:bg-green-600"
                         onClick={() => {
                           setHistoriques([]);
 
@@ -251,7 +251,7 @@ export default function Accueil() {
                         Oui
                       </button>
                       <button
-                        className="bg-red-500"
+                        className="bg-red-500 hover:bg-red-800"
                         onClick={() => {
                           const confirm = document.querySelector(
                             ".confirm",
