@@ -4,7 +4,8 @@ import { getAnime } from "@/app/lib/getAnime";
 export const getCurrentEpisode = (
   animeName: string,
   index: number,
-  historiques: Historique[]
+
+  historiques: Historique[],
 ) => {
   if (localStorage.getItem(`${animeName}--e-sp`)) {
     return localStorage.getItem(`${animeName}--e-sp`)!;
@@ -14,9 +15,9 @@ export const getCurrentEpisode = (
       0 > 0
     ) {
       const horsSeries = getAnime(
-        animeName
+        animeName,
       )!.options.EPISODES_OPTIONS?.horsSeries!.find(
-        ({ saison }) => saison === historiques?.[index].saison
+        ({ saison }) => saison === historiques?.[index].saison,
       )?.hs;
 
       if (horsSeries) {

@@ -346,7 +346,7 @@ export default function Accueil() {
                     ) : null}
 
                     <Image
-                      className={`relative top-1 z-[-1] h-[${category === "Reprendre" ? "90px" : "70px"}] w-[${category === "Reprendre" ? "160px" : "130px"}] scale-90 rounded-t-xl`}
+                      className={`relative top-1 z-[-1] ${category === "Reprendre" ? "max-h-[90px]" : "max-h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} scale-90 rounded-t-xl`}
                       src={getAnime(animeName)?.options.affiche!}
                       alt="affiche d'un anime"
                     />

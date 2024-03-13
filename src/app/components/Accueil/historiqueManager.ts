@@ -1,14 +1,14 @@
 import React from "react";
-import { toast } from "sonner";
 
+import { toast } from "sonner";
 import { Historique } from "@/typings/types";
 
 export const removeAnimeFromHistorique = (
   animeName: string,
   redirectAnime: string,
-  historiques: Historique[],
 
-  setHistoriques: React.Dispatch<React.SetStateAction<Historique[]>>
+  historiques: Historique[],
+  setHistoriques: React.Dispatch<React.SetStateAction<Historique[]>>,
 ) => {
   if (redirectAnime === "Episodes") {
     localStorage.removeItem(`${animeName}--saison`);
@@ -36,11 +36,11 @@ export const removeAnimeFromHistorique = (
       (historique) =>
         !(
           historique.name === animeName && historique.redirect === redirectAnime
-        )
-    )
+        ),
+    ),
   );
 
   toast.success(
-    `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`
+    `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
   );
 };
