@@ -37,7 +37,7 @@ const Home = () => {
   }, [query.anime]);
 
   return (
-    <main className="mx-auto w-3/4 rounded-lg bg-[#17171c7a] p-4 shadow-lg shadow-black/10 max-md:w-full">
+    <main className="mx-auto w-3/4 rounded-lg bg-[#17171c7a] p-4 shadow-lg shadow-black/10 max-md:w-full max-md:bg-transparent max-md:shadow-none">
       <Head>
         {anime?.anime && (
           <title>

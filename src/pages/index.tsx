@@ -351,7 +351,7 @@ export default function Accueil() {
                       alt="affiche d'un anime"
                     />
 
-                    <p className="relative top-2 text-sm text-[--mainColor] max-sm:text-xs">
+                    <p className="relative top-2 p-1 text-sm text-[--mainColor] max-sm:text-xs">
                       {formatName(animeName)}
                       {historiques[i] && category === "Reprendre" && (
                         <>
