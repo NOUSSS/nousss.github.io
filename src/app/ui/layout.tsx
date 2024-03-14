@@ -10,11 +10,14 @@ import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
+  const [mainColor, setMainColor] = useState<string | null>(null);
 
   const SearchIcon = icons["Search"];
 
   useEffect(() => {
     const mainColor = localStorage.getItem("color");
+
+    setMainColor(mainColor);
 
     if (mainColor)
       document.documentElement.style.setProperty("--mainColor", mainColor);
@@ -65,7 +68,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           property="og:description"
           content="À mon avis c'est le meilleur site pour regarder des animes / films ou lire des scans gratuitement et sans pub."
         />
-        <meta content="#ffea00" data-react-helmet="true" name="theme-color" />
+        <meta
+          content={mainColor ?? "#ffea00"}
+          data-react-helmet="true"
+          name="theme-color"
+        />
         <link rel="icon" href="/Logo.png" />
 
         <title>Mugiwara-no Streaming</title>
@@ -78,7 +85,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       />
 
       <div
-        className={`${isVisible ? "" : "hidden"} animate-appearCenter fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 border border-[--grey] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
+        className={`${isVisible ? "" : "hidden"} fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-[--grey] text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
         ref={searchContainerRef}
       >
         <div className="flex h-16 items-center border-b border-[--grey] bg-[rgba(_22,_23,_29,_0.5)] p-2">

@@ -18,7 +18,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
-    "sass": "^1.71.1",
     "sonner": "^1.4.3",
     "usehooks-ts": "^2.15.1"
   },

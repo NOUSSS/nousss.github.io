@@ -1,4 +1,4 @@
-import "@/app/defaultStyles/global.scss";
+import "@/app/defaultStyles/global.css";
 
 import RootLayout from "@/app/ui/layout";
 

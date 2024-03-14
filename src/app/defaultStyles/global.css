@@ -57,17 +57,15 @@
   }
 }
 
-* {
-  &::-webkit-scrollbar {
-    background-color: transparent;
-  }
+*::-webkit-scrollbar {
+  background-color: transparent;
+}
 
-  &::-webkit-scrollbar-track {
-    background: rgb(33 35 37);
-  }
+*::-webkit-scrollbar-track {
+  background: rgb(33 35 37);
+}
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    border: 1px solid var(--mainColor);
-  }
+*::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  border: 1px solid var(--mainColor);
 }

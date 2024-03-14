@@ -26,6 +26,7 @@ import Select, { ItemsProps } from "@/app/ui/Select";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
+  const Hand = icons["Hand"];
 
   const [anime, setAnime] = useState<AnimesType | null>(null);
   const [isClient, setIsClient] = useState(false);
@@ -53,28 +54,6 @@ const Scans = () => {
     } else {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       setAnime(currentAnime);
-
-      const scrollUp = document.querySelector(".scrollUp") as HTMLElement;
-      const target = document.querySelector(".footer");
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              scrollUp.style.position = "relative";
-              scrollUp.style.margin = "-50px";
-            } else {
-              scrollUp.style.position = "fixed";
-              scrollUp.style.margin = "50px";
-            }
-          });
-        },
-        {
-          threshold: 0.5,
-        },
-      );
-
-      if (target) observer.observe(target);
     }
   }, []);
 
@@ -160,6 +139,70 @@ const Scans = () => {
     }
   }, [status, anime, loadingToast]);
 
+  interface Position {
+    x: number;
+    y: number;
+  }
+
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startPosition, setStartPosition] = useState<Position>({ x: 0, y: 0 });
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMove = (clientX: number, clientY: number) => {
+      if (isDragging) {
+        const newX = clientX - startPosition.x;
+        const newY = clientY - startPosition.y;
+        setPosition({ x: newX, y: newY });
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      handleMove(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY);
+    };
+
+    const handleMouseUp = () => setIsDragging(false);
+    const handleTouchEnd = () => setIsDragging(false);
+
+    if (isDragging) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchmove", handleTouchMove);
+      document.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isDragging, startPosition]);
+
+  const startDrag = (clientX: number, clientY: number) => {
+    setIsDragging(true);
+    setStartPosition({
+      x: clientX - position.x,
+      y: clientY - position.y,
+    });
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    startDrag(e.clientX, e.clientY);
+    e.preventDefault();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+    e.preventDefault();
+  };
+
   return (
     <main className="flex flex-col items-center">
       <Head>
@@ -215,9 +258,20 @@ const Scans = () => {
         </div>
       </div>
 
-      <div className="scrollUp fixed bottom-0 right-0 m-12 cursor-pointer rounded border border-[--mainColor] bg-[hsla(231,_14%,_10%,_0.429)] p-2 transition-all duration-200 ease-out hover:bg-[hsla(231,_14%,_10%,_1)]">
+      <div
+        className="fixed bottom-0 right-0 m-12 cursor-pointer rounded border border-[--mainColor] bg-[hsla(231,14%,10%,0.429)] p-2 transition-all duration-200 ease-out hover:bg-[hsla(231,14%,10%,1)]"
+        style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      >
+        <Hand
+          size={17.5}
+          className="absolute right-0 top-0 m-1 cursor-grab"
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+        ></Hand>
+
         <UpArrow
           size="50px"
+          className="relative top-1"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         />
       </div>
