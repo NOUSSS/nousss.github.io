@@ -193,14 +193,16 @@ const Scans = () => {
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    startDrag(e.clientX, e.clientY);
     e.preventDefault();
+
+    startDrag(e.clientX, e.clientY);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+
     const touch = e.touches[0];
     startDrag(touch.clientX, touch.clientY);
-    e.preventDefault();
   };
 
   return (
@@ -267,7 +269,7 @@ const Scans = () => {
           className="absolute right-0 top-0 m-1 cursor-grab"
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
-        ></Hand>
+        />
 
         <UpArrow
           size="50px"
