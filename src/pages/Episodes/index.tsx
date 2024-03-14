@@ -602,8 +602,6 @@ const Episodes = () => {
             type="checkbox"
             className="appearance-none"
             onChange={({ target }) => {
-              console.log("changed");
-
               const label = document.querySelector(
                 ".hideEpisodesNames",
               ) as HTMLElement;
