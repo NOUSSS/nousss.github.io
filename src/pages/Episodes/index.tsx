@@ -24,6 +24,9 @@ import Select from "@/app/ui/Select";
 
 import Head from "next/head";
 
+let LecteurEpisodes: string[] = [];
+let Lecteurs: LecteurReturnType;
+
 const Episodes = () => {
   const router = useRouter();
 
@@ -36,6 +39,7 @@ const Episodes = () => {
   }>(null);
 
   const [isClient, setIsClient] = useState(false);
+
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
@@ -46,9 +50,6 @@ const Episodes = () => {
     (isClient && options?.EPISODES_OPTIONS) || {};
 
   const disclamerMessage = useRef("");
-
-  const LecteurEpisodes = useRef<string[]>([]);
-  const Lecteurs = useRef<LecteurReturnType>();
 
   let scriptIndex = (isClient && AnimeInfo?.saison) as string | undefined;
 
@@ -243,23 +244,21 @@ const Episodes = () => {
         AnimeInfo!.saison = newIndexSaison;
       }
 
-      Lecteurs.current = getLecteur();
+      Lecteurs = getLecteur();
 
       if (currentLecteur?.lecteur) {
-        LecteurEpisodes.current =
-          Lecteurs.current[
-            currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"
-          ]!;
+        LecteurEpisodes =
+          Lecteurs[currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"]!;
       } else {
-        if (Lecteurs.current.epsAS) {
+        if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: "epsAS" });
-          LecteurEpisodes.current = Lecteurs.current.epsAS;
+          LecteurEpisodes = Lecteurs.epsAS;
         } else {
           const lecteur = Object.keys(Lecteurs)[0] as "eps1" | "eps2" | "epsAS";
 
           setCurrentLecteur({ lecteur });
 
-          LecteurEpisodes.current = Lecteurs.current[lecteur]!;
+          LecteurEpisodes = Lecteurs[lecteur]!;
         }
       }
 
@@ -284,7 +283,7 @@ const Episodes = () => {
 
       for (
         let indexEpisode = 1;
-        indexEpisode < LecteurEpisodes.current.length + 1;
+        indexEpisode < LecteurEpisodes.length + 1;
         indexEpisode++
       ) {
         const isHorsSerie = horsSeries?.find(
@@ -348,7 +347,7 @@ const Episodes = () => {
         (async () => {
           await new Promise((res) => setTimeout(res, 100, true));
 
-          const URL_EPISODE = LecteurEpisodes.current[Number(episode) - 1];
+          const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
           let retard = 0;
 
@@ -384,7 +383,7 @@ const Episodes = () => {
       }
 
       if (episode !== "1" && e_sp) {
-        const URL_EPISODE = LecteurEpisodes.current[Number(episode) - 1];
+        const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
         setVideo(URL_EPISODE);
         setEpisodeTitle(
@@ -393,7 +392,7 @@ const Episodes = () => {
       }
 
       if (episode === "1") {
-        const [firstEpisode] = LecteurEpisodes.current;
+        const [firstEpisode] = LecteurEpisodes;
 
         const title =
           names?.find(
@@ -418,7 +417,7 @@ const Episodes = () => {
 
       setTimeout(() => {
         clickEvents(
-          LecteurEpisodes.current,
+          LecteurEpisodes,
           setVideo,
           setEpisodeTitle,
           AnimeInfo!.anime!,
@@ -431,7 +430,7 @@ const Episodes = () => {
         setSaisonTitle(
           <>
             <span>
-              {saisonName} ({LecteurEpisodes.current.length})
+              {saisonName} ({LecteurEpisodes.length})
             </span>{" "}
             {"["}
             <span style={{ color: "white" }}>
@@ -487,7 +486,7 @@ const Episodes = () => {
         PrevEpisodeSelector.classList.add("hidden");
       else PrevEpisodeSelector.classList.remove("hidden");
 
-      if (Number(episode) === LecteurEpisodes.current.length)
+      if (Number(episode) === LecteurEpisodes.length)
         NextEpisodeSelector.classList.add("hidden");
       else NextEpisodeSelector.classList.remove("hidden");
     }

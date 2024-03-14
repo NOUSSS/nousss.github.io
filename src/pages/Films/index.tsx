@@ -22,6 +22,9 @@ import Select from "@/app/ui/Select";
 
 import Head from "next/head";
 
+let LecteursFilms: string[] = [];
+let Lecteurs: LecteurReturnType;
+
 const Films = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
   const [isClient, setIsClient] = useState(false);
@@ -42,8 +45,6 @@ const Films = () => {
   } | null>(null);
 
   const lecteurString = useRef<"" | "eps1" | "eps2">("");
-  const LecteursFilms = useRef<string[]>([]);
-  const Lecteurs = useRef<LecteurReturnType>();
 
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
     null,
@@ -109,30 +110,28 @@ const Films = () => {
         `${formatName(currentAnime)}--currentFilm`,
       );
 
-      Lecteurs.current = getLecteur();
+      Lecteurs = getLecteur();
 
       if (currentLecteur?.lecteur) {
-        LecteursFilms.current =
-          Lecteurs.current[
-            currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"
-          ]!;
+        LecteursFilms =
+          Lecteurs[currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"]!;
       } else {
-        if (Lecteurs.current.epsAS) {
+        if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: "epsAS" });
 
-          LecteursFilms.current = Lecteurs.current.epsAS;
+          LecteursFilms = Lecteurs.epsAS;
         } else {
           const lecteur = Object.keys(Lecteurs)[0] as "eps1" | "eps2" | "epsAS";
 
           setCurrentLecteur({ lecteur: lecteur });
 
-          LecteursFilms.current = Lecteurs.current[lecteur]!;
+          LecteursFilms = Lecteurs[lecteur]!;
         }
       }
 
       lecteurString.current = "eps1";
 
-      const films_url = Lecteurs.current[lecteurString.current]!;
+      const films_url = Lecteurs[lecteurString.current]!;
 
       if (options?.BLACKLIST_URL) {
         for (const BLACKLIST of options.BLACKLIST_URL) {
@@ -143,8 +142,8 @@ const Films = () => {
 
       appearVideo(
         lastFilm
-          ? `${LecteursFilms.current[Number(lastFilm)]} ${Number(lastFilm)}`
-          : `${LecteursFilms.current[0]} ${
+          ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
+          : `${LecteursFilms[0]} ${
               localStorage.getItem(
                 `${formatName(currentAnime)}--currentFilm`,
               ) ?? "0"
