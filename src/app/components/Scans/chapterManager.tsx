@@ -51,14 +51,19 @@ export const selectChapter = (
 
     for (let i = 1; i <= scans.length; i++) {
       scansImages.push(
-        <Image
-          alt={`Image ${i}`}
+        <div
           key={`Image ${i}`}
-          width="1000"
-          height="1000"
-          className="pointer-events-none w-[750px] max-md:w-full"
-          src={IMAGE_URL!({ chapitre: item.value, index: i })}
-        ></Image>,
+          className="w-[750px] max-md:w-full"
+          onContextMenu={(e) => e.preventDefault()}
+          onTouchStart={(e) => e.preventDefault()}
+        >
+          <Image
+            alt={`Image ${i}`}
+            width="1000"
+            height="1000"
+            src={IMAGE_URL!({ chapitre: item.value, index: i })}
+          />
+        </div>,
       );
     }
 
