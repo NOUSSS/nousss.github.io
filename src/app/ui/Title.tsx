@@ -27,10 +27,10 @@ export function Title({
   const text = accueil ? (
     <h1 className="title">Le catalogue</h1>
   ) : (
-    <Link href={link ? link : "/"} className="title text-6xl">
+    <Link href={link ? link : "/"} className="title">
       <h1>{formatName(anime)}</h1>
     </Link>
   );
 
-  return <>{text}</>;
+  return <div className="text-6xl">{text}</div>;
 }
