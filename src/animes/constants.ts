@@ -54,6 +54,8 @@ import NinjaKamui from "./NinjaKamui/ninja-kamui";
 import YuyuHakusho from "./YuyuHakusho/yuyu-hakusho";
 import Frieren from "./Frieren/frieren";
 import Vagabond from "./Vagabond/vagabond";
+import TheBoxer from "./TheBoxer/the-boxer";
+import DoomBreaker from "./DoomBreaker/doom-breaker";
 
 export interface AnimesType {
   anime: string;
@@ -504,6 +506,20 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "En 1600 a lieu la terrible bataille de Sekigahara, qui assied le pouvoir du shôgun Tokugawa. Parmi les combattants se trouve Musashi, le fils d'un grand samurai, qui est prêt à tout pour survivre. Alors qu'il revient dans son village natal, il est pourchassé pour avoir déserté, et se trouve rejeté par les habitants. Commence alors pour lui une longue errance, avec un unique objectif : améliorer sa maitrise de la lame, et devenir le meilleur samurai du Japon.",
   },
+  {
+    anime: "The Boxer",
+    category: ["Webtoon", "Sport"],
+    options: new TheBoxer(),
+    synopsis:
+      "\"The Boxer\" raconte l'histoire captivante d'un jeune prodige de la boxe doté d'un talent naturel remarquable et d'une force inégalée, mais qui monte sur le ring sans passion ni ambition. Repéré par un entraîneur visionnaire convaincu de pouvoir faire de lui le meilleur boxeur du monde, il se lance dans un parcours semé de défis. À travers des combats intenses contre des adversaires de plus en plus puissants, chacun porteur de sa propre histoire, il est contraint d'affronter non seulement ses rivaux mais aussi ses propres interrogations sur le sens de la victoire et de la défaite.",
+  },
+  {
+    anime: "Doom Breaker",
+    category: ["Webtoon"],
+    options: new DoomBreaker(),
+    synopsis:
+      "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",
+  },
 ];
 
 interface AnimeOption {
@@ -517,7 +533,7 @@ interface GroupedAnimes {
 }
 
 export const groupAnimesByCategory = (
-  animes: AnimeOption[]
+  animes: AnimeOption[],
 ): GroupedAnimes[] => {
   const grouped: { [key: string]: string[] } = {};
 

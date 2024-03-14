@@ -3,7 +3,7 @@ import { ItemsProps } from "@/app/ui/Select";
 
 const attachButtonClickEvent = (
   className: string,
-  clickHandler: () => void
+  clickHandler: () => void,
 ) => {
   document
     .querySelectorAll(`.${className}`)
@@ -13,23 +13,27 @@ const attachButtonClickEvent = (
 export const clickEvents = (
   setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>,
   currentAnime: string,
-  items: ItemsProps[]
+  items: ItemsProps[],
 ): void => {
   attachButtonClickEvent("prevButton", () => {
+    window.localStorage.removeItem(`${currentAnime}--scrollPosition`);
+
     setScans(
       selectChapter(
         items[Number(localStorage.getItem(`${currentAnime}--chapitre`)) - 2],
-        currentAnime
-      )
+        currentAnime,
+      ),
     );
   });
 
   attachButtonClickEvent("nextButton", () => {
+    window.localStorage.removeItem(`${currentAnime}--scrollPosition`);
+
     setScans(
       selectChapter(
         items[Number(localStorage.getItem(`${currentAnime}--chapitre`))],
-        currentAnime
-      )
+        currentAnime,
+      ),
     );
   });
 

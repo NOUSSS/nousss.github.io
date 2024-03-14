@@ -24,6 +24,11 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Select, { ItemsProps } from "@/app/ui/Select";
 
+interface Position {
+  x: number;
+  y: number;
+}
+
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
   const Hand = icons["Hand"];
@@ -35,6 +40,10 @@ const Scans = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
+
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [startPosition, setStartPosition] = useState<Position>({ x: 0, y: 0 });
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
 
   const router = useRouter();
 
@@ -120,33 +129,39 @@ const Scans = () => {
       }
 
       setTimeout(() => {
-        setChapitresOptions(options);
-        clickEvents(setScans, formatName(anime!.anime!), options);
+        if (anime) {
+          setChapitresOptions(options);
+          clickEvents(setScans, formatName(anime.anime), options);
 
-        setScans(
-          selectChapter(
-            options[
-              Number(
-                localStorage.getItem(
-                  `${formatName(anime!.anime!)}--chapitre`,
-                ) ?? from,
-              ) - from
-            ],
-            formatName(anime!.anime!),
-          ),
-        );
+          setScans(
+            selectChapter(
+              options[
+                Number(
+                  localStorage.getItem(
+                    `${formatName(anime!.anime!)}--chapitre`,
+                  ) ?? from,
+                ) - from
+              ],
+              formatName(anime!.anime!),
+            ),
+          );
+        }
       }, 100);
+
+      setTimeout(() => {
+        const scrollPosition = localStorage.getItem(
+          `${formatName(anime!.anime)}--scrollPosition`,
+        );
+
+        if (scrollPosition) {
+          window.scrollTo({
+            top: +scrollPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 1500);
     }
   }, [status, anime, loadingToast]);
-
-  interface Position {
-    x: number;
-    y: number;
-  }
-
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [startPosition, setStartPosition] = useState<Position>({ x: 0, y: 0 });
-  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMove = (clientX: number, clientY: number) => {
