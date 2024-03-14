@@ -111,24 +111,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               className="group flex items-center gap-3 tracking-widest transition-all duration-300 ease-out"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-
-                const input = document.querySelectorAll("input")[1];
-
-                if (input) {
-                  input.value = "";
-
-                  input.dispatchEvent(
-                    new KeyboardEvent("keydown", {
-                      key: "Backspace",
-                      code: "Backspace",
-                      keyCode: 8,
-                      charCode: 8,
-                      bubbles: true,
-                    }),
-                  );
-
-                  input.dispatchEvent(new Event("input", { bubbles: true }));
-                }
               }}
             >
               <Image
