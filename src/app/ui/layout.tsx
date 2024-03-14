@@ -15,12 +15,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const SearchIcon = icons["Search"];
 
   useEffect(() => {
-    const mainColor = localStorage.getItem("color");
+    const main = localStorage.getItem("color");
+    setMainColor(main);
 
-    setMainColor(mainColor);
-
-    if (mainColor)
-      document.documentElement.style.setProperty("--mainColor", mainColor);
+    if (main) document.documentElement.style.setProperty("--mainColor", main);
 
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>(".title h1")!;
