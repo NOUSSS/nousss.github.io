@@ -10,14 +10,16 @@ import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
+  const [mainColor, setMainColor] = useState<string | null>(null);
 
   const SearchIcon = icons["Search"];
 
   useEffect(() => {
-    const mainColor = localStorage.getItem("color");
+    const main = localStorage.getItem("color");
+    setMainColor(main);
 
-    if (mainColor)
-      document.documentElement.style.setProperty("--mainColor", mainColor);
+    if (main)
+      document.documentElement.style.setProperty("--mainColor", main);
 
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>(".title h1")!;
@@ -65,7 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           property="og:description"
           content="À mon avis c'est le meilleur site pour regarder des animes / films ou lire des scans gratuitement et sans pub."
         />
-        <meta content={window.localStorage.getItem("color") ?? "#ffea00"} data-react-helmet="true" name="theme-color" />
+        <meta content={mainColor ?? "#ffea00"} data-react-helmet="true" name="theme-color" />
         <link rel="icon" href="/Logo.png" />
 
         <title>Mugiwara-no Streaming</title>
