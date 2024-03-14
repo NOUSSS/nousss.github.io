@@ -56,7 +56,7 @@ export const selectChapter = (
           key={`Image ${i}`}
           width="1000"
           height="1000"
-          className="w-[750px] select-none max-md:w-full"
+          className="pointer-events-none w-[750px] max-md:w-full"
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
         ></Image>,
       );
