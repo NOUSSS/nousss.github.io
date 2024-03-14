@@ -57,7 +57,7 @@ const Saisons = () => {
         Les <span>saisons</span> disponibles.
       </p>
 
-      <p className="my-12">
+      <p>
         {saison && (
           <>
             Historique Saison :{" "}

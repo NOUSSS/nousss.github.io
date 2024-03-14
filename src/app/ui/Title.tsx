@@ -32,5 +32,5 @@ export function Title({
     </Link>
   );
 
-  return <div className="text-6xl">{text}</div>;
+  return <>{text}</>;
 }

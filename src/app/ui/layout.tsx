@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-[--grey] bg-[#2123259f] shadow-lg backdrop-blur-3xl">
+      <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-[--grey] shadow-lg backdrop-blur-3xl">
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
           <Link href="/">
             <h1
