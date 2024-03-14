@@ -10,13 +10,13 @@ import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
-  const [mainColor, setMainColor] = useState<string | null>(null);
+  const [mainColor, setMainColor] = useState<string>("#ffea00");
 
   const SearchIcon = icons["Search"];
+  const ResetIcon = icons["RotateCcw"];
 
   useEffect(() => {
     const main = localStorage.getItem("color");
-    setMainColor(main);
 
     if (main) document.documentElement.style.setProperty("--mainColor", main);
 
@@ -160,6 +160,43 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </nav>
       </header>
+
+      <div className="relative top-24 flex items-center justify-center gap-3">
+        <div
+          className="flex size-5 items-center justify-center overflow-hidden rounded-full"
+          style={{
+            backgroundColor: mainColor,
+          }}
+        >
+          <input
+            className="absolute h-full w-full cursor-pointer opacity-0"
+            value={mainColor}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const newColor = event.target.value;
+
+              document.documentElement.style.setProperty(
+                "--mainColor",
+                newColor,
+              );
+
+              localStorage.setItem("color", newColor);
+              setMainColor(newColor);
+            }}
+            type="color"
+          />
+        </div>
+
+        <ResetIcon
+          className="size-5 cursor-pointer opacity-50 transition-opacity hover:opacity-100"
+          onClick={() => {
+            document.documentElement.style.setProperty(
+              "--mainColor",
+              "#ffea00",
+            );
+            localStorage.removeItem("color");
+          }}
+        />
+      </div>
 
       {children}
     </>

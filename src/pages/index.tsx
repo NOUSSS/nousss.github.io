@@ -25,7 +25,6 @@ export default function Accueil() {
   const router = useRouter();
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
-  const [mainColor, setMainColor] = useState("#ffea00");
 
   useEffect(() => {
     const keys = Object.keys(localStorage);
@@ -45,12 +44,6 @@ export default function Accueil() {
     duplicates.forEach((duplicate) => {
       localStorage.removeItem(duplicate);
     });
-
-    const color =
-      getComputedStyle(document.body).getPropertyValue("--mainColor").trim() ||
-      "#ffea00";
-
-    setMainColor(color);
 
     const loadHistoriques = () => {
       const loadedHistoriques: Historique[] = [];
@@ -183,35 +176,6 @@ export default function Accueil() {
         d'anime-sama
       </p>
 
-      <div className="color-picker m-12 hidden">
-        <input
-          value={mainColor}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            document.documentElement.style.setProperty(
-              "--mainColor",
-              event.target.value,
-            );
-            localStorage.setItem("color", event.target.value);
-
-            setMainColor(event.target.value);
-          }}
-          type="color"
-        />
-        <button
-          className="btn"
-          onClick={() => {
-            document.documentElement.style.setProperty(
-              "--mainColor",
-              "#ffea00",
-            );
-
-            localStorage.removeItem("color");
-          }}
-        >
-          Réinisialiser
-        </button>
-      </div>
-
       <div className="catalogue">
         {catalogues.map(({ names, category }) => (
           <div className={`${category} mb-3`} key={category}>
@@ -250,6 +214,7 @@ export default function Accueil() {
                       >
                         Oui
                       </button>
+
                       <button
                         className="bg-red-500 hover:bg-red-800"
                         onClick={() => {
