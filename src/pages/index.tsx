@@ -78,6 +78,7 @@ export default function Accueil() {
           }
         }
       }
+
       return loadedHistoriques;
     };
 
@@ -323,6 +324,7 @@ export default function Accueil() {
                           {historiques[i]?.chapitre && (
                             <>
                               <br />
+
                               {getCurrentChapitre(
                                 formatName(animeName),
                                 i,
