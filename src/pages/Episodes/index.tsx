@@ -125,7 +125,7 @@ const Episodes = () => {
     }
   }, []);
 
-  if (isClient && AnimeInfo?.anime == "L'attaque des titans") {
+  if (isClient && AnimeInfo?.anime.toLowerCase() === "l'attaque des titans") {
     if (
       Number(localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)) >
       4
@@ -138,7 +138,7 @@ const Episodes = () => {
     }
   }
 
-  if (isClient && AnimeInfo?.anime! == "Bleach") {
+  if (isClient && AnimeInfo?.anime.toLowerCase() === "bleach") {
     if (
       Number(localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)) >
       2
