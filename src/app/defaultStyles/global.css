@@ -6,7 +6,6 @@
 
 :root {
   --mainColor: #ffea00;
-  --grey: rgb(60 60 60 / 1);
   --plyr-color-main: var(--mainColor);
 }
 

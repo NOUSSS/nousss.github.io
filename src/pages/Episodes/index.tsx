@@ -325,7 +325,7 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-[--grey] p-1.5 text-left last:border-0"
+              className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               id={title}
               key={title}
@@ -350,7 +350,7 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-[--grey] p-1.5 text-left last:border-0"
+              className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               id={id}
               key={id}
@@ -609,7 +609,7 @@ const Episodes = () => {
         )}
       </div>
 
-      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-[--grey]">
+      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-neutral-700">
         <button className="btn back prevButton">Épisode précedent</button>
         <button className="btn next nextButton">Épisode suivant</button>
       </div>

@@ -187,9 +187,9 @@ export default function Accueil() {
                 <>
                   <p>{category}</p>
 
-                  <span className="m-4 h-8 border-r border-r-[--grey]"></span>
+                  <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
-                  <div className="confirm fixed left-2/4 top-2/4 z-50 hidden w-96 -translate-x-2/4 -translate-y-2/4 rounded-sm border border-[--grey] bg-[#2123259f] shadow-lg backdrop-blur-3xl max-sm:w-full">
+                  <div className="confirm fixed left-2/4 top-2/4 z-50 hidden w-96 -translate-x-2/4 -translate-y-2/4 rounded-sm border border-neutral-700 bg-[#2123259f] shadow-lg backdrop-blur-3xl max-sm:w-full">
                     <div className="p-4 tracking-normal">
                       <div>Confirmez vous ?</div>
 
@@ -198,7 +198,7 @@ export default function Accueil() {
                       </p>
                     </div>
 
-                    <div className="flex w-full justify-end gap-8 border-t border-[--grey] p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
+                    <div className="flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
                       <button
                         className="bg-green-500 hover:bg-green-600"
                         onClick={() => {
