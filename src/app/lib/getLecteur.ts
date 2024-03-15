@@ -2,7 +2,7 @@ import { LecteurReturnType } from "@/typings/types";
 
 export const getLecteur = (): LecteurReturnType => {
   if (typeof window.epsAS === "undefined") {
-    if (window.eps1) {
+    if (window.eps1 !== undefined) {
       for (const str of window.eps1) {
         if (str.includes("sibnet"))
           return {
@@ -11,7 +11,7 @@ export const getLecteur = (): LecteurReturnType => {
       }
     }
 
-    if (window.eps2) {
+    if (window.eps2 !== undefined) {
       for (const str of window.eps2) {
         if (str.includes("sibnet"))
           return {
@@ -27,13 +27,13 @@ export const getLecteur = (): LecteurReturnType => {
   } else {
     const lecteursExt: LecteurReturnType = {};
 
-    if (window.eps1) {
+    if (window.eps1 !== undefined) {
       for (const str of window.eps1) {
         if (str.includes("sibnet")) lecteursExt["eps1"] = window.eps1;
       }
     }
 
-    if (window.eps2) {
+    if (window.eps2 !== undefined) {
       for (const str of window.eps2) {
         if (str.includes("sibnet")) lecteursExt["eps2"] = window.eps2;
       }

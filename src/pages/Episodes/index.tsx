@@ -30,6 +30,32 @@ let Lecteurs: LecteurReturnType;
 const Episodes = () => {
   const router = useRouter();
 
+  useEffect(() => {
+    const handleRouteChange = () => {
+      let index = 1;
+
+      while (true) {
+        if (typeof window.epsAS !== "undefined") {
+          (window.epsAS as string[] | undefined) = undefined;
+        }
+
+        if (typeof window[`eps${index}`] !== "undefined") {
+          (window[`eps${index}`] as string[] | undefined) = undefined;
+        } else {
+          break;
+        }
+
+        index++;
+      }
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, [router.events]);
+
   const [AnimeInfo, setAnimeInfo] = useState<null | {
     anime: string;
 
