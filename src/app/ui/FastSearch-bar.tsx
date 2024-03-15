@@ -32,43 +32,21 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
   const router = useRouter();
 
   React.useEffect(() => {
-    const toggleSearchContainer = () => {
-      setIsVisible(!isVisible);
-
-      document.body.style.overflow = isVisible ? "hidden" : "";
-
-      const background = document.querySelector(".background") as HTMLElement;
-
-      if (background)
-        background.style.filter = isVisible ? "blur(5px)" : "blur(0px)";
-    };
-
     const handleClickOutside = (event: MouseEvent) => {
       if (
         searchContainerRef.current &&
         !searchContainerRef.current.contains(event.target as Node)
-      ) {
+      )
         setIsVisible(false);
-
-        document.body.style.overflow = "";
-
-        const background = document.querySelector(".background") as HTMLElement;
-        if (background) background.style.filter = "blur(5px)";
-      }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsVisible(false);
-
-        document.body.style.overflow = "";
-
-        const background = document.querySelector(".background") as HTMLElement;
-        if (background) background.style.filter = "blur(5px)";
       } else if (event.ctrlKey && event.key === "k") {
         event.preventDefault();
 
-        toggleSearchContainer();
+        setIsVisible(!isVisible);
       }
     };
 
