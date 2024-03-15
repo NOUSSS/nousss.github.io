@@ -40,7 +40,7 @@ export default function Report() {
 
       <form onSubmit={handleSubmit}>
         <textarea
-          className="mb-16 h-64 w-full border border-[--grey] bg-transparent p-2 focus:outline-none"
+          className="mb-8 h-64 w-full rounded-md border border-[--grey] bg-transparent p-2 focus:outline-none"
           value={message}
           onChange={({ target: { value } }) => setMessage(value)}
           placeholder="Ton site il est guez"
