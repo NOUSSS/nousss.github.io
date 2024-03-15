@@ -15,7 +15,7 @@ export const getTailleChapitres = (): number => {
   while (true) {
     const episodeKey = `eps${i}`;
 
-    if (typeof (window as unknown as windowKeys)[episodeKey] !== "undefined") {
+    if ((window as unknown as windowKeys)[episodeKey] !== undefined) {
       tailleChapitres++;
     } else {
       break;
