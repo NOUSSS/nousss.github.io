@@ -21,6 +21,7 @@ import Plyr from "plyr";
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
 import Head from "next/head";
+import ClearCache from "@/app/cache/clearCache";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -29,28 +30,10 @@ const Episodes = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      let index = 1;
-
-      if (typeof window.epsAS !== "undefined") {
-        (window.epsAS as string[] | undefined) = undefined;
-      }
-
-      while (true) {
-        if (typeof window[`eps${index}`] !== "undefined") {
-          (window[`eps${index}`] as string[] | undefined) = undefined;
-        } else {
-          break;
-        }
-
-        index++;
-      }
-    };
-
-    router.events.on("routeChangeStart", handleRouteChange);
+    router.events.on("routeChangeStart", ClearCache);
 
     return () => {
-      router.events.off("routeChangeStart", handleRouteChange);
+      router.events.off("routeChangeStart", ClearCache);
     };
   }, [router.events]);
 

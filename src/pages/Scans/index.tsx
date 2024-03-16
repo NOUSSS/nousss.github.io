@@ -23,6 +23,7 @@ import { useRouter } from "next/router";
 
 import Head from "next/head";
 import Select, { ItemsProps } from "@/app/ui/Select";
+import ClearCache from "@/app/cache/clearCache";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -38,24 +39,10 @@ const Scans = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      let index = 1;
-
-      while (true) {
-        if (typeof window[`eps${index}`] !== "undefined") {
-          (window[`eps${index}`] as string[] | undefined) = undefined;
-        } else {
-          break;
-        }
-
-        index++;
-      }
-    };
-
-    router.events.on("routeChangeStart", handleRouteChange);
+    router.events.on("routeChangeStart", ClearCache);
 
     return () => {
-      router.events.off("routeChangeStart", handleRouteChange);
+      router.events.off("routeChangeStart", ClearCache);
     };
   }, [router.events]);
 
