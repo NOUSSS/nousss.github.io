@@ -10,19 +10,35 @@ import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
-  const [isClient, setIsClient] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const SearchIcon = icons["Search"];
   const ResetIcon = icons["RotateCcw"];
 
   const colorPickerRef = useRef<HTMLDivElement | null>(null);
+  const colorInputRef = useRef<HTMLInputElement | null>(null);
+  const metaColorRef = useRef<HTMLMetaElement | null>(null);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setIsClient(true);
+    const main = localStorage.getItem("color");
+    const color = main ?? "#ffea00";
 
+    if (metaColorRef.current) metaColorRef.current.content = color;
+  }, [metaColorRef.current]);
+
+  useEffect(() => {
     const main = localStorage.getItem("color");
 
     if (main) document.documentElement.style.setProperty("--mainColor", main);
+
+    const color = main ?? "#ffea00";
+
+    if (colorPickerRef.current)
+      colorPickerRef.current.style.backgroundColor = color;
+
+    if (colorInputRef.current) colorInputRef.current.value = color;
 
     setInterval(() => {
       const whiteText = document.querySelector<HTMLElement>(".title h1")!;
@@ -48,11 +64,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     );
   }, []);
 
-  const [isVisible, setIsVisible] = useState(false);
-  const searchContainerRef = useRef<HTMLDivElement>(null);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -77,13 +88,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           property="og:description"
           content="À mon avis c'est le meilleur site pour regarder des animes / films ou lire des scans gratuitement et sans pub."
         />
-        <meta
-          content={
-            ((isClient && localStorage.getItem("color")) ?? "#ffea00") as string
-          }
-          data-react-helmet="true"
-          name="theme-color"
-        />
+        <meta ref={metaColorRef} data-react-helmet="true" name="theme-color" />
         <link rel="icon" href="/Logo.png" />
 
         <title>Mugiwara-no Streaming</title>
@@ -162,17 +167,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div
           ref={colorPickerRef}
           className="flex size-5 items-center justify-center overflow-hidden rounded-full"
-          style={{
-            backgroundColor: ((isClient && localStorage.getItem("color")) ??
-              "#ffea00") as string,
-          }}
         >
           <input
             className="absolute h-5 w-5 cursor-pointer bg-transparent opacity-0"
-            value={
-              ((isClient && localStorage.getItem("color")) ??
-                "#ffea00") as string
-            }
+            ref={colorInputRef}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const newColor = event.target.value;
 
