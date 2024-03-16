@@ -52,8 +52,12 @@ export const selectChapter = (
     for (let i = 1; i <= scans.length; i++) {
       scansImages.push(
         <img
+          onContextMenu={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
           key={`Image ${i}`}
-          className="scanImg w-[1000px]"
+          className="scanImg w-[1000px] select-none"
           alt={`Image ${i}`}
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
         />,
