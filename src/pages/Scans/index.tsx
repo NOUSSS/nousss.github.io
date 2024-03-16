@@ -23,7 +23,7 @@ import { useRouter } from "next/router";
 
 import Head from "next/head";
 import Select, { ItemsProps } from "@/app/ui/Select";
-import ClearCache from "@/app/cache/clearCache";
+import ClearCache from "@/app/cache/ClearCache";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
