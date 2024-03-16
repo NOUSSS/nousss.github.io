@@ -310,7 +310,7 @@ export default function Accueil() {
                     ) : null}
 
                     <Image
-                      className={`relative top-1 z-[-1] ${category === "Reprendre" ? "h-[90px]" : "h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} scale-90 rounded-t-xl`}
+                      className={`relative top-1 z-[-1] ${category === "Reprendre" ? "h-[90px]" : "h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} ${category === "Reprendre" ? "max-sm:h-[85px]" : "max-sm:h-[65px]"} scale-90 rounded-t-xl`}
                       src={getAnime(animeName)?.options.affiche!}
                       alt="affiche d'un anime"
                     />

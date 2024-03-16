@@ -11,7 +11,7 @@ export function Footer({
 }) {
   return (
     <div
-      className={`${margin ? "mt-16" : "mt-52"} relative ml-2 flex flex-col justify-center after:absolute after:-top-12 after:h-[2px] after:w-full after:bg-[--mainColor] ${className}`}
+      className={`${margin ? "mt-16" : "mt-52"} relative ml-2 after:absolute after:-top-12 after:left-0 after:h-[2px] after:w-full after:bg-[--mainColor] ${className}`}
     >
       <Link
         className="text-sm text-[--mainColor] underline"
