@@ -268,7 +268,7 @@ export default function Accueil() {
             >
               {names.map((animeName: string, i) => (
                 <li
-                  className="animes-list ml-5 max-sm:m-2"
+                  className="animes-list ml-4"
                   onClick={() => goToAnime(formatName(animeName), category, i)}
                   id={
                     formatName(animeName) +
