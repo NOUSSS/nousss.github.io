@@ -39,6 +39,10 @@ const episodes = [
     name: "What Is This, a Picnic?",
     index: "10",
   },
+  {
+    name: "A Knight Who Defends an Empty Throne",
+    index: "11",
+  },
 ];
 
 export default episodes;

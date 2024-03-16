@@ -11,11 +11,6 @@ export function getSaisons() {
       ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase(),
     )!.options || {};
 
-  const lastEpisode =
-    options.EPISODES_OPTIONS?.names?.[
-      options.EPISODES_OPTIONS?.names.length - 1
-    ]?.index || "?";
-
   const { allIndex } = options.EPISODES_OPTIONS || {};
   const { saisons } = options;
 
@@ -25,16 +20,14 @@ export function getSaisons() {
     const isOAV =
       i === Object.keys(saisons!).length && options.EPISODES_OPTIONS!.oav;
 
-    const intervalEpisodes = `${allIndex![i] + 1} - ${
-      i < Object.keys(saisons!).length ? allIndex![i + 1] : lastEpisode
-    }`;
+    const intervalEpisodes = `${allIndex![i] + 1} - ${allIndex![i + 1]}`;
 
     saisonsList.push({
       id: `${saisons?.[i].name}|${
         typeof saisons?.[i].aliases === "undefined"
           ? ""
           : saisons?.[i].aliases?.join(", ")
-      } ${intervalEpisodes}`,
+      } ${i === Object.keys(saisons!).length ? "sdfsdf" : intervalEpisodes}`,
       element: (
         <>
           <Image
@@ -46,7 +39,9 @@ export function getSaisons() {
           <p className="text-sm">
             <span>{saisons?.[i].name}</span>
             <br />
-            {isOAV ? "" : " (" + intervalEpisodes + ")"}
+            {isOAV || (!isOAV && i === Object.keys(saisons!).length)
+              ? ""
+              : `(${intervalEpisodes})`}
           </p>
         </>
       ),
