@@ -121,28 +121,18 @@ const Episodes = () => {
     }
   }, []);
 
-  if (isClient && AnimeInfo?.anime.toLowerCase() === "l'attaque des titans") {
-    if (
-      Number(localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)) >
-      4
-    ) {
-      scriptIndex = `4-${
-        Number(
-          localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`),
-        ) - 3
-      }`;
-    }
-  }
+  const parts = (isClient && options.EPISODES_OPTIONS?.fromParts) as number;
 
-  if (isClient && AnimeInfo?.anime.toLowerCase() === "bleach") {
+  if (parts) {
     if (
       Number(localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`)) >
-      2
+      parts
     ) {
-      scriptIndex = `2-${
+      scriptIndex = `${parts}-${
         Number(
           localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`),
-        ) - 1
+        ) -
+        (parts - 1)
       }`;
     }
   }
@@ -162,6 +152,7 @@ const Episodes = () => {
   const saisonsEntries = (isClient &&
     AnimeInfo &&
     Object.keys(options?.saisons!)) as string[];
+
   const saisonsValues = (isClient &&
     AnimeInfo &&
     Object.values(options?.saisons!)) as SeasonAndFilm[];

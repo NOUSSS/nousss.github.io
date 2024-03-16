@@ -57,6 +57,8 @@ class Bleach extends Anime {
         3: 379,
         4: 392,
       },
+
+      fromParts: 2,
       names: episodes,
     };
   }

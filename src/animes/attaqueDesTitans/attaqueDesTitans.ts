@@ -90,6 +90,8 @@ class AttaqueDesTitans extends Anime {
         8: 89,
       },
 
+      fromParts: 4,
+
       names: episodesNames,
       oav: true,
     };
