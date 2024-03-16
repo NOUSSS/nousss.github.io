@@ -160,7 +160,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         >
           <input
-            className="absolute h-full w-full cursor-pointer opacity-0"
+            className="absolute h-full w-full cursor-pointer bg-transparent opacity-0"
             value={mainColor}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const newColor = event.target.value;

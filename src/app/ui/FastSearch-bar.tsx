@@ -61,7 +61,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   return (
     <input
-      className={`${className ?? ""}`}
+      className={`bg-transparent ${className ?? ""}`}
       ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;

@@ -48,7 +48,7 @@
   }
 
   input {
-    @apply bg-transparent focus:outline-none;
+    @apply focus:outline-none;
   }
 
   main {

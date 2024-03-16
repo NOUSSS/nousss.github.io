@@ -20,7 +20,7 @@ export default function SearchBar({ container, placeholder }: SearchBarProps) {
       <input
         type="text"
         placeholder={placeholder}
-        className="h-7 w-full rounded-md placeholder-white"
+        className="h-7 w-full rounded-md bg-transparent placeholder-white"
         onInput={() =>
           initSearchBar(
             document.querySelector(
