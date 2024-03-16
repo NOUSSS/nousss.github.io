@@ -139,7 +139,7 @@ const Scans = () => {
                   localStorage.getItem(
                     `${formatName(anime!.anime!)}--chapitre`,
                   ) ?? from,
-                ) - from
+                ) - 1
               ],
               formatName(anime!.anime!),
             ),
