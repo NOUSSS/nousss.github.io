@@ -12,10 +12,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
   const [mainColor, setMainColor] = useState<string>("#ffea00");
 
+  const [isClient, setIsClient] = useState(false);
+
   const SearchIcon = icons["Search"];
   const ResetIcon = icons["RotateCcw"];
 
+  const colorPickerRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
+    setIsClient(true);
+
     const main = localStorage.getItem("color");
 
     if (main) document.documentElement.style.setProperty("--mainColor", main);
@@ -154,13 +160,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
       <div className="relative top-24 flex items-center justify-center gap-3">
         <div
+          ref={colorPickerRef}
           className="flex size-5 items-center justify-center overflow-hidden rounded-full"
           style={{
-            backgroundColor: mainColor,
+            backgroundColor: ((isClient && localStorage.getItem("color")) ??
+              "#ffea00") as string,
           }}
         >
           <input
-            className="absolute h-full w-full cursor-pointer bg-transparent opacity-0"
+            className="absolute h-5 w-5 cursor-pointer bg-transparent opacity-0"
             value={mainColor}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const newColor = event.target.value;
@@ -171,7 +179,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               );
 
               localStorage.setItem("color", newColor);
-              setMainColor(newColor);
+
+              if (colorPickerRef.current)
+                colorPickerRef.current.style.backgroundColor = newColor;
             }}
             type="color"
           />
@@ -184,7 +194,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               "--mainColor",
               "#ffea00",
             );
+
             localStorage.removeItem("color");
+
+            if (colorPickerRef.current)
+              colorPickerRef.current.style.backgroundColor = "#ffea00";
           }}
         />
       </div>
