@@ -176,7 +176,7 @@ const Scans = () => {
   }, [status, anime, loadingToast]);
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex select-none flex-col items-center">
       <Head>
         {anime?.anime ? (
           <title>
