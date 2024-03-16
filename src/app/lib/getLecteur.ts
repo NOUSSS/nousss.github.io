@@ -45,7 +45,7 @@ export const getLecteur = (): LecteurReturnType => {
     )
       lecteursExt["eps1"] = window.eps1;
 
-    const lecteurs = { epsAS: window.epsAS, ...lecteursExt };
+    const lecteurs = { ...lecteursExt };
 
     return lecteurs;
   }
