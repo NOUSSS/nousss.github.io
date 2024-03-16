@@ -10,8 +10,6 @@ import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [output, setOutput] = useState<React.ReactNode>();
-  const [mainColor, setMainColor] = useState<string>("#ffea00");
-
   const [isClient, setIsClient] = useState(false);
 
   const SearchIcon = icons["Search"];
@@ -80,7 +78,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           content="À mon avis c'est le meilleur site pour regarder des animes / films ou lire des scans gratuitement et sans pub."
         />
         <meta
-          content={mainColor ?? "#ffea00"}
+          content={
+            ((isClient && localStorage.getItem("color")) ?? "#ffea00") as string
+          }
           data-react-helmet="true"
           name="theme-color"
         />
@@ -169,7 +169,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           <input
             className="absolute h-5 w-5 cursor-pointer bg-transparent opacity-0"
-            value={mainColor}
+            value={
+              ((isClient && localStorage.getItem("color")) ??
+                "#ffea00") as string
+            }
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const newColor = event.target.value;
 

@@ -88,6 +88,32 @@ const Scans = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleContextMenu = (event: Event) => {
+      event.preventDefault();
+    };
+
+    if (scans) {
+      const image = document.querySelectorAll(".scanImg");
+
+      if (image) {
+        image.forEach((i) =>
+          i.addEventListener("contextmenu", handleContextMenu),
+        );
+      }
+    }
+
+    return () => {
+      const image = document.querySelectorAll(".scanImg");
+
+      if (image) {
+        image.forEach((i) =>
+          i.removeEventListener("contextmenu", handleContextMenu),
+        );
+      }
+    };
+  }, [scans]);
+
   const options = (isClient && anime?.options?.SCANS_OPTIONS) as ScansOptions;
   const from = isClient && options?.from === 0 ? options.from : 1;
 
