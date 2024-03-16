@@ -221,7 +221,9 @@ const Scans = () => {
         </div>
       </div>
 
-      <div className="relative -top-16 -mb-32">{scans}</div>
+      <div className="relative -top-16 -mb-32 before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
+        {scans}
+      </div>
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
         <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-neutral-700">

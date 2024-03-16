@@ -53,8 +53,7 @@ export const selectChapter = (
       scansImages.push(
         <img
           key={`Image ${i}`}
-          onContextMenu={(e) => e.preventDefault()}
-          className="scanImg w-[1000px] select-none"
+          className="scanImg w-[1000px]"
           alt={`Image ${i}`}
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
         />,
