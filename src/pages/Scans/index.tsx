@@ -91,6 +91,11 @@ const Scans = () => {
   useEffect(() => {
     const handleContextMenu = (event: Event) => {
       event.preventDefault();
+
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      return false;
     };
 
     if (scans) {
