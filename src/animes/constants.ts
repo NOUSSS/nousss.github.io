@@ -56,6 +56,7 @@ import Frieren from "./Frieren/frieren";
 import Vagabond from "./Vagabond/vagabond";
 import TheBoxer from "./TheBoxer/the-boxer";
 import DoomBreaker from "./DoomBreaker/doom-breaker";
+import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
 
 export interface AnimesType {
   anime: string;
@@ -126,7 +127,7 @@ export const ANIMES: AnimesType[] = [
     anime: "vinland saga",
     aliases: ["ennemi", "thorfinn", "thors", "thorkell", "saisons", "scans"],
     options: new VinlandSaga(),
-    category: ["Reflexion"],
+    category: ["Réflexion"],
     synopsis:
       "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
@@ -180,7 +181,7 @@ export const ANIMES: AnimesType[] = [
     anime: "L'attaque des titans",
     aliases: ["shingeki no kyojin", "snk", "eren", "saisons", "scans"],
     options: new AttaqueDesTitans(),
-    category: ["Classique", "Reflexion"],
+    category: ["Classique", "Réflexion"],
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
   },
@@ -188,7 +189,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Death Note",
     aliases: ["light", "L", "films", "saisons", "scans"],
     options: new DeathNote(),
-    category: ["Reflexion", "School Life"],
+    category: ["Réflexion", "School Life"],
     synopsis:
       "Light Yagami, un jeune étudiant surdoué, ramasse un jour le \"Death Note\", un carnet abandonné par un dieu de la mort, Ryuk, qui apparemment s'ennuyait dans son monde. Il suffit d'écrire le nom d'une personne dans ce carnet, et celle-ci meurt.",
   },
@@ -325,14 +326,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Tokyo Ghoul",
     aliases: ["tg", "re", "scans", "saisons"],
     options: new TokyoGhoul(),
-    category: ["Reflexion"],
+    category: ["Réflexion"],
     synopsis:
       "Dans la ville de Tokyo, des créatures nommées goules sont apparues et se nourrissent de chair humaine pour survivre. Un jour, Ken Kaneki, jeune étudiant, se fait attaquer par l'une d'entre elles et subit une grave blessure.",
   },
   {
     anime: "Chainsaw Man",
     aliases: ["cm", "denji", "scans", "saisons"],
-    category: ["New gen", "Reflexion"],
+    category: ["New gen", "Réflexion"],
     options: new ChainsawMan(),
     synopsis:
       "Denji est un jeune homme sans argent qui travaille comme Devil Hunter auprès d'un mafieux. Avec l'aide de Pochita, son chien-démon-tronçonneuse, il continue de rembourser les dettes de son père. Cependant, après s'être fait trahir, il fusionne avec Pochita et devient un homme-tronçonneuse.",
@@ -419,7 +420,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Monster",
-    category: ["Reflexion"],
+    category: ["Réflexion"],
     aliases: ["saisons"],
     synopsis:
       "Talentueux, respecté et fiancé à une belle jeune femme, le Dr Kenzo Tenma est un neurochirurgien japonais qui exerce en Allemagne. Tout lui sourit jusqu'au jour où il décide de suivre son coeur et de sauver en priorité la vie d'un petit réfugié d'Allemagne de l'Est plutôt que celle du maire de Düsseldorf.",
@@ -501,7 +502,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Vagabond",
-    category: ["Reflexion"],
+    category: ["Réflexion"],
     options: new Vagabond(),
     synopsis:
       "En 1600 a lieu la terrible bataille de Sekigahara, qui assied le pouvoir du shôgun Tokugawa. Parmi les combattants se trouve Musashi, le fils d'un grand samurai, qui est prêt à tout pour survivre. Alors qu'il revient dans son village natal, il est pourchassé pour avoir déserté, et se trouve rejeté par les habitants. Commence alors pour lui une longue errance, avec un unique objectif : améliorer sa maitrise de la lame, et devenir le meilleur samurai du Japon.",
@@ -519,6 +520,12 @@ export const ANIMES: AnimesType[] = [
     options: new DoomBreaker(),
     synopsis:
       "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",
+  },
+  {
+    anime: "Boruto Two Blue Vortex",
+    category: ["New gen"],
+    options: new BorutoTwoBlueVortex(),
+    synopsis: "En gros c'est boruto shippuden",
   },
 ];
 
