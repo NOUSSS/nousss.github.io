@@ -33,6 +33,13 @@
   @apply absolute top-0 -z-10 scale-110 blur-[150px];
 }
 
+.scanImg {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
 @layer base {
   body {
     font-family: Fredoka;
