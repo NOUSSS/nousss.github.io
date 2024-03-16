@@ -54,7 +54,7 @@ export const selectChapter = (
         <img
           key={`Image ${i}`}
           onContextMenu={(e) => e.preventDefault()}
-          className="scanImg w-4xl select-none"
+          className="scanImg min-w-3xl select-none"
           alt={`Image ${i}`}
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
         />,
