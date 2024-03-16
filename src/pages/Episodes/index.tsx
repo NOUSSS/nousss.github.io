@@ -14,14 +14,12 @@ import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
 import { changeSaison } from "@/app/components/Saisons/changeSaison";
-
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 
 import Plyr from "plyr";
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
-
 import Head from "next/head";
 
 let LecteurEpisodes: string[] = [];
@@ -34,11 +32,11 @@ const Episodes = () => {
     const handleRouteChange = () => {
       let index = 1;
 
-      while (true) {
-        if (typeof window.epsAS !== "undefined") {
-          (window.epsAS as string[] | undefined) = undefined;
-        }
+      if (typeof window.epsAS !== "undefined") {
+        (window.epsAS as string[] | undefined) = undefined;
+      }
 
+      while (true) {
         if (typeof window[`eps${index}`] !== "undefined") {
           (window[`eps${index}`] as string[] | undefined) = undefined;
         } else {
@@ -58,9 +56,7 @@ const Episodes = () => {
 
   const [AnimeInfo, setAnimeInfo] = useState<null | {
     anime: string;
-
     saison: string;
-
     lang: string;
   }>(null);
 
