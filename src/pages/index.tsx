@@ -209,6 +209,17 @@ export default function Accueil() {
                           }
 
                           toast.success("L'historique a bien été vidé");
+
+                          const confirm = document.querySelector(
+                            ".confirm",
+                          )! as HTMLElement;
+
+                          const overlay = document.querySelector(
+                            ".overlay",
+                          )! as HTMLElement;
+
+                          confirm.classList.add("hidden");
+                          overlay.classList.add("hidden");
                         }}
                       >
                         Oui
