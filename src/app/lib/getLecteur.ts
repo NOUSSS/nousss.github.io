@@ -1,52 +1,20 @@
 import { LecteurReturnType } from "@/typings/types";
 
+const containsMyvi = (episodes?: string[]): boolean => {
+  return episodes ? episodes.some((str) => str.includes("myvi")) : false;
+};
+
 export const getLecteur = (): LecteurReturnType => {
-  if (typeof window.epsAS === "undefined") {
-    if (window.eps1 !== undefined) {
-      for (const str of window.eps1) {
-        if (str.includes("sibnet"))
-          return {
-            eps1: window.eps1,
-          };
-      }
-    }
+  const { eps1, eps2, epsAS } = window;
 
-    if (window.eps2 !== undefined) {
-      for (const str of window.eps2) {
-        if (str.includes("sibnet"))
-          return {
-            eps2: window.eps2,
-            eps1: window.eps1,
-          };
-      }
-    }
+  let lecteursExt: LecteurReturnType = {};
 
-    return {
-      eps1: window.eps1,
-    };
-  } else {
-    const lecteursExt: LecteurReturnType = {};
+  if (eps1 !== undefined && !containsMyvi(eps1)) lecteursExt["eps1"] = eps1;
+  if (eps2 !== undefined && !containsMyvi(eps2)) lecteursExt["eps2"] = eps2;
 
-    if (window.eps1 !== undefined) {
-      for (const str of window.eps1) {
-        if (str.includes("sibnet")) lecteursExt["eps1"] = window.eps1;
-      }
-    }
-
-    if (window.eps2 !== undefined) {
-      for (const str of window.eps2) {
-        if (str.includes("sibnet")) lecteursExt["eps2"] = window.eps2;
-      }
-    }
-
-    if (
-      Object.keys(lecteursExt).length === 0 ||
-      (lecteursExt.eps2 && !lecteursExt.eps1)
-    )
-      lecteursExt["eps1"] = window.eps1;
-
-    const lecteurs = { ...lecteursExt };
-
-    return lecteurs;
+  if (epsAS !== undefined) {
+    lecteursExt = { ...lecteursExt };
   }
+
+  return lecteursExt;
 };
