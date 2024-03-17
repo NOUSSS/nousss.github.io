@@ -132,18 +132,24 @@ const Scans = () => {
           setChapitresOptions(options);
           clickEvents(setScans, formatName(anime.anime), options);
 
-          setScans(
-            selectChapter(
-              options[
-                Number(
-                  localStorage.getItem(
-                    `${formatName(anime!.anime!)}--chapitre`,
-                  ) ?? from,
-                ) - 1
-              ],
-              formatName(anime!.anime!),
-            ),
-          );
+          const option =
+            options[
+              Number(
+                localStorage.getItem(
+                  `${formatName(anime!.anime!)}--chapitre`,
+                ) ?? from,
+              ) - 1
+            ];
+
+          setScans(selectChapter(option, formatName(anime!.anime!)));
+
+          setTimeout(() => {
+            const placeholder = document.querySelector(
+              ".placeholder",
+            ) as HTMLElement;
+
+            if (placeholder) placeholder.innerText = option.name;
+          }, 200);
         }
       }, 100);
 

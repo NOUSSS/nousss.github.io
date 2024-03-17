@@ -8,7 +8,6 @@ interface SearchBarProps {
 
 export default function SearchBar({ container, placeholder }: SearchBarProps) {
   const SearchIcon = icons["Search"];
-  <div className="border-2 border-red-500">Test Border</div>;
 
   return (
     <label
