@@ -33,6 +33,7 @@ const Scans = () => {
   const [isClient, setIsClient] = useState(false);
   const [chapitresOptions, setChapitresOptions] = useState<ItemsProps[]>([]);
   const [scans, setScans] = useState<React.ReactNode[] | undefined>([]);
+  const [filever, setFilever] = useState<number>();
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
@@ -63,6 +64,7 @@ const Scans = () => {
     } else {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       setAnime(currentAnime);
+      setFilever(random());
     }
   }, []);
 
@@ -71,7 +73,9 @@ const Scans = () => {
 
   const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
 
-  const status = useScript(SCRIPT_URL + `?filever=${random()}`, {
+  console.log("hh");
+
+  const status = useScript(SCRIPT_URL + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
