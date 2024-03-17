@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "@/assets/Animes/Bleach/Affiche.png";
+import Affiche from "@/assets/Animes/Bleach/affiche.webp";
 
 import { Anime } from "@/app/class/anime";
 
