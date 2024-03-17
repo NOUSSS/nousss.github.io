@@ -9,7 +9,7 @@ export default class BorutoTwoBlueVortex extends Anime {
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:
-        "https://anime-sama.fr/catalogue/boruto/scan-boruto-two-blue-vortex/vf/episodes.js?filever=21191",
+        "https://anime-sama.fr/catalogue/boruto/scan-boruto-two-blue-vortex/vf/episodes.js",
 
       IMAGE_URL: ({
         chapitre,

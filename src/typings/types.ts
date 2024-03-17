@@ -59,11 +59,9 @@ export interface EpisodesOptions {
   SCRIPT_URL: ({
     index,
     lang,
-    maxEpisode,
   }: {
     index: number | string;
     lang: string;
-    maxEpisode?: string;
   }) => string;
 
   horsSeries?: horsSeriesType[];

@@ -36,7 +36,7 @@ export default class BlueExorcist extends Anime {
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:
-        "https://anime-sama.fr/catalogue/blue-exorcist/scan/vf/episodes.js?filever=1728957",
+        "https://anime-sama.fr/catalogue/blue-exorcist/scan/vf/episodes.js",
 
       IMAGE_URL: ({
         chapitre,
@@ -51,18 +51,8 @@ export default class BlueExorcist extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({
-        index,
-        lang,
-        maxEpisode,
-      }: {
-        index: number | string;
-        lang: string;
-        maxEpisode?: string;
-      }) =>
-        `https://anime-sama.fr/catalogue/blue-exorcist/saison${index}/${lang}/episodes.js${
-          maxEpisode ? "?filever=" + maxEpisode : ""
-        }`,
+      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
+        `https://anime-sama.fr/catalogue/blue-exorcist/saison${index}/${lang}/episodes.js`,
 
       allIndex: {
         1: 0,

@@ -21,7 +21,8 @@ import Plyr from "plyr";
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
 import Head from "next/head";
-import ClearCache from "@/app/cache/clearCache";
+import ClearCache from "@/app/cache/ClearCache";
+import random from "@/app/lib/random";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -162,27 +163,21 @@ const Episodes = () => {
 
     setUrlScript(
       (isClient &&
-        (AnimeInfo?.anime === "one piece"
-          ? SCRIPT_URL!({
-              index: scriptIndex!,
-              lang: AnimeInfo?.lang!,
-              maxEpisode: names![names!.length - 1]!.index,
-            })
-          : oav
-            ? isOAV
-              ? SCRIPT_URL!({
-                  index: scriptIndex!,
-                  lang: AnimeInfo?.lang!,
-                }).replace(/saison\d+(-\d+)?/g, "oav")
-              : SCRIPT_URL!({ index: scriptIndex!, lang: AnimeInfo?.lang! })
-            : SCRIPT_URL!({
+        (oav
+          ? isOAV
+            ? SCRIPT_URL!({
                 index: scriptIndex!,
                 lang: AnimeInfo?.lang!,
-              }))) as string,
+              }).replace(/saison\d+(-\d+)?/g, "oav")
+            : SCRIPT_URL!({ index: scriptIndex!, lang: AnimeInfo?.lang! })
+          : SCRIPT_URL!({
+              index: scriptIndex!,
+              lang: AnimeInfo?.lang!,
+            }))) as string,
     );
   }, [lang, AnimeInfo, SCRIPT_URL, isClient, isOAV, names, oav, scriptIndex]);
 
-  const status = useScript(url_script as string, {
+  const status = useScript((url_script as string) + `?filever=${random()}`, {
     removeOnUnmount: true,
   });
 

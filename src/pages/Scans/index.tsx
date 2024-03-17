@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Select, { ItemsProps } from "@/app/ui/Select";
 import ClearCache from "@/app/cache/ClearCache";
+import random from "@/app/lib/random";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -70,7 +71,7 @@ const Scans = () => {
 
   const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
 
-  const status = useScript(SCRIPT_URL, {
+  const status = useScript(SCRIPT_URL + `?filever=${random()}`, {
     removeOnUnmount: true,
   });
 

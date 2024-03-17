@@ -36,7 +36,7 @@ class TokyoRevengers extends Anime {
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:
-        "https://anime-sama.fr/catalogue/tokyo-revengers/scan/vf/episodes.js?filever=1728957",
+        "https://anime-sama.fr/catalogue/tokyo-revengers/scan/vf/episodes.js",
 
       IMAGE_URL: ({
         chapitre,
