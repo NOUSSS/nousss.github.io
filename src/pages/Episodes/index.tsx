@@ -177,7 +177,7 @@ const Episodes = () => {
     );
   }, [lang, AnimeInfo, SCRIPT_URL, isClient, isOAV, names, oav, scriptIndex]);
 
-  const status = useScript((url_script as string) + `?filever=${random()}`, {
+  const status = useScript(url_script + `?filever=${random()}`, {
     removeOnUnmount: true,
   });
 
