@@ -361,16 +361,13 @@ const Episodes = () => {
 
           setEpisodeTitle(
             <>
-              <span className="transition-all duration-200 ease-out">
+              <span>
                 {Number(episodeIndex) + Number(episode) - retard}{" "}
                 {AnimeInfo?.saison === "1"
                   ? ""
                   : `(${Number(episode) - retard})`}
               </span>{" "}
-              :{" "}
-              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor]">
-                {title}
-              </span>
+              : <span className="episodeName text-white">{title}</span>
             </>,
           );
         })();
@@ -380,9 +377,7 @@ const Episodes = () => {
         const URL_EPISODE = LecteurEpisodes[Number(episode) - 1];
 
         setVideo(URL_EPISODE);
-        setEpisodeTitle(
-          <span className="transition-all duration-200 ease-out">{e_sp}</span>,
-        );
+        setEpisodeTitle(<span>{e_sp}</span>);
       }
 
       if (episode === "1") {
@@ -397,14 +392,11 @@ const Episodes = () => {
 
         setEpisodeTitle(
           <>
-            <span className="transition-all duration-200 ease-out">
+            <span>
               {Number(episodeIndex) + 1}{" "}
               {AnimeInfo?.saison === "1" ? "" : `(1)`}
             </span>{" "}
-            :{" "}
-            <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor]">
-              {title}
-            </span>
+            : <span className="episodeName text-white">{title}</span>
           </>,
         );
       }
