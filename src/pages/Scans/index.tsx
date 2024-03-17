@@ -73,8 +73,6 @@ const Scans = () => {
 
   const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
 
-  console.log("hh");
-
   const status = useScript(SCRIPT_URL + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
