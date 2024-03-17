@@ -181,11 +181,11 @@ export default function Accueil() {
         {catalogues.map(({ names, category }) => (
           <div className={`${category} mb-3`} key={category}>
             <div
-              className={`category ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl font-bold tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
+              className={`category ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
             >
               {category === "Reprendre" ? (
                 <>
-                  <p>{category}</p>
+                  <p className="font-normal">{category}</p>
 
                   <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
@@ -269,7 +269,7 @@ export default function Accueil() {
                   </button>
                 </>
               ) : (
-                <p>{category}</p>
+                <p className="font-normal">{category}</p>
               )}
             </div>
 

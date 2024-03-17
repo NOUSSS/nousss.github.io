@@ -141,8 +141,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 className="w-10"
               />
 
-              <p className="text-3xl max-md:hidden">
-                <span className="transition-colors group-hover:text-white">
+              <p className="text-3xl font-normal max-md:hidden">
+                <span className="font-normal transition-colors group-hover:text-white">
                   Mugiwara-no
                 </span>{" "}
                 Streaming
