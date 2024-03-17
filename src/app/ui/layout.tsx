@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import background from "@/assets/Background3.jpg";
 
 import { icons } from "lucide-react";
+import { isMobile } from "../lib/isMobile";
 
 import FastSearchBar from "./FastSearch-bar";
 import Image from "next/image";
@@ -29,6 +30,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   }, [metaColorRef.current]);
 
   useEffect(() => {
+    const searchBarText = document.querySelector(
+      ".searchBarText",
+    ) as HTMLElement;
+
+    if (searchBarText && !isMobile()) {
+      searchBarText.innerText += "(Ctrl + K)";
+    }
+
     const main = localStorage.getItem("color");
 
     if (main) document.documentElement.style.setProperty("--mainColor", main);
@@ -156,8 +165,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           >
             <SearchIcon className="mr-4 w-6" />
 
-            <span className="flex items-center text-white">
-              Recherche rapide (Ctrl + K)
+            <span className="searchBarText flex items-center text-white">
+              Recherche rapide&nbsp;
             </span>
           </div>
         </nav>
