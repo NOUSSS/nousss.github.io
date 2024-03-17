@@ -152,6 +152,7 @@ const Episodes = () => {
     oav;
 
   const [url_script, setUrlScript] = useState<string>();
+  const [filever, setFilever] = useState<number>();
 
   useEffect(() => {
     if (lang && AnimeInfo?.anime) {
@@ -159,25 +160,27 @@ const Episodes = () => {
         `${formatName(AnimeInfo.anime)}--${AnimeInfo.saison}--lang`,
         lang,
       );
-    }
 
-    setUrlScript(
-      (isClient &&
-        (oav
-          ? isOAV
-            ? SCRIPT_URL!({
+      setUrlScript(
+        (isClient &&
+          (oav
+            ? isOAV
+              ? SCRIPT_URL!({
+                  index: scriptIndex!,
+                  lang: AnimeInfo?.lang!,
+                }).replace(/saison\d+(-\d+)?/g, "oav")
+              : SCRIPT_URL!({ index: scriptIndex!, lang: AnimeInfo?.lang! })
+            : SCRIPT_URL!({
                 index: scriptIndex!,
                 lang: AnimeInfo?.lang!,
-              }).replace(/saison\d+(-\d+)?/g, "oav")
-            : SCRIPT_URL!({ index: scriptIndex!, lang: AnimeInfo?.lang! })
-          : SCRIPT_URL!({
-              index: scriptIndex!,
-              lang: AnimeInfo?.lang!,
-            }))) as string,
-    );
-  }, [lang, AnimeInfo, SCRIPT_URL, isClient, isOAV, names, oav, scriptIndex]);
+              }))) as string,
+      );
 
-  const status = useScript(url_script + `?filever=${random()}`, {
+      setFilever(random());
+    }
+  }, [AnimeInfo]);
+
+  const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
