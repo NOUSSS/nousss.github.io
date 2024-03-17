@@ -90,6 +90,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Head>
+        {/* Google Tag Manager */}
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-KVG6T32C');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+
         <meta charSet="UTF-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -104,20 +117,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <title>Mugiwara-no Streaming</title>
       </Head>
 
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtm.js?id=GTM-KVG6T32C`}
-      />
-
-      <Script id="google-tag-manager" strategy="afterInteractive">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-KVG6T32C');
-        `}
-      </Script>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-KVG6T32C"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
 
       <Image
         className="background fixed left-0 top-0 h-full w-full opacity-[0.02] blur-[5px]"
