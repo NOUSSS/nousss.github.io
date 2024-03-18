@@ -158,6 +158,7 @@ export default function Accueil() {
 
         <div className="container--search-bar">
           <SearchBar
+            className="m-8"
             placeholder="Rechercher un anime"
             container="animes-list"
           />
