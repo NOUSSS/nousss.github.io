@@ -51,7 +51,7 @@ export const selectChapter = (
 
     for (let i = 1; i <= scans.length; i++) {
       scansImages.push(
-        <img
+        <Image
           onContextMenu={(e) => {
             e.preventDefault();
             e.stopPropagation();
