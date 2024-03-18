@@ -6,17 +6,17 @@ export async function appearVideo(
   setVideo: React.Dispatch<React.SetStateAction<string>>,
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
-  currentAnime: string
+  currentAnime: string,
 ) {
   const { names } =
     ANIMES.find(
-      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase()
+      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase(),
     )?.options.FILM_OPTIONS || {};
 
   const lang = localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
-    top: (document.querySelector(".label-select") as HTMLElement).offsetTop,
+    top: (document.querySelector(".container") as HTMLElement).offsetTop,
     behavior: "smooth",
   });
 
@@ -28,7 +28,7 @@ export async function appearVideo(
     <>
       <span>{names![index].name}</span> [
       <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
-    </>
+    </>,
   );
 
   setVideo(url);

@@ -103,7 +103,7 @@ export function Change(
   }
 
   window.scrollTo({
-    top: (document.querySelector(".label-select") as HTMLElement).offsetTop,
+    top: (document.querySelector(".container") as HTMLElement).offsetTop,
     behavior: "smooth",
   });
 }
