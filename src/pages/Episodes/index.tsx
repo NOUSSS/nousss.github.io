@@ -22,7 +22,9 @@ import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
+
 import random from "@/app/lib/random";
+import getHostname from "@/app/lib/getHostname";
 
 import FR from "@/assets/FR.webp";
 import JAP from "@/assets/JAP.webp";
@@ -527,7 +529,7 @@ const Episodes = () => {
 
       <p className="m-7 mt-12 text-3xl">{episodeTitle}</p>
 
-      <div className="mb-8 flex gap-11 max-md:flex-col max-md:gap-2">
+      <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
           items={[
@@ -562,7 +564,7 @@ const Episodes = () => {
                 });
               }}
               items={Object.keys(Lecteurs).map((l, i) => ({
-                name: `Lecteur ${i + 1}`,
+                name: getHostname(Object.values(Lecteurs)[i][0]),
                 value: l,
                 disabled: currentLecteur?.lecteur === l ? true : false,
               }))}
@@ -598,6 +600,7 @@ const Episodes = () => {
       </div>
 
       <SearchBar
+        className="m-8"
         placeholder="Rechercher un épisode"
         container="list-episodes"
       />

@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
+import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
 
@@ -202,7 +203,7 @@ const Films = () => {
 
       <div className="film m-11 text-3xl">{title}</div>
 
-      <div className="mb-8 flex gap-11 max-md:flex-col max-md:gap-2">
+      <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
           items={[
@@ -237,7 +238,7 @@ const Films = () => {
                 });
               }}
               items={Object.keys(Lecteurs).map((l, i) => ({
-                name: `Lecteur ${i + 1}`,
+                name: getHostname(Object.values(Lecteurs)[i][0]),
                 value: l,
                 disabled: currentLecteur?.lecteur === l ? true : false,
               }))}

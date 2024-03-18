@@ -75,6 +75,7 @@ const Saisons = () => {
 
       <SearchBar
         placeholder="Rechercher une saison"
+        className="m-8"
         container="list-poster-saison"
       />
 
@@ -96,6 +97,7 @@ const Saisons = () => {
           </div>
         ))}
       </div>
+
       <Footer />
     </main>
   );

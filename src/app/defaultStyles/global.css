@@ -22,11 +22,11 @@
 }
 
 .container {
-  @apply relative flex w-full justify-center;
+  @apply relative my-20 flex w-full justify-center;
 }
 
 .video {
-  @apply relative mb-16 aspect-video h-[675px] w-[1200px] border-0 max-xl:h-[523px] max-xl:w-[930px] max-lg:h-full max-lg:w-full;
+  @apply relative aspect-video h-[675px] w-[1200px] border-0 max-xl:h-[523px] max-xl:w-[930px] max-lg:h-full max-lg:w-full;
 }
 
 .ambiance {
