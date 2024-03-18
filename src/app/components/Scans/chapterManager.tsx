@@ -59,6 +59,8 @@ export const selectChapter = (
           key={`Image ${i}`}
           className="scanImg w-[1000px] select-none"
           alt={`Image ${i}`}
+          width={1000}
+          height={1000}
           src={IMAGE_URL!({ chapitre: item.value, index: i })}
         />,
       );
