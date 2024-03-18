@@ -121,7 +121,7 @@ export default function Select({
                 }}
                 className={
                   item.disabled
-                    ? `flex cursor-default ${item.image ? "justify-between" : "justify-center"} p-1 text-base text-gray-500 transition-all duration-300 ease-out hover:bg-transparent`
+                    ? `flex cursor-default ${item.image ? "justify-between" : "justify-center"} p-1 text-base opacity-50 transition-all duration-300 ease-out hover:bg-transparent`
                     : `flex cursor-pointer ${item.image ? "justify-between" : "justify-center"} p-1 text-base transition-all duration-300 ease-out hover:bg-[#212325]`
                 }
               >
@@ -131,6 +131,7 @@ export default function Select({
                     src={item.image.src}
                     width={40}
                     height={30}
+                    className={item.disabled ? "opacity-50" : ""}
                   />
                 ) : null}
 
