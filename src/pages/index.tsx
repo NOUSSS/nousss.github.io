@@ -183,7 +183,7 @@ export default function Accueil() {
                     <div className="relative z-10 p-4 tracking-normal">
                       <div>Confirmez vous ?</div>
 
-                      <p className="mb-12 text-xs opacity-50">
+                      <p className="mb-12 text-sm opacity-50">
                         Vous êtes sur le point de supprimer tout l'historique
                       </p>
                     </div>
