@@ -24,11 +24,19 @@ import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
 
+import FR from "@/assets/FR.webp";
+import JAP from "@/assets/JAP.webp";
+
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 const Episodes = () => {
   const router = useRouter();
+
+  const langObj = {
+    vostfr: "VostFR",
+    vf: "VF",
+  };
 
   useEffect(() => {
     router.events.on("routeChangeStart", ClearCache);
@@ -90,11 +98,18 @@ const Episodes = () => {
         `${formatName(currentAnime)}--${currentSaison}--lang`,
       );
 
+      const placeholder = document.querySelector(".placeholder") as HTMLElement;
+
       if (!lang) {
         setLang("vostfr");
 
         lang = "vostfr";
-      } else setLang(lang);
+
+        placeholder.innerText = "VostFR";
+      } else {
+        setLang(lang);
+        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
+      }
 
       setAnimeInfo({
         anime: currentAnime!,
@@ -155,7 +170,7 @@ const Episodes = () => {
   const [filever, setFilever] = useState<number>();
 
   useEffect(() => {
-    if (lang && AnimeInfo?.anime) {
+    if (lang && AnimeInfo?.anime && AnimeInfo?.lang) {
       localStorage.setItem(
         `${formatName(AnimeInfo.anime)}--${AnimeInfo.saison}--lang`,
         lang,
@@ -178,7 +193,7 @@ const Episodes = () => {
 
       setFilever(random());
     }
-  }, [AnimeInfo]);
+  }, [AnimeInfo, lang]);
 
   const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
@@ -193,11 +208,17 @@ const Episodes = () => {
       }
 
       if (AnimeInfo && AnimeInfo.saison) {
+        const placeholder = document.querySelector(
+          ".placeholder",
+        ) as HTMLElement;
+
         setLang("vostfr");
         setAnimeInfo({
           ...AnimeInfo!,
           lang: "vostfr",
         });
+
+        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
       }
     }
 
@@ -514,11 +535,13 @@ const Episodes = () => {
               name: "VostFR",
               value: "vostfr",
               disabled: lang === "vostfr" ? true : false,
+              image: JAP,
             },
             {
               name: "VF",
               value: "vf",
               disabled: lang === "vostfr" ? false : true,
+              image: FR,
             },
           ]}
           onSelect={({ value }) => {

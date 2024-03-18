@@ -1,10 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { icons } from "lucide-react";
+import Image from "next/image";
 
 export interface ItemsProps {
   name: string;
   value: string;
   disabled?: boolean;
+  image?: any;
 }
 
 interface SelectProps {
@@ -119,11 +121,20 @@ export default function Select({
                 }}
                 className={
                   item.disabled
-                    ? "cursor-default p-1 text-base text-gray-500 transition-all duration-300 ease-out hover:bg-transparent"
-                    : "cursor-pointer p-1 text-base transition-all duration-300 ease-out hover:bg-[#212325]"
+                    ? `flex cursor-default ${item.image ? "justify-between" : "justify-center"} p-1 text-base text-gray-500 transition-all duration-300 ease-out hover:bg-transparent`
+                    : `flex cursor-pointer ${item.image ? "justify-between" : "justify-center"} p-1 text-base transition-all duration-300 ease-out hover:bg-[#212325]`
                 }
               >
-                {item.name}
+                {item.image ? (
+                  <Image
+                    alt="image representant l'option"
+                    src={item.image.src}
+                    width={40}
+                    height={30}
+                  />
+                ) : null}
+
+                <p>{item.name}</p>
               </li>
             </ul>
           ))}

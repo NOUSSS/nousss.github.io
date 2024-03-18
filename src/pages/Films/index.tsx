@@ -22,6 +22,9 @@ import Select from "@/app/ui/Select";
 
 import Head from "next/head";
 
+import FR from "@/assets/FR.webp";
+import JAP from "@/assets/JAP.webp";
+
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
 
@@ -75,13 +78,25 @@ const Films = () => {
         pathname: "/",
       });
     } else {
-      setLoadingToast(toast.loading("Les films sont en cours de chargement"));
-      setLang(
+      const lang =
         localStorage.getItem(`${formatName(currentAnime.anime)}--lang`) ??
-          "vostfr",
-      );
+        "vostfr";
+
+      setLoadingToast(toast.loading("Les films sont en cours de chargement"));
+      setLang(lang);
 
       setAnime(currentAnime);
+
+      const placeholder = document.querySelector(".placeholder") as HTMLElement;
+
+      const langObj = {
+        vostfr: "VostFR",
+        vf: "VF",
+      };
+
+      if (placeholder) {
+        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
+      }
     }
   }, []);
 
@@ -195,11 +210,13 @@ const Films = () => {
               name: "VostFR",
               value: "vostfr",
               disabled: lang === "vostfr" ? true : false,
+              image: JAP,
             },
             {
               name: "VF",
               value: "vf",
               disabled: lang === "vostfr" ? false : true,
+              image: FR,
             },
           ]}
           onSelect={({ value }) => {
