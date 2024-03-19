@@ -10,7 +10,7 @@ export default class Monster extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tout les episodes",
+        name: "Tous les episodes",
         aliases: ["debut"],
         image: () => getImage(1),
       },

@@ -10,7 +10,7 @@ export default class AirGear extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tout les épisodes",
+        name: "Tous les épisodes",
         aliases: ["debut"],
         image: () => getImage(1),
       },

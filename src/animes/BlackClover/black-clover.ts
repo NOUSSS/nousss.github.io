@@ -12,7 +12,7 @@ class BlackClover extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tout les épisodes",
+        name: "Tous les épisodes",
         aliases: ["magie"],
         image: () => getImage(1),
       },

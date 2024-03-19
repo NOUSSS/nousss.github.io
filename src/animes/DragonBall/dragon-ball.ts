@@ -13,7 +13,7 @@ class DragonBall extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tout les épisodes",
+        name: "Tous les épisodes",
         aliases: ["aliase1"],
         image: () => getImage(1),
       },

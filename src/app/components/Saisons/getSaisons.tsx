@@ -17,9 +17,6 @@ export function getSaisons() {
   const saisonsList = [];
 
   for (let i = 1; i < Object.keys(saisons!).length + 1; i++) {
-    const isOAV =
-      i === Object.keys(saisons!).length && options.EPISODES_OPTIONS!.oav;
-
     const intervalEpisodes = `${allIndex![i] + 1} - ${allIndex![i + 1]}`;
 
     saisonsList.push({
@@ -39,9 +36,7 @@ export function getSaisons() {
           <p className="text-sm">
             <span>{saisons?.[i].name}</span>
             <br />
-            {isOAV || (!isOAV && i === Object.keys(saisons!).length)
-              ? ""
-              : `(${intervalEpisodes})`}
+            {i === Object.keys(saisons!).length ? "" : `(${intervalEpisodes})`}
           </p>
         </>
       ),

@@ -13,7 +13,7 @@ class Boruto extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tout les épisodes",
+        name: "Tous les épisodes",
         aliases: ["code", "shikamaru", "sasuke", "naruto"],
         image: () => getImage(1),
       },
