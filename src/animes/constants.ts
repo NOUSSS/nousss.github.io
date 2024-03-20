@@ -135,7 +135,7 @@ export const ANIMES: AnimesType[] = [
     anime: "solo leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
-    category: ["Nouveautées", "Webtoon"],
+    category: ["Nouveautés", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -173,7 +173,7 @@ export const ANIMES: AnimesType[] = [
     anime: "mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
-    category: ["Nouveautées", "Humour", "Magie"],
+    category: ["Nouveautés", "Humour", "Magie"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -237,7 +237,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Classroom of the Elites",
     aliases: ["kyotaka", "ecole", "scans", "saisons"],
     options: new ClassroomOfTheElites(),
-    category: ["Nouveautées", "School Life"],
+    category: ["Nouveautés", "School Life"],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -389,7 +389,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["Nouveautées", "Magie"],
+    category: ["Nouveautés", "Magie"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["films", "scans", "saisons"],
@@ -451,7 +451,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Demon Slave",
-    category: ["New gen", "Nouveautées", "Magie", "Ecchi"],
+    category: ["New gen", "Nouveautés", "Magie", "Ecchi"],
     options: new DemonSlave(),
     synopsis:
       "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
@@ -481,7 +481,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Ninja Kamui",
-    category: ["Nouveautées"],
+    category: ["Nouveautés"],
     options: new NinjaKamui(),
     synopsis:
       "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
@@ -495,7 +495,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Frieren",
-    category: ["Nouveautées"],
+    category: ["Nouveautés"],
     options: new Frieren(),
     synopsis:
       "L'histoire suit l'elfe magicienne Frieren, une ancienne membre du groupe d'aventuriers qui a vaincu le roi des démons et restauré l'harmonie du monde après une quête de 10 ans. Ce groupe comptait : l'elfe magicienne Frieren, le héros humain Himmel, le guerrier nain Eisen et le prêtre humain Heiter.",

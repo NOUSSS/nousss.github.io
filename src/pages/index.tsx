@@ -97,7 +97,7 @@ export default function Accueil() {
     ).sort((a, b) => b.names.length - a.names.length);
 
     const momentIndex = updatedCatalogues.findIndex(
-      ({ category }) => category === "Nouveautées",
+      ({ category }) => category === "Nouveautés",
     );
 
     if (momentIndex !== -1) {
