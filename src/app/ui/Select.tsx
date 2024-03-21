@@ -108,7 +108,7 @@ export default function Select({
 
         <div
           ref={menuRef}
-          className="absolute left-0 top-16 z-[1] hidden max-h-64 w-full animate-appear overflow-y-auto rounded-md border border-neutral-700 bg-[#1b1d21] transition-all duration-300 ease-in-out"
+          className="absolute left-0 z-10 hidden max-h-64 w-full overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
         >
           {items.map((item, index) => (
             <ul key={index}>
@@ -121,20 +121,10 @@ export default function Select({
                 }}
                 className={
                   item.disabled
-                    ? `flex cursor-default ${item.image ? "justify-between" : "justify-center"} p-1 text-base opacity-50 transition-all duration-300 ease-out hover:bg-transparent`
-                    : `flex cursor-pointer ${item.image ? "justify-between" : "justify-center"} p-1 text-base transition-all duration-300 ease-out hover:bg-[#212325]`
+                    ? `flex h-9 cursor-default items-center justify-center rounded-md text-base opacity-50 hover:bg-transparent`
+                    : `flex h-9 cursor-pointer items-center justify-center rounded-md text-base hover:bg-[#3e63dd] hover:text-white`
                 }
               >
-                {item.image ? (
-                  <Image
-                    alt="image representant l'option"
-                    src={item.image.src}
-                    width={40}
-                    height={30}
-                    className={item.disabled ? "opacity-50" : ""}
-                  />
-                ) : null}
-
                 <p>{item.name}</p>
               </li>
             </ul>

@@ -650,7 +650,7 @@ const Episodes = () => {
         </label>
       )}
 
-      <div className="m-5 max-h-96 overflow-y-auto">
+      <div className="m-5 max-h-96 min-w-24 overflow-y-auto">
         <ul>{episodes}</ul>
       </div>
 

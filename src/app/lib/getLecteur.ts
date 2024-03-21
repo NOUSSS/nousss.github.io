@@ -1,7 +1,7 @@
 import { LecteurReturnType } from "@/typings/types";
 
 const containsMyvi = (episodes?: string[]): boolean => {
-  return episodes ? episodes.some((str) => str.includes("myvi")) : false;
+  return episodes ? episodes[0].includes("myvi") : false;
 };
 
 export const getLecteur = (): LecteurReturnType => {
