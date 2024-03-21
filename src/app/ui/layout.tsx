@@ -50,15 +50,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
     if (colorInputRef.current) colorInputRef.current.value = color;
 
-    setInterval(() => {
-      const whiteText = document.querySelector<HTMLElement>(".title h1")!;
-      if (whiteText) whiteText.style.color = "var(--mainColor)";
-
-      setTimeout(() => {
-        if (whiteText) whiteText.style.color = "white";
-      }, 1000);
-    }, 2000);
-
     console.log(
       "%c Salut !",
       [

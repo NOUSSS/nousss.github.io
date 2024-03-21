@@ -11,10 +11,10 @@ export function Footer({
 }) {
   return (
     <div
-      className={`${margin ? "mt-16" : "mt-52"} relative ml-2 after:absolute after:-top-12 after:left-0 after:h-[2px] after:w-full after:bg-[--mainColor] ${className}`}
+      className={`${margin ? "mt-16" : "mt-52"} after:bg-main relative ml-2 after:absolute after:-top-12 after:left-0 after:h-[2px] after:w-full ${className}`}
     >
       <Link
-        className="text-sm text-[--mainColor] underline"
+        className="text-main text-sm underline"
         href={{
           pathname: "Report",
         }}

@@ -228,7 +228,7 @@ const Scans = () => {
         </div>
       </div>
 
-      <div className="fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border border-[--mainColor] bg-[hsla(231,14%,10%,1)] p-2">
+      <div className="border-main fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border bg-[hsla(231,14%,10%,1)] p-2">
         <UpArrow
           size="25px"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

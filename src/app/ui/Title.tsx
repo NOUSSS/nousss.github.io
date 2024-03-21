@@ -10,10 +10,7 @@ export function Title({
   link,
 }: {
   accueil?: boolean;
-  link?: {
-    pathname: string;
-    query?: { anime: string };
-  };
+  link?: { pathname: string; query?: { anime: string } };
 }) {
   const [anime, setAnime] = useState("");
 
@@ -25,9 +22,9 @@ export function Title({
   }, [anime, query.anime]);
 
   const text = accueil ? (
-    <h1 className="title">Le catalogue</h1>
+    <h1>Le catalogue</h1>
   ) : (
-    <Link href={link ? link : "/"} className="title">
+    <Link href={link ? link : "/"}>
       <h1>{formatName(anime)}</h1>
     </Link>
   );

@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.tsx"],
   theme: {
     extend: {
+      colors: {
+        main: "var(--mainColor)",
+      },
       keyframes: {
         borderAnime: {
           from: { transform: "rotate(0deg)" },
@@ -32,6 +35,7 @@ module.exports = {
       },
       animation: {
         spin: "borderAnime 2.5s linear infinite",
+
         appearCenter: "appearCenter 250ms ease-out",
         appear: "appear 250ms ease-out",
       },

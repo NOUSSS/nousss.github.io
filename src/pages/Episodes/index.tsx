@@ -350,7 +350,7 @@ const Episodes = () => {
                 {episodeNumber} {indexId}
               </span>{" "}
               :{" "}
-              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-[--mainColor] group-hover:text-[--mainColor]">
+              <span className="episodeName hover:text-main group-hover:text-main text-white transition-all duration-200 ease-out">
                 {episodeTitle}
               </span>
             </li>,
@@ -607,7 +607,7 @@ const Episodes = () => {
         <label className="hideEpisodesNames relative -left-5 flex cursor-pointer transition-all duration-300 ease-out before:absolute before:-right-12 before:bottom-2 before:h-[10px] before:w-10 before:rounded-full before:bg-[#3c3c3c] before:transition-all before:duration-200">
           <p>Cacher le nom des épisodes</p>
 
-          <span className="Toggle relative left-6 h-6 w-6 rounded-full bg-[--mainColor] transition-all duration-200"></span>
+          <span className="Toggle bg-main relative left-6 h-6 w-6 rounded-full transition-all duration-200"></span>
           <input
             type="checkbox"
             className="appearance-none"
@@ -627,7 +627,7 @@ const Episodes = () => {
               if (target.checked) {
                 toggleSpan.classList.add("left-[52px]");
 
-                label.classList.add("before:bg-[--mainColor]");
+                label.classList.add("before:bg-main");
                 label.classList.add("before:brightness-[.55]");
 
                 for (const episode of names) {
@@ -636,7 +636,7 @@ const Episodes = () => {
               } else {
                 toggleSpan.classList.remove("left-[52px]");
 
-                label.classList.remove("before:bg-[--mainColor]");
+                label.classList.remove("before:bg-main");
                 label.classList.remove("before:brightness-[.55]");
 
                 for (const episode of names) {

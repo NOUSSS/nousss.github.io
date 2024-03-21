@@ -53,7 +53,7 @@ const Home = () => {
       <div className="choices flex justify-center text-left">
         <ul>
           {isClient && anime?.options.FILM_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-[--mainColor]">
+            <li className="hover:text-main text-4xl text-sky-500 transition-colors">
               <Link
                 href={{ pathname: "/Films", query: { anime: anime?.anime } }}
               >
@@ -62,7 +62,7 @@ const Home = () => {
             </li>
           )}
           {isClient && anime?.options.EPISODES_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-[--mainColor]">
+            <li className="hover:text-main text-4xl text-sky-500 transition-colors">
               <Link
                 href={{
                   pathname: "/Saisons",
@@ -74,7 +74,7 @@ const Home = () => {
             </li>
           )}
           {isClient && anime?.options.SCANS_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-[--mainColor]">
+            <li className="hover:text-main text-4xl text-sky-500 transition-colors">
               <Link
                 href={{ pathname: "/Scans", query: { anime: anime?.anime } }}
               >

@@ -10,7 +10,7 @@
 }
 
 .btn {
-  @apply relative left-0 h-12 rounded border border-[--mainColor] bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm text-[--mainColor] transition-all duration-300;
+  @apply border-main text-main relative left-0 h-12 rounded border bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm transition-all duration-300;
 }
 
 .back {
@@ -40,7 +40,7 @@
   }
 
   span {
-    @apply text-[--mainColor];
+    @apply text-main;
   }
 
   * {
