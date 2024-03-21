@@ -1,12 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { icons } from "lucide-react";
-import Image from "next/image";
 
 export interface ItemsProps {
   name: string;
   value: string;
   disabled?: boolean;
-  image?: any;
 }
 
 interface SelectProps {

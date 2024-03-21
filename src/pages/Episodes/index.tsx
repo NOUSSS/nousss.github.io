@@ -537,13 +537,11 @@ const Episodes = () => {
               name: "VostFR",
               value: "vostfr",
               disabled: lang === "vostfr" ? true : false,
-              image: JAP,
             },
             {
               name: "VF",
               value: "vf",
               disabled: lang === "vostfr" ? false : true,
-              image: FR,
             },
           ]}
           onSelect={({ value }) => {

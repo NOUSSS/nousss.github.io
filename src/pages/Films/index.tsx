@@ -23,9 +23,6 @@ import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
 
-import FR from "@/assets/FR.webp";
-import JAP from "@/assets/JAP.webp";
-
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
 
@@ -211,13 +208,11 @@ const Films = () => {
               name: "VostFR",
               value: "vostfr",
               disabled: lang === "vostfr" ? true : false,
-              image: JAP,
             },
             {
               name: "VF",
               value: "vf",
               disabled: lang === "vostfr" ? false : true,
-              image: FR,
             },
           ]}
           onSelect={({ value }) => {
