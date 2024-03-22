@@ -135,14 +135,12 @@ const Scans = () => {
           setChapitresOptions(options);
           clickEvents(setScans, formatName(anime.anime), options);
 
-          const option =
-            options[
-              Number(
-                localStorage.getItem(
-                  `${formatName(anime!.anime!)}--chapitre`,
-                ) ?? from,
-              ) - 1
-            ];
+          const storedChapter = localStorage.getItem(
+            `${formatName(anime!.anime!)}--chapitre`,
+          );
+
+          const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
+          const option = options[indexOption];
 
           setScans(selectChapter(option, formatName(anime!.anime!)));
 
@@ -228,7 +226,7 @@ const Scans = () => {
         </div>
       </div>
 
-      <div className="border-main fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border bg-[hsla(231,14%,10%,1)] p-2">
+      <div className="fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border border-main bg-[hsla(231,14%,10%,1)] p-2">
         <UpArrow
           size="25px"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
