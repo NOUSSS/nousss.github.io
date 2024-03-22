@@ -350,7 +350,7 @@ const Episodes = () => {
                 {episodeNumber} {indexId}
               </span>{" "}
               :{" "}
-              <span className="episodeName hover:text-main group-hover:text-main text-white transition-all duration-200 ease-out">
+              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-main group-hover:text-main">
                 {episodeTitle}
               </span>
             </li>,
@@ -604,47 +604,32 @@ const Episodes = () => {
       />
 
       {isMobile() ? null : (
-        <label className="hideEpisodesNames relative -left-5 flex cursor-pointer transition-all duration-300 ease-out before:absolute before:-right-12 before:bottom-2 before:h-[10px] before:w-10 before:rounded-full before:bg-[#3c3c3c] before:transition-all before:duration-200">
+        <label className="hideEpisodesNames relative -left-5 flex cursor-pointer transition-all duration-300 ease-out before:absolute before:-right-12 before:bottom-2 before:h-[10px] before:w-10 before:rounded-full before:bg-[#3c3c3c] before:transition-all before:duration-200 has-[:checked]:before:bg-main has-[:checked]:before:brightness-[.55]">
           <p>Cacher le nom des épisodes</p>
 
-          <span className="Toggle bg-main relative left-6 h-6 w-6 rounded-full transition-all duration-200"></span>
           <input
             type="checkbox"
-            className="appearance-none"
+            className="peer appearance-none"
             onChange={({ target }) => {
               const label = document.querySelector(
                 ".hideEpisodesNames",
-              ) as HTMLElement;
-
-              const toggleSpan = document.querySelector(
-                ".Toggle",
               ) as HTMLElement;
 
               const names = Array.from(
                 document.querySelectorAll(".episodeName"),
               );
 
-              if (target.checked) {
-                toggleSpan.classList.add("left-[52px]");
-
-                label.classList.add("before:bg-main");
-                label.classList.add("before:brightness-[.55]");
-
+              if (target.checked)
                 for (const episode of names) {
                   (episode as HTMLElement).classList.add("blur");
                 }
-              } else {
-                toggleSpan.classList.remove("left-[52px]");
-
-                label.classList.remove("before:bg-main");
-                label.classList.remove("before:brightness-[.55]");
-
+              else
                 for (const episode of names) {
                   (episode as HTMLElement).classList.remove("blur");
                 }
-              }
             }}
           />
+          <span className="relative left-6 h-6 w-6 rounded-full bg-main transition-all duration-200 peer-checked:left-[52px]"></span>
         </label>
       )}
 
