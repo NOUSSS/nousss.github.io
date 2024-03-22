@@ -24,10 +24,8 @@ export function Footer({
 
       {media ? (
         <p className="mb-5 text-left">
-          Les URL des vidéos / scans présentent sur Mugiwara-no Streaming sont
-          prise directement du site anime-sama.fr. De plus, contactez
-          directement la plateforme d'hébergement vidéo (sibnet pour la plupart
-          des cas) pour toutes réclamations de droits relatifs aux contenus en
+          Contactez
+          directement la plateforme d'hébergement vidéo pour toutes réclamations de droits relatifs aux contenus en
           question.
         </p>
       ) : null}
