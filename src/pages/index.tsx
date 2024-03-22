@@ -263,10 +263,7 @@ export default function Accueil() {
               )}
             </div>
 
-            <ul
-              key={category}
-              className="ml-3 flex cursor-pointer overflow-x-auto"
-            >
+            <ul key={category} className="flex cursor-pointer overflow-x-auto">
               {names.map((animeName: string, i) => (
                 <li
                   className="animes-list ml-4"
@@ -290,11 +287,11 @@ export default function Accueil() {
                       getAnime(animeName)?.synopsis ??
                       "Aucun synopsis pour cette anime"
                     }
-                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} before:bg-main duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
+                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
                   >
                     {historiques[i] && category === "Reprendre" ? (
                       <div
-                        className="border-main absolute right-0 m-2 flex h-7 items-center rounded-sm border bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
+                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
                         onClick={(event) => {
                           event.stopPropagation();
 
@@ -316,7 +313,7 @@ export default function Accueil() {
                       alt="affiche d'un anime"
                     />
 
-                    <p className="text-main relative top-2 p-1 text-sm max-sm:text-xs">
+                    <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
                       {formatName(animeName)}
                       {historiques[i] && category === "Reprendre" && (
                         <>
