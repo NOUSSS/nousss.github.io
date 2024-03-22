@@ -32,12 +32,25 @@ module.exports = {
             transform: "scale(1)",
           },
         },
+        title: {
+          "0%": {
+            color: "white",
+          },
+          "50%": {
+            color: "var(--mainColor)",
+          },
+          "100%": {
+            color: "white",
+          },
+        },
       },
       animation: {
         spin: "borderAnime 2.5s linear infinite",
 
         appearCenter: "appearCenter 250ms ease-out",
         appear: "appear 250ms ease-out",
+
+        title: "title 2.5s infinite",
       },
     },
   },
