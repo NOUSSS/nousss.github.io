@@ -106,7 +106,7 @@ export default function Select({
 
         <div
           ref={menuRef}
-          className="absolute left-0 z-10 hidden max-h-64 w-full overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
+          className="absolute left-0 z-10 hidden max-h-64 w-full scale-95 overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
         >
           {items.map((item, index) => (
             <ul key={index}>
