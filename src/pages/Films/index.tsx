@@ -261,7 +261,11 @@ const Films = () => {
         )}
       </div>
 
-      <SearchBar placeholder="Rechercher un film" container="list-poster" />
+      <SearchBar
+        placeholder="Rechercher un film"
+        container="list-poster"
+        query="id"
+      />
 
       <div className="overflow-x-auto">{films}</div>
 

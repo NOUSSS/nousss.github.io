@@ -1,16 +1,20 @@
 import { icons } from "lucide-react";
 import { initSearchBar } from "@/app/lib/initSearchBar";
 
+type QueryType = "id" | "innerText";
+
 interface SearchBarProps {
   container: string;
   placeholder: string;
   className?: string;
+  query: QueryType;
 }
 
 export default function SearchBar({
   container,
   placeholder,
   className,
+  query,
 }: SearchBarProps) {
   const SearchIcon = icons["Search"];
 
@@ -33,6 +37,7 @@ export default function SearchBar({
             document.getElementsByClassName(
               container,
             ) as HTMLCollectionOf<HTMLElement>,
+            query,
           )
         }
       />

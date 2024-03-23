@@ -161,6 +161,7 @@ export default function Accueil() {
             className="m-8"
             placeholder="Rechercher un anime"
             container="animes-list"
+            query="id"
           />
         </div>
       </nav>

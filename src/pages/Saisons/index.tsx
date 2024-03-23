@@ -77,6 +77,7 @@ const Saisons = () => {
         placeholder="Rechercher une saison"
         className="m-8"
         container="list-poster-saison"
+        query="id"
       />
 
       <div className="overflow-x-auto">

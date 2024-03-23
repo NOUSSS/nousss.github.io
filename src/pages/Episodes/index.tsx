@@ -318,7 +318,6 @@ const Episodes = () => {
             <li
               className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
-              id={title}
               key={title}
             >
               <span className="transition-all duration-200 ease-out group-hover:text-white">
@@ -343,7 +342,6 @@ const Episodes = () => {
             <li
               className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
-              id={id}
               key={id}
             >
               <span className="transition-all duration-200 ease-out group-hover:text-white">
@@ -601,6 +599,7 @@ const Episodes = () => {
         className="m-8"
         placeholder="Rechercher un épisode"
         container="list-episodes"
+        query="innerText"
       />
 
       {isMobile() ? null : (

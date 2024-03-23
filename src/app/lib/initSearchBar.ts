@@ -1,20 +1,27 @@
+type QueryType = "id" | "innerText";
+
 export function initSearchBar(
   input: HTMLInputElement,
   container: HTMLCollectionOf<HTMLElement>,
+  query: QueryType,
 ): void {
   const visible: string[] = [];
+  const searchQuery =
+    query === "id"
+      ? (q: HTMLElement): string => q.id
+      : (q: HTMLElement): string => q.innerText;
 
   Array.from(container).forEach((element, index) => {
     if (
       input.value.length === 0 ||
-      (element.id
+      (searchQuery(element)
         .toLowerCase()
         .replaceAll("é", "e")
         .includes(input.value.toLowerCase().replaceAll("é", "e")) &&
-        !visible.includes(element.id))
+        !visible.includes(searchQuery(element)))
     ) {
       container[index].classList.remove("hidden");
-      visible.push(element.id);
+      visible.push(searchQuery(element));
     } else {
       container[index].classList.add("hidden");
     }
