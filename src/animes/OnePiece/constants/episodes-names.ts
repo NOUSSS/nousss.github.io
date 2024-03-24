@@ -3400,6 +3400,10 @@ const episodes = [
     index: "1097",
     name: "La volonté d'Ohara. Recherches en héritage !",
   },
+  {
+    index: "1098",
+    name: "Un rêve hors du commun. L'avenir idéal vu par un génie !",
+  },
 ];
 
 export default episodes;
