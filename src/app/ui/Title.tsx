@@ -22,7 +22,7 @@ export function Title({
   }, [anime, query.anime]);
 
   const text = accueil ? (
-    <h1>Le catalogue</h1>
+    <h1>Hello World!</h1>
   ) : (
     <Link href={link ? link : "/"}>
       <h1>{formatName(anime)}</h1>
