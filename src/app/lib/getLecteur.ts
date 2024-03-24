@@ -5,13 +5,14 @@ const containsMyvi = (episodes?: string[]): boolean => {
 };
 
 export const getLecteur = (): LecteurReturnType => {
-  const { eps1, eps2, eps3, epsAS } = window;
+  const { eps1, eps2, eps3, eps4, epsAS } = window;
 
   let lecteursExt: LecteurReturnType = {};
 
   if (eps1 !== undefined && !containsMyvi(eps1)) lecteursExt["eps1"] = eps1;
   if (eps2 !== undefined && !containsMyvi(eps2)) lecteursExt["eps2"] = eps2;
-  if (eps3 !== undefined && !containsMyvi(eps2)) lecteursExt["eps3"] = eps3;
+  if (eps3 !== undefined && !containsMyvi(eps3)) lecteursExt["eps3"] = eps3;
+  if (eps4 !== undefined && !containsMyvi(eps4)) lecteursExt["eps4"] = eps4;
 
   if (epsAS !== undefined) {
     lecteursExt = { ...lecteursExt };

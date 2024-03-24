@@ -23,12 +23,7 @@ export interface horsSeriesType {
 export type allIndexType = Record<string, number>;
 
 export interface LecteurReturnType {
-  epsAS?: string[];
-
-  eps1?: string[];
-  eps2?: string[];
-  eps3?: string[];
-  eps4?: string[];
+  [key: string]: string[];
 }
 
 export interface FilmOptions {
