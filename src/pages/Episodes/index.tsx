@@ -367,7 +367,7 @@ const Episodes = () => {
 
           document.querySelectorAll(".list-episodes").forEach((e, i) => {
             if (i + 1 < Number(episode)) {
-              if (e.id.includes("E-SP")) retard++;
+              if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
             }
           });
 
