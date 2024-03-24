@@ -58,6 +58,7 @@ import TheBoxer from "./TheBoxer/the-boxer";
 import DoomBreaker from "./DoomBreaker/doom-breaker";
 import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
 import Bucchigiri from "./Bucchigiri/bucchigiri";
+import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
 
 export interface AnimesType {
   anime: string;
@@ -534,6 +535,13 @@ export const ANIMES: AnimesType[] = [
     options: new Bucchigiri(),
     synopsis:
       "Les retrouvailles d'Arajin Tomoshibi avec son vieil ami de lycée Matakara Asamine prennent une tournure inattendue lorsqu'ils sont entraînés dans une bagarre avec les caïds du coin. La situation devient encore plus bizarre quand débarque un véritable colosse ! Mais ce n’est que le début d’une bataille plus profonde qui s’en engagée…",
+  },
+  {
+    anime: "Fullmetal Alchemist Brotherhood",
+    category: ["Classique"],
+    options: new FMAB(),
+    synopsis:
+      "Dans un pays où l'alchimie permet de faire des choses extraordinaire, deux jeunes frères étudie cette science qui permet l'échange d'une chose contre une autre. Cette science repose sur le principe de \"l'échange équivalent\" qui requière de sacrifier une chose pour en obtenir une autre.",
   },
 ];
 
