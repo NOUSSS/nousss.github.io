@@ -60,6 +60,7 @@ import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
 import Bucchigiri from "./Bucchigiri/bucchigiri";
 import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
 import FMA from "./FMA/fullmetal-alchemist";
+import Baki from "./Baki/baki";
 
 export interface AnimesType {
   anime: string;
@@ -550,6 +551,13 @@ export const ANIMES: AnimesType[] = [
     options: new FMA(),
     synopsis:
       "Après avoir perdu leur mère, Edward et Alphonse tentent de la ramener à la vie grâce à l'alchimie. Cependant, l'alchimie doit obéir à la loi de l'échange équivalent : l'objet transformé et l'objet issu de la transformation doivent être de masses équivalentes. Passer outre cette règle coûte très cher, et les frères Elric en feront les frais : Edward perd un bras et une jambe alors que son frère Alphonse perd son corps. Heureusement Edward réussit à enfermer l'âme de son frère dans une armure de métal grâce à un sceau de sang. Ils décident alors de quitter leur maison pour partir à la recherche d'informations sur la pierre philosophale, qui leur permettrait de regagner leurs corps. Cependant, ils ne sont pas les seuls à la recherche de cette pierre...",
+  },
+  {
+    anime: "Baki",
+    category: ["Sport"],
+    options: new Baki(),
+    synopsis:
+      "Cinq condamnés à mort s'évadent en même temps de leur prison respective. Ils ne se connaissent pas, n'ont même pas la même nationalité, et pourtant disent tous la même phrase : \"Je veux connaître la défaite\". Ils se dirigent au Japon, et là bas, un jeune garçon de 17 du nom de Baki s'y trouve. Il s'agit d'un jeune très doué pratiquant des arts-martiaux, qui n'est autre que le gagnant du précédant \"tournoi du sous sol\", un tournoi très violent auquel a également participé le père de Baki, Yujiro, qui n'est autre que \"la Créature la plus forte du monde\", un homme qui fait trembler même les sportifs les plus aguerris ! Baki va devoir au fur et a mesure progresser pour combattre et vaincre ses mastodontes qui ont l'air totalement surpuissant, et très dangereux !",
   },
 ];
 
