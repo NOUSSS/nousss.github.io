@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { formatName } from "@/app/lib/formatName";
-import { clickEvents } from "@/app/components/Episodes/eventHandlers";
+import { clickEvents } from "@/app/utils/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
@@ -13,7 +13,7 @@ import { isMobile } from "@/app/lib/isMobile";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
-import { changeSaison } from "@/app/components/Saisons/changeSaison";
+import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 
@@ -28,6 +28,7 @@ import getHostname from "@/app/lib/getHostname";
 
 import FR from "@/assets/FR.webp";
 import JAP from "@/assets/JAP.webp";
+import Switch from "@/app/ui/Switch";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -603,34 +604,21 @@ const Episodes = () => {
       />
 
       {isMobile() ? null : (
-        <label className="hideEpisodesNames relative -left-5 flex transition-all duration-300 ease-out before:absolute before:-right-12 before:h-7 before:w-12 before:rounded-full before:border before:border-neutral-700 before:border-opacity-50 before:bg-transparent before:transition-all before:duration-200 hover:before:border-opacity-100 has-[:checked]:before:bg-main has-[:checked]:before:brightness-50">
-          <p>Cacher le nom des épisodes</p>
+        <Switch
+          placeholder="Cacher le nom des épisodes"
+          onChange={(event) => {
+            const names = Array.from(document.querySelectorAll(".episodeName"));
 
-          <input
-            type="checkbox"
-            className="peer appearance-none"
-            onChange={({ target }) => {
-              const label = document.querySelector(
-                ".hideEpisodesNames",
-              ) as HTMLElement;
-
-              const names = Array.from(
-                document.querySelectorAll(".episodeName"),
-              );
-
-              if (target.checked)
-                for (const episode of names) {
-                  (episode as HTMLElement).classList.add("blur");
-                }
-              else
-                for (const episode of names) {
-                  (episode as HTMLElement).classList.remove("blur");
-                }
-            }}
-          />
-
-          <span className="relative left-6 top-1 h-5 w-5 rounded-full bg-main transition-all duration-200 peer-checked:left-11"></span>
-        </label>
+            if (event.target.checked)
+              for (const episode of names) {
+                (episode as HTMLElement).classList.add("blur");
+              }
+            else
+              for (const episode of names) {
+                (episode as HTMLElement).classList.remove("blur");
+              }
+          }}
+        />
       )}
 
       <div className="m-5 max-h-96 min-w-24 overflow-y-auto">

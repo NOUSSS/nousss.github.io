@@ -1,10 +1,10 @@
 "use client";
 
-import { getSaisons } from "@/app/components/Saisons/getSaisons";
+import { getSaisons } from "@/app/utils/Saisons/getSaisons";
 import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
-import { changeSaison } from "@/app/components/Saisons/changeSaison";
+import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";

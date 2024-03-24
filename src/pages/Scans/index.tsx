@@ -5,13 +5,13 @@ import React, { useState, useEffect } from "react";
 import {
   getTailleChapitres,
   selectChapter,
-} from "@/app/components/Scans/chapterManager";
+} from "@/app/utils/Scans/chapterManager";
 
 import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { clickEvents } from "@/app/components/Scans/eventHandler";
+import { clickEvents } from "@/app/utils/Scans/eventHandler";
 import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 import { ScansOptions } from "@/typings/types";
