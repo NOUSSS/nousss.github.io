@@ -43,6 +43,13 @@ const episodes = [
     name: "A Knight Who Defends an Empty Throne",
     index: "11",
   },
-];
+  {
+    anime: "Arise",
+    index: "12",
+  },
+] as {
+  name: string;
+  index: string;
+}[];
 
 export default episodes;
