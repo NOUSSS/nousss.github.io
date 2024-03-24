@@ -57,6 +57,7 @@ import Vagabond from "./Vagabond/vagabond";
 import TheBoxer from "./TheBoxer/the-boxer";
 import DoomBreaker from "./DoomBreaker/doom-breaker";
 import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
+import Bucchigiri from "./Bucchigiri/bucchigiri";
 
 export interface AnimesType {
   anime: string;
@@ -526,6 +527,13 @@ export const ANIMES: AnimesType[] = [
     category: ["New gen"],
     options: new BorutoTwoBlueVortex(),
     synopsis: "En gros c'est boruto shippuden",
+  },
+  {
+    anime: "Bucchigiri",
+    category: ["New gen"],
+    options: new Bucchigiri(),
+    synopsis:
+      "Les retrouvailles d'Arajin Tomoshibi avec son vieil ami de lycée Matakara Asamine prennent une tournure inattendue lorsqu'ils sont entraînés dans une bagarre avec les caïds du coin. La situation devient encore plus bizarre quand débarque un véritable colosse ! Mais ce n’est que le début d’une bataille plus profonde qui s’en engagée…",
   },
 ];
 
