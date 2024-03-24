@@ -3404,6 +3404,14 @@ const episodes = [
     index: "1098",
     name: "Un rêve hors du commun. L'avenir idéal vu par un génie !",
   },
+  {
+    index: "1099",
+    name: "Envoyez le comité d'accueil. Rob Lucci attaque !",
+  },
+  {
+    index: "1100",
+    name: "La puissance d'une autre dimension. Luffy contre Lucci !",
+  },
 ];
 
 export default episodes;
