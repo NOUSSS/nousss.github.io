@@ -171,23 +171,28 @@ const Episodes = () => {
 
   useEffect(() => {
     if (lang && AnimeInfo?.anime && lang) {
+      let retard = 0;
+
       localStorage.setItem(
         `${formatName(AnimeInfo.anime)}--${AnimeInfo.saison}--lang`,
         lang,
       );
 
+      const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
+
+      if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
+
       setUrlScript(
         (isClient &&
-          (oav
-            ? isOAV
-              ? SCRIPT_URL!({
-                  index: scriptIndex!,
-                  lang: lang!,
-                }).replace(/saison\d+(-\d+)?/g, "oav")
-              : SCRIPT_URL!({ index: scriptIndex!, lang: lang! })
-            : SCRIPT_URL!({
-                index: scriptIndex!,
+          (isOAV
+            ? SCRIPT_URL!({
+                index: Number(scriptIndex) - retard,
                 lang: lang!,
+              }).replace(/saison\d+(-\d+)?/g, "oav")
+            : SCRIPT_URL!({
+                index: Number(scriptIndex) - retard,
+                lang: lang!,
+                hs: scriptIndex === "2" ? true : false,
               }))) as string,
       );
 

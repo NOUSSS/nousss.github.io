@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 export interface SeasonAndFilm {
   name: string;
   aliases?: string[];
+  hs?: boolean;
   image: () => StaticImageData;
 }
 
@@ -26,6 +27,8 @@ export interface LecteurReturnType {
 
   eps1?: string[];
   eps2?: string[];
+  eps3?: string[];
+  eps4?: string[];
 }
 
 export interface FilmOptions {
@@ -59,9 +62,11 @@ export interface EpisodesOptions {
   SCRIPT_URL: ({
     index,
     lang,
+    hs,
   }: {
     index: number | string;
     lang: string;
+    hs?: boolean;
   }) => string;
 
   horsSeries?: horsSeriesType[];

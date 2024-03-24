@@ -17,11 +17,16 @@ export default class DemonSlayer extends Anime {
         image: () => getImage(1),
       },
       2: {
+        name: "Récap Film",
+        image: () => films[0].image(),
+        hs: true,
+      },
+      3: {
         name: "Le quartier des plaisirs",
         aliases: ["crocodile", "2"],
         image: () => getImage(2),
       },
-      3: {
+      4: {
         name: "Le village des fourgerons",
         aliases: ["ile", "poneglyphe", "3"],
         image: () => getImage(3),
@@ -50,23 +55,16 @@ export default class DemonSlayer extends Anime {
       CHAPITRE_SPECIAUX: [],
     };
 
-    this.note = [
-      {
-        saison: "2",
-        message:
-          "Il est IMPERATIF d'avoir vu le film 'train de l'infini' avant de regarder cette saison !",
-      },
-    ];
-
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
-        `https://anime-sama.fr/catalogue/demon-slayer/saison${index}/${lang}/episodes.js`,
+      SCRIPT_URL: ({ index, lang, hs }) =>
+        `https://anime-sama.fr/catalogue/demon-slayer/saison${index}${hs === true ? "hs" : ""}/${lang}/episodes.js`,
 
       allIndex: {
         1: 0,
         2: 26,
-        3: 37,
-        4: 48,
+        3: 33,
+        4: 44,
+        5: 55,
       },
     };
   }
