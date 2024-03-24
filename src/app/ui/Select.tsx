@@ -120,7 +120,7 @@ export default function Select({
 
         <div
           ref={menuRef}
-          className="absolute left-0 z-10 hidden max-h-64 w-full scale-95 overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
+          className="absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
         >
           {items.map((item, index) => (
             <ul key={index}>
@@ -131,11 +131,7 @@ export default function Select({
                     appear();
                   }
                 }}
-                className={
-                  item.disabled
-                    ? `flex h-9 cursor-default items-center justify-center rounded-md text-base opacity-50 hover:bg-transparent`
-                    : `flex h-9 cursor-pointer items-center justify-center rounded-md text-base hover:bg-[#3e63dd] hover:text-white`
-                }
+                className={`flex h-9 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-[#3e63dd] hover:text-white"} `}
               >
                 <p>{item.name}</p>
               </li>

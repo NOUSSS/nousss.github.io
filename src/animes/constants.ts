@@ -563,19 +563,19 @@ interface GroupedAnimes {
   category: string;
 }
 
+interface Group {
+  [key: string]: string[];
+}
+
 export const groupAnimesByCategory = (
   animes: AnimeOption[],
 ): GroupedAnimes[] => {
-  const grouped: { [key: string]: string[] } = {};
+  const grouped: Group = {};
 
   animes.forEach(({ anime, category }) => {
     category.forEach((category) => {
-      if (!grouped[category]) {
-        grouped[category] = [];
-      }
-      if (!grouped[category].includes(anime)) {
-        grouped[category].push(anime);
-      }
+      if (!grouped[category]) grouped[category] = [];
+      if (!grouped[category].includes(anime)) grouped[category].push(anime);
     });
   });
 
