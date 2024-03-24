@@ -114,6 +114,8 @@ const Films = () => {
       toast.error("Erreur dans le chargement des films.", {
         id: loadingToast!,
       });
+
+      if (lang === "vf") setLang("vostfr");
     }
   }, [status, lang, loadingToast]);
 
@@ -198,7 +200,7 @@ const Films = () => {
 
       <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
 
-      <div className="film m-11 text-3xl">{title}</div>
+      <div className="m-4 mb-12 text-4xl">{title}</div>
 
       <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select

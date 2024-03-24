@@ -68,7 +68,7 @@ export function Change(
             {numberEpisode}{" "}
             {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
           </span>{" "}
-          : <span className="episodeName">{title}</span>
+          : <span className="episodeName text-white">{title}</span>
         </>,
       );
 
@@ -94,7 +94,7 @@ export function Change(
         <span>
           {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
         </span>{" "}
-        : <span className="episodeName">{episodeTitle}</span>
+        : <span className="episodeName text-white">{episodeTitle}</span>
       </>,
     );
 

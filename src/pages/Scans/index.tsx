@@ -186,23 +186,19 @@ const Scans = () => {
         }}
       />
 
-      <div className="relative">
-        {chapitresOptions.length > 0 ? (
-          <Select
-            className="top-12"
-            onSelect={(item) => {
-              localStorage.setItem(
-                `${formatName(anime!.anime!)}--chapitre`,
-                item.value,
-              );
+      <Select
+        className="top-12"
+        onSelect={(item) => {
+          localStorage.setItem(
+            `${formatName(anime!.anime!)}--chapitre`,
+            item.value,
+          );
 
-              setScans(selectChapter(item, formatName(anime!.anime!)));
-            }}
-            items={chapitresOptions}
-            placeholder="Selectionnez un chapitre"
-          />
-        ) : null}
-      </div>
+          setScans(selectChapter(item, formatName(anime!.anime!)));
+        }}
+        items={chapitresOptions}
+        placeholder="Selectionnez un chapitre"
+      />
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
         <button className="btn lastChapter next relative top-4">

@@ -52,7 +52,6 @@ const Episodes = () => {
   const [AnimeInfo, setAnimeInfo] = useState<null | {
     anime: string;
     saison: string;
-    lang: string;
   }>(null);
 
   const [isClient, setIsClient] = useState(false);
@@ -117,8 +116,6 @@ const Episodes = () => {
       setAnimeInfo({
         anime: currentAnime!,
         saison: currentSaison,
-
-        lang,
       });
     }
   }, []);
@@ -173,7 +170,7 @@ const Episodes = () => {
   const [filever, setFilever] = useState<number>();
 
   useEffect(() => {
-    if (lang && AnimeInfo?.anime && AnimeInfo?.lang) {
+    if (lang && AnimeInfo?.anime && lang) {
       localStorage.setItem(
         `${formatName(AnimeInfo.anime)}--${AnimeInfo.saison}--lang`,
         lang,
@@ -185,12 +182,12 @@ const Episodes = () => {
             ? isOAV
               ? SCRIPT_URL!({
                   index: scriptIndex!,
-                  lang: AnimeInfo?.lang!,
+                  lang: lang!,
                 }).replace(/saison\d+(-\d+)?/g, "oav")
-              : SCRIPT_URL!({ index: scriptIndex!, lang: AnimeInfo?.lang! })
+              : SCRIPT_URL!({ index: scriptIndex!, lang: lang! })
             : SCRIPT_URL!({
                 index: scriptIndex!,
-                lang: AnimeInfo?.lang!,
+                lang: lang!,
               }))) as string,
       );
 
@@ -216,10 +213,6 @@ const Episodes = () => {
         ) as HTMLElement;
 
         setLang("vostfr");
-        setAnimeInfo({
-          ...AnimeInfo!,
-          lang: "vostfr",
-        });
 
         placeholder.innerText = langObj[lang as "vostfr" | "vf"];
       }
@@ -442,7 +435,7 @@ const Episodes = () => {
             </span>{" "}
             {"["}
             <span style={{ color: "white" }}>
-              {AnimeInfo?.lang?.toUpperCase() || "VOSTFR"}
+              {lang?.toUpperCase() || "VOSTFR"}
             </span>
             {"]"}
           </>,
@@ -517,7 +510,7 @@ const Episodes = () => {
         }}
       />
 
-      <p className="m-12 text-4xl">{saisonTitle}</p>
+      <p className="m-4 text-4xl">{saisonTitle}</p>
 
       {disclamerMessage.current ? (
         <p

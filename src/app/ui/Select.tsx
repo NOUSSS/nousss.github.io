@@ -105,40 +105,35 @@ export default function Select({
   };
 
   return (
-    <div>
-      <label
-        ref={labelRef}
-        className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,_23,_29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
-        onClick={appear}
+    <label
+      ref={labelRef}
+      className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,_23,_29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
+      onClick={appear}
+    >
+      <p className="placeholder">{placeholder}</p>
+
+      <UpArrow ref={svgRef} className="transition-all duration-300 ease-out" />
+
+      <div
+        ref={menuRef}
+        className="absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
       >
-        <p className="placeholder">{placeholder}</p>
-
-        <UpArrow
-          ref={svgRef}
-          className="transition-all duration-300 ease-out"
-        />
-
-        <div
-          ref={menuRef}
-          className="absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-y-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
-        >
-          {items.map((item, index) => (
-            <ul key={index}>
-              <li
-                onClick={() => {
-                  if (!item.disabled) {
-                    handleSelect(item);
-                    appear();
-                  }
-                }}
-                className={`flex h-9 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-[#3e63dd] hover:text-white"} `}
-              >
-                <p>{item.name}</p>
-              </li>
-            </ul>
-          ))}
-        </div>
-      </label>
-    </div>
+        {items.map((item, index) => (
+          <ul key={index}>
+            <li
+              onClick={() => {
+                if (!item.disabled) {
+                  handleSelect(item);
+                  appear();
+                }
+              }}
+              className={`flex h-9 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-[#3e63dd] hover:text-white"} `}
+            >
+              <p>{item.name}</p>
+            </li>
+          </ul>
+        ))}
+      </div>
+    </label>
   );
 }
