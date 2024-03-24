@@ -26,15 +26,16 @@ import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
 import getHostname from "@/app/lib/getHostname";
 
-import FR from "@/assets/FR.webp";
-import JAP from "@/assets/JAP.webp";
 import Switch from "@/app/ui/Switch";
+
+import { useSearchParams } from "next/navigation";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 const Episodes = () => {
   const router = useRouter();
+  const params = useSearchParams();
 
   const langObj = {
     vostfr: "VostFR",
@@ -94,7 +95,9 @@ const Episodes = () => {
       );
 
       const currentSaison =
-        localStorage.getItem(`${formatName(currentAnime)}--saison`) ?? "1";
+        params?.get("saison") ??
+        localStorage.getItem(`${formatName(currentAnime)}--saison`) ??
+        "1";
 
       let lang = localStorage.getItem(
         `${formatName(currentAnime)}--${currentSaison}--lang`,
@@ -633,11 +636,15 @@ const Episodes = () => {
                 ),
               ) - 1;
 
-            changeSaison(
-              prevSaison.toString(),
-              formatName(AnimeInfo!.anime!),
-              router,
-            );
+            router.push({
+              pathname: `/Episodes`,
+              query: {
+                anime: formatName(AnimeInfo?.anime!),
+                saison: prevSaison,
+              },
+            });
+
+            changeSaison(prevSaison.toString(), formatName(AnimeInfo!.anime!));
 
             router.reload();
           }}
@@ -655,11 +662,15 @@ const Episodes = () => {
                 ),
               ) + 1;
 
-            changeSaison(
-              newSaison.toString(),
-              formatName(AnimeInfo!.anime!),
-              router,
-            );
+            router.push({
+              pathname: `/Episodes`,
+              query: {
+                anime: formatName(AnimeInfo?.anime!),
+                saison: newSaison,
+              },
+            });
+
+            changeSaison(newSaison.toString(), formatName(AnimeInfo!.anime!));
 
             router.reload();
           }}

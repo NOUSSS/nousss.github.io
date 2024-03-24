@@ -62,9 +62,14 @@ const Saisons = () => {
           <>
             Historique Saison :{" "}
             <span
-              onClick={() =>
-                changeSaison(saison, formatName(anime?.anime!), router)
-              }
+              onClick={() => {
+                router.push({
+                  pathname: `/Episodes`,
+                  query: { anime: formatName(anime?.anime!), saison: saison },
+                });
+
+                changeSaison(saison, formatName(anime?.anime!));
+              }}
               className="cursor-pointer underline"
             >
               {anime?.options.saisons?.[saison].name}
@@ -86,13 +91,17 @@ const Saisons = () => {
             key={id}
             id={id}
             className="list-poster-saison m-8 inline-flex w-20 cursor-pointer flex-col gap-2.5"
-            onClick={() =>
-              changeSaison(
-                (index + 1).toString(),
-                formatName(anime?.anime!),
-                router,
-              )
-            }
+            onClick={() => {
+              router.push({
+                pathname: `/Episodes`,
+                query: {
+                  anime: formatName(anime?.anime!),
+                  saison: (index + 1).toString(),
+                },
+              });
+
+              changeSaison((index + 1).toString(), formatName(anime?.anime!));
+            }}
           >
             {element}
           </div>

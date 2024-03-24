@@ -1,15 +1,4 @@
-import { NextRouter } from "next/router";
-
-export function changeSaison(
-  index: string,
-  currentAnime: string,
-  router: NextRouter
-) {
-  router.push({
-    pathname: `/Episodes`,
-    query: { anime: currentAnime, saison: index },
-  });
-
+export function changeSaison(index: string, currentAnime: string) {
   if (localStorage.getItem(`${currentAnime}--saison`) !== index) {
     for (const key of Object.keys(localStorage)) {
       if (
