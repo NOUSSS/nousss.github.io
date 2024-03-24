@@ -59,6 +59,7 @@ import DoomBreaker from "./DoomBreaker/doom-breaker";
 import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
 import Bucchigiri from "./Bucchigiri/bucchigiri";
 import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
+import FMA from "./FMA/fullmetal-alchemist";
 
 export interface AnimesType {
   anime: string;
@@ -542,6 +543,13 @@ export const ANIMES: AnimesType[] = [
     options: new FMAB(),
     synopsis:
       "Dans un pays où l'alchimie permet de faire des choses extraordinaire, deux jeunes frères étudie cette science qui permet l'échange d'une chose contre une autre. Cette science repose sur le principe de \"l'échange équivalent\" qui requière de sacrifier une chose pour en obtenir une autre.",
+  },
+  {
+    anime: "Fullmetal Alchemist",
+    category: ["Magie"],
+    options: new FMA(),
+    synopsis:
+      "Après avoir perdu leur mère, Edward et Alphonse tentent de la ramener à la vie grâce à l'alchimie. Cependant, l'alchimie doit obéir à la loi de l'échange équivalent : l'objet transformé et l'objet issu de la transformation doivent être de masses équivalentes. Passer outre cette règle coûte très cher, et les frères Elric en feront les frais : Edward perd un bras et une jambe alors que son frère Alphonse perd son corps. Heureusement Edward réussit à enfermer l'âme de son frère dans une armure de métal grâce à un sceau de sang. Ils décident alors de quitter leur maison pour partir à la recherche d'informations sur la pierre philosophale, qui leur permettrait de regagner leurs corps. Cependant, ils ne sont pas les seuls à la recherche de cette pierre...",
   },
 ];
 
