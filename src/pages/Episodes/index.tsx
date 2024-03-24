@@ -237,7 +237,7 @@ const Episodes = () => {
         document.querySelector<HTMLElement>(".PrevSaison")!;
 
       const lastSaison = (
-        Object.keys(allIndex!)[Object.keys(allIndex!).length - 1] - 1
+        Number(Object.keys(allIndex!)[Object.keys(allIndex!).length - 1]) - 1
       ).toString();
 
       const firstSaison = Object.keys(allIndex!)[0];
