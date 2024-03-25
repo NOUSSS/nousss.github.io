@@ -45,7 +45,7 @@ class AttaqueDesTitans extends Anime {
         aliases: ["grand terrassement", "vrai fin"],
         image: () => getImage(7),
       },
-      8: {
+      oav: {
         name: "OAV",
         aliases: ["hs"],
         image: () => getImage(8),
@@ -91,9 +91,7 @@ class AttaqueDesTitans extends Anime {
       },
 
       fromParts: 4,
-
       names: episodesNames,
-      oav: true,
     };
   }
 }

@@ -72,7 +72,7 @@ const Saisons = () => {
               }}
               className="cursor-pointer underline"
             >
-              {anime?.options.saisons?.[saison].name}
+              {Object.values(anime?.options.saisons!)[Number(saison) - 1].name}
             </span>
           </>
         )}

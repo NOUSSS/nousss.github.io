@@ -17,7 +17,7 @@ class FairyTail extends Anime {
         aliases: [""],
         image: () => getImage(1),
       },
-      2: {
+      oav: {
         name: "OAV",
         aliases: [""],
         image: () => getImage(2),
@@ -57,8 +57,6 @@ class FairyTail extends Anime {
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/fairy-tail/saison${index}/${lang}/episodes.js`,
-
-      oav: true,
 
       allIndex: {
         1: 0,

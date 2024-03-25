@@ -16,27 +16,30 @@ export function getSaisons() {
 
   const saisonsList = [];
 
-  for (let i = 1; i < Object.keys(saisons!).length + 1; i++) {
-    const intervalEpisodes = `${allIndex![i] + 1} - ${allIndex![i + 1]}`;
+  for (let i = 0; i < Object.keys(saisons!).length; i++) {
+    const intervalEpisodes = `${allIndex![i + 1] + 1} - ${allIndex![i + 2]}`;
+    const saisonsValues = Object.values(saisons!);
 
     saisonsList.push({
-      id: `${saisons?.[i].name}|${
-        typeof saisons?.[i].aliases === "undefined"
+      id: `${saisonsValues?.[i].name}|${
+        typeof saisonsValues?.[i].aliases === "undefined"
           ? ""
-          : saisons?.[i].aliases?.join(", ")
-      } ${i === Object.keys(saisons!).length ? "sdfsdf" : intervalEpisodes}`,
+          : saisonsValues?.[i].aliases?.join(", ")
+      } ${i === Object.keys(saisonsValues!).length - 1 ? "" : intervalEpisodes}`,
       element: (
         <>
           <Image
-            src={saisons?.[i].image()!}
+            src={saisonsValues?.[i].image()!}
             id={i.toString()}
             alt="poster de saison"
             className="h-[108px] w-[89px] duration-300 hover:rotate-12"
           />
           <p className="text-sm">
-            <span>{saisons?.[i].name}</span>
+            <span>{saisonsValues?.[i].name}</span>
             <br />
-            {i === Object.keys(saisons!).length ? "" : `(${intervalEpisodes})`}
+            {i === Object.keys(saisonsValues!).length - 1
+              ? ""
+              : `(${intervalEpisodes})`}
           </p>
         </>
       ),

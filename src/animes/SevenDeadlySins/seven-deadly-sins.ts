@@ -26,7 +26,7 @@ export default class SevenDeadlySins extends Anime {
         name: "Saison 4",
         image: () => getImage(4),
       },
-      5: {
+      oav: {
         name: "OAV",
         image: () => getImage(5),
       },
@@ -41,8 +41,6 @@ export default class SevenDeadlySins extends Anime {
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/seven-deadly-sins/saison${index}/${lang}/episodes.js`,
-
-      oav: true,
 
       allIndex: {
         1: 0,
