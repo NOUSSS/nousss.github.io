@@ -69,13 +69,7 @@ const Episodes = () => {
 
     const animeFetched = getAnime(currentAnime);
 
-    if (
-      !currentAnime ||
-      !animeFetched?.options.EPISODES_OPTIONS ||
-      (animeFetched.options &&
-        Object.keys(animeFetched.options?.saisons!).length <
-          Number(localStorage.getItem(`${formatName(currentAnime)}--saison`)))
-    ) {
+    if (!currentAnime || !animeFetched?.options.EPISODES_OPTIONS) {
       router.push({
         pathname: "/",
       });
