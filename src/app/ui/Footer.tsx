@@ -2,16 +2,14 @@ import Link from "next/link";
 
 export function Footer({
   media = false,
-  margin,
-  className,
+  style,
 }: {
   media?: boolean;
-  className?: string;
-  margin?: boolean;
+  style?: boolean;
 }) {
   return (
     <div
-      className={`${margin ? "mt-16" : "mt-52"} relative ml-2 after:absolute after:-top-12 after:left-0 after:h-[2px] after:w-full after:bg-main ${className}`}
+      className={`${!style ? "" : "w-full bg-zinc-900 bg-opacity-50"} mt-4 p-8`}
     >
       <Link
         className="text-sm text-main underline"
@@ -23,7 +21,7 @@ export function Footer({
       </Link>
 
       {media ? (
-        <p className="mb-5 text-left">
+        <p className="mb-5">
           Contactez directement la plateforme d'hébergement vidéo pour toutes
           réclamations de droits relatifs aux contenus en question.
         </p>

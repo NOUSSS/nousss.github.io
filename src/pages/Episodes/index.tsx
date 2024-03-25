@@ -578,7 +578,7 @@ const Episodes = () => {
         <ul>{episodes}</ul>
       </div>
 
-      <div className="relative top-12 flex gap-5">
+      <div className="m-8 flex gap-5">
         {isClient && AnimeInfo?.saison !== "1" ? (
           <button
             onClick={() => {
@@ -627,8 +627,7 @@ const Episodes = () => {
           </button>
         ) : null}
       </div>
-
-      <Footer media />
+      <Footer style={true} media />
     </main>
   );
 };

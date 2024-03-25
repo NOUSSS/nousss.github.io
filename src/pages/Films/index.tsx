@@ -274,7 +274,7 @@ const Films = () => {
 
       <div className="overflow-x-auto">{films}</div>
 
-      <Footer media />
+      <Footer style={true} media />
     </main>
   );
 };

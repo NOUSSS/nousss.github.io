@@ -261,7 +261,7 @@ const Scans = () => {
         />
       </div>
 
-      <Footer media />
+      <Footer style={true} media />
     </main>
   );
 };

@@ -357,7 +357,8 @@ export default function Accueil() {
           </div>
         ))}
       </div>
-      <Footer />
+
+      <Footer style={true} />
     </main>
   );
 }

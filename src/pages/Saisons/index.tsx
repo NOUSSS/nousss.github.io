@@ -107,7 +107,6 @@ const Saisons = () => {
           </div>
         ))}
       </div>
-
       <Footer />
     </main>
   );
