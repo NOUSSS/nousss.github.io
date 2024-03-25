@@ -104,9 +104,8 @@ const Episodes = () => {
       const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
       if (!lang) {
-        setLang("vostfr");
-
         lang = "vostfr";
+        setLang(lang);
 
         placeholder.innerText = "VostFR";
       } else {
@@ -247,7 +246,6 @@ const Episodes = () => {
       }
 
       const episodeIndex = allIndex![AnimeInfo?.saison ?? 0];
-
       let episode = localStorage.getItem(`${AnimeInfo?.anime}--episode`);
 
       if (!episode) {
