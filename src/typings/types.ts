@@ -1,5 +1,7 @@
 import { StaticImageData } from "next/image";
 
+export type EPS = "eps1" | "eps2" | "eps3" | "eps4" | "epsAS";
+
 export interface SeasonAndFilm {
   name: string;
   aliases?: string[];

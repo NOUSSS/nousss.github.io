@@ -7,7 +7,7 @@ import { clickEvents } from "@/app/utils/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { LecteurReturnType, SeasonAndFilm } from "@/typings/types";
+import { EPS, LecteurReturnType, SeasonAndFilm } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { isMobile } from "@/app/lib/isMobile";
 import { useRouter } from "next/router";
@@ -172,8 +172,6 @@ const Episodes = () => {
 
       if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
 
-      console.log(oavIndex);
-
       setUrlScript(
         (isClient &&
           (oavIndex !== -1 && oavIndex + 1 === Number(AnimeInfo?.saison)
@@ -247,30 +245,20 @@ const Episodes = () => {
       if (AnimeInfo!.saison > saisonsEntries[oavIndex]) {
         const newIndexSaison = (Number(AnimeInfo?.saison) - 1).toString();
 
-        localStorage.setItem(
-          `${formatName(AnimeInfo!.anime!)}--saison`,
-          newIndexSaison,
-        );
+        localStorage.setItem(`${AnimeInfo?.anime}--saison`, newIndexSaison);
         AnimeInfo!.saison = newIndexSaison;
       }
 
       Lecteurs = getLecteur();
 
       if (currentLecteur?.lecteur) {
-        LecteurEpisodes =
-          Lecteurs[
-            currentLecteur.lecteur as "epsAS" | "eps1" | "eps2" | "eps3"
-          ]!;
+        LecteurEpisodes = Lecteurs[currentLecteur.lecteur as EPS]!;
       } else {
         if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: "epsAS" });
           LecteurEpisodes = Lecteurs.epsAS;
         } else {
-          const lecteur = Object.keys(Lecteurs)[0] as
-            | "eps1"
-            | "eps2"
-            | "eps3"
-            | "epsAS";
+          const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
           setCurrentLecteur({ lecteur });
 
@@ -280,19 +268,15 @@ const Episodes = () => {
 
       const episodeIndex = allIndex![AnimeInfo?.saison ?? 0];
 
-      let episode = localStorage.getItem(
-        `${formatName(AnimeInfo!.anime!)}--episode`,
-      );
+      let episode = localStorage.getItem(`${AnimeInfo?.anime}--episode`);
 
       if (!episode) {
-        localStorage.setItem(`${formatName(AnimeInfo!.anime!)}--episode`, "1");
+        localStorage.setItem(`${AnimeInfo?.anime}--episode`, "1");
 
         episode = "1";
       }
 
-      const e_sp = localStorage.getItem(
-        `${formatName(AnimeInfo!.anime!)}--e-sp`,
-      );
+      const e_sp = localStorage.getItem(`${AnimeInfo?.anime}--e-sp`);
       const listEpisodes: React.ReactNode[] = [];
 
       let retard = 0;
@@ -304,8 +288,7 @@ const Episodes = () => {
       ) {
         const isHorsSerie = horsSeries?.find(
           ({ saison }) =>
-            saison ===
-            localStorage.getItem(`${formatName(AnimeInfo!.anime!)}--saison`),
+            saison === localStorage.getItem(`${AnimeInfo?.anime}--saison`),
         );
 
         if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {

@@ -6,7 +6,7 @@ import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { FilmOptions, LecteurReturnType } from "@/typings/types";
+import { EPS, FilmOptions, LecteurReturnType } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -45,7 +45,7 @@ const Films = () => {
     change?: boolean;
   } | null>(null);
 
-  const lecteurString = useRef<"" | "eps1" | "eps2">("");
+  const lecteurString = useRef<EPS | "">("");
 
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
     null,
@@ -83,7 +83,12 @@ const Films = () => {
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
       setLang(lang);
 
-      setAnime(currentAnime);
+      setAnime({
+        anime: formatName(currentAnime!.anime),
+        options: currentAnime.options,
+        category: currentAnime.category,
+        synopsis: currentAnime.synopsis,
+      });
 
       const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
@@ -99,8 +104,7 @@ const Films = () => {
   }, []);
 
   useEffect(() => {
-    if (anime && lang)
-      localStorage.setItem(`${formatName(anime.anime)}--lang`, lang);
+    if (anime && lang) localStorage.setItem(`${currentAnime}--lang`, lang);
   }, [lang, anime]);
 
   useEffect(() => {
@@ -128,15 +132,14 @@ const Films = () => {
       Lecteurs = getLecteur();
 
       if (currentLecteur?.lecteur) {
-        LecteursFilms =
-          Lecteurs[currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"]!;
+        LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
       } else {
         if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: "epsAS" });
 
           LecteursFilms = Lecteurs.epsAS;
         } else {
-          const lecteur = Object.keys(Lecteurs)[0] as "eps1" | "eps2" | "epsAS";
+          const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
           setCurrentLecteur({ lecteur: lecteur });
 

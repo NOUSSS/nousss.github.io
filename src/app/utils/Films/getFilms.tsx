@@ -4,6 +4,7 @@ import { getLecteur } from "@/app/lib/getLecteur";
 import { appearVideo } from "./appearVideo";
 import { getAnime } from "@/app/lib/getAnime";
 import { formatName } from "@/app/lib/formatName";
+import { EPS } from "@/typings/types";
 
 export function getFilms(
   setFilmsFront: React.Dispatch<
@@ -33,15 +34,14 @@ export function getFilms(
   const filmsNodes: React.ReactNode[] = [];
 
   if (currentLecteur) {
-    LecteursFilms =
-      Lecteurs[currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"]!;
+    LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
   } else {
     if (Lecteurs.epsAS) {
       setCurrentLecteur({ lecteur: "epsAS" });
 
       LecteursFilms = Lecteurs.epsAS;
     } else {
-      const lecteur = Object.keys(Lecteurs)[0] as "eps1" | "eps2" | "epsAS";
+      const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
       setCurrentLecteur({ lecteur });
 
