@@ -61,6 +61,7 @@ import Bucchigiri from "./Bucchigiri/bucchigiri";
 import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
 import FMA from "./FMA/fullmetal-alchemist";
 import Baki from "./Baki/baki";
+import DragonBallGT from "./DragonBallGT/dragon-ball-gt";
 
 export interface AnimesType {
   anime: string;
@@ -558,6 +559,13 @@ export const ANIMES: AnimesType[] = [
     options: new Baki(),
     synopsis:
       "Cinq condamnés à mort s'évadent en même temps de leur prison respective. Ils ne se connaissent pas, n'ont même pas la même nationalité, et pourtant disent tous la même phrase : \"Je veux connaître la défaite\". Ils se dirigent au Japon, et là bas, un jeune garçon de 17 du nom de Baki s'y trouve. Il s'agit d'un jeune très doué pratiquant des arts-martiaux, qui n'est autre que le gagnant du précédant \"tournoi du sous sol\", un tournoi très violent auquel a également participé le père de Baki, Yujiro, qui n'est autre que \"la Créature la plus forte du monde\", un homme qui fait trembler même les sportifs les plus aguerris ! Baki va devoir au fur et a mesure progresser pour combattre et vaincre ses mastodontes qui ont l'air totalement surpuissant, et très dangereux !",
+  },
+  {
+    anime: "Dragon Ball GT",
+    category: ["Classique"],
+    options: new DragonBallGT(),
+    synopsis:
+      "Dix ans se sont écoulés depuis la fin de Dragon Ball Z. Au palais de Dendé, Son Gokû, qui s'entrainait avec Uub, surprend Pilaf sur le point de dérober les boules de cristal. Par accident, celui-ci fait le voeu que Son Gokû redevienne un enfant pour qu'il puisse l'affronter. C'est alors que le Dragon exauce le voeu et que les boules de cristal s'éparpillent à travers toute la galaxie. Son Gokû, redevenu enfant, n'a qu'une année pour les retrouver et demander au Dragon de lui rendre sa taille normale sinon, la Terre se désintègrera. C'est ainsi que débutent les nouvelles aventures de Son Gokû, Trunks et Pan, la fille de Son Gohan et Videl, à travers la galaxie.",
   },
 ];
 
