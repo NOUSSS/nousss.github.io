@@ -20,7 +20,7 @@ export default function SearchBar({
 
   return (
     <label
-      className={`label--search-bar flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 p-2.5 ${className}`}
+      className={`label--search-bar flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-[rgba(22,23,29,0.5)] p-2.5 shadow-xl ${className}`}
       title="Système de recherche super cool"
     >
       <SearchIcon size="25" />
@@ -28,7 +28,7 @@ export default function SearchBar({
       <input
         type="text"
         placeholder={placeholder}
-        className="h-7 w-full rounded-md bg-transparent placeholder-white"
+        className="h-7 w-full rounded-md bg-transparent"
         onInput={() =>
           initSearchBar(
             document.querySelector(

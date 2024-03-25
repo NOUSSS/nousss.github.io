@@ -445,12 +445,14 @@ const Episodes = () => {
         ) : null}
       </Head>
 
-      <Title
-        link={{
-          pathname: "/Saisons",
-          query: { anime: AnimeInfo!.anime },
-        }}
-      />
+      {isClient && (
+        <Title
+          link={{
+            pathname: "/Saisons",
+            query: { anime: AnimeInfo!.anime },
+          }}
+        />
+      )}
 
       <p className="m-4 text-4xl">{saisonTitle}</p>
 
