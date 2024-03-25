@@ -217,7 +217,7 @@ export const ANIMES: AnimesType[] = [
     anime: "naruto",
     aliases: ["konoha", "kurama", "kyubi", "scans", "saisons"],
     options: new Naruto(),
-    category: ["Classique", "Aventure"],
+    category: ["Classique"],
     synopsis:
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
@@ -225,7 +225,7 @@ export const ANIMES: AnimesType[] = [
     anime: "naruto shippuden",
     aliases: ["naruto adulte", "films", "saisons"],
     options: new NarutoShippuden(),
-    category: ["Classique", "Aventure"],
+    category: ["Classique"],
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
   },
