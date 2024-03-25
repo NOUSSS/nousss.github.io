@@ -233,16 +233,11 @@ const Episodes = () => {
       if (currentLecteur?.lecteur) {
         LecteurEpisodes = Lecteurs[currentLecteur.lecteur as EPS]!;
       } else {
-        if (Lecteurs.epsAS) {
-          setCurrentLecteur({ lecteur: "epsAS" });
-          LecteurEpisodes = Lecteurs.epsAS;
-        } else {
-          const lecteur = Object.keys(Lecteurs)[0] as EPS;
+        const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-          setCurrentLecteur({ lecteur });
+        setCurrentLecteur({ lecteur });
 
-          LecteurEpisodes = Lecteurs[lecteur]!;
-        }
+        LecteurEpisodes = Lecteurs[lecteur]!;
       }
 
       const episodeIndex = allIndex![AnimeInfo?.saison ?? 0];

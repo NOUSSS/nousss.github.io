@@ -134,17 +134,11 @@ const Films = () => {
       if (currentLecteur?.lecteur) {
         LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
       } else {
-        if (Lecteurs.epsAS) {
-          setCurrentLecteur({ lecteur: "epsAS" });
+        const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-          LecteursFilms = Lecteurs.epsAS;
-        } else {
-          const lecteur = Object.keys(Lecteurs)[0] as EPS;
+        setCurrentLecteur({ lecteur: lecteur });
 
-          setCurrentLecteur({ lecteur: lecteur });
-
-          LecteursFilms = Lecteurs[lecteur]!;
-        }
+        LecteursFilms = Lecteurs[lecteur]!;
       }
 
       lecteurString.current = "eps1";
@@ -248,22 +242,8 @@ const Films = () => {
       </div>
 
       <div className="container">
-        {currentLecteur?.lecteur === "epsAS" ? (
-          <>
-            <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-
-            <video controls src={video} />
-
-            <div className="video">
-              <video src={video} />
-            </div>
-          </>
-        ) : (
-          <>
-            <iframe className="video" src={video} allowFullScreen></iframe>
-            <iframe className="ambiance" src={video}></iframe>
-          </>
-        )}
+        <iframe className="video" src={video} allowFullScreen></iframe>
+        <iframe className="ambiance" src={video}></iframe>
       </div>
 
       <SearchBar

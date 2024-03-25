@@ -36,17 +36,11 @@ export function getFilms(
   if (currentLecteur) {
     LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
   } else {
-    if (Lecteurs.epsAS) {
-      setCurrentLecteur({ lecteur: "epsAS" });
+    const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-      LecteursFilms = Lecteurs.epsAS;
-    } else {
-      const lecteur = Object.keys(Lecteurs)[0] as EPS;
+    setCurrentLecteur({ lecteur });
 
-      setCurrentLecteur({ lecteur });
-
-      LecteursFilms = Lecteurs[lecteur]!;
-    }
+    LecteursFilms = Lecteurs[lecteur]!;
   }
 
   for (let i = 0; i < Object.keys(names!).length; i++) {
