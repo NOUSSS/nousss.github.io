@@ -5,20 +5,30 @@ interface WindowKeys {
 }
 
 const containsMyvi = (episodes?: string[]): boolean =>
-  episodes?.[0]?.includes("myvi") ?? false;
+  episodes?.some((episode) => episode.includes("myvi")) ?? false;
+
+const containsVidmoly = (episodes?: string[]): boolean =>
+  episodes?.some((episode) => episode.includes("vidmoly")) ?? false;
 
 export const getLecteur = (): LecteurReturnType => {
   const eps = ["eps1", "eps2", "eps3", "eps4"];
 
-  const windowProps = eps.reduce((acc, cur) => {
-    const value = (window as unknown as WindowKeys)[cur];
+  const { vidmolyEps, otherEps } = eps.reduce(
+    (acc, cur) => {
+      const value = (window as unknown as WindowKeys)[cur];
 
-    if (value && !containsMyvi(value)) {
-      acc[cur] = value;
-    }
+      if (value && containsVidmoly(value)) {
+        acc.vidmolyEps[cur] = value;
+      } else if (value && !containsMyvi(value)) {
+        acc.otherEps[cur] = value;
+      }
 
-    return acc;
-  }, {} as LecteurReturnType);
+      return acc;
+    },
+    { vidmolyEps: {} as LecteurReturnType, otherEps: {} as LecteurReturnType },
+  );
 
-  return windowProps;
+  const orderedEps = { ...vidmolyEps, ...otherEps };
+
+  return orderedEps;
 };
