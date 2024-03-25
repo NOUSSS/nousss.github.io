@@ -25,7 +25,7 @@ export function Title({
     <h1>{new Date().getHours() > 19 ? "Bonsoir." : "Bonjour."}</h1>
   ) : (
     <Link href={link ? link : "/"}>
-      <h1>{formatName(anime)}</h1>
+      <h1>{formatName(anime) || ""}</h1>
     </Link>
   );
 

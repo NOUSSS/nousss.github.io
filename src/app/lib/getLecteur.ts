@@ -5,7 +5,7 @@ interface WindowKeys {
 }
 
 const containsMyvi = (episodes?: string[]): boolean =>
-  episodes?.some((episode) => episode.includes("myvi")) ?? false;
+  episodes?.[0].includes("myvi") ?? false;
 
 const containsVidmoly = (episodes?: string[]): boolean =>
   episodes?.some((episode) => episode.includes("vidmoly")) ?? false;

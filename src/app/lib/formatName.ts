@@ -1,9 +1,7 @@
+import { ANIMES } from "@/animes/constants";
+
 export const formatName = (animeName: string) => {
-  return animeName
-    .replaceAll("-", " ")
-    .split(" ")
-    .map((word: string) => {
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    .join(" ");
+  return ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === animeName.toLowerCase(),
+  )?.anime;
 };

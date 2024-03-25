@@ -73,7 +73,7 @@ export interface AnimesType {
 
 export const ANIMES: AnimesType[] = [
   {
-    anime: "one piece",
+    anime: "One Piece",
     aliases: ["luffy", "zoro", "op", "films", "saisons", "scans"],
     options: new OnePiece(),
     category: ["Classique", "Aventure"],
@@ -113,7 +113,7 @@ export const ANIMES: AnimesType[] = [
       "Au début de l’histoire, le monde semble paisible et tout le monde vit librement, mais tout cela ne dure pas longtemps. Un nouvel ennemi a commencé à se cacher et l’entité « Destructeur » appelée le Dieu de la Destruction s’est réveillée de son sommeil. Tout cela a eu un très grand impact sur la terre, tout le monde a commencé à se préparer à une catastrophe encore plus grande. ",
   },
   {
-    anime: "my hero academia",
+    anime: "My Hero Academia",
     aliases: [
       "boku no hero academia",
       "izuku",
@@ -129,7 +129,7 @@ export const ANIMES: AnimesType[] = [
       'Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d\'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.',
   },
   {
-    anime: "vinland saga",
+    anime: "Vinland Saga",
     aliases: ["ennemi", "thorfinn", "thors", "thorkell", "saisons", "scans"],
     options: new VinlandSaga(),
     category: ["Réflexion"],
@@ -137,7 +137,7 @@ export const ANIMES: AnimesType[] = [
       "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
   {
-    anime: "solo leveling",
+    anime: "Solo Leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
     category: ["Nouveautés", "Webtoon"],
@@ -152,7 +152,7 @@ export const ANIMES: AnimesType[] = [
     synopsis: `Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.`,
   },
   {
-    anime: "jujutsu kaisen",
+    anime: "Jujutsu Kaisen",
     aliases: ["itadori", "gojo", "sukuna", "jjk", "films", "saisons", "scans"],
     options: new JujutsuKaisen(),
     category: ["Magie"],
@@ -160,14 +160,14 @@ export const ANIMES: AnimesType[] = [
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
   {
-    anime: "black clover",
+    anime: "Black Clover",
     aliases: ["asta", "yuno", "bc", "films", "saisons", "scans"],
     options: new BlackClover(),
     category: ["Magie"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
-    anime: "hunter x hunter",
+    anime: "Hunter X Hunter",
     aliases: ["nen", "hxh", "gon", "netero", "films", "saisons", "scans"],
     options: new HunterXHunter(),
     category: ["Aventure", "Classique"],
@@ -175,7 +175,7 @@ export const ANIMES: AnimesType[] = [
       "Abandonné par son père qui est un Hunter, à la fois un aventurier et un chasseur de primes, Gon décide à l'âge de 12 ans de partir pour devenir un Hunter. Cela ne sera pas chose aisée, il devra passer une suite de tests et examens en compagnie de milliers d'autres prétendants au titre de Hunter.",
   },
   {
-    anime: "mashle",
+    anime: "Mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
     category: ["Nouveautés", "Humour", "Magie"],
@@ -215,7 +215,7 @@ export const ANIMES: AnimesType[] = [
       "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
   },
   {
-    anime: "naruto",
+    anime: "Naruto",
     aliases: ["konoha", "kurama", "kyubi", "scans", "saisons"],
     options: new Naruto(),
     category: ["Classique"],
@@ -223,7 +223,7 @@ export const ANIMES: AnimesType[] = [
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
   {
-    anime: "naruto shippuden",
+    anime: "Naruto Shippuden",
     aliases: ["naruto adulte", "films", "saisons"],
     options: new NarutoShippuden(),
     category: ["Classique"],
@@ -255,7 +255,7 @@ export const ANIMES: AnimesType[] = [
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
   {
-    anime: "haikyuu",
+    anime: "Haikyuu",
     aliases: ["volley", "films", "scans", "saisons"],
     options: new Haikyuu(),
     category: ["Sport"],

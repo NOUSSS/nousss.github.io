@@ -70,7 +70,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
           const value = inputValue.toLowerCase();
 
           return (
-            formatName(anime).toLowerCase().includes(value) ||
+            formatName(anime)?.toLowerCase().includes(value) ||
             (aliases &&
               aliases.some((alias) => alias.toLowerCase().includes(value)))
           );
@@ -104,8 +104,8 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
                   <div>
                     <h1 className="mx-3 text-2xl">
-                      {formatName(anime).length > 30
-                        ? `${formatName(anime).substring(0, 30)}...`
+                      {formatName(anime)!.length > 30
+                        ? `${formatName(anime)?.substring(0, 30)}...`
                         : formatName(anime)}
                     </h1>
 

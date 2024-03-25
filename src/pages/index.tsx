@@ -268,7 +268,7 @@ export default function Accueil() {
               {names.map((animeName: string, i) => (
                 <li
                   className="animes-list ml-4"
-                  onClick={() => goToAnime(formatName(animeName), category, i)}
+                  onClick={() => goToAnime(formatName(animeName)!, category, i)}
                   id={
                     formatName(animeName) +
                     `${
@@ -297,7 +297,7 @@ export default function Accueil() {
                           event.stopPropagation();
 
                           removeAnimeFromHistorique(
-                            formatName(animeName),
+                            formatName(animeName)!,
                             historiques[i]!.redirect,
                             historiques,
                             setHistoriques,
@@ -323,7 +323,7 @@ export default function Accueil() {
                               <br />
 
                               {getCurrentChapitre(
-                                formatName(animeName),
+                                formatName(animeName)!,
                                 i,
                                 historiques,
                               )}
@@ -341,7 +341,7 @@ export default function Accueil() {
                               Saison {historiques[i]?.saison}
                               {", "}
                               {getCurrentEpisode(
-                                formatName(animeName),
+                                formatName(animeName)!,
                                 i,
                                 historiques,
                               )}

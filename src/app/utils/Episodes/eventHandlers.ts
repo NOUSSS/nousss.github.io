@@ -41,7 +41,13 @@ export function clickEvents(
       episodes.forEach((ep) => ep.classList.remove("select"));
       episode.classList.add("select");
 
-      Change(episodeId!, lecteur, setVideo, setTitle, formatName(currentAnime));
+      Change(
+        episodeId!,
+        lecteur,
+        setVideo,
+        setTitle,
+        formatName(currentAnime)!,
+      );
     };
 
     episode.addEventListener("click", handler);

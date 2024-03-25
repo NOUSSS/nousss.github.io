@@ -66,7 +66,7 @@ export function getFilms(
               `${url} ${i}`,
               setVideo,
               setTitle,
-              formatName(currentAnime),
+              formatName(currentAnime)!,
             );
           }}
           alt="poster de saison"

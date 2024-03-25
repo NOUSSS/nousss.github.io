@@ -60,15 +60,6 @@ const Episodes = () => {
     null,
   );
 
-  const options = (isClient && getAnime(AnimeInfo!.anime)?.options) as Anime;
-
-  const { allIndex, horsSeries, SCRIPT_URL, names } =
-    (isClient && options?.EPISODES_OPTIONS) || {};
-
-  const disclamerMessage = useRef("");
-
-  let scriptIndex = (isClient && AnimeInfo?.saison) as string | undefined;
-
   useEffect(() => {
     setIsClient(true);
 
@@ -81,8 +72,9 @@ const Episodes = () => {
     if (
       !currentAnime ||
       !animeFetched?.options.EPISODES_OPTIONS ||
-      Object.keys(animeFetched.options?.saisons!).length <
-        Number(localStorage.getItem(`${formatName(currentAnime)}--saison`))
+      (animeFetched.options &&
+        Object.keys(animeFetched.options?.saisons!).length <
+          Number(localStorage.getItem(`${formatName(currentAnime)}--saison`)))
     ) {
       router.push({
         pathname: "/",
@@ -114,22 +106,22 @@ const Episodes = () => {
       }
 
       setAnimeInfo({
-        anime: formatName(currentAnime!),
+        anime: formatName(currentAnime!)!,
         saison: currentSaison,
       });
     }
   }, []);
 
-  const parts = (isClient && options?.EPISODES_OPTIONS?.fromParts) as number;
+  const options = (isClient &&
+    AnimeInfo?.anime &&
+    getAnime(AnimeInfo!.anime)?.options) as Anime;
 
-  if (parts) {
-    if (Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) > parts) {
-      scriptIndex = `${parts}-${
-        Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) -
-        (parts - 1)
-      }`;
-    }
-  }
+  const { allIndex, horsSeries, SCRIPT_URL, names } =
+    (isClient && options?.EPISODES_OPTIONS) || {};
+
+  const disclamerMessage = useRef("");
+
+  let scriptIndex = (isClient && AnimeInfo?.saison) as string | undefined;
 
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
@@ -157,6 +149,17 @@ const Episodes = () => {
 
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
+
+  const parts = (isClient && options?.EPISODES_OPTIONS?.fromParts) as number;
+
+  if (parts) {
+    if (Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) > parts) {
+      scriptIndex = `${parts}-${
+        Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) -
+        (parts - 1)
+      }`;
+    }
+  }
 
   useEffect(() => {
     if (lang && AnimeInfo?.anime && lang) {
@@ -387,7 +390,8 @@ const Episodes = () => {
 
         const saisonName = Object.values(
           getAnime(AnimeInfo!.anime)?.options?.saisons!,
-        )[Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1].name;
+        )[Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1]
+          ?.name;
 
         setSaisonTitle(
           <>
@@ -438,7 +442,7 @@ const Episodes = () => {
         ) : null}
       </Head>
 
-      {isClient && (
+      {isClient && AnimeInfo?.anime && (
         <Title
           link={{
             pathname: "/Saisons",
@@ -596,7 +600,7 @@ const Episodes = () => {
           </button>
         ) : null}
 
-        {isClient && AnimeInfo?.saison !== saisonsEntries.length.toString() ? (
+        {isClient && AnimeInfo?.saison !== saisonsEntries?.length.toString() ? (
           <button
             onClick={() => {
               const newSaison =

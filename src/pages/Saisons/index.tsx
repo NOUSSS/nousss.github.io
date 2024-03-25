@@ -68,11 +68,11 @@ const Saisons = () => {
                   query: { anime: formatName(anime?.anime!), saison: saison },
                 });
 
-                changeSaison(saison, formatName(anime?.anime!));
+                changeSaison(saison, formatName(anime?.anime!)!);
               }}
               className="cursor-pointer underline"
             >
-              {Object.values(anime?.options.saisons!)[Number(saison) - 1].name}
+              {Object.values(anime?.options.saisons!)[Number(saison) - 1]?.name}
             </span>
           </>
         )}
@@ -100,7 +100,7 @@ const Saisons = () => {
                 },
               });
 
-              changeSaison((index + 1).toString(), formatName(anime?.anime!));
+              changeSaison((index + 1).toString(), formatName(anime?.anime!)!);
             }}
           >
             {element}

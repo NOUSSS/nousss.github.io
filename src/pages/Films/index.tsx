@@ -84,7 +84,7 @@ const Films = () => {
       setLang(lang);
 
       setAnime({
-        anime: formatName(currentAnime!.anime),
+        anime: formatName(currentAnime!.anime)!,
         options: currentAnime.options,
         category: currentAnime.category,
         synopsis: currentAnime.synopsis,
@@ -164,7 +164,7 @@ const Films = () => {
         setVideo,
         setTitle,
 
-        formatName(currentAnime),
+        formatName(currentAnime)!,
       );
 
       getFilms(
@@ -182,7 +182,7 @@ const Films = () => {
     lang,
     status,
     currentAnime,
-    options.BLACKLIST_URL,
+    options?.BLACKLIST_URL,
   ]);
 
   return (

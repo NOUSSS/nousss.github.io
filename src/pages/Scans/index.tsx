@@ -64,7 +64,7 @@ const Scans = () => {
     } else {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       setAnime({
-        anime: formatName(currentAnime!.anime),
+        anime: formatName(currentAnime!.anime)!,
         options: currentAnime.options,
         category: currentAnime.category,
         synopsis: currentAnime.synopsis,
