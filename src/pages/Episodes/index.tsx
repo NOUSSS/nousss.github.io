@@ -32,14 +32,14 @@ import Switch from "@/app/ui/Switch";
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
 
+const langObj = {
+  vostfr: "VostFR",
+  vf: "VF",
+};
+
 const Episodes = () => {
   const router = useRouter();
   const params = useSearchParams();
-
-  const langObj = {
-    vostfr: "VostFR",
-    vf: "VF",
-  };
 
   useEffect(() => {
     router.events.on("routeChangeStart", ClearCache);
@@ -60,7 +60,7 @@ const Episodes = () => {
     null,
   );
 
-  const options = (isClient && getAnime(AnimeInfo?.anime!)?.options) as Anime;
+  const options = (isClient && getAnime(AnimeInfo!.anime)?.options) as Anime;
 
   const { allIndex, horsSeries, SCRIPT_URL, names } =
     (isClient && options?.EPISODES_OPTIONS) || {};
@@ -389,13 +389,12 @@ const Episodes = () => {
           LecteurEpisodes,
           setVideo,
           setEpisodeTitle,
-          AnimeInfo!.anime!,
+          AnimeInfo!.anime,
         );
 
         const saisonName = Object.values(
-          getAnime(AnimeInfo?.anime!)?.options?.saisons!,
-        )[Number(localStorage.getItem(`${AnimeInfo?.anime!}--saison`)) - 1]
-          .name;
+          getAnime(AnimeInfo!.anime)?.options?.saisons!,
+        )[Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1].name;
 
         setSaisonTitle(
           <>
@@ -449,7 +448,7 @@ const Episodes = () => {
       <Title
         link={{
           pathname: "/Saisons",
-          query: { anime: AnimeInfo?.anime! },
+          query: { anime: AnimeInfo!.anime },
         }}
       />
 
@@ -587,7 +586,7 @@ const Episodes = () => {
               router.push({
                 pathname: `/Episodes`,
                 query: {
-                  anime: AnimeInfo?.anime!,
+                  anime: AnimeInfo?.anime,
                   saison: prevSaison,
                 },
               });
@@ -611,7 +610,7 @@ const Episodes = () => {
               router.push({
                 pathname: `/Episodes`,
                 query: {
-                  anime: AnimeInfo?.anime!,
+                  anime: AnimeInfo?.anime,
                   saison: newSaison,
                 },
               });
