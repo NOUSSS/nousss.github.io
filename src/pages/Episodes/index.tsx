@@ -176,7 +176,7 @@ const Episodes = () => {
 
       setUrlScript(
         (isClient &&
-          (oavIndex !== -1
+          (oavIndex !== -1 && oavIndex + 1 === Number(AnimeInfo?.saison)
             ? SCRIPT_URL!({
                 index: 1,
                 lang: lang!,
