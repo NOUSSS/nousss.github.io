@@ -107,7 +107,7 @@ export default function Select({
   return (
     <label
       ref={labelRef}
-      className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,_23,_29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
+      className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,23,29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
       onClick={appear}
     >
       <p className="placeholder">{placeholder}</p>
