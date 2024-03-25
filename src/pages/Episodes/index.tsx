@@ -627,6 +627,7 @@ const Episodes = () => {
           </button>
         ) : null}
       </div>
+
       <Footer style={true} media />
     </main>
   );
