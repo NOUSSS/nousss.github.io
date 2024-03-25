@@ -222,26 +222,6 @@ const Episodes = () => {
         });
       }
 
-      const NextSaisonSelector =
-        document.querySelector<HTMLElement>(".NextSaison")!;
-
-      const PrevSaisonSelector =
-        document.querySelector<HTMLElement>(".PrevSaison")!;
-
-      const lastSaison = (
-        Number(Object.keys(allIndex!)[Object.keys(allIndex!).length - 1]) - 1
-      ).toString();
-
-      const firstSaison = Object.keys(allIndex!)[0];
-
-      if (AnimeInfo?.saison === firstSaison)
-        PrevSaisonSelector.classList.add("hidden");
-      else PrevSaisonSelector.classList.remove("hidden");
-
-      if (AnimeInfo?.saison === lastSaison)
-        NextSaisonSelector.classList.add("hidden");
-      else NextSaisonSelector.classList.remove("hidden");
-
       if (AnimeInfo!.saison > saisonsEntries[oavIndex]) {
         const newIndexSaison = (Number(AnimeInfo?.saison) - 1).toString();
 
@@ -598,49 +578,53 @@ const Episodes = () => {
       </div>
 
       <div className="relative top-12 flex gap-5">
-        <button
-          onClick={() => {
-            const prevSaison =
-              Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1;
+        {isClient && AnimeInfo?.saison !== "1" ? (
+          <button
+            onClick={() => {
+              const prevSaison =
+                Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1;
 
-            router.push({
-              pathname: `/Episodes`,
-              query: {
-                anime: AnimeInfo?.anime!,
-                saison: prevSaison,
-              },
-            });
+              router.push({
+                pathname: `/Episodes`,
+                query: {
+                  anime: AnimeInfo?.anime!,
+                  saison: prevSaison,
+                },
+              });
 
-            changeSaison(prevSaison.toString(), AnimeInfo!.anime);
+              changeSaison(prevSaison.toString(), AnimeInfo!.anime);
 
-            router.reload();
-          }}
-          className="btn back PrevSaison"
-        >
-          Saison précédente
-        </button>
+              router.reload();
+            }}
+            className="btn back"
+          >
+            Saison précédente
+          </button>
+        ) : null}
 
-        <button
-          onClick={() => {
-            const newSaison =
-              Number(localStorage.getItem(`${AnimeInfo!.anime}--saison`)) + 1;
+        {isClient && AnimeInfo?.saison !== saisonsEntries.length.toString() ? (
+          <button
+            onClick={() => {
+              const newSaison =
+                Number(localStorage.getItem(`${AnimeInfo!.anime}--saison`)) + 1;
 
-            router.push({
-              pathname: `/Episodes`,
-              query: {
-                anime: AnimeInfo?.anime!,
-                saison: newSaison,
-              },
-            });
+              router.push({
+                pathname: `/Episodes`,
+                query: {
+                  anime: AnimeInfo?.anime!,
+                  saison: newSaison,
+                },
+              });
 
-            changeSaison(newSaison.toString(), AnimeInfo!.anime);
+              changeSaison(newSaison.toString(), AnimeInfo!.anime);
 
-            router.reload();
-          }}
-          className="btn next NextSaison"
-        >
-          Saison suivante
-        </button>
+              router.reload();
+            }}
+            className="btn next"
+          >
+            Saison suivante
+          </button>
+        ) : null}
       </div>
 
       <Footer media />
