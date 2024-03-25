@@ -1,22 +1,24 @@
 import { LecteurReturnType } from "@/typings/types";
 
-const containsMyvi = (episodes?: string[]): boolean => {
-  return episodes ? episodes[0].includes("myvi") : false;
-};
+interface WindowKeys {
+  [key: string]: string[];
+}
+
+const containsMyvi = (episodes?: string[]): boolean =>
+  episodes?.[0]?.includes("myvi") ?? false;
 
 export const getLecteur = (): LecteurReturnType => {
-  const { eps1, eps2, eps3, eps4, epsAS } = window;
+  const eps = ["eps1", "eps2", "eps3", "eps4", "epsAS"];
 
-  let lecteursExt: LecteurReturnType = {};
+  const windowProps = eps.reduce((acc, cur) => {
+    const value = (window as unknown as WindowKeys)[cur];
 
-  if (eps1 !== undefined && !containsMyvi(eps1)) lecteursExt["eps1"] = eps1;
-  if (eps2 !== undefined && !containsMyvi(eps2)) lecteursExt["eps2"] = eps2;
-  if (eps3 !== undefined && !containsMyvi(eps3)) lecteursExt["eps3"] = eps3;
-  if (eps4 !== undefined && !containsMyvi(eps4)) lecteursExt["eps4"] = eps4;
+    if (value && !containsMyvi(value) && cur !== "epsAS") {
+      acc[cur] = value;
+    }
 
-  if (epsAS !== undefined) {
-    lecteursExt = { ...lecteursExt };
-  }
+    return acc;
+  }, {} as LecteurReturnType);
 
-  return lecteursExt;
+  return windowProps;
 };

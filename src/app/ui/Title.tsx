@@ -22,7 +22,7 @@ export function Title({
   }, [anime, query.anime]);
 
   const text = accueil ? (
-    <h1>Hello World!</h1>
+    <h1>{new Date().getHours() > 19 ? "Bonsoir." : "Bonjour."}</h1>
   ) : (
     <Link href={link ? link : "/"}>
       <h1>{formatName(anime)}</h1>

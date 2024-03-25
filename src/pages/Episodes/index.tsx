@@ -156,15 +156,6 @@ const Episodes = () => {
     AnimeInfo &&
     saisonsEntries.findIndex((e) => e === "oav")) as number;
 
-  const isOAV =
-    isClient &&
-    oavIndex &&
-    AnimeInfo?.saison ===
-      (
-        saisonsEntries.findIndex((e) => e.toString() === oavIndex.toString()) +
-        2
-      ).toString();
-
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
 
@@ -181,11 +172,13 @@ const Episodes = () => {
 
       if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
 
+      console.log(oavIndex);
+
       setUrlScript(
         (isClient &&
-          (isOAV
+          (oavIndex !== -1
             ? SCRIPT_URL!({
-                index: 66,
+                index: 1,
                 lang: lang!,
               }).replace(/saison\d+(-\d+)?/g, "oav")
             : SCRIPT_URL!({
@@ -265,13 +258,19 @@ const Episodes = () => {
 
       if (currentLecteur?.lecteur) {
         LecteurEpisodes =
-          Lecteurs[currentLecteur.lecteur as "epsAS" | "eps1" | "eps2"]!;
+          Lecteurs[
+            currentLecteur.lecteur as "epsAS" | "eps1" | "eps2" | "eps3"
+          ]!;
       } else {
         if (Lecteurs.epsAS) {
           setCurrentLecteur({ lecteur: "epsAS" });
           LecteurEpisodes = Lecteurs.epsAS;
         } else {
-          const lecteur = Object.keys(Lecteurs)[0] as "eps1" | "eps2" | "epsAS";
+          const lecteur = Object.keys(Lecteurs)[0] as
+            | "eps1"
+            | "eps2"
+            | "eps3"
+            | "epsAS";
 
           setCurrentLecteur({ lecteur });
 
