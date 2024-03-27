@@ -5,6 +5,7 @@ import { appearVideo } from "./appearVideo";
 import { getAnime } from "@/app/lib/getAnime";
 import { formatName } from "@/app/lib/formatName";
 import { EPS } from "@/typings/types";
+import { RefObject } from "react";
 
 export function getFilms(
   setFilmsFront: React.Dispatch<
@@ -24,9 +25,9 @@ export function getFilms(
   },
 
   currentAnime: string,
+  containerRef: RefObject<HTMLElement>,
 ) {
   let LecteursFilms: string[] = [];
-
   const Lecteurs = getLecteur();
 
   const { names } = getAnime(currentAnime)!.options.FILM_OPTIONS || {};
@@ -55,7 +56,7 @@ export function getFilms(
       <div
         id={id}
         key={id}
-        className="list-poster group m-8 inline-flex w-20 flex-col gap-3"
+        className="group m-8 inline-flex w-20 flex-col gap-3"
       >
         <Image
           className="h-[109px] w-[89px] transition-all duration-300 group-hover:rotate-12"
@@ -67,6 +68,7 @@ export function getFilms(
               setVideo,
               setTitle,
               formatName(currentAnime)!,
+              containerRef,
             );
           }}
           alt="poster de saison"

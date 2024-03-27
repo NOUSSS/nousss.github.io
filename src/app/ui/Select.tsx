@@ -25,6 +25,7 @@ export default function Select({
   const labelRef = useRef<HTMLLabelElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
 
   const toggleBodyScroll = (disable: boolean) => {
     if (disable) {
@@ -51,11 +52,7 @@ export default function Select({
           menuRef.current.childNodes.length - 1
         ] as HTMLElement;
 
-        if (
-          lastItem.innerText ===
-          (labelRef.current.querySelector(".placeholder") as HTMLElement)
-            ?.innerText
-        ) {
+        if (lastItem.innerText === placeholderRef.current?.innerText) {
           menuRef.current.scrollTo({
             top: menuRef.current.scrollHeight,
             behavior: "smooth",
@@ -95,12 +92,8 @@ export default function Select({
     onSelect(item);
     disappear();
 
-    if (labelRef.current) {
-      const placeholderElement = labelRef.current.querySelector(
-        ".placeholder",
-      ) as HTMLElement;
-
-      placeholderElement.innerText = item.name;
+    if (labelRef.current && placeholderRef.current) {
+      placeholderRef.current.innerText = item.name;
     }
   };
 
@@ -110,7 +103,9 @@ export default function Select({
       className={`label-select relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,23,29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
       onClick={appear}
     >
-      <p className="placeholder">{placeholder}</p>
+      <p className="placeholder" ref={placeholderRef}>
+        {placeholder}
+      </p>
 
       <UpArrow ref={svgRef} className="transition-all duration-300 ease-out" />
 

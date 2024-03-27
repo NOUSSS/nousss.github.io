@@ -9,7 +9,6 @@ import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { EPS, LecteurReturnType, SeasonAndFilm } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
-import { isMobile } from "@/app/lib/isMobile";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
@@ -60,6 +59,9 @@ const Episodes = () => {
     null,
   );
 
+  const episodesRef = useRef<HTMLUListElement[]>([]);
+  const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
+
   useEffect(() => {
     setIsClient(true);
 
@@ -85,7 +87,7 @@ const Episodes = () => {
 
       let lang = localStorage.getItem(
         `${formatName(currentAnime)}--${currentSaison}--lang`,
-      );
+      ) as "vostfr" | "vf";
 
       const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
@@ -96,7 +98,7 @@ const Episodes = () => {
         placeholder.innerText = "VostFR";
       } else {
         setLang(lang);
-        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
+        placeholder.innerText = langObj[lang];
       }
 
       setAnimeInfo({
@@ -114,6 +116,8 @@ const Episodes = () => {
     (isClient && options?.EPISODES_OPTIONS) || {};
 
   const disclamerMessage = useRef("");
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const namesRef = useRef<HTMLSpanElement[]>([]);
 
   let scriptIndex = (isClient && AnimeInfo?.saison) as string | undefined;
 
@@ -268,13 +272,16 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
+              className="group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               key={title}
             >
               <span className="transition-all duration-200 ease-out group-hover:text-white">
                 {title}
               </span>
+              <span
+                ref={(el) => (namesRef.current[indexEpisode - 1] = el!)}
+              ></span>
             </li>,
           );
         } else {
@@ -292,7 +299,7 @@ const Episodes = () => {
 
           listEpisodes.push(
             <li
-              className="list-episodes group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
+              className="group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
               data-id={indexEpisode}
               key={id}
             >
@@ -300,7 +307,10 @@ const Episodes = () => {
                 {episodeNumber} {indexId}
               </span>{" "}
               :{" "}
-              <span className="episodeName text-white transition-all duration-200 ease-out hover:text-main group-hover:text-main">
+              <span
+                ref={(el) => (namesRef.current[indexEpisode - 1] = el!)}
+                className="text-white transition-all duration-200 ease-out hover:text-main group-hover:text-main"
+              >
                 {episodeTitle}
               </span>
             </li>,
@@ -318,7 +328,7 @@ const Episodes = () => {
 
           let retard = 0;
 
-          document.querySelectorAll(".list-episodes").forEach((e, i) => {
+          episodesRef.current?.[0].childNodes.forEach((e, i) => {
             if (i + 1 < Number(episode)) {
               if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
             }
@@ -340,7 +350,10 @@ const Episodes = () => {
                   ? ""
                   : `(${Number(episode) - retard})`}
               </span>{" "}
-              : <span className="episodeName text-white">{title}</span>
+              :{" "}
+              <span ref={episodeTitleRef} className="text-white">
+                {title}
+              </span>
             </>,
           );
         })();
@@ -357,19 +370,20 @@ const Episodes = () => {
         const [firstEpisode] = LecteurEpisodes;
 
         const title =
-          names?.find(
-            ({ index }) => index === (Number(episodeIndex) + 1).toString(),
-          )?.name || "";
+          names?.find(({ index }) => index === (episodeIndex + 1).toString())
+            ?.name || "";
 
         setVideo(firstEpisode);
 
         setEpisodeTitle(
           <>
             <span>
-              {Number(episodeIndex) + 1}{" "}
-              {AnimeInfo?.saison === "1" ? "" : `(1)`}
+              {episodeIndex + 1} {AnimeInfo?.saison === "1" ? "" : `(1)`}
             </span>{" "}
-            : <span className="episodeName text-white">{title}</span>
+            :{" "}
+            <span ref={episodeTitleRef} className="text-white">
+              {title}
+            </span>
           </>,
         );
       }
@@ -380,6 +394,9 @@ const Episodes = () => {
           setVideo,
           setEpisodeTitle,
           AnimeInfo!.anime,
+          episodesRef,
+          containerRef,
+          episodeTitleRef,
         );
 
         const saisonName = Object.values(
@@ -415,18 +432,7 @@ const Episodes = () => {
         }
       }
     }
-  }, [
-    currentLecteur?.change,
-    AnimeInfo,
-    scriptIndex,
-    status,
-    url_script,
-    allIndex,
-    horsSeries,
-    names,
-    oavIndex,
-    options?.note,
-  ]);
+  }, [currentLecteur?.change, status]);
 
   return (
     <main className="flex flex-col items-center">
@@ -498,7 +504,7 @@ const Episodes = () => {
         ) : null}
       </div>
 
-      <div className="container">
+      <div ref={containerRef} className="container">
         <iframe className="video" src={video} allowFullScreen></iframe>
         <iframe className="ambiance" src={video}></iframe>
       </div>
@@ -514,6 +520,9 @@ const Episodes = () => {
                 setVideo,
                 setEpisodeTitle,
                 AnimeInfo!.anime,
+                episodesRef,
+                containerRef,
+                episodeTitleRef,
               )
             }
           >
@@ -532,6 +541,9 @@ const Episodes = () => {
                 setVideo,
                 setEpisodeTitle,
                 AnimeInfo!.anime,
+                episodesRef,
+                containerRef,
+                episodeTitleRef,
               )
             }
           >
@@ -543,30 +555,31 @@ const Episodes = () => {
       <SearchBar
         className="m-8"
         placeholder="Rechercher un épisode"
-        container="list-episodes"
+        containerRef={episodesRef}
         query="innerText"
       />
 
-      {isMobile() ? null : (
-        <Switch
-          placeholder="Cacher le nom des épisodes"
-          onChange={(event) => {
-            const names = Array.from(document.querySelectorAll(".episodeName"));
+      <Switch
+        placeholder="Cacher le nom des épisodes"
+        onChange={(event) => {
+          if (event.target.checked) {
+            episodeTitleRef.current?.classList.add("blur");
 
-            if (event.target.checked)
-              for (const episode of names) {
-                (episode as HTMLElement).classList.add("blur");
-              }
-            else
-              for (const episode of names) {
-                (episode as HTMLElement).classList.remove("blur");
-              }
-          }}
-        />
-      )}
+            for (const episode of namesRef.current) {
+              episode.classList.add("blur");
+            }
+          } else {
+            episodeTitleRef.current?.classList.remove("blur");
+
+            for (const episode of namesRef.current) {
+              episode.classList.remove("blur");
+            }
+          }
+        }}
+      />
 
       <div className="m-5 max-h-96 min-w-24 overflow-y-auto">
-        <ul>{episodes}</ul>
+        <ul ref={(el) => (episodesRef.current[0] = el!)}>{episodes}</ul>
       </div>
 
       <div className="m-8 flex gap-5">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import SearchBar from "@/app/ui/searchBar";
 import Image from "next/image";
@@ -25,6 +25,11 @@ export default function Accueil() {
   const router = useRouter();
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
+
+  const confirmRef = useRef<HTMLDivElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+
+  const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
     const keys = Object.keys(localStorage);
@@ -153,6 +158,11 @@ export default function Accueil() {
 
   return (
     <main>
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
+      ></div>
+
       <nav className="mb-16">
         <Title accueil />
 
@@ -160,14 +170,14 @@ export default function Accueil() {
           <SearchBar
             className="m-8"
             placeholder="Rechercher un anime"
-            container="animes-list"
+            containerRef={animesRef}
             query="id"
           />
         </div>
       </nav>
 
       <div className="catalogue">
-        {catalogues.map(({ names, category }) => (
+        {catalogues.map(({ names, category }, index) => (
           <div className={`${category} mb-3`} key={category}>
             <div
               className={`category ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
@@ -178,7 +188,10 @@ export default function Accueil() {
 
                   <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
-                  <div className="confirm fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full">
+                  <div
+                    ref={confirmRef}
+                    className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
+                  >
                     <div className="absolute inset-0 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
 
                     <div className="relative z-10 p-4 tracking-normal">
@@ -201,16 +214,8 @@ export default function Accueil() {
 
                           toast.success("L'historique a bien été vidé");
 
-                          const confirm = document.querySelector(
-                            ".confirm",
-                          )! as HTMLElement;
-
-                          const overlay = document.querySelector(
-                            ".overlay",
-                          )! as HTMLElement;
-
-                          confirm.classList.add("hidden");
-                          overlay.classList.add("hidden");
+                          confirmRef.current?.classList.add("hidden");
+                          overlayRef?.current?.classList.add("hidden");
                         }}
                       >
                         Oui
@@ -219,16 +224,8 @@ export default function Accueil() {
                       <button
                         className="bg-red-500 hover:bg-red-800"
                         onClick={() => {
-                          const confirm = document.querySelector(
-                            ".confirm",
-                          )! as HTMLElement;
-
-                          const overlay = document.querySelector(
-                            ".overlay",
-                          )! as HTMLElement;
-
-                          confirm.classList.add("hidden");
-                          overlay.classList.add("hidden");
+                          confirmRef.current?.classList.add("hidden");
+                          overlayRef?.current?.classList.add("hidden");
                         }}
                       >
                         Annuler
@@ -239,21 +236,13 @@ export default function Accueil() {
                   <button
                     className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
                     onClick={() => {
-                      const confirm = document.querySelector(
-                        ".confirm",
-                      )! as HTMLElement;
+                      confirmRef.current?.classList.contains("hidden")
+                        ? confirmRef.current?.classList.remove("hidden")
+                        : confirmRef.current?.classList.add("hidden");
 
-                      const overlay = document.querySelector(
-                        ".overlay",
-                      )! as HTMLElement;
-
-                      confirm.classList.contains("hidden")
-                        ? confirm.classList.remove("hidden")
-                        : confirm.classList.add("hidden");
-
-                      overlay.classList.contains("hidden")
-                        ? overlay.classList.remove("hidden")
-                        : overlay.classList.add("hidden");
+                      overlayRef?.current?.classList.contains("hidden")
+                        ? overlayRef?.current?.classList.remove("hidden")
+                        : overlayRef?.current?.classList.add("hidden");
                     }}
                   >
                     Supprimer tout l'historique
@@ -264,10 +253,14 @@ export default function Accueil() {
               )}
             </div>
 
-            <ul key={category} className="flex cursor-pointer overflow-x-auto">
+            <ul
+              ref={(el) => (animesRef.current![index] = el!)}
+              key={category}
+              className="flex cursor-pointer overflow-x-auto"
+            >
               {names.map((animeName: string, i) => (
                 <li
-                  className="animes-list ml-4"
+                  className="ml-4"
                   onClick={() => goToAnime(formatName(animeName)!, category, i)}
                   id={
                     formatName(animeName) +

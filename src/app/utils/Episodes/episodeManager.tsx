@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject } from "react";
 
 import { getAnime } from "@/app/lib/getAnime";
 
@@ -10,6 +10,9 @@ export function Change(
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
   currentAnime: string,
+  episodesRef: RefObject<HTMLElement[]>,
+  containerRef: RefObject<HTMLElement>,
+  episodeTitleRef: RefObject<HTMLSpanElement>,
 ): void {
   localStorage.removeItem(`${currentAnime}--currentTime`);
 
@@ -27,9 +30,11 @@ export function Change(
     if (isHorsSerie.hs.includes(Number(indexEpisode) - 1)) {
       let esp = "";
 
-      document.querySelectorAll("p").forEach((e) => {
+      episodesRef.current?.[0].childNodes.forEach((el) => {
+        const e = el as HTMLElement;
+
         if (e.dataset?.id === indexEpisode) {
-          esp = e.id.match(/[0-9]/g)!.join("");
+          esp = e.innerText.match(/[0-9]/g)!.join("");
         }
       });
 
@@ -43,7 +48,7 @@ export function Change(
     } else {
       let retard = 0;
 
-      document.querySelectorAll(".list-episodes").forEach((e, i) => {
+      episodesRef.current?.[0].childNodes.forEach((e, i) => {
         if (i + 1 < Number(indexEpisode)) {
           if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
         }
@@ -68,7 +73,10 @@ export function Change(
             {numberEpisode}{" "}
             {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
           </span>{" "}
-          : <span className="episodeName text-white">{title}</span>
+          :{" "}
+          <span ref={episodeTitleRef} className="text-white">
+            {title}
+          </span>
         </>,
       );
 
@@ -94,7 +102,10 @@ export function Change(
         <span>
           {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
         </span>{" "}
-        : <span className="episodeName text-white">{episodeTitle}</span>
+        :{" "}
+        <span ref={episodeTitleRef} className="text-white">
+          {episodeTitle}
+        </span>
       </>,
     );
 
@@ -103,7 +114,7 @@ export function Change(
   }
 
   window.scrollTo({
-    top: (document.querySelector(".container") as HTMLElement).offsetTop,
+    top: containerRef.current?.offsetTop,
     behavior: "smooth",
   });
 }
@@ -115,11 +126,24 @@ export function NextEpisode(
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
   currentAnime: string,
+
+  episodesRef: RefObject<HTMLElement[]>,
+  containerRef: RefObject<HTMLElement>,
+  episodeTitleRef: RefObject<HTMLSpanElement>,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${currentAnime}--episode`)) + 1;
 
-  Change(newEpisodeIndex, lecteur, setVideo, setEpisodeTitle, currentAnime);
+  Change(
+    newEpisodeIndex,
+    lecteur,
+    setVideo,
+    setEpisodeTitle,
+    currentAnime,
+    episodesRef,
+    containerRef,
+    episodeTitleRef,
+  );
 }
 
 export function PrevEpisode(
@@ -129,9 +153,22 @@ export function PrevEpisode(
   setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
   currentAnime: string,
+
+  episodesRef: RefObject<HTMLElement[]>,
+  containerRef: RefObject<HTMLElement>,
+  episodeTitleRef: RefObject<HTMLSpanElement>,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${currentAnime}--episode`)) - 1;
 
-  Change(newEpisodeIndex, lecteur, setVideo, setEpisodeTitle, currentAnime);
+  Change(
+    newEpisodeIndex,
+    lecteur,
+    setVideo,
+    setEpisodeTitle,
+    currentAnime,
+    episodesRef,
+    containerRef,
+    episodeTitleRef,
+  );
 }

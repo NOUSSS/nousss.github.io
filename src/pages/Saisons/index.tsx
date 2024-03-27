@@ -10,7 +10,7 @@ import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 import SearchBar from "@/app/ui/searchBar";
@@ -22,6 +22,8 @@ const Saisons = () => {
   const [saisons, setSaisons] = useState<
     null | { id: string; element: React.ReactNode }[]
   >(null);
+
+  const saisonsRef = useRef<HTMLUListElement[]>([]);
 
   useEffect(() => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
@@ -81,16 +83,19 @@ const Saisons = () => {
       <SearchBar
         placeholder="Rechercher une saison"
         className="m-8"
-        container="list-poster-saison"
+        containerRef={saisonsRef}
         query="id"
       />
 
-      <div className="overflow-x-auto">
+      <ul
+        className="overflow-x-auto"
+        ref={(el) => (saisonsRef.current[0] = el!)}
+      >
         {saisons?.map(({ element, id }, index) => (
           <div
             key={id}
             id={id}
-            className="list-poster-saison m-8 inline-flex w-20 cursor-pointer flex-col gap-2.5"
+            className="m-8 inline-flex w-20 cursor-pointer flex-col gap-2.5"
             onClick={() => {
               router.push({
                 pathname: `/Episodes`,
@@ -106,7 +111,7 @@ const Saisons = () => {
             {element}
           </div>
         ))}
-      </div>
+      </ul>
 
       <Footer />
     </main>

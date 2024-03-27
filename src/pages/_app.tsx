@@ -2,7 +2,7 @@ import "@/app/defaultStyles/global.css";
 
 import RootLayout from "@/app/ui/layout";
 
-import type { AppProps } from "next/app";
+import { AppProps } from "next/app";
 import { Toaster } from "sonner";
 
 function App({ Component, pageProps }: AppProps) {

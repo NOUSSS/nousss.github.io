@@ -1,50 +1,53 @@
+import { RefObject } from "react";
+
 type QueryType = "id" | "innerText";
 
 export function initSearchBar(
-  input: HTMLInputElement,
-  container: HTMLCollectionOf<HTMLElement>,
+  input: RefObject<HTMLInputElement>,
+  containerRef: RefObject<HTMLUListElement[] | null>,
   query: QueryType,
 ): void {
-  const visible: string[] = [];
-  const searchQuery =
-    query === "id"
-      ? (q: HTMLElement): string => q.id
-      : (q: HTMLElement): string => q.innerText;
+  const visible: Set<string> = new Set();
 
-  Array.from(container).forEach((element, index) => {
-    if (
-      input.value.length === 0 ||
-      (searchQuery(element)
-        .toLowerCase()
-        .replaceAll("é", "e")
-        .includes(input.value.toLowerCase().replaceAll("é", "e")) &&
-        !visible.includes(searchQuery(element)))
-    ) {
-      container[index].classList.remove("hidden");
-      visible.push(searchQuery(element));
-    } else {
-      container[index].classList.add("hidden");
-    }
-  });
+  const getSearchQuery = (element: HTMLElement): string =>
+    query === "id" ? element.id : element.innerText;
 
-  Array.from(container).forEach((e) => {
-    if (!e.classList.contains("hidden")) {
-    }
-  });
+  if (containerRef.current && input.current) {
+    containerRef.current.forEach((e) =>
+      e.childNodes.forEach((el) => {
+        const element = el as HTMLElement;
 
-  if (window.location.hash === "") {
-    const categories = document.querySelectorAll(".catalogue > div");
+        const elementQuery = getSearchQuery(element)
+          .toLowerCase()
+          .replaceAll("é", "e");
 
-    categories.forEach((category) => {
-      const items = category.querySelectorAll("li");
+        if (
+          input.current?.value.length === 0 ||
+          (elementQuery
+            .trim()
+            .includes(
+              input.current!.value.toLowerCase().replaceAll("é", "e").trim(),
+            ) &&
+            !visible.has(elementQuery))
+        ) {
+          element.classList.remove("hidden");
+          visible.add(elementQuery);
+        } else {
+          element.classList.add("hidden");
+        }
+      }),
+    );
+  }
 
-      const isAllHidden = Array.from(items).every((item) =>
-        item.classList.contains("hidden"),
+  if (window.location.hash === "" && containerRef.current) {
+    containerRef.current.forEach((category) => {
+      const isAllHidden = Array.from(category.childNodes).every((item) =>
+        (item as HTMLElement).classList.contains("hidden"),
       );
 
       isAllHidden
-        ? category.classList.add("hidden")
-        : category.classList.remove("hidden");
+        ? (category.parentNode as HTMLElement).classList.add("hidden")
+        : (category.parentNode as HTMLElement).classList.remove("hidden");
     });
   }
 }

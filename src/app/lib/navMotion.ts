@@ -1,7 +1,9 @@
+import { RefObject } from "react";
+
 type directionType = "vertical" | "horizontal";
 
 interface NavMotionProps {
-  container: HTMLElement;
+  container: RefObject<HTMLElement>;
   direction: directionType;
   size: number;
 }
@@ -11,27 +13,21 @@ export default function NavMotion({
   direction,
   size,
 }: NavMotionProps) {
-  container.style.position = "relative";
+  container.current!.style.position = "relative";
 
-  let selector = document.querySelector(".selector") as HTMLElement;
+  const selector = document.createElement("div");
 
-  if (!selector) {
-    selector = document.createElement("div");
+  selector.style.position = "absolute";
+  selector.style.backgroundColor = "var(--mainColor)";
+  selector.style.transition = "all 0.25s ease-in-out";
+  selector.style.transform = "scaleX(0)";
 
-    selector.className = "selector";
+  if (direction === "vertical") selector.style.width = `${size}px`;
+  if (direction === "horizontal") selector.style.height = `${size}px`;
 
-    selector.style.position = "absolute";
-    selector.style.backgroundColor = "var(--mainColor)";
-    selector.style.transition = "all 0.25s ease-in-out";
-    selector.style.transform = "scaleX(0)";
+  container.current?.appendChild(selector);
 
-    if (direction === "vertical") selector.style.width = `${size}px`;
-    if (direction === "horizontal") selector.style.height = `${size}px`;
-
-    container.appendChild(selector);
-  }
-
-  const items = container.childNodes;
+  const items = container.current!.childNodes;
   const [containerItems] = Array.from(items);
 
   items.forEach((item) => {
@@ -56,7 +52,7 @@ export default function NavMotion({
     selector.style.transform = "scaleX(1)";
   });
 
-  container.addEventListener("mouseout", () => {
+  container.current?.addEventListener("mouseout", () => {
     selector.style.transform = "scaleX(0)";
   });
 }

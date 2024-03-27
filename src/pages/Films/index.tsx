@@ -46,6 +46,7 @@ const Films = () => {
   } | null>(null);
 
   const lecteurString = useRef<EPS | "">("");
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
     null,
@@ -61,6 +62,8 @@ const Films = () => {
   );
 
   const router = useRouter();
+
+  const filmsRef = useRef<HTMLUListElement[]>([]);
 
   useEffect(() => {
     setIsClient(true);
@@ -165,6 +168,7 @@ const Films = () => {
         setTitle,
 
         formatName(currentAnime)!,
+        containerRef,
       );
 
       getFilms(
@@ -175,6 +179,7 @@ const Films = () => {
 
         currentLecteur!,
         currentAnime,
+        containerRef,
       );
     }
   }, [
@@ -241,18 +246,20 @@ const Films = () => {
         ) : null}
       </div>
 
-      <div className="container">
+      <div ref={containerRef} className="container">
         <iframe className="video" src={video} allowFullScreen></iframe>
         <iframe className="ambiance" src={video}></iframe>
       </div>
 
       <SearchBar
         placeholder="Rechercher un film"
-        container="list-poster"
+        containerRef={filmsRef}
         query="id"
       />
 
-      <div className="overflow-x-auto">{films}</div>
+      <ul ref={(el) => (filmsRef.current[0] = el!)} className="overflow-x-auto">
+        {films}
+      </ul>
 
       <Footer style={true} media />
     </main>

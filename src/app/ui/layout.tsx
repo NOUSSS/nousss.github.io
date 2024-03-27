@@ -22,6 +22,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const metaColorRef = useRef<HTMLMetaElement | null>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchTextRef = useRef<HTMLElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const main = localStorage.getItem("color");
@@ -31,12 +33,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   }, [metaColorRef.current]);
 
   useEffect(() => {
-    const searchBarText = document.querySelector(
-      ".searchBarText",
-    ) as HTMLElement;
-
-    if (searchBarText && !isMobile()) {
-      searchBarText.innerText += "(Ctrl + K)";
+    if (searchTextRef.current && !isMobile()) {
+      searchTextRef.current.innerText += "(Ctrl + K)";
     }
 
     const main = localStorage.getItem("color");
@@ -69,12 +67,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     if (inputRef.current) {
       inputRef.current.focus();
 
-      const overlay = document.querySelector(".overlay") as HTMLElement;
-
-      if (overlay)
+      if (overlayRef.current)
         isVisible
-          ? overlay.classList.remove("hidden")
-          : overlay.classList.add("hidden");
+          ? overlayRef.current.classList.remove("hidden")
+          : overlayRef.current.classList.add("hidden");
     }
   }, [isVisible]);
 
@@ -146,7 +142,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <div className="overlay fixed inset-0 z-40 hidden bg-black bg-opacity-20"></div>
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
+      ></div>
 
       <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-neutral-700 shadow-lg backdrop-blur-3xl">
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
@@ -180,7 +179,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           >
             <SearchIcon className="mr-4 w-6" />
 
-            <span className="searchBarText flex items-center text-white">
+            <span ref={searchTextRef} className="flex items-center text-white">
               Recherche rapide&nbsp;
             </span>
           </div>

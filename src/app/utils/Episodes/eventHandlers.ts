@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject } from "react";
 
 import { Change } from "./episodeManager";
 import { formatName } from "@/app/lib/formatName";
@@ -9,10 +9,8 @@ const eventHandlers = {
   episodes: [] as EventHandler[],
 };
 
-export function removeClickEvents(): void {
-  const episodes = document.querySelectorAll(".list-episodes");
-
-  episodes.forEach((episode, index) => {
+export function removeClickEvents(episodesRef: RefObject<HTMLElement[]>): void {
+  episodesRef.current?.[0].childNodes.forEach((episode, index) => {
     const handler = eventHandlers.episodes[index];
 
     if (typeof handler === "function")
@@ -29,16 +27,23 @@ export function clickEvents(
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
   currentAnime: string,
+
+  episodesRef: RefObject<HTMLElement[]>,
+  containerRef: RefObject<HTMLElement>,
+  episodeTitleRef: RefObject<HTMLSpanElement>,
 ): void {
-  removeClickEvents();
+  removeClickEvents(episodesRef);
 
-  const episodes = document.querySelectorAll(".list-episodes");
+  episodesRef.current?.[0].childNodes.forEach((e, index) => {
+    const episode = e as HTMLElement;
 
-  episodes.forEach((episode, index) => {
     const handler = () => {
-      const episodeId = (episode as HTMLElement).dataset.id;
+      const episodeId = episode.dataset.id;
 
-      episodes.forEach((ep) => ep.classList.remove("select"));
+      episodesRef.current?.[0].childNodes.forEach((ep) =>
+        (ep as HTMLElement).classList.remove("select"),
+      );
+
       episode.classList.add("select");
 
       Change(
@@ -47,6 +52,9 @@ export function clickEvents(
         setVideo,
         setTitle,
         formatName(currentAnime)!,
+        episodesRef,
+        containerRef,
+        episodeTitleRef,
       );
     };
 

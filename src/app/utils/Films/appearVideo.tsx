@@ -1,4 +1,5 @@
 import { ANIMES } from "@/animes/constants";
+import { RefObject } from "react";
 
 export async function appearVideo(
   id: string,
@@ -7,6 +8,7 @@ export async function appearVideo(
   setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
 
   currentAnime: string,
+  containerRef: RefObject<HTMLElement>,
 ) {
   const { names } =
     ANIMES.find(
@@ -16,7 +18,7 @@ export async function appearVideo(
   const lang = localStorage.getItem(`${currentAnime}--lang`);
 
   window.scrollTo({
-    top: (document.querySelector(".container") as HTMLElement).offsetTop,
+    top: containerRef.current?.offsetTop,
     behavior: "smooth",
   });
 

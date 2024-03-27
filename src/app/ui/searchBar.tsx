@@ -1,22 +1,25 @@
 import { icons } from "lucide-react";
 import { initSearchBar } from "@/app/lib/initSearchBar";
+import { RefObject, useRef } from "react";
 
 type QueryType = "id" | "innerText";
 
 interface SearchBarProps {
-  container: string;
+  containerRef: RefObject<HTMLUListElement[] | null>;
   placeholder: string;
   className?: string;
   query: QueryType;
 }
 
 export default function SearchBar({
-  container,
+  containerRef,
   placeholder,
   className,
   query,
 }: SearchBarProps) {
   const SearchIcon = icons["Search"];
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <label
@@ -26,20 +29,11 @@ export default function SearchBar({
       <SearchIcon size="25" />
 
       <input
+        ref={inputRef}
         type="text"
         placeholder={placeholder}
         className="h-7 w-full rounded-md bg-transparent"
-        onInput={() =>
-          initSearchBar(
-            document.querySelector(
-              ".label--search-bar input",
-            ) as HTMLInputElement,
-            document.getElementsByClassName(
-              container,
-            ) as HTMLCollectionOf<HTMLElement>,
-            query,
-          )
-        }
+        onInput={() => initSearchBar(inputRef, containerRef, query)}
       />
     </label>
   );
