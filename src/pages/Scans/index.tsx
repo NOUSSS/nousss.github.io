@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import {
   getTailleChapitres,
@@ -37,6 +37,8 @@ const Scans = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
+
+  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
 
   const router = useRouter();
 
@@ -134,14 +136,11 @@ const Scans = () => {
           const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
           const option = options[indexOption];
 
-          setScans(selectChapter(option, anime?.anime));
+          setScans(selectChapter(option, anime?.anime, placeholderRef));
 
           setTimeout(() => {
-            const placeholder = document.querySelector(
-              ".placeholder",
-            ) as HTMLElement;
-
-            if (placeholder) placeholder.innerText = option.name;
+            if (placeholderRef.current)
+              placeholderRef.current.innerText = option.name;
           }, 200);
         }
       }, 100);
@@ -181,10 +180,11 @@ const Scans = () => {
         onSelect={(item) => {
           localStorage.setItem(`${anime?.anime}--chapitre`, item.value);
 
-          setScans(selectChapter(item, anime?.anime!));
+          setScans(selectChapter(item, anime?.anime!, placeholderRef));
         }}
         items={chapitresOptions}
         placeholder="Selectionnez un chapitre"
+        placeholderRef={placeholderRef}
       />
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
@@ -193,7 +193,7 @@ const Scans = () => {
           onClick={() => {
             const lastScan = chapitresOptions[chapitresOptions.length - 1];
 
-            setScans(selectChapter(lastScan, anime!.anime));
+            setScans(selectChapter(lastScan, anime!.anime, placeholderRef));
           }}
         >
           Dernier chapitre

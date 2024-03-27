@@ -65,6 +65,9 @@ const Films = () => {
 
   const filmsRef = useRef<HTMLUListElement[]>([]);
 
+  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
+  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
+
   useEffect(() => {
     setIsClient(true);
 
@@ -93,15 +96,13 @@ const Films = () => {
         synopsis: currentAnime.synopsis,
       });
 
-      const placeholder = document.querySelector(".placeholder") as HTMLElement;
-
       const langObj = {
         vostfr: "VostFR",
         vf: "VF",
       };
 
-      if (placeholder) {
-        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
+      if (placeholderLangRef.current) {
+        placeholderLangRef.current.innerText = langObj[lang as "vostfr" | "vf"];
       }
     }
   }, []);
@@ -207,6 +208,7 @@ const Films = () => {
       <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
+          placeholderRef={placeholderLangRef}
           items={[
             {
               name: "VostFR",
@@ -230,6 +232,7 @@ const Films = () => {
           Object.keys(Lecteurs).length > 1 ? (
             <Select
               placeholder="Changer de lecteur"
+              placeholderRef={placeholderLecteurRef}
               onSelect={({ value }) => {
                 setCurrentLecteur({
                   lecteur: value,

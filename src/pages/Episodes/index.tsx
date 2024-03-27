@@ -62,6 +62,9 @@ const Episodes = () => {
   const episodesRef = useRef<HTMLUListElement[]>([]);
   const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
 
+  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
+  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
+
   useEffect(() => {
     setIsClient(true);
 
@@ -89,16 +92,16 @@ const Episodes = () => {
         `${formatName(currentAnime)}--${currentSaison}--lang`,
       ) as "vostfr" | "vf";
 
-      const placeholder = document.querySelector(".placeholder") as HTMLElement;
-
       if (!lang) {
         lang = "vostfr";
         setLang(lang);
 
-        placeholder.innerText = "VostFR";
+        if (placeholderLangRef.current)
+          placeholderLangRef.current.innerText = "VostFR";
       } else {
         setLang(lang);
-        placeholder.innerText = langObj[lang];
+        if (placeholderLangRef.current)
+          placeholderLangRef.current.innerText = langObj[lang];
       }
 
       setAnimeInfo({
@@ -205,13 +208,11 @@ const Episodes = () => {
       }
 
       if (AnimeInfo && AnimeInfo.saison) {
-        const placeholder = document.querySelector(
-          ".placeholder",
-        ) as HTMLElement;
-
         setLang("vostfr");
 
-        placeholder.innerText = langObj[lang as "vostfr" | "vf"];
+        if (placeholderLangRef.current)
+          placeholderLangRef.current.innerText =
+            langObj[lang as "vostfr" | "vf"];
       }
     }
 
@@ -465,6 +466,7 @@ const Episodes = () => {
       <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
+          placeholderRef={placeholderLangRef}
           items={[
             {
               name: "VostFR",
@@ -488,6 +490,7 @@ const Episodes = () => {
           Object.keys(Lecteurs).length > 1 ? (
             <Select
               placeholder="Changer de lecteur"
+              placeholderRef={placeholderLecteurRef}
               onSelect={({ value }) => {
                 setCurrentLecteur({
                   lecteur: value,

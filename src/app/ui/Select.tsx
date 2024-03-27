@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 
 export interface ItemsProps {
@@ -12,6 +12,7 @@ interface SelectProps {
   placeholder: string;
   onSelect: (value: ItemsProps) => void;
   className?: string;
+  placeholderRef: RefObject<HTMLParagraphElement>;
 }
 
 export default function Select({
@@ -19,13 +20,13 @@ export default function Select({
   placeholder,
   onSelect,
   className,
+  placeholderRef,
 }: SelectProps) {
   const UpArrow = icons["ChevronUp"];
 
   const labelRef = useRef<HTMLLabelElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
 
   const toggleBodyScroll = (disable: boolean) => {
     if (disable) {

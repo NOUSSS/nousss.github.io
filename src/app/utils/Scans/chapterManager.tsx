@@ -1,4 +1,4 @@
-import React from "react";
+import React, { RefObject } from "react";
 import Image from "next/image";
 
 import { getAnime } from "@/app/lib/getAnime";
@@ -30,6 +30,7 @@ export const getTailleChapitres = (): number => {
 export const selectChapter = (
   item: ItemsProps,
   currentAnime: string,
+  placeholderRef: RefObject<HTMLElement>,
 ): React.ReactNode[] | undefined => {
   const scrollPosition = localStorage.getItem(
     `${currentAnime}--scrollPosition`,
@@ -40,10 +41,9 @@ export const selectChapter = (
   const { IMAGE_URL } = getAnime(currentAnime)?.options.SCANS_OPTIONS || {};
 
   const scansImages: React.ReactNode[] = [];
-  const placeholder = document.querySelector(".placeholder") as HTMLElement;
 
   if (item?.name && item?.value) {
-    if (placeholder) placeholder.innerText = item.name;
+    if (placeholderRef.current) placeholderRef.current.innerText = item.name;
 
     const scans = (window as unknown as windowKeys)[`eps${item.value}`];
 
