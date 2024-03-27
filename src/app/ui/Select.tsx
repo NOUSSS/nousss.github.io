@@ -111,7 +111,7 @@ export default function Select({
 
       <div
         ref={menuRef}
-        className="absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
+        className="select absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
       >
         {items.map((item, index) => (
           <ul key={index}>

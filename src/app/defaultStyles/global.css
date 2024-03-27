@@ -10,7 +10,7 @@
 }
 
 .btn {
-  @apply border-main text-main relative left-0 h-12 rounded border bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm transition-all duration-300;
+  @apply relative left-0 h-12 rounded border border-main bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm text-main transition-all duration-300;
 }
 
 .back {
@@ -64,11 +64,15 @@
   background-color: transparent;
 }
 
-*::-webkit-scrollbar-track {
-  background: rgb(33 35 37);
-}
-
 *::-webkit-scrollbar-thumb {
   border-radius: 3px;
   border: 1px solid var(--mainColor);
+}
+
+.select::-webkit-scrollbar-thumb {
+  background-color: #3e63dd;
+}
+
+.select::-webkit-scrollbar-thumb {
+  border: transparent;
 }
