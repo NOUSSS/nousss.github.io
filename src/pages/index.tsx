@@ -164,7 +164,7 @@ export default function Accueil() {
       ></div>
 
       {randomAnime?.options.affiche && (
-        <div className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-md:max-h-none max-md:flex-col">
+        <div className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-md:max-h-none max-md:flex-col-reverse">
           <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
             <div className="m-4">
               <h1 className="text-5xl max-xl:text-4xl">{randomAnime.anime}</h1>
@@ -218,7 +218,7 @@ export default function Accueil() {
           </div>
 
           <Image
-            className="aspect-video min-w-[900px] max-md:-top-12 max-md:min-w-full"
+            className="aspect-video min-w-[900px] max-md:min-w-full"
             alt="affiche d'un anime aléatoire"
             src={randomAnime.options.affiche}
           />
