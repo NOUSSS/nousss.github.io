@@ -184,7 +184,7 @@ export default function Accueil() {
         spaceBetween={30}
         slidesPerView={1}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
