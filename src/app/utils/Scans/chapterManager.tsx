@@ -57,7 +57,7 @@ export const selectChapter = (
             e.stopPropagation();
           }}
           key={`Image ${i}`}
-          className="scanImg w-[1000px] select-none"
+          className="w-[1000px] select-none"
           alt={`Image ${i}`}
           width={1000}
           height={1000}

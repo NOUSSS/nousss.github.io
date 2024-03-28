@@ -33,16 +33,4 @@ export function initSearchBar(
       }),
     );
   }
-
-  if (window.location.hash === "" && containerRef.current) {
-    containerRef.current.forEach((category) => {
-      const isAllHidden = Array.from(category.childNodes).every((item) =>
-        (item as HTMLElement).classList.contains("hidden"),
-      );
-
-      isAllHidden
-        ? (category.parentNode as HTMLElement).classList.add("hidden")
-        : (category.parentNode as HTMLElement).classList.remove("hidden");
-    });
-  }
 }

@@ -189,7 +189,7 @@ const Scans = () => {
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
         <button
-          className="btn lastChapter next relative top-4"
+          className="btn next relative top-4"
           onClick={() => {
             const lastScan = chapitresOptions[chapitresOptions.length - 1];
 

@@ -6,10 +6,8 @@ import { formatName } from "@/app/lib/formatName";
 import { useRouter } from "next/router";
 
 export function Title({
-  accueil = false,
   link,
 }: {
-  accueil?: boolean;
   link?: { pathname: string; query?: { anime: string } };
 }) {
   const [anime, setAnime] = useState("");
@@ -21,9 +19,7 @@ export function Title({
     setAnime(getCurrentAnime({ wSaison: false }));
   }, [anime, query.anime]);
 
-  const text = accueil ? (
-    <h1>{new Date().getHours() > 19 ? "Bonsoir." : "Bonjour."}</h1>
-  ) : (
+  const text = (
     <Link href={link ? link : "/"}>
       <h1>{formatName(anime) || ""}</h1>
     </Link>

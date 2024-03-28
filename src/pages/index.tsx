@@ -1,13 +1,10 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-
-import SearchBar from "@/app/ui/searchBar";
 import Image from "next/image";
 
 import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
-import { ANIMES, groupAnimesByCategory } from "@/animes/constants";
+import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { formatName } from "@/app/lib/formatName";
 import { Historique } from "@/typings/types";
@@ -25,6 +22,7 @@ export default function Accueil() {
   const router = useRouter();
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
+  const [randomAnime, setRandomAnime] = useState<AnimesType>();
 
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -32,6 +30,8 @@ export default function Accueil() {
   const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
+    setRandomAnime(ANIMES[Math.floor(Math.random() * ANIMES.length)]);
+
     const keys = Object.keys(localStorage);
     const lowercaseKeys = keys.map((key) => key.toLowerCase());
     const duplicates: string[] = [];
@@ -157,199 +157,252 @@ export default function Accueil() {
   );
 
   return (
-    <main>
+    <main className="top-[60px]">
       <div
         ref={overlayRef}
         className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
       ></div>
 
-      <nav className="mb-16">
-        <Title accueil />
+      {randomAnime?.options.affiche && (
+        <div className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-md:max-h-none max-md:flex-col">
+          <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
+            <div className="m-4">
+              <h1 className="text-5xl max-xl:text-4xl">{randomAnime.anime}</h1>
 
-        <div className="container--search-bar">
-          <SearchBar
-            className="m-8"
-            placeholder="Rechercher un anime"
-            containerRef={animesRef}
-            query="id"
-          />
-        </div>
-      </nav>
-
-      <div className="catalogue">
-        {catalogues.map(({ names, category }, index) => (
-          <div className={`${category} mb-3`} key={category}>
-            <div
-              className={`category ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
-            >
-              {category === "Reprendre" ? (
-                <>
-                  <p className="font-normal">{category}</p>
-
-                  <span className="m-4 h-8 border-r border-r-neutral-700"></span>
-
-                  <div
-                    ref={confirmRef}
-                    className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
-                  >
-                    <div className="absolute inset-0 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
-
-                    <div className="relative z-10 p-4 tracking-normal">
-                      <div>Confirmez vous ?</div>
-
-                      <p className="mb-12 text-sm opacity-50">
-                        Vous êtes sur le point de supprimer tout l'historique
-                      </p>
-                    </div>
-
-                    <div className="relative z-10 flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
-                      <button
-                        className="bg-green-500 hover:bg-green-600"
-                        onClick={() => {
-                          setHistoriques([]);
-
-                          for (const key of Object.keys(localStorage)) {
-                            if (key !== "color") localStorage.removeItem(key);
-                          }
-
-                          toast.success("L'historique a bien été vidé");
-
-                          confirmRef.current?.classList.add("hidden");
-                          overlayRef?.current?.classList.add("hidden");
-                        }}
-                      >
-                        Oui
-                      </button>
-
-                      <button
-                        className="bg-red-500 hover:bg-red-800"
-                        onClick={() => {
-                          confirmRef.current?.classList.add("hidden");
-                          overlayRef?.current?.classList.add("hidden");
-                        }}
-                      >
-                        Annuler
-                      </button>
-                    </div>
-                  </div>
-
-                  <button
-                    className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
-                    onClick={() => {
-                      confirmRef.current?.classList.contains("hidden")
-                        ? confirmRef.current?.classList.remove("hidden")
-                        : confirmRef.current?.classList.add("hidden");
-
-                      overlayRef?.current?.classList.contains("hidden")
-                        ? overlayRef?.current?.classList.remove("hidden")
-                        : overlayRef?.current?.classList.add("hidden");
-                    }}
-                  >
-                    Supprimer tout l'historique
-                  </button>
-                </>
-              ) : (
-                <p className="font-normal">{category}</p>
-              )}
+              <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
+                {randomAnime.synopsis.length > 600
+                  ? randomAnime.synopsis.substring(0, 600) + "..."
+                  : randomAnime.synopsis}
+              </p>
             </div>
 
-            <ul
-              ref={(el) => (animesRef.current![index] = el!)}
-              key={category}
-              className="flex cursor-pointer overflow-x-auto"
+            <button
+              className="btn"
+              onClick={() => {
+                if (historiques.find((e) => e.name === randomAnime.anime))
+                  router.push({
+                    pathname: "Episodes",
+                    query: {
+                      anime: randomAnime.anime,
+                      saison: historiques.find(
+                        (e) => e.name === randomAnime.anime,
+                      )!.saison,
+                    },
+                  });
+                else
+                  router.push({
+                    pathname: "Home",
+                    query: { anime: randomAnime.anime },
+                  });
+              }}
             >
-              {names.map((animeName: string, i) => (
-                <li
-                  className="ml-4"
-                  onClick={() => goToAnime(formatName(animeName)!, category, i)}
-                  id={
-                    formatName(animeName) +
-                    `${
-                      typeof getAnime(animeName)?.aliases === "undefined"
-                        ? ""
-                        : getAnime(animeName)?.aliases
-                    }`
-                  }
-                  key={
-                    historiques[i]?.redirect
-                      ? animeName + historiques[i]?.redirect
-                      : animeName + historiques[i]?.name
-                  }
+              {historiques.find((e) => e.name === randomAnime.anime)?.saison
+                ? `Reprendre
+                        ${
+                          historiques[
+                            historiques.findIndex(
+                              (e) => e.name === randomAnime.anime,
+                            )
+                          ]?.episode &&
+                          `Saison ${historiques[historiques.findIndex((e) => e.name === randomAnime.anime)]?.saison}
+                            ${getCurrentEpisode(
+                              randomAnime.anime,
+                              historiques.findIndex(
+                                (e) => e.name === randomAnime.anime,
+                              ),
+                              historiques,
+                            )}`
+                        }`
+                : "Regarder"}
+            </button>
+          </div>
+
+          <Image
+            className="aspect-video min-w-[900px] max-md:-top-12 max-md:min-w-full"
+            alt="affiche d'un anime aléatoire"
+            src={randomAnime.options.affiche}
+          />
+
+          <Image
+            className="absolute left-0  top-0 -z-10 aspect-video h-[720px] w-full blur-3xl"
+            alt="affiche d'un anime aléatoire"
+            src={randomAnime.options.affiche}
+          />
+        </div>
+      )}
+
+      {catalogues.map(({ names, category }, index) => (
+        <div className="mb-3" key={category}>
+          <div
+            className={`ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
+          >
+            {category === "Reprendre" ? (
+              <>
+                <p className="font-normal">{category}</p>
+
+                <span className="m-4 h-8 border-r border-r-neutral-700"></span>
+
+                <div
+                  ref={confirmRef}
+                  className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
                 >
-                  <div
-                    title={
-                      getAnime(animeName)?.synopsis ??
-                      "Aucun synopsis pour cette anime"
-                    }
-                    className={`card relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
-                  >
-                    {historiques[i] && category === "Reprendre" ? (
-                      <div
-                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
-                        onClick={(event) => {
-                          event.stopPropagation();
+                  <div className="absolute inset-0 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
 
-                          removeAnimeFromHistorique(
-                            formatName(animeName)!,
-                            historiques[i]!.redirect,
-                            historiques,
-                            setHistoriques,
-                          );
-                        }}
-                      >
-                        X
-                      </div>
-                    ) : null}
+                  <div className="relative z-10 p-4 tracking-normal">
+                    <div>Confirmez vous ?</div>
 
-                    <Image
-                      className={`relative top-1 z-[-1] ${category === "Reprendre" ? "h-[90px]" : "h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} ${category === "Reprendre" ? "max-sm:h-[85px]" : "max-sm:h-[65px]"} scale-90 rounded-t-xl`}
-                      src={getAnime(animeName)?.options.affiche!}
-                      alt="affiche d'un anime"
-                    />
-
-                    <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
-                      {formatName(animeName)}
-                      {historiques[i] && category === "Reprendre" && (
-                        <>
-                          {historiques[i]?.chapitre && (
-                            <>
-                              <br />
-
-                              {getCurrentChapitre(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
-                            </>
-                          )}
-                          {historiques[i]?.film && (
-                            <>
-                              <br />
-                              Film {Number(historiques[i]?.film) + 1}
-                            </>
-                          )}
-                          {historiques[i]?.episode && (
-                            <>
-                              <br />
-                              Saison {historiques[i]?.saison}
-                              {", "}
-                              {getCurrentEpisode(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
-                            </>
-                          )}
-                        </>
-                      )}
+                    <p className="mb-12 text-sm opacity-50">
+                      Vous êtes sur le point de supprimer tout l'historique
                     </p>
                   </div>
-                </li>
-              ))}
-            </ul>
+
+                  <div className="relative z-10 flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
+                    <button
+                      className="bg-green-500 hover:bg-green-600"
+                      onClick={() => {
+                        setHistoriques([]);
+
+                        for (const key of Object.keys(localStorage)) {
+                          if (key !== "color") localStorage.removeItem(key);
+                        }
+
+                        toast.success("L'historique a bien été vidé");
+
+                        confirmRef.current?.classList.add("hidden");
+                        overlayRef?.current?.classList.add("hidden");
+                      }}
+                    >
+                      Oui
+                    </button>
+
+                    <button
+                      className="bg-red-500 hover:bg-red-800"
+                      onClick={() => {
+                        confirmRef.current?.classList.add("hidden");
+                        overlayRef?.current?.classList.add("hidden");
+                      }}
+                    >
+                      Annuler
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
+                  onClick={() => {
+                    confirmRef.current?.classList.contains("hidden")
+                      ? confirmRef.current?.classList.remove("hidden")
+                      : confirmRef.current?.classList.add("hidden");
+
+                    overlayRef?.current?.classList.contains("hidden")
+                      ? overlayRef?.current?.classList.remove("hidden")
+                      : overlayRef?.current?.classList.add("hidden");
+                  }}
+                >
+                  Supprimer tout l'historique
+                </button>
+              </>
+            ) : (
+              <p className="font-normal">{category}</p>
+            )}
           </div>
-        ))}
-      </div>
+
+          <ul
+            ref={(el) => (animesRef.current![index] = el!)}
+            key={category}
+            className="flex cursor-pointer overflow-x-auto"
+          >
+            {names.map((animeName: string, i) => (
+              <li
+                className="ml-4"
+                onClick={() => goToAnime(formatName(animeName)!, category, i)}
+                id={
+                  formatName(animeName) +
+                  `${
+                    typeof getAnime(animeName)?.aliases === "undefined"
+                      ? ""
+                      : getAnime(animeName)?.aliases
+                  }`
+                }
+                key={
+                  historiques[i]?.redirect
+                    ? animeName + historiques[i]?.redirect
+                    : animeName + historiques[i]?.name
+                }
+              >
+                <div
+                  title={
+                    getAnime(animeName)?.synopsis ??
+                    "Aucun synopsis pour cette anime"
+                  }
+                  className={`relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
+                >
+                  {historiques[i] && category === "Reprendre" ? (
+                    <div
+                      className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
+                      onClick={(event) => {
+                        event.stopPropagation();
+
+                        removeAnimeFromHistorique(
+                          formatName(animeName)!,
+                          historiques[i]!.redirect,
+                          historiques,
+                          setHistoriques,
+                        );
+                      }}
+                    >
+                      X
+                    </div>
+                  ) : null}
+
+                  <Image
+                    className={`relative top-1 z-[-1] ${category === "Reprendre" ? "h-[90px]" : "h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} ${category === "Reprendre" ? "max-sm:h-[85px]" : "max-sm:h-[65px]"} scale-90 rounded-t-xl`}
+                    src={getAnime(animeName)?.options.affiche!}
+                    alt="affiche d'un anime"
+                  />
+
+                  <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
+                    {formatName(animeName)}
+                    {historiques[i] && category === "Reprendre" && (
+                      <>
+                        {historiques[i]?.chapitre && (
+                          <>
+                            <br />
+
+                            {getCurrentChapitre(
+                              formatName(animeName)!,
+                              i,
+                              historiques,
+                            )}
+                          </>
+                        )}
+                        {historiques[i]?.film && (
+                          <>
+                            <br />
+                            Film {Number(historiques[i]?.film) + 1}
+                          </>
+                        )}
+                        {historiques[i]?.episode && (
+                          <>
+                            <br />
+                            Saison {historiques[i]?.saison}
+                            {", "}
+                            {getCurrentEpisode(
+                              formatName(animeName)!,
+                              i,
+                              historiques,
+                            )}
+                          </>
+                        )}
+                      </>
+                    )}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
 
       <Footer style={true} />
     </main>
