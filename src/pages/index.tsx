@@ -184,7 +184,7 @@ export default function Accueil() {
         spaceBetween={30}
         slidesPerView={1}
         autoplay={{
-          delay: 5000,
+          delay: 5000000,
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
@@ -193,11 +193,17 @@ export default function Accueil() {
           <SwiperSlide key={index}>
             <div
               key={index}
-              className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:flex-col-reverse"
+              className="flex max-h-[525px] min-h-[525px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
             >
               <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
                 <div className="m-4">
-                  <h1 className="text-5xl max-xl:text-4xl">{anime.anime}</h1>
+                  <h1 className="text-5xl max-xl:text-4xl max-md:text-xl">
+                    {typeof window !== "undefined" && window.innerWidth < 600
+                      ? anime.anime.length > 17
+                        ? anime.anime.substring(0, 17) + "..."
+                        : anime.anime
+                      : anime.anime}
+                  </h1>
 
                   <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
                     {anime.synopsis.length > 600
@@ -228,7 +234,7 @@ export default function Accueil() {
               </div>
 
               <Image
-                className="aspect-video min-w-[900px] max-lg:min-w-full"
+                className="aspect-video min-w-[900px] max-w-[900px] max-lg:min-w-full max-lg:max-w-full"
                 alt="affiche d'un anime aléatoire"
                 src={anime.options.affiche!}
               />
