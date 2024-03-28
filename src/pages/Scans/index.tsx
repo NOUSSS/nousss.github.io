@@ -204,7 +204,12 @@ const Scans = () => {
             <button
               className="btn back"
               onClick={() =>
-                PrevChapter(setScans, anime!.anime, chapitresOptions)
+                PrevChapter(
+                  setScans,
+                  anime!.anime,
+                  chapitresOptions,
+                  placeholderRef,
+                )
               }
             >
               Chapitre précédent
@@ -215,7 +220,12 @@ const Scans = () => {
             <button
               className="btn next"
               onClick={() =>
-                NextChapter(setScans, anime!.anime, chapitresOptions)
+                NextChapter(
+                  setScans,
+                  anime!.anime,
+                  chapitresOptions,
+                  placeholderRef,
+                )
               }
             >
               Chapitre suivant
@@ -234,7 +244,12 @@ const Scans = () => {
             <button
               className="btn prevButton back"
               onClick={() =>
-                PrevChapter(setScans, anime!.anime, chapitresOptions)
+                PrevChapter(
+                  setScans,
+                  anime!.anime,
+                  chapitresOptions,
+                  placeholderRef,
+                )
               }
             >
               Chapitre précédent
@@ -245,7 +260,12 @@ const Scans = () => {
             <button
               className="btn nextButton next"
               onClick={() =>
-                NextChapter(setScans, anime!.anime, chapitresOptions)
+                NextChapter(
+                  setScans,
+                  anime!.anime,
+                  chapitresOptions,
+                  placeholderRef,
+                )
               }
             >
               Chapitre suivant
