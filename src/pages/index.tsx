@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import ColorPicker from "@/app/ui/colorPicker";
 
 import { Footer } from "@/app/ui/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
@@ -230,6 +231,8 @@ export default function Accueil() {
           />
         </div>
       )}
+
+      <ColorPicker />
 
       {catalogues.map(({ names, category }, index) => (
         <div className="mb-3" key={category}>

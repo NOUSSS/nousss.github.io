@@ -15,10 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const SearchIcon = icons["Search"];
-  const ResetIcon = icons["RotateCcw"];
 
-  const colorPickerRef = useRef<HTMLDivElement | null>(null);
-  const colorInputRef = useRef<HTMLInputElement | null>(null);
   const metaColorRef = useRef<HTMLMetaElement | null>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,13 +37,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     const main = localStorage.getItem("color");
 
     if (main) document.documentElement.style.setProperty("--mainColor", main);
-
-    const color = main ?? "#ffea00";
-
-    if (colorPickerRef.current)
-      colorPickerRef.current.style.backgroundColor = color;
-
-    if (colorInputRef.current) colorInputRef.current.value = color;
 
     console.log(
       "%c Salut !",
@@ -185,47 +175,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </nav>
       </header>
-
-      <div className="relative top-24 flex items-center justify-center gap-3">
-        <div
-          ref={colorPickerRef}
-          className="flex size-5 items-center justify-center overflow-hidden rounded-full"
-        >
-          <input
-            className="absolute h-5 w-5 cursor-pointer bg-transparent opacity-0"
-            ref={colorInputRef}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              const newColor = event.target.value;
-
-              document.documentElement.style.setProperty(
-                "--mainColor",
-                newColor,
-              );
-
-              localStorage.setItem("color", newColor);
-
-              if (colorPickerRef.current)
-                colorPickerRef.current.style.backgroundColor = newColor;
-            }}
-            type="color"
-          />
-        </div>
-
-        <ResetIcon
-          className="size-5 cursor-pointer opacity-50 transition-opacity hover:opacity-100"
-          onClick={() => {
-            document.documentElement.style.setProperty(
-              "--mainColor",
-              "#ffea00",
-            );
-
-            localStorage.removeItem("color");
-
-            if (colorPickerRef.current)
-              colorPickerRef.current.style.backgroundColor = "#ffea00";
-          }}
-        />
-      </div>
 
       {children}
     </>

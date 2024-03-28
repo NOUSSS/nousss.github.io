@@ -22,6 +22,7 @@ import Select from "@/app/ui/Select";
 import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
+import ColorPicker from "@/app/ui/colorPicker";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -201,6 +202,7 @@ const Films = () => {
         ) : null}
       </Head>
 
+      <ColorPicker />
       <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
 
       <div className="m-4 mb-12 text-4xl">{title}</div>

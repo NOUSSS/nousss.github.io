@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 import SearchBar from "@/app/ui/searchBar";
+import ColorPicker from "@/app/ui/colorPicker";
 
 const Saisons = () => {
   const router = useRouter();
@@ -47,6 +48,8 @@ const Saisons = () => {
           </title>
         )}
       </Head>
+
+      <ColorPicker />
 
       <Title
         link={{

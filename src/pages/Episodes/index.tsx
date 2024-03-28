@@ -27,6 +27,7 @@ import random from "@/app/lib/random";
 import getHostname from "@/app/lib/getHostname";
 
 import Switch from "@/app/ui/Switch";
+import ColorPicker from "@/app/ui/colorPicker";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -442,6 +443,8 @@ const Episodes = () => {
           <title>{AnimeInfo.anime} - Episodes - Mugiwara-no Streaming</title>
         ) : null}
       </Head>
+
+      <ColorPicker />
 
       {isClient && AnimeInfo?.anime && (
         <Title

@@ -25,6 +25,7 @@ import Head from "next/head";
 import Select, { ItemsProps } from "@/app/ui/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
+import ColorPicker from "@/app/ui/colorPicker";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -167,6 +168,8 @@ const Scans = () => {
           <title>{anime.anime} - Scans - Mugiwara-no Streaming</title>
         ) : null}
       </Head>
+
+      <ColorPicker />
 
       <Title
         link={{
