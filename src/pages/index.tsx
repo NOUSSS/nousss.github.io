@@ -16,10 +16,9 @@ import { getAnime } from "@/app/lib/getAnime";
 import { useRouter } from "next/router";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function Accueil() {
@@ -38,12 +37,16 @@ export default function Accueil() {
   const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
-    const animes: AnimesType[] = [];
+    let options = [...ANIMES];
+    const animes = [];
 
     for (let i = 0; i < 5; i++) {
-      const generate = ANIMES[Math.floor(Math.random() * ANIMES.length)];
+      if (options.length > 0) {
+        const index = Math.floor(Math.random() * options.length);
 
-      if (!animes.includes(generate)) animes.push(generate);
+        animes.push(options[index]);
+        options.splice(index, 1);
+      }
     }
 
     setRandomAnimes(animes);
