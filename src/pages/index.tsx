@@ -195,10 +195,7 @@ export default function Accueil() {
               key={index}
               className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:flex-col-reverse"
             >
-              <div
-                className="flex flex-col justify-between p-8 md:min-w-[300px]"
-                style={{ display: "flex" }}
-              >
+              <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
                 <div className="m-4">
                   <h1 className="text-5xl max-xl:text-4xl">{anime.anime}</h1>
 
