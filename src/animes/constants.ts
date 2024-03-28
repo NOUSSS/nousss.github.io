@@ -85,7 +85,8 @@ export const ANIMES: AnimesType[] = [
     aliases: ["goku", "shenron", "db", "films", "saisons"],
     options: new DragonBall(),
     category: ["Classique", "Aventure"],
-    synopsis: "Akira Toriyama - Paix à son âme.",
+    synopsis:
+      "Son Gokû est un petit garçon exceptionnellement doué pour les arts martiaux, qui possède une mystérieuse queue de singe. Le jour où il rencontre Bulma, ils partent ensemble à la recherche des sept boules de cristal... Akira Toriyama - Paix à son âme.",
   },
   {
     anime: "Dragon Ball Z",

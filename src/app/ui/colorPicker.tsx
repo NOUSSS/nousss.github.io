@@ -16,7 +16,7 @@ const ColorPicker = () => {
       colorPickerRef.current.style.backgroundColor = color;
 
     if (colorInputRef.current) colorInputRef.current.value = color;
-  }, [colorInputRef]);
+  }, [colorInputRef.current]);
 
   return (
     <div className="m-8 flex items-center justify-center gap-3">

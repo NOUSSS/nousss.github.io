@@ -15,6 +15,13 @@ import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
 import { getAnime } from "@/app/lib/getAnime";
 import { useRouter } from "next/router";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export default function Accueil() {
   const animes = Array.from(
     ANIMES.map(({ anime, category }) => ({ anime, category })),
@@ -23,7 +30,7 @@ export default function Accueil() {
   const router = useRouter();
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
-  const [randomAnime, setRandomAnime] = useState<AnimesType>();
+  const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
 
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -31,7 +38,15 @@ export default function Accueil() {
   const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
-    setRandomAnime(ANIMES[Math.floor(Math.random() * ANIMES.length)]);
+    const animes: AnimesType[] = [];
+
+    for (let i = 0; i < 5; i++) {
+      const generate = ANIMES[Math.floor(Math.random() * ANIMES.length)];
+
+      if (!animes.includes(generate)) animes.push(generate);
+    }
+
+    setRandomAnimes(animes);
 
     const keys = Object.keys(localStorage);
     const lowercaseKeys = keys.map((key) => key.toLowerCase());
@@ -164,73 +179,72 @@ export default function Accueil() {
         className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
       ></div>
 
-      {randomAnime?.options.affiche && (
-        <div className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-md:max-h-none max-md:flex-col-reverse">
-          <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
-            <div className="m-4">
-              <h1 className="text-5xl max-xl:text-4xl">{randomAnime.anime}</h1>
-
-              <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
-                {randomAnime.synopsis.length > 600
-                  ? randomAnime.synopsis.substring(0, 600) + "..."
-                  : randomAnime.synopsis}
-              </p>
-            </div>
-
-            <button
-              className="btn"
-              onClick={() => {
-                if (historiques.find((e) => e.name === randomAnime.anime))
-                  router.push({
-                    pathname: "Episodes",
-                    query: {
-                      anime: randomAnime.anime,
-                      saison: historiques.find(
-                        (e) => e.name === randomAnime.anime,
-                      )!.saison,
-                    },
-                  });
-                else
-                  router.push({
-                    pathname: "Home",
-                    query: { anime: randomAnime.anime },
-                  });
-              }}
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        spaceBetween={30}
+        slidesPerView={1}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+      >
+        {randomAnimes?.map((anime, index) => (
+          <SwiperSlide key={index}>
+            <div
+              key={index}
+              className="flex max-h-[550px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:flex-col-reverse"
             >
-              {historiques.find((e) => e.name === randomAnime.anime)?.saison
-                ? `Reprendre
-                        ${
-                          historiques[
-                            historiques.findIndex(
-                              (e) => e.name === randomAnime.anime,
-                            )
-                          ]?.episode &&
-                          `Saison ${historiques[historiques.findIndex((e) => e.name === randomAnime.anime)]?.saison}
-                            ${getCurrentEpisode(
-                              randomAnime.anime,
-                              historiques.findIndex(
-                                (e) => e.name === randomAnime.anime,
-                              ),
-                              historiques,
-                            )}`
-                        }`
-                : "Regarder"}
-            </button>
-          </div>
+              <div
+                className="flex flex-col justify-between p-8 md:min-w-[300px]"
+                style={{ display: "flex" }}
+              >
+                <div className="m-4">
+                  <h1 className="text-5xl max-xl:text-4xl">{anime.anime}</h1>
 
-          <Image
-            className="aspect-video min-w-[900px] max-md:min-w-full"
-            alt="affiche d'un anime aléatoire"
-            src={randomAnime.options.affiche}
-          />
+                  <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
+                    {anime.synopsis.length > 600
+                      ? `${anime.synopsis.substring(0, 600)}...`
+                      : anime.synopsis}
+                  </p>
+                </div>
 
-          <Image
-            className="absolute left-0  top-0 -z-10 aspect-video h-[720px] w-full blur-3xl"
-            alt="affiche d'un anime aléatoire"
-            src={randomAnime.options.affiche}
-          />
-        </div>
-      )}
+                <button
+                  className="btn"
+                  onClick={() => {
+                    const histo = historiques.find(
+                      (e) => e.name === anime.anime,
+                    );
+
+                    const pathname = histo ? "Episodes" : "Home";
+                    const query = histo
+                      ? { anime: anime.anime, saison: histo.saison }
+                      : { anime: anime.anime };
+
+                    router.push({ pathname, query });
+                  }}
+                >
+                  {historiques.find((e) => e.name === anime.anime)?.saison
+                    ? `Reprendre ${getCurrentEpisode(anime.anime, 0, historiques)}`
+                    : "Regarder"}
+                </button>
+              </div>
+
+              <Image
+                className="aspect-video min-w-[900px] max-lg:min-w-full"
+                alt="affiche d'un anime aléatoire"
+                src={anime.options.affiche!}
+              />
+
+              <Image
+                className="fixed left-0 top-0 -z-10 aspect-video h-[720px] w-full blur-3xl"
+                alt="affiche d'un anime aléatoire"
+                src={anime.options.affiche!}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
       <ColorPicker />
 
