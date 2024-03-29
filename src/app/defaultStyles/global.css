@@ -6,7 +6,10 @@
 
 :root {
   --mainColor: #ffea00;
-  --plyr-color-main: var(--mainColor);
+}
+
+.swiper-pagination-progressbar-fill {
+  background: var(--mainColor) !important;
 }
 
 .btn {
