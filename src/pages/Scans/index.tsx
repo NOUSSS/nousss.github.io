@@ -245,7 +245,7 @@ const Scans = () => {
         <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-neutral-700">
           {!isFirst ? (
             <button
-              className="btn prevButton back"
+              className="btn back"
               onClick={() =>
                 PrevChapter(
                   setScans,
@@ -261,7 +261,7 @@ const Scans = () => {
 
           {!isLast ? (
             <button
-              className="btn nextButton next"
+              className="btn next"
               onClick={() =>
                 NextChapter(
                   setScans,
