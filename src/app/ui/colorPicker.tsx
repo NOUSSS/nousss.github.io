@@ -23,7 +23,7 @@ const ColorPicker = () => {
   }, [colorInputRef.current]);
 
   return (
-    <div className="m-8 flex items-center justify-center gap-3">
+    <div className="relative z-50 m-8 flex items-center justify-center gap-3">
       <div
         ref={colorPickerRef}
         className="flex size-5 items-center justify-center overflow-hidden rounded-full"
