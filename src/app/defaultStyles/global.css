@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --mainColor: #ffea00;
+  --defaultColor: #fb923c;
+  --mainColor: #fb923c;
 }
 
 .swiper-pagination-progressbar-fill {

@@ -10,7 +10,11 @@ const ColorPicker = () => {
   useEffect(() => {
     const main = localStorage.getItem("color");
 
-    const color = main ?? "#ffea00";
+    const color =
+      main ??
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--defaultColor",
+      );
 
     if (colorPickerRef.current)
       colorPickerRef.current.style.backgroundColor = color;
@@ -44,12 +48,19 @@ const ColorPicker = () => {
       <ResetIcon
         className="size-5 cursor-pointer opacity-50 transition-opacity hover:opacity-100"
         onClick={() => {
-          document.documentElement.style.setProperty("--mainColor", "#ffea00");
+          const defaultColor = getComputedStyle(
+            document.documentElement,
+          ).getPropertyValue("--defaultColor");
+
+          document.documentElement.style.setProperty(
+            "--mainColor",
+            defaultColor,
+          );
 
           localStorage.removeItem("color");
 
           if (colorPickerRef.current)
-            colorPickerRef.current.style.backgroundColor = "#ffea00";
+            colorPickerRef.current.style.backgroundColor = defaultColor;
         }}
       />
     </div>

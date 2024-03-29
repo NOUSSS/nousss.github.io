@@ -24,7 +24,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const main = localStorage.getItem("color");
-    const color = main ?? "#ffea00";
+    const color =
+      main ??
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--defaultColor",
+      );
 
     if (metaColorRef.current) metaColorRef.current.content = color;
   }, [metaColorRef.current]);
