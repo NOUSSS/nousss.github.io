@@ -1,4 +1,4 @@
-import Affiche from "@/assets/Animes/BorutoTwoBlueVortex/affiche.webp";
+import Affiche from "@/assets/Animes/BorutoTwoBlueVortex/affiche.jpg";
 import { Anime } from "@/app/class/anime";
 
 export default class BorutoTwoBlueVortex extends Anime {
