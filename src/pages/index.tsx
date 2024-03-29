@@ -188,10 +188,10 @@ export default function Accueil() {
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 4500,
           disableOnInteraction: false,
         }}
-        pagination={{ clickable: true, type: "progressbar" }}
+        pagination={{ type: "progressbar" }}
       >
         {randomAnimes?.map((anime, index) => (
           <SwiperSlide key={index}>
