@@ -13,10 +13,6 @@
   background: var(--mainColor) !important;
 }
 
-.swiper {
-  overflow: inherit !important;
-}
-
 .btn {
   @apply relative left-0 h-12 rounded border border-main bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm text-main transition-all duration-300;
 }
