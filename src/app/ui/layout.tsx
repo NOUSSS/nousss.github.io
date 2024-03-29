@@ -40,8 +40,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
     const colorPerso = localStorage.getItem("color");
 
-    console.log(colorPerso);
-
     if (colorPerso)
       document.documentElement.style.setProperty("--mainColor", colorPerso);
 
