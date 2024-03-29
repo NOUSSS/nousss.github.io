@@ -1,4 +1,4 @@
-import s1 from "@/assets/Animes/EightySix/Saisons/saison1.jpg";
+import s1 from "@/assets/Animes/EightySix/saisons/saison1.jpg";
 
 const images = {
   1: s1,
