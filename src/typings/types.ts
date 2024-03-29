@@ -6,6 +6,7 @@ export interface SeasonAndFilm {
   name: string;
   aliases?: string[];
   hs?: boolean;
+
   image: () => StaticImageData;
 }
 
@@ -35,17 +36,16 @@ export interface FilmOptions {
   names: Film;
 }
 
+interface ImageUrlOptions {
+  chapitre: string | number;
+  index: string | number;
+}
+
 export interface ScansOptions {
   from?: number;
   SCRIPT_URL: string;
 
-  IMAGE_URL: ({
-    chapitre,
-    index,
-  }: {
-    chapitre: string | number;
-    index: string | number;
-  }) => string;
+  IMAGE_URL: ({ chapitre, index }: ImageUrlOptions) => string;
 
   CHAPITRE_SPECIAUX?: number[];
 }
@@ -55,16 +55,15 @@ interface NameProps {
   name: string;
 }
 
+interface ScriptOptions {
+  index: number | string;
+  lang: string;
+
+  hs?: boolean;
+}
+
 export interface EpisodesOptions {
-  SCRIPT_URL: ({
-    index,
-    lang,
-    hs,
-  }: {
-    index: number | string;
-    lang: string;
-    hs?: boolean;
-  }) => string;
+  SCRIPT_URL: ({ index, lang, hs }: ScriptOptions) => string;
 
   horsSeries?: horsSeriesType[];
   names?: NameProps[];
