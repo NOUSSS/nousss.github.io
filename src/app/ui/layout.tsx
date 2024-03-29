@@ -38,9 +38,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       searchTextRef.current.innerText += "(Ctrl + K)";
     }
 
-    const main = localStorage.getItem("color");
+    const colorPerso = localStorage.getItem("color");
 
-    if (main) document.documentElement.style.setProperty("--mainColor", main);
+    console.log(colorPerso);
+
+    if (colorPerso)
+      document.documentElement.style.setProperty("--mainColor", colorPerso);
 
     console.log(
       "%c Salut !",
