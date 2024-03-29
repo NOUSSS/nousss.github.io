@@ -40,7 +40,7 @@ export default function Accueil() {
     let options = [...ANIMES];
     const animes = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       if (options.length > 0) {
         const index = Math.floor(Math.random() * options.length);
 
@@ -176,7 +176,7 @@ export default function Accueil() {
   );
 
   return (
-    <main className="top-[60px]">
+    <main className="top-20">
       <div
         ref={overlayRef}
         className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
@@ -186,11 +186,12 @@ export default function Accueil() {
         modules={[Autoplay, Pagination]}
         spaceBetween={30}
         slidesPerView={1}
+        loop={true}
         autoplay={{
-          delay: 5000000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
-        pagination={{ clickable: true }}
+        pagination={{ clickable: true, type: "progressbar" }}
       >
         {randomAnimes?.map((anime, index) => (
           <SwiperSlide key={index}>
@@ -198,13 +199,11 @@ export default function Accueil() {
               key={index}
               className="flex max-h-[525px] min-h-[525px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
             >
-              <div className="flex flex-col justify-between p-8 md:min-w-[300px]">
-                <div className="m-4">
+              <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
+                <div className="my-4">
                   <h1 className="text-5xl max-xl:text-4xl max-md:text-xl">
-                    {typeof window !== "undefined" && window.innerWidth < 600
-                      ? anime.anime.length > 17
-                        ? anime.anime.substring(0, 17) + "..."
-                        : anime.anime
+                    {anime.anime.length > 25
+                      ? anime.anime.substring(0, 25) + "..."
                       : anime.anime}
                   </h1>
 
