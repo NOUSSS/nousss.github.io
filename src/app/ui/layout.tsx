@@ -85,8 +85,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       />
       {/* End Google Tag Manager */}
 
-      <Script src="../path/to/flowbite/dist/flowbite.min.js" />
-
       <Head>
         <meta charSet="UTF-8" />
 
