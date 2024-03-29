@@ -48,6 +48,7 @@ module.exports = {
           },
         },
       },
+
       animation: {
         spin: "borderAnime 2.5s linear infinite",
 
