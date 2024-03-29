@@ -250,7 +250,7 @@ export default function Accueil() {
 
       {randomAnimes && randomAnimes.length > 0 ? (
         <Image
-          className="absolute left-0 top-0 -z-50 h-[600px] w-full blur-3xl"
+          className="absolute left-0 top-0 -z-50 h-[725px] w-full blur-3xl"
           alt="affiche d'un anime aléatoire"
           src={randomAnimes![currentIndex].options.affiche!}
         />
