@@ -8,8 +8,10 @@
 
 # testing
 /coverage
+
+# dev
 /EpisodeCollector.js
-/tool
+/dev.bat
 
 # next.js
 /.next/
