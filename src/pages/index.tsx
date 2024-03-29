@@ -42,7 +42,7 @@ export default function Accueil() {
     let options = [...ANIMES];
     const animes = [];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       if (options.length > 0) {
         const index = Math.floor(Math.random() * options.length);
 
@@ -196,56 +196,98 @@ export default function Accueil() {
         onSlideChange={({ realIndex }) => setCurrentIndex(realIndex)}
         pagination={{ type: "progressbar" }}
       >
-        {randomAnimes?.map((anime, index) => (
-          <SwiperSlide key={index}>
-            <div
-              key={index}
-              className="flex max-h-[525px] min-h-[525px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
-            >
-              <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
-                <div className="my-4">
-                  <h1 className="text-5xl max-xl:text-4xl max-md:text-xl">
-                    {anime.anime.length > 25
-                      ? anime.anime.substring(0, 25) + "..."
-                      : anime.anime}
-                  </h1>
+        {randomAnimes?.map((anime, index) => {
+          const historiquesFiltered = historiques.filter(({ name }) =>
+            randomAnimes.find(({ anime }) => anime === name) ? true : false,
+          );
 
-                  <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
-                    {anime.synopsis.length > 600
-                      ? `${anime.synopsis.substring(0, 600)}...`
-                      : anime.synopsis}
-                  </p>
+          const historiqueIndex = historiquesFiltered.findIndex(
+            ({ name }) => name === anime.anime,
+          );
+
+          const historique = historiquesFiltered.find(
+            ({ name }) => name === anime.anime,
+          );
+
+          return (
+            <SwiperSlide key={index}>
+              <div
+                key={index}
+                className="flex max-h-[525px] min-h-[525px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
+              >
+                <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
+                  <div className="my-4">
+                    <h1 className="text-5xl max-xl:text-4xl max-md:text-xl">
+                      {anime.anime.length > 25
+                        ? anime.anime.substring(0, 25) + "..."
+                        : anime.anime}
+                    </h1>
+
+                    <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
+                      {anime.synopsis.length > 600
+                        ? `${anime.synopsis.substring(0, 600)}...`
+                        : anime.synopsis}
+                    </p>
+                  </div>
+
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      const query: {
+                        anime: string;
+                        saison?: string;
+                      } = { anime: anime.anime };
+
+                      if (
+                        historique?.redirect &&
+                        historique?.redirect === "Episodes"
+                      )
+                        query.saison = historique.saison;
+                      if (historique?.redirect)
+                        router.push({
+                          pathname: historique.redirect,
+                          query,
+                        });
+                      else
+                        router.push({
+                          pathname: "Home",
+                          query: { anime: anime.anime },
+                        });
+                    }}
+                  >
+                    {historiquesFiltered.find((e) => e.name === anime.anime)
+                      ? "Reprendre " +
+                        `${
+                          historiquesFiltered[historiqueIndex]?.episode
+                            ? `Saison ${historiquesFiltered[historiqueIndex]?.saison} ${getCurrentEpisode(
+                                randomAnimes[historiqueIndex].anime,
+                                historiqueIndex,
+                                historiquesFiltered,
+                              )}`
+                            : historiquesFiltered[historiqueIndex]?.film
+                              ? `Film ${Number(historiquesFiltered[historiqueIndex]?.film) + 1}`
+                              : historiquesFiltered[historiqueIndex]?.chapitre
+                                ? `
+                      ${getCurrentChapitre(
+                        randomAnimes[historiqueIndex].anime,
+                        historiqueIndex,
+                        historiquesFiltered,
+                      )}`
+                                : ""
+                        }`
+                      : "Regarder"}
+                  </button>
                 </div>
 
-                <button
-                  className="btn"
-                  onClick={() => {
-                    const histo = historiques.find(
-                      (e) => e.name === anime.anime,
-                    );
-
-                    const pathname = histo ? "Episodes" : "Home";
-                    const query = histo
-                      ? { anime: anime.anime, saison: histo.saison }
-                      : { anime: anime.anime };
-
-                    router.push({ pathname, query });
-                  }}
-                >
-                  {historiques.find((e) => e.name === anime.anime)?.saison
-                    ? `Reprendre ${getCurrentEpisode(anime.anime, 0, historiques)}`
-                    : "Regarder"}
-                </button>
+                <Image
+                  className="aspect-video min-w-[900px] max-w-[900px] max-lg:min-w-full max-lg:max-w-full"
+                  alt="affiche d'un anime aléatoire"
+                  src={anime.options.affiche!}
+                />
               </div>
-
-              <Image
-                className="aspect-video min-w-[900px] max-w-[900px] max-lg:min-w-full max-lg:max-w-full"
-                alt="affiche d'un anime aléatoire"
-                src={anime.options.affiche!}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
 
       {randomAnimes && randomAnimes.length > 0 ? (
