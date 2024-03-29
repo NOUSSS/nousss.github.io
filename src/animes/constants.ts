@@ -62,6 +62,7 @@ import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
 import FMA from "./FMA/fullmetal-alchemist";
 import Baki from "./Baki/baki";
 import DragonBallGT from "./DragonBallGT/dragon-ball-gt";
+import EightySix from "./EightySix/eighty-six";
 
 export interface AnimesType {
   anime: string;
@@ -567,6 +568,12 @@ export const ANIMES: AnimesType[] = [
     options: new DragonBallGT(),
     synopsis:
       "Dix ans se sont écoulés depuis la fin de Dragon Ball Z. Au palais de Dendé, Son Gokû, qui s'entrainait avec Uub, surprend Pilaf sur le point de dérober les boules de cristal. Par accident, celui-ci fait le voeu que Son Gokû redevienne un enfant pour qu'il puisse l'affronter. C'est alors que le Dragon exauce le voeu et que les boules de cristal s'éparpillent à travers toute la galaxie. Son Gokû, redevenu enfant, n'a qu'une année pour les retrouver et demander au Dragon de lui rendre sa taille normale sinon, la Terre se désintègrera. C'est ainsi que débutent les nouvelles aventures de Son Gokû, Trunks et Pan, la fille de Son Gohan et Videl, à travers la galaxie.",
+  },
+  {
+    anime: "86: Eighty Six",
+    options: new EightySix(),
+    category: ["New gen"],
+    synopsis: `Pour répondre aux attaques de drones autonomes envoyés par l’Empire voisin de Giad, la République de San Magnolia a développé ses propres drones de combat surnommés les “Juggernaut", espérant ainsi limiter les pertes humaines. En réalité, ces appareils sont pilotés par les 86, les habitants d’un district secret considérés comme du bétail. Déterminé dans sa mission, Shin, le capitaine de l'escadron Spearhead composé de plusieurs 86, poursuit ces opérations suicidaires. C’est alors qu’arrive un nouvel officier et soldat de l’élite militaire, Lena, qui déteste la façon dont la République utilise les 86. Ils n’auraient jamais dû se croiser, mais face aux événements de cette guerre féroce, ils vont entrevoir ensemble un nouvel avenir…`,
   },
 ];
 
