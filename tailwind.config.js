@@ -7,11 +7,13 @@ module.exports = {
       colors: {
         main: "var(--mainColor)",
       },
+
       keyframes: {
         borderAnime: {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
+
         appearCenter: {
           from: {
             opacity: 0,
@@ -22,6 +24,7 @@ module.exports = {
             transform: "translateX(-50%) translateY(-50%) scale(1)",
           },
         },
+
         appear: {
           from: {
             opacity: 0,
@@ -32,6 +35,7 @@ module.exports = {
             transform: "scale(1)",
           },
         },
+
         title: {
           "0%": {
             color: "white",
@@ -54,5 +58,6 @@ module.exports = {
       },
     },
   },
+
   plugins: [],
 };
