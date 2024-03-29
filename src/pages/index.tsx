@@ -183,12 +183,12 @@ export default function Accueil() {
       ></div>
 
       <Swiper
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
         spaceBetween={30}
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 4500,
           disableOnInteraction: false,
         }}
         pagination={{ type: "progressbar" }}

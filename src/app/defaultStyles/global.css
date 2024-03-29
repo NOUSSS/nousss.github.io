@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --defaultColor: #fb923c;
+  --defaultColor: white;
   --mainColor: #fb923c;
 }
 
