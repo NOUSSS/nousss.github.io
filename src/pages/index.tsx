@@ -261,7 +261,7 @@ export default function Accueil() {
             >
               {category === "Reprendre" ? (
                 <>
-                  <p className="font-normal">{category}</p>
+                  <p className="font-normal drop-shadow-2xl">{category}</p>
 
                   <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
