@@ -40,7 +40,7 @@
 @layer base {
   body {
     font-family: Fredoka;
-    @apply overflow-x-hidden bg-[#1b1d21] text-center text-white;
+    @apply bg-[#1b1d21] text-center text-white;
   }
 
   span {

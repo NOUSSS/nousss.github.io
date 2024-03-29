@@ -31,6 +31,8 @@ export default function Accueil() {
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
@@ -191,6 +193,7 @@ export default function Accueil() {
           delay: 4500,
           disableOnInteraction: false,
         }}
+        onSlideChange={({ realIndex }) => setCurrentIndex(realIndex)}
         pagination={{ type: "progressbar" }}
       >
         {randomAnimes?.map((anime, index) => (
@@ -240,16 +243,18 @@ export default function Accueil() {
                 alt="affiche d'un anime aléatoire"
                 src={anime.options.affiche!}
               />
-
-              <Image
-                className="absolute left-0 top-0 -z-50 aspect-video h-[720px] w-full blur-3xl"
-                alt="affiche d'un anime aléatoire"
-                src={anime.options.affiche!}
-              />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {randomAnimes && randomAnimes.length > 0 ? (
+        <Image
+          className="absolute left-0 top-0 -z-50 h-[600px] w-full blur-3xl"
+          alt="affiche d'un anime aléatoire"
+          src={randomAnimes![currentIndex].options.affiche!}
+        />
+      ) : null}
 
       <ColorPicker />
 
