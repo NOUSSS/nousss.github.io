@@ -63,6 +63,7 @@ import FMA from "./FMA/fullmetal-alchemist";
 import Baki from "./Baki/baki";
 import DragonBallGT from "./DragonBallGT/dragon-ball-gt";
 import EightySix from "./EightySix/eighty-six";
+import SpyXFamily from "./SpyXFamily/spy-x-family";
 
 export interface AnimesType {
   anime: string;
@@ -574,6 +575,13 @@ export const ANIMES: AnimesType[] = [
     options: new EightySix(),
     category: ["New gen"],
     synopsis: `Pour répondre aux attaques de drones autonomes envoyés par l’Empire voisin de Giad, la République de San Magnolia a développé ses propres drones de combat surnommés les “Juggernaut", espérant ainsi limiter les pertes humaines. En réalité, ces appareils sont pilotés par les 86, les habitants d’un district secret considérés comme du bétail. Déterminé dans sa mission, Shin, le capitaine de l'escadron Spearhead composé de plusieurs 86, poursuit ces opérations suicidaires. C’est alors qu’arrive un nouvel officier et soldat de l’élite militaire, Lena, qui déteste la façon dont la République utilise les 86. Ils n’auraient jamais dû se croiser, mais face aux événements de cette guerre féroce, ils vont entrevoir ensemble un nouvel avenir…`,
+  },
+  {
+    anime: "Spy X Family",
+    synopsis:
+      "Twilight, le plus grand espion du monde, doit pour sa nouvelle mission créer une famille de toutes pièces afin de pouvoir s'introduire dans la plus prestigieuse école de l'aristocratie. Totalement dépourvu d'expérience familiale, il va adopter une petite fille en ignorant qu'elle est télépathe, et s'associer à une jeune femme timide, sans se douter qu'elle est une redoutable tueuse à gages. Ce trio atypique va devoir composer pour passer inaperçu, tout en découvrant les vraies valeurs d'une famille unie et aimante.",
+    options: new SpyXFamily(),
+    category: ["New gen"],
   },
 ];
 

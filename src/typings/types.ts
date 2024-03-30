@@ -68,7 +68,7 @@ export interface EpisodesOptions {
   horsSeries?: horsSeriesType[];
   names?: NameProps[];
 
-  parts: {
+  parts?: {
     from: number;
     to: number;
   };

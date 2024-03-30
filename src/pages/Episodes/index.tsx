@@ -155,14 +155,15 @@ const Episodes = () => {
   const parts = isClient && options?.EPISODES_OPTIONS?.parts;
 
   if (parts) {
+    if (Number(AnimeInfo?.saison) > parts.to)
+      scriptIndex = (Number(scriptIndex) - 1).toString();
+
     if (
-      Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) >
-        parts.from &&
-      Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) <= parts.to
+      Number(AnimeInfo?.saison) > parts.from &&
+      Number(AnimeInfo?.saison) <= parts.to
     ) {
       scriptIndex = `${parts.from}-${
-        Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) -
-        (parts.from - 1)
+        Number(AnimeInfo?.saison) - (parts.from - 1)
       }`;
     }
   }
@@ -199,6 +200,8 @@ const Episodes = () => {
       setFilever(random());
     }
   }, [AnimeInfo, lang]);
+
+  console.log(url_script);
 
   const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
