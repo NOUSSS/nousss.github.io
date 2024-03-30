@@ -42,7 +42,7 @@ export default function Accueil() {
     let options = [...ANIMES];
     const animes = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       if (options.length > 0) {
         const index = Math.floor(Math.random() * options.length);
 
