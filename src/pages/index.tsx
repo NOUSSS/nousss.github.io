@@ -443,39 +443,41 @@ export default function Accueil() {
                         />
                       ) : null}
 
-                      <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
-                        {formatName(animeName)}
+                      <div className="relative top-2 p-1 text-sm max-sm:text-xs">
+                        <p className="text-white">{formatName(animeName)}</p>
 
-                        {historiques[i]?.chapitre && (
-                          <>
-                            <br />
+                        <p className="relative -top-5 text-main">
+                          {historiques[i]?.chapitre && (
+                            <>
+                              <br />
 
-                            {getCurrentChapitre(
-                              formatName(animeName)!,
-                              i,
-                              historiques,
-                            )}
-                          </>
-                        )}
-                        {historiques[i]?.film && (
-                          <>
-                            <br />
-                            Film {Number(historiques[i]?.film) + 1}
-                          </>
-                        )}
-                        {historiques[i]?.episode && (
-                          <>
-                            <br />
-                            Saison {historiques[i]?.saison}
-                            {", "}
-                            {getCurrentEpisode(
-                              formatName(animeName)!,
-                              i,
-                              historiques,
-                            )}
-                          </>
-                        )}
-                      </p>
+                              {getCurrentChapitre(
+                                formatName(animeName)!,
+                                i,
+                                historiques,
+                              )}
+                            </>
+                          )}
+                          {historiques[i]?.film && (
+                            <>
+                              <br />
+                              Film {Number(historiques[i]?.film) + 1}
+                            </>
+                          )}
+                          {historiques[i]?.episode && (
+                            <>
+                              <br />
+                              Saison {historiques[i]?.saison}
+                              {", "}
+                              {getCurrentEpisode(
+                                formatName(animeName)!,
+                                i,
+                                historiques,
+                              )}
+                            </>
+                          )}
+                        </p>
+                      </div>
                     </div>
                   ) : (
                     <div
@@ -483,15 +485,15 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="relative mr-2 h-60 w-32 overflow-hidden rounded-xl"
+                      className="relative mr-2 h-64 w-36 overflow-hidden rounded-xl max-md:mr-1 max-md:w-32"
                     >
                       <Image
-                        className="relative top-1 z-[-1] h-44 min-h-44 rounded-md"
+                        className="relative top-1 z-[-1] h-48 min-h-48 w-36 rounded-md"
                         src={getSaison(animeName)!}
                         alt="affiche d'un anime"
                       />
 
-                      <p className="relative top-4 text-left text-sm text-main">
+                      <p className="relative top-4 text-left text-base max-lg:text-sm">
                         {formatName(animeName)!.length > 17
                           ? formatName(animeName)?.substring(0, 17) + "..."
                           : formatName(animeName)}
