@@ -1,4 +1,5 @@
 import Affiche from "@/assets/Animes/BlueLock/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 import { Anime } from "@/app/class/anime";
 import { getImage } from "./constants/images-saisons";
@@ -38,6 +39,8 @@ export default class BlueLock extends Anime {
         1: 0,
         2: 24,
       },
+
+      names,
     };
   }
 }

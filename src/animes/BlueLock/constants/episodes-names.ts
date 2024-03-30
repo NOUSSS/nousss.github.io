@@ -1,0 +1,28 @@
+const names = [
+  { name: "Mon rêve", index: "1" },
+  { name: "Le Monstre", index: "2" },
+  { name: "Réinventer le foot de zéro", index: "3" },
+  { name: "Pressentiment et intuition", index: "4" },
+  { name: "Le moment ou jamais pour changer", index: "5" },
+  { name: "Désolé", index: "6" },
+  { name: "La passion ardente", index: "7" },
+  { name: "La formule pour marquer", index: "8" },
+  { name: "L'éveil", index: "9" },
+  { name: "C'est pour le mieux", index: "10" },
+  { name: "La dernière pièce du puzzle", index: "11" },
+  { name: "La deuxième sélection", index: "12" },
+  { name: "Top 3", index: "13" },
+  { name: "Les génies et les mecs lambda", index: "14" },
+  { name: "Le dévoreur", index: "15" },
+  { name: "La combinaison à trois", index: "16" },
+  { name: "Le nullos", index: "17" },
+  { name: "Le protagoniste de la scène", index: "18" },
+  { name: "Dancing boy", index: "19" },
+  { name: "Le super jeu combiné", index: "20" },
+  { name: "Je ne fais pas partie de leur monde", index: "21" },
+  { name: "La voix du cœur", index: "22" },
+  { name: "Luck", index: "23" },
+  { name: "L'heure est venue", index: "24" },
+];
+
+export default names;
