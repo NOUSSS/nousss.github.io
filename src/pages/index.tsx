@@ -13,6 +13,7 @@ import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
 import { getAnime } from "@/app/lib/getAnime";
+import { shuffle } from "@/app/lib/shuffle";
 import { useRouter } from "next/router";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,7 +21,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { shuffle } from "@/app/lib/shuffle";
 
 export default function Accueil() {
   const animes = Array.from(
@@ -40,17 +40,15 @@ export default function Accueil() {
   const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
-    let options = shuffle(ANIMES);
+    let animesCopy = [...shuffle(ANIMES)];
     const animes = [];
 
-    console.log(options);
-
     for (let i = 0; i < 6; i++) {
-      if (options.length > 0) {
-        const index = Math.floor(Math.random() * options.length);
+      if (animesCopy.length > 0) {
+        const index = Math.floor(Math.random() * animesCopy.length);
 
-        animes.push(options[index]);
-        options.splice(index, 1);
+        animes.push(animesCopy[index]);
+        animesCopy.splice(index, 1);
       }
     }
 
