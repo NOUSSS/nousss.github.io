@@ -1,9 +1,9 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/AssassinationClassroom/Affiche.webp";
-
-import { Anime } from "@/app/class/anime";
+import names from "./constants/episodes-names";
 
 export default class AssassinationClassroom extends Anime {
   constructor() {
@@ -36,6 +36,8 @@ export default class AssassinationClassroom extends Anime {
         2: 22,
         3: 47,
       },
+
+      names,
     };
   }
 }
