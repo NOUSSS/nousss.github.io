@@ -47,9 +47,6 @@ const episodes = [
     name: "Arise",
     index: "12",
   },
-] as {
-  name: string;
-  index: string;
-}[];
+];
 
 export default episodes;
