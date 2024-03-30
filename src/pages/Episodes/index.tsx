@@ -212,14 +212,6 @@ const Episodes = () => {
           id: loadingToast,
         });
       }
-
-      if (AnimeInfo && AnimeInfo.saison) {
-        setLang("vostfr");
-
-        if (placeholderLangRef.current)
-          placeholderLangRef.current.innerText =
-            langObj[lang as "vostfr" | "vf"];
-      }
     }
 
     if (status === "ready") {
