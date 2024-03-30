@@ -109,6 +109,19 @@ const episodes = [
     name: "La première cause des conclusions absurdes, je l’attribue au manque de méthode.",
     index: "35",
   },
+  {
+    name: "Il n'y a qu'une loi en sentiment. C'est de faire le bonheur de ce qu'on aime",
+    index: "36",
+  },
+
+  {
+    name: "Changer mes désirs plutôt que l'ordre du monde",
+    index: "37",
+  },
+  {
+    name: "L'amour est le meilleur des rêves",
+    index: "38",
+  },
 ];
 
 export default episodes;
