@@ -27,6 +27,10 @@ class Bleach extends Anime {
         aliases: ["partie 2"],
         image: () => getImage(3),
       },
+      oav: {
+        name: "OAV",
+        image: () => getImage(1),
+      },
     };
 
     this.FILM_OPTIONS = {
@@ -58,7 +62,10 @@ class Bleach extends Anime {
         4: 392,
       },
 
-      fromParts: 2,
+      parts: {
+        from: 2,
+        to: 3,
+      },
       names: episodes,
     };
   }

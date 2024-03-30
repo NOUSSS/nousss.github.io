@@ -152,13 +152,17 @@ const Episodes = () => {
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
 
-  const parts = (isClient && options?.EPISODES_OPTIONS?.fromParts) as number;
+  const parts = isClient && options?.EPISODES_OPTIONS?.parts;
 
   if (parts) {
-    if (Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) > parts) {
-      scriptIndex = `${parts}-${
+    if (
+      Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) >
+        parts.from &&
+      Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) <= parts.to
+    ) {
+      scriptIndex = `${parts.from}-${
         Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) -
-        (parts - 1)
+        (parts.from - 1)
       }`;
     }
   }
