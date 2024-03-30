@@ -2,6 +2,7 @@ import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Monster/Affiche.jpg";
+import names from "../AirGear/constants/episodes-names";
 
 export default class Monster extends Anime {
   constructor() {
@@ -23,6 +24,8 @@ export default class Monster extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }
