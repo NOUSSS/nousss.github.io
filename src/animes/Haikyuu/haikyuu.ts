@@ -1,4 +1,5 @@
 import Affiche from "@/assets/Animes/Haikyuu/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 import { Anime } from "@/app/class/anime";
 import { getImage } from "./constants/images-saisons";
@@ -64,6 +65,8 @@ export default class Haikyuu extends Anime {
         4: 60,
         5: 85,
       },
+
+      names,
     };
   }
 }
