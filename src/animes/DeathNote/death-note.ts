@@ -1,8 +1,9 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/DeathNote/Affiche.webp";
-import { Anime } from "@/app/class/anime";
+import names from "./constants/episodes-names";
 
 export default class DeathNote extends Anime {
   constructor() {
@@ -47,6 +48,8 @@ export default class DeathNote extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }
