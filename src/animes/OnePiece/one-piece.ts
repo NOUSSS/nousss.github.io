@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/OnePiece/Affiche.jpeg";
 
 class OnePiece extends Anime {
@@ -148,7 +148,7 @@ class OnePiece extends Anime {
         10: 877,
         11: 1088,
       },
-      names: episodes,
+      names,
     };
   }
 }

@@ -46,7 +46,7 @@ class SoloLeveling extends Anime {
       allIndex: {
         1: 0,
       },
-      names: episodes,
+      names,
     };
   }
 }

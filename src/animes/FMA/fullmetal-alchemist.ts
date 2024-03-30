@@ -3,7 +3,7 @@ import { Anime } from "@/app/class/anime";
 import affiche from "@/assets/Animes/FMA/affiche.webp";
 import saison1 from "@/assets/Animes/FMA/Saisons/saison1.webp";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 
 class FMA extends Anime {
   constructor() {
@@ -26,7 +26,7 @@ class FMA extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
 
     this.SCANS_OPTIONS = {

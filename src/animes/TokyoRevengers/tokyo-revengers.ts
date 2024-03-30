@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/TokyoRevengers/Affiche.jpg";
 
 class TokyoRevengers extends Anime {
@@ -59,7 +59,7 @@ class TokyoRevengers extends Anime {
         4: 50,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

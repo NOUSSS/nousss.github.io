@@ -3,7 +3,7 @@ import { films } from "./constants/films-names";
 
 import affiche from "@/assets/Animes/DragonBallGT/affiche.webp";
 import saison1 from "@/assets/Animes/DragonBallGT/Saisons/saison1.webp";
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 
 class DragonBallGT extends Anime {
   constructor() {
@@ -33,7 +33,7 @@ class DragonBallGT extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

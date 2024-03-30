@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/Bleach/affiche.webp";
 
 import { Anime } from "@/app/class/anime";
@@ -66,7 +66,7 @@ class Bleach extends Anime {
         from: 2,
         to: 3,
       },
-      names: episodes,
+      names,
     };
   }
 }

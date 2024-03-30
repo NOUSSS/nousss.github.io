@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
 import Affiche from "@/assets/Animes/MyHeroAcademia/Affiche.jpg";
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 
 import { Anime } from "@/app/class/anime";
 
@@ -80,7 +80,7 @@ export default class MyHeroAcademia extends Anime {
         6: 113,
         7: 138,
       },
-      names: episodes,
+      names,
     };
   }
 }

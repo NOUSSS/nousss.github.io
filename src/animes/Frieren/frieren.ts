@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Frieren/affiche.webp";
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 
 export default class Frieren extends Anime {
   constructor() {
@@ -38,7 +38,7 @@ export default class Frieren extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

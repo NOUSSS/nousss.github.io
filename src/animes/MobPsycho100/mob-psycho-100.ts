@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/MobPsycho100/Affiche.webp";
 
 class MobPsycho100 extends Anime {
@@ -53,7 +53,7 @@ class MobPsycho100 extends Anime {
         3: 25,
         4: 37,
       },
-      names: episodes,
+      names,
     };
   }
 }

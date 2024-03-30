@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/Boruto/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
@@ -47,7 +47,7 @@ class Boruto extends Anime {
       allIndex: {
         1: 0,
       },
-      names: episodes,
+      names,
     };
   }
 }

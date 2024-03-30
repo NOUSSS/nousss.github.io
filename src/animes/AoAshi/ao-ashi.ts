@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/AoAshi/Affiche.jpg";
 
 class AoAshi extends Anime {
@@ -36,7 +36,7 @@ class AoAshi extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

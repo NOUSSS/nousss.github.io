@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/SpyXFamily/affiche.jpg";
 
 class SpyXFamily extends Anime {
@@ -59,7 +59,7 @@ class SpyXFamily extends Anime {
         to: 2,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

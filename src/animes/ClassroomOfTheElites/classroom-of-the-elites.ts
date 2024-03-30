@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/ClassroomOfTheElites/Affiche.webp";
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 
 export default class ClassroomOfTheElites extends Anime {
   constructor() {
@@ -54,7 +54,7 @@ export default class ClassroomOfTheElites extends Anime {
         3: 25,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

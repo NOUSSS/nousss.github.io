@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 
 import Affiche from "@/assets/Animes/BlackClover/Affiche.jpg";
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import { Anime } from "@/app/class/anime";
 
 class BlackClover extends Anime {
@@ -53,7 +53,7 @@ class BlackClover extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

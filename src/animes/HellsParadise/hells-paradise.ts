@@ -1,6 +1,6 @@
 import { getImage } from "./constants/images-saisons";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/HellsParadise/Affiche.jpg";
 
 import { Anime } from "@/app/class/anime";
@@ -43,7 +43,7 @@ class HellsParadise extends Anime {
         2: 13,
       },
 
-      names: episodes,
+      names,
     };
   }
 }

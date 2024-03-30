@@ -1,7 +1,7 @@
 import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
-import episodes from "./constants/episodes-names";
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/EightySix/affiche.jpg";
 
 class EightySix extends Anime {
@@ -32,7 +32,7 @@ class EightySix extends Anime {
         1: 0,
       },
 
-      names: episodes,
+      names,
     };
   }
 }
