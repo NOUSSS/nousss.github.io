@@ -74,3 +74,5 @@ const episodes = [
   { index: "73", name: "En attendant l'apocalypse" },
   { index: "74", name: "Monster VS Monster" },
 ];
+
+export default episodes;

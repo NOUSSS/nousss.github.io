@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Mashle/Affiche.jpeg";
-import names from "../AirGear/constants/episodes-names";
+import names from "./constants/episodes-names";
 
 export default class Mashle extends Anime {
   constructor() {
