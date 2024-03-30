@@ -1,4 +1,6 @@
 import Affiche from "@/assets/Animes/KaguraBachi/Affiche.jpg";
+import saison1 from "@/assets/Animes/KaguraBachi/saisons/saison1.webp";
+
 import { Anime } from "@/app/class/anime";
 
 export default class KaguraBachi extends Anime {
@@ -6,6 +8,10 @@ export default class KaguraBachi extends Anime {
     super();
 
     this.affiche = Affiche;
+
+    this.saisons = {
+      1: { name: "Saison 1", image: () => saison1 },
+    };
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:

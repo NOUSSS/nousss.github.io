@@ -1,4 +1,6 @@
 import Affiche from "@/assets/Animes/DoomBreaker/affiche.webp";
+import saison1 from "@/assets/Animes/DoomBreaker/Saisons/saison1.webp";
+
 import { Anime } from "@/app/class/anime";
 
 export default class DoomBreaker extends Anime {
@@ -6,6 +8,13 @@ export default class DoomBreaker extends Anime {
     super();
 
     this.affiche = Affiche;
+
+    this.saisons = {
+      1: {
+        name: "Saison 1",
+        image: () => saison1,
+      },
+    };
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:

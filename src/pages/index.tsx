@@ -8,7 +8,7 @@ import { Footer } from "@/app/ui/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { formatName } from "@/app/lib/formatName";
-import { Historique } from "@/typings/types";
+import { Historique, Season } from "@/typings/types";
 import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
@@ -38,6 +38,16 @@ export default function Accueil() {
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
   const animesRef = useRef<HTMLUListElement[] | null>([]);
+
+  const getSaison = (animeName: string) => {
+    const anime = getAnime(animeName);
+
+    if (anime?.options.saisons) {
+      const saisons = Object.values(anime.options.saisons);
+
+      return saisons[saisons.length - 1].image();
+    }
+  };
 
   useEffect(() => {
     let animesCopy = [...shuffle(ANIMES)];
@@ -401,14 +411,14 @@ export default function Accueil() {
                       : animeName + historiques[i]?.name
                   }
                 >
-                  <div
-                    title={
-                      getAnime(animeName)?.synopsis ??
-                      "Aucun synopsis pour cette anime"
-                    }
-                    className={`relative mb-3 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-in-out ${category === "Reprendre" ? "h-44 w-40 max-sm:h-[170px]" : "h-40 w-32 max-sm:h-36 max-sm:w-28"} duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100`}
-                  >
-                    {historiques[i] && category === "Reprendre" ? (
+                  {category === "Reprendre" ? (
+                    <div
+                      title={
+                        getAnime(animeName)?.synopsis ??
+                        "Aucun synopsis pour cette anime"
+                      }
+                      className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
+                    >
                       <div
                         className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
                         onClick={(event) => {
@@ -424,51 +434,70 @@ export default function Accueil() {
                       >
                         X
                       </div>
-                    ) : null}
 
-                    <Image
-                      className={`relative top-1 z-[-1] ${category === "Reprendre" ? "h-[90px]" : "h-[70px]"} ${category === "Reprendre" ? "w-[160px]" : "w-[130px]"} ${category === "Reprendre" ? "max-sm:h-[85px]" : "max-sm:h-[65px]"} scale-90 rounded-t-xl`}
-                      src={getAnime(animeName)?.options.affiche!}
-                      alt="affiche d'un anime"
-                    />
+                      {getSaison(animeName) ? (
+                        <Image
+                          className="relative top-1 z-[-1] h-[90px] w-[160px] scale-90 rounded-t-xl max-sm:h-[85px]"
+                          src={getAnime(animeName)!.options.affiche!}
+                          alt="affiche d'un anime"
+                        />
+                      ) : null}
 
-                    <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
-                      {formatName(animeName)}
-                      {historiques[i] && category === "Reprendre" && (
-                        <>
-                          {historiques[i]?.chapitre && (
-                            <>
-                              <br />
+                      <p className="relative top-2 p-1 text-sm text-main max-sm:text-xs">
+                        {formatName(animeName)}
 
-                              {getCurrentChapitre(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
-                            </>
-                          )}
-                          {historiques[i]?.film && (
-                            <>
-                              <br />
-                              Film {Number(historiques[i]?.film) + 1}
-                            </>
-                          )}
-                          {historiques[i]?.episode && (
-                            <>
-                              <br />
-                              Saison {historiques[i]?.saison}
-                              {", "}
-                              {getCurrentEpisode(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
-                            </>
-                          )}
-                        </>
-                      )}
-                    </p>
-                  </div>
+                        {historiques[i]?.chapitre && (
+                          <>
+                            <br />
+
+                            {getCurrentChapitre(
+                              formatName(animeName)!,
+                              i,
+                              historiques,
+                            )}
+                          </>
+                        )}
+                        {historiques[i]?.film && (
+                          <>
+                            <br />
+                            Film {Number(historiques[i]?.film) + 1}
+                          </>
+                        )}
+                        {historiques[i]?.episode && (
+                          <>
+                            <br />
+                            Saison {historiques[i]?.saison}
+                            {", "}
+                            {getCurrentEpisode(
+                              formatName(animeName)!,
+                              i,
+                              historiques,
+                            )}
+                          </>
+                        )}
+                      </p>
+                    </div>
+                  ) : (
+                    <div
+                      title={
+                        getAnime(animeName)?.synopsis ??
+                        "Aucun synopsis pour cette anime"
+                      }
+                      className="relative mr-2 h-60 w-32 overflow-hidden rounded-xl"
+                    >
+                      <Image
+                        className="relative top-1 z-[-1] h-44 min-h-44 rounded-md"
+                        src={getSaison(animeName)!}
+                        alt="affiche d'un anime"
+                      />
+
+                      <p className="relative top-4 text-left text-sm text-main">
+                        {formatName(animeName)!.length > 17
+                          ? formatName(animeName)?.substring(0, 17) + "..."
+                          : formatName(animeName)}
+                      </p>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
