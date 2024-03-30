@@ -5,7 +5,6 @@ const episodes = [
   { index: "4", name: "Mash Burnedead et le redoutable sorcier" },
   { index: "5", name: "Mash Burnedead et le garçon malchanceux en amour" },
   { index: "6", name: "Mash Burnedead et la magie de fer" },
-  { index: "6.5", name: "Mash Burnedead et la lettre mystérieuse" },
   { index: "7", name: "Mash Burnedead et le marionnettiste" },
   { index: "8", name: "Mash Burnedead et les loups magiciens" },
   { index: "9", name: "Mash Burnedead et le sorcier au sort d'accélération" },
