@@ -193,15 +193,13 @@ const Episodes = () => {
                   ? Number(scriptIndex) - retard
                   : scriptIndex!,
                 lang: lang!,
-                hs: saisonsValues[Number(scriptIndex) - 1]?.hs ? true : false,
+                hs: saisonsValues[Number(scriptIndex) - 1].hs ? true : false,
               }))) as string,
       );
 
       setFilever(random());
     }
   }, [AnimeInfo, lang]);
-
-  console.log(url_script);
 
   const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
