@@ -1,7 +1,8 @@
 import { getImage } from "./constants/images-saisons";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Mashle/Affiche.jpeg";
-import { Anime } from "@/app/class/anime";
+import names from "../AirGear/constants/episodes-names";
 
 export default class Mashle extends Anime {
   constructor() {
@@ -44,10 +45,13 @@ export default class Mashle extends Anime {
           hs: [6],
         },
       ],
+
       allIndex: {
         1: 0,
         2: 12,
       },
+
+      names,
     };
   }
 }
