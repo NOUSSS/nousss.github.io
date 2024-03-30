@@ -10,7 +10,6 @@
 /coverage
 
 # dev
-/EpisodeCollector.js
 /dev.bat
 
 # next.js
