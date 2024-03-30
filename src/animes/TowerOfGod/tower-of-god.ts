@@ -1,4 +1,5 @@
 import { getImage } from "./constants/images-saisons";
+import names from "./constants/episodes-names";
 
 import Affiche from "@/assets/Animes/TowerOfGod/Affiche.jpg";
 import { Anime } from "@/app/class/anime";
@@ -41,6 +42,8 @@ export default class TowerOfGod extends Anime {
         1: 0,
         2: 13,
       },
+
+      names,
     };
   }
 }

@@ -2,6 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/TheGodOfHighschool/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 export default class TheGodOfHighschool extends Anime {
   constructor() {
@@ -41,6 +42,8 @@ export default class TheGodOfHighschool extends Anime {
         1: 0,
         2: 13,
       },
+
+      names,
     };
   }
 }
