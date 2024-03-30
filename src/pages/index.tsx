@@ -198,7 +198,7 @@ export default function Accueil() {
       >
         {randomAnimes?.map((anime, index) => {
           const historiquesFiltered = historiques.filter(({ name }) =>
-            randomAnimes.find(({ anime }) => anime === name) ? true : false,
+            randomAnimes.find(({ anime }) => anime === name),
           );
 
           const historiqueIndex = historiquesFiltered.findIndex(
@@ -300,7 +300,7 @@ export default function Accueil() {
 
       <ColorPicker />
 
-      <div className="relative z-10">
+      <div className="relative">
         {catalogues.map(({ names, category }, index) => (
           <div className="mb-3" key={category}>
             <div
@@ -316,9 +316,9 @@ export default function Accueil() {
                     ref={confirmRef}
                     className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
                   >
-                    <div className="absolute inset-0 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
+                    <div className="absolute inset-0 -z-10 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
 
-                    <div className="relative z-10 p-4 tracking-normal">
+                    <div className="relative p-4 tracking-normal">
                       <div>Confirmez vous ?</div>
 
                       <p className="mb-12 text-sm opacity-50">
@@ -326,7 +326,7 @@ export default function Accueil() {
                       </p>
                     </div>
 
-                    <div className="relative z-10 flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
+                    <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
                       <button
                         className="bg-green-500 hover:bg-green-600"
                         onClick={() => {
