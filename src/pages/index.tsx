@@ -20,6 +20,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import { shuffle } from "@/app/lib/shuffle";
 
 export default function Accueil() {
   const animes = Array.from(
@@ -39,8 +40,10 @@ export default function Accueil() {
   const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   useEffect(() => {
-    let options = [...ANIMES];
+    let options = shuffle(ANIMES);
     const animes = [];
+
+    console.log(options);
 
     for (let i = 0; i < 6; i++) {
       if (options.length > 0) {
