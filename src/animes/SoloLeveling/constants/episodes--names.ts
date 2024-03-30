@@ -44,7 +44,7 @@ const episodes = [
     index: "11",
   },
   {
-    anime: "Arise",
+    name: "Arise",
     index: "12",
   },
 ] as {
