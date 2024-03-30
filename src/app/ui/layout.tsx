@@ -110,7 +110,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </noscript>
 
       <Image
-        className="fixed left-0 top-0 h-full w-full opacity-[0.02] blur-[5px]"
+        className="fixed left-0 top-0 h-full w-full opacity-5 blur-2xl"
         src={background}
         alt="Fond"
       />
