@@ -2,6 +2,7 @@ import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/SlamDunk/Affiche.webp";
+import names from "./constants/episodes-names";
 
 export default class SlamDunk extends Anime {
   constructor() {
@@ -23,6 +24,8 @@ export default class SlamDunk extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }
