@@ -387,7 +387,7 @@ export default function Accueil() {
                   </button>
                 </>
               ) : (
-                <p className="font-normal">{category}</p>
+                <p className="font-normal text-main">{category}</p>
               )}
             </div>
 
@@ -488,9 +488,9 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="group relative mr-2 h-64 w-36 overflow-hidden rounded-xl max-md:mr-1 max-md:w-32"
+                      className="group mr-2 h-full w-36 rounded-xl max-md:mr-1 max-md:w-32"
                     >
-                      <div className="min-h-48 overflow-hidden rounded-md">
+                      <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                         <Image
                           className="relative top-1 z-[-1] h-48 min-h-48 w-36 rounded-md transition-transform group-hover:scale-110"
                           src={getSaison(animeName)!}
@@ -498,7 +498,7 @@ export default function Accueil() {
                         />
                       </div>
 
-                      <p className="relative top-2 text-left text-base max-md:text-sm">
+                      <p className="my-2 text-left text-base max-md:text-sm">
                         {formatName(animeName)!.length > 17
                           ? formatName(animeName)?.substring(0, 17) + "..."
                           : formatName(animeName)}
