@@ -137,18 +137,21 @@ export default function Accueil() {
       ({ category }) => category === "Nouveautés",
     );
 
-    if (momentIndex !== -1) {
-      const [momentItem] = updatedCatalogues.splice(momentIndex, 1);
+    let momentItem;
+    let resumeItem;
 
-      updatedCatalogues.splice(1, 0, momentItem);
-    }
+    if (momentIndex !== -1)
+      [momentItem] = updatedCatalogues.splice(momentIndex, 1);
 
     if (historiques.length > 0) {
-      updatedCatalogues.unshift({
+      resumeItem = {
         category: "Reprendre",
         names: historiques.map(({ name }) => name),
-      });
+      };
     }
+
+    if (momentItem) updatedCatalogues.unshift(momentItem);
+    if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
     setCatalogues(updatedCatalogues);
   }, [historiques]);
@@ -313,7 +316,7 @@ export default function Accueil() {
 
       <div className="relative">
         {catalogues.map(({ names, category }, index) => (
-          <div className="mb-3" key={category}>
+          <div key={category}>
             <div
               className={`ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
             >
