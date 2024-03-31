@@ -3,6 +3,7 @@ import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/SevenDeadlySins/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 export default class SevenDeadlySins extends Anime {
   constructor() {
@@ -42,13 +43,22 @@ export default class SevenDeadlySins extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/seven-deadly-sins/saison${index}/${lang}/episodes.js`,
 
+      horsSeries: [
+        {
+          saison: "1",
+          hs: [28],
+        },
+      ],
+
       allIndex: {
         1: 0,
-        2: 29,
-        3: 53,
-        4: 77,
-        5: 101,
+        2: 28,
+        3: 52,
+        4: 76,
+        5: 100,
       },
+
+      names,
     };
   }
 }
