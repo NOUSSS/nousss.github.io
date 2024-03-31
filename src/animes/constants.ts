@@ -65,6 +65,7 @@ import DragonBallGT from "./DragonBallGT/dragon-ball-gt";
 import EightySix from "./EightySix/eighty-six";
 import SpyXFamily from "./SpyXFamily/spy-x-family";
 import CyberpunkEdgerunners from "./CyberpunkEdgerunner/cyberpunk-edgerunners";
+import OshinoKo from "./OshinoKo/oshi-no-ko";
 
 export interface AnimesType {
   anime: string;
@@ -587,9 +588,16 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Cyberpunk: Edgerunners",
     options: new CyberpunkEdgerunners(),
-    category: ["New gen"],
+    category: ["New gen", "Musique"],
     synopsis:
       "Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.",
+  },
+  {
+    anime: "Oshi no Ko",
+    category: ["New gen", "Musique"],
+    synopsis:
+      'Le docteur Gorô est obstétricien dans un hôpital de campagne. Il est loin du monde de paillettes dans lequel évolue Ai Hoshino, une chanteuse au succès grandissant dont il est "un fan absolu". Ces deux-là vont peut-être se rencontrer dans des circonstances peu favorables, mais cet événement changera leur vie à jamais !',
+    options: new OshinoKo(),
   },
 ];
 
