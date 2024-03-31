@@ -18,7 +18,7 @@ import { shuffle } from "@/app/lib/shuffle";
 import { useRouter } from "next/router";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -397,44 +397,10 @@ export default function Accueil() {
               )}
             </div>
 
-            <Swiper
-              slidesPerView={30}
-              breakpoints={{
-                320: {
-                  slidesPerView: 3,
-                  spaceBetween: 150,
-                },
-                420: {
-                  slidesPerView: 4,
-                  spaceBetween: 150,
-                },
-                600: {
-                  slidesPerView: 5,
-                },
-                780: {
-                  slidesPerView: 6,
-                },
-                940: {
-                  slidesPerView: 7,
-                },
-                1200: {
-                  slidesPerView: 8,
-                },
-                1400: {
-                  slidesPerView: 9,
-                },
-                1600: {
-                  slidesPerView: 11,
-                },
-                2300: {
-                  slidesPerView: 15,
-                },
-              }}
-              modules={[Pagination, Navigation, Autoplay]}
-            >
+            <ul className="flex overflow-auto">
               {names.map((animeName: string, i) => (
-                <SwiperSlide
-                  className="cursor-pointer"
+                <li
+                  className="mr-3 cursor-pointer"
                   onClick={() => goToAnime(formatName(animeName)!, category, i)}
                   id={
                     formatName(animeName) +
@@ -547,9 +513,9 @@ export default function Accueil() {
                       </p>
                     </div>
                   )}
-                </SwiperSlide>
+                </li>
               ))}
-            </Swiper>
+            </ul>
           </div>
         ))}
       </div>
