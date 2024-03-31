@@ -495,7 +495,7 @@ export default function Accueil() {
                         />
                       </div>
 
-                      <p className="relative top-4 text-left text-base max-md:text-sm">
+                      <p className="relative top-2 text-left text-base max-md:text-sm">
                         {formatName(animeName)!.length > 17
                           ? formatName(animeName)?.substring(0, 17) + "..."
                           : formatName(animeName)}
