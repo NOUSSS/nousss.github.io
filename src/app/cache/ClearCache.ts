@@ -1,13 +1,8 @@
-export default function ClearCache() {
-  let index = 1;
+interface WindowKeys {
+  [key: string]: string[] | undefined;
+}
 
-  while (true) {
-    if (typeof window[`eps${index}`] !== "undefined") {
-      (window[`eps${index}`] as string[] | undefined) = undefined;
-    } else {
-      break;
-    }
-
-    index++;
-  }
+export default function clearCache(): void {
+  for (let index = 1; typeof window[`eps${index}`] !== "undefined"; index++)
+    (window as unknown as WindowKeys)[`eps${index}`] = undefined;
 }

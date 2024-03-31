@@ -9,20 +9,16 @@ interface windowKeys {
 }
 
 export const getTailleChapitres = (): number => {
-  let i = 1;
   let tailleChapitres = 0;
 
-  while (true) {
-    const episodeKey = `eps${i}`;
+  for (
+    let i = 1;
+    (window as unknown as windowKeys)[`eps${i}`] !== undefined;
+    i++
+  )
+    tailleChapitres++;
 
-    if ((window as unknown as windowKeys)[episodeKey] !== undefined) {
-      tailleChapitres++;
-    } else {
-      break;
-    }
-
-    i++;
-  }
+  console.log(tailleChapitres);
 
   return tailleChapitres;
 };
