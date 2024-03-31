@@ -1,8 +1,9 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/KurokoBasket/Affiche.jpg";
-import { Anime } from "@/app/class/anime";
+import names from "./constants/episodes-names";
 
 export default class KurokoBasket extends Anime {
   constructor() {
@@ -42,13 +43,24 @@ export default class KurokoBasket extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/kuroko-no-basket/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [],
+      horsSeries: [
+        {
+          saison: "1",
+          hs: [21],
+        },
+        {
+          saison: "2",
+          hs: [16],
+        },
+      ],
 
       allIndex: {
         1: 0,
-        2: 26,
-        3: 52,
+        2: 25,
+        3: 50,
       },
+
+      names,
     };
   }
 }
