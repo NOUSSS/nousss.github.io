@@ -262,9 +262,7 @@ const Films = () => {
         query="id"
       />
 
-      <ul ref={(el) => (filmsRef.current[0] = el!)} className="overflow-x-auto">
-        {films}
-      </ul>
+      <ul ref={(el) => (filmsRef.current[0] = el!)}>{films}</ul>
 
       <Footer style={true} media />
     </main>

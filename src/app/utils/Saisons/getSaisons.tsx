@@ -28,12 +28,14 @@ export function getSaisons() {
       } ${i === Object.keys(saisonsValues!).length - 1 ? "" : intervalEpisodes}`,
       element: (
         <>
-          <Image
-            src={saisonsValues?.[i].image()!}
-            id={i.toString()}
-            alt="poster de saison"
-            className="h-[108px] w-[89px] rounded-md transition-transform group-hover:scale-110"
-          />
+          <div className="overflow-hidden rounded-md">
+            <Image
+              src={saisonsValues?.[i].image()!}
+              id={i.toString()}
+              alt="poster de saison"
+              className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-110"
+            />
+          </div>
 
           <p className="text-sm">
             <span>{saisonsValues?.[i].name}</span>

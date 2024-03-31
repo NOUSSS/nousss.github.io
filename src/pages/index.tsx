@@ -488,7 +488,7 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="group mr-2 h-full w-36 rounded-xl max-md:mr-1 max-md:w-32"
+                      className="group mr-2 w-36 rounded-xl max-md:mr-1 max-md:w-32"
                     >
                       <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                         <Image

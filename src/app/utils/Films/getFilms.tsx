@@ -58,21 +58,23 @@ export function getFilms(
         key={id}
         className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden rounded-md"
       >
-        <Image
-          className="h-[109px] w-[89px] rounded-md transition-transform group-hover:scale-110"
-          src={names![i].image()}
-          id={`${url} ${i}`}
-          onClick={() => {
-            appearVideo(
-              `${url} ${i}`,
-              setVideo,
-              setTitle,
-              formatName(currentAnime)!,
-              containerRef,
-            );
-          }}
-          alt="poster de saison"
-        />
+        <div className="overflow-hidden rounded-md">
+          <Image
+            className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-110"
+            src={names![i].image()}
+            id={`${url} ${i}`}
+            onClick={() => {
+              appearVideo(
+                `${url} ${i}`,
+                setVideo,
+                setTitle,
+                formatName(currentAnime)!,
+                containerRef,
+              );
+            }}
+            alt="poster de film"
+          />
+        </div>
 
         <p className="text-sm">{names![i].name}</p>
       </div>,
