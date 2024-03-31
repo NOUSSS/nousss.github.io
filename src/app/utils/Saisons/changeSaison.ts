@@ -11,7 +11,6 @@ export function changeSaison(index: string, currentAnime: string) {
     }
 
     localStorage.setItem(`${currentAnime}--episode`, "1");
-    localStorage.removeItem(`${currentAnime}--currentTime`);
   }
 
   localStorage.setItem(`${currentAnime}--saison`, index);

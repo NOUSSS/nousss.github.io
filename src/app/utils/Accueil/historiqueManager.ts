@@ -13,7 +13,6 @@ export const removeAnimeFromHistorique = (
   if (redirectAnime === "Episodes") {
     localStorage.removeItem(`${animeName}--saison`);
     localStorage.removeItem(`${animeName}--episode`);
-    localStorage.removeItem(`${animeName}--currentTime`);
 
     for (const key of Object.keys(localStorage)) {
       if (key.includes("--lang") && key.includes(animeName))
@@ -23,7 +22,6 @@ export const removeAnimeFromHistorique = (
     localStorage.removeItem(`${animeName}--chapitre`);
   } else if (redirectAnime === "Films") {
     localStorage.removeItem(`${animeName}--currentFilm`);
-    localStorage.removeItem(`${animeName}--currentTime`);
 
     for (const key of Object.keys(localStorage)) {
       if (key.includes("--lang") && key.includes(animeName))

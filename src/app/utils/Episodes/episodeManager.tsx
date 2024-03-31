@@ -14,8 +14,6 @@ export function Change(
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
 ): void {
-  localStorage.removeItem(`${currentAnime}--currentTime`);
-
   const options = getAnime(currentAnime)!.options;
   const saison = localStorage.getItem(`${currentAnime}--saison`);
 
