@@ -21,17 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check for skip deploy keyword
-        run: |
-          echo "COMMIT_MESSAGE<<EOF" >> $GITHUB_ENV
-          echo "${{ github.event.head_commit.message }}" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          if echo "$COMMIT_MESSAGE" | grep -q "\[skip deploy\]"; then
-            echo "Skip deploy keyword found, cancelling the workflow."
-            exit 78
-          fi
-
-      - name: Detect package manager
+      - name: Detect Package Manager
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
@@ -47,13 +37,13 @@ jobs:
             exit 1
           fi
 
-      - name: Setup Node
+      - name: NodeJS setup
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Setup Pages
+      - name: Pages setup
         uses: actions/configure-pages@v4
 
       - name: Restore cache
@@ -65,10 +55,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
-      - name: Install dependencies
+      - name: Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js
+      - name: Next.js Build
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
