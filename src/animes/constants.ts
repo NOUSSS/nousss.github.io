@@ -64,6 +64,7 @@ import Baki from "./Baki/baki";
 import DragonBallGT from "./DragonBallGT/dragon-ball-gt";
 import EightySix from "./EightySix/eighty-six";
 import SpyXFamily from "./SpyXFamily/spy-x-family";
+import CyberpunkEdgerunners from "./CyberpunkEdgerunner/cyberpunk-edgerunners";
 
 export interface AnimesType {
   anime: string;
@@ -582,6 +583,13 @@ export const ANIMES: AnimesType[] = [
       "Twilight, le plus grand espion du monde, doit pour sa nouvelle mission créer une famille de toutes pièces afin de pouvoir s'introduire dans la plus prestigieuse école de l'aristocratie. Totalement dépourvu d'expérience familiale, il va adopter une petite fille en ignorant qu'elle est télépathe, et s'associer à une jeune femme timide, sans se douter qu'elle est une redoutable tueuse à gages. Ce trio atypique va devoir composer pour passer inaperçu, tout en découvrant les vraies valeurs d'une famille unie et aimante.",
     options: new SpyXFamily(),
     category: ["New gen"],
+  },
+  {
+    anime: "Cyberpunk: Edgerunners",
+    options: new CyberpunkEdgerunners(),
+    category: ["New gen"],
+    synopsis:
+      "Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.",
   },
 ];
 
