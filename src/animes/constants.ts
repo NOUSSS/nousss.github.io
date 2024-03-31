@@ -253,7 +253,7 @@ export const ANIMES: AnimesType[] = [
     anime: "The Daily Life of the Immortal King",
     aliases: ["saitama v2", "saisons"],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: ["School Life"],
+    category: ["School Life", "Puissance"],
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
