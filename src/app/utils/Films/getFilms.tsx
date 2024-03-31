@@ -56,10 +56,10 @@ export function getFilms(
       <div
         id={id}
         key={id}
-        className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden"
+        className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden rounded-md"
       >
         <Image
-          className="h-[109px] w-[89px] transition-transform group-hover:scale-110"
+          className="h-[109px] w-[89px] rounded-md transition-transform group-hover:scale-110"
           src={names![i].image()}
           id={`${url} ${i}`}
           onClick={() => {

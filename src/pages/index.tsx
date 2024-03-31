@@ -492,7 +492,7 @@ export default function Accueil() {
                     >
                       <div className="min-h-48 overflow-hidden rounded-md">
                         <Image
-                          className="relative top-1 z-[-1] h-48 min-h-48 w-36 transition-transform group-hover:scale-110"
+                          className="relative top-1 z-[-1] h-48 min-h-48 w-36 rounded-md transition-transform group-hover:scale-110"
                           src={getSaison(animeName)!}
                           alt="affiche d'un anime"
                         />
