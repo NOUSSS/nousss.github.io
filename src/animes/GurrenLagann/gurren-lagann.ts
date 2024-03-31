@@ -3,6 +3,7 @@ import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/GurrenLagann/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 export default class GurrenLagann extends Anime {
   constructor() {
@@ -36,6 +37,8 @@ export default class GurrenLagann extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }
