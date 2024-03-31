@@ -400,7 +400,7 @@ export default function Accueil() {
             <ul className="flex overflow-auto">
               {names.map((animeName: string, i) => (
                 <li
-                  className="mr-3 cursor-pointer"
+                  className="mr-4 cursor-pointer"
                   onClick={() => goToAnime(formatName(animeName)!, category, i)}
                   id={
                     formatName(animeName) +
