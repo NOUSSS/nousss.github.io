@@ -398,38 +398,35 @@ export default function Accueil() {
             </div>
 
             <Swiper
-              slidesPerView={10}
-              spaceBetween={30}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: true,
-              }}
+              slidesPerView={30}
               breakpoints={{
                 320: {
-                  slidesPerView: 2,
-                },
-                500: {
                   slidesPerView: 3,
+                  spaceBetween: 150,
+                },
+                420: {
+                  slidesPerView: 4,
+                  spaceBetween: 150,
                 },
                 600: {
-                  slidesPerView: 4,
-                },
-                780: {
                   slidesPerView: 5,
                 },
-                940: {
+                780: {
                   slidesPerView: 6,
                 },
-                1200: {
+                940: {
                   slidesPerView: 7,
                 },
-                1400: {
+                1200: {
                   slidesPerView: 8,
                 },
-                1500: {
-                  slidesPerView: 10,
+                1400: {
+                  slidesPerView: 9,
                 },
-                2230: {
+                1600: {
+                  slidesPerView: 11,
+                },
+                2300: {
                   slidesPerView: 15,
                 },
               }}
