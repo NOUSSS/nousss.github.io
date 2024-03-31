@@ -54,7 +54,7 @@ export default function Accueil() {
     let animesCopy = [...shuffle(ANIMES)];
     const animes = [];
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 6; i++) {
       if (animesCopy.length > 0) {
         const index = Math.floor(Math.random() * animesCopy.length);
 
