@@ -1,8 +1,8 @@
 import { getImage } from "./constants/images-saisons";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/EminenceInShadow/Affiche.jpg";
-
-import { Anime } from "@/app/class/anime";
+import names from "./constants/episodes-names";
 
 export default class EminenceInShadow extends Anime {
   constructor() {
@@ -45,6 +45,8 @@ export default class EminenceInShadow extends Anime {
         2: 20,
         3: 32,
       },
+
+      names,
     };
   }
 }
