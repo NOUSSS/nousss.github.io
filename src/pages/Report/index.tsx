@@ -1,7 +1,6 @@
 import { toast } from "sonner";
 
 import React from "react";
-import ColorPicker from "@/app/ui/colorPicker";
 
 export default function Report() {
   const [message, setMessage] = React.useState("");
@@ -38,8 +37,6 @@ export default function Report() {
 
   return (
     <main className="mx-auto w-[500px] rounded-md bg-[#17171c7a] p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
-      <ColorPicker />
-
       <h1 className="mb-20 text-4xl">Signaler un problème</h1>
 
       <form onSubmit={handleSubmit}>
