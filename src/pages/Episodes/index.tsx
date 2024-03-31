@@ -28,6 +28,7 @@ import getHostname from "@/app/lib/getHostname";
 
 import Switch from "@/app/ui/Switch";
 import ColorPicker from "@/app/ui/colorPicker";
+import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -123,8 +124,6 @@ const Episodes = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
 
-  let scriptIndex = (isClient && AnimeInfo?.saison) as string | undefined;
-
   const [saisonTitle, setSaisonTitle] = useState<React.ReactNode>();
   const [episodeTitle, setEpisodeTitle] = useState<React.ReactNode>();
   const [episodes, setEpisodes] = useState<React.ReactNode[]>([]);
@@ -152,24 +151,17 @@ const Episodes = () => {
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
 
-  const parts = isClient && options?.EPISODES_OPTIONS?.parts;
-
-  if (parts) {
-    if (Number(AnimeInfo?.saison) > parts.to)
-      scriptIndex = (Number(scriptIndex) - 1).toString();
-
-    if (
-      Number(AnimeInfo?.saison) > parts.from &&
-      Number(AnimeInfo?.saison) <= parts.to
-    ) {
-      scriptIndex = `${parts.from}-${
-        Number(AnimeInfo?.saison) - (parts.from - 1)
-      }`;
-    }
-  }
-
   useEffect(() => {
     if (lang && AnimeInfo?.anime && lang) {
+      const parts = isClient ? options?.EPISODES_OPTIONS?.parts : undefined;
+
+      let scriptIndex = getScriptIndex({
+        currentSaison: AnimeInfo!.saison,
+        parts,
+      });
+
+      console.log(scriptIndex);
+
       let retard = 0;
 
       localStorage.setItem(
@@ -193,7 +185,7 @@ const Episodes = () => {
                   ? Number(scriptIndex) - retard
                   : scriptIndex!,
                 lang: lang!,
-                hs: saisonsValues[Number(scriptIndex) - 1].hs ? true : false,
+                hs: saisonsValues[Number(scriptIndex) - 1]?.hs,
               }))) as string,
       );
 

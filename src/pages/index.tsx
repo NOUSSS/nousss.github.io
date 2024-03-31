@@ -21,6 +21,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 export default function Accueil() {
   const animes = Array.from(
@@ -53,7 +54,7 @@ export default function Accueil() {
     let animesCopy = [...shuffle(ANIMES)];
     const animes = [];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 40; i++) {
       if (animesCopy.length > 0) {
         const index = Math.floor(Math.random() * animesCopy.length);
 
@@ -273,7 +274,13 @@ export default function Accueil() {
                       ? "Reprendre " +
                         `${
                           historiquesFiltered[historiqueIndex]?.episode
-                            ? `Saison ${historiquesFiltered[historiqueIndex]?.saison} ${getCurrentEpisode(
+                            ? `Saison ${getScriptIndex({
+                                currentSaison:
+                                  historiquesFiltered[historiqueIndex]?.saison,
+                                parts:
+                                  randomAnimes[historiqueIndex].options
+                                    .EPISODES_OPTIONS?.parts,
+                              })} ${getCurrentEpisode(
                                 randomAnimes[historiqueIndex].anime,
                                 historiqueIndex,
                                 historiquesFiltered,
@@ -470,7 +477,13 @@ export default function Accueil() {
                           {historiques[i]?.episode && (
                             <>
                               <br />
-                              Saison {historiques[i]?.saison}
+                              Saison{" "}
+                              {getScriptIndex({
+                                currentSaison: historiques[i]?.saison,
+                                parts:
+                                  getAnime(animeName)?.options.EPISODES_OPTIONS
+                                    ?.parts,
+                              })}
                               {", "}
                               {getCurrentEpisode(
                                 formatName(animeName)!,
