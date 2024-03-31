@@ -3,12 +3,13 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ColorPicker from "@/app/ui/colorPicker";
+import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 import { Footer } from "@/app/ui/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { formatName } from "@/app/lib/formatName";
-import { Historique, Season } from "@/typings/types";
+import { Historique } from "@/typings/types";
 import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
@@ -17,11 +18,11 @@ import { shuffle } from "@/app/lib/shuffle";
 import { useRouter } from "next/router";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
-import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 export default function Accueil() {
   const animes = Array.from(
@@ -37,8 +38,6 @@ export default function Accueil() {
 
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
-
-  const animesRef = useRef<HTMLUListElement[] | null>([]);
 
   const getSaison = (animeName: string) => {
     const anime = getAnime(animeName);
@@ -313,7 +312,7 @@ export default function Accueil() {
 
       {randomAnimes && randomAnimes.length > 0 ? (
         <Image
-          className="absolute left-0 top-0 -z-50 h-[700px] w-full blur-3xl"
+          className="absolute left-0 top-0 -z-50 h-[600px] w-full blur-3xl"
           alt="affiche d'un anime aléatoire"
           src={randomAnimes![currentIndex].options.affiche!}
         />
@@ -321,11 +320,11 @@ export default function Accueil() {
 
       <ColorPicker />
 
-      <div className="relative">
-        {catalogues.map(({ names, category }, index) => (
+      <div className="relative ml-4">
+        {catalogues.map(({ names, category }) => (
           <div key={category}>
             <div
-              className={`ml-3 ${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
+              className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
             >
               {category === "Reprendre" ? (
                 <>
@@ -398,14 +397,47 @@ export default function Accueil() {
               )}
             </div>
 
-            <ul
-              ref={(el) => (animesRef.current![index] = el!)}
-              key={category}
-              className="flex cursor-pointer overflow-x-auto"
+            <Swiper
+              slidesPerView={10}
+              spaceBetween={30}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: true,
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                },
+                500: {
+                  slidesPerView: 3,
+                },
+                600: {
+                  slidesPerView: 4,
+                },
+                780: {
+                  slidesPerView: 5,
+                },
+                940: {
+                  slidesPerView: 6,
+                },
+                1200: {
+                  slidesPerView: 7,
+                },
+                1400: {
+                  slidesPerView: 8,
+                },
+                1500: {
+                  slidesPerView: 10,
+                },
+                2230: {
+                  slidesPerView: 15,
+                },
+              }}
+              modules={[Pagination, Navigation, Autoplay]}
             >
               {names.map((animeName: string, i) => (
-                <li
-                  className="ml-4"
+                <SwiperSlide
+                  className="cursor-pointer"
                   onClick={() => goToAnime(formatName(animeName)!, category, i)}
                   id={
                     formatName(animeName) +
@@ -501,7 +533,7 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="group mr-2 w-36 rounded-xl max-md:mr-1 max-md:w-32"
+                      className="group w-36 rounded-xl max-md:mr-1 max-md:w-32"
                     >
                       <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                         <Image
@@ -518,9 +550,9 @@ export default function Accueil() {
                       </p>
                     </div>
                   )}
-                </li>
+                </SwiperSlide>
               ))}
-            </ul>
+            </Swiper>
           </div>
         ))}
       </div>
