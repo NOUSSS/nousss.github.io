@@ -485,15 +485,17 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="relative mr-2 h-64 w-36 overflow-hidden rounded-xl max-md:mr-1 max-md:w-32"
+                      className="group relative mr-2 h-64 w-36 overflow-hidden rounded-xl max-md:mr-1 max-md:w-32"
                     >
-                      <Image
-                        className="relative top-1 z-[-1] h-48 min-h-48 w-36 rounded-md"
-                        src={getSaison(animeName)!}
-                        alt="affiche d'un anime"
-                      />
+                      <div className="min-h-48 overflow-hidden rounded-md">
+                        <Image
+                          className="relative top-1 z-[-1] h-48 min-h-48 w-36 transition-transform group-hover:scale-110"
+                          src={getSaison(animeName)!}
+                          alt="affiche d'un anime"
+                        />
+                      </div>
 
-                      <p className="relative top-4 text-left text-base max-lg:text-sm">
+                      <p className="relative top-4 text-left text-base max-md:text-sm">
                         {formatName(animeName)!.length > 17
                           ? formatName(animeName)?.substring(0, 17) + "..."
                           : formatName(animeName)}
