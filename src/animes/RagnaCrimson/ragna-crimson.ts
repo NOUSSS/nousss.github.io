@@ -2,6 +2,7 @@ import { getImage } from "./constants/image-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/RagnaCrimson/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 export default class RagnaCrimson extends Anime {
   constructor() {
@@ -37,6 +38,8 @@ export default class RagnaCrimson extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }

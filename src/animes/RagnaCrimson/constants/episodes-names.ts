@@ -1,0 +1,28 @@
+const names = [
+  { name: "The Day the Reaper Was Born", index: "1" },
+  { name: "The Beginning of the Story", index: "2" },
+  { name: "Agitation", index: "3" },
+  { name: "Action", index: "4" },
+  { name: "Wing", index: "5" },
+  { name: "Reunion", index: "6" },
+  { name: "Act and Guilt", index: "7" },
+  { name: "A Painful Blow", index: "8" },
+  { name: "Negotiation and True Nature", index: "9" },
+  { name: "Stakes and Cooperation", index: "10" },
+  { name: "Tactics and Knowledge", index: "11" },
+  { name: "Determination and Readiness", index: "12" },
+  { name: "Hero of the Battle", index: "13" },
+  { name: "Impatience and Vigilance", index: "14" },
+  { name: "Latent Awakening", index: "15" },
+  { name: "Will of Resistance", index: "16" },
+  { name: "My Comrade", index: "17" },
+  { name: "End of the Battle to the Death", index: "18" },
+  { name: "Reason to Fight", index: "19" },
+  { name: "Just Watch Me", index: "20" },
+  { name: "Words Aren't Needed", index: "21" },
+  { name: "The Winged Monarch", index: "22" },
+  { name: "Lightning God", index: "23" },
+  { name: "Light", index: "24" },
+];
+
+export default names;
