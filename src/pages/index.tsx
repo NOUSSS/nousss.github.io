@@ -446,7 +446,7 @@ export default function Accueil() {
                         />
                       ) : null}
 
-                      <div className="relative top-2 p-1 text-sm max-sm:text-xs">
+                      <div className="relative top-2 p-1 text-sm">
                         <p className="text-white">
                           {animeName.length > 15
                             ? animeName.substring(0, 15) + "..."
