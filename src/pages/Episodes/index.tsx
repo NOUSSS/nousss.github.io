@@ -231,7 +231,7 @@ const Episodes = () => {
         episode = "1";
       }
 
-      const e_sp = localStorage.getItem(`$AnimeInfo?.anime?.anime}--e-sp`);
+      const e_sp = localStorage.getItem(`${AnimeInfo?.anime?.anime}--e-sp`);
       const listEpisodes: React.ReactNode[] = [];
 
       let retard = 0;
@@ -244,7 +244,7 @@ const Episodes = () => {
         const isHorsSerie = horsSeries?.find(
           ({ saison }) =>
             saison ===
-            localStorage.getItem(`$AnimeInfo?.anime?.anime}--saison`),
+            localStorage.getItem(`${AnimeInfo?.anime?.anime}--saison`),
         );
 
         if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
@@ -594,7 +594,7 @@ const Episodes = () => {
             onClick={() => {
               const prevSaison =
                 Number(
-                  localStorage.getItem(`$AnimeInfo?.anime?.anime}--saison`),
+                  localStorage.getItem(`${AnimeInfo?.anime?.anime}--saison`),
                 ) - 1;
 
               router.push({
