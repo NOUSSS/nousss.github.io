@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, RefObject } from "react";
+import React, { useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 
 export interface ItemsProps {
@@ -22,6 +22,7 @@ export default function Select({
   className,
   placeholderRef,
 }: SelectProps) {
+  const [isSelected, setIsSelected] = useState(false);
   const UpArrow = icons["ChevronUp"];
 
   const labelRef = useRef<HTMLLabelElement | null>(null);
@@ -37,6 +38,8 @@ export default function Select({
   };
 
   const appear = () => {
+    setIsSelected(true);
+
     if (labelRef.current && menuRef.current && svgRef.current) {
       if (svgRef.current.classList.contains("rotate-180")) {
         svgRef.current.classList.remove("rotate-180");
@@ -64,6 +67,8 @@ export default function Select({
   };
 
   const disappear = () => {
+    setIsSelected(false);
+
     if (svgRef.current && menuRef.current) {
       menuRef.current.classList.add("hidden");
       svgRef.current.classList.remove("rotate-180");
@@ -101,7 +106,7 @@ export default function Select({
   return (
     <label
       ref={labelRef}
-      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,23,29)] bg-opacity-50 p-3 text-white ${className ?? ""}`}
+      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,23,29)] bg-opacity-50 p-3 text-white ${isSelected ? "outline outline-1 outline-main" : ""} ${className ?? ""}`}
       onClick={appear}
     >
       <p className="placeholder" ref={placeholderRef}>
