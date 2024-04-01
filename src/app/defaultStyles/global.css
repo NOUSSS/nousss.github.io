@@ -64,19 +64,15 @@
   }
 }
 
-*::-webkit-scrollbar {
-  background-color: transparent;
-}
-
 *::-webkit-scrollbar-thumb {
   border-radius: 3px;
   border: 1px solid var(--mainColor);
 }
 
-.select::-webkit-scrollbar-thumb {
-  background-color: #3e63dd;
+*::-webkit-scrollbar {
+  @apply bg-transparent;
 }
 
 .select::-webkit-scrollbar-thumb {
-  border: transparent;
+  @apply bg-gray-600 bg-opacity-50;
 }
