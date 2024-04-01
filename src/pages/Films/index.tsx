@@ -4,11 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
-import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import {
   AnimeFilmsProps,
-  AnimeInfoProps,
   EPS,
   FilmOptions,
   LecteurReturnType,
@@ -16,7 +14,6 @@ import {
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
-import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
 
 import { toast } from "sonner";

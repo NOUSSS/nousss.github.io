@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { formatName } from "@/app/lib/formatName";
 import { useRouter } from "next/router";
 
 export function Title({
@@ -21,7 +20,7 @@ export function Title({
 
   const text = (
     <Link href={link ? link : "/"}>
-      <h1>{formatName(anime) || ""}</h1>
+      <h1>{anime || ""}</h1>
     </Link>
   );
 

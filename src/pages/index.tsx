@@ -8,7 +8,6 @@ import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import { Footer } from "@/app/ui/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
-import { formatName } from "@/app/lib/formatName";
 import { Historique } from "@/typings/types";
 import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
@@ -401,9 +400,9 @@ export default function Accueil() {
               {names.map((animeName: string, i) => (
                 <li
                   className="mr-4 cursor-pointer"
-                  onClick={() => goToAnime(formatName(animeName)!, category, i)}
+                  onClick={() => goToAnime(animeName!, category, i)}
                   id={
-                    formatName(animeName) +
+                    animeName +
                     `${
                       typeof getAnime(animeName)?.aliases === "undefined"
                         ? ""
@@ -430,7 +429,7 @@ export default function Accueil() {
                           event.stopPropagation();
 
                           removeAnimeFromHistorique(
-                            formatName(animeName)!,
+                            animeName!,
                             historiques[i]!.redirect,
                             setHistoriques,
                           );
@@ -448,18 +447,14 @@ export default function Accueil() {
                       ) : null}
 
                       <div className="relative top-2 p-1 text-sm max-sm:text-xs">
-                        <p className="text-white">{formatName(animeName)}</p>
+                        <p className="text-white">{animeName}</p>
 
                         <p className="relative -top-5 text-main">
                           {historiques[i]?.chapitre && (
                             <>
                               <br />
 
-                              {getCurrentChapitre(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
+                              {getCurrentChapitre(animeName!, i, historiques)}
                             </>
                           )}
                           {historiques[i]?.film && (
@@ -479,11 +474,7 @@ export default function Accueil() {
                                     ?.parts,
                               })}
                               {", "}
-                              {getCurrentEpisode(
-                                formatName(animeName)!,
-                                i,
-                                historiques,
-                              )}
+                              {getCurrentEpisode(animeName!, i, historiques)}
                             </>
                           )}
                         </p>
@@ -506,9 +497,9 @@ export default function Accueil() {
                       </div>
 
                       <p className="my-2 text-left text-base max-md:text-sm">
-                        {formatName(animeName)!.length > 17
-                          ? formatName(animeName)?.substring(0, 17) + "..."
-                          : formatName(animeName)}
+                        {animeName!.length > 17
+                          ? animeName?.substring(0, 17) + "..."
+                          : animeName}
                       </p>
                     </div>
                   )}

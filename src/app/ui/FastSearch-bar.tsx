@@ -3,7 +3,6 @@
 import React, { RefObject } from "react";
 
 import { ANIMES } from "@/animes/constants";
-import { formatName } from "@/app/lib/formatName";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -70,7 +69,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
           const value = inputValue.toLowerCase();
 
           return (
-            formatName(anime)?.toLowerCase().includes(value) ||
+            anime?.toLowerCase().includes(value) ||
             (aliases &&
               aliases.some((alias) => alias.toLowerCase().includes(value)))
           );
@@ -90,7 +89,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
                     router?.push({
                       pathname: "/Home",
-                      query: { anime: formatName(anime) },
+                      query: { anime: anime },
                     });
                   }}
                 >
@@ -104,9 +103,9 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
                   <div>
                     <h1 className="mx-3 text-2xl">
-                      {formatName(anime)!.length > 30
-                        ? `${formatName(anime)?.substring(0, 30)}...`
-                        : formatName(anime)}
+                      {anime.length > 30
+                        ? `${anime?.substring(0, 30)}...`
+                        : anime}
                     </h1>
 
                     <p className="mx-4 text-xs opacity-75">

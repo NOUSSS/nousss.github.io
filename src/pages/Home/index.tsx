@@ -10,7 +10,6 @@ import { Title } from "@/app/ui/Title";
 import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
-import { formatName } from "@/app/lib/formatName";
 
 const Home = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
@@ -43,9 +42,7 @@ const Home = () => {
     <main className="mx-auto w-3/4 rounded-lg bg-[#17171c7a] p-4 shadow-lg shadow-black/10 max-md:w-full max-md:bg-transparent max-md:shadow-none">
       <Head>
         {anime?.anime && (
-          <title>
-            {formatName(anime.anime)} - Accueil - Mugiwara-no Streaming
-          </title>
+          <title>{anime.anime} - Accueil - Mugiwara-no Streaming</title>
         )}
       </Head>
 
