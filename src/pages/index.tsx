@@ -447,9 +447,13 @@ export default function Accueil() {
                       ) : null}
 
                       <div className="relative top-2 p-1 text-sm max-sm:text-xs">
-                        <p className="text-white">{animeName}</p>
+                        <p className="text-white">
+                          {animeName.length > 15
+                            ? animeName.substring(0, 15) + "..."
+                            : animeName}
+                        </p>
 
-                        <p className="relative -top-5 text-main">
+                        <p className="text-main">
                           {historiques[i]?.chapitre && (
                             <>
                               <br />
