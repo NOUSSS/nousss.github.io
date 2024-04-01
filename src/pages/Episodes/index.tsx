@@ -236,6 +236,13 @@ const Episodes = () => {
 
       let retard = 0;
 
+      if (!LecteurEpisodes || LecteurEpisodes.length < 1) {
+        return setAnimeInfo((currentState) => ({
+          ...currentState,
+          episodeTitle: "Aucun lecteur n'est disponible pour cette anime",
+        }));
+      }
+
       for (
         let indexEpisode = 1;
         indexEpisode < LecteurEpisodes.length + 1;
@@ -537,7 +544,7 @@ const Episodes = () => {
 
         {isClient &&
         localStorage.getItem(`${AnimeInfo?.anime?.anime}--episode`) !==
-          LecteurEpisodes.length.toString() ? (
+          LecteurEpisodes?.length.toString() ? (
           <button
             className="btn next"
             onClick={() =>
