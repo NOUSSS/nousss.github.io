@@ -65,6 +65,7 @@ import EightySix from "./EightySix/eighty-six";
 import SpyXFamily from "./SpyXFamily/spy-x-family";
 import CyberpunkEdgerunners from "./CyberpunkEdgerunner/cyberpunk-edgerunners";
 import OshinoKo from "./OshinoKo/oshi-no-ko";
+import MushokuTensei from "./MushokuTensei/mushoku-tensei";
 
 export interface AnimesType {
   anime: string;
@@ -590,6 +591,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       'Le docteur Gorô est obstétricien dans un hôpital de campagne. Il est loin du monde de paillettes dans lequel évolue Ai Hoshino, une chanteuse au succès grandissant dont il est "un fan absolu". Ces deux-là vont peut-être se rencontrer dans des circonstances peu favorables, mais cet événement changera leur vie à jamais !',
     options: new OshinoKo(),
+  },
+  {
+    anime: "Mushoku Tensei: Jobless Reincarnation",
+    category: ["Aventure", "Isekai"],
+    synopsis:
+      "Un NEET vient d'être chassé de chez ses parents. Ayant le moral au plus bas, il pense au suicide. Jusqu'au jour où il aperçoit une ancienne camarade de classe sur le point de se faire renverser. D'un geste héroïque, il la pousse et se fait renverser à sa place. Suite à ça, il meurt puis se retrouve réincarné dans un monde fantaisiste. Il se réincarne dans le corps d'un enfant du nom de Rudeus Greyrat. Il est le fils d'un épéiste nommé Paul Greyrat et d'une ancienne aventurière nommée Zenith Greyrat. Bien décidé à faire quelque chose de sa nouvelle vie en tant que Rudeus, il va essayer de devenir le plus grand magicien de l'histoire.",
+    options: new MushokuTensei(),
   },
 ];
 
