@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
 import NavMotion from "@/app/lib/navMotion";
-import ColorPicker from "@/app/ui/colorPicker";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -46,7 +45,6 @@ const Home = () => {
         )}
       </Head>
 
-      <ColorPicker />
       <Title link={{ pathname: "/" }} />
 
       <div className="m-12 text-left text-lg">{anime?.synopsis}</div>
