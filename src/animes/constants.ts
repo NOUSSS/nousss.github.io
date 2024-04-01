@@ -46,7 +46,6 @@ import Monster from "./Monster/monster";
 import FireForce from "./FireForce/fire-force";
 import AssassinationClassroom from "./AssassinationClassroom/assassination-classroom";
 import AoAshi from "./AoAshi/ao-ashi";
-import DemonSlave from "./DemonSlave/demon-slave";
 import GurrenLagann from "./GurrenLagann/gurren-lagann";
 import SevenDeadlySins from "./SevenDeadlySins/seven-deadly-sins";
 import RagnaCrimson from "./RagnaCrimson/ragna-crimson";
@@ -460,13 +459,6 @@ export const ANIMES: AnimesType[] = [
     options: new AoAshi(),
   },
   {
-    anime: "Demon Slave",
-    category: ["New gen", "Nouveautés", "Magie", "Ecchi"],
-    options: new DemonSlave(),
-    synopsis:
-      "Un jeune garçon nommé Yûki Wakura se retrouve plongé dans la dimension de Mato par accident. Dans ce monde de monstre, il est sauvé de justesse par une jeune femme capable de le transformer en une créature surpuissante. Mais l'activation de ce pouvoir comporte une condition : il doit devenir son esclave...",
-  },
-  {
     anime: "Gurren Lagann",
     category: ["Aventure", "Puissance", "Humour"],
     options: new GurrenLagann(),
@@ -476,7 +468,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Seven Deadly Sins",
-    category: ["Aventure", "Ecchi", "Puissance"],
+    category: ["Aventure", "Puissance"],
     options: new SevenDeadlySins(),
     aliases: ["meliodas"],
     synopsis:
