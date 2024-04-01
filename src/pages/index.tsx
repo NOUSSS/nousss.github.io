@@ -440,7 +440,7 @@ export default function Accueil() {
 
                       {getSaison(animeName) ? (
                         <Image
-                          className="relative top-1 z-[-1] h-[90px] w-[160px] scale-90 rounded-t-xl max-sm:h-[85px]"
+                          className="relative top-1 z-[-1] aspect-video w-40 scale-90 rounded-t-xl max-sm:h-[85px]"
                           src={getAnime(animeName)!.options.affiche!}
                           alt="affiche d'un anime"
                         />
@@ -448,8 +448,8 @@ export default function Accueil() {
 
                       <div className="relative top-2 p-1 text-sm">
                         <p className="text-white">
-                          {animeName.length > 15
-                            ? animeName.substring(0, 15) + "..."
+                          {animeName.length > 16
+                            ? animeName.substring(0, 16) + "..."
                             : animeName}
                         </p>
 
@@ -494,17 +494,13 @@ export default function Accueil() {
                     >
                       <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                         <Image
-                          className="relative top-1 z-[-1] h-48 min-h-48 w-36 rounded-md transition-transform group-hover:scale-110"
+                          className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
                           src={getSaison(animeName)!}
                           alt="affiche d'un anime"
                         />
                       </div>
 
-                      <p className="my-2 text-left text-base max-md:text-sm">
-                        {animeName!.length > 17
-                          ? animeName?.substring(0, 17) + "..."
-                          : animeName}
-                      </p>
+                      <p className="my-2 text-left text-sm">{animeName}</p>
                     </div>
                   )}
                 </li>
