@@ -109,7 +109,11 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
                         : formatName(anime)}
                     </h1>
 
-                    <p className="mx-4 text-xs opacity-75">{synopsis}</p>
+                    <p className="mx-4 text-xs opacity-75">
+                      {synopsis.length > 300
+                        ? synopsis.substring(0, 300) + "..."
+                        : synopsis}
+                    </p>
                   </div>
                 </li>
               ))}
