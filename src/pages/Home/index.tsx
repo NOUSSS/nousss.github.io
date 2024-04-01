@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Head from "next/head";
 import NavMotion from "@/app/lib/navMotion";
