@@ -23,7 +23,7 @@ export default function SearchBar({
 
   return (
     <label
-      className={`flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-[rgba(22,23,29,0.5)] p-2.5 shadow-xl ${className}`}
+      className={`flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2.5 shadow-xl ${className}`}
       title="Système de recherche super cool"
     >
       <SearchIcon size="25" />

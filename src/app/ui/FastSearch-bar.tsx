@@ -82,7 +82,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
             <ul>
               {filteredAnimes.map(({ options, anime, synopsis }) => (
                 <li
-                  className="flex cursor-pointer border border-transparent py-2 text-left opacity-60 transition-all duration-200 ease-out hover:border-neutral-700 hover:bg-[rgb(33,35,37,0.7)] hover:opacity-100"
+                  className="flex cursor-pointer border border-transparent py-2 text-left opacity-60 transition-all duration-200 ease-out hover:border-neutral-700 hover:bg-zinc-900 hover:bg-opacity-50 hover:opacity-100"
                   key={anime}
                   onClick={() => {
                     setIsVisible(!isVisible);

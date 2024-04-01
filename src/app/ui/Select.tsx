@@ -106,7 +106,7 @@ export default function Select({
   return (
     <label
       ref={labelRef}
-      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-[rgba(22,23,29)] bg-opacity-50 p-3 text-white ${isSelected ? "outline outline-1 outline-main" : ""} ${className ?? ""}`}
+      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "outline outline-1 outline-main" : ""} ${className ?? ""}`}
       onClick={appear}
     >
       <p className="placeholder" ref={placeholderRef}>
@@ -128,7 +128,7 @@ export default function Select({
                   appear();
                 }
               }}
-              className={`flex h-8 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-[#3e63dd] hover:text-white"} `}
+              className={`flex h-8 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-blue-600 hover:text-white"} `}
             >
               <p>{item.name}</p>
             </li>

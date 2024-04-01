@@ -14,7 +14,7 @@
 }
 
 .btn {
-  @apply relative left-0 h-12 rounded border border-main bg-[hsla(231,_14%,_10%,_0.5)] p-2 text-sm transition-all duration-300;
+  @apply relative left-0 h-12 rounded border border-main bg-zinc-950 bg-opacity-30 p-2 text-sm transition-all duration-300;
 }
 
 .back {
@@ -40,7 +40,7 @@
 @layer base {
   body {
     font-family: Fredoka;
-    @apply bg-[#1b1d21] text-center text-white;
+    @apply bg-zinc-950 text-center text-white;
   }
 
   span {

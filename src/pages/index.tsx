@@ -226,7 +226,7 @@ export default function Accueil() {
             <SwiperSlide key={index}>
               <div
                 key={index}
-                className="flex max-h-[525px] min-h-[525px] justify-between bg-[hsla(231,14%,10%,0.5)] max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
+                className="flex max-h-[525px] min-h-[525px] justify-between bg-zinc-900 bg-opacity-50 max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
               >
                 <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
                   <div className="my-4">
@@ -335,7 +335,7 @@ export default function Accueil() {
                     ref={confirmRef}
                     className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
                   >
-                    <div className="absolute inset-0 -z-10 rounded-sm bg-[#2123259f] backdrop-blur-3xl"></div>
+                    <div className="absolute inset-0 -z-10 rounded-sm bg-zinc-900 bg-opacity-50 backdrop-blur-3xl"></div>
 
                     <div className="relative p-4 tracking-normal">
                       <div>Confirmez vous ?</div>
@@ -421,10 +421,10 @@ export default function Accueil() {
                         getAnime(animeName)?.synopsis ??
                         "Aucun synopsis pour cette anime"
                       }
-                      className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-[hsl(240,_10%,_10%)] hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
+                      className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-zinc-900 hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
                     >
                       <div
-                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-[hsla(240,_10%,_10%,_0.472)] p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
+                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-zinc-900 bg-opacity-50 p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
                         onClick={(event) => {
                           event.stopPropagation();
 
