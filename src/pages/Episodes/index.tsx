@@ -83,8 +83,6 @@ const Episodes = () => {
     change?: boolean;
   } | null>(null);
 
-  const [lang, setLang] = useState<string | null>(null);
-
   const saisonsEntries = (isClient &&
     AnimeInfo &&
     Object.keys(options?.saisons!)) as string[];
@@ -129,12 +127,13 @@ const Episodes = () => {
 
       if (!lang) {
         lang = "vostfr";
-        setLang(lang);
+        setAnimeInfo((currentState) => ({ ...currentState, lang }));
 
         if (placeholderLangRef.current)
           placeholderLangRef.current.innerText = "VostFR";
       } else {
-        setLang(lang);
+        setAnimeInfo((currentState) => ({ ...currentState, lang }));
+
         if (placeholderLangRef.current)
           placeholderLangRef.current.innerText = langObj[lang];
       }
@@ -148,7 +147,7 @@ const Episodes = () => {
   }, []);
 
   useEffect(() => {
-    if (lang && AnimeInfo?.anime && lang) {
+    if (AnimeInfo?.lang && AnimeInfo?.anime && AnimeInfo?.lang) {
       const parts = isClient ? options?.EPISODES_OPTIONS?.parts : undefined;
 
       let scriptIndex = getScriptIndex({
@@ -160,7 +159,7 @@ const Episodes = () => {
 
       localStorage.setItem(
         `${AnimeInfo.anime}--${AnimeInfo.saison}--lang`,
-        lang,
+        AnimeInfo.lang,
       );
 
       const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
@@ -172,20 +171,20 @@ const Episodes = () => {
           (oavIndex !== -1 && oavIndex + 1 === Number(AnimeInfo?.saison)
             ? SCRIPT_URL!({
                 index: 1,
-                lang: lang!,
+                lang: AnimeInfo.lang!,
               }).replace(/saison\d+(-\d+)?/g, "oav")
             : SCRIPT_URL!({
                 index: Number(scriptIndex)
                   ? Number(scriptIndex) - retard
                   : scriptIndex!,
-                lang: lang!,
+                lang: AnimeInfo.lang!,
                 hs: saisonsValues[Number(scriptIndex) - 1]?.hs,
               }))) as string,
       );
 
       setFilever(random());
     }
-  }, [AnimeInfo, lang]);
+  }, [AnimeInfo]);
 
   const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
@@ -408,7 +407,7 @@ const Episodes = () => {
               </span>{" "}
               {"["}
               <span style={{ color: "white" }}>
-                {lang?.toUpperCase() || "VOSTFR"}
+                {AnimeInfo?.lang?.toUpperCase() || "VOSTFR"}
               </span>
               {"]"}
             </>
@@ -470,16 +469,16 @@ const Episodes = () => {
             {
               name: "VostFR",
               value: "vostfr",
-              disabled: lang === "vostfr" ? true : false,
+              disabled: AnimeInfo?.lang === "vostfr" ? true : false,
             },
             {
               name: "VF",
               value: "vf",
-              disabled: lang === "vostfr" ? false : true,
+              disabled: AnimeInfo?.lang === "vostfr" ? false : true,
             },
           ]}
           onSelect={({ value }) => {
-            setLang(value);
+            setAnimeInfo((currentState) => ({ ...currentState, lang: value }));
 
             router.reload();
           }}
