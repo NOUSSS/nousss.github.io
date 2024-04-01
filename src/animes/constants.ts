@@ -66,6 +66,7 @@ import SpyXFamily from "./SpyXFamily/spy-x-family";
 import CyberpunkEdgerunners from "./CyberpunkEdgerunner/cyberpunk-edgerunners";
 import OshinoKo from "./OshinoKo/oshi-no-ko";
 import MushokuTensei from "./MushokuTensei/mushoku-tensei";
+import GTO from "./GTO/great-teacher-onizuka";
 
 export interface AnimesType {
   anime: string;
@@ -598,6 +599,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Un NEET vient d'être chassé de chez ses parents. Ayant le moral au plus bas, il pense au suicide. Jusqu'au jour où il aperçoit une ancienne camarade de classe sur le point de se faire renverser. D'un geste héroïque, il la pousse et se fait renverser à sa place. Suite à ça, il meurt puis se retrouve réincarné dans un monde fantaisiste. Il se réincarne dans le corps d'un enfant du nom de Rudeus Greyrat. Il est le fils d'un épéiste nommé Paul Greyrat et d'une ancienne aventurière nommée Zenith Greyrat. Bien décidé à faire quelque chose de sa nouvelle vie en tant que Rudeus, il va essayer de devenir le plus grand magicien de l'histoire.",
     options: new MushokuTensei(),
+  },
+  {
+    anime: "Great Teacher Onizuka",
+    category: ["Humour", "Classique"],
+    synopsis:
+      "Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée \"Holy Forest Academy\", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...",
+    options: new GTO(),
   },
 ];
 
