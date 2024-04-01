@@ -1,21 +1,21 @@
 import { ANIMES } from "@/animes/constants";
+import { AnimeFilmsProps } from "@/typings/types";
 import { RefObject } from "react";
 
 export async function appearVideo(
   id: string,
 
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  Anime: AnimeFilmsProps,
+  setAnime: React.Dispatch<React.SetStateAction<AnimeFilmsProps | null>>,
 
-  currentAnime: string,
   containerRef: RefObject<HTMLElement>,
 ) {
   const { names } =
     ANIMES.find(
-      ({ anime }) => anime.toLowerCase() === currentAnime.toLowerCase(),
+      ({ anime }) => anime.toLowerCase() === Anime?.anime?.anime.toLowerCase(),
     )?.options.FILM_OPTIONS || {};
 
-  const lang = localStorage.getItem(`${currentAnime}--lang`);
+  const lang = localStorage.getItem(`${Anime?.anime?.anime}--lang`);
 
   window.scrollTo({
     top: containerRef.current?.offsetTop,
@@ -24,16 +24,18 @@ export async function appearVideo(
 
   const [url, index] = id.split(" ");
 
-  localStorage.setItem(`${currentAnime}--currentFilm`, index);
+  localStorage.setItem(`${Anime?.anime?.anime}--currentFilm`, index);
 
-  setTitle(
-    <>
-      <span>{names![index].name}</span> [
-      <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
-    </>,
-  );
-
-  setVideo(url);
+  setAnime((currentState) => ({
+    ...currentState,
+    video: url,
+    filmTitle: (
+      <>
+        <span>{names![index].name}</span> [
+        <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
+      </>
+    ),
+  }));
 
   return url;
 }

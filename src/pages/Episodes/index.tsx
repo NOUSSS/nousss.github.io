@@ -2,13 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { formatName } from "@/app/lib/formatName";
 import { clickEvents } from "@/app/utils/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import {
-  AnimeInfoProps,
+  AnimeEpisodesProps,
   EPS,
   LecteurReturnType,
   SeasonAndFilm,
@@ -55,7 +54,7 @@ const Episodes = () => {
     };
   }, [router.events]);
 
-  const [AnimeInfo, setAnimeInfo] = useState<AnimeInfoProps | null>(null);
+  const [AnimeInfo, setAnimeInfo] = useState<AnimeEpisodesProps | null>(null);
   const [isClient, setIsClient] = useState(false);
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
@@ -69,7 +68,7 @@ const Episodes = () => {
 
   const options = (isClient &&
     AnimeInfo?.anime &&
-    getAnime(AnimeInfo!.anime)?.options) as Anime;
+    AnimeInfo!.anime?.options) as Anime;
 
   const { allIndex, horsSeries, SCRIPT_URL, names } =
     (isClient && options?.EPISODES_OPTIONS) || {};
@@ -77,11 +76,6 @@ const Episodes = () => {
   const disclamerMessage = useRef("");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
-
-  const [currentLecteur, setCurrentLecteur] = useState<{
-    lecteur: string;
-    change?: boolean;
-  } | null>(null);
 
   const saisonsEntries = (isClient &&
     AnimeInfo &&
@@ -118,11 +112,11 @@ const Episodes = () => {
 
       const currentSaison =
         params?.get("saison") ??
-        localStorage.getItem(`${formatName(currentAnime)}--saison`) ??
+        localStorage.getItem(`${currentAnime}--saison`) ??
         "1";
 
       let lang = localStorage.getItem(
-        `${formatName(currentAnime)}--${currentSaison}--lang`,
+        `${currentAnime}--${currentSaison}--lang`,
       ) as "vostfr" | "vf";
 
       if (!lang) {
@@ -140,7 +134,7 @@ const Episodes = () => {
 
       setAnimeInfo((currentState) => ({
         ...currentState,
-        anime: formatName(currentAnime!)!,
+        anime: getAnime(currentAnime),
         saison: currentSaison,
       }));
     }
@@ -158,7 +152,7 @@ const Episodes = () => {
       let retard = 0;
 
       localStorage.setItem(
-        `${AnimeInfo.anime}--${AnimeInfo.saison}--lang`,
+        `${AnimeInfo.anime.anime}--${AnimeInfo.saison}--lang`,
         AnimeInfo.lang,
       );
 
@@ -209,32 +203,35 @@ const Episodes = () => {
       if (AnimeInfo?.saison && AnimeInfo.saison > saisonsEntries[oavIndex]) {
         const newIndexSaison = (Number(AnimeInfo?.saison) - 1).toString();
 
-        localStorage.setItem(`${AnimeInfo?.anime}--saison`, newIndexSaison);
+        localStorage.setItem(
+          `${AnimeInfo?.anime?.anime}--saison`,
+          newIndexSaison,
+        );
         AnimeInfo!.saison = newIndexSaison;
       }
 
       Lecteurs = getLecteur();
 
-      if (currentLecteur?.lecteur) {
-        LecteurEpisodes = Lecteurs[currentLecteur.lecteur as EPS]!;
+      if (AnimeInfo?.lecteur) {
+        LecteurEpisodes = Lecteurs[AnimeInfo.lecteur as EPS]!;
       } else {
         const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-        setCurrentLecteur({ lecteur });
+        setAnimeInfo((currentState) => ({ ...currentState, lecteur }));
 
         LecteurEpisodes = Lecteurs[lecteur]!;
       }
 
       const episodeIndex = allIndex![AnimeInfo?.saison ?? 0];
-      let episode = localStorage.getItem(`${AnimeInfo?.anime}--episode`);
+      let episode = localStorage.getItem(`${AnimeInfo?.anime?.anime}--episode`);
 
       if (!episode) {
-        localStorage.setItem(`${AnimeInfo?.anime}--episode`, "1");
+        localStorage.setItem(`${AnimeInfo?.anime?.anime}--episode`, "1");
 
         episode = "1";
       }
 
-      const e_sp = localStorage.getItem(`${AnimeInfo?.anime}--e-sp`);
+      const e_sp = localStorage.getItem(`$AnimeInfo?.anime?.anime}--e-sp`);
       const listEpisodes: React.ReactNode[] = [];
 
       let retard = 0;
@@ -246,7 +243,8 @@ const Episodes = () => {
       ) {
         const isHorsSerie = horsSeries?.find(
           ({ saison }) =>
-            saison === localStorage.getItem(`${AnimeInfo?.anime}--saison`),
+            saison ===
+            localStorage.getItem(`$AnimeInfo?.anime?.anime}--saison`),
         );
 
         if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
@@ -386,7 +384,7 @@ const Episodes = () => {
         clickEvents(
           LecteurEpisodes,
           setAnimeInfo,
-          AnimeInfo!.anime!,
+          AnimeInfo!,
           episodesRef,
           containerRef,
           episodeTitleRef,
@@ -394,8 +392,9 @@ const Episodes = () => {
 
         const saisonName =
           AnimeInfo?.anime &&
-          Object.values(getAnime(AnimeInfo.anime)?.options?.saisons!)[
-            Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1
+          Object.values(AnimeInfo.anime?.options?.saisons!)[
+            Number(localStorage.getItem(`${AnimeInfo?.anime?.anime}--saison`)) -
+              1
           ]?.name;
 
         setAnimeInfo((currentState) => ({
@@ -429,13 +428,15 @@ const Episodes = () => {
         }
       }
     }
-  }, [currentLecteur?.change, status]);
+  }, [AnimeInfo?.lecteur, status]);
 
   return (
     <main className="flex flex-col items-center">
       <Head>
         {AnimeInfo?.anime ? (
-          <title>{AnimeInfo.anime} - Episodes - Mugiwara-no Streaming</title>
+          <title>
+            {AnimeInfo.anime.anime} - Episodes - Mugiwara-no Streaming
+          </title>
         ) : null}
       </Head>
 
@@ -445,7 +446,7 @@ const Episodes = () => {
         <Title
           link={{
             pathname: "/Saisons",
-            query: { anime: AnimeInfo!.anime },
+            query: { anime: AnimeInfo!.anime.anime },
           }}
         />
       )}
@@ -490,15 +491,15 @@ const Episodes = () => {
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
               onSelect={({ value }) => {
-                setCurrentLecteur({
+                setAnimeInfo((currentState) => ({
+                  ...currentState,
                   lecteur: value,
-                  change: !currentLecteur?.change,
-                });
+                }));
               }}
               items={Object.keys(Lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(Lecteurs)[i][0]),
                 value: l,
-                disabled: currentLecteur?.lecteur === l ? true : false,
+                disabled: AnimeInfo?.lecteur === l ? true : false,
               }))}
             />
           ) : null
@@ -516,14 +517,14 @@ const Episodes = () => {
 
       <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-neutral-700">
         {isClient &&
-        localStorage.getItem(`${AnimeInfo?.anime}--episode`) !== "1" ? (
+        localStorage.getItem(`${AnimeInfo?.anime?.anime}--episode`) !== "1" ? (
           <button
             className="btn back"
             onClick={() =>
               PrevEpisode(
                 LecteurEpisodes,
                 setAnimeInfo,
-                AnimeInfo!.anime!,
+                AnimeInfo!,
                 episodesRef,
                 containerRef,
                 episodeTitleRef,
@@ -535,7 +536,7 @@ const Episodes = () => {
         ) : null}
 
         {isClient &&
-        localStorage.getItem(`${AnimeInfo?.anime}--episode`) !==
+        localStorage.getItem(`${AnimeInfo?.anime?.anime}--episode`) !==
           LecteurEpisodes.length.toString() ? (
           <button
             className="btn next"
@@ -543,7 +544,7 @@ const Episodes = () => {
               NextEpisode(
                 LecteurEpisodes,
                 setAnimeInfo,
-                AnimeInfo!.anime!,
+                AnimeInfo!,
                 episodesRef,
                 containerRef,
                 episodeTitleRef,
@@ -592,17 +593,19 @@ const Episodes = () => {
           <button
             onClick={() => {
               const prevSaison =
-                Number(localStorage.getItem(`${AnimeInfo?.anime}--saison`)) - 1;
+                Number(
+                  localStorage.getItem(`$AnimeInfo?.anime?.anime}--saison`),
+                ) - 1;
 
               router.push({
                 pathname: `/Episodes`,
                 query: {
-                  anime: AnimeInfo?.anime,
+                  anime: AnimeInfo?.anime!.anime,
                   saison: prevSaison,
                 },
               });
 
-              changeSaison(prevSaison.toString(), AnimeInfo!.anime!);
+              changeSaison(prevSaison.toString(), AnimeInfo?.anime?.anime!);
 
               router.reload();
             }}
@@ -616,17 +619,19 @@ const Episodes = () => {
           <button
             onClick={() => {
               const newSaison =
-                Number(localStorage.getItem(`${AnimeInfo!.anime}--saison`)) + 1;
+                Number(
+                  localStorage.getItem(`${AnimeInfo?.anime?.anime}--saison`),
+                ) + 1;
 
               router.push({
                 pathname: `/Episodes`,
                 query: {
-                  anime: AnimeInfo?.anime,
+                  anime: AnimeInfo?.anime?.anime!,
                   saison: newSaison,
                 },
               });
 
-              changeSaison(newSaison.toString(), AnimeInfo!.anime!);
+              changeSaison(newSaison.toString(), AnimeInfo?.anime?.anime!);
 
               router.reload();
             }}

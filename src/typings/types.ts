@@ -1,5 +1,8 @@
-import { Anime } from "@/app/class/anime";
+import { AnimesType } from "@/animes/constants";
+import { ItemsProps } from "@/app/ui/Select";
 import { StaticImageData } from "next/image";
+
+import React from "react";
 
 export type EPS = "eps1" | "eps2" | "eps3" | "eps4";
 
@@ -88,12 +91,38 @@ export interface Historique {
 }
 
 export interface AnimeInfoProps {
-  anime?: string;
+  anime?: AnimesType;
+}
+
+export interface AnimeEpisodesProps extends AnimeInfoProps {
+  video?: string;
+  lang?: string;
+  lecteur?: string;
   saison?: string;
-  options?: Anime;
   saisonTitle?: React.ReactNode;
   episodeTitle?: React.ReactNode;
   episodes?: React.ReactNode[];
+}
+
+export interface AnimeFilmsProps extends AnimeInfoProps {
   video?: string;
   lang?: string;
+  lecteur?: string;
+  filmTitle?: React.ReactNode;
+  films?: React.ReactNode[];
+}
+
+interface SaisonsProps {
+  id: string;
+  element: React.ReactNode;
+}
+
+export interface AnimeSaisonsProps extends AnimeInfoProps {
+  saisons?: SaisonsProps[];
+  saison?: string;
+}
+
+export interface AnimeScansProps extends AnimeInfoProps {
+  scans?: React.ReactNode[];
+  chapitresOptions?: ItemsProps[];
 }

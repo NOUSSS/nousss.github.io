@@ -1,7 +1,7 @@
 import React, { RefObject } from "react";
 import Image from "next/image";
 
-import { getAnime } from "@/app/lib/getAnime";
+import { AnimeScansProps } from "@/typings/types";
 import { ItemsProps } from "@/app/ui/Select";
 
 interface windowKeys {
@@ -18,23 +18,22 @@ export const getTailleChapitres = (): number => {
   )
     tailleChapitres++;
 
-  console.log(tailleChapitres);
-
   return tailleChapitres;
 };
 
 export const selectChapter = (
+  Anime: AnimeScansProps,
   item: ItemsProps,
-  currentAnime: string,
+
   placeholderRef: RefObject<HTMLElement>,
 ): React.ReactNode[] | undefined => {
   const scrollPosition = localStorage.getItem(
-    `${currentAnime}--scrollPosition`,
+    `${Anime?.anime?.anime}--scrollPosition`,
   );
 
   if (!scrollPosition) window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const { IMAGE_URL } = getAnime(currentAnime)?.options.SCANS_OPTIONS || {};
+  const { IMAGE_URL } = Anime?.anime?.options.SCANS_OPTIONS || {};
 
   const scansImages: React.ReactNode[] = [];
 
@@ -43,7 +42,7 @@ export const selectChapter = (
 
     const scans = (window as unknown as windowKeys)[`eps${item.value}`];
 
-    localStorage.setItem(`${currentAnime}--chapitre`, item.value);
+    localStorage.setItem(`${Anime?.anime?.anime}--chapitre`, item.value);
 
     for (let i = 1; i <= scans.length; i++) {
       scansImages.push(

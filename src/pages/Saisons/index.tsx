@@ -1,13 +1,12 @@
 "use client";
 
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
-import { AnimesType } from "@/animes/constants";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { formatName } from "@/app/lib/formatName";
 import { getAnime } from "@/app/lib/getAnime";
+import { AnimeSaisonsProps } from "@/typings/types";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -18,11 +17,8 @@ import ColorPicker from "@/app/ui/colorPicker";
 
 const Saisons = () => {
   const router = useRouter();
-  const [anime, setAnime] = useState<AnimesType | null>(null);
-  const [saison, setSaison] = useState<null | string>(null);
-  const [saisons, setSaisons] = useState<
-    null | { id: string; element: React.ReactNode }[]
-  >(null);
+
+  const [anime, setAnime] = useState<AnimeSaisonsProps | null>(null);
 
   const saisonsRef = useRef<HTMLUListElement[]>([]);
 
@@ -31,11 +27,12 @@ const Saisons = () => {
     if (!currentAnime || !currentAnime.options.saisons) {
       router.push("/");
     } else {
-      setAnime(currentAnime);
-      setSaisons(getSaisons());
-      setSaison(
-        localStorage.getItem(`${formatName(currentAnime?.anime!)}--saison`),
-      );
+      setAnime((currentState) => ({
+        ...currentState,
+        anime: currentAnime,
+        saisons: getSaisons(),
+        saison: localStorage.getItem(`${currentAnime?.anime!}--saison`)!,
+      }));
     }
   }, [router]);
 
@@ -43,9 +40,7 @@ const Saisons = () => {
     <main>
       <Head>
         {anime?.anime && (
-          <title>
-            {formatName(anime.anime)} - Saisons - Mugiwara-no Streaming
-          </title>
+          <title>{anime.anime.anime} - Saisons - Mugiwara-no Streaming</title>
         )}
       </Head>
 
@@ -54,7 +49,7 @@ const Saisons = () => {
       <Title
         link={{
           pathname: "/Home",
-          query: { anime: anime?.anime! },
+          query: { anime: anime?.anime?.anime! },
         }}
       />
 
@@ -63,21 +58,25 @@ const Saisons = () => {
       </p>
 
       <p>
-        {saison && (
+        {anime?.saison && (
           <>
             Historique Saison :{" "}
             <span
               onClick={() => {
                 router.push({
                   pathname: `/Episodes`,
-                  query: { anime: formatName(anime?.anime!), saison: saison },
+                  query: { anime: anime?.anime?.anime!, saison: anime.saison },
                 });
 
-                changeSaison(saison, formatName(anime?.anime!)!);
+                changeSaison(anime.saison!, anime?.anime?.anime!);
               }}
               className="cursor-pointer underline"
             >
-              {Object.values(anime?.options.saisons!)[Number(saison) - 1]?.name}
+              {
+                Object.values(anime?.anime?.options.saisons!)[
+                  Number(anime?.saison) - 1
+                ]?.name
+              }
             </span>
           </>
         )}
@@ -94,7 +93,7 @@ const Saisons = () => {
         className="overflow-x-auto"
         ref={(el) => (saisonsRef.current[0] = el!)}
       >
-        {saisons?.map(({ element, id }, index) => (
+        {anime?.saisons?.map(({ element, id }, index) => (
           <div
             key={id}
             id={id}
@@ -103,12 +102,12 @@ const Saisons = () => {
               router.push({
                 pathname: `/Episodes`,
                 query: {
-                  anime: formatName(anime?.anime!),
+                  anime: anime?.anime?.anime!,
                   saison: (index + 1).toString(),
                 },
               });
 
-              changeSaison((index + 1).toString(), formatName(anime?.anime!)!);
+              changeSaison((index + 1).toString(), anime?.anime?.anime!);
             }}
           >
             {element}

@@ -1,27 +1,25 @@
 import React, { RefObject } from "react";
-
-import { getAnime } from "@/app/lib/getAnime";
-import { AnimeInfoProps } from "@/typings/types";
+import { AnimeEpisodesProps } from "@/typings/types";
 
 export function Change(
   indexEpisode: number | string,
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  AnimeInfo: AnimeEpisodesProps,
 
-  currentAnime: string,
   episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
 ): void {
-  const options = getAnime(currentAnime)!.options;
-  const saison = localStorage.getItem(`${currentAnime}--saison`);
+  const options = AnimeInfo.anime?.options;
+  const saison = localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`);
 
-  const { allIndex, horsSeries, names } = options.EPISODES_OPTIONS || {};
+  const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS || {};
 
   const isHorsSerie = horsSeries?.find(
     ({ saison }: { saison: string }) =>
-      saison === localStorage.getItem(`${currentAnime}--saison`),
+      saison === localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`),
   );
 
   if (isHorsSerie) {
@@ -44,8 +42,11 @@ export function Change(
         episodeTitle: <span>E-SP{esp}</span>,
       }));
 
-      localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
-      localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
+      localStorage.setItem(
+        `${AnimeInfo.anime?.anime}--episode`,
+        indexEpisode.toString(),
+      );
+      localStorage.setItem(`${AnimeInfo.anime?.anime}--e-sp`, `E-SP${esp}`);
     } else {
       let retard = 0;
 
@@ -55,7 +56,7 @@ export function Change(
         }
       });
 
-      const saison = localStorage.getItem(`${currentAnime}--saison`);
+      const saison = localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`);
 
       const numberEpisode =
         Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
@@ -84,13 +85,19 @@ export function Change(
         ),
       }));
 
-      localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
-      localStorage.removeItem(`${currentAnime}--e-sp`);
+      localStorage.setItem(
+        `${AnimeInfo.anime?.anime}--episode`,
+        indexEpisode.toString(),
+      );
+      localStorage.removeItem(`${AnimeInfo.anime?.anime}--e-sp`);
     }
   } else {
     const numberEpisode =
-      Number(allIndex?.[localStorage.getItem(`${currentAnime}--saison`) ?? 0]) +
-      Number(indexEpisode);
+      Number(
+        allIndex?.[
+          localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`) ?? 0
+        ],
+      ) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
 
@@ -115,8 +122,11 @@ export function Change(
       ),
     }));
 
-    localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
-    localStorage.removeItem(`${currentAnime}--e-sp`);
+    localStorage.setItem(
+      `${AnimeInfo.anime?.anime}--episode`,
+      indexEpisode.toString(),
+    );
+    localStorage.removeItem(`${AnimeInfo.anime?.anime}--e-sp`);
   }
 
   window.scrollTo({
@@ -128,22 +138,21 @@ export function Change(
 export function NextEpisode(
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
-
-  currentAnime: string,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
 ) {
   const newEpisodeIndex =
-    Number(localStorage.getItem(`${currentAnime}--episode`)) + 1;
+    Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) + 1;
 
   Change(
     newEpisodeIndex,
     lecteur,
     setAnimeInfo,
-    currentAnime,
+    AnimeInfo,
     episodesRef,
     containerRef,
     episodeTitleRef,
@@ -153,22 +162,21 @@ export function NextEpisode(
 export function PrevEpisode(
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
-
-  currentAnime: string,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
 ) {
   const newEpisodeIndex =
-    Number(localStorage.getItem(`${currentAnime}--episode`)) - 1;
+    Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) - 1;
 
   Change(
     newEpisodeIndex,
     lecteur,
     setAnimeInfo,
-    currentAnime,
+    AnimeInfo,
     episodesRef,
     containerRef,
     episodeTitleRef,

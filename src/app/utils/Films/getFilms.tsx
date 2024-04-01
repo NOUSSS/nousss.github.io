@@ -2,44 +2,28 @@ import Image from "next/image";
 
 import { getLecteur } from "@/app/lib/getLecteur";
 import { appearVideo } from "./appearVideo";
-import { getAnime } from "@/app/lib/getAnime";
-import { formatName } from "@/app/lib/formatName";
-import { EPS } from "@/typings/types";
+import { AnimeFilmsProps, EPS } from "@/typings/types";
 import { RefObject } from "react";
 
 export function getFilms(
-  setFilmsFront: React.Dispatch<
-    React.SetStateAction<React.ReactNode[] | undefined>
-  >,
+  Anime: AnimeFilmsProps,
+  setAnime: React.Dispatch<React.SetStateAction<AnimeFilmsProps | null>>,
 
-  setCurrentLecteur: React.Dispatch<
-    React.SetStateAction<{ lecteur: string; change?: boolean } | null>
-  >,
-
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-
-  currentLecteur: {
-    lecteur: string;
-    change?: boolean;
-  },
-
-  currentAnime: string,
   containerRef: RefObject<HTMLElement>,
 ) {
   let LecteursFilms: string[] = [];
   const Lecteurs = getLecteur();
 
-  const { names } = getAnime(currentAnime)!.options.FILM_OPTIONS || {};
+  const { names } = Anime?.anime!.options.FILM_OPTIONS || {};
 
   const filmsNodes: React.ReactNode[] = [];
 
-  if (currentLecteur) {
-    LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
+  if (Anime?.lecteur) {
+    LecteursFilms = Lecteurs[Anime?.lecteur as EPS]!;
   } else {
     const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-    setCurrentLecteur({ lecteur });
+    setAnime((currentState) => ({ ...currentState, lecteur }));
 
     LecteursFilms = Lecteurs[lecteur]!;
   }
@@ -64,13 +48,7 @@ export function getFilms(
             src={names![i].image()}
             id={`${url} ${i}`}
             onClick={() => {
-              appearVideo(
-                `${url} ${i}`,
-                setVideo,
-                setTitle,
-                formatName(currentAnime)!,
-                containerRef,
-              );
+              appearVideo(`${url} ${i}`, Anime, setAnime, containerRef);
             }}
             alt="poster de film"
           />
@@ -81,5 +59,5 @@ export function getFilms(
     );
   }
 
-  setFilmsFront(filmsNodes);
+  setAnime((currentState) => ({ ...currentState, films: filmsNodes }));
 }

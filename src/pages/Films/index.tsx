@@ -6,7 +6,13 @@ import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { EPS, FilmOptions, LecteurReturnType } from "@/typings/types";
+import {
+  AnimeFilmsProps,
+  AnimeInfoProps,
+  EPS,
+  FilmOptions,
+  LecteurReturnType,
+} from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -28,23 +34,13 @@ let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 const Films = () => {
-  const [anime, setAnime] = useState<AnimesType | null>(null);
+  const [anime, setAnime] = useState<AnimeFilmsProps | null>(null);
   const [isClient, setIsClient] = useState(false);
 
-  const currentAnime = (isClient && anime?.anime) as string;
-  const options = (isClient && anime?.options.FILM_OPTIONS) as FilmOptions;
+  const options = (isClient &&
+    anime?.anime?.options.FILM_OPTIONS) as FilmOptions;
 
   const { SCRIPT_URL } = options || {};
-
-  const [films, setFilmsFront] = useState<React.ReactNode[]>();
-  const [title, setTitle] = useState<React.ReactNode>();
-
-  const [video, setVideo] = useState<string>("");
-  const [lang, setLang] = useState<string | null>(null);
-  const [currentLecteur, setCurrentLecteur] = useState<{
-    lecteur: string;
-    change?: boolean;
-  } | null>(null);
 
   const lecteurString = useRef<EPS | "">("");
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -54,8 +50,8 @@ const Films = () => {
   );
 
   const status = useScript(
-    (isClient && lang && typeof SCRIPT_URL === "function"
-      ? SCRIPT_URL(lang)
+    (isClient && anime?.lang && typeof SCRIPT_URL === "function"
+      ? SCRIPT_URL(anime?.lang)
       : false) as string,
     {
       removeOnUnmount: true,
@@ -72,30 +68,26 @@ const Films = () => {
   useEffect(() => {
     setIsClient(true);
 
-    const currentAnime = getAnime(
-      getCurrentAnime({
-        wSaison: false,
-      }),
-    );
+    const currentAnime = getCurrentAnime({
+      wSaison: false,
+    });
 
-    if (!currentAnime || !currentAnime.options.FILM_OPTIONS) {
+    const fetchedAnime = getAnime(currentAnime);
+
+    if (!currentAnime || !fetchedAnime?.options.FILM_OPTIONS) {
       router.push({
         pathname: "/",
       });
     } else {
-      const lang =
-        localStorage.getItem(`${formatName(currentAnime.anime)}--lang`) ??
-        "vostfr";
+      const lang = localStorage.getItem(`${currentAnime}--lang`) ?? "vostfr";
 
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
-      setLang(lang);
 
-      setAnime({
-        anime: formatName(currentAnime!.anime)!,
-        options: currentAnime.options,
-        category: currentAnime.category,
-        synopsis: currentAnime.synopsis,
-      });
+      setAnime((currentState) => ({
+        ...currentState,
+        anime: getAnime(currentAnime),
+        lang,
+      }));
 
       const langObj = {
         vostfr: "VostFR",
@@ -109,8 +101,9 @@ const Films = () => {
   }, []);
 
   useEffect(() => {
-    if (anime && lang) localStorage.setItem(`${currentAnime}--lang`, lang);
-  }, [lang, anime]);
+    if (anime && anime?.lang)
+      localStorage.setItem(`${anime?.anime?.anime}--lang`, anime?.lang);
+  }, [anime?.lang]);
 
   useEffect(() => {
     if (status === "ready") {
@@ -124,24 +117,25 @@ const Films = () => {
         id: loadingToast!,
       });
 
-      if (lang === "vf") setLang("vostfr");
+      if (anime?.lang === "vf")
+        setAnime((currentState) => ({ ...currentState, lang: "vostfr" }));
     }
-  }, [status, lang, loadingToast]);
+  }, [status, anime?.lang, loadingToast]);
 
   useEffect(() => {
     if (status === "ready") {
       const lastFilm = localStorage.getItem(
-        `${formatName(currentAnime)}--currentFilm`,
+        `${anime?.anime?.anime}--currentFilm`,
       );
 
       Lecteurs = getLecteur();
 
-      if (currentLecteur?.lecteur) {
-        LecteursFilms = Lecteurs[currentLecteur.lecteur as EPS]!;
+      if (anime?.lecteur) {
+        LecteursFilms = Lecteurs[anime?.lecteur as EPS]!;
       } else {
         const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-        setCurrentLecteur({ lecteur: lecteur });
+        setAnime((currentState) => ({ ...currentState, lecteur }));
 
         LecteursFilms = Lecteurs[lecteur]!;
       }
@@ -161,51 +155,33 @@ const Films = () => {
         lastFilm
           ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
           : `${LecteursFilms[0]} ${
-              localStorage.getItem(
-                `${formatName(currentAnime)}--currentFilm`,
-              ) ?? "0"
+              localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ?? "0"
             }`,
 
-        setVideo,
-        setTitle,
+        anime!,
+        setAnime,
 
-        formatName(currentAnime)!,
         containerRef,
       );
 
-      getFilms(
-        setFilmsFront,
-        setCurrentLecteur,
-        setTitle,
-        setVideo,
-
-        currentLecteur!,
-        currentAnime,
-        containerRef,
-      );
+      getFilms(anime!, setAnime, containerRef);
     }
-  }, [
-    currentLecteur?.change,
-    lang,
-    status,
-    currentAnime,
-    options?.BLACKLIST_URL,
-  ]);
+  }, [status, anime?.lecteur]);
 
   return (
     <main className="flex flex-col items-center">
       <Head>
-        {currentAnime ? (
-          <title>
-            {formatName(currentAnime)} - Films - Mugiwara-no Streaming
-          </title>
+        {anime?.anime?.anime ? (
+          <title>{anime?.anime?.anime} - Films - Mugiwara-no Streaming</title>
         ) : null}
       </Head>
 
       <ColorPicker />
-      <Title link={{ pathname: "/Home", query: { anime: currentAnime } }} />
+      <Title
+        link={{ pathname: "/Home", query: { anime: anime?.anime?.anime! } }}
+      />
 
-      <div className="m-4 mb-12 text-4xl">{title}</div>
+      <div className="m-4 mb-12 text-4xl">{anime?.filmTitle}</div>
 
       <div className="flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
@@ -215,16 +191,16 @@ const Films = () => {
             {
               name: "VostFR",
               value: "vostfr",
-              disabled: lang === "vostfr" ? true : false,
+              disabled: anime?.lang === "vostfr" ? true : false,
             },
             {
               name: "VF",
               value: "vf",
-              disabled: lang === "vostfr" ? false : true,
+              disabled: anime?.lang === "vostfr" ? false : true,
             },
           ]}
           onSelect={({ value }) => {
-            setLang(value);
+            setAnime((currentState) => ({ ...currentState, lang: value }));
 
             router.reload();
           }}
@@ -235,16 +211,13 @@ const Films = () => {
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
-              onSelect={({ value }) => {
-                setCurrentLecteur({
-                  lecteur: value,
-                  change: !currentLecteur?.change,
-                });
-              }}
+              onSelect={({ value }) =>
+                setAnime((currentState) => ({ ...currentState, lang: value }))
+              }
               items={Object.keys(Lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(Lecteurs)[i][0]),
                 value: l,
-                disabled: currentLecteur?.lecteur === l ? true : false,
+                disabled: anime?.lecteur === l ? true : false,
               }))}
             />
           ) : null
@@ -252,8 +225,8 @@ const Films = () => {
       </div>
 
       <div ref={containerRef} className="container">
-        <iframe className="video" src={video} allowFullScreen></iframe>
-        <iframe className="ambiance" src={video}></iframe>
+        <iframe className="video" src={anime?.video} allowFullScreen></iframe>
+        <iframe className="ambiance" src={anime?.video}></iframe>
       </div>
 
       <SearchBar
@@ -262,7 +235,7 @@ const Films = () => {
         query="id"
       />
 
-      <ul ref={(el) => (filmsRef.current[0] = el!)}>{films}</ul>
+      <ul ref={(el) => (filmsRef.current[0] = el!)}>{anime?.films}</ul>
 
       <Footer style={true} media />
     </main>

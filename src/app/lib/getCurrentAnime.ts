@@ -43,5 +43,5 @@ export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
     anime = localStorage.getItem("anime")!;
   }
 
-  return anime;
+  return formatName(anime)!;
 };

@@ -1,48 +1,56 @@
 import { ItemsProps } from "@/app/ui/Select";
 import { selectChapter } from "./chapterManager";
 import { RefObject } from "react";
+import { AnimeScansProps } from "@/typings/types";
 
 export const PrevChapter = (
-  setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>,
-  currentAnime: string,
-  items: ItemsProps[],
+  Anime: AnimeScansProps,
+  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
-  localStorage.removeItem(`${currentAnime}--scrollPosition`);
+  localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
 
-  setScans(
-    selectChapter(
-      items[Number(localStorage.getItem(`${currentAnime}--chapitre`)) - 2],
-      currentAnime,
+  setAnime((currentState) => ({
+    ...currentState,
+    scans: selectChapter(
+      Anime,
+      Anime.chapitresOptions![
+        Number(localStorage.getItem(`${Anime?.anime?.anime}--chapitre`)) - 2
+      ],
       placeholderRef,
     ),
-  );
+  }));
 };
 
 export const NextChapter = (
-  setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>,
-  currentAnime: string,
-  items: ItemsProps[],
+  Anime: AnimeScansProps,
+  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
-  localStorage.removeItem(`${currentAnime}--scrollPosition`);
+  localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
 
-  setScans(
-    selectChapter(
-      items[Number(localStorage.getItem(`${currentAnime}--chapitre`))],
-      currentAnime,
+  setAnime((currentState) => ({
+    ...currentState,
+    scans: selectChapter(
+      Anime,
+      Anime.chapitresOptions![
+        Number(localStorage.getItem(`${Anime?.anime?.anime}--chapitre`))
+      ],
       placeholderRef,
     ),
-  );
+  }));
 };
 
 export const LastChapter = (
-  setScans: React.Dispatch<React.SetStateAction<React.ReactNode[] | undefined>>,
-  currentAnime: string,
-  items: ItemsProps[],
+  Anime: AnimeScansProps,
+  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
+  const items = Anime.chapitresOptions!;
   const lastScan = items[items.length - 1];
 
-  setScans(selectChapter(lastScan, currentAnime, placeholderRef));
+  setAnime((currentState) => ({
+    ...currentState,
+    scans: selectChapter(Anime, lastScan, placeholderRef),
+  }));
 };
