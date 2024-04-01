@@ -1,13 +1,13 @@
 import React, { RefObject } from "react";
 
 import { getAnime } from "@/app/lib/getAnime";
+import { AnimeInfoProps } from "@/typings/types";
 
 export function Change(
   indexEpisode: number | string,
   lecteur: string[],
 
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
 
   currentAnime: string,
   episodesRef: RefObject<HTMLElement[]>,
@@ -38,8 +38,11 @@ export function Change(
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      setVideo(url);
-      setEpisodeTitle(<span>E-SP{esp}</span>);
+      setAnimeInfo((currentState) => ({
+        ...currentState,
+        video: url,
+        episodeTitle: <span>E-SP{esp}</span>,
+      }));
 
       localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
       localStorage.setItem(`${currentAnime}--e-sp`, `E-SP${esp}`);
@@ -64,19 +67,22 @@ export function Change(
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      setVideo(url);
-      setEpisodeTitle(
-        <>
-          <span>
-            {numberEpisode}{" "}
-            {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
-          </span>{" "}
-          :{" "}
-          <span ref={episodeTitleRef} className="text-white">
-            {title}
-          </span>
-        </>,
-      );
+      setAnimeInfo((currentState) => ({
+        ...currentState,
+        video: url,
+        episodeTitle: (
+          <>
+            <span>
+              {numberEpisode}{" "}
+              {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
+            </span>{" "}
+            :{" "}
+            <span ref={episodeTitleRef} className="text-white">
+              {title}
+            </span>
+          </>
+        ),
+      }));
 
       localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
       localStorage.removeItem(`${currentAnime}--e-sp`);
@@ -93,19 +99,21 @@ export function Change(
         ({ index }: { index: string }) => index === numberEpisode.toString(),
       )?.name || "Episode";
 
-    setVideo(url);
-
-    setEpisodeTitle(
-      <>
-        <span>
-          {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
-        </span>{" "}
-        :{" "}
-        <span ref={episodeTitleRef} className="text-white">
-          {episodeTitle}
-        </span>
-      </>,
-    );
+    setAnimeInfo((currentState) => ({
+      ...currentState,
+      video: url,
+      episodeTitle: (
+        <>
+          <span>
+            {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
+          </span>{" "}
+          :{" "}
+          <span ref={episodeTitleRef} className="text-white">
+            {episodeTitle}
+          </span>
+        </>
+      ),
+    }));
 
     localStorage.setItem(`${currentAnime}--episode`, indexEpisode.toString());
     localStorage.removeItem(`${currentAnime}--e-sp`);
@@ -120,8 +128,7 @@ export function Change(
 export function NextEpisode(
   lecteur: string[],
 
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
 
   currentAnime: string,
 
@@ -135,8 +142,7 @@ export function NextEpisode(
   Change(
     newEpisodeIndex,
     lecteur,
-    setVideo,
-    setEpisodeTitle,
+    setAnimeInfo,
     currentAnime,
     episodesRef,
     containerRef,
@@ -147,8 +153,7 @@ export function NextEpisode(
 export function PrevEpisode(
   lecteur: string[],
 
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setEpisodeTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
 
   currentAnime: string,
 
@@ -162,8 +167,7 @@ export function PrevEpisode(
   Change(
     newEpisodeIndex,
     lecteur,
-    setVideo,
-    setEpisodeTitle,
+    setAnimeInfo,
     currentAnime,
     episodesRef,
     containerRef,

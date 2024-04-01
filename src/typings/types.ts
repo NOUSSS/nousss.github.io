@@ -1,3 +1,4 @@
+import { Anime } from "@/app/class/anime";
 import { StaticImageData } from "next/image";
 
 export type EPS = "eps1" | "eps2" | "eps3" | "eps4";
@@ -84,4 +85,15 @@ export interface Historique {
   episode?: string;
   saison?: string;
   film?: string;
+}
+
+export interface AnimeInfoProps {
+  anime?: string;
+  saison?: string;
+  options?: Anime;
+  saisonTitle?: React.ReactNode;
+  episodeTitle?: React.ReactNode;
+  episodes?: React.ReactNode[];
+  video?: string;
+  lang?: string;
 }

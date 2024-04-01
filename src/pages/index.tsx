@@ -432,7 +432,6 @@ export default function Accueil() {
                           removeAnimeFromHistorique(
                             formatName(animeName)!,
                             historiques[i]!.redirect,
-                            historiques,
                             setHistoriques,
                           );
                         }}

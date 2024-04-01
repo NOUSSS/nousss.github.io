@@ -2,6 +2,7 @@ import React, { RefObject } from "react";
 
 import { Change } from "./episodeManager";
 import { formatName } from "@/app/lib/formatName";
+import { AnimeInfoProps } from "@/typings/types";
 
 type EventHandler = (() => void) | null;
 
@@ -23,8 +24,7 @@ export function removeClickEvents(episodesRef: RefObject<HTMLElement[]>): void {
 export function clickEvents(
   lecteur: string[],
 
-  setVideo: React.Dispatch<React.SetStateAction<string>>,
-  setTitle: React.Dispatch<React.SetStateAction<React.ReactNode>>,
+  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeInfoProps | null>>,
 
   currentAnime: string,
 
@@ -49,8 +49,7 @@ export function clickEvents(
       Change(
         episodeId!,
         lecteur,
-        setVideo,
-        setTitle,
+        setAnimeInfo,
         formatName(currentAnime)!,
         episodesRef,
         containerRef,

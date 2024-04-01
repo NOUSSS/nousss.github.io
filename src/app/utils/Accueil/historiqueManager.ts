@@ -1,36 +1,37 @@
-import React from "react";
-
-import { toast } from "sonner";
 import { Historique } from "@/typings/types";
+import { toast } from "sonner";
 
 export const removeAnimeFromHistorique = (
   animeName: string,
   redirectAnime: string,
-
-  historiques: Historique[],
   setHistoriques: React.Dispatch<React.SetStateAction<Historique[]>>,
 ) => {
-  if (redirectAnime === "Episodes") {
-    localStorage.removeItem(`${animeName}--saison`);
-    localStorage.removeItem(`${animeName}--episode`);
+  const keysToRemove = [];
 
-    for (const key of Object.keys(localStorage)) {
-      if (key.includes("--lang") && key.includes(animeName))
-        localStorage.removeItem(key);
-    }
+  if (redirectAnime === "Episodes" || redirectAnime === "Films") {
+    keysToRemove.push(
+      `${animeName}--saison`,
+      `${animeName}--episode`,
+      `${animeName}--currentFilm`,
+    );
   } else if (redirectAnime === "Scans") {
-    localStorage.removeItem(`${animeName}--chapitre`);
-  } else if (redirectAnime === "Films") {
-    localStorage.removeItem(`${animeName}--currentFilm`);
-
-    for (const key of Object.keys(localStorage)) {
-      if (key.includes("--lang") && key.includes(animeName))
-        localStorage.removeItem(key);
-    }
+    keysToRemove.push(`${animeName}--chapitre`);
   }
 
-  setHistoriques(
-    historiques.filter(
+  if (redirectAnime === "Episodes" || redirectAnime === "Films") {
+    Object.keys(localStorage).forEach((key) => {
+      if (key.includes("--lang") && key.includes(animeName)) {
+        keysToRemove.push(key);
+      }
+    });
+  }
+
+  keysToRemove.forEach((key) => {
+    localStorage.removeItem(key);
+  });
+
+  setHistoriques((currentHistoriques) =>
+    currentHistoriques.filter(
       (historique) =>
         !(
           historique.name === animeName && historique.redirect === redirectAnime
@@ -39,6 +40,6 @@ export const removeAnimeFromHistorique = (
   );
 
   toast.success(
-    `Les ${redirectAnime} de ${animeName} ont bien été retiré de l'historique !`,
+    `Les ${redirectAnime} de ${animeName} ont bien été retirés de l'historique !`,
   );
 };
