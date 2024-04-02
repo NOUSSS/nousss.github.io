@@ -15,6 +15,7 @@ import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
 import { getAnime } from "@/app/lib/getAnime";
 import { shuffle } from "@/app/lib/shuffle";
 import { useRouter } from "next/router";
+import { icons } from "lucide-react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -29,6 +30,7 @@ export default function Accueil() {
   );
 
   const router = useRouter();
+  const Trash = icons["Trash2"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
@@ -435,7 +437,7 @@ export default function Accueil() {
                           );
                         }}
                       >
-                        X
+                        <Trash size={15} />
                       </div>
 
                       {getSaison(animeName) ? (
