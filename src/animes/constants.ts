@@ -484,7 +484,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Seven Deadly Sins",
     category: ["Aventure", "Puissance", "En équipe"],
     options: new SevenDeadlySins(),
-    aliases: ["meliodas"],
+    aliases: ["nanatsu no taizai"],
     synopsis:
       "Il y a dix ans, un groupe de Chevaliers Sacrés renégats appelé les Seven Deadly Sins s'est rebellé contre les Chevaliers Sacrés, la garde du royaume. Depuis, ils ont disparu et personne ne sait ce qu'ils sont devenus.",
   },

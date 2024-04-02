@@ -522,6 +522,7 @@ const Episodes = () => {
           src={AnimeInfo?.video}
           allowFullScreen
         ></iframe>
+
         <iframe className="ambiance" src={AnimeInfo?.video}></iframe>
       </div>
 
