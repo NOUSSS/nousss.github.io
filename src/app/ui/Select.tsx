@@ -128,7 +128,7 @@ export default function Select({
                   appear();
                 }
               }}
-              className={`flex h-8 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50 hover:bg-transparent" : "hover:bg-blue-600 hover:text-white"} `}
+              className={`flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50 hover:border-transparent" : "hover:border-blue-600"} `}
             >
               <p>{item.name}</p>
             </li>
