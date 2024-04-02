@@ -1,9 +1,9 @@
 import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
+import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/HajimeNoIppo/Affiche.webp";
-
-import { Anime } from "@/app/class/anime";
+import names from "./constants/episodes-names";
 
 export default class HajimeNoIppo extends Anime {
   constructor() {
@@ -58,6 +58,8 @@ export default class HajimeNoIppo extends Anime {
         3: 102,
         4: 127,
       },
+
+      names,
     };
   }
 }
