@@ -519,7 +519,7 @@ export default function Accueil() {
 
                         <p className="my-2 text-left text-base max-md:text-sm">
                           {animeName} <br />{" "}
-                          <span className="text-sm opacity-70 max-md:text-xs">
+                          <span className="text-sm max-md:text-xs">
                             {disponibles.join(", ")}
                           </span>
                         </p>
