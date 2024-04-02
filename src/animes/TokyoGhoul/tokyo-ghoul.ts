@@ -2,6 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/TokyoGhoul/Affiche.jpg";
+import names from "./constants/episodes-names";
 
 export default class TokyoGhoul extends Anime {
   constructor() {
@@ -49,14 +50,9 @@ export default class TokyoGhoul extends Anime {
         2: 12,
         3: 24,
         4: 48,
-        5: 336,
-        6: 389,
-        7: 516,
-        8: 574,
-        9: 746,
-        10: 877,
-        11: 1088,
       },
+
+      names,
     };
   }
 }
