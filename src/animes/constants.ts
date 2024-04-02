@@ -67,6 +67,7 @@ import CyberpunkEdgerunners from "./CyberpunkEdgerunner/cyberpunk-edgerunners";
 import OshinoKo from "./OshinoKo/oshi-no-ko";
 import MushokuTensei from "./MushokuTensei/mushoku-tensei";
 import GTO from "./GTO/great-teacher-onizuka";
+import SevenSeeds from "./7seeds/7-seeds";
 
 export interface AnimesType {
   anime: string;
@@ -79,7 +80,7 @@ export interface AnimesType {
 export const ANIMES: AnimesType[] = [
   {
     anime: "One Piece",
-    aliases: ["luffy", "zoro", "op", "films", "saisons", "scans"],
+    aliases: ["luffy", "zoro", "op", "films", "saisons", "scans", "En équipe"],
     options: new OnePiece(),
     category: ["Classique", "Aventure"],
     synopsis:
@@ -95,7 +96,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Dragon Ball Z",
-    aliases: ["goku", "vegeta", "dbz", "saisons", "films"],
+    aliases: ["goku", "vegeta", "dbz", "saisons", "films", "En équipe"],
     options: new DragonBallZ(),
     category: ["Classique", "Aventure"],
     synopsis:
@@ -462,7 +463,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Gurren Lagann",
-    category: ["Aventure", "Puissance", "Humour"],
+    category: ["Aventure", "Puissance", "Humour", "En équipe"],
     options: new GurrenLagann(),
     aliases: ["anti spiral"],
     synopsis:
@@ -470,7 +471,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Seven Deadly Sins",
-    category: ["Aventure", "Puissance"],
+    category: ["Aventure", "Puissance", "En équipe"],
     options: new SevenDeadlySins(),
     aliases: ["meliodas"],
     synopsis:
@@ -606,6 +607,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée \"Holy Forest Academy\", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...",
     options: new GTO(),
+  },
+  {
+    anime: "7 Seeds",
+    category: ["Aventure", "En équipe"],
+    synopsis:
+      "Un groupe de 7 personnes atterrissent sur une île inconnue et probablement déserte, après un long sommeil, ils ne se connaissent pas et ne savent pas ce qui leur est arrivé. Malgré les tensions au sein du groupe, ils vont devoir s'entraider pour faire face aux dangers de la jungle et tenter de découvrir la raison pour laquelle ils sont ici...",
+    options: new SevenSeeds(),
   },
 ];
 

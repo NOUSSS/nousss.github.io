@@ -1,0 +1,28 @@
+const episodes = [
+  { name: "Le début du printemps", index: "1" },
+  { name: "Le réveil des insectes", index: "2" },
+  { name: "La petite neige", index: "3" },
+  { name: "Le début de l'automne", index: "4" },
+  { name: "La grande neige", index: "5" },
+  { name: "La pluie des céréales", index: "6" },
+  { name: "Le solstice d'hiver", index: "7" },
+  { name: "Le solstice d'été", index: "8" },
+  { name: "La chaleur modérée", index: "9" },
+  { name: "La rosée froide", index: "10" },
+  { name: "La grande chaleur", index: "11" },
+  { name: "La fin de la chaleur", index: "12" },
+  { name: "La gelée blanche", index: "13" },
+  { name: "Le début de l'été", index: "14" },
+  { name: "La formation des épis", index: "15" },
+  { name: "L'équinoxe de l'automne", index: "16" },
+  { name: "L'équinoxe du printemps", index: "17" },
+  { name: "La rosée blanche", index: "18" },
+  { name: "Le début de l'hiver", index: "19" },
+  { name: "La petite froidure", index: "20" },
+  { name: "La barbe des céréales", index: "21" },
+  { name: "L'eau de pluie", index: "22" },
+  { name: "La grande froidure", index: "23" },
+  { name: "La clarté limpide", index: "24" },
+];
+
+export default episodes;
