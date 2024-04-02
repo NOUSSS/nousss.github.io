@@ -291,7 +291,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Air Gear",
     options: new AirGear(),
-    category: ["Sport"],
+    category: ["Sport", "Les anciens"],
     aliases: ["saisons"],
     synopsis:
       "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
@@ -300,7 +300,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Slam Dunk",
     aliases: ["basket", "saisons"],
     options: new SlamDunk(),
-    category: ["Sport"],
+    category: ["Sport", "Les anciens"],
     synopsis:
       "Hanamichi Sakuragi, un jeune homme immature et impopulaire, est bien décidé à en finir avec les déceptions amoureuses lors de son entrée au lycée de Shohoku. Il y rencontre alors Haruko Akagi, une fille dont il tombe amoureux.",
   },
@@ -438,7 +438,7 @@ export const ANIMES: AnimesType[] = [
       "Ryuma, un samouraï nomade sans le sou, est sauvé d'une mort certaine par Flare, une généreuse serveuse, dont l'admiration envers Cyrano, un escrimeur émérite, est sans faille. Cependant, lorsque ce dernier porte atteinte à l'honneur de Ryuma, le jeune homme se voit contraint de le provoquer en duel. Mais ce geste pourtant anodin pourrait bien avoir des conséquences irrémédiables.",
     options: new Monster103(),
     aliases: ["saisons", "one piece", "op"],
-    category: ["New gen", "Les anciens"],
+    category: ["New gen"],
   },
   {
     anime: "Monster",
@@ -468,7 +468,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Ao Ashi",
     synopsis:
       "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
-    category: ["Sport"],
+    category: ["Sport", "Les anciens"],
     options: new AoAshi(),
   },
   {
