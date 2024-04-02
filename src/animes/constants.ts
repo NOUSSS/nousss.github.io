@@ -68,6 +68,7 @@ import OshinoKo from "./OshinoKo/oshi-no-ko";
 import MushokuTensei from "./MushokuTensei/mushoku-tensei";
 import GTO from "./GTO/great-teacher-onizuka";
 import SevenSeeds from "./7seeds/7-seeds";
+import AkameGaKill from "./AkameGaKill/akame-ga-kill";
 
 export interface AnimesType {
   anime: string;
@@ -614,6 +615,12 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Un groupe de 7 personnes atterrissent sur une île inconnue et probablement déserte, après un long sommeil, ils ne se connaissent pas et ne savent pas ce qui leur est arrivé. Malgré les tensions au sein du groupe, ils vont devoir s'entraider pour faire face aux dangers de la jungle et tenter de découvrir la raison pour laquelle ils sont ici...",
     options: new SevenSeeds(),
+  },
+  {
+    anime: "Akame Ga Kill",
+    synopsis: `Tatsumi, jeune combattant, se rendait à la capitale dans l'optique de sauver son village. Mais, naïf, il se fait dérober tout ce qu'il possède par une mystérieuse jeune fille et se retrouve sans un sou. Heureusement, une autre jeune fille, une noble, propose de l'accueillir chez elle pendant quelque temps. Cependant, la poisse semble coller à la peau de Tatsumi quand un groupe d'assassins débarque pour s'en prendre à sa protectrice... qui n'est pas aussi innocente qu'elle en a l'air.`,
+    options: new AkameGaKill(),
+    category: ["Aventure"],
   },
 ];
 

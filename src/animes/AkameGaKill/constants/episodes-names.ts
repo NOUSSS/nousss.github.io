@@ -1,0 +1,28 @@
+const episodes = [
+  { name: "Mort aux ténèbres", index: "1" },
+  { name: "Mort au pouvoir", index: "2" },
+  { name: "Mort au ressentiment", index: "3" },
+  { name: "Mort à l'adepte d'arme impériale", index: "4" },
+  { name: "Mort aux chimères", index: "5" },
+  { name: "Mort à la justice absolue", index: "6" },
+  { name: "Mort aux bourreausquetaires (1re partie)", index: "7" },
+  { name: "Mort aux bourreausquetaires (2e partie)", index: "8" },
+  { name: "Mort aux fous de combat", index: "9" },
+  { name: "Mort à la tentation", index: "10" },
+  { name: "Mort au savant fou", index: "11" },
+  { name: "Mort aux nouveaux", index: "12" },
+  { name: "Mort aux gêneurs", index: "13" },
+  { name: "Mort aux créatures géantes", index: "14" },
+  { name: "Mort à l'ordre religieux", index: "15" },
+  { name: "Mort aux pantins", index: "16" },
+  { name: "Mort au sortilège", index: "17" },
+  { name: "Mort aux démons", index: "18" },
+  { name: "Mort à la fatalité", index: "19" },
+  { name: "Mort à Shura", index: "20" },
+  { name: "Mort au désespoir", index: "21" },
+  { name: "Mort à la cadette", index: "22" },
+  { name: "Mort à l'empereur", index: "23" },
+  { name: "Akame ga Kill!", index: "24" },
+];
+
+export default episodes;
