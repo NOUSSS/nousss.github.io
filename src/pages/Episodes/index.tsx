@@ -33,6 +33,7 @@ import getHostname from "@/app/lib/getHostname";
 import Switch from "@/app/ui/Switch";
 import ColorPicker from "@/app/ui/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
+import Message from "@/app/ui/Message";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -512,6 +513,8 @@ const Episodes = () => {
           ) : null
         ) : null}
       </div>
+
+      <Message message="Si vous avez des pubs dans les lecteurs, bah c'est pas de ma faute car les lecteurs ne sont pas à moi" />
 
       <div ref={containerRef} className="container">
         <iframe
