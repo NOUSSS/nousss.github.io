@@ -69,6 +69,7 @@ import MushokuTensei from "./MushokuTensei/mushoku-tensei";
 import GTO from "./GTO/great-teacher-onizuka";
 import SevenSeeds from "./7seeds/7-seeds";
 import AkameGaKill from "./AkameGaKill/akame-ga-kill";
+import Erased from "./Erased/erased";
 
 export interface AnimesType {
   anime: string;
@@ -91,13 +92,21 @@ export const ANIMES: AnimesType[] = [
     anime: "Dragon Ball",
     aliases: ["goku", "shenron", "db", "films", "saisons"],
     options: new DragonBall(),
-    category: ["Classique", "Aventure"],
+    category: ["Classique", "Aventure", "Les anciens"],
     synopsis:
       "Son Gokû est un petit garçon exceptionnellement doué pour les arts martiaux, qui possède une mystérieuse queue de singe. Le jour où il rencontre Bulma, ils partent ensemble à la recherche des sept boules de cristal... Akira Toriyama - Paix à son âme.",
   },
   {
     anime: "Dragon Ball Z",
-    aliases: ["goku", "vegeta", "dbz", "saisons", "films", "En équipe"],
+    aliases: [
+      "goku",
+      "vegeta",
+      "dbz",
+      "saisons",
+      "films",
+      "En équipe",
+      "Les anciens",
+    ],
     options: new DragonBallZ(),
     category: ["Classique", "Aventure"],
     synopsis:
@@ -420,7 +429,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Tsubasa Ozora est déjà un petit génie du ballon rond malgré son jeune âge. Son rêve est d'offrir la Coupe du monde de football au Japon. Roberto Hongô, son mentor, est un joueur de légende revenu du Brésil et Tsubasa suit un entraînement particulièrement rigoureux.",
     aliases: ["olive et tom", "saisons"],
-    category: ["Sport"],
+    category: ["Sport", "Les anciens"],
     options: new CaptainTsubasa(),
   },
   {
@@ -429,7 +438,7 @@ export const ANIMES: AnimesType[] = [
       "Ryuma, un samouraï nomade sans le sou, est sauvé d'une mort certaine par Flare, une généreuse serveuse, dont l'admiration envers Cyrano, un escrimeur émérite, est sans faille. Cependant, lorsque ce dernier porte atteinte à l'honneur de Ryuma, le jeune homme se voit contraint de le provoquer en duel. Mais ce geste pourtant anodin pourrait bien avoir des conséquences irrémédiables.",
     options: new Monster103(),
     aliases: ["saisons", "one piece", "op"],
-    category: ["New gen"],
+    category: ["New gen", "Les anciens"],
   },
   {
     anime: "Monster",
@@ -494,7 +503,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Yuyu Hakusho",
-    category: ["Classique", "Aventure"],
+    category: ["Classique", "Aventure", "Les anciens"],
     options: new YuyuHakusho(),
     synopsis:
       "Yusuke Urameshi est un jeune vaurien de 14 ans. Il va pourtant sauver la vie d'un petit garçon et se faire écraser... Il y laisse sa vie. Pourtant, sa mort, imprévue, pose problème à Enma Jr, le fils du Juge des Enfers. Il décide alors de lui faire passer un test, pour juger de ses qualités. S'il réussit ce test, il pourra ressusciter et deviendra un détective du monde des esprits, afin de combattre avec son guide spirituel Botan, tous les démons trouvés sur Terre pour y faire du mal.",
@@ -604,7 +613,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Great Teacher Onizuka",
-    category: ["Humour", "Classique"],
+    category: ["Humour", "Classique", "Les anciens"],
     synopsis:
       "Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée \"Holy Forest Academy\", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...",
     options: new GTO(),
@@ -621,6 +630,12 @@ export const ANIMES: AnimesType[] = [
     synopsis: `Tatsumi, jeune combattant, se rendait à la capitale dans l'optique de sauver son village. Mais, naïf, il se fait dérober tout ce qu'il possède par une mystérieuse jeune fille et se retrouve sans un sou. Heureusement, une autre jeune fille, une noble, propose de l'accueillir chez elle pendant quelque temps. Cependant, la poisse semble coller à la peau de Tatsumi quand un groupe d'assassins débarque pour s'en prendre à sa protectrice... qui n'est pas aussi innocente qu'elle en a l'air.`,
     options: new AkameGaKill(),
     category: ["Aventure"],
+  },
+  {
+    anime: "Erased",
+    synopsis: `2006. Aspirant mangaka dont la carrière peine à décoller, Satoru Fujinuma travaille comme livreur de pizzas pour joindre les deux bouts. Effacé et peu enclin à s'ouvrir aux autres, il observe le monde qui l'entoure sans vraiment y prendre part. Pourtant, Satoru possède un don exceptionnel : à chaque fois qu'un incident ou une tragédie se déroule près de lui, il est projeté quelques minutes dans le passé pour empêcher l'inévitable avant qu'il se produise... Cette anomalie de l'espace-temps lui vaut un séjour à l'hôpital le jour où, pour rattraper le conducteur d'un camion fou, il est percuté par un autre véhicule de plein fouet. Après l'accident, petit à petit, les souvenirs effacés de l'enfance traumatisante de Satoru resurgissent...`,
+    options: new Erased(),
+    category: ["Les anciens", "Classique"],
   },
 ];
 
