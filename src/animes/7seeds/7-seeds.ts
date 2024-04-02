@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "@/assets/Animes/Nom/Affiche.jpeg";
+import Affiche from "@/assets/Animes/7seeds/affiche.webp";
 
 class SevenSeeds extends Anime {
   constructor() {
