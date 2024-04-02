@@ -40,13 +40,17 @@ export default function Accueil() {
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
-  const getSaison = (animeName: string) => {
+  const getWallpaper = (animeName: string) => {
     const anime = getAnime(animeName);
 
     if (anime?.options.saisons) {
       const saisons = Object.values(anime.options.saisons);
 
       return saisons[saisons.length - 1].image();
+    } else if (anime?.options.FILM_OPTIONS) {
+      const films = Object.values(anime.options.FILM_OPTIONS.names);
+
+      return films[films.length - 1].image();
     }
   };
 
@@ -440,7 +444,7 @@ export default function Accueil() {
                         <Trash size={15} />
                       </div>
 
-                      {getSaison(animeName) ? (
+                      {getWallpaper(animeName) ? (
                         <Image
                           className="relative top-1 z-[-1] aspect-video w-40 scale-90 rounded-t-xl max-sm:h-[85px]"
                           src={getAnime(animeName)!.options.affiche!}
@@ -497,7 +501,7 @@ export default function Accueil() {
                       <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                         <Image
                           className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
-                          src={getSaison(animeName)!}
+                          src={getWallpaper(animeName)!}
                           alt="affiche d'un anime"
                         />
                       </div>

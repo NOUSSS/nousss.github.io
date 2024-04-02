@@ -70,6 +70,7 @@ import GTO from "./GTO/great-teacher-onizuka";
 import SevenSeeds from "./7seeds/7-seeds";
 import AkameGaKill from "./AkameGaKill/akame-ga-kill";
 import Erased from "./Erased/erased";
+import YourName from "./YourName/your-name";
 
 export interface AnimesType {
   anime: string;
@@ -636,6 +637,13 @@ export const ANIMES: AnimesType[] = [
     synopsis: `2006. Aspirant mangaka dont la carrière peine à décoller, Satoru Fujinuma travaille comme livreur de pizzas pour joindre les deux bouts. Effacé et peu enclin à s'ouvrir aux autres, il observe le monde qui l'entoure sans vraiment y prendre part. Pourtant, Satoru possède un don exceptionnel : à chaque fois qu'un incident ou une tragédie se déroule près de lui, il est projeté quelques minutes dans le passé pour empêcher l'inévitable avant qu'il se produise... Cette anomalie de l'espace-temps lui vaut un séjour à l'hôpital le jour où, pour rattraper le conducteur d'un camion fou, il est percuté par un autre véhicule de plein fouet. Après l'accident, petit à petit, les souvenirs effacés de l'enfance traumatisante de Satoru resurgissent...`,
     options: new Erased(),
     category: ["Les anciens", "Classique"],
+  },
+  {
+    anime: "Your Name",
+    synopsis:
+      "Mitsuha, adolescente coincée dans une famille traditionnelle, rêve de quitter ses montagnes natales pour découvrir la vie trépidante de Tokyo. Elle est loin d'imaginer pouvoir vivre l'aventure urbaine dans la peau de... Taki, un jeune lycéen vivant à Tokyo, occupé entre son petit boulot dans un restaurant italien et ses nombreux amis.",
+    options: new YourName(),
+    category: ["School Life", "Réflexion"],
   },
 ];
 
