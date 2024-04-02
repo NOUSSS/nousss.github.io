@@ -511,7 +511,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Frieren",
-    category: ["Nouveautés"],
+    category: ["Nouveautés", "En équipe"],
     options: new Frieren(),
     synopsis:
       "L'histoire suit l'elfe magicienne Frieren, une ancienne membre du groupe d'aventuriers qui a vaincu le roi des démons et restauré l'harmonie du monde après une quête de 10 ans. Ce groupe comptait : l'elfe magicienne Frieren, le héros humain Himmel, le guerrier nain Eisen et le prêtre humain Heiter.",
