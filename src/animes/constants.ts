@@ -568,12 +568,13 @@ export const ANIMES: AnimesType[] = [
     anime: "Baki",
     category: ["Sport"],
     options: new Baki(),
+    aliases: ["Hanma"],
     synopsis:
       "Cinq condamnés à mort s'évadent en même temps de leur prison respective. Ils ne se connaissent pas, n'ont même pas la même nationalité, et pourtant disent tous la même phrase : \"Je veux connaître la défaite\". Ils se dirigent au Japon, et là bas, un jeune garçon de 17 du nom de Baki s'y trouve. Il s'agit d'un jeune très doué pratiquant des arts-martiaux, qui n'est autre que le gagnant du précédant \"tournoi du sous sol\", un tournoi très violent auquel a également participé le père de Baki, Yujiro, qui n'est autre que \"la Créature la plus forte du monde\", un homme qui fait trembler même les sportifs les plus aguerris ! Baki va devoir au fur et a mesure progresser pour combattre et vaincre ses mastodontes qui ont l'air totalement surpuissant, et très dangereux !",
   },
   {
     anime: "Dragon Ball GT",
-    category: ["Classique"],
+    category: ["Classique", "DBG"],
     options: new DragonBallGT(),
     synopsis:
       "Dix ans se sont écoulés depuis la fin de Dragon Ball Z. Au palais de Dendé, Son Gokû, qui s'entrainait avec Uub, surprend Pilaf sur le point de dérober les boules de cristal. Par accident, celui-ci fait le voeu que Son Gokû redevienne un enfant pour qu'il puisse l'affronter. C'est alors que le Dragon exauce le voeu et que les boules de cristal s'éparpillent à travers toute la galaxie. Son Gokû, redevenu enfant, n'a qu'une année pour les retrouver et demander au Dragon de lui rendre sa taille normale sinon, la Terre se désintègrera. C'est ainsi que débutent les nouvelles aventures de Son Gokû, Trunks et Pan, la fille de Son Gohan et Videl, à travers la galaxie.",
@@ -618,6 +619,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée \"Holy Forest Academy\", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...",
     options: new GTO(),
+    aliases: ["GTO"],
   },
   {
     anime: "7 Seeds",
@@ -631,12 +633,14 @@ export const ANIMES: AnimesType[] = [
     synopsis: `Tatsumi, jeune combattant, se rendait à la capitale dans l'optique de sauver son village. Mais, naïf, il se fait dérober tout ce qu'il possède par une mystérieuse jeune fille et se retrouve sans un sou. Heureusement, une autre jeune fille, une noble, propose de l'accueillir chez elle pendant quelque temps. Cependant, la poisse semble coller à la peau de Tatsumi quand un groupe d'assassins débarque pour s'en prendre à sa protectrice... qui n'est pas aussi innocente qu'elle en a l'air.`,
     options: new AkameGaKill(),
     category: ["Aventure"],
+    aliases: ["Red Eyes Sword"],
   },
   {
     anime: "Erased",
     synopsis: `2006. Aspirant mangaka dont la carrière peine à décoller, Satoru Fujinuma travaille comme livreur de pizzas pour joindre les deux bouts. Effacé et peu enclin à s'ouvrir aux autres, il observe le monde qui l'entoure sans vraiment y prendre part. Pourtant, Satoru possède un don exceptionnel : à chaque fois qu'un incident ou une tragédie se déroule près de lui, il est projeté quelques minutes dans le passé pour empêcher l'inévitable avant qu'il se produise... Cette anomalie de l'espace-temps lui vaut un séjour à l'hôpital le jour où, pour rattraper le conducteur d'un camion fou, il est percuté par un autre véhicule de plein fouet. Après l'accident, petit à petit, les souvenirs effacés de l'enfance traumatisante de Satoru resurgissent...`,
     options: new Erased(),
-    category: ["Les anciens", "Classique"],
+    category: ["Les anciens", "Classique", "Réflexion"],
+    aliases: ["Boku Dake ga Inai Machi"],
   },
   {
     anime: "Your Name",
@@ -644,6 +648,7 @@ export const ANIMES: AnimesType[] = [
       "Mitsuha, adolescente coincée dans une famille traditionnelle, rêve de quitter ses montagnes natales pour découvrir la vie trépidante de Tokyo. Elle est loin d'imaginer pouvoir vivre l'aventure urbaine dans la peau de... Taki, un jeune lycéen vivant à Tokyo, occupé entre son petit boulot dans un restaurant italien et ses nombreux amis.",
     options: new YourName(),
     category: ["School Life", "Réflexion"],
+    aliases: ["Kimi no na wa"],
   },
 ];
 
