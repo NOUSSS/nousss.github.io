@@ -403,114 +403,131 @@ export default function Accueil() {
             </div>
 
             <ul className="flex overflow-auto">
-              {names.map((animeName: string, i) => (
-                <li
-                  className="mr-4 cursor-pointer"
-                  onClick={() => goToAnime(animeName!, category, i)}
-                  id={
-                    animeName +
-                    `${
-                      typeof getAnime(animeName)?.aliases === "undefined"
-                        ? ""
-                        : getAnime(animeName)?.aliases
-                    }`
-                  }
-                  key={
-                    historiques[i]?.redirect
-                      ? animeName + historiques[i]?.redirect
-                      : animeName + historiques[i]?.name
-                  }
-                >
-                  {category === "Reprendre" ? (
-                    <div
-                      title={
-                        getAnime(animeName)?.synopsis ??
-                        "Aucun synopsis pour cette anime"
-                      }
-                      className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-zinc-900 hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
-                    >
+              {names.map((animeName: string, i) => {
+                const fetchedAnime = getAnime(animeName);
+                const disponibles = [];
+
+                if (fetchedAnime && fetchedAnime.options.EPISODES_OPTIONS)
+                  disponibles.push("Episodes");
+                if (fetchedAnime && fetchedAnime.options.SCANS_OPTIONS)
+                  disponibles.push("Scans");
+                if (fetchedAnime && fetchedAnime.options.FILM_OPTIONS)
+                  disponibles.push("Films");
+
+                return (
+                  <li
+                    className="mr-4 cursor-pointer"
+                    onClick={() => goToAnime(animeName!, category, i)}
+                    id={
+                      animeName +
+                      `${
+                        typeof fetchedAnime?.aliases === "undefined"
+                          ? ""
+                          : fetchedAnime?.aliases
+                      }`
+                    }
+                    key={
+                      historiques[i]?.redirect
+                        ? animeName + historiques[i]?.redirect
+                        : animeName + historiques[i]?.name
+                    }
+                  >
+                    {category === "Reprendre" ? (
                       <div
-                        className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-zinc-900 bg-opacity-50 p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
-                        onClick={(event) => {
-                          event.stopPropagation();
-
-                          removeAnimeFromHistorique(
-                            animeName!,
-                            historiques[i]!.redirect,
-                            setHistoriques,
-                          );
-                        }}
+                        title={
+                          fetchedAnime?.synopsis ??
+                          "Aucun synopsis pour cette anime"
+                        }
+                        className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-zinc-900 hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
                       >
-                        <Trash size={15} />
+                        <div
+                          className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-zinc-900 bg-opacity-50 p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
+                          onClick={(event) => {
+                            event.stopPropagation();
+
+                            removeAnimeFromHistorique(
+                              animeName!,
+                              historiques[i]!.redirect,
+                              setHistoriques,
+                            );
+                          }}
+                        >
+                          <Trash size={15} />
+                        </div>
+
+                        {getWallpaper(animeName) ? (
+                          <Image
+                            className="relative top-1 z-[-1] aspect-video w-40 scale-90 rounded-t-xl max-sm:h-[85px]"
+                            src={fetchedAnime!.options.affiche!}
+                            alt="affiche d'un anime"
+                          />
+                        ) : null}
+
+                        <div className="relative top-2 p-1 text-sm">
+                          <p className="text-white">
+                            {animeName.length > 16
+                              ? animeName.substring(0, 16) + "..."
+                              : animeName}
+                          </p>
+
+                          <p className="text-main">
+                            {historiques[i]?.chapitre && (
+                              <>
+                                <br />
+
+                                {getCurrentChapitre(animeName!, i, historiques)}
+                              </>
+                            )}
+                            {historiques[i]?.film && (
+                              <>
+                                <br />
+                                Film {Number(historiques[i]?.film) + 1}
+                              </>
+                            )}
+                            {historiques[i]?.episode && (
+                              <>
+                                <br />
+                                Saison{" "}
+                                {getScriptIndex({
+                                  currentSaison: historiques[i]?.saison,
+                                  parts:
+                                    fetchedAnime?.options.EPISODES_OPTIONS
+                                      ?.parts,
+                                })}
+                                {", "}
+                                {getCurrentEpisode(animeName!, i, historiques)}
+                              </>
+                            )}
+                          </p>
+                        </div>
                       </div>
+                    ) : (
+                      <div
+                        title={
+                          fetchedAnime?.synopsis ??
+                          "Aucun synopsis pour cette anime"
+                        }
+                        className="group w-36 rounded-xl max-md:mr-1 max-md:w-32"
+                      >
+                        <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
+                          <Image
+                            className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
+                            src={getWallpaper(animeName)!}
+                            alt="affiche d'un anime"
+                          />
+                        </div>
 
-                      {getWallpaper(animeName) ? (
-                        <Image
-                          className="relative top-1 z-[-1] aspect-video w-40 scale-90 rounded-t-xl max-sm:h-[85px]"
-                          src={getAnime(animeName)!.options.affiche!}
-                          alt="affiche d'un anime"
-                        />
-                      ) : null}
-
-                      <div className="relative top-2 p-1 text-sm">
-                        <p className="text-white">
-                          {animeName.length > 16
-                            ? animeName.substring(0, 16) + "..."
-                            : animeName}
+                        <p className="my-2 text-left text-base max-md:text-sm">
+                          {animeName} <br />{" "}
+                          <span className="text-sm opacity-70 max-md:text-xs">
+                            {disponibles.join(", ")}
+                          </span>
                         </p>
-
-                        <p className="text-main">
-                          {historiques[i]?.chapitre && (
-                            <>
-                              <br />
-
-                              {getCurrentChapitre(animeName!, i, historiques)}
-                            </>
-                          )}
-                          {historiques[i]?.film && (
-                            <>
-                              <br />
-                              Film {Number(historiques[i]?.film) + 1}
-                            </>
-                          )}
-                          {historiques[i]?.episode && (
-                            <>
-                              <br />
-                              Saison{" "}
-                              {getScriptIndex({
-                                currentSaison: historiques[i]?.saison,
-                                parts:
-                                  getAnime(animeName)?.options.EPISODES_OPTIONS
-                                    ?.parts,
-                              })}
-                              {", "}
-                              {getCurrentEpisode(animeName!, i, historiques)}
-                            </>
-                          )}
-                        </p>
                       </div>
-                    </div>
-                  ) : (
-                    <div
-                      title={
-                        getAnime(animeName)?.synopsis ??
-                        "Aucun synopsis pour cette anime"
-                      }
-                      className="group w-36 rounded-xl max-md:mr-1 max-md:w-32"
-                    >
-                      <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
-                        <Image
-                          className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
-                          src={getWallpaper(animeName)!}
-                          alt="affiche d'un anime"
-                        />
-                      </div>
-
-                      <p className="my-2 text-left text-sm">{animeName}</p>
-                    </div>
-                  )}
-                </li>
-              ))}
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}
