@@ -29,14 +29,6 @@ export default function Select({
   const menuRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
 
-  const toggleBodyScroll = (disable: boolean) => {
-    if (disable) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  };
-
   const appear = () => {
     setIsSelected(true);
 
@@ -44,13 +36,9 @@ export default function Select({
       if (svgRef.current.classList.contains("rotate-180")) {
         svgRef.current.classList.remove("rotate-180");
         menuRef.current.classList.add("hidden");
-
-        toggleBodyScroll(false);
       } else {
         svgRef.current.classList.add("rotate-180");
         menuRef.current.classList.remove("hidden");
-
-        toggleBodyScroll(true);
 
         const lastItem = menuRef.current.childNodes[
           menuRef.current.childNodes.length - 1
@@ -72,8 +60,6 @@ export default function Select({
     if (svgRef.current && menuRef.current) {
       menuRef.current.classList.add("hidden");
       svgRef.current.classList.remove("rotate-180");
-
-      toggleBodyScroll(false);
     }
   };
 
