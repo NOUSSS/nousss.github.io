@@ -205,7 +205,7 @@ const Scans = () => {
           Dernier chapitre
         </button>
 
-        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-neutral-700">
+        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
           {!isFirst ? (
             <button
               className="btn back"
@@ -231,7 +231,7 @@ const Scans = () => {
       </div>
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
-        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-[1px] after:w-full after:bg-neutral-700">
+        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
           {!isFirst ? (
             <button
               className="btn back"

@@ -526,7 +526,7 @@ const Episodes = () => {
         <iframe className="ambiance" src={AnimeInfo?.video}></iframe>
       </div>
 
-      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-[1px] after:w-full after:bg-neutral-700">
+      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-px after:w-full after:bg-neutral-700">
         {isClient &&
         localStorage.getItem(`${AnimeInfo?.anime?.anime}--episode`) !== "1" ? (
           <button
