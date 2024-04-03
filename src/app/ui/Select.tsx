@@ -48,11 +48,13 @@ export default function Select({
         menuRef.current.classList.remove("hidden");
 
         if (placeholderRef.current && itemsRef.current) {
-          const lastItem = placeholderRef.current.innerText;
+          const lastSelectedItem = placeholderRef.current.innerText;
+          const lastSelectedItemElement = itemsRef.current.find(
+            ({ name }) => name === lastSelectedItem,
+          )?.el;
 
           menuRef.current.scrollTo({
-            top: itemsRef.current.find(({ name }) => name === lastItem)?.el
-              .offsetTop,
+            top: lastSelectedItemElement?.offsetTop,
             behavior: "smooth",
           });
         }
