@@ -583,7 +583,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "86: Eighty Six",
     options: new EightySix(),
-    category: ["New gen"],
+    category: ["New gen", "Réflexion"],
     synopsis: `Pour répondre aux attaques de drones autonomes envoyés par l’Empire voisin de Giad, la République de San Magnolia a développé ses propres drones de combat surnommés les “Juggernaut", espérant ainsi limiter les pertes humaines. En réalité, ces appareils sont pilotés par les 86, les habitants d’un district secret considérés comme du bétail. Déterminé dans sa mission, Shin, le capitaine de l'escadron Spearhead composé de plusieurs 86, poursuit ces opérations suicidaires. C’est alors qu’arrive un nouvel officier et soldat de l’élite militaire, Lena, qui déteste la façon dont la République utilise les 86. Ils n’auraient jamais dû se croiser, mais face aux événements de cette guerre féroce, ils vont entrevoir ensemble un nouvel avenir…`,
   },
   {
@@ -596,7 +596,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Cyberpunk: Edgerunners",
     options: new CyberpunkEdgerunners(),
-    category: ["New gen", "Musique"],
+    category: ["Netflix", "Musique"],
     synopsis:
       "Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.",
   },
@@ -624,7 +624,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "7 Seeds",
-    category: ["Aventure", "En équipe"],
+    category: ["Aventure", "En équipe", "Netflix"],
     synopsis:
       "Un groupe de 7 personnes atterrissent sur une île inconnue et probablement déserte, après un long sommeil, ils ne se connaissent pas et ne savent pas ce qui leur est arrivé. Malgré les tensions au sein du groupe, ils vont devoir s'entraider pour faire face aux dangers de la jungle et tenter de découvrir la raison pour laquelle ils sont ici...",
     options: new SevenSeeds(),
