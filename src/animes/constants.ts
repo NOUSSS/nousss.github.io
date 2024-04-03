@@ -71,6 +71,7 @@ import SevenSeeds from "./7seeds/7-seeds";
 import AkameGaKill from "./AkameGaKill/akame-ga-kill";
 import Erased from "./Erased/erased";
 import YourName from "./YourName/your-name";
+import Gintama from "./Gintama/gintama";
 
 export interface AnimesType {
   anime: string;
@@ -85,7 +86,7 @@ export const ANIMES: AnimesType[] = [
     anime: "One Piece",
     aliases: ["luffy", "zoro", "op", "films", "saisons", "scans", "En équipe"],
     options: new OnePiece(),
-    category: ["Classique", "Aventure"],
+    category: ["Classique", "Aventure", "Fleuve"],
     synopsis:
       "L'histoire suit principalement l'équipage de Chapeau de paille, mené par son capitaine Monkey D. Luffy, un jeune homme ayant mangé, enfant, sans le savoir, le fruit du Gum Gum qui lui permet d'étirer ses membres, et dont le rêve est de devenir le Roi des pirates.",
   },
@@ -93,7 +94,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Dragon Ball",
     aliases: ["goku", "shenron", "db", "films", "saisons"],
     options: new DragonBall(),
-    category: ["Classique", "Aventure", "Les anciens"],
+    category: ["Classique", "Aventure", "Les anciens", "Fleuve"],
     synopsis:
       "Son Gokû est un petit garçon exceptionnellement doué pour les arts martiaux, qui possède une mystérieuse queue de singe. Le jour où il rencontre Bulma, ils partent ensemble à la recherche des sept boules de cristal... Akira Toriyama - Paix à son âme.",
   },
@@ -109,7 +110,7 @@ export const ANIMES: AnimesType[] = [
       "Les anciens",
     ],
     options: new DragonBallZ(),
-    category: ["Classique", "Aventure"],
+    category: ["Classique", "Aventure", "Fleuve"],
     synopsis:
       "Dragon Ball Z se déroule cinq ans après le mariage de Son Goku et de Chichi. Raditz, un mystérieux guerrier de l'espace, frère de Son Goku, arrive sur Terre pour retrouver Goku. Ce dernier apprend qu'il vient d'une planète de guerriers redoutables dont il ne reste plus que quatre survivants.",
   },
@@ -181,7 +182,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Black Clover",
     aliases: ["asta", "yuno", "bc", "films", "saisons", "scans"],
     options: new BlackClover(),
-    category: ["Magie"],
+    category: ["Magie", "Fleuve"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
@@ -236,7 +237,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto",
     aliases: ["konoha", "kurama", "kyubi", "scans", "saisons"],
     options: new Naruto(),
-    category: ["Classique"],
+    category: ["Classique", "Fleuve"],
     synopsis:
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
@@ -244,7 +245,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto Shippuden",
     aliases: ["naruto adulte", "films", "saisons"],
     options: new NarutoShippuden(),
-    category: ["Classique"],
+    category: ["Classique", "Fleuve"],
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
   },
@@ -650,6 +651,14 @@ export const ANIMES: AnimesType[] = [
     options: new YourName(),
     category: ["School Life", "Réflexion"],
     aliases: ["Kimi no na wa"],
+  },
+  {
+    anime: "Gintama",
+    synopsis:
+      "Dans un Japon mi-médiéval, mi-futuriste, des extraterrestres, les Amanto débarquent sur Terre. Forts de leur supériorité technologique, ils vont imposer leur loi : tout samouraï devra se défaire de son sabre... C'en est donc fini de l'âme du guerrier samouraï ! C'est sans compter Gintoki Sakata ! Armé de son sabre d'entraînement, il se placera en dernier défenseur du Bushido, le code du samouraï et ne se défera pas de son humour cinglant lors de ses missions délirantes !",
+    category: ["Humour", "Fleuve"],
+    aliases: ["Silver soul"],
+    options: new Gintama(),
   },
 ];
 
