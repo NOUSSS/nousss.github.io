@@ -329,7 +329,7 @@ export default function Accueil() {
         {catalogues.map(({ names, category }) => (
           <div key={category}>
             <div
-              className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl tracking-widest ${category !== "Reprendre" ? "" : "flex items-center"}`}
+              className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
             >
               {category === "Reprendre" ? (
                 <>
@@ -398,7 +398,7 @@ export default function Accueil() {
                   </button>
                 </>
               ) : (
-                <p className="font-normal text-main">{category}</p>
+                <p className="font-normal">{category}</p>
               )}
             </div>
 
