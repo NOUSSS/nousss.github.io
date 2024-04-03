@@ -97,7 +97,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
                     <Image
                       src={options.affiche!}
                       alt={anime}
-                      className="min-w-40 max-w-40"
+                      className="w-40 min-w-40"
                     />
                   </div>
 

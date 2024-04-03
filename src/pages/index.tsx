@@ -232,7 +232,7 @@ export default function Accueil() {
             <SwiperSlide key={index}>
               <div
                 key={index}
-                className="flex max-h-[525px] min-h-[525px] justify-between bg-zinc-900 bg-opacity-50 max-lg:max-h-none max-lg:min-h-0 max-lg:flex-col-reverse"
+                className="flex h-[525px] min-h-[525px] justify-between bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:min-h-full max-lg:flex-col-reverse"
               >
                 <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
                   <div className="my-4">
