@@ -412,7 +412,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["Nouveautés", "Magie"],
+    category: ["Magie"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["films", "scans", "saisons"],
@@ -545,7 +545,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Bucchigiri",
-    category: ["New gen"],
+    category: ["New gen", "Nouveautés"],
     options: new Bucchigiri(),
     synopsis:
       "Les retrouvailles d'Arajin Tomoshibi avec son vieil ami de lycée Matakara Asamine prennent une tournure inattendue lorsqu'ils sont entraînés dans une bagarre avec les caïds du coin. La situation devient encore plus bizarre quand débarque un véritable colosse ! Mais ce n’est que le début d’une bataille plus profonde qui s’en engagée…",
