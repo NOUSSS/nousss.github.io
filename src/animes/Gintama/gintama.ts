@@ -2,7 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { films } from "./constants/films-names";
 import { Anime } from "@/app/class/anime";
 
-import Affiche from "@/assets/Animes/Nom/Affiche.jpeg";
+import Affiche from "@/assets/Animes/Gintama/affiche.jpg";
 
 class Gintama extends Anime {
   constructor() {
