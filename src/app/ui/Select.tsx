@@ -15,6 +15,11 @@ interface SelectProps {
   placeholderRef: RefObject<HTMLParagraphElement>;
 }
 
+interface ItemsRef {
+  name: string;
+  el: HTMLLIElement;
+}
+
 export default function Select({
   items,
   placeholder,
@@ -29,6 +34,8 @@ export default function Select({
   const menuRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
 
+  const itemsRef = useRef<ItemsRef[]>([]);
+
   const appear = () => {
     setIsSelected(true);
 
@@ -40,13 +47,12 @@ export default function Select({
         svgRef.current.classList.add("rotate-180");
         menuRef.current.classList.remove("hidden");
 
-        const lastItem = menuRef.current.childNodes[
-          menuRef.current.childNodes.length - 1
-        ] as HTMLElement;
+        if (placeholderRef.current && itemsRef.current) {
+          const lastItem = placeholderRef.current.innerText;
 
-        if (lastItem.innerText === placeholderRef.current?.innerText) {
           menuRef.current.scrollTo({
-            top: menuRef.current.scrollHeight,
+            top: itemsRef.current.find(({ name }) => name === lastItem)?.el
+              .offsetTop,
             behavior: "smooth",
           });
         }
@@ -114,6 +120,12 @@ export default function Select({
                   appear();
                 }
               }}
+              ref={(el) =>
+                (itemsRef.current[index] = {
+                  name: item.name,
+                  el: el!,
+                })
+              }
               className={`flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50 hover:border-transparent" : "hover:border-blue-600"} `}
             >
               <p>{item.name}</p>
