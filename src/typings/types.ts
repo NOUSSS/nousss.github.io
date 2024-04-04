@@ -4,8 +4,6 @@ import { StaticImageData } from "next/image";
 
 import React from "react";
 
-export type EPS = "eps1" | "eps2" | "eps3" | "eps4";
-
 export interface SeasonAndFilm {
   name: string;
   aliases?: string[];
@@ -125,4 +123,9 @@ export interface AnimeSaisonsProps extends AnimeInfoProps {
 export interface AnimeScansProps extends AnimeInfoProps {
   scans?: React.ReactNode[];
   chapitresOptions?: ItemsProps[];
+}
+
+export interface LecteursProps {
+  lecteurs?: LecteurReturnType;
+  currentLecteur?: string[];
 }

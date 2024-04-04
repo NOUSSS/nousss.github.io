@@ -5,16 +5,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import {
-  AnimeFilmsProps,
-  EPS,
-  FilmOptions,
-  LecteurReturnType,
-} from "@/typings/types";
+import { AnimeFilmsProps, FilmOptions, LecteursProps } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { getAnime } from "@/app/lib/getAnime";
+import { formatLang, langType } from "@/app/lib/formatLang";
 
 import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
@@ -27,21 +23,17 @@ import getHostname from "@/app/lib/getHostname";
 import Head from "next/head";
 import ColorPicker from "@/app/ui/colorPicker";
 import useAnime from "@/app/lib/components/useAnime";
-import { formatLang, langType } from "@/app/lib/formatLang";
-
-let LecteursFilms: string[] = [];
-let Lecteurs: LecteurReturnType;
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<AnimeFilmsProps>({});
   const [isClient, setIsClient] = useState(false);
+  const [lecteurs, setLecteurs] = useState<LecteursProps>();
 
   const options = (isClient &&
     anime?.anime?.options.FILM_OPTIONS) as FilmOptions;
 
   const { SCRIPT_URL } = options || {};
 
-  const lecteurString = useRef<EPS | "">("");
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
@@ -122,33 +114,41 @@ const Films = () => {
         `${anime?.anime?.anime}--currentFilm`,
       );
 
-      Lecteurs = getLecteur();
+      const fetchedLecteurs = getLecteur();
+
+      setLecteurs({
+        lecteurs: fetchedLecteurs,
+      });
 
       if (anime?.lecteur) {
-        LecteursFilms = Lecteurs[anime?.lecteur as EPS]!;
+        setLecteurs((currentState) => ({
+          ...currentState,
+          currentLecteur: fetchedLecteurs[anime.lecteur!],
+        }));
       } else {
-        const lecteur = Object.keys(Lecteurs)[0] as EPS;
+        const lecteur = Object.keys(fetchedLecteurs)[0];
 
         updateAnime((currentState) => ({ ...currentState, lecteur }));
-
-        LecteursFilms = Lecteurs[lecteur]!;
+        setLecteurs((currentState) => ({
+          ...currentState,
+          currentLecteur: fetchedLecteurs[lecteur]!,
+        }));
       }
-
-      lecteurString.current = "eps1";
-
-      const films_url = Lecteurs[lecteurString.current]!;
 
       if (options?.BLACKLIST_URL) {
         for (const BLACKLIST of options.BLACKLIST_URL) {
-          if (films_url.includes(BLACKLIST))
-            films_url.splice(films_url.indexOf(BLACKLIST), 1);
+          if (lecteurs?.currentLecteur?.includes(BLACKLIST))
+            lecteurs?.currentLecteur?.splice(
+              lecteurs?.currentLecteur?.indexOf(BLACKLIST),
+              1,
+            );
         }
       }
 
       appearVideo(
         lastFilm
-          ? `${LecteursFilms[Number(lastFilm)]} ${Number(lastFilm)}`
-          : `${LecteursFilms[0]} ${
+          ? `${lecteurs?.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
+          : `${lecteurs?.currentLecteur?.[0]} ${
               localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ?? "0"
             }`,
 
@@ -160,7 +160,7 @@ const Films = () => {
 
       getFilms(anime!, updateAnime, containerRef);
     }
-  }, [status, anime?.lecteur]);
+  }, [status, lecteurs?.currentLecteur]);
 
   return (
     <main className="flex flex-col items-center">
@@ -200,8 +200,8 @@ const Films = () => {
           }}
         />
 
-        {Lecteurs ? (
-          Object.keys(Lecteurs).length > 1 ? (
+        {lecteurs?.lecteurs ? (
+          Object.keys(lecteurs.lecteurs).length > 1 ? (
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
@@ -211,8 +211,8 @@ const Films = () => {
                   lang: value,
                 }))
               }
-              items={Object.keys(Lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(Lecteurs)[i][0]),
+              items={Object.keys(lecteurs.lecteurs).map((l, i) => ({
+                name: getHostname(Object.values(lecteurs.lecteurs!)[i][0]),
                 value: l,
                 disabled: anime?.lecteur === l ? true : false,
               }))}
