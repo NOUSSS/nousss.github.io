@@ -14,11 +14,12 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import SearchBar from "@/app/ui/searchBar";
 import ColorPicker from "@/app/ui/colorPicker";
+import useAnime from "@/app/lib/components/useAnime";
 
 const Saisons = () => {
   const router = useRouter();
 
-  const [anime, setAnime] = useState<AnimeSaisonsProps | null>(null);
+  const [anime, updateAnime] = useAnime<AnimeSaisonsProps>({});
 
   const saisonsRef = useRef<HTMLUListElement[]>([]);
 
@@ -27,12 +28,11 @@ const Saisons = () => {
     if (!currentAnime || !currentAnime.options.saisons) {
       router.push("/");
     } else {
-      setAnime((currentState) => ({
-        ...currentState,
+      updateAnime({
         anime: currentAnime,
         saisons: getSaisons(),
         saison: localStorage.getItem(`${currentAnime?.anime!}--saison`)!,
-      }));
+      });
     }
   }, [router]);
 

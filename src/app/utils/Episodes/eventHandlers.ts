@@ -23,7 +23,12 @@ export function removeClickEvents(episodesRef: RefObject<HTMLElement[]>): void {
 export function clickEvents(
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  updateAnime: (
+    newData:
+      | Partial<AnimeEpisodesProps>
+      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+  ) => void,
+
   AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
@@ -47,7 +52,7 @@ export function clickEvents(
       Change(
         episodeId!,
         lecteur,
-        setAnimeInfo,
+        updateAnime,
         AnimeInfo,
         episodesRef,
         containerRef,

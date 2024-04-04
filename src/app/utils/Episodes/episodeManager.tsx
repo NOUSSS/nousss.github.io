@@ -5,7 +5,12 @@ export function Change(
   indexEpisode: number | string,
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  updateAnime: (
+    newData:
+      | Partial<AnimeEpisodesProps>
+      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+  ) => void,
+
   AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
@@ -36,7 +41,7 @@ export function Change(
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      setAnimeInfo((currentState) => ({
+      updateAnime((currentState) => ({
         ...currentState,
         video: url,
         episodeTitle: <span>E-SP{esp}</span>,
@@ -68,7 +73,7 @@ export function Change(
 
       const url = lecteur[Number(indexEpisode) - 1];
 
-      setAnimeInfo((currentState) => ({
+      updateAnime((currentState) => ({
         ...currentState,
         video: url,
         episodeTitle: (
@@ -106,7 +111,7 @@ export function Change(
         ({ index }: { index: string }) => index === numberEpisode.toString(),
       )?.name || "Episode";
 
-    setAnimeInfo((currentState) => ({
+    updateAnime((currentState) => ({
       ...currentState,
       video: url,
       episodeTitle: (
@@ -138,7 +143,12 @@ export function Change(
 export function NextEpisode(
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  updateAnime: (
+    newData:
+      | Partial<AnimeEpisodesProps>
+      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+  ) => void,
+
   AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
@@ -151,7 +161,7 @@ export function NextEpisode(
   Change(
     newEpisodeIndex,
     lecteur,
-    setAnimeInfo,
+    updateAnime,
     AnimeInfo,
     episodesRef,
     containerRef,
@@ -162,7 +172,12 @@ export function NextEpisode(
 export function PrevEpisode(
   lecteur: string[],
 
-  setAnimeInfo: React.Dispatch<React.SetStateAction<AnimeEpisodesProps | null>>,
+  updateAnime: (
+    newData:
+      | Partial<AnimeEpisodesProps>
+      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+  ) => void,
+
   AnimeInfo: AnimeEpisodesProps,
 
   episodesRef: RefObject<HTMLElement[]>,
@@ -175,7 +190,7 @@ export function PrevEpisode(
   Change(
     newEpisodeIndex,
     lecteur,
-    setAnimeInfo,
+    updateAnime,
     AnimeInfo,
     episodesRef,
     containerRef,

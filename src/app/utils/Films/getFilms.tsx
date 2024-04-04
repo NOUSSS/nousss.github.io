@@ -7,7 +7,12 @@ import { RefObject } from "react";
 
 export function getFilms(
   Anime: AnimeFilmsProps,
-  setAnime: React.Dispatch<React.SetStateAction<AnimeFilmsProps | null>>,
+
+  updateAnime: (
+    newData:
+      | Partial<AnimeFilmsProps>
+      | ((prevState: AnimeFilmsProps) => Partial<AnimeFilmsProps>),
+  ) => void,
 
   containerRef: RefObject<HTMLElement>,
 ) {
@@ -23,7 +28,7 @@ export function getFilms(
   } else {
     const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-    setAnime((currentState) => ({ ...currentState, lecteur }));
+    updateAnime((currentState) => ({ ...currentState, lecteur }));
 
     LecteursFilms = Lecteurs[lecteur]!;
   }
@@ -48,7 +53,7 @@ export function getFilms(
             src={names![i].image()}
             id={`${url} ${i}`}
             onClick={() => {
-              appearVideo(`${url} ${i}`, Anime, setAnime, containerRef);
+              appearVideo(`${url} ${i}`, Anime, updateAnime, containerRef);
             }}
             alt="poster de film"
           />
@@ -59,5 +64,5 @@ export function getFilms(
     );
   }
 
-  setAnime((currentState) => ({ ...currentState, films: filmsNodes }));
+  updateAnime((currentState) => ({ ...currentState, films: filmsNodes }));
 }

@@ -5,7 +5,11 @@ import { AnimeScansProps } from "@/typings/types";
 
 export const PrevChapter = (
   Anime: AnimeScansProps,
-  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
+  setAnime: (
+    newData:
+      | Partial<AnimeScansProps>
+      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+  ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
   localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
@@ -24,7 +28,11 @@ export const PrevChapter = (
 
 export const NextChapter = (
   Anime: AnimeScansProps,
-  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
+  setAnime: (
+    newData:
+      | Partial<AnimeScansProps>
+      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+  ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
   localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
@@ -43,7 +51,11 @@ export const NextChapter = (
 
 export const LastChapter = (
   Anime: AnimeScansProps,
-  setAnime: React.Dispatch<React.SetStateAction<AnimeScansProps | null>>,
+  setAnime: (
+    newData:
+      | Partial<AnimeScansProps>
+      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+  ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
   const items = Anime.chapitresOptions!;

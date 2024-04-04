@@ -24,11 +24,12 @@ import Select, { ItemsProps } from "@/app/ui/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
 import ColorPicker from "@/app/ui/colorPicker";
+import useAnime from "@/app/lib/components/useAnime";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
 
-  const [anime, setAnime] = useState<AnimeScansProps | null>(null);
+  const [anime, updateAnime] = useAnime<AnimeScansProps>({});
   const [isClient, setIsClient] = useState(false);
   const [filever, setFilever] = useState<number>();
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
@@ -62,13 +63,14 @@ const Scans = () => {
       });
     } else {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
-      setAnime((currentState) => ({ ...currentState, anime: currentAnime }));
+      updateAnime({ anime: currentAnime });
       setFilever(random());
     }
   }, []);
 
   const options = (isClient &&
     anime?.anime?.options?.SCANS_OPTIONS) as ScansOptions;
+
   const from = isClient && options?.from === 0 ? options.from : 1;
 
   const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
@@ -119,7 +121,7 @@ const Scans = () => {
       }
 
       if (anime) {
-        setAnime((currentState) => ({
+        updateAnime((currentState) => ({
           ...currentState,
           chapitresOptions: options,
         }));
@@ -131,7 +133,7 @@ const Scans = () => {
         const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
         const option = options[indexOption];
 
-        setAnime((currentState) => ({
+        updateAnime((currentState) => ({
           ...currentState,
           scans: selectChapter(anime!, option, placeholderRef),
         }));
@@ -179,7 +181,7 @@ const Scans = () => {
         onSelect={(item) => {
           localStorage.setItem(`${anime?.anime?.anime}--chapitre`, item.value);
 
-          setAnime((currentState) => ({
+          updateAnime((currentState) => ({
             ...currentState,
             scans: selectChapter(anime!, item, placeholderRef),
           }));
@@ -196,7 +198,7 @@ const Scans = () => {
             const lastScan =
               anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
 
-            setAnime((currentState) => ({
+            updateAnime((currentState) => ({
               ...currentState,
               scans: selectChapter(anime!, lastScan, placeholderRef),
             }));
@@ -209,7 +211,7 @@ const Scans = () => {
           {!isFirst ? (
             <button
               className="btn back"
-              onClick={() => PrevChapter(anime!, setAnime, placeholderRef)}
+              onClick={() => PrevChapter(anime!, updateAnime, placeholderRef)}
             >
               Chapitre précédent
             </button>
@@ -218,7 +220,7 @@ const Scans = () => {
           {!isLast ? (
             <button
               className="btn next"
-              onClick={() => NextChapter(anime!, setAnime, placeholderRef)}
+              onClick={() => NextChapter(anime!, updateAnime, placeholderRef)}
             >
               Chapitre suivant
             </button>
@@ -235,7 +237,7 @@ const Scans = () => {
           {!isFirst ? (
             <button
               className="btn back"
-              onClick={() => PrevChapter(anime!, setAnime, placeholderRef)}
+              onClick={() => PrevChapter(anime!, updateAnime, placeholderRef)}
             >
               Chapitre précédent
             </button>
@@ -244,7 +246,7 @@ const Scans = () => {
           {!isLast ? (
             <button
               className="btn next"
-              onClick={() => NextChapter(anime!, setAnime, placeholderRef)}
+              onClick={() => NextChapter(anime!, updateAnime, placeholderRef)}
             >
               Chapitre suivant
             </button>

@@ -6,7 +6,12 @@ export async function appearVideo(
   id: string,
 
   Anime: AnimeFilmsProps,
-  setAnime: React.Dispatch<React.SetStateAction<AnimeFilmsProps | null>>,
+
+  updateAnime: (
+    newData:
+      | Partial<AnimeFilmsProps>
+      | ((prevState: AnimeFilmsProps) => Partial<AnimeFilmsProps>),
+  ) => void,
 
   containerRef: RefObject<HTMLElement>,
 ) {
@@ -26,7 +31,7 @@ export async function appearVideo(
 
   localStorage.setItem(`${Anime?.anime?.anime}--currentFilm`, index);
 
-  setAnime((currentState) => ({
+  updateAnime((currentState) => ({
     ...currentState,
     video: url,
     filmTitle: (

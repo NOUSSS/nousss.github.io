@@ -26,12 +26,13 @@ import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
 import ColorPicker from "@/app/ui/colorPicker";
+import useAnime from "@/app/lib/components/useAnime";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
 
 const Films = () => {
-  const [anime, setAnime] = useState<AnimeFilmsProps | null>(null);
+  const [anime, updateAnime] = useAnime<AnimeFilmsProps>({});
   const [isClient, setIsClient] = useState(false);
 
   const options = (isClient &&
@@ -80,11 +81,10 @@ const Films = () => {
 
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
 
-      setAnime((currentState) => ({
-        ...currentState,
+      updateAnime({
         anime: getAnime(currentAnime),
         lang,
-      }));
+      });
 
       const langObj = {
         vostfr: "VostFR",
@@ -115,7 +115,7 @@ const Films = () => {
       });
 
       if (anime?.lang === "vf")
-        setAnime((currentState) => ({ ...currentState, lang: "vostfr" }));
+        updateAnime((currentState) => ({ ...currentState, lang: "vostfr" }));
     }
   }, [status, anime?.lang, loadingToast]);
 
@@ -132,7 +132,7 @@ const Films = () => {
       } else {
         const lecteur = Object.keys(Lecteurs)[0] as EPS;
 
-        setAnime((currentState) => ({ ...currentState, lecteur }));
+        updateAnime((currentState) => ({ ...currentState, lecteur }));
 
         LecteursFilms = Lecteurs[lecteur]!;
       }
@@ -156,12 +156,12 @@ const Films = () => {
             }`,
 
         anime!,
-        setAnime,
+        updateAnime,
 
         containerRef,
       );
 
-      getFilms(anime!, setAnime, containerRef);
+      getFilms(anime!, updateAnime, containerRef);
     }
   }, [status, anime?.lecteur]);
 
@@ -197,7 +197,7 @@ const Films = () => {
             },
           ]}
           onSelect={({ value }) => {
-            setAnime((currentState) => ({ ...currentState, lang: value }));
+            updateAnime((currentState) => ({ ...currentState, lang: value }));
 
             router.reload();
           }}
@@ -209,7 +209,10 @@ const Films = () => {
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
               onSelect={({ value }) =>
-                setAnime((currentState) => ({ ...currentState, lang: value }))
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  lang: value,
+                }))
               }
               items={Object.keys(Lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(Lecteurs)[i][0]),
