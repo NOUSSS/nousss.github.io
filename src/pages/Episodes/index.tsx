@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { clickEvents } from "@/app/utils/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
@@ -430,6 +430,25 @@ const Episodes = () => {
     }
   }, [anime?.lecteur, status]);
 
+  const blurEpisodes = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.checked) {
+        episodeTitleRef.current?.classList.add("blur");
+
+        for (const episode of namesRef.current) {
+          episode.classList.add("blur");
+        }
+      } else {
+        episodeTitleRef.current?.classList.remove("blur");
+
+        for (const episode of namesRef.current) {
+          episode.classList.remove("blur");
+        }
+      }
+    },
+    [],
+  );
+
   return (
     <main className="flex flex-col items-center">
       <Head>
@@ -508,7 +527,6 @@ const Episodes = () => {
 
       <div ref={containerRef} className="container">
         <iframe className="video" src={anime?.video} allowFullScreen></iframe>
-
         <iframe className="ambiance" src={anime?.video}></iframe>
       </div>
 
@@ -562,21 +580,7 @@ const Episodes = () => {
 
       <Switch
         placeholder="Cacher le nom des épisodes"
-        onChange={(event) => {
-          if (event.target.checked) {
-            episodeTitleRef.current?.classList.add("blur");
-
-            for (const episode of namesRef.current) {
-              episode.classList.add("blur");
-            }
-          } else {
-            episodeTitleRef.current?.classList.remove("blur");
-
-            for (const episode of namesRef.current) {
-              episode.classList.remove("blur");
-            }
-          }
-        }}
+        onChange={blurEpisodes}
       />
 
       <div className="m-5 max-h-96 min-w-24 overflow-y-auto">
