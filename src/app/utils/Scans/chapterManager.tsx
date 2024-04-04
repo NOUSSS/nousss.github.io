@@ -27,11 +27,7 @@ export const selectChapter = (
 
   placeholderRef: RefObject<HTMLElement>,
 ): React.ReactNode[] | undefined => {
-  const scrollPosition = localStorage.getItem(
-    `${Anime?.anime?.anime}--scrollPosition`,
-  );
-
-  if (!scrollPosition) window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   const { IMAGE_URL } = Anime?.anime?.options.SCANS_OPTIONS || {};
 

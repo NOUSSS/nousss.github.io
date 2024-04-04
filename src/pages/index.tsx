@@ -262,6 +262,7 @@ export default function Accueil() {
                         historique?.redirect === "Episodes"
                       )
                         query.saison = historique.saison;
+
                       if (historique?.redirect)
                         router.push({
                           pathname: historique.redirect,

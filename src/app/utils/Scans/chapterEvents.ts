@@ -12,8 +12,6 @@ export const PrevChapter = (
   ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
-  localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
-
   setAnime((currentState) => ({
     ...currentState,
     scans: selectChapter(
@@ -35,8 +33,6 @@ export const NextChapter = (
   ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
-  localStorage.removeItem(`${Anime?.anime?.anime}--scrollPosition`);
-
   setAnime((currentState) => ({
     ...currentState,
     scans: selectChapter(

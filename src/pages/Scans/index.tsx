@@ -138,24 +138,9 @@ const Scans = () => {
           scans: selectChapter(anime!, option, placeholderRef),
         }));
 
-        setTimeout(() => {
-          if (placeholderRef.current)
-            placeholderRef.current.innerText = option.name;
-        }, 200);
+        if (placeholderRef.current)
+          placeholderRef.current.innerText = option.name;
       }
-
-      setTimeout(() => {
-        const scrollPosition = localStorage.getItem(
-          `${anime?.anime?.anime}--scrollPosition`,
-        );
-
-        if (scrollPosition) {
-          window.scrollTo({
-            top: +scrollPosition,
-            behavior: "smooth",
-          });
-        }
-      }, 1500);
     }
   }, [status, loadingToast]);
 
