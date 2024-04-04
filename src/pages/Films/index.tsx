@@ -27,6 +27,7 @@ import getHostname from "@/app/lib/getHostname";
 import Head from "next/head";
 import ColorPicker from "@/app/ui/colorPicker";
 import useAnime from "@/app/lib/components/useAnime";
+import { formatLang, langType } from "@/app/lib/formatLang";
 
 let LecteursFilms: string[] = [];
 let Lecteurs: LecteurReturnType;
@@ -77,7 +78,8 @@ const Films = () => {
         pathname: "/",
       });
     } else {
-      const lang = localStorage.getItem(`${currentAnime}--lang`) ?? "vostfr";
+      const lang = (localStorage.getItem(`${currentAnime}--lang`) ??
+        "vostfr") as langType;
 
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
 
@@ -86,13 +88,8 @@ const Films = () => {
         lang,
       });
 
-      const langObj = {
-        vostfr: "VostFR",
-        vf: "VF",
-      };
-
       if (placeholderLangRef.current) {
-        placeholderLangRef.current.innerText = langObj[lang as "vostfr" | "vf"];
+        placeholderLangRef.current.innerText = formatLang(lang);
       }
     }
   }, []);

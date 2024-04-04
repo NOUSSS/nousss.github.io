@@ -35,14 +35,10 @@ import ColorPicker from "@/app/ui/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Message from "@/app/ui/Message";
 import useAnime from "@/app/lib/components/useAnime";
+import { formatLang, langType } from "@/app/lib/formatLang";
 
 let LecteurEpisodes: string[] = [];
 let Lecteurs: LecteurReturnType;
-
-const langObj = {
-  vostfr: "VostFR",
-  vf: "VF",
-};
 
 const Episodes = () => {
   const router = useRouter();
@@ -117,7 +113,7 @@ const Episodes = () => {
 
       let lang = localStorage.getItem(
         `${currentAnime}--${currentSaison}--lang`,
-      ) as "vostfr" | "vf";
+      ) as langType;
 
       if (!lang) {
         lang = "vostfr";
@@ -129,7 +125,7 @@ const Episodes = () => {
         updateAnime({ lang });
 
         if (placeholderLangRef.current)
-          placeholderLangRef.current.innerText = langObj[lang];
+          placeholderLangRef.current.innerText = formatLang(lang);
       }
 
       updateAnime((currentState) => ({
