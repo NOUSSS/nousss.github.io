@@ -2,7 +2,6 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { clickEvents } from "@/app/utils/Episodes/eventHandlers";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
@@ -20,7 +19,7 @@ import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 import { useSearchParams } from "next/navigation";
 import { formatLang, langType } from "@/app/lib/formatLang";
-import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episodeManager";
+import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
 import SearchBar from "@/app/ui/searchBar";
 import Select from "@/app/ui/Select";
@@ -35,6 +34,7 @@ import ColorPicker from "@/app/ui/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Message from "@/app/ui/Message";
 import useAnime from "@/app/lib/components/useAnime";
+import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 
 const Episodes = () => {
   const router = useRouter();
@@ -56,8 +56,8 @@ const Episodes = () => {
 
   const [lecteurs, setLecteurs] = useState<LecteursProps>();
 
-  const episodesRef = useRef<HTMLUListElement[]>([]);
   const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
+  const episodesListRef = useRef<HTMLUListElement[]>([]);
 
   const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
   const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
@@ -207,7 +207,7 @@ const Episodes = () => {
         lecteurs: fetchedLecteurs,
       });
 
-      if (anime?.lecteur) {
+      if (lecteurs?.currentLecteur) {
         setLecteurs((currentState) => ({
           ...currentState,
           currentLecteur: fetchedLecteurs[anime.lecteur!],
@@ -259,18 +259,19 @@ const Episodes = () => {
           const title = `E-SP${retard}`;
 
           listEpisodes.push(
-            <li
-              className="group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
-              data-id={indexEpisode}
-              key={title}
-            >
-              <span className="transition-all duration-200 ease-out group-hover:text-white">
-                {title}
-              </span>
-              <span
-                ref={(el) => (namesRef.current[indexEpisode - 1] = el!)}
-              ></span>
-            </li>,
+            <EpisodeComponent
+              episodeIndex={indexEpisode - retard}
+              id={indexEpisode.toString()}
+              episodeNumber={title}
+              episodeSpecial={true}
+              namesRef={namesRef}
+              containerRef={containerRef}
+              episodeTitleRef={episodeTitleRef}
+              AnimeInfo={anime}
+              updateAnime={updateAnime}
+              lecteur={lecteurs.currentLecteur}
+              episodesListRef={episodesListRef}
+            />,
           );
         } else {
           const episodeNumber = episodeIndex + indexEpisode - retard;
@@ -280,28 +281,21 @@ const Episodes = () => {
                 index === episodeNumber.toString(),
             )?.name || "";
 
-          const indexId =
-            anime?.saison === "1" ? "" : `(${indexEpisode - retard})`;
-
-          const id = `${episodeNumber} ${indexId} ${episodeTitle}`;
-
           listEpisodes.push(
-            <li
-              className="group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
-              data-id={indexEpisode}
-              key={id}
-            >
-              <span className="transition-all duration-200 ease-out group-hover:text-white">
-                {episodeNumber} {indexId}
-              </span>{" "}
-              :{" "}
-              <span
-                ref={(el) => (namesRef.current[indexEpisode - 1] = el!)}
-                className="text-white transition-all duration-200 ease-out hover:text-main group-hover:text-main"
-              >
-                {episodeTitle}
-              </span>
-            </li>,
+            <EpisodeComponent
+              episodeIndex={indexEpisode - retard}
+              id={indexEpisode.toString()}
+              episodeTitle={episodeTitle}
+              episodeNumber={episodeNumber}
+              namesRef={namesRef}
+              episodeSpecial={false}
+              containerRef={containerRef}
+              episodeTitleRef={episodeTitleRef}
+              AnimeInfo={anime}
+              updateAnime={updateAnime}
+              lecteur={lecteurs.currentLecteur}
+              episodesListRef={episodesListRef}
+            />,
           );
         }
       }
@@ -319,7 +313,7 @@ const Episodes = () => {
 
           let retard = 0;
 
-          episodesRef.current?.[0].childNodes.forEach((e, i) => {
+          episodesListRef.current?.[0].childNodes.forEach((e, i) => {
             if (i + 1 < Number(episode)) {
               if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
             }
@@ -384,38 +378,27 @@ const Episodes = () => {
         }));
       }
 
-      setTimeout(() => {
-        clickEvents(
-          lecteurs.currentLecteur!,
-          updateAnime,
-          anime!,
-          episodesRef,
-          containerRef,
-          episodeTitleRef,
-        );
+      const saisonName =
+        anime?.anime &&
+        Object.values(anime.anime?.options?.saisons!)[
+          Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
+        ]?.name;
 
-        const saisonName =
-          anime?.anime &&
-          Object.values(anime.anime?.options?.saisons!)[
-            Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
-          ]?.name;
-
-        updateAnime((currentState) => ({
-          ...currentState,
-          saisonTitle: (
-            <>
-              <span>
-                {saisonName} ({lecteurs.currentLecteur?.length})
-              </span>{" "}
-              {"["}
-              <span style={{ color: "white" }}>
-                {anime?.lang?.toUpperCase() || "VOSTFR"}
-              </span>
-              {"]"}
-            </>
-          ),
-        }));
-      }, 100);
+      updateAnime((currentState) => ({
+        ...currentState,
+        saisonTitle: (
+          <>
+            <span>
+              {saisonName} ({lecteurs.currentLecteur?.length})
+            </span>{" "}
+            {"["}
+            <span style={{ color: "white" }}>
+              {anime?.lang?.toUpperCase() || "VOSTFR"}
+            </span>
+            {"]"}
+          </>
+        ),
+      }));
 
       if (options?.note) {
         if (typeof options.note === "string") {
@@ -438,15 +421,12 @@ const Episodes = () => {
       if (event.target.checked) {
         episodeTitleRef.current?.classList.add("blur");
 
-        for (const episode of namesRef.current) {
-          episode.classList.add("blur");
-        }
+        for (const episode of namesRef.current) episode.classList.add("blur");
       } else {
         episodeTitleRef.current?.classList.remove("blur");
 
-        for (const episode of namesRef.current) {
+        for (const episode of namesRef.current)
           episode.classList.remove("blur");
-        }
       }
     },
     [],
@@ -548,9 +528,9 @@ const Episodes = () => {
                 lecteurs?.currentLecteur!,
                 updateAnime,
                 anime!,
-                episodesRef,
                 containerRef,
                 episodeTitleRef,
+                episodesListRef,
               )
             }
           >
@@ -568,9 +548,9 @@ const Episodes = () => {
                 lecteurs?.currentLecteur!,
                 updateAnime,
                 anime!,
-                episodesRef,
                 containerRef,
                 episodeTitleRef,
+                episodesListRef,
               )
             }
           >
@@ -582,7 +562,7 @@ const Episodes = () => {
       <SearchBar
         className="m-8"
         placeholder="Rechercher un épisode"
-        containerRef={episodesRef}
+        containerRef={episodesListRef}
         query="innerText"
       />
 
@@ -592,7 +572,9 @@ const Episodes = () => {
       />
 
       <div className="m-5 max-h-96 min-w-24 overflow-y-auto">
-        <ul ref={(el) => (episodesRef.current[0] = el!)}>{anime?.episodes}</ul>
+        <ul ref={(el) => (episodesListRef.current[0] = el!)}>
+          {anime?.episodes}
+        </ul>
       </div>
 
       <div className="m-8 flex gap-5">

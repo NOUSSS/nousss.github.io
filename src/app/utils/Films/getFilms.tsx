@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { getLecteur } from "@/app/lib/getLecteur";
 import { appearVideo } from "./appearVideo";
-import { AnimeFilmsProps, EPS } from "@/typings/types";
+import { AnimeFilmsProps } from "@/typings/types";
 import { RefObject } from "react";
 
 export function getFilms(
@@ -24,9 +24,9 @@ export function getFilms(
   const filmsNodes: React.ReactNode[] = [];
 
   if (Anime?.lecteur) {
-    LecteursFilms = Lecteurs[Anime?.lecteur as EPS]!;
+    LecteursFilms = Lecteurs[Anime?.lecteur]!;
   } else {
-    const lecteur = Object.keys(Lecteurs)[0] as EPS;
+    const lecteur = Object.keys(Lecteurs)[0];
 
     updateAnime((currentState) => ({ ...currentState, lecteur }));
 

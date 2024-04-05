@@ -1,5 +1,4 @@
-import { ItemsProps } from "@/app/ui/Select";
-import { selectChapter } from "./chapterManager";
+import { selectChapter } from "./chapters-utils";
 import { RefObject } from "react";
 import { AnimeScansProps } from "@/typings/types";
 

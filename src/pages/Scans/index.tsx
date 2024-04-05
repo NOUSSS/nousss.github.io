@@ -5,14 +5,14 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   getTailleChapitres,
   selectChapter,
-} from "@/app/utils/Scans/chapterManager";
+} from "@/app/utils/Scans/chapters-utils";
 
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
 import { AnimeScansProps, ScansOptions } from "@/typings/types";
-import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapterEvents";
+import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
 import { toast } from "sonner";
 import { icons } from "lucide-react";
@@ -137,9 +137,6 @@ const Scans = () => {
           ...currentState,
           scans: selectChapter(anime!, option, placeholderRef),
         }));
-
-        if (placeholderRef.current)
-          placeholderRef.current.innerText = option.name;
       }
     }
   }, [status, loadingToast]);

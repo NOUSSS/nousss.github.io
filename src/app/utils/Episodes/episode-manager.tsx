@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { MutableRefObject, RefObject } from "react";
 import { AnimeEpisodesProps } from "@/typings/types";
 
 export function Change(
@@ -13,9 +13,9 @@ export function Change(
 
   AnimeInfo: AnimeEpisodesProps,
 
-  episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
+  episodesListRef: RefObject<HTMLElement[]>,
 ): void {
   const options = AnimeInfo.anime?.options;
   const saison = localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`);
@@ -31,7 +31,7 @@ export function Change(
     if (isHorsSerie.hs.includes(Number(indexEpisode) - 1)) {
       let esp = "";
 
-      episodesRef.current?.[0].childNodes.forEach((el) => {
+      episodesListRef.current?.[0].childNodes.forEach((el) => {
         const e = el as HTMLElement;
 
         if (e.dataset?.id === indexEpisode) {
@@ -55,7 +55,7 @@ export function Change(
     } else {
       let retard = 0;
 
-      episodesRef.current?.[0].childNodes.forEach((e, i) => {
+      episodesListRef.current?.[0].childNodes.forEach((e, i) => {
         if (i + 1 < Number(indexEpisode)) {
           if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
         }
@@ -94,6 +94,7 @@ export function Change(
         `${AnimeInfo.anime?.anime}--episode`,
         indexEpisode.toString(),
       );
+
       localStorage.removeItem(`${AnimeInfo.anime?.anime}--e-sp`);
     }
   } else {
@@ -151,9 +152,9 @@ export function NextEpisode(
 
   AnimeInfo: AnimeEpisodesProps,
 
-  episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
+  episodesListRef: RefObject<HTMLElement[]>,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) + 1;
@@ -163,9 +164,9 @@ export function NextEpisode(
     lecteur,
     updateAnime,
     AnimeInfo,
-    episodesRef,
     containerRef,
     episodeTitleRef,
+    episodesListRef,
   );
 }
 
@@ -180,9 +181,9 @@ export function PrevEpisode(
 
   AnimeInfo: AnimeEpisodesProps,
 
-  episodesRef: RefObject<HTMLElement[]>,
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
+  episodesListRef: RefObject<HTMLElement[]>,
 ) {
   const newEpisodeIndex =
     Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) - 1;
@@ -192,8 +193,8 @@ export function PrevEpisode(
     lecteur,
     updateAnime,
     AnimeInfo,
-    episodesRef,
     containerRef,
     episodeTitleRef,
+    episodesListRef,
   );
 }
