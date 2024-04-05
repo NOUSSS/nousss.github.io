@@ -139,7 +139,7 @@ const Scans = () => {
         }));
       }
     }
-  }, [status, loadingToast]);
+  }, [status]);
 
   return (
     <main className="flex select-none flex-col items-center">
