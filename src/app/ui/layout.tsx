@@ -132,7 +132,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         </div>
 
-        <div className="h-[calc(100%-60px)] overflow-y-scroll bg-zinc-900 bg-opacity-50">
+        <div className="h-[calc(100%-64px)] overflow-y-scroll bg-zinc-900 bg-opacity-50">
           {output}
         </div>
       </div>
