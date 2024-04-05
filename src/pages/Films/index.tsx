@@ -102,11 +102,8 @@ const Films = () => {
       toast.error("Erreur dans le chargement des films.", {
         id: loadingToast!,
       });
-
-      if (anime?.lang === "vf")
-        updateAnime((currentState) => ({ ...currentState, lang: "vostfr" }));
     }
-  }, [status, anime?.lang, loadingToast]);
+  }, [status, anime?.lang]);
 
   useEffect(() => {
     if (status === "ready") {
@@ -160,7 +157,7 @@ const Films = () => {
 
       getFilms(anime!, updateAnime, containerRef);
     }
-  }, [status, lecteurs?.currentLecteur]);
+  }, [status, anime?.lecteur]);
 
   return (
     <main className="flex flex-col items-center">
@@ -205,12 +202,17 @@ const Films = () => {
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
-              onSelect={({ value }) =>
+              onSelect={({ value }) => {
                 updateAnime((currentState) => ({
                   ...currentState,
-                  lang: value,
-                }))
-              }
+                  lecteur: value,
+                }));
+
+                setLecteurs((currentState) => ({
+                  ...currentState,
+                  currentLecteur: lecteurs?.lecteurs?.[value],
+                }));
+              }}
               items={Object.keys(lecteurs.lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(lecteurs.lecteurs!)[i][0]),
                 value: l,
