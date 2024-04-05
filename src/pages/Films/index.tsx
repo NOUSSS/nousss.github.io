@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { AnimeFilmsProps, FilmOptions, LecteursProps } from "@/typings/types";
+import { AnimeFilmsProps, FilmOptions } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -27,7 +27,6 @@ import useAnime from "@/app/lib/components/useAnime";
 const Films = () => {
   const [anime, updateAnime] = useAnime<AnimeFilmsProps>({});
   const [isClient, setIsClient] = useState(false);
-  const [lecteurs, setLecteurs] = useState<LecteursProps>();
 
   const options = (isClient &&
     anime?.anime?.options.FILM_OPTIONS) as FilmOptions;
@@ -113,30 +112,31 @@ const Films = () => {
 
       const fetchedLecteurs = getLecteur();
 
-      setLecteurs({
+      updateAnime((currentState) => ({
+        ...currentState,
         lecteurs: fetchedLecteurs,
-      });
+      }));
 
       if (anime?.lecteur) {
-        setLecteurs((currentState) => ({
+        updateAnime((currentState) => ({
           ...currentState,
           currentLecteur: fetchedLecteurs[anime.lecteur!],
         }));
       } else {
         const lecteur = Object.keys(fetchedLecteurs)[0];
 
-        updateAnime((currentState) => ({ ...currentState, lecteur }));
-        setLecteurs((currentState) => ({
+        updateAnime((currentState) => ({
           ...currentState,
+          lecteur,
           currentLecteur: fetchedLecteurs[lecteur]!,
         }));
       }
 
       if (options?.BLACKLIST_URL) {
         for (const BLACKLIST of options.BLACKLIST_URL) {
-          if (lecteurs?.currentLecteur?.includes(BLACKLIST))
-            lecteurs?.currentLecteur?.splice(
-              lecteurs?.currentLecteur?.indexOf(BLACKLIST),
+          if (anime.currentLecteur?.includes(BLACKLIST))
+            anime.currentLecteur?.splice(
+              anime.currentLecteur?.indexOf(BLACKLIST),
               1,
             );
         }
@@ -144,8 +144,8 @@ const Films = () => {
 
       appearVideo(
         lastFilm
-          ? `${lecteurs?.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
-          : `${lecteurs?.currentLecteur?.[0]} ${
+          ? `${anime.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
+          : `${anime.currentLecteur?.[0]} ${
               localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ?? "0"
             }`,
 
@@ -157,7 +157,7 @@ const Films = () => {
 
       getFilms(anime!, updateAnime, containerRef);
     }
-  }, [status, anime?.lecteur]);
+  }, [status, anime?.currentLecteur]);
 
   return (
     <main className="flex flex-col items-center">
@@ -168,6 +168,7 @@ const Films = () => {
       </Head>
 
       <ColorPicker />
+
       <Title
         link={{ pathname: "/Home", query: { anime: anime?.anime?.anime! } }}
       />
@@ -197,8 +198,8 @@ const Films = () => {
           }}
         />
 
-        {lecteurs?.lecteurs ? (
-          Object.keys(lecteurs.lecteurs).length > 1 ? (
+        {anime.lecteurs ? (
+          Object.keys(anime.lecteurs).length > 1 ? (
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
@@ -206,15 +207,11 @@ const Films = () => {
                 updateAnime((currentState) => ({
                   ...currentState,
                   lecteur: value,
-                }));
-
-                setLecteurs((currentState) => ({
-                  ...currentState,
-                  currentLecteur: lecteurs?.lecteurs?.[value],
+                  currentLecteur: anime?.lecteurs?.[value],
                 }));
               }}
-              items={Object.keys(lecteurs.lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(lecteurs.lecteurs!)[i][0]),
+              items={Object.keys(anime.lecteurs).map((l, i) => ({
+                name: getHostname(Object.values(anime.lecteurs!)[i][0]),
                 value: l,
                 disabled: anime?.lecteur === l ? true : false,
               }))}

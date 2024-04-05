@@ -5,11 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/ui/Footer";
 import { Title } from "@/app/ui/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import {
-  AnimeEpisodesProps,
-  LecteursProps,
-  SeasonAndFilm,
-} from "@/typings/types";
+import { AnimeEpisodesProps, SeasonAndFilm } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
@@ -53,8 +49,6 @@ const Episodes = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
-
-  const [lecteurs, setLecteurs] = useState<LecteursProps>();
 
   const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
@@ -203,21 +197,22 @@ const Episodes = () => {
 
       const fetchedLecteurs = getLecteur();
 
-      setLecteurs({
+      updateAnime((currentState) => ({
+        ...currentState,
         lecteurs: fetchedLecteurs,
-      });
+      }));
 
-      if (lecteurs?.currentLecteur) {
-        setLecteurs((currentState) => ({
+      if (anime?.currentLecteur) {
+        updateAnime((currentState) => ({
           ...currentState,
           currentLecteur: fetchedLecteurs[anime.lecteur!],
         }));
       } else {
         const lecteur = Object.keys(fetchedLecteurs)[0];
 
-        updateAnime((currentState) => ({ ...currentState, lecteur }));
-        setLecteurs((currentState) => ({
+        updateAnime((currentState) => ({
           ...currentState,
+          lecteur,
           currentLecteur: fetchedLecteurs[lecteur]!,
         }));
       }
@@ -236,7 +231,7 @@ const Episodes = () => {
 
       let retard = 0;
 
-      if (!lecteurs?.currentLecteur || lecteurs?.currentLecteur.length < 1) {
+      if (!anime.currentLecteur || anime.currentLecteur.length < 1) {
         return updateAnime((currentState) => ({
           ...currentState,
           episodeTitle: "Aucun lecteur n'est disponible pour cette anime",
@@ -245,7 +240,7 @@ const Episodes = () => {
 
       for (
         let indexEpisode = 1;
-        indexEpisode < lecteurs?.currentLecteur.length + 1;
+        indexEpisode < anime.currentLecteur.length + 1;
         indexEpisode++
       ) {
         const isHorsSerie = horsSeries?.find(
@@ -269,7 +264,7 @@ const Episodes = () => {
               episodeTitleRef={episodeTitleRef}
               AnimeInfo={anime}
               updateAnime={updateAnime}
-              lecteur={lecteurs.currentLecteur}
+              lecteur={anime.currentLecteur!}
               episodesListRef={episodesListRef}
             />,
           );
@@ -293,7 +288,7 @@ const Episodes = () => {
               episodeTitleRef={episodeTitleRef}
               AnimeInfo={anime}
               updateAnime={updateAnime}
-              lecteur={lecteurs.currentLecteur}
+              lecteur={anime.currentLecteur!}
               episodesListRef={episodesListRef}
             />,
           );
@@ -309,7 +304,7 @@ const Episodes = () => {
         (async () => {
           await new Promise((res) => setTimeout(res, 100, true));
 
-          const URL_EPISODE = lecteurs.currentLecteur?.[Number(episode) - 1];
+          const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
 
           let retard = 0;
 
@@ -345,7 +340,7 @@ const Episodes = () => {
       }
 
       if (episode !== "1" && e_sp) {
-        const URL_EPISODE = lecteurs.currentLecteur[Number(episode) - 1];
+        const URL_EPISODE = anime.currentLecteur![Number(episode) - 1];
 
         updateAnime((currentState) => ({
           ...currentState,
@@ -355,7 +350,7 @@ const Episodes = () => {
       }
 
       if (episode === "1") {
-        const [firstEpisode] = lecteurs.currentLecteur;
+        const [firstEpisode] = anime.currentLecteur!;
 
         const title =
           names?.find(({ index }) => index === (episodeIndex + 1).toString())
@@ -389,7 +384,7 @@ const Episodes = () => {
         saisonTitle: (
           <>
             <span>
-              {saisonName} ({lecteurs.currentLecteur?.length})
+              {saisonName} ({anime.currentLecteur?.length})
             </span>{" "}
             {"["}
             <span style={{ color: "white" }}>
@@ -414,7 +409,7 @@ const Episodes = () => {
         }
       }
     }
-  }, [lecteurs?.currentLecteur, status]);
+  }, [anime.currentLecteur, status]);
 
   const blurEpisodes = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -485,8 +480,8 @@ const Episodes = () => {
           }}
         />
 
-        {lecteurs?.lecteurs ? (
-          Object.keys(lecteurs.lecteurs).length > 1 ? (
+        {anime.lecteurs ? (
+          Object.keys(anime.lecteurs).length > 1 ? (
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
@@ -494,15 +489,11 @@ const Episodes = () => {
                 updateAnime((currentState) => ({
                   ...currentState,
                   lecteur: value,
-                }));
-
-                setLecteurs((currentState) => ({
-                  ...currentState,
-                  currentLecteur: lecteurs?.lecteurs?.[value],
+                  currentLecteur: anime.lecteurs?.[value],
                 }));
               }}
-              items={Object.keys(lecteurs.lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(lecteurs.lecteurs!)[i][0]),
+              items={Object.keys(anime.lecteurs).map((l, i) => ({
+                name: getHostname(Object.values(anime.lecteurs!)[i][0]),
                 value: l,
                 disabled: anime?.lecteur === l ? true : false,
               }))}
@@ -525,7 +516,7 @@ const Episodes = () => {
             className="btn back"
             onClick={() =>
               PrevEpisode(
-                lecteurs?.currentLecteur!,
+                anime.currentLecteur!,
                 updateAnime,
                 anime!,
                 containerRef,
@@ -540,12 +531,12 @@ const Episodes = () => {
 
         {isClient &&
         localStorage.getItem(`${anime?.anime?.anime}--episode`) !==
-          lecteurs?.currentLecteur?.length.toString() ? (
+          anime?.currentLecteur?.length.toString() ? (
           <button
             className="btn next"
             onClick={() =>
               NextEpisode(
-                lecteurs?.currentLecteur!,
+                anime?.currentLecteur!,
                 updateAnime,
                 anime!,
                 containerRef,

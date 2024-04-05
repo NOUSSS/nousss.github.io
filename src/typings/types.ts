@@ -96,6 +96,8 @@ export interface AnimeEpisodesProps extends AnimeInfoProps {
   video?: string;
   lang?: string;
   lecteur?: string;
+  currentLecteur?: string[];
+  lecteurs?: LecteurReturnType;
   saison?: string;
   saisonTitle?: React.ReactNode;
   episodeTitle?: React.ReactNode;
@@ -106,6 +108,8 @@ export interface AnimeFilmsProps extends AnimeInfoProps {
   video?: string;
   lang?: string;
   lecteur?: string;
+  currentLecteur?: string[];
+  lecteurs?: LecteurReturnType;
   filmTitle?: React.ReactNode;
   films?: React.ReactNode[];
 }
@@ -123,9 +127,4 @@ export interface AnimeSaisonsProps extends AnimeInfoProps {
 export interface AnimeScansProps extends AnimeInfoProps {
   scans?: React.ReactNode[];
   chapitresOptions?: ItemsProps[];
-}
-
-export interface LecteursProps {
-  lecteurs?: LecteurReturnType;
-  currentLecteur?: string[];
 }
