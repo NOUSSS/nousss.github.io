@@ -2,7 +2,7 @@ import React, { RefObject } from "react";
 import Image from "next/image";
 
 import { AnimeScansProps } from "@/typings/types";
-import { ItemsProps } from "@/app/ui/Select";
+import { ItemsProps } from "@/app/components/Select";
 
 interface windowKeys {
   [key: string]: string;

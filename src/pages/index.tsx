@@ -2,10 +2,10 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import ColorPicker from "@/app/ui/colorPicker";
+import ColorPicker from "@/app/components/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
-import { Footer } from "@/app/ui/Footer";
+import { Footer } from "@/app/components/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { Historique } from "@/typings/types";

@@ -1,8 +1,8 @@
 "use client";
 
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { Footer } from "@/app/components/Footer";
+import { Title } from "@/app/components/Title";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
@@ -12,8 +12,8 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
-import SearchBar from "@/app/ui/searchBar";
-import ColorPicker from "@/app/ui/colorPicker";
+import SearchBar from "@/app/components/searchBar";
+import ColorPicker from "@/app/components/colorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Saisons = () => {

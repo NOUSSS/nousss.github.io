@@ -6,8 +6,8 @@ import NavMotion from "@/app/lib/navMotion";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { Footer } from "@/app/components/Footer";
+import { Title } from "@/app/components/Title";
 import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";

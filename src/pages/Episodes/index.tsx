@@ -2,8 +2,8 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { Footer } from "@/app/components/Footer";
+import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { AnimeEpisodesProps, SeasonAndFilm } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -17,18 +17,18 @@ import { useSearchParams } from "next/navigation";
 import { formatLang, langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
-import SearchBar from "@/app/ui/searchBar";
-import Select from "@/app/ui/Select";
+import SearchBar from "@/app/components/searchBar";
+import Select from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 
 import random from "@/app/lib/random";
 import getHostname from "@/app/lib/getHostname";
 
-import Switch from "@/app/ui/Switch";
-import ColorPicker from "@/app/ui/colorPicker";
+import Switch from "@/app/components/Switch";
+import ColorPicker from "@/app/components/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
-import Message from "@/app/ui/Message";
+import Message from "@/app/components/Message";
 import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 

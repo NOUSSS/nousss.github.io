@@ -1,5 +1,5 @@
 import { AnimesType } from "@/animes/constants";
-import { ItemsProps } from "@/app/ui/Select";
+import { ItemsProps } from "@/app/components/Select";
 import { StaticImageData } from "next/image";
 
 import React from "react";

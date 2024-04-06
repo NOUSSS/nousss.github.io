@@ -7,8 +7,8 @@ import {
   selectChapter,
 } from "@/app/utils/Scans/chapters-utils";
 
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { Footer } from "@/app/components/Footer";
+import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
 import { AnimeScansProps, ScansOptions } from "@/typings/types";
@@ -20,10 +20,10 @@ import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
-import Select, { ItemsProps } from "@/app/ui/Select";
+import Select, { ItemsProps } from "@/app/components/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
-import ColorPicker from "@/app/ui/colorPicker";
+import ColorPicker from "@/app/components/colorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Scans = () => {

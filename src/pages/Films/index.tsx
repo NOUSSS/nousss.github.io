@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { Footer } from "@/app/ui/Footer";
-import { Title } from "@/app/ui/Title";
+import { Footer } from "@/app/components/Footer";
+import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { AnimeFilmsProps, FilmOptions } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
@@ -16,12 +16,12 @@ import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 
-import SearchBar from "@/app/ui/searchBar";
-import Select from "@/app/ui/Select";
+import SearchBar from "@/app/components/searchBar";
+import Select from "@/app/components/Select";
 import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
-import ColorPicker from "@/app/ui/colorPicker";
+import ColorPicker from "@/app/components/colorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Films = () => {
