@@ -1,8 +1,8 @@
-import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Naruto/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
+import s1 from "@/assets/Animes/Naruto/Saisons/Saison1.webp";
 
 class Naruto extends Anime {
   constructor() {
@@ -13,7 +13,7 @@ class Naruto extends Anime {
       1: {
         name: "Les episodes",
         aliases: ["saisons"],
-        image: () => getImage(1),
+        image: () => s1,
       },
     };
 
@@ -39,6 +39,7 @@ class Naruto extends Anime {
       allIndex: {
         1: 0,
       },
+
       names: episodesNames,
     };
   }
