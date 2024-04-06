@@ -665,6 +665,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Steins;Gate",
     category: ["Humour", "Réflexion"],
+    aliases: ["Steins Gate"],
     options: new SteinsGate(),
     synopsis:
       "L'histoire de Steins;Gate se déroule dans le quartier otaku d'Akihabara, et porte sur un groupe d'amis qui ont transformé leur micro-ondes par inadvertance en dispositif pouvant envoyer des messages texte vers le passé. Dans le but de comprendre ce phénomène ils effectuent différentes expériences concernant le voyage dans le temps.",
