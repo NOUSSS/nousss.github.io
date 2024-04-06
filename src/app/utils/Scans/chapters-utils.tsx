@@ -1,25 +1,8 @@
 import React, { RefObject } from "react";
 import Image from "next/image";
 
-import { AnimeScansProps } from "@/typings/types";
+import { AnimeScansProps, windowKeys } from "@/typings/types";
 import { ItemsProps } from "@/app/components/Select";
-
-interface windowKeys {
-  [key: string]: string;
-}
-
-export const getTailleChapitres = (): number => {
-  let tailleChapitres = 0;
-
-  for (
-    let i = 1;
-    (window as unknown as windowKeys)[`eps${i}`] !== undefined;
-    i++
-  )
-    tailleChapitres++;
-
-  return tailleChapitres;
-};
 
 export const selectChapter = (
   Anime: AnimeScansProps,

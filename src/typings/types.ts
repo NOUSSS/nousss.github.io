@@ -128,3 +128,7 @@ export interface AnimeScansProps extends AnimeInfoProps {
   scans?: React.ReactNode[];
   chapitresOptions?: ItemsProps[];
 }
+
+export interface windowKeys {
+  [key: string]: string;
+}

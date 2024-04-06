@@ -2,11 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-import {
-  getTailleChapitres,
-  selectChapter,
-} from "@/app/utils/Scans/chapters-utils";
-
+import { selectChapter } from "@/app/utils/Scans/chapters-utils";
+import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
 import { Footer } from "@/app/components/Footer";
 import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
