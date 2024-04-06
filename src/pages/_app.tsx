@@ -1,4 +1,4 @@
-import "@/app/defaultStyles/global.css";
+import "@/app/styles/global.css";
 
 import RootLayout from "@/app/components/layout";
 
