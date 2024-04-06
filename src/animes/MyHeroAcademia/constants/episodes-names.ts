@@ -140,6 +140,7 @@ const names = [
   { index: "136", name: "Deku vs la 2de A" },
   { index: "137", name: "Cri du cœur" },
   { index: "138", name: "Connexion" },
+  { index: "139", name: "Izuku Midoriya: Mind" },
 ];
 
 export default names;

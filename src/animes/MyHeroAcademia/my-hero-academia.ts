@@ -84,6 +84,7 @@ export default class MyHeroAcademia extends Anime {
         6: 113,
         7: 138,
       },
+
       names,
     };
   }
