@@ -73,6 +73,7 @@ import Erased from "./Erased/erased";
 import YourName from "./YourName/your-name";
 import Gintama from "./Gintama/gintama";
 import SteinsGate from "./SteinsGate/steins-gate";
+import CodeGeass from "./CodeGeass/code-geass";
 
 export interface AnimesType {
   anime: string;
@@ -667,6 +668,14 @@ export const ANIMES: AnimesType[] = [
     options: new SteinsGate(),
     synopsis:
       "L'histoire de Steins;Gate se déroule dans le quartier otaku d'Akihabara, et porte sur un groupe d'amis qui ont transformé leur micro-ondes par inadvertance en dispositif pouvant envoyer des messages texte vers le passé. Dans le but de comprendre ce phénomène ils effectuent différentes expériences concernant le voyage dans le temps.",
+  },
+  {
+    anime: "Code Geass",
+    aliases: ["Hangyaku no lelouch", "lelouch of rebellion"],
+    options: new CodeGeass(),
+    synopsis:
+      "En 2017, le Japon vit sous le joug de l'empire de Britannia. Rebaptisé \"Zone Eleven\", le pays subit quotidiennement la terreur de l'occupant qui réprime toute sédition grâce à ses armées de Mécas, les \"Nightmare Frames\". Mais le jour de la révolte a peut-être sonné lorsqu'un jeune étudiant du nom de Lelouch Lamperouge va se retrouver accidentellement impliqué dans un attentat terroriste. Alors qu'il aurait dû mourir, Lelouch va au contraire survivre, et même hériter d'un mystérieux pouvoir, le \"Geass\", qui donne à celui qui le détient la possibilité de contrôler la volonté d'autrui. Ce pouvoir permettra-t-il à Lelouch de faire vaciller l'empire de Britannia ?",
+    category: ["Réflexion", "Mécha", "Classique"],
   },
 ];
 
