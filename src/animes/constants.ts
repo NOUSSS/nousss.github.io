@@ -72,6 +72,7 @@ import AkameGaKill from "./AkameGaKill/akame-ga-kill";
 import Erased from "./Erased/erased";
 import YourName from "./YourName/your-name";
 import Gintama from "./Gintama/gintama";
+import SteinsGate from "./SteinsGate/steins-gate";
 
 export interface AnimesType {
   anime: string;
@@ -659,6 +660,13 @@ export const ANIMES: AnimesType[] = [
     category: ["Humour", "Fleuve"],
     aliases: ["Silver soul"],
     options: new Gintama(),
+  },
+  {
+    anime: "Steins;Gate",
+    category: ["Humour", "Réflexion"],
+    options: new SteinsGate(),
+    synopsis:
+      "L'histoire de Steins;Gate se déroule dans le quartier otaku d'Akihabara, et porte sur un groupe d'amis qui ont transformé leur micro-ondes par inadvertance en dispositif pouvant envoyer des messages texte vers le passé. Dans le but de comprendre ce phénomène ils effectuent différentes expériences concernant le voyage dans le temps.",
   },
 ];
 

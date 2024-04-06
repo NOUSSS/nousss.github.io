@@ -306,7 +306,7 @@ export default function Accueil() {
                 </div>
 
                 <Image
-                  className="aspect-video min-w-[900px] max-w-[900px] max-lg:min-w-full max-lg:max-w-full"
+                  className="aspect-video w-[900px] min-w-[900px] max-lg:min-w-full max-lg:max-w-full"
                   alt="affiche d'un anime aléatoire"
                   src={anime.options.affiche!}
                 />
