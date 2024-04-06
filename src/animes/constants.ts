@@ -112,7 +112,7 @@ export const ANIMES: AnimesType[] = [
       "Les anciens",
     ],
     options: new DragonBallZ(),
-    category: ["Classique", "Aventure", "Fleuve"],
+    category: ["Classique", "Aventure", "Fleuve", "En équipe"],
     synopsis:
       "Dragon Ball Z se déroule cinq ans après le mariage de Son Goku et de Chichi. Raditz, un mystérieux guerrier de l'espace, frère de Son Goku, arrive sur Terre pour retrouver Goku. Ce dernier apprend qu'il vient d'une planète de guerriers redoutables dont il ne reste plus que quatre survivants.",
   },
@@ -129,7 +129,7 @@ export const ANIMES: AnimesType[] = [
       "saisons",
     ],
     options: new DragonBallSuper(),
-    category: ["Classique", "Aventure", "Puissance"],
+    category: ["Classique", "Aventure", "Puissance", "En équipe"],
     synopsis:
       "Au début de l’histoire, le monde semble paisible et tout le monde vit librement, mais tout cela ne dure pas longtemps. Un nouvel ennemi a commencé à se cacher et l’entité « Destructeur » appelée le Dieu de la Destruction s’est réveillée de son sommeil. Tout cela a eu un très grand impact sur la terre, tout le monde a commencé à se préparer à une catastrophe encore plus grande. ",
   },
