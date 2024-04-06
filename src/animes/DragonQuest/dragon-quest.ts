@@ -25,6 +25,13 @@ class DragonQuest extends Anime {
         1: 0,
       },
 
+      horsSeries: [
+        {
+          saison: "1",
+          hs: [37],
+        },
+      ],
+
       names,
     };
   }
