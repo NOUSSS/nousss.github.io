@@ -74,6 +74,7 @@ import YourName from "./YourName/your-name";
 import Gintama from "./Gintama/gintama";
 import SteinsGate from "./SteinsGate/steins-gate";
 import CodeGeass from "./CodeGeass/code-geass";
+import ReZero from "./ReZero/re-zero";
 
 export interface AnimesType {
   anime: string;
@@ -677,6 +678,18 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "En 2017, le Japon vit sous le joug de l'empire de Britannia. Rebaptisé \"Zone Eleven\", le pays subit quotidiennement la terreur de l'occupant qui réprime toute sédition grâce à ses armées de Mécas, les \"Nightmare Frames\". Mais le jour de la révolte a peut-être sonné lorsqu'un jeune étudiant du nom de Lelouch Lamperouge va se retrouver accidentellement impliqué dans un attentat terroriste. Alors qu'il aurait dû mourir, Lelouch va au contraire survivre, et même hériter d'un mystérieux pouvoir, le \"Geass\", qui donne à celui qui le détient la possibilité de contrôler la volonté d'autrui. Ce pouvoir permettra-t-il à Lelouch de faire vaciller l'empire de Britannia ?",
     category: ["Réflexion", "Mécha", "Classique"],
+  },
+  {
+    anime: "Re:Zero",
+    aliases: [
+      "Life in a Different World from Zero",
+      "Starting Life in Another World",
+      "kara Hajimeru Isekai Seikatsu",
+    ],
+    category: ["Isekai"],
+    options: new ReZero(),
+    synopsis:
+      "Il s'agit de l'adaptation du roman Re:Zero de Nagatsuki Tappei et de Ootsuka Shinichirou. Un jour un jeune homme nommé Natsuki Subaru, à la sortie d'une supérette, est transporté dans un monde parallèle sans aucune explication. En essayant de comprendre pour quoi il se trouve ici, Subaru est attaqué par une bande de brigands mais est sauvé par une jeune fille : Emilia. Pour la remercier de l'aide qu'elle lui a fournie, il décide à son tour de l'aider à retrouver une voleuse qui lui a dérobé quelque chose. Un beau jour, Emilia et Subaru sont attaqués et tués par une mystérieuse personne. Cependant, Subaru se réveille au lieu et au jour où il est arrivé dans ce monde. C'est à ce moment-là qu'il se rend compte qu'il peut retourner dans le passé après être mort. Pour échapper à son funeste destin, Subaru décide d'utiliser son pouvoir pour sauver Emilia et pour se sauver lui-même.",
   },
 ];
 
