@@ -75,6 +75,7 @@ import Gintama from "./Gintama/gintama";
 import SteinsGate from "./SteinsGate/steins-gate";
 import CodeGeass from "./CodeGeass/code-geass";
 import ReZero from "./ReZero/re-zero";
+import DragonQuest from "./DragonQuest/dragon-quest";
 
 export interface AnimesType {
   anime: string;
@@ -256,7 +257,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Shangri-La Frontier",
     aliases: ["scans", "saisons"],
     options: new ShangriLaFrontier(),
-    category: ["Jeux Videos"],
+    category: ["Jeux vidéos"],
     synopsis:
       "Sunraku est un passionné de jeux vidéo, il s'essaye aux pires jeux existants. Un jour il décide de s'attaquer au MMORPG Shangri-La Frontier, jeu aux trente millions de membres inscrits, il va devoir faire affronter de multiples dangers avec un masque ridicule... en forme d'oiseau.",
   },
@@ -337,7 +338,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Sword Art Online",
     aliases: ["sao", "films", "saisons"],
     options: new SwordArtOnline(),
-    category: ["Jeux Videos", "Isekai"],
+    category: ["Jeux vidéos", "Isekai"],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -690,6 +691,14 @@ export const ANIMES: AnimesType[] = [
     options: new ReZero(),
     synopsis:
       "Il s'agit de l'adaptation du roman Re:Zero de Nagatsuki Tappei et de Ootsuka Shinichirou. Un jour un jeune homme nommé Natsuki Subaru, à la sortie d'une supérette, est transporté dans un monde parallèle sans aucune explication. En essayant de comprendre pour quoi il se trouve ici, Subaru est attaqué par une bande de brigands mais est sauvé par une jeune fille : Emilia. Pour la remercier de l'aide qu'elle lui a fournie, il décide à son tour de l'aider à retrouver une voleuse qui lui a dérobé quelque chose. Un beau jour, Emilia et Subaru sont attaqués et tués par une mystérieuse personne. Cependant, Subaru se réveille au lieu et au jour où il est arrivé dans ce monde. C'est à ce moment-là qu'il se rend compte qu'il peut retourner dans le passé après être mort. Pour échapper à son funeste destin, Subaru décide d'utiliser son pouvoir pour sauver Emilia et pour se sauver lui-même.",
+  },
+  {
+    anime: "Dragon Quest",
+    aliases: ["Dai no Daibouken", "La quête de dai", "The adventure of dai"],
+    synopsis:
+      "Il s'agit d'une nouvelle adaptation du manga Dragon Quest : Dai no Daibouken de Sanjo Riku. Il y a 15 ans, Hadlar, le Roi du Mal, qui terrorisait le monde avec ses hordes de monstres, a été vaincu par un grand héros. Libérés de ses maléfices, les monstres ont recommencé à vivre discrètement sur une petite île des mers du Sud, l'île de Dermline. C'est sur cette île que Daï a été élevé, par son grand-père adoptif Brass. Daï, un jeune garçon de 12 ans, rêve de devenir un héros et de protéger l'île, alors que son grand-père, un sage incube d'environ 180 ans, veut à tout prix qu'il soit mage. Mais, le jeune garçon n'est pas doué pour la magie... Malheureusement, le Roi du Mal ressuscite, grâce à l'empereur du Mal, et recommence à semer la terreur dans le monde. Daï est alors formé aux techniques de combat par maître Avan, en vue de défaire le Dieu du Mal... Mais alors que son entraînement est à peine entamé, Avan se sacrifie pour sauver ses disciples de Hadlar, le Roi du Mal. C'est pour venger sa mémoire que Daï se battra, aidé par ses amis, Pop, Maam, et d'autres... Ainsi débute sa quête...",
+    category: ["Jeux vidéos"],
+    options: new DragonQuest(),
   },
 ];
 
