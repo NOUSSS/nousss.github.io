@@ -4,6 +4,7 @@ import { Anime } from "@/app/class/anime";
 
 import episodes from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/CodeGeass/affiche.webp";
+import oav from "@/assets/Animes/CodeGeass/Saisons/oav.png";
 
 class CodeGeass extends Anime {
   constructor() {
@@ -21,6 +22,10 @@ class CodeGeass extends Anime {
         aliases: [""],
         image: () => getImage(2),
       },
+      oav: {
+        name: "OAV",
+        image: () => oav,
+      },
     };
 
     this.FILM_OPTIONS = {
@@ -37,6 +42,7 @@ class CodeGeass extends Anime {
         1: 0,
         2: 25,
         3: 50,
+        4: 55,
       },
 
       names: episodes,
