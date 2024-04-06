@@ -29,7 +29,7 @@ import Switch from "@/app/ui/Switch";
 import ColorPicker from "@/app/ui/colorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Message from "@/app/ui/Message";
-import useAnime from "@/app/lib/components/useAnime";
+import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 
 const Episodes = () => {

@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import SearchBar from "@/app/ui/searchBar";
 import ColorPicker from "@/app/ui/colorPicker";
-import useAnime from "@/app/lib/components/useAnime";
+import useAnime from "@/app/lib/hooks/useAnime";
 
 const Saisons = () => {
   const router = useRouter();

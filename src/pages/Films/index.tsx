@@ -22,7 +22,7 @@ import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
 import ColorPicker from "@/app/ui/colorPicker";
-import useAnime from "@/app/lib/components/useAnime";
+import useAnime from "@/app/lib/hooks/useAnime";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<AnimeFilmsProps>({});

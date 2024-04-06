@@ -24,7 +24,7 @@ import Select, { ItemsProps } from "@/app/ui/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
 import ColorPicker from "@/app/ui/colorPicker";
-import useAnime from "@/app/lib/components/useAnime";
+import useAnime from "@/app/lib/hooks/useAnime";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
