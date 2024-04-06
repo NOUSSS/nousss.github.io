@@ -141,6 +141,7 @@ const names = [
   { index: "137", name: "Cri du cœur" },
   { index: "138", name: "Connexion" },
   { index: "139", name: "Izuku Midoriya: Mind" },
+  { index: "140", name: "Toshinori Yagi: Embers" },
 ];
 
 export default names;
