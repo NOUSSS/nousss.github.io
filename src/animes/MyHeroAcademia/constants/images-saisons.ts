@@ -4,6 +4,7 @@ import s3 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison3.webp";
 import s4 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison4.webp";
 import s5 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison5.webp";
 import s6 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison6.webp";
+import s7 from "@/assets/Animes/MyHeroAcademia/Saisons/Saison7.webp";
 
 const images = {
   1: s1,
@@ -12,6 +13,7 @@ const images = {
   4: s4,
   5: s5,
   6: s6,
+  7: s7,
 };
 
 export type ImageKey = keyof typeof images;

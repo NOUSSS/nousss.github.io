@@ -42,6 +42,10 @@ export default class MyHeroAcademia extends Anime {
         aliases: ["shigaraki"],
         image: () => getImage(6),
       },
+      7: {
+        name: "Saison 7",
+        image: () => getImage(7),
+      },
     };
 
     this.FILM_OPTIONS = {
