@@ -131,7 +131,7 @@ class OnePiece extends Anime {
         },
         {
           saison: "11",
-          hs: [4, 11],
+          hs: [4, 13],
         },
       ],
 
