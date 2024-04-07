@@ -4,7 +4,7 @@ import background from "@/assets/Background3.jpg";
 import { icons } from "lucide-react";
 import { isMobile } from "../lib/isMobile";
 
-import FastSearchBar from "./FastSearch-bar";
+import FastSearchBar from "./Fast-Searchbar";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
