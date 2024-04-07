@@ -1,5 +1,5 @@
 import { RefObject } from "react";
-import normalizeSearchString from "./normalizeString";
+import normalizeString from "./normalizeString";
 
 type QueryType = "id" | "innerText";
 
@@ -18,8 +18,8 @@ export function initSearchBar(
       e.childNodes.forEach((el) => {
         const element = el as HTMLElement;
 
-        const elementQuery = normalizeSearchString(getSearchQuery(element));
-        const elementToSearch = normalizeSearchString(input.current!.value);
+        const elementQuery = normalizeString(getSearchQuery(element));
+        const elementToSearch = normalizeString(input.current!.value);
 
         if (
           input.current?.value.length === 0 ||

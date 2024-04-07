@@ -6,6 +6,7 @@ import { ANIMES } from "@/animes/constants";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
+import normalizeString from "../lib/normalizeString";
 
 interface FastSearchBarProps {
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;
@@ -63,17 +64,16 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
       className={`bg-transparent ${className ?? ""}`}
       ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
+        const inputValue = normalizeString(e.target.value);
 
-        const filteredAnimes = ANIMES.filter(({ anime, aliases }) => {
-          const value = inputValue.toLowerCase();
-
-          return (
-            anime?.toLowerCase().includes(value) ||
+        const filteredAnimes = ANIMES.filter(
+          ({ anime, aliases }) =>
+            normalizeString(anime).includes(inputValue) ||
             (aliases &&
-              aliases.some((alias) => alias.toLowerCase().includes(value)))
-          );
-        });
+              aliases.some((alias) =>
+                normalizeString(alias).includes(inputValue),
+              )),
+        );
 
         if (filteredAnimes.length === 0) {
           setOutput(<p>Aucun résultat trouvé.</p>);
