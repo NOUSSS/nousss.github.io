@@ -236,15 +236,15 @@ export default function Accueil() {
               >
                 <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
                   <div className="my-4">
-                    <h1 className="text-5xl max-xl:text-4xl max-md:text-xl">
+                    <h1 className="text-5xl max-xl:text-3xl">
                       {anime.anime.length > 25
                         ? anime.anime.substring(0, 25) + "..."
                         : anime.anime}
                     </h1>
 
-                    <p className="m-4 text-left text-sm text-zinc-400 max-xl:hidden">
-                      {anime.synopsis.length > 600
-                        ? `${anime.synopsis.substring(0, 600)}...`
+                    <p className="m-4 text-left text-base max-xl:hidden max-lg:block max-md:text-xs">
+                      {anime.synopsis.length > 300
+                        ? `${anime.synopsis.substring(0, 300)}...`
                         : anime.synopsis}
                     </p>
                   </div>
@@ -306,7 +306,7 @@ export default function Accueil() {
                 </div>
 
                 <Image
-                  className="aspect-video w-[900px] min-w-[900px] max-lg:min-w-full max-lg:max-w-full"
+                  className="aspect-video w-[900px] min-w-[900px] after:absolute max-lg:min-w-full max-lg:max-w-full"
                   alt="affiche d'un anime aléatoire"
                   src={anime.options.affiche!}
                 />
