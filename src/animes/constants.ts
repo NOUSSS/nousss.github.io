@@ -76,6 +76,7 @@ import SteinsGate from "./SteinsGate/steins-gate";
 import CodeGeass from "./CodeGeass/code-geass";
 import ReZero from "./ReZero/re-zero";
 import DragonQuest from "./DragonQuest/dragon-quest";
+import JojoBizarreAdventure from "./JojoBizarreAdventure/jojo-bizarre-adventure";
 
 export interface AnimesType {
   anime: string;
@@ -700,6 +701,13 @@ export const ANIMES: AnimesType[] = [
       "Il y a 15 ans, Hadlar, le Roi du Mal, qui terrorisait le monde avec ses hordes de monstres, a été vaincu par un grand héros. Libérés de ses maléfices, les monstres ont recommencé à vivre discrètement sur une petite île des mers du Sud, l'île de Dermline. C'est sur cette île que Daï a été élevé, par son grand-père adoptif Brass. Daï, un jeune garçon de 12 ans, rêve de devenir un héros et de protéger l'île, alors que son grand-père, un sage incube d'environ 180 ans, veut à tout prix qu'il soit mage. Mais, le jeune garçon n'est pas doué pour la magie... Malheureusement, le Roi du Mal ressuscite, grâce à l'empereur du Mal, et recommence à semer la terreur dans le monde. Daï est alors formé aux techniques de combat par maître Avan, en vue de défaire le Dieu du Mal... Mais alors que son entraînement est à peine entamé, Avan se sacrifie pour sauver ses disciples de Hadlar, le Roi du Mal. C'est pour venger sa mémoire que Daï se battra, aidé par ses amis, Pop, Maam, et d'autres... Ainsi débute sa quête...",
     category: ["Jeux vidéos"],
     options: new DragonQuest(),
+  },
+  {
+    anime: "JoJo's Bizarre Adventure",
+    synopsis:
+      "En Angleterre, dans les années 1880, Jonathan, fils unique de la famille aristocrate Joestar, s’efforce de devenir un gentleman accompli. Son quotidien est bouleversé par l’adoption de Dio Brando, un jeune homme mystérieux du même âge. Cette adoption résulte d’une vieille promesse liant leurs pères respectifs : Dario a sauvé la vie de George Joestar dans le passé et lui demande, sur son lit de mort, de recueillir son fils. Mais Dio est fourbe, ambitieux et sans scrupule : il fera tout pour s’emparer de la fortune des Joestar et détruire la vie de Jonathan. Leur lutte fratricide va les mener dans les recoins les plus sombres de la magie noire et se perpétuer de génération en génération comme une malédiction. Retrouvez également le deuxième arc de la saga Jojo, Battle Tendency ! Suivez le petit-fils de Jonathan, Joseph Joestar, à New York et revivez toute son aventure sur ADN.",
+    options: new JojoBizarreAdventure(),
+    category: ["Classique", "Humour"],
   },
 ];
 
