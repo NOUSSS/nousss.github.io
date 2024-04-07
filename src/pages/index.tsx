@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import ColorPicker from "@/app/components/colorPicker";
+import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 import { Footer } from "@/app/components/Footer";

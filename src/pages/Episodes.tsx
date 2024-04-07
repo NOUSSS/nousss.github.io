@@ -17,7 +17,7 @@ import { useSearchParams } from "next/navigation";
 import { formatLang, langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
-import SearchBar from "@/app/components/searchBar";
+import SearchBar from "@/app/components/SearchBar";
 import Select from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
@@ -26,7 +26,7 @@ import random from "@/app/lib/random";
 import getHostname from "@/app/lib/getHostname";
 
 import Switch from "@/app/components/Switch";
-import ColorPicker from "@/app/components/colorPicker";
+import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Message from "@/app/components/Message";
 import useAnime from "@/app/lib/hooks/useAnime";

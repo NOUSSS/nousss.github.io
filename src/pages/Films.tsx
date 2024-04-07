@@ -16,12 +16,12 @@ import { toast } from "sonner";
 import { useScript } from "usehooks-ts";
 import { useRouter } from "next/router";
 
-import SearchBar from "@/app/components/searchBar";
+import SearchBar from "@/app/components/SearchBar";
 import Select from "@/app/components/Select";
 import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
-import ColorPicker from "@/app/components/colorPicker";
+import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Films = () => {

@@ -20,7 +20,7 @@ import Head from "next/head";
 import Select, { ItemsProps } from "@/app/components/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
-import ColorPicker from "@/app/components/colorPicker";
+import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Scans = () => {
