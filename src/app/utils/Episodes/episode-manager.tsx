@@ -1,5 +1,5 @@
-import React, { MutableRefObject, RefObject } from "react";
-import { AnimeEpisodesProps } from "@/typings/types";
+import React, { RefObject } from "react";
+import { Anime } from "@/typings/types";
 
 export function Change(
   indexEpisode: number | string,
@@ -7,11 +7,13 @@ export function Change(
 
   updateAnime: (
     newData:
-      | Partial<AnimeEpisodesProps>
-      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+      | Partial<Anime.AnimeEpisodesProps>
+      | ((
+          prevState: Anime.AnimeEpisodesProps,
+        ) => Partial<Anime.AnimeEpisodesProps>),
   ) => void,
 
-  AnimeInfo: AnimeEpisodesProps,
+  AnimeInfo: Anime.AnimeEpisodesProps,
 
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
@@ -146,11 +148,13 @@ export function NextEpisode(
 
   updateAnime: (
     newData:
-      | Partial<AnimeEpisodesProps>
-      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+      | Partial<Anime.AnimeEpisodesProps>
+      | ((
+          prevState: Anime.AnimeEpisodesProps,
+        ) => Partial<Anime.AnimeEpisodesProps>),
   ) => void,
 
-  AnimeInfo: AnimeEpisodesProps,
+  AnimeInfo: Anime.AnimeEpisodesProps,
 
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,
@@ -175,11 +179,13 @@ export function PrevEpisode(
 
   updateAnime: (
     newData:
-      | Partial<AnimeEpisodesProps>
-      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+      | Partial<Anime.AnimeEpisodesProps>
+      | ((
+          prevState: Anime.AnimeEpisodesProps,
+        ) => Partial<Anime.AnimeEpisodesProps>),
   ) => void,
 
-  AnimeInfo: AnimeEpisodesProps,
+  AnimeInfo: Anime.AnimeEpisodesProps,
 
   containerRef: RefObject<HTMLElement>,
   episodeTitleRef: RefObject<HTMLSpanElement>,

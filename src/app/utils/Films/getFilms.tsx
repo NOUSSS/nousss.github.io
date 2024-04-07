@@ -2,16 +2,16 @@ import Image from "next/image";
 
 import { getLecteur } from "@/app/lib/getLecteur";
 import { appearVideo } from "./appearVideo";
-import { AnimeFilmsProps } from "@/typings/types";
+import { Anime } from "@/typings/types";
 import { RefObject } from "react";
 
 export function getFilms(
-  Anime: AnimeFilmsProps,
+  Anime: Anime.AnimeFilmsProps,
 
   updateAnime: (
     newData:
-      | Partial<AnimeFilmsProps>
-      | ((prevState: AnimeFilmsProps) => Partial<AnimeFilmsProps>),
+      | Partial<Anime.AnimeFilmsProps>
+      | ((prevState: Anime.AnimeFilmsProps) => Partial<Anime.AnimeFilmsProps>),
   ) => void,
 
   containerRef: RefObject<HTMLElement>,
@@ -64,5 +64,8 @@ export function getFilms(
     );
   }
 
-  updateAnime((currentState) => ({ ...currentState, films: filmsNodes }));
+  updateAnime((currentState) => ({
+    ...currentState,
+    films: filmsNodes,
+  }));
 }

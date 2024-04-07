@@ -1,7 +1,7 @@
-import { Film } from "@/typings/types";
+import { Options } from "@/typings/types";
 import { getImage } from "./images-films";
 
-export const films: Film = {
+export const films: Options.Film = {
   0: { name: "Broly", aliases: ["Super sayan"], image: () => getImage(0) },
   1: {
     name: "Super Heros",

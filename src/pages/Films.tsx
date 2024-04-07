@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { AnimeFilmsProps, FilmOptions } from "@/typings/types";
+import { Anime, Options } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -25,11 +25,11 @@ import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Films = () => {
-  const [anime, updateAnime] = useAnime<AnimeFilmsProps>({});
+  const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
   const [isClient, setIsClient] = useState(false);
 
   const options = (isClient &&
-    anime?.anime?.options.FILM_OPTIONS) as FilmOptions;
+    anime?.anime?.options.FILM_OPTIONS) as Options.FilmOptions;
 
   const { SCRIPT_URL } = options || {};
 

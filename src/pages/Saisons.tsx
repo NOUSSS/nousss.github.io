@@ -6,7 +6,7 @@ import { Title } from "@/app/components/Title";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
-import { AnimeSaisonsProps } from "@/typings/types";
+import { Anime } from "@/typings/types";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -19,7 +19,7 @@ import useAnime from "@/app/lib/hooks/useAnime";
 const Saisons = () => {
   const router = useRouter();
 
-  const [anime, updateAnime] = useAnime<AnimeSaisonsProps>({});
+  const [anime, updateAnime] = useAnime<Anime.AnimeSaisonsProps>({});
 
   const saisonsRef = useRef<HTMLUListElement[]>([]);
 

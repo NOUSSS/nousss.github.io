@@ -1,19 +1,13 @@
 import { StaticImageData } from "next/image";
-import {
-  FilmOptions,
-  ScansOptions,
-  EpisodesOptions,
-  Season,
-  Note,
-} from "@/typings/types";
+import { Note, Options } from "@/typings/types";
 
 export class Anime {
   public affiche: StaticImageData | null;
-  public saisons: Season | null;
+  public saisons: Options.Season | null;
 
-  public FILM_OPTIONS: FilmOptions | null;
-  public SCANS_OPTIONS: ScansOptions | null;
-  public EPISODES_OPTIONS: EpisodesOptions | null;
+  public FILM_OPTIONS: Options.FilmOptions | null;
+  public SCANS_OPTIONS: Options.ScansOptions | null;
+  public EPISODES_OPTIONS: Options.EpisodesOptions | null;
 
   public note: Note[] | string | undefined;
 

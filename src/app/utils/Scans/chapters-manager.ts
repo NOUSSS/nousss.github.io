@@ -1,13 +1,13 @@
 import { selectChapter } from "./chapters-utils";
 import { RefObject } from "react";
-import { AnimeScansProps } from "@/typings/types";
+import { Anime } from "@/typings/types";
 
 export const PrevChapter = (
-  Anime: AnimeScansProps,
+  Anime: Anime.AnimeScansProps,
   setAnime: (
     newData:
-      | Partial<AnimeScansProps>
-      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+      | Partial<Anime.AnimeScansProps>
+      | ((prevState: Anime.AnimeScansProps) => Partial<Anime.AnimeScansProps>),
   ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
@@ -24,11 +24,11 @@ export const PrevChapter = (
 };
 
 export const NextChapter = (
-  Anime: AnimeScansProps,
+  Anime: Anime.AnimeScansProps,
   setAnime: (
     newData:
-      | Partial<AnimeScansProps>
-      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+      | Partial<Anime.AnimeScansProps>
+      | ((prevState: Anime.AnimeScansProps) => Partial<Anime.AnimeScansProps>),
   ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {
@@ -45,11 +45,11 @@ export const NextChapter = (
 };
 
 export const LastChapter = (
-  Anime: AnimeScansProps,
+  Anime: Anime.AnimeScansProps,
   setAnime: (
     newData:
-      | Partial<AnimeScansProps>
-      | ((prevState: AnimeScansProps) => Partial<AnimeScansProps>),
+      | Partial<Anime.AnimeScansProps>
+      | ((prevState: Anime.AnimeScansProps) => Partial<Anime.AnimeScansProps>),
   ) => void,
   placeholderRef: RefObject<HTMLElement>,
 ) => {

@@ -1,11 +1,11 @@
 import React, { RefObject } from "react";
 import Image from "next/image";
 
-import { AnimeScansProps, windowKeys } from "@/typings/types";
+import { Anime } from "@/typings/types";
 import { ItemsProps } from "@/app/components/Select";
 
 export const selectChapter = (
-  Anime: AnimeScansProps,
+  Anime: Anime.AnimeScansProps,
   item: ItemsProps,
 
   placeholderRef: RefObject<HTMLElement>,
@@ -19,11 +19,11 @@ export const selectChapter = (
   if (item?.name && item?.value) {
     if (placeholderRef.current) placeholderRef.current.innerText = item.name;
 
-    const scans = (window as unknown as windowKeys)[`eps${item.value}`];
+    const scans = window[`eps${item.value}`];
 
     localStorage.setItem(`${Anime?.anime?.anime}--chapitre`, item.value);
 
-    for (let i = 1; i <= scans.length; i++) {
+    for (let i = 1; i <= scans!.length; i++) {
       scansImages.push(
         <Image
           onContextMenu={(e) => {

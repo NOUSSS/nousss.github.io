@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { AnimeEpisodesProps, SeasonAndFilm } from "@/typings/types";
+import { Anime as AnimeType, Options } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
@@ -44,7 +44,7 @@ const Episodes = () => {
     };
   }, [router.events]);
 
-  const [anime, updateAnime] = useAnime<AnimeEpisodesProps>({});
+  const [anime, updateAnime] = useAnime<AnimeType.AnimeEpisodesProps>({});
   const [isClient, setIsClient] = useState(false);
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
@@ -71,7 +71,7 @@ const Episodes = () => {
 
   const saisonsValues = (isClient &&
     anime &&
-    Object.values(options?.saisons!)) as SeasonAndFilm[];
+    Object.values(options?.saisons!)) as Options.SeasonAndFilm[];
 
   const oavIndex = (isClient &&
     anime &&

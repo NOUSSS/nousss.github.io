@@ -1,3 +1,3 @@
 interface Window {
-  [key: `eps${number}`]: string[];
+  [key: string]: string[] | undefined;
 }

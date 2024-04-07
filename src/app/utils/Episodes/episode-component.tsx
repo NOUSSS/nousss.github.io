@@ -1,6 +1,6 @@
 import { MutableRefObject, RefObject, useCallback } from "react";
 import { Change } from "./episode-manager";
-import { AnimeEpisodesProps } from "@/typings/types";
+import { Anime } from "@/typings/types";
 
 interface EpisodeComponentProps {
   namesRef: MutableRefObject<HTMLSpanElement[]>;
@@ -16,11 +16,13 @@ interface EpisodeComponentProps {
 
   updateAnime: (
     newData:
-      | Partial<AnimeEpisodesProps>
-      | ((prevState: AnimeEpisodesProps) => Partial<AnimeEpisodesProps>),
+      | Partial<Anime.AnimeEpisodesProps>
+      | ((
+          prevState: Anime.AnimeEpisodesProps,
+        ) => Partial<Anime.AnimeEpisodesProps>),
   ) => void;
 
-  AnimeInfo: AnimeEpisodesProps;
+  AnimeInfo: Anime.AnimeEpisodesProps;
 
   containerRef: RefObject<HTMLElement>;
   episodeTitleRef: RefObject<HTMLSpanElement>;

@@ -4,11 +4,11 @@ import { getAnime } from "@/app/lib/getAnime";
 export const getCurrentChapitre = (
   animeName: string,
   index: number,
-  historiques: Historique[]
+  historiques: Historique[],
 ) => {
   if (
     getAnime(animeName)?.options?.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.includes(
-      Number(localStorage.getItem(`${animeName}--chapitre`)) - 1
+      Number(localStorage.getItem(`${animeName}--chapitre`)) - 1,
     )
   ) {
     return `Chapitre Special`;
