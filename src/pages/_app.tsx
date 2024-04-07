@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 function App({ Component, pageProps }: AppProps) {
   return (
     <RootLayout>
-      <Toaster richColors />
+      <Toaster theme="system" closeButton={true} richColors />
 
       <Component {...pageProps} />
     </RootLayout>
