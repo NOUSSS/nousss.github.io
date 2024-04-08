@@ -28,7 +28,6 @@ import getHostname from "@/app/lib/getHostname";
 import Switch from "@/app/components/Switch";
 import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
-import Message from "@/app/components/Message";
 import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 
@@ -81,6 +80,13 @@ const Episodes = () => {
   const [filever, setFilever] = useState<number>();
 
   useEffect(() => {
+    toast.info(
+      "Si vous avez des pubs dans les lecteurs, bah c'est pas de ma faute car les lecteurs ne sont pas à moi",
+      {
+        duration: 10000,
+      },
+    );
+
     setIsClient(true);
 
     const currentAnime = getCurrentAnime({
@@ -501,8 +507,6 @@ const Episodes = () => {
           ) : null
         ) : null}
       </div>
-
-      <Message message="Si vous avez des pubs dans les lecteurs, bah c'est pas de ma faute car les lecteurs ne sont pas à moi" />
 
       <div ref={containerRef} className="container">
         <iframe className="video" src={anime?.video} allowFullScreen></iframe>
