@@ -164,7 +164,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Solo Leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
-    category: ["Nouveautés", "Webtoon"],
+    category: ["Nouvelles saisons", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -202,7 +202,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
-    category: ["Nouveautés", "Humour", "Magie"],
+    category: ["Nouvelles saisons", "Humour", "Magie"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -266,7 +266,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Classroom of the Elites",
     aliases: ["kyotaka", "ecole", "scans", "saisons"],
     options: new ClassroomOfTheElites(),
-    category: ["Nouveautés", "School Life"],
+    category: ["Réflexion", "School Life"],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -503,7 +503,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Ninja Kamui",
-    category: ["Nouveautés"],
+    category: ["Nouvelles saisons"],
     options: new NinjaKamui(),
     synopsis:
       "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
@@ -517,7 +517,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Frieren",
-    category: ["Nouveautés", "En équipe"],
+    category: ["Nouvelles saisons", "En équipe"],
     options: new Frieren(),
     aliases: ["sousou de frieren"],
     synopsis:
@@ -552,7 +552,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Bucchigiri",
-    category: ["New gen", "Nouveautés"],
+    category: ["New gen", "Nouvelles saisons"],
     options: new Bucchigiri(),
     synopsis:
       "Les retrouvailles d'Arajin Tomoshibi avec son vieil ami de lycée Matakara Asamine prennent une tournure inattendue lorsqu'ils sont entraînés dans une bagarre avec les caïds du coin. La situation devient encore plus bizarre quand débarque un véritable colosse ! Mais ce n’est que le début d’une bataille plus profonde qui s’en engagée…",
@@ -616,7 +616,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Mushoku Tensei: Jobless Reincarnation",
-    category: ["Aventure", "Isekai"],
+    category: ["Aventure", "Isekai", "Nouvelles saisons"],
     synopsis:
       "Un NEET vient d'être chassé de chez ses parents. Ayant le moral au plus bas, il pense au suicide. Jusqu'au jour où il aperçoit une ancienne camarade de classe sur le point de se faire renverser. D'un geste héroïque, il la pousse et se fait renverser à sa place. Suite à ça, il meurt puis se retrouve réincarné dans un monde fantaisiste. Il se réincarne dans le corps d'un enfant du nom de Rudeus Greyrat. Il est le fils d'un épéiste nommé Paul Greyrat et d'une ancienne aventurière nommée Zenith Greyrat. Bien décidé à faire quelque chose de sa nouvelle vie en tant que Rudeus, il va essayer de devenir le plus grand magicien de l'histoire.",
     options: new MushokuTensei(),

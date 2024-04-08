@@ -138,7 +138,7 @@ export default function Accueil() {
     ).sort((a, b) => b.names.length - a.names.length);
 
     const momentIndex = updatedCatalogues.findIndex(
-      ({ category }) => category === "Nouveautés",
+      ({ category }) => category === "Nouvelles saisons",
     );
 
     let momentItem;
