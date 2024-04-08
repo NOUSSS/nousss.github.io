@@ -16,7 +16,12 @@ class MushokuTensei extends Anime {
         image: () => getImage(1),
       },
       2: {
-        name: "Saison 2",
+        name: "Saison 2 partie 1",
+        aliases: [""],
+        image: () => getImage(2),
+      },
+      3: {
+        name: "Saison 2 partie 2",
         aliases: [""],
         image: () => getImage(2),
       },
@@ -52,6 +57,11 @@ class MushokuTensei extends Anime {
           hs: [0],
         },
       ],
+
+      parts: {
+        from: 2,
+        to: 3,
+      },
 
       allIndex: {
         1: 0,
