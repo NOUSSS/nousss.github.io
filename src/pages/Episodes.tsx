@@ -12,7 +12,7 @@ import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/app/class/anime";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
-import { useScript } from "usehooks-ts";
+import { useScript } from "@/app/lib/hooks/useScript";
 import { useSearchParams } from "next/navigation";
 import { formatLang, langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";

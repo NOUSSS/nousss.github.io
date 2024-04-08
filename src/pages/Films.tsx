@@ -13,7 +13,7 @@ import { getAnime } from "@/app/lib/getAnime";
 import { formatLang, langType } from "@/app/lib/formatLang";
 
 import { toast } from "sonner";
-import { useScript } from "usehooks-ts";
+import { useScript } from "@/app/lib/hooks/useScript";
 import { useRouter } from "next/router";
 
 import SearchBar from "@/app/components/SearchBar";

@@ -13,7 +13,7 @@ import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
 import { toast } from "sonner";
 import { icons } from "lucide-react";
-import { useScript } from "usehooks-ts";
+import { useScript } from "@/app/lib/hooks/useScript";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
