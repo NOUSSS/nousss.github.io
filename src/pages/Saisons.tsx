@@ -13,7 +13,6 @@ import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 import SearchBar from "@/app/components/SearchBar";
-import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 
 const Saisons = () => {
@@ -43,8 +42,6 @@ const Saisons = () => {
           <title>{anime.anime.anime} - Saisons - Mugiwara-no Streaming</title>
         )}
       </Head>
-
-      <ColorPicker />
 
       <Title
         link={{
