@@ -24,5 +24,5 @@ export function Title({
     </Link>
   );
 
-  return <div className="animate-title text-6xl">{text}</div>;
+  return <div className="animate-title text-6xl max-sm:text-5xl">{text}</div>;
 }

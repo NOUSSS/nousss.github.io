@@ -328,7 +328,7 @@ const Episodes = () => {
 
             let retard = 0;
 
-            episodesListRef.current?.[0].childNodes.forEach((e, i) => {
+            episodesListRef.current?.[0]?.childNodes.forEach((e, i) => {
               if (i + 1 < Number(episode)) {
                 if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
               }
