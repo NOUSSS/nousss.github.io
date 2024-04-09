@@ -196,7 +196,7 @@ export default function Accueil() {
   );
 
   return (
-    <main className="top-20">
+    <main className="top-16">
       <div
         ref={overlayRef}
         className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"

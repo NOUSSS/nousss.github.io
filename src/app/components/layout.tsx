@@ -142,7 +142,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
       ></div>
 
-      <header className="fixed left-0 top-0 z-[2024] flex h-20 w-full justify-center border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 shadow-lg backdrop-blur-3xl">
+      <header className="fixed left-0 top-0 z-[2024] flex h-16 w-full justify-center border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 shadow-lg backdrop-blur-3xl">
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
           <Link href="/">
             <h1
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 className="w-10"
               />
 
-              <p className="text-3xl font-normal max-md:hidden">
+              <p className="text-2xl font-normal max-md:hidden">
                 <span className="font-normal transition-colors group-hover:text-white">
                   Mugiwara-no
                 </span>{" "}
@@ -170,11 +170,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
           <div
             onClick={() => setIsVisible(!isVisible)}
-            className="flex cursor-pointer rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
+            className="flex cursor-pointer items-center rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
           >
-            <SearchIcon className="mr-4 w-6" />
+            <SearchIcon size={22} className="mr-4 w-6" />
 
-            <span ref={searchTextRef} className="flex items-center text-white">
+            <span ref={searchTextRef} className="text-base text-white">
               Recherche rapide&nbsp;
             </span>
           </div>
