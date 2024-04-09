@@ -135,11 +135,13 @@ const Episodes = () => {
   }, []);
 
   useEffect(() => {
-    if (anime?.lang && anime?.anime && anime?.lang) {
+    if (anime?.lang && anime?.anime && anime.saison) {
       const parts = isClient ? options?.EPISODES_OPTIONS?.parts : undefined;
 
+      console.log(anime?.lang);
+
       let scriptIndex = getScriptIndex({
-        currentSaison: anime!.saison,
+        currentSaison: anime.saison,
         parts,
       });
 
@@ -172,168 +174,210 @@ const Episodes = () => {
 
       setFilever(random());
     }
-  }, [anime]);
+  }, [anime, anime.saison, anime.lang]);
 
   const status = useScript((url_script as string) + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
   useEffect(() => {
-    if (status === "error") {
-      if (loadingToast) {
-        toast.error("Erreur dans le chargement des épisodes.", {
-          id: loadingToast,
-        });
-      }
+    if (status === "error" && loadingToast) {
+      toast.error("Erreur dans le chargement des épisodes.", {
+        id: loadingToast,
+      });
     }
 
+    if (status === "ready" && loadingToast) {
+      toast.success("Les épisodes ont bien été chargés", {
+        id: loadingToast,
+      });
+    }
+  }, [status]);
+
+  useEffect(() => {
     if (status === "ready") {
-      if (loadingToast) {
-        toast.success("Les épisodes ont bien été chargés", {
-          id: loadingToast,
-        });
-      }
+      setTimeout(() => {
+        if (anime?.saison && anime.saison > saisonsEntries[oavIndex]) {
+          const newIndexSaison = (Number(anime?.saison) - 1).toString();
 
-      if (anime?.saison && anime.saison > saisonsEntries[oavIndex]) {
-        const newIndexSaison = (Number(anime?.saison) - 1).toString();
-
-        localStorage.setItem(`${anime?.anime?.anime}--saison`, newIndexSaison);
-        anime!.saison = newIndexSaison;
-      }
-
-      const fetchedLecteurs = getLecteur();
-
-      updateAnime((currentState) => ({
-        ...currentState,
-        lecteurs: fetchedLecteurs,
-      }));
-
-      if (anime?.currentLecteur) {
-        updateAnime((currentState) => ({
-          ...currentState,
-          currentLecteur: fetchedLecteurs[anime.lecteur!],
-        }));
-      } else {
-        const lecteur = Object.keys(fetchedLecteurs)[0];
-
-        updateAnime((currentState) => ({
-          ...currentState,
-          lecteur,
-          currentLecteur: fetchedLecteurs[lecteur]!,
-        }));
-      }
-
-      const episodeIndex = allIndex![anime?.saison ?? 0];
-      let episode = localStorage.getItem(`${anime?.anime?.anime}--episode`);
-
-      if (!episode) {
-        localStorage.setItem(`${anime?.anime?.anime}--episode`, "1");
-
-        episode = "1";
-      }
-
-      const e_sp = localStorage.getItem(`${anime?.anime?.anime}--e-sp`);
-      const listEpisodes: React.ReactNode[] = [];
-
-      let retard = 0;
-
-      if (!anime.currentLecteur || anime.currentLecteur.length < 1) {
-        return updateAnime((currentState) => ({
-          ...currentState,
-          episodeTitle: "Aucun lecteur n'est disponible pour cette anime",
-        }));
-      }
-
-      for (
-        let indexEpisode = 1;
-        indexEpisode < anime.currentLecteur.length + 1;
-        indexEpisode++
-      ) {
-        const isHorsSerie = horsSeries?.find(
-          ({ saison }) =>
-            saison === localStorage.getItem(`${anime?.anime?.anime}--saison`),
-        );
-
-        if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
-          retard++;
-
-          const title = `E-SP${retard}`;
-
-          listEpisodes.push(
-            <EpisodeComponent
-              episodeIndex={indexEpisode - retard}
-              id={indexEpisode.toString()}
-              episodeNumber={title}
-              episodeSpecial={true}
-              namesRef={namesRef}
-              containerRef={containerRef}
-              episodeTitleRef={episodeTitleRef}
-              AnimeInfo={anime}
-              updateAnime={updateAnime}
-              lecteur={anime.currentLecteur!}
-              episodesListRef={episodesListRef}
-            />,
+          localStorage.setItem(
+            `${anime?.anime?.anime}--saison`,
+            newIndexSaison,
           );
-        } else {
-          const episodeNumber = episodeIndex + indexEpisode - retard;
-          const episodeTitle =
-            names?.find(
-              ({ index }: { index: string }) =>
-                index === episodeNumber.toString(),
-            )?.name || "";
-
-          listEpisodes.push(
-            <EpisodeComponent
-              episodeIndex={indexEpisode - retard}
-              id={indexEpisode.toString()}
-              episodeTitle={episodeTitle}
-              episodeNumber={episodeNumber}
-              namesRef={namesRef}
-              episodeSpecial={false}
-              containerRef={containerRef}
-              episodeTitleRef={episodeTitleRef}
-              AnimeInfo={anime}
-              updateAnime={updateAnime}
-              lecteur={anime.currentLecteur!}
-              episodesListRef={episodesListRef}
-            />,
-          );
+          anime!.saison = newIndexSaison;
         }
-      }
 
-      updateAnime((currentState) => ({
-        ...currentState,
-        episodes: listEpisodes,
-      }));
+        const fetchedLecteurs = getLecteur();
 
-      if (episode !== "1" && !e_sp) {
-        (async () => {
-          await new Promise((res) => setTimeout(res, 100, true));
+        updateAnime((currentState) => ({
+          ...currentState,
+          lecteurs: fetchedLecteurs,
+        }));
 
-          const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
+        if (anime?.currentLecteur) {
+          updateAnime((currentState) => ({
+            ...currentState,
+            currentLecteur: fetchedLecteurs[anime.lecteur!],
+          }));
+        } else {
+          const lecteur = Object.keys(fetchedLecteurs)[0];
 
-          let retard = 0;
+          updateAnime((currentState) => ({
+            ...currentState,
+            lecteur,
+            currentLecteur: fetchedLecteurs[lecteur]!,
+          }));
+        }
 
-          episodesListRef.current?.[0].childNodes.forEach((e, i) => {
-            if (i + 1 < Number(episode)) {
-              if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
-            }
-          });
+        const episodeIndex = allIndex![anime?.saison ?? 0];
+        let episode = localStorage.getItem(`${anime?.anime?.anime}--episode`);
 
-          const title =
-            names?.find(
-              ({ index }) =>
-                index === (episodeIndex + Number(episode) - retard).toString(),
-            )?.name || "";
+        if (!episode) {
+          localStorage.setItem(`${anime?.anime?.anime}--episode`, "1");
+
+          episode = "1";
+        }
+
+        const e_sp = localStorage.getItem(`${anime?.anime?.anime}--e-sp`);
+        const listEpisodes: React.ReactNode[] = [];
+
+        let retard = 0;
+
+        if (!anime.currentLecteur || anime.currentLecteur.length < 1) {
+          return updateAnime((currentState) => ({
+            ...currentState,
+            episodeTitle: "Un problème est survenue",
+          }));
+        }
+
+        for (
+          let indexEpisode = 1;
+          indexEpisode < anime.currentLecteur.length + 1;
+          indexEpisode++
+        ) {
+          const isHorsSerie = horsSeries?.find(
+            ({ saison }) =>
+              saison === localStorage.getItem(`${anime?.anime?.anime}--saison`),
+          );
+
+          if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
+            retard++;
+
+            const title = `E-SP${retard}`;
+
+            listEpisodes.push(
+              <EpisodeComponent
+                episodeIndex={indexEpisode - retard}
+                id={indexEpisode.toString()}
+                episodeNumber={title}
+                episodeSpecial={true}
+                namesRef={namesRef}
+                containerRef={containerRef}
+                episodeTitleRef={episodeTitleRef}
+                AnimeInfo={anime}
+                updateAnime={updateAnime}
+                lecteur={anime.currentLecteur!}
+                episodesListRef={episodesListRef}
+              />,
+            );
+          } else {
+            const episodeNumber = episodeIndex + indexEpisode - retard;
+            const episodeTitle =
+              names?.find(
+                ({ index }: { index: string }) =>
+                  index === episodeNumber.toString(),
+              )?.name || "";
+
+            listEpisodes.push(
+              <EpisodeComponent
+                episodeIndex={indexEpisode - retard}
+                id={indexEpisode.toString()}
+                episodeTitle={episodeTitle}
+                episodeNumber={episodeNumber}
+                namesRef={namesRef}
+                episodeSpecial={false}
+                containerRef={containerRef}
+                episodeTitleRef={episodeTitleRef}
+                AnimeInfo={anime}
+                updateAnime={updateAnime}
+                lecteur={anime.currentLecteur!}
+                episodesListRef={episodesListRef}
+              />,
+            );
+          }
+        }
+
+        updateAnime((currentState) => ({
+          ...currentState,
+          episodes: listEpisodes,
+        }));
+
+        if (episode !== "1" && !e_sp) {
+          (async () => {
+            await new Promise((res) => setTimeout(res, 100, true));
+
+            const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
+
+            let retard = 0;
+
+            episodesListRef.current?.[0].childNodes.forEach((e, i) => {
+              if (i + 1 < Number(episode)) {
+                if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
+              }
+            });
+
+            const title =
+              names?.find(
+                ({ index }) =>
+                  index ===
+                  (episodeIndex + Number(episode) - retard).toString(),
+              )?.name || "";
+
+            updateAnime((currentState) => ({
+              ...currentState,
+              video: URL_EPISODE,
+              episodeTitle: (
+                <>
+                  <span>
+                    {Number(episodeIndex) + Number(episode) - retard}{" "}
+                    {anime?.saison === "1"
+                      ? ""
+                      : `(${Number(episode) - retard})`}
+                  </span>{" "}
+                  :{" "}
+                  <span ref={episodeTitleRef} className="text-white">
+                    {title}
+                  </span>
+                </>
+              ),
+            }));
+          })();
+        }
+
+        if (episode !== "1" && e_sp) {
+          const URL_EPISODE = anime.currentLecteur![Number(episode) - 1];
 
           updateAnime((currentState) => ({
             ...currentState,
             video: URL_EPISODE,
+            episodeTitle: <span>{e_sp}</span>,
+          }));
+        }
+
+        if (episode === "1") {
+          const [firstEpisode] = anime.currentLecteur!;
+
+          const title =
+            names?.find(({ index }) => index === (episodeIndex + 1).toString())
+              ?.name || "";
+
+          updateAnime((currentState) => ({
+            ...currentState,
+            video: firstEpisode,
             episodeTitle: (
               <>
                 <span>
-                  {Number(episodeIndex) + Number(episode) - retard}{" "}
-                  {anime?.saison === "1" ? "" : `(${Number(episode) - retard})`}
+                  {episodeIndex + 1} {anime?.saison === "1" ? "" : `(1)`}
                 </span>{" "}
                 :{" "}
                 <span ref={episodeTitleRef} className="text-white">
@@ -342,80 +386,46 @@ const Episodes = () => {
               </>
             ),
           }));
-        })();
-      }
+        }
 
-      if (episode !== "1" && e_sp) {
-        const URL_EPISODE = anime.currentLecteur![Number(episode) - 1];
-
-        updateAnime((currentState) => ({
-          ...currentState,
-          video: URL_EPISODE,
-          episodeTitle: <span>{e_sp}</span>,
-        }));
-      }
-
-      if (episode === "1") {
-        const [firstEpisode] = anime.currentLecteur!;
-
-        const title =
-          names?.find(({ index }) => index === (episodeIndex + 1).toString())
-            ?.name || "";
+        const saisonName =
+          anime?.anime &&
+          Object.values(anime.anime?.options?.saisons!)[
+            Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
+          ]?.name;
 
         updateAnime((currentState) => ({
           ...currentState,
-          video: firstEpisode,
-          episodeTitle: (
+          saisonTitle: (
             <>
               <span>
-                {episodeIndex + 1} {anime?.saison === "1" ? "" : `(1)`}
+                {saisonName} ({anime.currentLecteur?.length})
               </span>{" "}
-              :{" "}
-              <span ref={episodeTitleRef} className="text-white">
-                {title}
+              {"["}
+              <span style={{ color: "white" }}>
+                {anime?.lang?.toUpperCase() || "VOSTFR"}
               </span>
+              {"]"}
             </>
           ),
         }));
-      }
 
-      const saisonName =
-        anime?.anime &&
-        Object.values(anime.anime?.options?.saisons!)[
-          Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
-        ]?.name;
-
-      updateAnime((currentState) => ({
-        ...currentState,
-        saisonTitle: (
-          <>
-            <span>
-              {saisonName} ({anime.currentLecteur?.length})
-            </span>{" "}
-            {"["}
-            <span style={{ color: "white" }}>
-              {anime?.lang?.toUpperCase() || "VOSTFR"}
-            </span>
-            {"]"}
-          </>
-        ),
-      }));
-
-      if (options?.note) {
-        if (typeof options.note === "string") {
-          disclamerMessage.current = options?.note;
-        } else {
-          if (options?.note.find((obj) => obj.saison === anime?.saison)) {
-            disclamerMessage.current =
-              options?.note.find((obj) => obj.saison === anime?.saison)
-                ?.message || "";
+        if (options?.note) {
+          if (typeof options.note === "string") {
+            disclamerMessage.current = options?.note;
           } else {
-            disclamerMessage!.current = "";
+            if (options?.note.find((obj) => obj.saison === anime?.saison)) {
+              disclamerMessage.current =
+                options?.note.find((obj) => obj.saison === anime?.saison)
+                  ?.message || "";
+            } else {
+              disclamerMessage!.current = "";
+            }
           }
         }
-      }
+      }, 400);
     }
-  }, [anime.currentLecteur, status]);
+  }, [anime.currentLecteur, anime.lang, anime.saison, status]);
 
   const blurEpisodes = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -480,9 +490,8 @@ const Episodes = () => {
             },
           ]}
           onSelect={({ value }) => {
+            ClearCache();
             updateAnime((currentState) => ({ ...currentState, lang: value }));
-
-            router.reload();
           }}
         />
 
@@ -576,6 +585,8 @@ const Episodes = () => {
         {isClient && anime?.saison !== "1" ? (
           <button
             onClick={() => {
+              ClearCache();
+
               const prevSaison =
                 Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) -
                 1;
@@ -590,7 +601,10 @@ const Episodes = () => {
 
               changeSaison(prevSaison.toString(), anime?.anime?.anime!);
 
-              router.reload();
+              updateAnime((currentState) => ({
+                ...currentState,
+                saison: prevSaison.toString(),
+              }));
             }}
             className="btn back"
           >
@@ -601,6 +615,8 @@ const Episodes = () => {
         {isClient && anime?.saison !== saisonsEntries?.length.toString() ? (
           <button
             onClick={() => {
+              ClearCache();
+
               const newSaison =
                 Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) +
                 1;
@@ -615,7 +631,10 @@ const Episodes = () => {
 
               changeSaison(newSaison.toString(), anime?.anime?.anime!);
 
-              router.reload();
+              updateAnime((currentState) => ({
+                ...currentState,
+                saison: newSaison.toString(),
+              }));
             }}
             className="btn next"
           >

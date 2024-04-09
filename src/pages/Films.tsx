@@ -23,6 +23,7 @@ import getHostname from "@/app/lib/getHostname";
 import Head from "next/head";
 import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
+import clearCache from "@/app/cache/ClearCache";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
@@ -39,14 +40,11 @@ const Films = () => {
     null,
   );
 
-  const status = useScript(
-    (isClient && anime?.lang && typeof SCRIPT_URL === "function"
-      ? SCRIPT_URL(anime?.lang)
-      : false) as string,
-    {
-      removeOnUnmount: true,
-    },
-  );
+  const [script, setScript] = useState<string>("");
+
+  const status = useScript(script, {
+    removeOnUnmount: true,
+  });
 
   const router = useRouter();
 
@@ -86,8 +84,10 @@ const Films = () => {
   }, []);
 
   useEffect(() => {
-    if (anime && anime?.lang)
+    if (anime && anime?.lang) {
       localStorage.setItem(`${anime?.anime?.anime}--lang`, anime?.lang);
+      setScript(SCRIPT_URL(anime.lang));
+    }
   }, [anime?.lang]);
 
   useEffect(() => {
@@ -102,62 +102,65 @@ const Films = () => {
         id: loadingToast!,
       });
     }
-  }, [status, anime?.lang]);
+  }, [status]);
 
   useEffect(() => {
     if (status === "ready") {
-      const lastFilm = localStorage.getItem(
-        `${anime?.anime?.anime}--currentFilm`,
-      );
+      setTimeout(() => {
+        const lastFilm = localStorage.getItem(
+          `${anime?.anime?.anime}--currentFilm`,
+        );
 
-      const fetchedLecteurs = getLecteur();
-
-      updateAnime((currentState) => ({
-        ...currentState,
-        lecteurs: fetchedLecteurs,
-      }));
-
-      if (anime?.lecteur) {
-        updateAnime((currentState) => ({
-          ...currentState,
-          currentLecteur: fetchedLecteurs[anime.lecteur!],
-        }));
-      } else {
-        const lecteur = Object.keys(fetchedLecteurs)[0];
+        const fetchedLecteurs = getLecteur();
 
         updateAnime((currentState) => ({
           ...currentState,
-          lecteur,
-          currentLecteur: fetchedLecteurs[lecteur]!,
+          lecteurs: fetchedLecteurs,
         }));
-      }
 
-      if (options?.BLACKLIST_URL) {
-        for (const BLACKLIST of options.BLACKLIST_URL) {
-          if (anime.currentLecteur?.includes(BLACKLIST))
-            anime.currentLecteur?.splice(
-              anime.currentLecteur?.indexOf(BLACKLIST),
-              1,
-            );
+        if (anime?.lecteur) {
+          updateAnime((currentState) => ({
+            ...currentState,
+            currentLecteur: fetchedLecteurs[anime.lecteur!],
+          }));
+        } else {
+          const lecteur = Object.keys(fetchedLecteurs)[0];
+
+          updateAnime((currentState) => ({
+            ...currentState,
+            lecteur,
+            currentLecteur: fetchedLecteurs[lecteur]!,
+          }));
         }
-      }
 
-      appearVideo(
-        lastFilm
-          ? `${anime.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
-          : `${anime.currentLecteur?.[0]} ${
-              localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ?? "0"
-            }`,
+        if (options?.BLACKLIST_URL) {
+          for (const BLACKLIST of options.BLACKLIST_URL) {
+            if (anime.currentLecteur?.includes(BLACKLIST))
+              anime.currentLecteur?.splice(
+                anime.currentLecteur?.indexOf(BLACKLIST),
+                1,
+              );
+          }
+        }
 
-        anime!,
-        updateAnime,
+        appearVideo(
+          lastFilm
+            ? `${anime.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
+            : `${anime.currentLecteur?.[0]} ${
+                localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ??
+                "0"
+              }`,
 
-        containerRef,
-      );
+          anime!,
+          updateAnime,
 
-      getFilms(anime!, updateAnime, containerRef);
+          containerRef,
+        );
+
+        getFilms(anime!, updateAnime, containerRef);
+      }, 100);
     }
-  }, [status, anime?.currentLecteur]);
+  }, [status, anime?.currentLecteur, anime?.lang]);
 
   return (
     <main className="flex flex-col items-center">
@@ -192,9 +195,8 @@ const Films = () => {
             },
           ]}
           onSelect={({ value }) => {
+            clearCache();
             updateAnime((currentState) => ({ ...currentState, lang: value }));
-
-            router.reload();
           }}
         />
 
