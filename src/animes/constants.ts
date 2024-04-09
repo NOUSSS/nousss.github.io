@@ -77,6 +77,7 @@ import CodeGeass from "./CodeGeass/code-geass";
 import ReZero from "./ReZero/re-zero";
 import DragonQuest from "./DragonQuest/dragon-quest";
 import JojoBizarreAdventure from "./JojoBizarreAdventure/jojo-bizarre-adventure";
+import WindBreaker from "./WindBreaker/wind-breaker";
 
 export interface AnimesType {
   anime: string;
@@ -708,6 +709,13 @@ export const ANIMES: AnimesType[] = [
       "En Angleterre, dans les années 1880, Jonathan, fils unique de la famille aristocrate Joestar, s’efforce de devenir un gentleman accompli. Son quotidien est bouleversé par l’adoption de Dio Brando, un jeune homme mystérieux du même âge. Cette adoption résulte d’une vieille promesse liant leurs pères respectifs : Dario a sauvé la vie de George Joestar dans le passé et lui demande, sur son lit de mort, de recueillir son fils. Mais Dio est fourbe, ambitieux et sans scrupule : il fera tout pour s’emparer de la fortune des Joestar et détruire la vie de Jonathan. Leur lutte fratricide va les mener dans les recoins les plus sombres de la magie noire et se perpétuer de génération en génération comme une malédiction. Retrouvez également le deuxième arc de la saga Jojo, Battle Tendency ! Suivez le petit-fils de Jonathan, Joseph Joestar, à New York et revivez toute son aventure sur ADN.",
     options: new JojoBizarreAdventure(),
     category: ["Classique", "Humour"],
+  },
+  {
+    anime: "Wind Breaker",
+    synopsis:
+      "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
+    options: new WindBreaker(),
+    category: ["New gen", "Nouvelles saisons"],
   },
 ];
 
