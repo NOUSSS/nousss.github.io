@@ -49,6 +49,8 @@ const Episodes = () => {
     null,
   );
 
+  const [ErrorInterval, setErrorInterval] = useState<NodeJS.Timeout>();
+
   const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
 
@@ -244,10 +246,16 @@ const Episodes = () => {
         let retard = 0;
 
         if (!anime.currentLecteur || anime.currentLecteur.length < 1) {
-          return updateAnime((currentState) => ({
-            ...currentState,
-            episodeTitle: "Un problème est survenue",
-          }));
+          return setErrorInterval(
+            setTimeout(() => {
+              updateAnime((currentState) => ({
+                ...currentState,
+                episodeTitle: "Un problème est survenue",
+              }));
+            }, 600),
+          );
+        } else {
+          clearInterval(ErrorInterval);
         }
 
         for (
