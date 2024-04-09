@@ -158,7 +158,7 @@ const Films = () => {
         );
 
         getFilms(anime!, updateAnime, containerRef);
-      }, 100);
+      }, 400);
     }
   }, [status, anime?.currentLecteur, anime?.lang]);
 
