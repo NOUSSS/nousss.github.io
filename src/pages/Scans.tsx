@@ -257,7 +257,14 @@ const Scans = () => {
           {!isFirst ? (
             <button
               className="btn back"
-              onClick={() => PrevChapter(anime!, updateAnime, placeholderRef)}
+              onClick={() =>
+                PrevChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
             >
               Chapitre précédent
             </button>
@@ -266,7 +273,14 @@ const Scans = () => {
           {!isLast ? (
             <button
               className="btn next"
-              onClick={() => NextChapter(anime!, updateAnime, placeholderRef)}
+              onClick={() =>
+                NextChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
             >
               Chapitre suivant
             </button>
@@ -283,7 +297,14 @@ const Scans = () => {
           {!isFirst ? (
             <button
               className="btn back"
-              onClick={() => PrevChapter(anime!, updateAnime, placeholderRef)}
+              onClick={() =>
+                PrevChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
             >
               Chapitre précédent
             </button>
@@ -292,7 +313,14 @@ const Scans = () => {
           {!isLast ? (
             <button
               className="btn next"
-              onClick={() => NextChapter(anime!, updateAnime, placeholderRef)}
+              onClick={() =>
+                NextChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
             >
               Chapitre suivant
             </button>
