@@ -3,12 +3,14 @@ import Image from "next/image";
 
 import { Anime } from "@/typings/types";
 import { ItemsProps } from "@/app/components/Select";
+import replaceName from "@/app/lib/replaceName";
 
 export const selectChapter = (
   Anime: Anime.AnimeScansProps,
   item: ItemsProps,
 
   placeholderRef: RefObject<HTMLElement>,
+  newName: string | undefined,
 ): React.ReactNode[] | undefined => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -35,7 +37,14 @@ export const selectChapter = (
           alt={`Image ${i}`}
           width={1000}
           height={1000}
-          src={IMAGE_URL!({ chapitre: item.value, index: i })}
+          src={
+            newName
+              ? replaceName(
+                  IMAGE_URL!({ chapitre: item.value, index: i }),
+                  newName,
+                )
+              : IMAGE_URL!({ chapitre: item.value, index: i })
+          }
         />,
       );
     }

@@ -33,7 +33,10 @@ const Scans = () => {
     null,
   );
 
+  const [script, setScript] = useState<string>();
+
   const placeholderRef = useRef<HTMLParagraphElement | null>(null);
+  const placeholderRefVersion = useRef<HTMLParagraphElement | null>(null);
 
   const router = useRouter();
 
@@ -62,17 +65,30 @@ const Scans = () => {
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       updateAnime({ anime: currentAnime });
       setFilever(random());
+
+      setScript(currentAnime.options.SCANS_OPTIONS.SCRIPT_URL);
     }
   }, []);
+
+  useEffect(() => {
+    if (anime.anime?.options.SCANS_OPTIONS && anime?.version) {
+      setScript(
+        anime.anime.options.SCANS_OPTIONS.SCRIPT_URL.replace(
+          "/scan/",
+          `/scan${anime.version.split("|")[0]}/`,
+        ),
+      );
+    }
+  }, [anime.version]);
 
   const options = (isClient &&
     anime?.anime?.options?.SCANS_OPTIONS) as Options.ScansOptions;
 
   const from = isClient && options?.from === 0 ? options.from : 1;
 
-  const { CHAPITRE_SPECIAUX, SCRIPT_URL } = options || {};
+  const { CHAPITRE_SPECIAUX } = options || {};
 
-  const status = useScript(SCRIPT_URL + `?filever=${filever}`, {
+  const status = useScript(script + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
@@ -93,50 +109,57 @@ const Scans = () => {
     }
 
     if (status === "ready") {
-      toast.success("Les scans ont été chargés.", {
-        id: loadingToast!,
-      });
+      setTimeout(() => {
+        toast.success("Les scans ont été chargés.", {
+          id: loadingToast!,
+        });
 
-      let retard = 0;
+        let retard = 0;
 
-      const options: ItemsProps[] = [];
+        const options: ItemsProps[] = [];
 
-      for (let i = 0; i < getTailleChapitres(); i++) {
-        if (CHAPITRE_SPECIAUX?.includes(i)) {
-          options.push({
-            name: "Chapitre Special",
-            value: (i + from).toString(),
-          });
+        for (let i = 0; i < getTailleChapitres(); i++) {
+          if (CHAPITRE_SPECIAUX?.includes(i)) {
+            options.push({
+              name: "Chapitre Special",
+              value: (i + from).toString(),
+            });
 
-          retard++;
-        } else {
-          options.push({
-            name: `Chapitre ${i + from - retard}`,
-            value: (i + 1).toString(),
-          });
+            retard++;
+          } else {
+            options.push({
+              name: `Chapitre ${i + from - retard}`,
+              value: (i + 1).toString(),
+            });
+          }
         }
-      }
 
-      if (anime) {
-        updateAnime((currentState) => ({
-          ...currentState,
-          chapitresOptions: options,
-        }));
+        if (anime) {
+          updateAnime((currentState) => ({
+            ...currentState,
+            chapitresOptions: options,
+          }));
 
-        const storedChapter = localStorage.getItem(
-          `${anime?.anime?.anime}--chapitre`,
-        );
+          const storedChapter = localStorage.getItem(
+            `${anime?.anime?.anime}--chapitre`,
+          );
 
-        const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
-        const option = options[indexOption];
+          const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
+          const option = options[indexOption];
 
-        updateAnime((currentState) => ({
-          ...currentState,
-          scans: selectChapter(anime!, option, placeholderRef),
-        }));
-      }
+          updateAnime((currentState) => ({
+            ...currentState,
+            scans: selectChapter(
+              anime!,
+              option,
+              placeholderRef,
+              !anime.version ? undefined : anime.version.split("|")[1],
+            ),
+          }));
+        }
+      }, 400);
     }
-  }, [status]);
+  }, [status, anime.version]);
 
   return (
     <main className="flex select-none flex-col items-center">
@@ -155,20 +178,59 @@ const Scans = () => {
         }}
       />
 
-      <Select
-        className="top-12"
-        onSelect={(item) => {
-          localStorage.setItem(`${anime?.anime?.anime}--chapitre`, item.value);
+      <div className="relative top-12">
+        <Select
+          onSelect={(item) => {
+            localStorage.setItem(
+              `${anime?.anime?.anime}--chapitre`,
+              item.value,
+            );
 
-          updateAnime((currentState) => ({
-            ...currentState,
-            scans: selectChapter(anime!, item, placeholderRef),
-          }));
-        }}
-        items={anime?.chapitresOptions!}
-        placeholder="Selectionnez un chapitre"
-        placeholderRef={placeholderRef}
-      />
+            updateAnime((currentState) => ({
+              ...currentState,
+              scans: selectChapter(
+                anime!,
+                item,
+                placeholderRef,
+                !anime.version ? undefined : anime.version.split("|")[1],
+              ),
+            }));
+          }}
+          items={anime?.chapitresOptions!}
+          placeholder="Selectionnez un chapitre"
+          placeholderRef={placeholderRef}
+        />
+
+        {anime.anime?.options.SCANS_OPTIONS?.versions ? (
+          <Select
+            className="mt-2"
+            placeholder="Changer de version"
+            placeholderRef={placeholderRefVersion}
+            items={[
+              {
+                name: "Normal",
+                value: "return-normal",
+              },
+              ...anime.anime.options.SCANS_OPTIONS.versions,
+            ]}
+            onSelect={({ value }) => {
+              if (value === "return-normal") {
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  version: undefined,
+                }));
+              } else {
+                ClearCache();
+
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  version: value,
+                }));
+              }
+            }}
+          />
+        ) : null}
+      </div>
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
         <button
@@ -179,7 +241,12 @@ const Scans = () => {
 
             updateAnime((currentState) => ({
               ...currentState,
-              scans: selectChapter(anime!, lastScan, placeholderRef),
+              scans: selectChapter(
+                anime!,
+                lastScan,
+                placeholderRef,
+                !anime.version ? undefined : anime.version.split("|")[1],
+              ),
             }));
           }}
         >

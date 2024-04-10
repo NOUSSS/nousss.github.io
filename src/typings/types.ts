@@ -61,6 +61,7 @@ export namespace Anime {
   export interface AnimeScansProps extends AnimeInfoProps {
     scans?: React.ReactNode[];
     chapitresOptions?: ItemsProps[];
+    version?: string;
   }
 }
 
@@ -95,6 +96,11 @@ export namespace Options {
     index: string | number;
   }
 
+  interface VersionType {
+    name: string;
+    value: string;
+  }
+
   export interface ScansOptions {
     from?: number;
     SCRIPT_URL: string;
@@ -102,6 +108,7 @@ export namespace Options {
     IMAGE_URL: ({ chapitre, index }: ImageUrlOptions) => string;
 
     CHAPITRE_SPECIAUX?: number[];
+    versions?: VersionType[];
   }
 
   interface NameProps {

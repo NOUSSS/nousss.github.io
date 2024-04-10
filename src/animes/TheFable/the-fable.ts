@@ -27,6 +27,13 @@ class TheFable extends Anime {
         chapitre: string | number;
         index: string | number;
       }) => `https://anime-sama.fr/s1/scans/The Fable/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "The Second Contact",
+          value: "_the-second-contact|The Fable The Second Contact",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {

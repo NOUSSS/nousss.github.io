@@ -44,6 +44,22 @@ class FairyTail extends Anime {
         `https://anime-sama.fr/s1/scans/Fairy%20Tail/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [425, 451, 464, 492],
+
+      versions: [
+        {
+          name: "La grande aventure de Happy",
+          value:
+            "_la-grande-aventure-de-happy|Fairy Tail - La Grande Aventure de Happy",
+        },
+        {
+          name: "100 Years Quest",
+          value: "_100-years-quest|Fairy Tail - 100 Years Quest",
+        },
+        {
+          name: "City Hero",
+          value: "_city-hero|Fairy Tail - City Hero",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {

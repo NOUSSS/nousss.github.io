@@ -52,7 +52,16 @@ export default class DemonSlayer extends Anime {
       }) =>
         `https://anime-sama.fr/s1/scans/Demon%20Slayer/${chapitre}/${index}.jpg`,
 
-      CHAPITRE_SPECIAUX: [],
+      versions: [
+        {
+          name: "Spin off Rengoku",
+          value: "-rengoku|Demon Slayer Rengoku",
+        },
+        {
+          name: "Spin off Tomioka",
+          value: "-tomioka|Demon Slayer Tomioka",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
