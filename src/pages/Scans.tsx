@@ -157,7 +157,7 @@ const Scans = () => {
             ),
           }));
         }
-      }, 400);
+      }, 500);
     }
   }, [status, anime.version]);
 
@@ -214,14 +214,14 @@ const Scans = () => {
               ...anime.anime.options.SCANS_OPTIONS.versions,
             ]}
             onSelect={({ value }) => {
+              ClearCache();
+
               if (value === "return-normal") {
                 updateAnime((currentState) => ({
                   ...currentState,
                   version: undefined,
                 }));
               } else {
-                ClearCache();
-
                 updateAnime((currentState) => ({
                   ...currentState,
                   version: value,
