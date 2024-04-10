@@ -322,7 +322,7 @@ export default function Accueil() {
 
       <ColorPicker />
 
-      <div className="relative ml-4">
+      <div className="relative ml-12 max-md:ml-4">
         {catalogues.map(({ names, category }) => (
           <div key={category}>
             <div
@@ -413,7 +413,7 @@ export default function Accueil() {
 
                 return (
                   <li
-                    className="mr-4 cursor-pointer"
+                    className="mr-7 cursor-pointer"
                     onClick={() => goToAnime(animeName!, category, i)}
                     id={
                       animeName +
