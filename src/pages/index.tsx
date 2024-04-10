@@ -41,15 +41,12 @@ export default function Accueil() {
 
   const getWallpaper = (animeName: string) => {
     const anime = getAnime(animeName);
+    const images = anime?.options.saisons || anime?.options.FILM_OPTIONS?.names;
 
-    if (anime?.options.saisons) {
-      const saisons = Object.values(anime.options.saisons);
+    if (images) {
+      const values = Object.values(images);
 
-      return saisons[saisons.length - 1].image();
-    } else if (anime?.options.FILM_OPTIONS) {
-      const films = Object.values(anime.options.FILM_OPTIONS.names);
-
-      return films[films.length - 1].image();
+      return values[values.length - 1].image();
     }
   };
 

@@ -79,6 +79,7 @@ import DragonQuest from "./DragonQuest/dragon-quest";
 import JojoBizarreAdventure from "./JojoBizarreAdventure/jojo-bizarre-adventure";
 import WindBreaker from "./WindBreaker/wind-breaker";
 import ReMonster from "./ReMonster/re-monster";
+import TheFable from "./TheFable/the-fable";
 
 export interface AnimesType {
   anime: string;
@@ -412,7 +413,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Tokyo Revengers",
     options: new TokyoRevengers(),
-    category: ["New gen"],
+    category: ["New gen", "Bagarre"],
     synopsis:
       "À 26 ans, Takemichi a le sentiment d'avoir déjà raté sa vie. Vivotant de petits boulots ingrats tout juste bons à payer le loyer d'un studio miteux, il se lamente sur le désert de sa vie amoureuse lorsqu'il apprend la mort de Hinata, la seule petite amie qu'il ait eue...",
     aliases: ["films", "scans", "saisons"],
@@ -716,7 +717,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
     options: new WindBreaker(),
-    category: ["New gen", "Nouvelles saisons"],
+    category: ["New gen", "Nouvelles saisons", "Bagarre"],
   },
   {
     anime: "Re:Monster",
@@ -724,6 +725,13 @@ export const ANIMES: AnimesType[] = [
     options: new ReMonster(),
     synopsis:
       "Après avoir été assassiné, Kanata Tomokui se réincarne dans le corps d'un faible gobelin du nom de Goburô. Cependant, ce dernier a conservé les souvenirs de sa vie antérieure. Bien que faible au départ, Goburô va rapidement devenir l'un des piliers de la race des gobelins grâce à sa compétence \"d'absorption\" qui lui permet d'obtenir les pouvoirs de ce qu'il mange. Dans ce monde où le plus fort survit, cette histoire va suivre l'ascension fulgurante de Goburô et de ses camarades.",
+  },
+  {
+    anime: "The Fable",
+    category: ["Nouvelles saisons", "Bagarre"],
+    options: new TheFable(),
+    synopsis:
+      "Muni de son arme favorite, un pistolet Nighthawk couleur anthracite, \"Fable\" est un tueur professionnel craint de toute la pègre japonaise. Hommes politiques, mafieux, personnalités publiques... Ce génie de l'assassinat peut envoyer n'importe laquelle de ses cibles six pieds sous terre. Et en six secondes, si le cœur lui en dit. Sauf qu'un beau jour, son commanditaire lui ordonne de tout mettre en pause et de mener la vie d'un citoyen ordinaire, dans la planque d'un clan de yakuzas à Osaka. Interdiction de tuer ou d'attaquer qui que ce soit pendant une année entière. Pour cette arme humaine au tempérament imprévisible, entourée de criminels à la gâchette facile, c'est le plus dur des contrats qui commence...",
   },
 ];
 
