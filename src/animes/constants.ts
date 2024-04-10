@@ -78,6 +78,7 @@ import ReZero from "./ReZero/re-zero";
 import DragonQuest from "./DragonQuest/dragon-quest";
 import JojoBizarreAdventure from "./JojoBizarreAdventure/jojo-bizarre-adventure";
 import WindBreaker from "./WindBreaker/wind-breaker";
+import ReMonster from "./ReMonster/re-monster";
 
 export interface AnimesType {
   anime: string;
@@ -180,7 +181,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Jujutsu Kaisen",
     aliases: ["itadori", "gojo", "sukuna", "jjk", "films", "saisons", "scans"],
     options: new JujutsuKaisen(),
-    category: ["Magie"],
+    category: ["New gen", "School Life"],
     synopsis:
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
@@ -188,7 +189,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Black Clover",
     aliases: ["asta", "yuno", "bc", "films", "saisons", "scans"],
     options: new BlackClover(),
-    category: ["Magie", "Fleuve"],
+    category: ["Fleuve", "En équipe"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
@@ -203,7 +204,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
-    category: ["Nouvelles saisons", "Humour", "Magie"],
+    category: ["Nouvelles saisons", "Humour", "School Life"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -379,7 +380,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Fairy Tail",
     options: new FairyTail(),
-    category: ["Magie"],
+    category: ["En équipe", "Les anciens"],
     synopsis:
       "Lucy, une jeune fille, rêve de devenir magicienne. Un jour, elle rencontre Natsu, un magicien maîtrisant le feu, ce dernier l'invite alors à rejoindre sa guilde. Il s'agit de la célèbre Fairy Tail, le sujet de tous les rêves de Lucy. Mais celle-ci est bien mystérieuse et semble être à l'origine de nombreux scandales.",
     aliases: ["films", "scans", "saisons"],
@@ -419,7 +420,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["Magie"],
+    category: ["Puissance"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["films", "scans", "saisons"],
@@ -567,7 +568,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Fullmetal Alchemist",
-    category: ["Magie"],
+    category: ["Les anciens"],
     options: new FMA(),
     synopsis:
       "Après avoir perdu leur mère, Edward et Alphonse tentent de la ramener à la vie grâce à l'alchimie. Cependant, l'alchimie doit obéir à la loi de l'échange équivalent : l'objet transformé et l'objet issu de la transformation doivent être de masses équivalentes. Passer outre cette règle coûte très cher, et les frères Elric en feront les frais : Edward perd un bras et une jambe alors que son frère Alphonse perd son corps. Heureusement Edward réussit à enfermer l'âme de son frère dans une armure de métal grâce à un sceau de sang. Ils décident alors de quitter leur maison pour partir à la recherche d'informations sur la pierre philosophale, qui leur permettrait de regagner leurs corps. Cependant, ils ne sont pas les seuls à la recherche de cette pierre...",
@@ -716,6 +717,13 @@ export const ANIMES: AnimesType[] = [
       "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
     options: new WindBreaker(),
     category: ["New gen", "Nouvelles saisons"],
+  },
+  {
+    anime: "Re:Monster",
+    category: ["Nouvelles saisons", "Isekai"],
+    options: new ReMonster(),
+    synopsis:
+      "Après avoir été assassiné, Kanata Tomokui se réincarne dans le corps d'un faible gobelin du nom de Goburô. Cependant, ce dernier a conservé les souvenirs de sa vie antérieure. Bien que faible au départ, Goburô va rapidement devenir l'un des piliers de la race des gobelins grâce à sa compétence \"d'absorption\" qui lui permet d'obtenir les pouvoirs de ce qu'il mange. Dans ce monde où le plus fort survit, cette histoire va suivre l'ascension fulgurante de Goburô et de ses camarades.",
   },
 ];
 

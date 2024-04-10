@@ -13,7 +13,7 @@ export default function NavMotion({
   direction,
   size,
 }: NavMotionProps) {
-  container.current!.style.position = "relative";
+  if (container.current) container.current.style.position = "relative";
 
   const selector = document.createElement("div");
 
@@ -28,7 +28,6 @@ export default function NavMotion({
   container.current?.appendChild(selector);
 
   const items = container.current!.childNodes;
-  const [containerItems] = Array.from(items);
 
   items.forEach((item) => {
     item.addEventListener("mousemove", (e) => {
@@ -48,7 +47,7 @@ export default function NavMotion({
     });
   });
 
-  containerItems.addEventListener("mouseover", () => {
+  items[0].addEventListener("mouseover", () => {
     selector.style.transform = "scaleX(1)";
   });
 

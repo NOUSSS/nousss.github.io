@@ -5,5 +5,6 @@ export const isMobile = () => {
 
     return regExp.test(navigator.userAgent);
   }
+
   return false;
 };
