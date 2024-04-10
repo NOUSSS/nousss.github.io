@@ -46,14 +46,6 @@ class FairyTail extends Anime {
       CHAPITRE_SPECIAUX: [425, 451, 464, 492],
     };
 
-    this.note = [
-      {
-        saison: "2",
-        message:
-          "Ce sont des episodes speciaux, ils ne sont donc pas important pour l'histoire voir inutile.",
-      },
-    ];
-
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/fairy-tail/saison${index}/${lang}/episodes.js`,

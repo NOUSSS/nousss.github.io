@@ -9,11 +9,12 @@ export class Anime {
   public SCANS_OPTIONS: Options.ScansOptions | null;
   public EPISODES_OPTIONS: Options.EpisodesOptions | null;
 
-  public note: Note[] | string | undefined;
+  public note: Note[] | string | null;
 
   constructor() {
     this.affiche = null;
     this.saisons = null;
+    this.note = null;
 
     this.FILM_OPTIONS = null;
     this.SCANS_OPTIONS = null;
