@@ -333,9 +333,7 @@ const Episodes = () => {
         }));
 
         if (episode !== "1" && !e_sp) {
-          (async () => {
-            await new Promise((res) => setTimeout(res, 100, true));
-
+          setTimeout(() => {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
 
             let retard = 0;
@@ -371,7 +369,7 @@ const Episodes = () => {
                 </>
               ),
             }));
-          })();
+          }, 100);
         }
 
         if (episode !== "1" && e_sp) {
@@ -438,8 +436,6 @@ const Episodes = () => {
               disclamerMessage.current =
                 options?.note.find((obj) => obj.saison === anime?.saison)
                   ?.message || "";
-            } else {
-              disclamerMessage!.current = "";
             }
           }
         }
