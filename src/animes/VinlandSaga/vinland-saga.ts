@@ -1,6 +1,7 @@
-import { getImage } from "./constants/images-saisons";
-
+import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/VinlandSaga/Affiche.jpg";
+
+import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 export default class VinlandSaga extends Anime {
@@ -47,6 +48,8 @@ export default class VinlandSaga extends Anime {
         2: 24,
         3: 48,
       },
+
+      names,
     };
   }
 }
