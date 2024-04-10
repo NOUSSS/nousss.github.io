@@ -35,7 +35,8 @@ export default class DeathNote extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Death%20Note/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Death Note/${chapitre}/${index}.jpg`,
+
       CHAPITRE_SPECIAUX: [109, 110],
     };
 
