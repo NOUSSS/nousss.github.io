@@ -116,16 +116,17 @@ export namespace Options {
     hs?: boolean;
   }
 
+  interface PartsProps {
+    from: number;
+    to: number;
+  }
+
   export interface EpisodesOptions {
     SCRIPT_URL: ({ index, lang, hs }: ScriptOptions) => string;
 
     horsSeries?: horsSeriesType[];
     names?: NameProps[];
-
-    parts?: {
-      from: number;
-      to: number;
-    };
+    parts?: PartsProps;
 
     allIndex: allIndexType;
   }
