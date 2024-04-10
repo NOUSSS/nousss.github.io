@@ -13,6 +13,7 @@ export const removeAnimeFromHistorique = (
       `${animeName}--saison`,
       `${animeName}--episode`,
       `${animeName}--currentFilm`,
+      `${animeName}--lecteur`,
     );
   } else if (redirectAnime === "Scans") {
     keysToRemove.push(`${animeName}--chapitre`);

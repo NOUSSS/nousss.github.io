@@ -224,11 +224,23 @@ const Episodes = () => {
         } else {
           const lecteur = Object.keys(fetchedLecteurs)[0];
 
-          updateAnime((currentState) => ({
-            ...currentState,
-            lecteur,
-            currentLecteur: fetchedLecteurs[lecteur]!,
-          }));
+          const lastLecteur = localStorage.getItem(
+            `${anime.anime?.anime}-${anime.saison}--lecteur`,
+          );
+
+          if (lastLecteur) {
+            updateAnime((currentState) => ({
+              ...currentState,
+              lecteur: lastLecteur,
+              currentLecteur: fetchedLecteurs[lastLecteur],
+            }));
+          } else {
+            updateAnime((currentState) => ({
+              ...currentState,
+              lecteur,
+              currentLecteur: fetchedLecteurs[lecteur]!,
+            }));
+          }
         }
 
         const episodeIndex = allIndex![anime?.saison ?? 0];
@@ -514,6 +526,11 @@ const Episodes = () => {
                   lecteur: value,
                   currentLecteur: anime.lecteurs?.[value],
                 }));
+
+                window.localStorage.setItem(
+                  `${anime.anime?.anime}-${anime.saison}--lecteur`,
+                  value,
+                );
               }}
               items={Object.keys(anime.lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(anime.lecteurs!)[i][0]),
