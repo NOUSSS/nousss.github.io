@@ -80,6 +80,7 @@ import JojoBizarreAdventure from "./JojoBizarreAdventure/jojo-bizarre-adventure"
 import WindBreaker from "./WindBreaker/wind-breaker";
 import ReMonster from "./ReMonster/re-monster";
 import TheFable from "./TheFable/the-fable";
+import NoGameNoLife from "./NoGameNoLife/no-game-no-life";
 
 export interface AnimesType {
   anime: string;
@@ -737,6 +738,13 @@ export const ANIMES: AnimesType[] = [
     category: ["Action", "Comédie", "Drame", "Nouvelles saisons"],
     options: new TheFable(),
     synopsis: `Muni de son arme favorite, un pistolet Nighthawk couleur anthracite, "Fable" est un tueur professionnel craint de toute la pègre japonaise. Hommes politiques, mafieux, personnalités publiques... Ce génie de l'assassinat peut envoyer n'importe laquelle de ses cibles six pieds sous terre. Et en six secondes, si le cœur lui en dit. Sauf qu'un beau jour, son commanditaire lui ordonne de tout mettre en pause et de mener la vie d'un citoyen ordinaire, dans la planque d'un clan de yakuzas à Osaka. Interdiction de tuer ou d'attaquer qui que ce soit pendant une année entière. Pour cette arme humaine au tempérament imprévisible, entourée de criminels à la gâchette facile, c'est le plus dur des contrats qui commence...`,
+  },
+  {
+    anime: "No Game, No Life",
+    category: ["Aventure", "Comédie", "Fantaisie", "Isekai"],
+    options: new NoGameNoLife(),
+    synopsis:
+      "Sora et Shiro sont deux frère et sœur hikikomori. L'hikikomori désigne une pathologie psycho-sociale caractérisant les personnes (souvent des adolescents) qui vivent coupées du monde en restant cloîtrées chez elles, refusant toute communication. Dans le cas des deux protagonistes, leur condition vient de leur vision du monde réel, qui se résume à un jeu guère intéressant. Ensemble, ils forment un duo de joueurs invaincus, véritable légende urbaine. Un jour, un garçon se qualifiant de \"Dieu\" les transporte dans un monde fantastique, où il a interdit toute forme de violence entre les 16 races différentes y vivant. À la place, toute décision ou conflit est réglé par le jeu. Les deux adolescents y sont convoqués car ils pourraient bien être les sauveurs de l'humanité, la race Imanity qui, classée dernière parmi les 16 races, se retrouve confinée dans leur seule et unique cité restante. Durant leur quête pour sauver l'Imanity, ils rencontrent Stephanie Dola : reconnue comme la petite fille de l'ancien roi considéré comme fou, Jibril : une Flügel qui est l'une des races les plus puissantes et Kurami Zell : une ancienne ennemie devenue une alliée.",
   },
 ];
 
