@@ -20,7 +20,7 @@ class NoGameNoLife extends Anime {
 
     this.FILM_OPTIONS = {
       SCRIPT_URL: (langage: string) =>
-        `https://anime-sama.fr/catalogue/nom/film/${langage}/episodes.js`,
+        `https://anime-sama.fr/catalogue/no-game-no-life/film/${langage}/episodes.js`,
       names: films,
     };
 
