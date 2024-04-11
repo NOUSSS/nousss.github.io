@@ -264,7 +264,7 @@ const Episodes = () => {
                 ...currentState,
                 episodeTitle: "Un problème est survenue",
               }));
-            }, 600),
+            }, 1000),
           );
         } else {
           clearInterval(ErrorInterval);
