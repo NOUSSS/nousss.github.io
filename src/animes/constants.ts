@@ -87,6 +87,7 @@ import Toradora from "./Toradora/toradora";
 import Noragami from "./Noragami/noragami";
 import AngelBeats from "./AngelBeats/angel-beats";
 import MiraiNikki from "./MiraiNikki/mirai-nikki";
+import ThePromisedNeverland from "./ThePromisedNeverland/the-promised-neverland";
 
 export interface AnimesType {
   anime: string;
@@ -828,6 +829,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "L'histoire nous entraîne dans le quotidien de Yukiteru Amano un jeune adolescent solitaire se renfermant sur lui-même détaché de la réalité. Il préfère se réfugier dans son monde avec ses amis imaginaires plutôt que de s'en faire de vrais dans la réalité. Seulement un jour, sa vie va basculer, lorsque Deus l'une de ses nombreuses créations se révèle être plus qu'un être imaginaire. Deus offre alors à Yukiteru la possibilité de voir dans le \"futur\" seulement, Deus est un dieu qui décide de céder sa place à celui qui survivra à un jeu de survie impitoyable.",
     options: new MiraiNikki(),
+  },
+  {
+    anime: "The Promised Neverland",
+    aliases: ["Yakusoku no Neverland"],
+    category: ["Aventure", "Drame", "Horreur", "Mystère", "Surnaturel"],
+    synopsis:
+      "Emma et ses amis, tous orphelins, ont été placés dans un établissement spécialisé lorsqu'ils étaient tout jeune. Bien que leur liberté soit limitée et que les règles soient parfois un peu strictes, ils mènent une vie agréable tous ensemble et la femme qui s'occupe d'eux est généreuse. Cependant, une question anime Emma et tous les autres : pourquoi n'ont-ils pas le droit de sortir de l'orphelinat ?",
+    options: new ThePromisedNeverland(),
   },
 ];
 
