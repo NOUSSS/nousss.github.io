@@ -83,6 +83,8 @@ import TheFable from "./TheFable/the-fable";
 import NoGameNoLife from "./NoGameNoLife/no-game-no-life";
 import ASilentVoice from "./ASilentVoice/a-silent-voice";
 import YourLieInApril from "./YourLieInApril/your-lie-in-april";
+import Toradora from "./Toradora/toradora";
+import Noragami from "./Noragami/noragami";
 
 export interface AnimesType {
   anime: string;
@@ -176,7 +178,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Kuroko Basket",
     aliases: ["kagami", "kuroko no basket", "knb", "films", "saisons"],
-    category: ["Sport", "Drame", "Scolaire"],
+    category: ["Sport", "Drame", "School Life"],
     options: new KurokoBasket(),
     synopsis:
       'Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.',
@@ -271,7 +273,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Classroom of the Elites",
     aliases: ["kyotaka", "ecole", "scans", "saisons"],
     options: new ClassroomOfTheElites(),
-    category: ["Drame", "Psychologique", "Scolaire", "Slice of Life"],
+    category: ["Drame", "Psychologique", "School Life", "Slice of Life"],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -287,7 +289,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Haikyuu",
     aliases: ["volley", "films", "scans", "saisons"],
     options: new Haikyuu(),
-    category: ["Sport", "Drame", "Scolaire"],
+    category: ["Sport", "Drame", "School Life"],
     synopsis:
       "Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.",
   },
@@ -466,7 +468,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Assassination Classroom",
-    category: ["Action", "Comédie", "Scolaire"],
+    category: ["Action", "Comédie", "School Life"],
     aliases: ["koro", "sensei"],
     synopsis:
       "Koro Sensei devient enseignant de la classe 3-E de l'école de Kunugigaoka. Après avoir détruit la Lune et promis de faire exploser la Terre, ses élèves tentent de l'arrêter. Unis par un lien mystérieux, ils ont un an pour achever leur mission.",
@@ -476,7 +478,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Ao Ashi",
     synopsis:
       "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
-    category: ["Sport", "Drame", "Scolaire"],
+    category: ["Sport", "Drame", "School Life"],
     options: new AoAshi(),
   },
   {
@@ -621,7 +623,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Great Teacher Onizuka",
-    category: ["Comédie", "Drame", "Scolaire"],
+    category: ["Comédie", "Drame", "School Life"],
     synopsis: `Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée "Holy Forest Academy", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...`,
     options: new GTO(),
     aliases: ["GTO"],
@@ -727,7 +729,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
     options: new WindBreaker(),
-    category: ["Drame", "Scolaire", "Nouvelles saisons"],
+    category: ["Drame", "School Life", "Nouvelles saisons"],
   },
   {
     anime: "Re:Monster",
@@ -769,6 +771,21 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Arima Kosei est un véritable prodige du piano : enfant, il dominait tous ses rivaux lors des concours et s'était déjà fait un nom dans le domaine musical. Mais, après la mort de sa mère, il sombre dans une forte dépression qui l'amène à être dégoûté de son propre instrument. Deux ans après le drame, continuant de considérer sa vie comme insipide, Arima se contente de vivre sa vie sans réel but... jusqu'à ce qu'il rencontre Miyazono Kaori, jeune violoniste extravertie qui, elle aussi, semble exceller dans son art...",
     category: ["School Life", "Slice of Life"],
+  },
+  {
+    anime: "Toradora!",
+    aliases: ["Tiger X Dragon"],
+    synopsis:
+      "Malgré sa douce personnalité, Ryuji Takasu fait peur à toutes les personnes qu'il rencontre à cause de son regard d'assassin, il a donc beaucoup de mal à s'intégrer et à se faire des amis. C'est alors, qu'à la rentrée, il se retrouve dans la même classe que son meilleur ami, Yusaku Kitamura. Il est l'un des seuls à ne pas le juger par son physique. Mais, il se retrouve aussi avec la fille qu'il aime, Minori Kushieda, et la meilleure amie de celle-ci, Taïga Aisaka. Enfin, on apprend que Taïga est amoureuse de Yusaku. Donc cette dernière et Ryuji vont se serrer les coudes. C'est ainsi que vont naître des relations auxquelles on ne s'attendait pas.",
+    options: new Toradora(),
+    category: ["Comédie", "Drame", "Romance", "School Life", "Slice of Life"],
+  },
+  {
+    anime: "Noragami",
+    category: ["Action", "Aventure", "Comédie", "Fantaisie", "Surnaturel"],
+    options: new Noragami(),
+    synopsis:
+      "Yato est un dieu mineur dont le rêve est de devenir la divinité la plus vénérée du pays, avec son propre temple et ses cérémonies. Pour ce faire, il exauce n'importe quelle demande contre une rémunération de 5 yens. Au cours de l'une de ses missions, il manque de se faire écraser par un bus qu'il évite grâce à une lycéenne, Hiyori Iki. N'ayant pu éviter le véhicule, la jeune fille verra alors son âme se séparer de son corps lorsqu'elle s'endort. Refusant de rester dans cet état, Hiyori demandera à Yato de l'aider à retrouver son état originel. En attendant de trouver une solution, sa condition va lui permettre de découvrir un autre univers collé au sien, qui est aussi fascinant que dangereux : le monde des esprits.",
   },
 ];
 
