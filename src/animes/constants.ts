@@ -89,6 +89,7 @@ import AngelBeats from "./AngelBeats/angel-beats";
 import MiraiNikki from "./MiraiNikki/mirai-nikki";
 import ThePromisedNeverland from "./ThePromisedNeverland/the-promised-neverland";
 import Evangelion from "./Envangelion/evangelion";
+import CowboyBebop from "./CowboyBebop/cowboy-bebop";
 
 export interface AnimesType {
   anime: string;
@@ -846,6 +847,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "En 2000, une gigantesque explosion se produit en Antarctique, provoquant un cataclysme (raz-de-marée, fonte des calottes polaires) qui dévaste une grande partie de la planète. Les autorités déclarent que cette catastrophe était due à la chute d'un astéroïde sur la planète. Quinze ans plus tard, l'humanité a surmonté cet événement, appelé le Second Impact. Mais de mystérieuses créatures nommées Anges font leur apparition, et tentent de détruire Tokyo-3, la nouvelle capitale forteresse du Japon, construite après le Second Impact. Pour les combattre, l'organisation secrète NERV a mis au point une arme ultime, l'Evangelion ou l'Eva, robot géant anthropoïde piloté. Shinji Ikari, quatorze ans, se rend à Tokyo-3 sur invitation de son père, qu'il n'a pas revu depuis dix ans. Il est loin de se douter qu'il sera impliqué dans un conflit qui pourrait bien signifier la fin de l'humanité quoi qu'il arrive...",
     options: new Evangelion(),
+  },
+  {
+    anime: "Cowboy Bebop",
+    category: ["Action", "Aventure", "Comédie", "Drame", "Science Fiction"],
+    options: new CowboyBebop(),
+    synopsis:
+      "L'histoire se déroule en l'an 2071, près de 50 ans après l'incident de la gate, et l'humanité s'est répandue à travers tout le système solaire grâce aux portes spatiales qu'elle a développé durant toutes ces années. Avec l'invention du MONO (Machine Operation Navigation of Outer space), les voyages interplanétaires se font de manière plus rapide, rendant les planètes distantes de la Terre comme Venus, mars ou encore Jupiter facilement accessibles, entraînant par la même occasion un trafic constant entre les différentes planètes et lunes du système solaire. Cowboy Bebop nous raconte les déboires de Spike et Jet, deux célibataires qui se sont associés dans la chasse aux hors-la-loi dont la tête est mise à prix. Tous les deux sans argent, ils sillonnent l'espace à bord du Bebop afin de renflouer leur compte en banque ainsi que leur frigo. Mais bientôt ils ne seront plus seuls car leurs chasses à l'homme les amèneront à croiser le chemin d'un chien intelligent, Ein, d'une belle brune, Faye et d'une jeune hackeur au comportement loufoque, Ed.",
   },
 ];
 
