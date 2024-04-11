@@ -81,6 +81,7 @@ import WindBreaker from "./WindBreaker/wind-breaker";
 import ReMonster from "./ReMonster/re-monster";
 import TheFable from "./TheFable/the-fable";
 import NoGameNoLife from "./NoGameNoLife/no-game-no-life";
+import ASilentVoice from "./ASilentVoice/a-silent-voice";
 
 export interface AnimesType {
   anime: string;
@@ -269,7 +270,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Classroom of the Elites",
     aliases: ["kyotaka", "ecole", "scans", "saisons"],
     options: new ClassroomOfTheElites(),
-    category: ["Drame", "Psychologique", "Scolaire"],
+    category: ["Drame", "Psychologique", "Scolaire", "Slice of Life"],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
   },
@@ -277,7 +278,7 @@ export const ANIMES: AnimesType[] = [
     anime: "The Daily Life of the Immortal King",
     aliases: ["saitama v2", "saisons"],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: ["Comédie", "Fantaisie", "Action"],
+    category: ["Comédie", "Fantaisie", "Action", "Slice of Life"],
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
@@ -745,6 +746,20 @@ export const ANIMES: AnimesType[] = [
     options: new NoGameNoLife(),
     synopsis:
       "Sora et Shiro sont deux frère et sœur hikikomori. L'hikikomori désigne une pathologie psycho-sociale caractérisant les personnes (souvent des adolescents) qui vivent coupées du monde en restant cloîtrées chez elles, refusant toute communication. Dans le cas des deux protagonistes, leur condition vient de leur vision du monde réel, qui se résume à un jeu guère intéressant. Ensemble, ils forment un duo de joueurs invaincus, véritable légende urbaine. Un jour, un garçon se qualifiant de \"Dieu\" les transporte dans un monde fantastique, où il a interdit toute forme de violence entre les 16 races différentes y vivant. À la place, toute décision ou conflit est réglé par le jeu. Les deux adolescents y sont convoqués car ils pourraient bien être les sauveurs de l'humanité, la race Imanity qui, classée dernière parmi les 16 races, se retrouve confinée dans leur seule et unique cité restante. Durant leur quête pour sauver l'Imanity, ils rencontrent Stephanie Dola : reconnue comme la petite fille de l'ancien roi considéré comme fou, Jibril : une Flügel qui est l'une des races les plus puissantes et Kurami Zell : une ancienne ennemie devenue une alliée.",
+  },
+  {
+    anime: "A Silent Voice",
+    category: [
+      "Drame",
+      "Psychologique",
+      "Romance",
+      "School Life",
+      "Slice of Life",
+    ],
+    options: new ASilentVoice(),
+    aliases: ["Koe no Katachi", "The Shape of Voice"],
+    synopsis:
+      "L'histoire débute avec l'arrivée de Shouko Nishimiya, une élève sourde, dans la classe de Shouya Ishida, un garçon turbulent. Ne comprenant pas comment interagir avec Shouko, Shouya commence à la brutaliser, entraînant le reste de la classe dans son comportement sans intervention significative de leur enseignant. Après avoir endommagé les appareils auditifs de Shouko, Shouya est ostracisé par ses camarades et Shouko change d'école. Avec le temps, Shouya, rongé par le remords et devenu lycéen, souhaite se racheter et apprend la langue des signes dans l'espoir de s'excuser auprès de Shouko. Avant de prendre une décision radicale quant à son avenir, il retrouve Shouko, un acte qui promet de transformer profondément sa vie.",
   },
 ];
 
