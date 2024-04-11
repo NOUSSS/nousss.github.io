@@ -82,6 +82,7 @@ import ReMonster from "./ReMonster/re-monster";
 import TheFable from "./TheFable/the-fable";
 import NoGameNoLife from "./NoGameNoLife/no-game-no-life";
 import ASilentVoice from "./ASilentVoice/a-silent-voice";
+import YourLieInApril from "./YourLieInApril/your-lie-in-april";
 
 export interface AnimesType {
   anime: string;
@@ -760,6 +761,14 @@ export const ANIMES: AnimesType[] = [
     aliases: ["Koe no Katachi", "The Shape of Voice"],
     synopsis:
       "L'histoire débute avec l'arrivée de Shouko Nishimiya, une élève sourde, dans la classe de Shouya Ishida, un garçon turbulent. Ne comprenant pas comment interagir avec Shouko, Shouya commence à la brutaliser, entraînant le reste de la classe dans son comportement sans intervention significative de leur enseignant. Après avoir endommagé les appareils auditifs de Shouko, Shouya est ostracisé par ses camarades et Shouko change d'école. Avec le temps, Shouya, rongé par le remords et devenu lycéen, souhaite se racheter et apprend la langue des signes dans l'espoir de s'excuser auprès de Shouko. Avant de prendre une décision radicale quant à son avenir, il retrouve Shouko, un acte qui promet de transformer profondément sa vie.",
+  },
+  {
+    anime: "Your Lie in April",
+    aliases: ["Shigatsu wa Kimi no Uso", "Kimiuso"],
+    options: new YourLieInApril(),
+    synopsis:
+      "Arima Kosei est un véritable prodige du piano : enfant, il dominait tous ses rivaux lors des concours et s'était déjà fait un nom dans le domaine musical. Mais, après la mort de sa mère, il sombre dans une forte dépression qui l'amène à être dégoûté de son propre instrument. Deux ans après le drame, continuant de considérer sa vie comme insipide, Arima se contente de vivre sa vie sans réel but... jusqu'à ce qu'il rencontre Miyazono Kaori, jeune violoniste extravertie qui, elle aussi, semble exceller dans son art...",
+    category: ["School Life", "Slice of Life"],
   },
 ];
 
