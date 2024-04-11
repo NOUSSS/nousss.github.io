@@ -119,8 +119,6 @@ export namespace Options {
   interface ScriptOptions {
     index: number | string;
     lang: string;
-
-    hs?: boolean;
   }
 
   interface PartsProps {
@@ -129,7 +127,7 @@ export namespace Options {
   }
 
   export interface EpisodesOptions {
-    SCRIPT_URL: ({ index, lang, hs }: ScriptOptions) => string;
+    SCRIPT_URL: ({ index, lang }: ScriptOptions) => string;
 
     horsSeries?: horsSeriesType[];
     names?: NameProps[];

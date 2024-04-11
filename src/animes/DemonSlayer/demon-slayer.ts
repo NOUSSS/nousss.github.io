@@ -65,8 +65,8 @@ export default class DemonSlayer extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang, hs }) =>
-        `https://anime-sama.fr/catalogue/demon-slayer/saison${index}${hs === true ? "hs" : ""}/${lang}/episodes.js`,
+      SCRIPT_URL: ({ index, lang }) =>
+        `https://anime-sama.fr/catalogue/demon-slayer/saison${index}/${lang}/episodes.js`,
 
       allIndex: {
         1: 0,

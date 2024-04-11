@@ -57,26 +57,9 @@ const Episodes = () => {
   const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
   const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
 
-  const options = (isClient && anime?.anime && anime!.anime?.options) as Anime;
-
-  const { allIndex, horsSeries, SCRIPT_URL, names } =
-    (isClient && options?.EPISODES_OPTIONS) || {};
-
   const disclamerMessage = useRef("");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
-
-  const saisonsEntries = (isClient &&
-    anime &&
-    Object.keys(options?.saisons!)) as string[];
-
-  const saisonsValues = (isClient &&
-    anime &&
-    Object.values(options?.saisons!)) as Options.SeasonAndFilm[];
-
-  const oavIndex = (isClient &&
-    anime &&
-    saisonsEntries.findIndex((e) => e === "oav")) as number;
 
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
@@ -128,8 +111,22 @@ const Episodes = () => {
   }, []);
 
   useEffect(() => {
-    if (anime?.lang && anime?.anime && anime.saison) {
-      const parts = isClient ? options?.EPISODES_OPTIONS?.parts : undefined;
+    if (
+      anime?.lang &&
+      anime?.anime &&
+      anime.saison &&
+      anime.anime.options.EPISODES_OPTIONS
+    ) {
+      const options = anime?.anime && anime!.anime?.options;
+
+      const { SCRIPT_URL } = options?.EPISODES_OPTIONS!;
+
+      const saisonsEntries = Object.keys(options?.saisons!);
+      const saisonsValues = Object.values(options?.saisons!);
+
+      const oavIndex = saisonsEntries.findIndex((e) => e === "oav");
+
+      const parts = options?.EPISODES_OPTIONS?.parts;
 
       let scriptIndex = getScriptIndex({
         currentSaison: anime.saison,
@@ -137,6 +134,7 @@ const Episodes = () => {
       });
 
       let retard = 0;
+      let url = "";
 
       localStorage.setItem(
         `${anime.anime.anime}--${anime.saison}--lang`,
@@ -146,23 +144,30 @@ const Episodes = () => {
       const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
 
       if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
+      if (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison)) {
+        url = SCRIPT_URL!({
+          index: 1,
+          lang: anime.lang!,
+        }).replace(/saison\d+(-\d+)?/g, "oav");
+      } else {
+        if (saisonsValues[Number(scriptIndex) - 1]?.hs) {
+          url = SCRIPT_URL!({
+            index: Number(scriptIndex)
+              ? Number(scriptIndex) - retard
+              : scriptIndex!,
+            lang: anime.lang!,
+          }).replace(/saison\d+(-\d+)?/g, "saison1hs");
+        } else {
+          url = SCRIPT_URL!({
+            index: Number(scriptIndex)
+              ? Number(scriptIndex) - retard
+              : scriptIndex!,
+            lang: anime.lang!,
+          });
+        }
+      }
 
-      setUrlScript(
-        (isClient &&
-          (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison)
-            ? SCRIPT_URL!({
-                index: 1,
-                lang: anime.lang!,
-              }).replace(/saison\d+(-\d+)?/g, "oav")
-            : SCRIPT_URL!({
-                index: Number(scriptIndex)
-                  ? Number(scriptIndex) - retard
-                  : scriptIndex!,
-                lang: anime.lang!,
-                hs: saisonsValues[Number(scriptIndex) - 1]?.hs,
-              }))) as string,
-      );
-
+      setUrlScript(url);
       setFilever(random());
     }
   }, [anime, anime.saison, anime.lang]);
@@ -188,6 +193,13 @@ const Episodes = () => {
   useEffect(() => {
     if (status === "ready") {
       setTimeout(() => {
+        const options = anime!.anime?.options;
+
+        const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS!;
+
+        const saisonsEntries = Object.keys(options?.saisons!);
+        const oavIndex = saisonsEntries.findIndex((e) => e === "oav");
+
         if (anime?.saison && anime.saison > saisonsEntries[oavIndex]) {
           const newIndexSaison = (Number(anime?.saison) - 1).toString();
 
@@ -622,7 +634,9 @@ const Episodes = () => {
           </button>
         ) : null}
 
-        {isClient && anime?.saison !== saisonsEntries?.length.toString() ? (
+        {isClient &&
+        anime?.saison !==
+          Object.keys(anime.anime?.options.saisons!)?.length.toString() ? (
           <button
             onClick={() => {
               ClearCache();
