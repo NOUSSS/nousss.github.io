@@ -71,13 +71,17 @@ const Scans = () => {
   }, []);
 
   useEffect(() => {
-    if (anime.anime?.options.SCANS_OPTIONS && anime?.version) {
-      setScript(
-        anime.anime.options.SCANS_OPTIONS.SCRIPT_URL.replace(
-          "/scan/",
-          `/scan${anime.version.split("|")[0]}/`,
-        ),
-      );
+    if (anime.anime?.options.SCANS_OPTIONS) {
+      if (anime.version === undefined) {
+        setScript(anime.anime.options.SCANS_OPTIONS.SCRIPT_URL);
+      } else {
+        setScript(
+          anime.anime.options.SCANS_OPTIONS.SCRIPT_URL.replace(
+            "/scan/",
+            `/scan${anime.version.split("|")[0]}/`,
+          ),
+        );
+      }
     }
   }, [anime.version]);
 
