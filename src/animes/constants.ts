@@ -86,6 +86,7 @@ import YourLieInApril from "./YourLieInApril/your-lie-in-april";
 import Toradora from "./Toradora/toradora";
 import Noragami from "./Noragami/noragami";
 import AngelBeats from "./AngelBeats/angel-beats";
+import MiraiNikki from "./MiraiNikki/mirai-nikki";
 
 export interface AnimesType {
   anime: string;
@@ -811,6 +812,22 @@ export const ANIMES: AnimesType[] = [
     options: new AngelBeats(),
     synopsis:
       "Dans le monde de l'au-delà existe un lieu, un immense campus, où sont envoyés les adolescents après leur décès. C'est là que se réveille Yuzuru Otonashi après son trépas, mais il n'a pas vraiment le temps de comprendre ce qui lui arrive qu'il est subitement pris dans un feu croisé entre les membres de la Shinda Sekai Sensen (SSS) et Tenshi. Plus tard, Yuri Nakamura, leader du SSS, lui explique que le groupe se rebelle contre le dieu qui leur a imposé une vie vide de sens. C'est pourquoi Tenshi est leur ennemie jurée. Mais Yuzuru, qui n'a aucun souvenir de sa vie sur Terre, a l'intuition que la jeune fille n'est pas une envoyée de Dieu.",
+  },
+  {
+    anime: "Mirai Nikki",
+    aliases: ["The Future Diary"],
+    category: [
+      "Action",
+      "Drame",
+      "Mystère",
+      "Psychologique",
+      "Romance",
+      "Surnaturel",
+      "Thriller",
+    ],
+    synopsis:
+      "L'histoire nous entraîne dans le quotidien de Yukiteru Amano un jeune adolescent solitaire se renfermant sur lui-même détaché de la réalité. Il préfère se réfugier dans son monde avec ses amis imaginaires plutôt que de s'en faire de vrais dans la réalité. Seulement un jour, sa vie va basculer, lorsque Deus l'une de ses nombreuses créations se révèle être plus qu'un être imaginaire. Deus offre alors à Yukiteru la possibilité de voir dans le \"futur\" seulement, Deus est un dieu qui décide de céder sa place à celui qui survivra à un jeu de survie impitoyable.",
+    options: new MiraiNikki(),
   },
 ];
 
