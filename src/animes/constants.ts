@@ -794,5 +794,3 @@ export const groupAnimesByCategory = (
     category: category,
   }));
 };
-
-console.log(ANIMES.length);

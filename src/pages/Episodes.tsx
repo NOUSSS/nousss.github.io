@@ -131,8 +131,6 @@ const Episodes = () => {
     if (anime?.lang && anime?.anime && anime.saison) {
       const parts = isClient ? options?.EPISODES_OPTIONS?.parts : undefined;
 
-      console.log(anime?.lang);
-
       let scriptIndex = getScriptIndex({
         currentSaison: anime.saison,
         parts,
