@@ -166,7 +166,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Solo Leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
-    category: ["Action", "Fantaisie", "Aventure"],
+    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -228,7 +228,7 @@ export const ANIMES: AnimesType[] = [
     anime: "The god of highschool",
     aliases: ["tdoh", "scans", "saisons"],
     options: new TheGodOfHighschool(),
-    category: ["Action", "Arts Martiaux", "Surnaturel"],
+    category: ["Action", "Arts Martiaux", "Surnaturel", "Webtoon"],
     synopsis:
       "Un lycéen et ses amis prennent part à un tournoi épique dans lequel le gagnant verra tous ses vœux s'exaucer. Cependant, les participants découvrent très vite qu'une mystérieuse organisation semble manipuler cette compétition dans l'ombre...",
   },
@@ -236,7 +236,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Tower of god",
     aliases: ["tog", "scans", "saisons"],
     options: new TowerOfGod(),
-    category: ["Action", "Fantaisie", "Aventure"],
+    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
     synopsis:
       "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
   },
@@ -530,13 +530,13 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "The Boxer",
-    category: ["Sport", "Drame", "Psychologique"],
+    category: ["Sport", "Drame", "Psychologique", "Webtoon"],
     options: new TheBoxer(),
     synopsis: `"The Boxer" raconte l'histoire captivante d'un jeune prodige de la boxe doté d'un talent naturel remarquable et d'une force inégalée, mais qui monte sur le ring sans passion ni ambition. Repéré par un entraîneur visionnaire convaincu de pouvoir faire de lui le meilleur boxeur du monde, il se lance dans un parcours semé de défis. À travers des combats intenses contre des adversaires de plus en plus puissants, chacun porteur de sa propre histoire, il est contraint d'affronter non seulement ses rivaux mais aussi ses propres interrogations sur le sens de la victoire et de la défaite.`,
   },
   {
     anime: "Doom Breaker",
-    category: ["Action", "Fantaisie", "Aventure"],
+    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
     options: new DoomBreaker(),
     synopsis:
       "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",

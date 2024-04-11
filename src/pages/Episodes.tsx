@@ -116,17 +116,8 @@ const Episodes = () => {
       ) as langType;
 
       if (!lang) {
-        lang = "vostfr";
-        updateAnime({ lang });
-
-        if (placeholderLangRef.current)
-          placeholderLangRef.current.innerText = "VostFR";
-      } else {
-        updateAnime({ lang });
-
-        if (placeholderLangRef.current)
-          placeholderLangRef.current.innerText = formatLang(lang);
-      }
+        updateAnime({ lang: "vostfr" });
+      } else updateAnime({ lang });
 
       updateAnime((currentState) => ({
         ...currentState,
