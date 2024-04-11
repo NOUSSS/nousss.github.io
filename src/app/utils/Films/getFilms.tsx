@@ -19,8 +19,6 @@ export function getFilms(
   let LecteursFilms: string[] = [];
   const Lecteurs = getLecteur();
 
-  const { names } = Anime?.anime!.options.FILM_OPTIONS || {};
-
   const filmsNodes: React.ReactNode[] = [];
 
   if (Anime?.lecteur) {
@@ -33,35 +31,41 @@ export function getFilms(
     LecteursFilms = Lecteurs[lecteur]!;
   }
 
-  for (let i = 0; i < Object.keys(names!).length; i++) {
-    const url = LecteursFilms[i];
-    const id = `${names![i].name}|${
-      typeof names![i].aliases === "undefined"
-        ? ""
-        : names![i].aliases?.join(", ")
-    }`;
+  const names = Anime.anime?.options.FILM_OPTIONS?.names
+    ? Object.values(Anime.anime.options.FILM_OPTIONS.names)
+    : undefined;
 
-    filmsNodes.push(
-      <div
-        id={id}
-        key={id}
-        className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden rounded-md"
-      >
-        <div className="overflow-hidden rounded-md">
-          <Image
-            className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-110"
-            src={names![i].image()}
-            id={`${url} ${i}`}
-            onClick={() => {
-              appearVideo(`${url} ${i}`, Anime, updateAnime, containerRef);
-            }}
-            alt="poster de film"
-          />
-        </div>
+  if (names) {
+    for (let i = 0; i < Object.keys(names).length; i++) {
+      const url = LecteursFilms[i];
+      const id = `${names[i].name}|${
+        typeof names[i].aliases === "undefined"
+          ? ""
+          : names[i].aliases?.join(", ")
+      }`;
 
-        <p className="text-sm">{names![i].name}</p>
-      </div>,
-    );
+      filmsNodes.push(
+        <div
+          id={id}
+          key={id}
+          className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden rounded-md"
+        >
+          <div className="overflow-hidden rounded-md">
+            <Image
+              className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-110"
+              src={names[i].image()}
+              id={`${url} ${i}`}
+              onClick={() => {
+                appearVideo(`${url} ${i}`, Anime, updateAnime, containerRef);
+              }}
+              alt="poster de film"
+            />
+          </div>
+
+          <p className="text-sm">{names[i].name}</p>
+        </div>,
+      );
+    }
   }
 
   updateAnime((currentState) => ({

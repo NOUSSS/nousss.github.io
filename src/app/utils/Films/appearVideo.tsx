@@ -31,16 +31,18 @@ export async function appearVideo(
 
   localStorage.setItem(`${Anime?.anime?.anime}--currentFilm`, index);
 
-  updateAnime((currentState) => ({
-    ...currentState,
-    video: url,
-    filmTitle: (
-      <>
-        <span>{names![index].name}</span> [
-        <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
-      </>
-    ),
-  }));
+  if (names) {
+    updateAnime((currentState) => ({
+      ...currentState,
+      video: url,
+      filmTitle: (
+        <>
+          <span>{Object.values(names)[Number(index)].name}</span> [
+          <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
+        </>
+      ),
+    }));
+  }
 
   return url;
 }
