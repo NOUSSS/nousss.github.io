@@ -85,6 +85,7 @@ import ASilentVoice from "./ASilentVoice/a-silent-voice";
 import YourLieInApril from "./YourLieInApril/your-lie-in-april";
 import Toradora from "./Toradora/toradora";
 import Noragami from "./Noragami/noragami";
+import AngelBeats from "./AngelBeats/angel-beats";
 
 export interface AnimesType {
   anime: string;
@@ -218,7 +219,7 @@ export const ANIMES: AnimesType[] = [
     anime: "L'attaque des titans",
     aliases: ["shingeki no kyojin", "snk", "eren", "saisons", "scans"],
     options: new AttaqueDesTitans(),
-    category: ["Action", "Fantaisie Sombre", "Drame"],
+    category: ["Action", "Fantaisie", "Drame", "Horreur"],
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
   },
@@ -320,7 +321,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Demon Slayer",
     aliases: ["kny", "kimetsu no yaiba", "films", "scans", "saisons"],
     options: new DemonSlayer(),
-    category: ["Action", "Fantaisie Sombre", "Aventure"],
+    category: ["Aventure", "Historique", "Surnaturel"],
     synopsis:
       "Les citadins locaux ne s'aventurent jamais dans les bois la nuit à cause de démons mangeurs d'hommes. Un jour, le jeune Tanjiro découvre que sa famille s'est fait massacrer et que la seule survivante, sa sœur Nezuko, est devenue un démon.",
   },
@@ -359,14 +360,21 @@ export const ANIMES: AnimesType[] = [
     anime: "Tokyo Ghoul",
     aliases: ["tg", "re", "scans", "saisons"],
     options: new TokyoGhoul(),
-    category: ["Fantaisie Sombre", "Horreur", "Action"],
+    category: [
+      "Action",
+      "Drame",
+      "Horreur",
+      "Mystère",
+      "Psychologique",
+      "Surnaturel",
+    ],
     synopsis:
       "Dans la ville de Tokyo, des créatures nommées goules sont apparues et se nourrissent de chair humaine pour survivre. Un jour, Ken Kaneki, jeune étudiant, se fait attaquer par l'une d'entre elles et subit une grave blessure.",
   },
   {
     anime: "Chainsaw Man",
     aliases: ["cm", "denji", "scans", "saisons"],
-    category: ["Action", "Fantaisie Sombre", "Horreur"],
+    category: ["Action", "Aventure", "Horreur", "Surnaturel"],
     options: new ChainsawMan(),
     synopsis:
       "Denji est un jeune homme sans argent qui travaille comme Devil Hunter auprès d'un mafieux. Avec l'aide de Pochita, son chien-démon-tronçonneuse, il continue de rembourser les dettes de son père. Cependant, après s'être fait trahir, il fusionne avec Pochita et devient un homme-tronçonneuse.",
@@ -647,7 +655,17 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Tatsumi, jeune combattant, se rendait à la capitale dans l'optique de sauver son village. Mais, naïf, il se fait dérober tout ce qu'il possède par une mystérieuse jeune fille et se retrouve sans un sou. Heureusement, une autre jeune fille, une noble, propose de l'accueillir chez elle pendant quelque temps. Cependant, la poisse semble coller à la peau de Tatsumi quand un groupe d'assassins débarque pour s'en prendre à sa protectrice... qui n'est pas aussi innocente qu'elle en a l'air.",
     options: new AkameGaKill(),
-    category: ["Action", "Fantaisie Sombre", "Aventure"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantaisie",
+      "Horreur",
+      "Psychologique",
+      "Romance",
+      "Thriller",
+    ],
     aliases: ["Red Eyes Sword"],
   },
   {
@@ -786,6 +804,13 @@ export const ANIMES: AnimesType[] = [
     options: new Noragami(),
     synopsis:
       "Yato est un dieu mineur dont le rêve est de devenir la divinité la plus vénérée du pays, avec son propre temple et ses cérémonies. Pour ce faire, il exauce n'importe quelle demande contre une rémunération de 5 yens. Au cours de l'une de ses missions, il manque de se faire écraser par un bus qu'il évite grâce à une lycéenne, Hiyori Iki. N'ayant pu éviter le véhicule, la jeune fille verra alors son âme se séparer de son corps lorsqu'elle s'endort. Refusant de rester dans cet état, Hiyori demandera à Yato de l'aider à retrouver son état originel. En attendant de trouver une solution, sa condition va lui permettre de découvrir un autre univers collé au sien, qui est aussi fascinant que dangereux : le monde des esprits.",
+  },
+  {
+    anime: "Angel Beats!",
+    category: ["Action", "Comédie", "Drame", "School Life", "Surnaturel"],
+    options: new AngelBeats(),
+    synopsis:
+      "Dans le monde de l'au-delà existe un lieu, un immense campus, où sont envoyés les adolescents après leur décès. C'est là que se réveille Yuzuru Otonashi après son trépas, mais il n'a pas vraiment le temps de comprendre ce qui lui arrive qu'il est subitement pris dans un feu croisé entre les membres de la Shinda Sekai Sensen (SSS) et Tenshi. Plus tard, Yuri Nakamura, leader du SSS, lui explique que le groupe se rebelle contre le dieu qui leur a imposé une vie vide de sens. C'est pourquoi Tenshi est leur ennemie jurée. Mais Yuzuru, qui n'a aucun souvenir de sa vie sur Terre, a l'intuition que la jeune fille n'est pas une envoyée de Dieu.",
   },
 ];
 
