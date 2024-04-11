@@ -88,6 +88,7 @@ import Noragami from "./Noragami/noragami";
 import AngelBeats from "./AngelBeats/angel-beats";
 import MiraiNikki from "./MiraiNikki/mirai-nikki";
 import ThePromisedNeverland from "./ThePromisedNeverland/the-promised-neverland";
+import Evangelion from "./Envangelion/evangelion";
 
 export interface AnimesType {
   anime: string;
@@ -837,6 +838,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Emma et ses amis, tous orphelins, ont été placés dans un établissement spécialisé lorsqu'ils étaient tout jeune. Bien que leur liberté soit limitée et que les règles soient parfois un peu strictes, ils mènent une vie agréable tous ensemble et la femme qui s'occupe d'eux est généreuse. Cependant, une question anime Emma et tous les autres : pourquoi n'ont-ils pas le droit de sortir de l'orphelinat ?",
     options: new ThePromisedNeverland(),
+  },
+  {
+    anime: "Neon Genesis Evangelion",
+    aliases: ["Shinseiki Evangelion", "NGE"],
+    category: ["Action", "Drame", "Psychologique", "Science Fiction"],
+    synopsis:
+      "En 2000, une gigantesque explosion se produit en Antarctique, provoquant un cataclysme (raz-de-marée, fonte des calottes polaires) qui dévaste une grande partie de la planète. Les autorités déclarent que cette catastrophe était due à la chute d'un astéroïde sur la planète. Quinze ans plus tard, l'humanité a surmonté cet événement, appelé le Second Impact. Mais de mystérieuses créatures nommées Anges font leur apparition, et tentent de détruire Tokyo-3, la nouvelle capitale forteresse du Japon, construite après le Second Impact. Pour les combattre, l'organisation secrète NERV a mis au point une arme ultime, l'Evangelion ou l'Eva, robot géant anthropoïde piloté. Shinji Ikari, quatorze ans, se rend à Tokyo-3 sur invitation de son père, qu'il n'a pas revu depuis dix ans. Il est loin de se douter qu'il sera impliqué dans un conflit qui pourrait bien signifier la fin de l'humanité quoi qu'il arrive...",
+    options: new Evangelion(),
   },
 ];
 
