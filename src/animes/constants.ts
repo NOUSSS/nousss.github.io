@@ -90,6 +90,7 @@ import MiraiNikki from "./MiraiNikki/mirai-nikki";
 import ThePromisedNeverland from "./ThePromisedNeverland/the-promised-neverland";
 import Evangelion from "./Envangelion/evangelion";
 import CowboyBebop from "./CowboyBebop/cowboy-bebop";
+import KaguyaSama from "./KaguyaSama/kaguya-sama";
 
 export interface AnimesType {
   anime: string;
@@ -916,6 +917,14 @@ export const ANIMES: AnimesType[] = [
     options: new CowboyBebop(),
     synopsis:
       "L'histoire se déroule en l'an 2071, près de 50 ans après l'incident de la gate, et l'humanité s'est répandue à travers tout le système solaire grâce aux portes spatiales qu'elle a développé durant toutes ces années. Avec l'invention du MONO (Machine Operation Navigation of Outer space), les voyages interplanétaires se font de manière plus rapide, rendant les planètes distantes de la Terre comme Venus, mars ou encore Jupiter facilement accessibles, entraînant par la même occasion un trafic constant entre les différentes planètes et lunes du système solaire. Cowboy Bebop nous raconte les déboires de Spike et Jet, deux célibataires qui se sont associés dans la chasse aux hors-la-loi dont la tête est mise à prix. Tous les deux sans argent, ils sillonnent l'espace à bord du Bebop afin de renflouer leur compte en banque ainsi que leur frigo. Mais bientôt ils ne seront plus seuls car leurs chasses à l'homme les amèneront à croiser le chemin d'un chien intelligent, Ein, d'une belle brune, Faye et d'une jeune hackeur au comportement loufoque, Ed.",
+  },
+  {
+    anime: "Kaguya-sama: Love is War",
+    aliases: ["Kaguya-sama wa Kokurasetai: Ultra Romantic"],
+    category: ["Comédie", "Drame", "Romance", "School Life"],
+    synopsis:
+      "Kaguya Shinomiya, vice-présidente du conseil des élèves ne voit pas l'amour comme tout le monde. Pour elle, c'est un combat qu'elle doit livrer avec la personne dont elle est amoureuse, Miyuki Shirogane, qui n'est autre que le président du conseil des élèves et qui partage une vision de l'amour assez similaire. Bien que tous les deux éprouvent des sentiments réciproques, leur orgueil fait que le premier qui osera se déclarer devra alors se soumettre à l'autre...",
+    options: new KaguyaSama(),
   },
 ];
 
