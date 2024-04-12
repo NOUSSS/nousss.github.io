@@ -94,6 +94,7 @@ import KaguyaSama from "./KaguyaSama/kaguya-sama";
 import FruitsBasket from "./FruitsBasket/fruits-basket";
 import Clannad from "./Clannad/clannad";
 import LesCarnetsDeLapothicaire from "./LesCarnetsDeLapothicaire/les-carnets-de-lapothicaire";
+import MarchComesinLikeaLion from "./MarchComesinLikeaLion/march-comes-in-like-a-lion";
 
 export interface AnimesType {
   anime: string;
@@ -964,6 +965,14 @@ export const ANIMES: AnimesType[] = [
     options: new LesCarnetsDeLapothicaire(),
     synopsis:
       "À 17 ans, Mao Mao a une vie compliquée. Formée dès son jeune âge par un apothicaire du quartier des plaisirs, elle se retrouve enlevée et vendue comme servante dans le quartier des femmes du palais impérial ! Entouré de hauts murs, il est coupé du monde extérieur. Afin de survivre dans cette prison de luxe grouillant de complots et de basses manœuvres, la jeune fille tente de cacher ses connaissances pour se fondre dans la masse. Mais, quand les morts suspectes de princes nouveau-nés mettent la cour en émoi, sa passion pour les poisons prend le dessus. Elle observe, enquête... et trouve la solution ! En voulant bien faire, la voilà repérée... Jinshi, haut fonctionnaire aussi beau que calculateur, devine son talent et la promeut goûteuse personnelle d'une des favorites de l'empereur. Au beau milieu de ce nid de serpents, le moindre faux pas peut lui être fatal !",
+  },
+  {
+    anime: "March Comes in like a Lion",
+    aliases: ["3-gatsu no Lion", "Sangatsu no Lion"],
+    category: ["Comédie", "Drame", "Slice of Life"],
+    synopsis:
+      "Rei Kiriyama est un jeune homme de dix-sept ans au caractère pour le moins marginal : calme et réservé, celui-ci n'a ni famille ni ami et, contrairement aux autres garçons de son âge, il ne va pas à l'école. Vivant à Tokyo, il est un très bon joueur de shogi et peut au moins compter sur une personne : Akari Kawamoto, une jeune célibataire qui s'occupe de ses deux petites sœurs, Hinata et Momo.",
+    options: new MarchComesinLikeaLion(),
   },
 ];
 
