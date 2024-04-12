@@ -91,6 +91,7 @@ import ThePromisedNeverland from "./ThePromisedNeverland/the-promised-neverland"
 import Evangelion from "./Envangelion/evangelion";
 import CowboyBebop from "./CowboyBebop/cowboy-bebop";
 import KaguyaSama from "./KaguyaSama/kaguya-sama";
+import FruitsBasket from "./FruitsBasket/fruits-basket";
 
 export interface AnimesType {
   anime: string;
@@ -925,6 +926,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Kaguya Shinomiya, vice-présidente du conseil des élèves ne voit pas l'amour comme tout le monde. Pour elle, c'est un combat qu'elle doit livrer avec la personne dont elle est amoureuse, Miyuki Shirogane, qui n'est autre que le président du conseil des élèves et qui partage une vision de l'amour assez similaire. Bien que tous les deux éprouvent des sentiments réciproques, leur orgueil fait que le premier qui osera se déclarer devra alors se soumettre à l'autre...",
     options: new KaguyaSama(),
+  },
+  {
+    anime: "Fruits Basket",
+    category: ["Comédie", "Drame", "Fantasy", "Romance", "School Life"],
+    aliases: ["Furuba"],
+    synopsis:
+      "Tohru Honda, récemment orpheline, choisit de vivre dans une tente sur un terrain vague plutôt que de déranger ses amies Arisa Uotani et Saki Hanajima, tandis que son grand-père rénove sa maison. Ce terrain s'avère appartenir à la famille Sôma, où vit Shigure Sôma avec son neveu Yuki, un camarade de classe distant de Tohru. Après un glissement de terrain qui détruit sa tente, Tohru est accueillie chez les Sôma en échange d'aide domestique. Peu après son arrivée, Tohru est témoin d'une altercation entre Yuki et un jeune homme aux cheveux oranges, Kyô, qui se transforme en chat lorsqu'elle le touche. Elle découvre alors le secret des Sôma : certains membres de la famille sont possédés par les esprits des 12 animaux du zodiaque chinois, plus le chat, exclu de la légende originale. Tohru a ainsi rencontré le rat (Yuki), le chien (Shigure), et le chat (Kyô). Intriguée, elle se demande quels autres membres de la famille partagent cette malédiction.",
+    options: new FruitsBasket(),
   },
 ];
 
