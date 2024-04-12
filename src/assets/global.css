@@ -74,5 +74,5 @@
 }
 
 .select::-webkit-scrollbar-thumb {
-  @apply rounded-md border-transparent bg-gray-600 bg-opacity-50;
+  @apply w-px rounded-md border-transparent bg-gray-400 bg-opacity-50;
 }
