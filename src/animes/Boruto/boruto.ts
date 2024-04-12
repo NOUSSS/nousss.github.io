@@ -47,6 +47,7 @@ class Boruto extends Anime {
       allIndex: {
         1: 0,
       },
+
       names,
     };
   }
