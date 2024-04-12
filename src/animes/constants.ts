@@ -97,6 +97,7 @@ import LesCarnetsDeLapothicaire from "./LesCarnetsDeLapothicaire/les-carnets-de-
 import MarchComesinLikeaLion from "./MarchComesinLikeaLion/march-comes-in-like-a-lion";
 import TheDangersInMyHeart from "./TheDangersInMyHeart/the-dangers-in-my-heart";
 import KaijuN8 from "./KaijuN8/kaiju-n8";
+import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 
 export interface AnimesType {
   anime: string;
@@ -997,6 +998,19 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Les kaiju sont d'effroyables monstres géants qui surgissent de nulle part pour attaquer la population. Au Japon, ces apparitions font désormais partie du quotidien. Enfant, Kafka Hibino rêvait d'intégrer les Forces de Défense pour combattre ces terribles ennemis, mais après de nombreux échecs à l'examen d'entrée, ce trentenaire travaille à nettoyer les rues de leurs encombrants cadavres. Jusqu'au jour où une mystérieuse créature s'introduit dans son organisme et le métamorphose en une entité surpuissante mi-humaine, mi-kaiju. Son nouveau nom de code : \"Kaiju n° 8\" !",
     options: new KaijuN8(),
+  },
+  {
+    anime: "Violet Evergarden",
+    category: [
+      "Drame",
+      "Fantasy",
+      "Romance",
+      "Science-fiction",
+      "Slice of Life",
+    ],
+    synopsis:
+      "Basé sur le roman Violet Evergarden de Akatsuki Kana. La guerre opposant Leidenschaftreich à l'Empire Gardarik a finalement pris fin après quatre longues années de conflit. Violet, une jeune fille formée dans le seul but de décimer les lignes ennemies, est hospitalisée suite à une violente opération. Après avoir tout perdu, elle se raccroche aux derniers mots du Major, son supérieur hiérarchique, mais sans comprendre leur signification. Se remettant de ses blessures, Violet est adoptée par la famille Evergarden mais ne se sentant pas à l'aise dans sa famille d'adoption, elle décide de commencer une nouvelle vie à CH Postal, une entreprise postale. Un jour, elle assiste par pur hasard au travail d'une «poupée de souvenirs automatiques», une personne qui retranscrit les pensées et les sentiments d'autrui dans des lettres. Intéressée, Violet commence à travailler en tant que poupée de souvenirs automatiques, un métier qui va lui permettre d'aider ses clients et de comprendre les derniers mots de celui qu'elle aimait.",
+    options: new VioletEvergarden(),
   },
 ];
 
