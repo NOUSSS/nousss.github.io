@@ -35,7 +35,7 @@ export function getFilms(
     ? Object.values(Anime.anime.options.FILM_OPTIONS.names)
     : undefined;
 
-  if (names) {
+  if (names && LecteursFilms?.length > 0) {
     for (let i = 0; i < Object.keys(names).length; i++) {
       const url = LecteursFilms[i];
       const id = `${names[i].name}|${

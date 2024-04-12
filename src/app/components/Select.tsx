@@ -51,6 +51,16 @@ export default function Select({
     }
   }, [selectedItems]);
 
+  const toggleBodyScroll = (toggle: boolean): void => {
+    if (toggle) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  };
+
+  useEffect(() => toggleBodyScroll(isSelected), [isSelected]);
+
   const appear = () => {
     setIsSelected(true);
 
@@ -115,6 +125,7 @@ export default function Select({
       if (placeholderRef.current) {
         placeholderRef.current.innerText = item.name;
       }
+
       disappear();
     } else {
       if (selectedItems.some((i) => i.value === item.value)) {
@@ -156,6 +167,8 @@ export default function Select({
           <ul key={index}>
             <li
               onClick={() => {
+                if (!multiple) toggleBodyScroll(false);
+
                 if (!item.disabled) {
                   handleSelect(item);
                   appear();
