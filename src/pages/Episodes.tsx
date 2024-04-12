@@ -170,9 +170,9 @@ const Episodes = () => {
       setUrlScript(url);
       setFilever(random());
     }
-  }, [anime, anime.saison, anime.lang]);
+  }, [anime.saison, anime.lang]);
 
-  const status = useScript((url_script as string) + `?filever=${filever}`, {
+  const status = useScript(url_script + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
