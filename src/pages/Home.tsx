@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
+
 import NavMotion from "@/app/lib/navMotion";
 
 import { useRouter } from "next/router";
@@ -40,7 +42,7 @@ const Home = () => {
   }, [query.anime]);
 
   return (
-    <main className="mx-auto w-3/4 rounded-lg bg-zinc-900 bg-opacity-50 p-4 shadow-lg shadow-black/10 max-md:w-full max-md:bg-transparent max-md:shadow-none">
+    <main className="top-24 mx-12 max-md:mx-0">
       <Head>
         {anime?.anime && (
           <title>{anime.anime} - Accueil - Mugiwara-no Streaming</title>
@@ -48,11 +50,49 @@ const Home = () => {
       </Head>
 
       <Title link={{ pathname: "/" }} />
-      <p className="text-lg text-zinc-400">
-        {anime && anime.category.join(", ")}
-      </p>
 
-      <div className="m-12 text-left text-lg">{anime?.synopsis}</div>
+      <div className="relative my-12 flex h-auto rounded-md bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-md:rounded-none">
+        {anime?.options.affiche && (
+          <div>
+            <Image
+              alt={`affiche de ${anime.anime}`}
+              src={anime.options.affiche!}
+              className="w-full rounded-l-md max-xl:rounded-t-md max-md:rounded-none md:w-[654px] md:max-w-[654px]"
+            />
+
+            <Image
+              alt={`ambiance de ${anime.anime}`}
+              src={anime.options.affiche!}
+              className="absolute left-0 top-0 -z-50 h-full w-full blur-3xl"
+            />
+          </div>
+        )}
+
+        <div className="m-5 text-lg">
+          {anime?.aliases && anime.aliases.length > 0 && (
+            <div>
+              Aliases
+              <p className="ml-1 text-sm text-zinc-300">
+                {anime.aliases.join(", ")}
+              </p>
+            </div>
+          )}
+
+          <div>
+            Catégories
+            <p className="ml-1 text-sm text-zinc-300">
+              {anime?.category && anime.category.join(", ")}
+            </p>
+          </div>
+
+          <div className="mt-4">
+            Synopsis
+            <p className="ml-1 text-sm text-zinc-300">
+              {anime?.synopsis && anime.synopsis}
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div ref={choicesRef} className="flex justify-center text-left">
         <ul>
