@@ -786,7 +786,6 @@ export const ANIMES: AnimesType[] = [
     options: new Erased(),
     category: [
       "Drame",
-      "Mature",
       "Mystère",
       "Psychologique",
       "Romance",
@@ -833,7 +832,7 @@ export const ANIMES: AnimesType[] = [
       "Thriller",
       "Drame",
       "Comédie",
-      "Psychologie",
+      "Psychologique",
       "Mystère",
     ],
     aliases: ["Steins Gate"],
