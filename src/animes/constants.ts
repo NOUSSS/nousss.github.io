@@ -96,6 +96,7 @@ import Clannad from "./Clannad/clannad";
 import LesCarnetsDeLapothicaire from "./LesCarnetsDeLapothicaire/les-carnets-de-lapothicaire";
 import MarchComesinLikeaLion from "./MarchComesinLikeaLion/march-comes-in-like-a-lion";
 import TheDangersInMyHeart from "./TheDangersInMyHeart/the-dangers-in-my-heart";
+import KaijuN8 from "./KaijuN8/kaiju-n8";
 
 export interface AnimesType {
   anime: string;
@@ -392,7 +393,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Sword Art Online",
     aliases: ["sao", "films", "saisons"],
     options: new SwordArtOnline(),
-    category: ["Action", "Drame", "Fantasy", "Romance", "Science Fiction"],
+    category: ["Action", "Drame", "Fantasy", "Romance", "Science-fiction"],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -516,7 +517,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Fire Force",
-    category: ["Action", "Surnaturel", "Science Fiction"],
+    category: ["Action", "Surnaturel", "Science-fiction"],
     aliases: ["feu"],
     synopsis:
       "L'humanité est terrifiée par le phénomène de combustion humaine. Des brigades spéciales Fire Force ont donc été mises en place avec pour mission de trouver la cause de ce mystérieux phénomène ! Le jeune Shinra, nouvelle recrue surnommée le Démon, rêve de devenir un héros.",
@@ -539,7 +540,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Gurren Lagann",
-    category: ["Action", "Aventure", "Science Fiction"],
+    category: ["Action", "Aventure", "Science-fiction"],
     options: new GurrenLagann(),
     aliases: ["anti spiral"],
     synopsis:
@@ -654,7 +655,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "86: Eighty Six",
     options: new EightySix(),
-    category: ["Science Fiction", "Action", "Drame"],
+    category: ["Science-fiction", "Action", "Drame"],
     synopsis: `Pour répondre aux attaques de drones autonomes envoyés par l’Empire voisin de Giad, la République de San Magnolia a développé ses propres drones de combat surnommés les “Juggernaut", espérant ainsi limiter les pertes humaines. En réalité, ces appareils sont pilotés par les 86, les habitants d’un district secret considérés comme du bétail. Déterminé dans sa mission, Shin, le capitaine de l'escadron Spearhead composé de plusieurs 86, poursuit ces opérations suicidaires. C’est alors qu’arrive un nouvel officier et soldat de l’élite militaire, Lena, qui déteste la façon dont la République utilise les 86. Ils n’auraient jamais dû se croiser, mais face aux événements de cette guerre féroce, ils vont entrevoir ensemble un nouvel avenir…`,
   },
   {
@@ -667,7 +668,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Cyberpunk: Edgerunners",
     options: new CyberpunkEdgerunners(),
-    category: ["Action", "Drame", "Science Fiction"],
+    category: ["Action", "Drame", "Science-fiction"],
     synopsis:
       "Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.",
   },
@@ -707,7 +708,7 @@ export const ANIMES: AnimesType[] = [
       "Drame",
       "Mystère",
       "Psychologique",
-      "Science Fiction",
+      "Science-fiction",
     ],
     synopsis:
       "Un groupe de 7 personnes atterrissent sur une île inconnue et probablement déserte, après un long sommeil, ils ne se connaissent pas et ne savent pas ce qui leur est arrivé. Malgré les tensions au sein du groupe, ils vont devoir s'entraider pour faire face aux dangers de la jungle et tenter de découvrir la raison pour laquelle ils sont ici...",
@@ -751,13 +752,13 @@ export const ANIMES: AnimesType[] = [
     anime: "Gintama",
     synopsis:
       "Dans un Japon mi-médiéval, mi-futuriste, des extraterrestres, les Amanto débarquent sur Terre. Forts de leur supériorité technologique, ils vont imposer leur loi : tout samouraï devra se défaire de son sabre... C'en est donc fini de l'âme du guerrier samouraï ! C'est sans compter Gintoki Sakata ! Armé de son sabre d'entraînement, il se placera en dernier défenseur du Bushido, le code du samouraï et ne se défera pas de son humour cinglant lors de ses missions délirantes !",
-    category: ["Action", "Comédie", "Science Fiction"],
+    category: ["Action", "Comédie", "Science-fiction"],
     aliases: ["Silver soul"],
     options: new Gintama(),
   },
   {
     anime: "Steins;Gate",
-    category: ["Science Fiction", "Thriller", "Drame"],
+    category: ["Science-fiction", "Thriller", "Drame"],
     aliases: ["Steins Gate"],
     options: new SteinsGate(),
     synopsis:
@@ -773,7 +774,7 @@ export const ANIMES: AnimesType[] = [
       "Drame",
       "Psychologique",
       "Romance",
-      "Science Fiction",
+      "Science-fiction",
       "Surnaturel",
       "Thriller",
     ],
@@ -911,14 +912,14 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Neon Genesis Evangelion",
     aliases: ["Shinseiki Evangelion", "NGE"],
-    category: ["Action", "Drame", "Psychologique", "Science Fiction"],
+    category: ["Action", "Drame", "Psychologique", "Science-fiction"],
     synopsis:
       "En 2000, une gigantesque explosion se produit en Antarctique, provoquant un cataclysme (raz-de-marée, fonte des calottes polaires) qui dévaste une grande partie de la planète. Les autorités déclarent que cette catastrophe était due à la chute d'un astéroïde sur la planète. Quinze ans plus tard, l'humanité a surmonté cet événement, appelé le Second Impact. Mais de mystérieuses créatures nommées Anges font leur apparition, et tentent de détruire Tokyo-3, la nouvelle capitale forteresse du Japon, construite après le Second Impact. Pour les combattre, l'organisation secrète NERV a mis au point une arme ultime, l'Evangelion ou l'Eva, robot géant anthropoïde piloté. Shinji Ikari, quatorze ans, se rend à Tokyo-3 sur invitation de son père, qu'il n'a pas revu depuis dix ans. Il est loin de se douter qu'il sera impliqué dans un conflit qui pourrait bien signifier la fin de l'humanité quoi qu'il arrive...",
     options: new Evangelion(),
   },
   {
     anime: "Cowboy Bebop",
-    category: ["Action", "Aventure", "Comédie", "Drame", "Science Fiction"],
+    category: ["Action", "Aventure", "Comédie", "Drame", "Science-fiction"],
     options: new CowboyBebop(),
     synopsis:
       "L'histoire se déroule en l'an 2071, près de 50 ans après l'incident de la gate, et l'humanité s'est répandue à travers tout le système solaire grâce aux portes spatiales qu'elle a développé durant toutes ces années. Avec l'invention du MONO (Machine Operation Navigation of Outer space), les voyages interplanétaires se font de manière plus rapide, rendant les planètes distantes de la Terre comme Venus, mars ou encore Jupiter facilement accessibles, entraînant par la même occasion un trafic constant entre les différentes planètes et lunes du système solaire. Cowboy Bebop nous raconte les déboires de Spike et Jet, deux célibataires qui se sont associés dans la chasse aux hors-la-loi dont la tête est mise à prix. Tous les deux sans argent, ils sillonnent l'espace à bord du Bebop afin de renflouer leur compte en banque ainsi que leur frigo. Mais bientôt ils ne seront plus seuls car leurs chasses à l'homme les amèneront à croiser le chemin d'un chien intelligent, Ein, d'une belle brune, Faye et d'une jeune hackeur au comportement loufoque, Ed.",
@@ -982,6 +983,20 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Kyôtarô Ichikawa est un garçon qui pense être secrètement le personnage principal torturé d'un thriller psychologique. Il passe ses journées à observer ses camarades de classe et en particulier Anna Yamada, l'idole de la classe, qui est la personne qu'il veut le plus tuer. Mais Kyôtarô est loin d'être l'adolescent perturbé qu'il prétend être et il s'avère qu'Anna est elle-même un peu bizarre !",
     options: new TheDangersInMyHeart(),
+  },
+  {
+    anime: "Kaiju N°8",
+    aliases: ["Monster 8"],
+    category: [
+      "Action",
+      "Comédie",
+      "Horreur",
+      "Science-fiction",
+      "Nouvelles saisons",
+    ],
+    synopsis:
+      "Les kaiju sont d'effroyables monstres géants qui surgissent de nulle part pour attaquer la population. Au Japon, ces apparitions font désormais partie du quotidien. Enfant, Kafka Hibino rêvait d'intégrer les Forces de Défense pour combattre ces terribles ennemis, mais après de nombreux échecs à l'examen d'entrée, ce trentenaire travaille à nettoyer les rues de leurs encombrants cadavres. Jusqu'au jour où une mystérieuse créature s'introduit dans son organisme et le métamorphose en une entité surpuissante mi-humaine, mi-kaiju. Son nouveau nom de code : \"Kaiju n° 8\" !",
+    options: new KaijuN8(),
   },
 ];
 
