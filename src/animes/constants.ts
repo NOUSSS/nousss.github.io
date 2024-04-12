@@ -95,6 +95,7 @@ import FruitsBasket from "./FruitsBasket/fruits-basket";
 import Clannad from "./Clannad/clannad";
 import LesCarnetsDeLapothicaire from "./LesCarnetsDeLapothicaire/les-carnets-de-lapothicaire";
 import MarchComesinLikeaLion from "./MarchComesinLikeaLion/march-comes-in-like-a-lion";
+import TheDangersInMyHeart from "./TheDangersInMyHeart/the-dangers-in-my-heart";
 
 export interface AnimesType {
   anime: string;
@@ -973,6 +974,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Rei Kiriyama est un jeune homme de dix-sept ans au caractère pour le moins marginal : calme et réservé, celui-ci n'a ni famille ni ami et, contrairement aux autres garçons de son âge, il ne va pas à l'école. Vivant à Tokyo, il est un très bon joueur de shogi et peut au moins compter sur une personne : Akari Kawamoto, une jeune célibataire qui s'occupe de ses deux petites sœurs, Hinata et Momo.",
     options: new MarchComesinLikeaLion(),
+  },
+  {
+    anime: "The Dangers in My Heart",
+    aliases: ["Boku no Kokoro no Yabai Yatsu"],
+    category: ["Comédie", "Romance", "School Life"],
+    synopsis:
+      "Kyôtarô Ichikawa est un garçon qui pense être secrètement le personnage principal torturé d'un thriller psychologique. Il passe ses journées à observer ses camarades de classe et en particulier Anna Yamada, l'idole de la classe, qui est la personne qu'il veut le plus tuer. Mais Kyôtarô est loin d'être l'adolescent perturbé qu'il prétend être et il s'avère qu'Anna est elle-même un peu bizarre !",
+    options: new TheDangersInMyHeart(),
   },
 ];
 
