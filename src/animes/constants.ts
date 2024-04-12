@@ -104,7 +104,7 @@ export const ANIMES: AnimesType[] = [
     anime: "One Piece",
     aliases: ["luffy", "zoro", "op", "films", "saisons", "scans", "En équipe"],
     options: new OnePiece(),
-    category: ["Aventure", "Fantaisie", "Action"],
+    category: ["Aventure", "Fantasy", "Action"],
     synopsis:
       "L'histoire suit principalement l'équipage de Chapeau de paille, mené par son capitaine Monkey D. Luffy, un jeune homme ayant mangé, enfant, sans le savoir, le fruit du Gum Gum qui lui permet d'étirer ses membres, et dont le rêve est de devenir le Roi des pirates.",
   },
@@ -176,7 +176,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Solo Leveling",
     aliases: ["only i level up", "saisons", "scans"],
     options: new SoloLeveling(),
-    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
+    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
@@ -200,14 +200,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Black Clover",
     aliases: ["asta", "yuno", "bc", "films", "saisons", "scans"],
     options: new BlackClover(),
-    category: ["Action", "Fantaisie", "Aventure"],
+    category: ["Action", "Fantasy", "Aventure"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
     anime: "Hunter X Hunter",
     aliases: ["nen", "hxh", "gon", "netero", "films", "saisons", "scans"],
     options: new HunterXHunter(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "Abandonné par son père qui est un Hunter, à la fois un aventurier et un chasseur de primes, Gon décide à l'âge de 12 ans de partir pour devenir un Hunter. Cela ne sera pas chose aisée, il devra passer une suite de tests et examens en compagnie de milliers d'autres prétendants au titre de Hunter.",
   },
@@ -215,7 +215,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Mashle",
     aliases: ["saitama v2", "muscle", "saisons", "scans"],
     options: new Mashle(),
-    category: ["Action", "Comédie", "Fantaisie"],
+    category: ["Action", "Comédie", "Fantasy"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -223,7 +223,7 @@ export const ANIMES: AnimesType[] = [
     anime: "L'attaque des titans",
     aliases: ["shingeki no kyojin", "snk", "eren", "saisons", "scans"],
     options: new AttaqueDesTitans(),
-    category: ["Action", "Fantaisie", "Drame", "Horreur"],
+    category: ["Action", "Fantasy", "Drame", "Horreur"],
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
   },
@@ -246,7 +246,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Tower of god",
     aliases: ["tog", "scans", "saisons"],
     options: new TowerOfGod(),
-    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
+    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
     synopsis:
       "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
   },
@@ -254,7 +254,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto",
     aliases: ["konoha", "kurama", "kyubi", "scans", "saisons"],
     options: new Naruto(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
@@ -262,7 +262,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto Shippuden",
     aliases: ["naruto adulte", "films", "saisons"],
     options: new NarutoShippuden(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
   },
@@ -270,7 +270,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Shangri-La Frontier",
     aliases: ["scans", "saisons"],
     options: new ShangriLaFrontier(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "Sunraku est un passionné de jeux vidéo, il s'essaye aux pires jeux existants. Un jour il décide de s'attaquer au MMORPG Shangri-La Frontier, jeu aux trente millions de membres inscrits, il va devoir faire affronter de multiples dangers avec un masque ridicule... en forme d'oiseau.",
   },
@@ -286,7 +286,7 @@ export const ANIMES: AnimesType[] = [
     anime: "The Daily Life of the Immortal King",
     aliases: ["saitama v2", "saisons"],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: ["Comédie", "Fantaisie", "Action", "Slice of Life"],
+    category: ["Comédie", "Fantasy", "Action", "Slice of Life"],
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
@@ -340,7 +340,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Boruto",
     aliases: ["suite", "code", "scans", "saisons", "films"],
     options: new Boruto(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "UNE NOUVELLE GÉNÉRATION DE NINJAS DÉBARQUE À KONOHA ! Les grands affrontements dans le monde des ninjas appartiennent désormais au passé. Le village de Konoha est entré dans une ère de paix. Boruto, le fils du 7e Hokage, vit mal d'être dans l'ombre de son imminent paternel.",
   },
@@ -348,7 +348,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Sword Art Online",
     aliases: ["sao", "films", "saisons"],
     options: new SwordArtOnline(),
-    category: ["Action", "Fantaisie", "Science Fiction", "Isekai"],
+    category: ["Action", "Drame", "Fantasy", "Romance", "Science Fiction"],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -386,7 +386,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Hell's Paradise",
     aliases: ["gabimaru", "scans", "saisons"],
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     options: new HellsParadise(),
     synopsis:
       "Gabimaru, « Le Vide », le plus célèbre et puissant des assassins a été capturé et croupit en prison. Affirmant n'avoir plus aucune raison de vivre, il attend désespérément qu'un bourreau parvienne à lui ôter la vie car son entraînement surhumain lui permet de résister aux pires des châtiments.",
@@ -394,7 +394,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Fairy Tail",
     options: new FairyTail(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     synopsis:
       "Lucy, une jeune fille, rêve de devenir magicienne. Un jour, elle rencontre Natsu, un magicien maîtrisant le feu, ce dernier l'invite alors à rejoindre sa guilde. Il s'agit de la célèbre Fairy Tail, le sujet de tous les rêves de Lucy. Mais celle-ci est bien mystérieuse et semble être à l'origine de nombreux scandales.",
     aliases: ["films", "scans", "saisons"],
@@ -402,7 +402,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "The Eminence in Shadow",
     options: new EminenceInShadow(),
-    category: ["Action", "Comédie", "Fantaisie", "Isekai"],
+    category: ["Action", "Aventure", "Comédie", "Fantasy"],
     synopsis:
       "L'histoire suit les péripéties de Cid, un jeune garçon transporté dans un autre monde. Souffrant du syndrome du chūnibyō, il parvient à convaincre son nouvel entourage qu'il est le chef d'une société secrète recrutant de puissants individus et visant à influencer le cours des événements.",
     aliases: ["scans", "saisons"],
@@ -433,7 +433,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["Action", "Surnaturel", "Fantaisie"],
+    category: ["Action", "Surnaturel", "Fantasy"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["films", "scans", "saisons"],
@@ -443,7 +443,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Kagura Bachi suit Chihiro, un jeune forgeron subitement devenu épéiste pour des raisons encore inconnues pour le moment. Le protagoniste évolue dans un univers fantaisiste où la magie existe, et peut renforcer des armes comme le katana qu'il manie. Chihiro traque un ennemi inconnu pour le moment.",
     options: new KaguraBachi(),
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     aliases: ["scans"],
   },
   {
@@ -503,7 +503,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Seven Deadly Sins",
-    category: ["Action", "Fantaisie", "Aventure"],
+    category: ["Action", "Fantasy", "Aventure"],
     options: new SevenDeadlySins(),
     aliases: ["nanatsu no taizai"],
     synopsis:
@@ -511,7 +511,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Ragna Crimson",
-    category: ["Action", "Fantaisie", "Drame"],
+    category: ["Action", "Fantasy", "Drame"],
     options: new RagnaCrimson(),
     synopsis:
       "Les chasseurs de dragons tuent leurs proies avec leur épée d'argent afin de toucher une récompense. Parmi eux, il y a Ragna, un jeune homme plutôt faible faisant équipe avec Léonica, une chasseuse de génie qui peut se vanter d'avoir tué bien plus de dragons que n'importe quel autre chasseur.",
@@ -532,7 +532,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Frieren",
-    category: ["Aventure", "Fantaisie", "Drame"],
+    category: ["Aventure", "Fantasy", "Drame"],
     options: new Frieren(),
     aliases: ["sousou de frieren"],
     synopsis:
@@ -553,33 +553,33 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Doom Breaker",
-    category: ["Action", "Fantaisie", "Aventure", "Webtoon"],
+    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
     options: new DoomBreaker(),
     synopsis:
       "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",
   },
   {
     anime: "Boruto Two Blue Vortex",
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     options: new BorutoTwoBlueVortex(),
     synopsis: "En gros c'est boruto shippuden",
   },
   {
     anime: "Bucchigiri",
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     options: new Bucchigiri(),
     synopsis:
       "Les retrouvailles d'Arajin Tomoshibi avec son vieil ami de lycée Matakara Asamine prennent une tournure inattendue lorsqu'ils sont entraînés dans une bagarre avec les caïds du coin. La situation devient encore plus bizarre quand débarque un véritable colosse ! Mais ce n’est que le début d’une bataille plus profonde qui s’en engagée…",
   },
   {
     anime: "Fullmetal Alchemist Brotherhood",
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     options: new FMAB(),
     synopsis: `Dans un pays où l'alchimie permet de faire des choses extraordinaire, deux jeunes frères étudie cette science qui permet l'échange d'une chose contre une autre. Cette science repose sur le principe de "l'échange équivalent" qui requière de sacrifier une chose pour en obtenir une autre.`,
   },
   {
     anime: "Fullmetal Alchemist",
-    category: ["Action", "Aventure", "Fantaisie"],
+    category: ["Action", "Aventure", "Fantasy"],
     options: new FMA(),
     synopsis:
       "Après avoir perdu leur mère, Edward et Alphonse tentent de la ramener à la vie grâce à l'alchimie. Cependant, l'alchimie doit obéir à la loi de l'échange équivalent : l'objet transformé et l'objet issu de la transformation doivent être de masses équivalentes. Passer outre cette règle coûte très cher, et les frères Elric en feront les frais : Edward perd un bras et une jambe alors que son frère Alphonse perd son corps. Heureusement Edward réussit à enfermer l'âme de son frère dans une armure de métal grâce à un sceau de sang. Ils décident alors de quitter leur maison pour partir à la recherche d'informations sur la pierre philosophale, qui leur permettrait de regagner leurs corps. Cependant, ils ne sont pas les seuls à la recherche de cette pierre...",
@@ -628,7 +628,14 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Mushoku Tensei: Jobless Reincarnation",
-    category: ["Fantaisie", "Aventure", "Isekai", "Nouvelles saisons"],
+    category: [
+      "Action",
+      "Fantasy",
+      "Isekai",
+      "Romance",
+      "Slice of Life",
+      "Nouvelles saisons",
+    ],
     synopsis:
       "Un NEET vient d'être chassé de chez ses parents. Ayant le moral au plus bas, il pense au suicide. Jusqu'au jour où il aperçoit une ancienne camarade de classe sur le point de se faire renverser. D'un geste héroïque, il la pousse et se fait renverser à sa place. Suite à ça, il meurt puis se retrouve réincarné dans un monde fantaisiste. Il se réincarne dans le corps d'un enfant du nom de Rudeus Greyrat. Il est le fils d'un épéiste nommé Paul Greyrat et d'une ancienne aventurière nommée Zenith Greyrat. Bien décidé à faire quelque chose de sa nouvelle vie en tant que Rudeus, il va essayer de devenir le plus grand magicien de l'histoire.",
     options: new MushokuTensei(),
@@ -664,7 +671,7 @@ export const ANIMES: AnimesType[] = [
       "Aventure",
       "Comédie",
       "Drame",
-      "Fantaisie",
+      "Fantasy",
       "Horreur",
       "Psychologique",
       "Romance",
@@ -726,7 +733,16 @@ export const ANIMES: AnimesType[] = [
       "Starting Life in Another World",
       "kara Hajimeru Isekai Seikatsu",
     ],
-    category: ["Fantaisie", "Drame", "Thriller", "Isekai"],
+    category: [
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Isekai",
+      "Mystère",
+      "Psychologique",
+      "Romance",
+      "Thriller",
+    ],
     options: new ReZero(),
     synopsis:
       "Il s'agit de l'adaptation du roman Re:Zero de Nagatsuki Tappei et de Ootsuka Shinichirou. Un jour un jeune homme nommé Natsuki Subaru, à la sortie d'une supérette, est transporté dans un monde parallèle sans aucune explication. En essayant de comprendre pour quoi il se trouve ici, Subaru est attaqué par une bande de brigands mais est sauvé par une jeune fille : Emilia. Pour la remercier de l'aide qu'elle lui a fournie, il décide à son tour de l'aider à retrouver une voleuse qui lui a dérobé quelque chose. Un beau jour, Emilia et Subaru sont attaqués et tués par une mystérieuse personne. Cependant, Subaru se réveille au lieu et au jour où il est arrivé dans ce monde. C'est à ce moment-là qu'il se rend compte qu'il peut retourner dans le passé après être mort. Pour échapper à son funeste destin, Subaru décide d'utiliser son pouvoir pour sauver Emilia et pour se sauver lui-même.",
@@ -736,7 +752,7 @@ export const ANIMES: AnimesType[] = [
     aliases: ["Dai no Daibouken", "La quête de dai", "The adventure of dai"],
     synopsis:
       "Il y a 15 ans, Hadlar, le Roi du Mal, qui terrorisait le monde avec ses hordes de monstres, a été vaincu par un grand héros. Libérés de ses maléfices, les monstres ont recommencé à vivre discrètement sur une petite île des mers du Sud, l'île de Dermline. C'est sur cette île que Daï a été élevé, par son grand-père adoptif Brass. Daï, un jeune garçon de 12 ans, rêve de devenir un héros et de protéger l'île, alors que son grand-père, un sage incube d'environ 180 ans, veut à tout prix qu'il soit mage. Mais, le jeune garçon n'est pas doué pour la magie... Malheureusement, le Roi du Mal ressuscite, grâce à l'empereur du Mal, et recommence à semer la terreur dans le monde. Daï est alors formé aux techniques de combat par maître Avan, en vue de défaire le Dieu du Mal... Mais alors que son entraînement est à peine entamé, Avan se sacrifie pour sauver ses disciples de Hadlar, le Roi du Mal. C'est pour venger sa mémoire que Daï se battra, aidé par ses amis, Pop, Maam, et d'autres... Ainsi débute sa quête...",
-    category: ["Aventure", "Fantaisie", "Action"],
+    category: ["Aventure", "Fantasy", "Action"],
     options: new DragonQuest(),
   },
   {
@@ -755,7 +771,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Re:Monster",
-    category: ["Fantaisie", "Aventure", "Isekai", "Nouvelles saisons"],
+    category: ["Action", "Aventure", "Fantasy", "Nouvelles saisons"],
     options: new ReMonster(),
     synopsis: `Après avoir été assassiné, Kanata Tomokui se réincarne dans le corps d'un faible gobelin du nom de Goburô. Cependant, ce dernier a conservé les souvenirs de sa vie antérieure. Bien que faible au départ, Goburô va rapidement devenir l'un des piliers de la race des gobelins grâce à sa compétence "d'absorption" qui lui permet d'obtenir les pouvoirs de ce qu'il mange. Dans ce monde où le plus fort survit, cette histoire va suivre l'ascension fulgurante de Goburô et de ses camarades.`,
   },
@@ -767,7 +783,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "No Game, No Life",
-    category: ["Aventure", "Comédie", "Fantaisie", "Isekai"],
+    category: ["Aventure", "Comédie", "Fantasy", "Isekai"],
     options: new NoGameNoLife(),
     synopsis:
       "Sora et Shiro sont deux frère et sœur hikikomori. L'hikikomori désigne une pathologie psycho-sociale caractérisant les personnes (souvent des adolescents) qui vivent coupées du monde en restant cloîtrées chez elles, refusant toute communication. Dans le cas des deux protagonistes, leur condition vient de leur vision du monde réel, qui se résume à un jeu guère intéressant. Ensemble, ils forment un duo de joueurs invaincus, véritable légende urbaine. Un jour, un garçon se qualifiant de \"Dieu\" les transporte dans un monde fantastique, où il a interdit toute forme de violence entre les 16 races différentes y vivant. À la place, toute décision ou conflit est réglé par le jeu. Les deux adolescents y sont convoqués car ils pourraient bien être les sauveurs de l'humanité, la race Imanity qui, classée dernière parmi les 16 races, se retrouve confinée dans leur seule et unique cité restante. Durant leur quête pour sauver l'Imanity, ils rencontrent Stephanie Dola : reconnue comme la petite fille de l'ancien roi considéré comme fou, Jibril : une Flügel qui est l'une des races les plus puissantes et Kurami Zell : une ancienne ennemie devenue une alliée.",
@@ -804,7 +820,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Noragami",
-    category: ["Action", "Aventure", "Comédie", "Fantaisie", "Surnaturel"],
+    category: ["Action", "Aventure", "Comédie", "Fantasy", "Surnaturel"],
     options: new Noragami(),
     synopsis:
       "Yato est un dieu mineur dont le rêve est de devenir la divinité la plus vénérée du pays, avec son propre temple et ses cérémonies. Pour ce faire, il exauce n'importe quelle demande contre une rémunération de 5 yens. Au cours de l'une de ses missions, il manque de se faire écraser par un bus qu'il évite grâce à une lycéenne, Hiyori Iki. N'ayant pu éviter le véhicule, la jeune fille verra alors son âme se séparer de son corps lorsqu'elle s'endort. Refusant de rester dans cet état, Hiyori demandera à Yato de l'aider à retrouver son état originel. En attendant de trouver une solution, sa condition va lui permettre de découvrir un autre univers collé au sien, qui est aussi fascinant que dangereux : le monde des esprits.",
