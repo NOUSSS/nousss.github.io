@@ -92,6 +92,7 @@ import Evangelion from "./Envangelion/evangelion";
 import CowboyBebop from "./CowboyBebop/cowboy-bebop";
 import KaguyaSama from "./KaguyaSama/kaguya-sama";
 import FruitsBasket from "./FruitsBasket/fruits-basket";
+import Clannad from "./Clannad/clannad";
 
 export interface AnimesType {
   anime: string;
@@ -934,6 +935,21 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Tohru Honda, récemment orpheline, choisit de vivre dans une tente sur un terrain vague plutôt que de déranger ses amies Arisa Uotani et Saki Hanajima, tandis que son grand-père rénove sa maison. Ce terrain s'avère appartenir à la famille Sôma, où vit Shigure Sôma avec son neveu Yuki, un camarade de classe distant de Tohru. Après un glissement de terrain qui détruit sa tente, Tohru est accueillie chez les Sôma en échange d'aide domestique. Peu après son arrivée, Tohru est témoin d'une altercation entre Yuki et un jeune homme aux cheveux oranges, Kyô, qui se transforme en chat lorsqu'elle le touche. Elle découvre alors le secret des Sôma : certains membres de la famille sont possédés par les esprits des 12 animaux du zodiaque chinois, plus le chat, exclu de la légende originale. Tohru a ainsi rencontré le rat (Yuki), le chien (Shigure), et le chat (Kyô). Intriguée, elle se demande quels autres membres de la famille partagent cette malédiction.",
     options: new FruitsBasket(),
+  },
+  {
+    anime: "Clannad: After Story",
+    category: [
+      "Comédie",
+      "Drame",
+      "Psychologique",
+      "Romance",
+      "School Life",
+      "Slice of Life",
+      "Surnaturel",
+    ],
+    options: new Clannad(),
+    synopsis:
+      "Clannad After Story est la suite de la série Clannad. Cependant, elle ne reprend pas la même histoire et la même fin que le film. Il ne reste que quelques mois avant la fin du lycée pour Tomoya Okazaki et ses amis. En couple avec Nagisa Furukawa, il vit toujours chez cette dernière, mais souhaite songer à un avenir afin d'éviter de devenir un poids pour les parents de sa petite amie.",
   },
 ];
 
