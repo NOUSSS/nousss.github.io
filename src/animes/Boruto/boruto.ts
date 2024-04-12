@@ -35,6 +35,13 @@ class Boruto extends Anime {
         chapitre: string | number;
         index: string | number;
       }) => `https://anime-sama.fr/s1/scans/Boruto/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Two Blue Vortex",
+          value: "-boruto-two-blue-vortex|Boruto Two Blue Vortex",
+        },
+      ],
     };
 
     this.note =

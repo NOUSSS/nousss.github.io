@@ -67,6 +67,14 @@ const Scans = () => {
       setFilever(random());
 
       setScript(currentAnime.options.SCANS_OPTIONS.SCRIPT_URL);
+
+      const lastVersion = localStorage.getItem(
+        `${currentAnime.anime}--version`,
+      );
+
+      if (lastVersion) {
+        updateAnime({ version: lastVersion });
+      }
     }
   }, []);
 
@@ -215,8 +223,15 @@ const Scans = () => {
                 {
                   name: "Normal",
                   value: "return-normal",
+                  disabled: anime.version ? false : true,
                 },
-                ...anime.anime.options.SCANS_OPTIONS.versions,
+                ...anime.anime.options.SCANS_OPTIONS.versions.map(
+                  ({ value, name }) => ({
+                    value,
+                    name,
+                    disabled: anime.version === value,
+                  }),
+                ),
               ]}
               onSelect={(items) => {
                 ClearCache();
@@ -226,11 +241,18 @@ const Scans = () => {
                     ...currentState,
                     version: undefined,
                   }));
+
+                  localStorage.removeItem(`${anime.anime?.anime}--version`);
                 } else {
                   updateAnime((currentState) => ({
                     ...currentState,
                     version: items[0].value,
                   }));
+
+                  localStorage.setItem(
+                    `${anime.anime?.anime}--version`,
+                    items[0].value,
+                  );
                 }
               }}
             />

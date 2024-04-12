@@ -55,7 +55,6 @@ import Frieren from "./Frieren/frieren";
 import Vagabond from "./Vagabond/vagabond";
 import TheBoxer from "./TheBoxer/the-boxer";
 import DoomBreaker from "./DoomBreaker/doom-breaker";
-import BorutoTwoBlueVortex from "./BorutoTwoBlueVortex/boruto-two-blue-vortex";
 import Bucchigiri from "./Bucchigiri/bucchigiri";
 import FMAB from "./FMAB/fullmetal-alchemist-brotherhood";
 import FMA from "./FMA/fullmetal-alchemist";
@@ -645,12 +644,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",
   },
-  {
-    anime: "Boruto Two Blue Vortex",
-    category: ["Action", "Aventure", "Fantasy", "Arts Martiaux"],
-    options: new BorutoTwoBlueVortex(),
-    synopsis: "En gros c'est boruto shippuden",
-  },
+
   {
     anime: "Bucchigiri",
     category: ["Action", "School Life"],
