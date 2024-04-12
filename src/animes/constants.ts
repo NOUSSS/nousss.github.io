@@ -99,6 +99,7 @@ import TheDangersInMyHeart from "./TheDangersInMyHeart/the-dangers-in-my-heart";
 import KaijuN8 from "./KaijuN8/kaiju-n8";
 import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 import Kingdom from "./Kingdom/kingdom";
+import Parasite from "./Parasite/parasite";
 
 export interface AnimesType {
   anime: string;
@@ -1019,6 +1020,22 @@ export const ANIMES: AnimesType[] = [
     options: new Kingdom(),
     synopsis:
       "Au sein du Royaume de Qin vivent deux orphelins, Hyo et Shin. Au beau milieu des champs de bataille, les deux frères espèrent un jour qu'eux aussi, ils pourront servir leur royaume en combattant aux côtés des soldats qu'ils admirent. Alors qu'un jour, les deux orphelins se trouvent séparés, Shin décide de poursuivre son chemin pour devenir un grand général.",
+  },
+  {
+    anime: "Parasite",
+    aliases: ["Kiseijuu: Sei no Kakuritsu", "the maxime"],
+    category: [
+      "Action",
+      "Drame",
+      "Horreur",
+      "Psychologique",
+      "Romance",
+      "School Life",
+      "Science-fiction",
+    ],
+    options: new Parasite(),
+    synopsis:
+      "Depuis des milliers d'années, l'Homme se trouve au sommet de la chaîne alimentaire. Jusqu'à ce jour où de mystérieuses sphères, abritant d'étranges parasites, se répandent un peu partout sur Terre. Rapidement, les entités prennent possession de certains habitants. Nul ne sait d'où elles viennent, mais ce qui semble certain, c'est qu'elles sont là pour débarrasser le monde de l'espèce humaine. Shinichi, jeune lycéen, est un « hôte » dont le cerveau a miraculeusement été épargné : et pour cause, Migi, son parasite, a pris possession de son bras droit ! Ce cas exceptionnel va déboucher sur une singulière cohabitation. Car au-delà de la fusion physique opérée entre Migi et Shinichi, qui partagent désormais le même corps et la même vie, va se développer un lien d'attachement particulier où les deux êtres vont apprendre chacun l'un de l'autre. Alors que Shinichi se découvre doté d'incroyables facultés physiques, il prend aussi conscience de la menace qui plane sur ses proches... et sur l'humanité tout entière.",
   },
 ];
 

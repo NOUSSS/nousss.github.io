@@ -1,0 +1,28 @@
+const episodes = [
+  { name: "La Métamorphose", index: "1" },
+  { name: "Le Diable au corps", index: "2" },
+  { name: "Le banquet", index: "3" },
+  { name: "Cheveux emmêlés", index: "4" },
+  { name: "L'Étranger", index: "5" },
+  { name: "Le soleil se lève aussi", index: "6" },
+  { name: "Errances dans la nuit", index: "7" },
+  { name: "Point de congélation", index: "8" },
+  { name: "Par-delà bien et mal", index: "9" },
+  { name: "L'Univers en folie", index: "10" },
+  { name: "L'Oiseau bleu", index: "11" },
+  { name: "Le pauvre cœur des hommes", index: "12" },
+  { name: "Bonjour tristesse", index: "13" },
+  { name: "Le Gène égoïste", index: "14" },
+  { name: "La Foire des ténèbres", index: "15" },
+  { name: "Une Famille heureuse", index: "16" },
+  { name: "Le Détective agonisant", index: "17" },
+  { name: "Les Plus qu'humains", index: "18" },
+  { name: "De sang-froid", index: "19" },
+  { name: "Crime et Châtiment", index: "20" },
+  { name: "Le Sexe et le sacré", index: "21" },
+  { name: "Le Calme et l'Éveil", index: "22" },
+  { name: "La Vie et la Promesse", index: "23" },
+  { name: "Parasite", index: "24" },
+];
+
+export default episodes;
