@@ -333,7 +333,7 @@ const Episodes = () => {
           episodes: listEpisodes,
         }));
 
-        if (episode !== "1" && !e_sp) {
+        if (!e_sp) {
           setTimeout(() => {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
 
@@ -371,39 +371,13 @@ const Episodes = () => {
               ),
             }));
           }, 100);
-        }
-
-        if (episode !== "1" && e_sp) {
-          const URL_EPISODE = anime.currentLecteur![Number(episode) - 1];
+        } else {
+          const URL_EPISODE = anime.currentLecteur[Number(episode) - 1];
 
           updateAnime((currentState) => ({
             ...currentState,
             video: URL_EPISODE,
             episodeTitle: <span>{e_sp}</span>,
-          }));
-        }
-
-        if (episode === "1") {
-          const [firstEpisode] = anime.currentLecteur!;
-
-          const title =
-            names?.find(({ index }) => index === (episodeIndex + 1).toString())
-              ?.name || "";
-
-          updateAnime((currentState) => ({
-            ...currentState,
-            video: firstEpisode,
-            episodeTitle: (
-              <>
-                <span>
-                  {episodeIndex + 1} {anime?.saison === "1" ? "" : `(1)`}
-                </span>{" "}
-                :{" "}
-                <span ref={episodeTitleRef} className="text-white">
-                  {title}
-                </span>
-              </>
-            ),
           }));
         }
 
