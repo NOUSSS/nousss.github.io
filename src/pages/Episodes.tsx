@@ -596,10 +596,12 @@ const Episodes = () => {
         query="innerText"
       />
 
-      <Switch
-        placeholder="Cacher le nom des épisodes"
-        onChange={blurEpisodes}
-      />
+      <div className="text-lg">
+        <Switch
+          placeholder="Cacher le nom des épisodes"
+          onChange={blurEpisodes}
+        />
+      </div>
 
       <div className="m-5 max-h-96 min-w-24 overflow-y-auto">
         <ul ref={(el) => (episodesListRef.current[0] = el!)}>
