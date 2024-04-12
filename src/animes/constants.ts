@@ -161,14 +161,14 @@ export const ANIMES: AnimesType[] = [
       "scans",
     ],
     options: new MyHeroAcademia(),
-    category: ["Action", "Comédie", "School Life", "Surnaturel"],
+    category: ["Action", "School Life", "Surnaturel"],
     synopsis: `Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.`,
   },
   {
     anime: "Vinland Saga",
     aliases: ["ennemi", "thorfinn", "thors", "thorkell", "saisons", "scans"],
     options: new VinlandSaga(),
-    category: ["Historique", "Action", "Aventure"],
+    category: ["Historique", "Action", "Aventure", "Drame"],
     synopsis:
       "Depuis que Moussab, un chef de guerre fourbe et sans honneur, a tué Jordi lorsqu'il était enfant, Thorfinn le suit partout dans le but de se venger. Mais bien qu'il soit devenu un guerrier redoutable, il ne parvient toujours pas à vaincre son ennemi.",
   },
@@ -192,7 +192,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Jujutsu Kaisen",
     aliases: ["itadori", "gojo", "sukuna", "jjk", "films", "saisons", "scans"],
     options: new JujutsuKaisen(),
-    category: ["Action", "Surnaturel", "Horreur"],
+    category: [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Mystère",
+      "School Life",
+      "Surnaturel",
+    ],
     synopsis:
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
@@ -200,7 +207,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Black Clover",
     aliases: ["asta", "yuno", "bc", "films", "saisons", "scans"],
     options: new BlackClover(),
-    category: ["Action", "Fantasy", "Aventure"],
+    category: ["Action", "Aventure", "Fantasy", "Surnaturel"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
@@ -223,7 +230,16 @@ export const ANIMES: AnimesType[] = [
     anime: "L'attaque des titans",
     aliases: ["shingeki no kyojin", "snk", "eren", "saisons", "scans"],
     options: new AttaqueDesTitans(),
-    category: ["Action", "Fantasy", "Drame", "Horreur"],
+    category: [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Horreur",
+      "Mystère",
+      "Psychologique",
+      "Surnaturel",
+      "Thriller",
+    ],
     synopsis:
       "L'humanité vit regroupée dans une citadelle pour se protéger des Titans, de gigantesques monstres dévoreurs de chair humaine. Un jeune garçon va néanmoins déjouer le destin des siens lorsqu'il se découvre la possibilité de se transformer en Titan.",
   },
@@ -231,7 +247,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Death Note",
     aliases: ["light", "L", "films", "saisons", "scans"],
     options: new DeathNote(),
-    category: ["Surnaturel", "Thriller", "Psychologique"],
+    category: ["Drame", "Mystère", "Psychologique", "Surnaturel", "Thriller"],
     synopsis: `Light Yagami, un jeune étudiant surdoué, ramasse un jour le "Death Note", un carnet abandonné par un dieu de la mort, Ryuk, qui apparemment s'ennuyait dans son monde. Il suffit d'écrire le nom d'une personne dans ce carnet, et celle-ci meurt.`,
   },
   {
@@ -246,7 +262,15 @@ export const ANIMES: AnimesType[] = [
     anime: "Tower of god",
     aliases: ["tog", "scans", "saisons"],
     options: new TowerOfGod(),
-    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Mystère",
+      "Webtoon",
+    ],
     synopsis:
       "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
   },
@@ -254,7 +278,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto",
     aliases: ["konoha", "kurama", "kyubi", "scans", "saisons"],
     options: new Naruto(),
-    category: ["Action", "Aventure", "Fantasy"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Surnaturel",
+    ],
     synopsis:
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
@@ -262,7 +293,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Naruto Shippuden",
     aliases: ["naruto adulte", "films", "saisons"],
     options: new NarutoShippuden(),
-    category: ["Action", "Aventure", "Fantasy"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Surnaturel",
+    ],
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
   },
@@ -294,7 +332,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Haikyuu",
     aliases: ["volley", "films", "scans", "saisons"],
     options: new Haikyuu(),
-    category: ["Sport", "Drame", "School Life"],
+    category: ["Sport", "Comédie", "School Life"],
     synopsis:
       "Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.",
   },
@@ -308,7 +346,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Air Gear",
     options: new AirGear(),
-    category: ["Sport", "Science Fiction", "Action"],
+    category: ["Sport", "School Life", "Romance", "Comédie", "Drame"],
     aliases: ["saisons"],
     synopsis:
       "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
@@ -490,7 +528,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Ao Ashi",
     synopsis:
       "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
-    category: ["Sport", "Drame", "School Life"],
+    category: ["Sport", "Slice of Life", "School Life"],
     options: new AoAshi(),
   },
   {
@@ -525,7 +563,15 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Yuyu Hakusho",
-    category: ["Action", "Surnaturel", "Arts Martiaux"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Horreur",
+      "Surnaturel",
+      "Arts Martiaux",
+    ],
     options: new YuyuHakusho(),
     synopsis:
       "Yusuke Urameshi est un jeune vaurien de 14 ans. Il va pourtant sauver la vie d'un petit garçon et se faire écraser... Il y laisse sa vie. Pourtant, sa mort, imprévue, pose problème à Enma Jr, le fils du Juge des Enfers. Il décide alors de lui faire passer un test, pour juger de ses qualités. S'il réussit ce test, il pourra ressusciter et deviendra un détective du monde des esprits, afin de combattre avec son guide spirituel Botan, tous les démons trouvés sur Terre pour y faire du mal.",
@@ -547,13 +593,13 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "The Boxer",
-    category: ["Sport", "Drame", "Psychologique", "Webtoon"],
+    category: ["Sport", "Action", "School Life", "Webtoon"],
     options: new TheBoxer(),
     synopsis: `"The Boxer" raconte l'histoire captivante d'un jeune prodige de la boxe doté d'un talent naturel remarquable et d'une force inégalée, mais qui monte sur le ring sans passion ni ambition. Repéré par un entraîneur visionnaire convaincu de pouvoir faire de lui le meilleur boxeur du monde, il se lance dans un parcours semé de défis. À travers des combats intenses contre des adversaires de plus en plus puissants, chacun porteur de sa propre histoire, il est contraint d'affronter non seulement ses rivaux mais aussi ses propres interrogations sur le sens de la victoire et de la défaite.`,
   },
   {
     anime: "Doom Breaker",
-    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
+    category: ["Action", "Fantasy", "Drame", "Webtoon"],
     options: new DoomBreaker(),
     synopsis:
       "Le dernier survivant de l'humanité, Zephyr, a finalement était vaincu. La guerre contre les démons s'est soldé par une défaite et le voici maintenant dans l'au-delà. Du moins, c'est ce qu'il pensait. Les mêmes dieux qui avaient abandonné les Hommes lui ont donné une nouvelle chance de les amuser. Remontant 10 ans en arrière, Zephyr se jure de ne plus refaire ses erreurs passées ainsi que de terrasser les démons et les dieux.",
