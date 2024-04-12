@@ -1,0 +1,28 @@
+const episodes = [
+  { name: "Mao Mao", index: "1" },
+  { name: "La très atrabilaire apothicaire", index: "2" },
+  { name: "Nuisances spectrales", index: "3" },
+  { name: "Manœuvres d’intimidation", index: "4" },
+  { name: "Sourdes machinations", index: "5" },
+  { name: "Le banquet", index: "6" },
+  { name: "Retour aux sources", index: "7" },
+  { name: "La paille", index: "8" },
+  { name: "Suicide ou homicide", index: "9" },
+  { name: "Le miel", index: "10" },
+  { name: "De une, de deux", index: "11" },
+  { name: "L'eunuque et la courtisane", index: "12" },
+  { name: "À L'assaut de la cour intérieur", index: "13" },
+  { name: "Une nouvelle concubine", index: "14" },
+  { name: "L'émincé", index: "15" },
+  { name: "Le plomb", index: "16" },
+  { name: "Promenade en ville", index: "17" },
+  { name: "Lakan", index: "18" },
+  { name: "Coïncidence ou malveillance ?", index: "19" },
+  { name: "Le Datura", index: "20" },
+  { name: "Opération rachat de contrat", index: "21" },
+  { name: "Les roses bleues", index: "22" },
+  { name: "Balsamine et oxalis", index: "23" },
+  { name: "Jinshi et Mao Mao", index: "24" },
+];
+
+export default episodes;

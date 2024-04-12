@@ -93,6 +93,7 @@ import CowboyBebop from "./CowboyBebop/cowboy-bebop";
 import KaguyaSama from "./KaguyaSama/kaguya-sama";
 import FruitsBasket from "./FruitsBasket/fruits-basket";
 import Clannad from "./Clannad/clannad";
+import LesCarnetsDeLapothicaire from "./LesCarnetsDeLapothicaire/les-carnets-de-lapothicaire";
 
 export interface AnimesType {
   anime: string;
@@ -950,6 +951,19 @@ export const ANIMES: AnimesType[] = [
     options: new Clannad(),
     synopsis:
       "Clannad After Story est la suite de la série Clannad. Cependant, elle ne reprend pas la même histoire et la même fin que le film. Il ne reste que quelques mois avant la fin du lycée pour Tomoya Okazaki et ses amis. En couple avec Nagisa Furukawa, il vit toujours chez cette dernière, mais souhaite songer à un avenir afin d'éviter de devenir un poids pour les parents de sa petite amie.",
+  },
+  {
+    anime: "Les Carnets de l'Apothicaire",
+    aliases: [
+      "Kusuriya no Hitorigoto",
+      "The Apothecary Diaries",
+      "The Pharmacist's Monologue",
+      "Drugstore Soliloquy",
+    ],
+    category: ["Drame", "Historique", "Mystère", "Romance", "Slice of Life"],
+    options: new LesCarnetsDeLapothicaire(),
+    synopsis:
+      "À 17 ans, Mao Mao a une vie compliquée. Formée dès son jeune âge par un apothicaire du quartier des plaisirs, elle se retrouve enlevée et vendue comme servante dans le quartier des femmes du palais impérial ! Entouré de hauts murs, il est coupé du monde extérieur. Afin de survivre dans cette prison de luxe grouillant de complots et de basses manœuvres, la jeune fille tente de cacher ses connaissances pour se fondre dans la masse. Mais, quand les morts suspectes de princes nouveau-nés mettent la cour en émoi, sa passion pour les poisons prend le dessus. Elle observe, enquête... et trouve la solution ! En voulant bien faire, la voilà repérée... Jinshi, haut fonctionnaire aussi beau que calculateur, devine son talent et la promeut goûteuse personnelle d'une des favorites de l'empereur. Au beau milieu de ce nid de serpents, le moindre faux pas peut lui être fatal !",
   },
 ];
 
