@@ -57,7 +57,7 @@ const Home = () => {
             <Image
               alt={`affiche de ${anime.anime}`}
               src={anime.options.affiche!}
-              className="w-full rounded-l-md max-xl:rounded-t-md max-md:rounded-none md:w-[654px] md:max-w-[654px]"
+              className="w-full rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-md:rounded-none md:w-[654px] md:max-w-[654px]"
             />
 
             <Image
