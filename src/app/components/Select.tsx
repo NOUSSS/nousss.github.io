@@ -4,15 +4,19 @@ import { icons } from "lucide-react";
 export interface ItemsProps {
   name: string;
   value: string;
+
   disabled?: boolean;
 }
 
 interface SelectProps {
-  items: ItemsProps[];
   placeholder: string;
-  onSelect: (value: ItemsProps) => void;
-  className?: string;
+  multiple?: boolean;
+  scroll?: boolean;
+
+  items: ItemsProps[];
   placeholderRef: RefObject<HTMLParagraphElement>;
+
+  onSelect: (value: ItemsProps[]) => void;
 }
 
 interface ItemsRef {
@@ -24,10 +28,13 @@ export default function Select({
   items,
   placeholder,
   onSelect,
-  className,
   placeholderRef,
+  multiple,
+  scroll,
 }: SelectProps) {
   const [isSelected, setIsSelected] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
+
   const UpArrow = icons["ChevronUp"];
 
   const labelRef = useRef<HTMLLabelElement | null>(null);
@@ -35,6 +42,14 @@ export default function Select({
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const itemsRef = useRef<ItemsRef[]>([]);
+
+  useEffect(() => {
+    if (selectedItems.length === 0) {
+      if (placeholderRef.current) {
+        placeholderRef.current.innerText = placeholder;
+      }
+    }
+  }, [selectedItems]);
 
   const appear = () => {
     setIsSelected(true);
@@ -47,7 +62,7 @@ export default function Select({
         svgRef.current.classList.add("rotate-180");
         menuRef.current.classList.remove("hidden");
 
-        if (placeholderRef.current && itemsRef.current) {
+        if (placeholderRef.current && itemsRef.current && scroll) {
           const lastSelectedItem = placeholderRef.current.innerText;
           const lastSelectedItemElement = itemsRef.current.find(
             ({ name }) => name === lastSelectedItem,
@@ -89,18 +104,42 @@ export default function Select({
   }, []);
 
   const handleSelect = (item: ItemsProps) => {
-    onSelect(item);
-    disappear();
+    let updatedSelectedItems;
 
-    if (labelRef.current && placeholderRef.current) {
-      placeholderRef.current.innerText = item.name;
+    if (!multiple) {
+      updatedSelectedItems = [item];
+
+      setSelectedItems(updatedSelectedItems);
+      onSelect(updatedSelectedItems);
+
+      if (placeholderRef.current) {
+        placeholderRef.current.innerText = item.name;
+      }
+      disappear();
+    } else {
+      if (selectedItems.some((i) => i.value === item.value)) {
+        updatedSelectedItems = selectedItems.filter(
+          (i) => i.value !== item.value,
+        );
+      } else {
+        updatedSelectedItems = [...selectedItems, item];
+      }
+
+      setSelectedItems(updatedSelectedItems);
+      onSelect(updatedSelectedItems);
+
+      if (placeholderRef.current) {
+        placeholderRef.current.innerText = updatedSelectedItems
+          .map(({ name }) => name)
+          .join(", ");
+      }
     }
   };
 
   return (
     <label
       ref={labelRef}
-      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "outline outline-1 outline-main" : ""} ${className ?? ""}`}
+      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "outline outline-1 outline-main" : ""}`}
       onClick={appear}
     >
       <p className="placeholder" ref={placeholderRef}>
@@ -128,7 +167,7 @@ export default function Select({
                   el: el!,
                 })
               }
-              className={`flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50 hover:border-transparent" : "hover:border-blue-600"} `}
+              className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50 hover:border-transparent" : "hover:border-blue-600"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-blue-600 text-white" : ""}`}
             >
               <p>{item.name}</p>
             </li>

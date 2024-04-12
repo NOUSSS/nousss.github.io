@@ -194,9 +194,13 @@ const Films = () => {
               disabled: anime?.lang === "vostfr" ? false : true,
             },
           ]}
-          onSelect={({ value }) => {
+          onSelect={(items) => {
             clearCache();
-            updateAnime((currentState) => ({ ...currentState, lang: value }));
+
+            updateAnime((currentState) => ({
+              ...currentState,
+              lang: items[0].value,
+            }));
           }}
         />
 
@@ -205,11 +209,11 @@ const Films = () => {
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
-              onSelect={({ value }) => {
+              onSelect={(items) => {
                 updateAnime((currentState) => ({
                   ...currentState,
-                  lecteur: value,
-                  currentLecteur: anime?.lecteurs?.[value],
+                  lecteur: items[0].value,
+                  currentLecteur: anime?.lecteurs?.[items[0].value],
                 }));
               }}
               items={Object.keys(anime.lecteurs).map((l, i) => ({

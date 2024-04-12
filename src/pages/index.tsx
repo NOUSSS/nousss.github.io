@@ -22,22 +22,30 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import Select from "@/app/components/Select";
 
 export default function Accueil() {
-  const animes = Array.from(
-    ANIMES.map(({ anime, category }) => ({ anime, category })),
-  );
+  const categories: string[] = [];
+
+  const animes = ANIMES.map(({ anime, category }) => ({ anime, category }));
+
+  for (const anime of animes) {
+    for (const cat of anime.category) {
+      if (!categories.includes(cat)) categories.push(cat);
+    }
+  }
 
   const router = useRouter();
   const Trash = icons["Trash2"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
-
+  const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
 
   const getWallpaper = (animeName: string) => {
     const anime = getAnime(animeName);
@@ -130,9 +138,21 @@ export default function Accueil() {
   );
 
   useEffect(() => {
-    const updatedCatalogues = groupAnimesByCategory(
-      ANIMES.map(({ anime, category }) => ({ anime, category })),
-    ).sort((a, b) => b.names.length - a.names.length);
+    let updatedCatalogues;
+
+    if (filteredCategories.length > 0) {
+      const filteredAnimes = ANIMES.filter(({ category }) =>
+        filteredCategories.every((cat) => category.includes(cat)),
+      );
+
+      updatedCatalogues = groupAnimesByCategory(filteredAnimes).sort(
+        (a, b) => b.names.length - a.names.length,
+      );
+    } else {
+      updatedCatalogues = groupAnimesByCategory(
+        ANIMES.map(({ anime, category }) => ({ anime, category })),
+      ).sort((a, b) => b.names.length - a.names.length);
+    }
 
     const momentIndex = updatedCatalogues.findIndex(
       ({ category }) => category === "Nouvelles saisons",
@@ -155,7 +175,7 @@ export default function Accueil() {
     if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
     setCatalogues(updatedCatalogues);
-  }, [historiques]);
+  }, [historiques, filteredCategories]);
 
   const goToAnime = useCallback(
     (animeName: string, category: string, index: number) => {
@@ -321,6 +341,18 @@ export default function Accueil() {
       ) : null}
 
       <ColorPicker />
+
+      <div className="mt-16 flex justify-center">
+        <Select
+          multiple={true}
+          placeholder="Filtrer"
+          placeholderRef={placeholderRef}
+          items={categories.map((cat) => ({ name: cat, value: cat }))}
+          onSelect={(items) =>
+            setFilteredCategories(items.map(({ value }) => value))
+          }
+        />
+      </div>
 
       <div className="relative ml-12 max-md:ml-4">
         {catalogues.map(({ names, category }) => (

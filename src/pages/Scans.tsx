@@ -184,17 +184,18 @@ const Scans = () => {
 
       <div className="relative top-12">
         <Select
-          onSelect={(item) => {
+          scroll={true}
+          onSelect={(items) => {
             localStorage.setItem(
               `${anime?.anime?.anime}--chapitre`,
-              item.value,
+              items[0].value,
             );
 
             updateAnime((currentState) => ({
               ...currentState,
               scans: selectChapter(
                 anime!,
-                item,
+                items[0],
                 placeholderRef,
                 !anime.version ? undefined : anime.version.split("|")[1],
               ),
@@ -206,33 +207,34 @@ const Scans = () => {
         />
 
         {anime.anime?.options.SCANS_OPTIONS?.versions ? (
-          <Select
-            className="mt-2"
-            placeholder="Changer de version"
-            placeholderRef={placeholderRefVersion}
-            items={[
-              {
-                name: "Normal",
-                value: "return-normal",
-              },
-              ...anime.anime.options.SCANS_OPTIONS.versions,
-            ]}
-            onSelect={({ value }) => {
-              ClearCache();
+          <div className="mt-2">
+            <Select
+              placeholder="Changer de version"
+              placeholderRef={placeholderRefVersion}
+              items={[
+                {
+                  name: "Normal",
+                  value: "return-normal",
+                },
+                ...anime.anime.options.SCANS_OPTIONS.versions,
+              ]}
+              onSelect={(items) => {
+                ClearCache();
 
-              if (value === "return-normal") {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  version: undefined,
-                }));
-              } else {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  version: value,
-                }));
-              }
-            }}
-          />
+                if (items[0].value === "return-normal") {
+                  updateAnime((currentState) => ({
+                    ...currentState,
+                    version: undefined,
+                  }));
+                } else {
+                  updateAnime((currentState) => ({
+                    ...currentState,
+                    version: items[0].value,
+                  }));
+                }
+              }}
+            />
+          </div>
         ) : null}
       </div>
 

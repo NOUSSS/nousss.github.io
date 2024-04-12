@@ -48,6 +48,9 @@ const Home = () => {
       </Head>
 
       <Title link={{ pathname: "/" }} />
+      <p className="text-lg text-zinc-400">
+        {anime && anime.category.join(", ")}
+      </p>
 
       <div className="m-12 text-left text-lg">{anime?.synopsis}</div>
 

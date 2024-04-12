@@ -18,7 +18,7 @@ import { formatLang, langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
 import SearchBar from "@/app/components/SearchBar";
-import Select from "@/app/components/Select";
+import Select, { ItemsProps } from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 
@@ -506,9 +506,13 @@ const Episodes = () => {
               disabled: anime?.lang === "vostfr" ? false : true,
             },
           ]}
-          onSelect={({ value }) => {
+          onSelect={(value) => {
             ClearCache();
-            updateAnime((currentState) => ({ ...currentState, lang: value }));
+
+            updateAnime((currentState) => ({
+              ...currentState,
+              lang: value[0].value,
+            }));
           }}
         />
 
@@ -517,16 +521,16 @@ const Episodes = () => {
             <Select
               placeholder="Changer de lecteur"
               placeholderRef={placeholderLecteurRef}
-              onSelect={({ value }) => {
+              onSelect={(items) => {
                 updateAnime((currentState) => ({
                   ...currentState,
-                  lecteur: value,
-                  currentLecteur: anime.lecteurs?.[value],
+                  lecteur: items[0].value,
+                  currentLecteur: anime.lecteurs?.[items[0].value],
                 }));
 
                 window.localStorage.setItem(
                   `${anime.anime?.anime}-${anime.saison}--lecteur`,
-                  value,
+                  items[0].value,
                 );
               }}
               items={Object.keys(anime.lecteurs).map((l, i) => ({
