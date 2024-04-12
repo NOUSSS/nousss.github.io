@@ -5,20 +5,19 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { Anime as AnimeType, Options } from "@/typings/types";
+import { Anime as AnimeType } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { useRouter } from "next/router";
 import { getAnime } from "@/app/lib/getAnime";
-import { Anime } from "@/app/class/anime";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
 import { useScript } from "@/app/lib/hooks/useScript";
 import { useSearchParams } from "next/navigation";
-import { formatLang, langType } from "@/app/lib/formatLang";
+import { langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
 import SearchBar from "@/app/components/SearchBar";
-import Select, { ItemsProps } from "@/app/components/Select";
+import Select from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 
@@ -30,6 +29,7 @@ import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
+import getNote from "@/app/utils/Episodes/getNote";
 
 const Episodes = () => {
   const router = useRouter();
@@ -403,17 +403,7 @@ const Episodes = () => {
           ),
         }));
 
-        if (options?.note) {
-          if (typeof options.note === "string") {
-            disclamerMessage.current = options?.note;
-          } else {
-            if (options?.note.find((obj) => obj.saison === anime?.saison)) {
-              disclamerMessage.current =
-                options?.note.find((obj) => obj.saison === anime?.saison)
-                  ?.message || "";
-            }
-          }
-        }
+        if (options) disclamerMessage.current = getNote(options.note, anime);
       }, 400);
     }
   }, [anime.currentLecteur, anime.lang, anime.saison, status]);
