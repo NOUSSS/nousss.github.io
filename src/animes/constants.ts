@@ -174,7 +174,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Solo Leveling",
     aliases: ["only i level up", "Ore dake Level Up na Ken"],
     options: new SoloLeveling(),
-    category: ["Action", "Fantasy", "Aventure", "Webtoon"],
+    category: ["Action", "Aventure", "Fantasy", "Drame", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
