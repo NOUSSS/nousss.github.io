@@ -52,6 +52,7 @@ export default class ClassroomOfTheElites extends Anime {
         1: 0,
         2: 12,
         3: 25,
+        4: 38,
       },
 
       names,
