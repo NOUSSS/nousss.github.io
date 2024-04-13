@@ -354,7 +354,7 @@ export default function Accueil() {
         />
       </div>
 
-      <div className="relative ml-12 max-md:ml-4">
+      <div className="relative mx-4 overflow-hidden md:mx-16">
         {catalogues
           .filter(({ category }) =>
             filteredCategories.length > 0
