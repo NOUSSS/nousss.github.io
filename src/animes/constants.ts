@@ -153,7 +153,13 @@ export const ANIMES: AnimesType[] = [
     anime: "My Hero Academia",
     aliases: ["boku no hero academia", "mha"],
     options: new MyHeroAcademia(),
-    category: ["Action", "Comédie", "School Life", "Surnaturel"],
+    category: [
+      "Action",
+      "Comédie",
+      "School Life",
+      "Surnaturel",
+      "Nouvelles saisons",
+    ],
     synopsis: `Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.`,
   },
   {
