@@ -27,12 +27,10 @@ const Scans = () => {
   const UpArrow = icons["ArrowUp"];
 
   const [anime, updateAnime] = useAnime<Anime.AnimeScansProps>({});
-  const [isClient, setIsClient] = useState(false);
   const [filever, setFilever] = useState<number>();
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
-
   const [script, setScript] = useState<string>();
 
   const placeholderRef = useRef<HTMLParagraphElement | null>(null);
@@ -49,8 +47,6 @@ const Scans = () => {
   }, [router.events]);
 
   useEffect(() => {
-    setIsClient(true);
-
     const currentAnime = getAnime(
       getCurrentAnime({
         wSaison: false,
@@ -93,24 +89,17 @@ const Scans = () => {
     }
   }, [anime.version]);
 
-  const options = (isClient &&
-    anime?.anime?.options?.SCANS_OPTIONS) as Options.ScansOptions;
-
-  const from = isClient && options?.from === 0 ? options.from : 1;
-
-  const { CHAPITRE_SPECIAUX } = options || {};
-
   const status = useScript(script + `?filever=${filever}`, {
     removeOnUnmount: true,
   });
 
   const isLast =
-    isClient &&
+    anime.anime?.anime &&
     localStorage.getItem(`${anime?.anime?.anime}--chapitre`) ===
       anime?.chapitresOptions?.length.toString();
 
   const isFirst =
-    isClient &&
+    anime.anime?.anime &&
     localStorage.getItem(`${anime?.anime?.anime}--chapitre`) === "1";
 
   useEffect(() => {
@@ -125,6 +114,11 @@ const Scans = () => {
         toast.success("Les scans ont été chargés.", {
           id: loadingToast!,
         });
+
+        const scanOptions = anime.anime?.options.SCANS_OPTIONS;
+
+        const from = scanOptions?.from === 0 ? scanOptions.from : 1;
+        const { CHAPITRE_SPECIAUX } = scanOptions || {};
 
         let retard = 0;
 

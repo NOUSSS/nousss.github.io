@@ -27,20 +27,15 @@ import clearCache from "@/app/cache/ClearCache";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
-  const [isClient, setIsClient] = useState(false);
-
-  const options = (isClient &&
-    anime?.anime?.options.FILM_OPTIONS) as Options.FilmOptions;
-
-  const { SCRIPT_URL } = options || {};
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
     null,
   );
-
   const [script, setScript] = useState<string>("");
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const filmsRef = useRef<HTMLUListElement[]>([]);
+  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
+  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
 
   const status = useScript(script, {
     removeOnUnmount: true,
@@ -48,14 +43,7 @@ const Films = () => {
 
   const router = useRouter();
 
-  const filmsRef = useRef<HTMLUListElement[]>([]);
-
-  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
-  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
-
   useEffect(() => {
-    setIsClient(true);
-
     const currentAnime = getCurrentAnime({
       wSaison: false,
     });
@@ -85,8 +73,12 @@ const Films = () => {
 
   useEffect(() => {
     if (anime && anime?.lang) {
-      localStorage.setItem(`${anime?.anime?.anime}--lang`, anime?.lang);
-      setScript(SCRIPT_URL(anime.lang));
+      const options = anime?.anime?.options.FILM_OPTIONS;
+
+      if (options) {
+        localStorage.setItem(`${anime?.anime?.anime}--lang`, anime?.lang);
+        setScript(options?.SCRIPT_URL(anime.lang));
+      }
     }
   }, [anime?.lang]);
 
@@ -110,6 +102,8 @@ const Films = () => {
         const lastFilm = localStorage.getItem(
           `${anime?.anime?.anime}--currentFilm`,
         );
+
+        const options = anime?.anime?.options.FILM_OPTIONS;
 
         const fetchedLecteurs = getLecteur();
 

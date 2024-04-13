@@ -16,7 +16,6 @@ import { getAnime } from "@/app/lib/getAnime";
 
 const Home = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
-  const [isClient, setIsClient] = useState(false);
 
   const router = useRouter();
   const query = router.query;
@@ -24,8 +23,6 @@ const Home = () => {
   const choicesRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
-
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
 
     if (currentAnime) {
@@ -96,7 +93,7 @@ const Home = () => {
 
       <div ref={choicesRef} className="flex justify-center text-left">
         <ul>
-          {isClient && anime?.options.FILM_OPTIONS && (
+          {anime?.options.FILM_OPTIONS && (
             <li className="text-4xl text-sky-500 transition-colors hover:text-main">
               <Link
                 href={{ pathname: "/Films", query: { anime: anime?.anime } }}
@@ -105,7 +102,7 @@ const Home = () => {
               </Link>
             </li>
           )}
-          {isClient && anime?.options.EPISODES_OPTIONS && (
+          {anime?.options.EPISODES_OPTIONS && (
             <li className="text-4xl text-sky-500 transition-colors hover:text-main">
               <Link
                 href={{
@@ -118,7 +115,7 @@ const Home = () => {
             </li>
           )}
 
-          {isClient && anime?.options.SCANS_OPTIONS && (
+          {anime?.options.SCANS_OPTIONS && (
             <li className="text-4xl text-sky-500 transition-colors hover:text-main">
               <Link
                 href={{ pathname: "/Scans", query: { anime: anime?.anime } }}

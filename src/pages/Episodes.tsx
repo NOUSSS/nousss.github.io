@@ -44,19 +44,15 @@ const Episodes = () => {
   }, [router.events]);
 
   const [anime, updateAnime] = useAnime<AnimeType.AnimeEpisodesProps>({});
-  const [isClient, setIsClient] = useState(false);
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
-
   const [ErrorInterval, setErrorInterval] = useState<NodeJS.Timeout>();
 
   const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
-
   const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
   const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
-
   const disclamerMessage = useRef("");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
@@ -71,8 +67,6 @@ const Episodes = () => {
         duration: 10000,
       },
     );
-
-    setIsClient(true);
 
     const currentAnime = getCurrentAnime({
       wSaison: true,
@@ -434,7 +428,7 @@ const Episodes = () => {
 
       <ColorPicker />
 
-      {isClient && anime?.anime && (
+      {anime?.anime && (
         <Title
           link={{
             pathname: "/Saisons",
@@ -513,8 +507,8 @@ const Episodes = () => {
       </div>
 
       <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-px after:w-full after:bg-neutral-700">
-        {isClient &&
-        localStorage.getItem(`${anime?.anime?.anime}--episode`) !== "1" ? (
+        {anime.anime?.anime &&
+        localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
           <button
             className="btn back"
             onClick={() =>
@@ -532,9 +526,10 @@ const Episodes = () => {
           </button>
         ) : null}
 
-        {isClient &&
-        localStorage.getItem(`${anime?.anime?.anime}--episode`) !==
-          anime?.currentLecteur?.length.toString() ? (
+        {anime.anime?.anime &&
+        anime.currentLecteur &&
+        localStorage.getItem(`${anime.anime.anime}--episode`) !==
+          anime.currentLecteur.length.toString() ? (
           <button
             className="btn next"
             onClick={() =>
@@ -574,7 +569,7 @@ const Episodes = () => {
       </div>
 
       <div className="m-8 flex gap-5">
-        {isClient && anime?.saison !== "1" ? (
+        {anime?.saison !== "1" ? (
           <button
             onClick={() => {
               ClearCache();
@@ -604,7 +599,7 @@ const Episodes = () => {
           </button>
         ) : null}
 
-        {isClient &&
+        {anime.anime &&
         anime?.saison !==
           Object.keys(anime.anime?.options.saisons!)?.length.toString() ? (
           <button
