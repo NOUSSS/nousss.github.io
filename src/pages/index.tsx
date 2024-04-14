@@ -364,7 +364,7 @@ export default function Accueil() {
           .map(({ names, category }) => (
             <div key={category}>
               <div
-                className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-3xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
+                className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-2xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
               >
                 {category === "Reprendre" ? (
                   <>
@@ -560,7 +560,7 @@ export default function Accueil() {
                             />
                           </div>
 
-                          <p className="my-2 text-left text-base max-md:text-sm">
+                          <p className="my-2 text-center text-base max-md:text-sm">
                             {animeName} <br />{" "}
                             <span className="text-sm max-md:text-xs">
                               {disponibles.join(", ")}
