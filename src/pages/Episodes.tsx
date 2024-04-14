@@ -62,7 +62,7 @@ const Episodes = () => {
 
   useEffect(() => {
     toast.info(
-      "Si vous avez des pubs dans les lecteurs, bah c'est pas de ma faute car les lecteurs ne sont pas à moi",
+      "Les lecteurs ne nous appartiennent pas, donc si des pubs y sont présentes ignorez-les.",
       {
         duration: 10000,
       },
