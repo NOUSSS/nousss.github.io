@@ -11,7 +11,7 @@ export const getLecteur = (): Anime.LecteurReturnType => {
       const value = window[cur];
 
       if (value && contains(value, "vk")) {
-        acc.vidmolyEps[cur] = value;
+        acc.vkEps[cur] = value;
       } else if (value && contains(value, "sibnet")) {
         acc.sibnetEps[cur] = value;
       } else if (value && !contains(value, "myvi")) {
