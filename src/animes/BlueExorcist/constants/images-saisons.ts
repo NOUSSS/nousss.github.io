@@ -9,4 +9,4 @@ const images = {
 };
 
 export type ImageKey = keyof typeof images;
-export const getImage = (key: ImageKey) => images[key];
+export const getImagesSaisons = (key: ImageKey) => images[key];
