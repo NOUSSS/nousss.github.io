@@ -32,6 +32,10 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
   const router = useRouter();
 
   React.useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         searchContainerRef.current &&
@@ -57,7 +61,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isVisible, searchContainerRef, setIsVisible]);
+  }, [isVisible]);
 
   return (
     <input
