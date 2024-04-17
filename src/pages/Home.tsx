@@ -9,7 +9,6 @@ import NavMotion from "@/app/lib/navMotion";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
-import { Title } from "@/app/components/Title";
 import { AnimesType } from "@/animes/constants";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
@@ -46,8 +45,6 @@ const Home = () => {
         )}
       </Head>
 
-      <Title link={{ pathname: "/" }} />
-
       <div className="relative my-12 flex h-auto rounded-md bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
         {anime?.options.affiche && (
           <div>
@@ -66,6 +63,11 @@ const Home = () => {
         )}
 
         <div className="m-5 text-lg">
+          {anime?.anime && (
+            <h1 className="animate-title text-center text-4xl">
+              {anime.anime}
+            </h1>
+          )}
           {anime?.aliases && anime.aliases.length > 0 && (
             <div>
               Aliases

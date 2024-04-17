@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { Footer } from "@/app/components/Footer";
-import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { Anime as AnimeType } from "@/typings/types";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -30,6 +29,7 @@ import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import getNote from "@/app/utils/Episodes/getNote";
+import Link from "next/link";
 
 const Episodes = () => {
   const router = useRouter();
@@ -429,12 +429,16 @@ const Episodes = () => {
       <ColorPicker />
 
       {anime?.anime && (
-        <Title
-          link={{
-            pathname: "/Saisons",
-            query: { anime: anime!.anime.anime },
-          }}
-        />
+        <h1 className="animate-title text-5xl">
+          <Link
+            href={{
+              pathname: "/Saisons",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
+        </h1>
       )}
 
       <p className="m-4 text-4xl">{anime?.saisonTitle}</p>

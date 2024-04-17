@@ -2,18 +2,18 @@
 
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
 import { Footer } from "@/app/components/Footer";
-import { Title } from "@/app/components/Title";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
 import { Anime } from "@/typings/types";
 
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import Head from "next/head";
 import SearchBar from "@/app/components/SearchBar";
 import useAnime from "@/app/lib/hooks/useAnime";
+import Link from "next/link";
 
 const Saisons = () => {
   const router = useRouter();
@@ -43,12 +43,18 @@ const Saisons = () => {
         )}
       </Head>
 
-      <Title
-        link={{
-          pathname: "/Home",
-          query: { anime: anime?.anime?.anime! },
-        }}
-      />
+      {anime?.anime && (
+        <h1 className="animate-title text-5xl">
+          <Link
+            href={{
+              pathname: "/Home",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
+        </h1>
+      )}
 
       <p className="m-4 text-5xl">
         Les <span>saisons</span> disponibles.

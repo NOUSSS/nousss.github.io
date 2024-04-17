@@ -5,10 +5,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
 import { Footer } from "@/app/components/Footer";
-import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
 import { getAnime } from "@/app/lib/getAnime";
-import { Anime, Options } from "@/typings/types";
+import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
 import { toast } from "sonner";
@@ -22,6 +21,7 @@ import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
 import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
+import Link from "next/link";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -31,6 +31,7 @@ const Scans = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
+
   const [script, setScript] = useState<string>();
 
   const placeholderRef = useRef<HTMLParagraphElement | null>(null);
@@ -177,12 +178,18 @@ const Scans = () => {
 
       <ColorPicker />
 
-      <Title
-        link={{
-          pathname: "/Home",
-          query: { anime: anime?.anime?.anime! },
-        }}
-      />
+      {anime?.anime && (
+        <h1 className="animate-title text-5xl">
+          <Link
+            href={{
+              pathname: "/Home",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
+        </h1>
+      )}
 
       <div className="relative top-12">
         <Select

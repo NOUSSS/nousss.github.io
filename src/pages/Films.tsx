@@ -3,9 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { Footer } from "@/app/components/Footer";
-import { Title } from "@/app/components/Title";
 import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { Anime, Options } from "@/typings/types";
+import { Anime } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
@@ -24,6 +23,7 @@ import Head from "next/head";
 import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 import clearCache from "@/app/cache/ClearCache";
+import Link from "next/link";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
@@ -166,9 +166,18 @@ const Films = () => {
 
       <ColorPicker />
 
-      <Title
-        link={{ pathname: "/Home", query: { anime: anime?.anime?.anime! } }}
-      />
+      {anime?.anime && (
+        <h1 className="animate-title text-5xl">
+          <Link
+            href={{
+              pathname: "/Home",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
+        </h1>
+      )}
 
       <div className="m-4 mb-12 text-4xl">{anime?.filmTitle}</div>
 
