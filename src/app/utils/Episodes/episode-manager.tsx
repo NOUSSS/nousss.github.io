@@ -55,7 +55,6 @@ export function Change(
         `${AnimeInfo.anime?.anime}--episode`,
         indexEpisode.toString(),
       );
-      localStorage.setItem(`${AnimeInfo.anime?.anime}--e-sp`, `E-SP${esp}`);
     } else {
       let retard = 0;
 
@@ -98,8 +97,6 @@ export function Change(
         `${AnimeInfo.anime?.anime}--episode`,
         indexEpisode.toString(),
       );
-
-      localStorage.removeItem(`${AnimeInfo.anime?.anime}--e-sp`);
     }
   } else {
     const numberEpisode =
@@ -136,7 +133,6 @@ export function Change(
       `${AnimeInfo.anime?.anime}--episode`,
       indexEpisode.toString(),
     );
-    localStorage.removeItem(`${AnimeInfo.anime?.anime}--e-sp`);
   }
 
   window.scrollTo({

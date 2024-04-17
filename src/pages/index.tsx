@@ -96,7 +96,7 @@ export default function Accueil() {
 
       if (typeof window !== "undefined") {
         for (const key of Object.keys(localStorage)) {
-          if (key.includes("--episode")) {
+          if (key.includes("--episode") && !key.includes("--lang")) {
             const name = key.replace("--episode", "");
             const episode = localStorage.getItem(key)!;
             const saison = localStorage.getItem(`${name}--saison`) ?? "1";

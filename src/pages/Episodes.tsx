@@ -244,7 +244,6 @@ const Episodes = () => {
           episode = "1";
         }
 
-        const e_sp = localStorage.getItem(`${anime?.anime?.anime}--e-sp`);
         const listEpisodes: React.ReactNode[] = [];
 
         let retard = 0;
@@ -327,23 +326,35 @@ const Episodes = () => {
           episodes: listEpisodes,
         }));
 
-        if (!e_sp) {
-          setTimeout(() => {
+        setTimeout(() => {
+          let retardEsp = 0;
+
+          episodesListRef.current?.[0]?.childNodes.forEach((e, i) => {
+            if (i + 1 < Number(episode)) {
+              if ((e as HTMLElement).innerText.includes("E-SP")) retardEsp++;
+            }
+          });
+
+          console.log(
+            horsSeries?.find(({ saison }) => saison === anime.saison)?.hs,
+          );
+
+          const e_sp =
+            horsSeries &&
+            horsSeries
+              ?.find(({ saison }) => saison === anime.saison)
+              ?.hs.includes(Number(episode) - 1);
+
+          console.log(e_sp);
+
+          if (!e_sp) {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
-
-            let retard = 0;
-
-            episodesListRef.current?.[0]?.childNodes.forEach((e, i) => {
-              if (i + 1 < Number(episode)) {
-                if ((e as HTMLElement).innerText.includes("E-SP")) retard++;
-              }
-            });
 
             const title =
               names?.find(
                 ({ index }) =>
                   index ===
-                  (episodeIndex + Number(episode) - retard).toString(),
+                  (episodeIndex + Number(episode) - retardEsp).toString(),
               )?.name || "";
 
             updateAnime((currentState) => ({
@@ -352,10 +363,10 @@ const Episodes = () => {
               episodeTitle: (
                 <>
                   <span>
-                    {Number(episodeIndex) + Number(episode) - retard}{" "}
+                    {Number(episodeIndex) + Number(episode) - retardEsp}{" "}
                     {anime?.saison === "1"
                       ? ""
-                      : `(${Number(episode) - retard})`}
+                      : `(${Number(episode) - retardEsp})`}
                   </span>{" "}
                   :{" "}
                   <span ref={episodeTitleRef} className="text-white">
@@ -364,38 +375,38 @@ const Episodes = () => {
                 </>
               ),
             }));
-          }, 100);
-        } else {
-          const URL_EPISODE = anime.currentLecteur[Number(episode) - 1];
+          } else {
+            const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
+
+            updateAnime((currentState) => ({
+              ...currentState,
+              video: URL_EPISODE,
+              episodeTitle: <span>E-SP{e_sp}</span>,
+            }));
+          }
+
+          const saisonName =
+            anime?.anime &&
+            Object.values(anime.anime?.options?.saisons!)[
+              Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
+            ]?.name;
 
           updateAnime((currentState) => ({
             ...currentState,
-            video: URL_EPISODE,
-            episodeTitle: <span>{e_sp}</span>,
+            saisonTitle: (
+              <>
+                <span>
+                  {saisonName} ({anime.currentLecteur?.length})
+                </span>{" "}
+                {"["}
+                <span style={{ color: "white" }}>
+                  {anime?.lang?.toUpperCase() || "VOSTFR"}
+                </span>
+                {"]"}
+              </>
+            ),
           }));
-        }
-
-        const saisonName =
-          anime?.anime &&
-          Object.values(anime.anime?.options?.saisons!)[
-            Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
-          ]?.name;
-
-        updateAnime((currentState) => ({
-          ...currentState,
-          saisonTitle: (
-            <>
-              <span>
-                {saisonName} ({anime.currentLecteur?.length})
-              </span>{" "}
-              {"["}
-              <span style={{ color: "white" }}>
-                {anime?.lang?.toUpperCase() || "VOSTFR"}
-              </span>
-              {"]"}
-            </>
-          ),
-        }));
+        }, 100);
 
         if (options) disclamerMessage.current = getNote(options.note, anime);
       }, 400);

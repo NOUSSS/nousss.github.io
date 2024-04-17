@@ -7,13 +7,19 @@ export const getCurrentEpisode = (
 
   historiques: Historique[],
 ) => {
-  if (localStorage.getItem(`${animeName}--e-sp`)) {
-    return localStorage.getItem(`${animeName}--e-sp`)!;
+  const anime = getAnime(animeName);
+
+  if (
+    anime?.options.EPISODES_OPTIONS?.horsSeries &&
+    anime.options.EPISODES_OPTIONS.horsSeries
+      .find(
+        ({ saison }) => saison === localStorage.getItem(`${animeName}--saison`),
+      )
+      ?.hs.includes(Number(localStorage.getItem(`${animeName}--episode`)))
+  ) {
+    return localStorage.getItem(`${animeName}--episode`)!;
   } else {
-    if (
-      getAnime(animeName)?.options.EPISODES_OPTIONS?.horsSeries?.length ??
-      0 > 0
-    ) {
+    if (anime?.options.EPISODES_OPTIONS?.horsSeries?.length ?? 0 > 0) {
       const horsSeries = getAnime(
         animeName,
       )!.options.EPISODES_OPTIONS?.horsSeries!.find(
