@@ -27,7 +27,7 @@ export function Change(
   const isHorsSerie =
     AnimeInfo.lang === "vostfr" &&
     horsSeries?.find(
-      ({ saison }: { saison: string }) =>
+      ({ saison }) =>
         saison === localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`),
     );
 

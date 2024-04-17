@@ -335,17 +335,11 @@ const Episodes = () => {
             }
           });
 
-          console.log(
-            horsSeries?.find(({ saison }) => saison === anime.saison)?.hs,
-          );
-
           const e_sp =
             horsSeries &&
             horsSeries
               ?.find(({ saison }) => saison === anime.saison)
               ?.hs.includes(Number(episode) - 1);
-
-          console.log(e_sp);
 
           if (!e_sp) {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
@@ -381,7 +375,7 @@ const Episodes = () => {
             updateAnime((currentState) => ({
               ...currentState,
               video: URL_EPISODE,
-              episodeTitle: <span>E-SP{e_sp}</span>,
+              episodeTitle: <span>E-SP{retardEsp + 1}</span>,
             }));
           }
 
