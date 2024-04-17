@@ -2,6 +2,7 @@ import { Anime } from "@/app/class/anime";
 
 import affiche from "@/assets/Animes/Bucchigiri/affiche.webp";
 import saison1 from "@/assets/Animes/Bucchigiri/Saisons/Saison1.webp";
+import names from "./constants/episodes-names";
 
 class Bucchigiri extends Anime {
   constructor() {
@@ -30,6 +31,8 @@ class Bucchigiri extends Anime {
           hs: [6],
         },
       ],
+
+      names,
     };
   }
 }
