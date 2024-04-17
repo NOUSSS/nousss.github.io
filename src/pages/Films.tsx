@@ -55,7 +55,7 @@ const Films = () => {
         pathname: "/",
       });
     } else {
-      const lang = (localStorage.getItem(`${currentAnime}--lang`) ??
+      const lang = (localStorage.getItem(`${currentAnime}--film--lang`) ??
         "vostfr") as langType;
 
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
@@ -76,7 +76,7 @@ const Films = () => {
       const options = anime?.anime?.options.FILM_OPTIONS;
 
       if (options) {
-        localStorage.setItem(`${anime?.anime?.anime}--lang`, anime?.lang);
+        localStorage.setItem(`${anime?.anime?.anime}--film--lang`, anime?.lang);
         setScript(options?.SCRIPT_URL(anime.lang));
       }
     }

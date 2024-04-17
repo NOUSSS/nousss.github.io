@@ -15,16 +15,14 @@ export const removeAnimeFromHistorique = (
       `${animeName}--currentFilm`,
       `${animeName}--lecteur`,
     );
-  } else if (redirectAnime === "Scans") {
-    keysToRemove.push(`${animeName}--chapitre`);
-  }
 
-  if (redirectAnime === "Episodes" || redirectAnime === "Films") {
     Object.keys(localStorage).forEach((key) => {
       if (key.includes("--lang") && key.includes(animeName)) {
         keysToRemove.push(key);
       }
     });
+  } else if (redirectAnime === "Scans") {
+    keysToRemove.push(`${animeName}--chapitre`);
   }
 
   keysToRemove.forEach((key) => {

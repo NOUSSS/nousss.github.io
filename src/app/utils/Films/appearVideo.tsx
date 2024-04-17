@@ -20,7 +20,7 @@ export async function appearVideo(
       ({ anime }) => anime.toLowerCase() === Anime?.anime?.anime.toLowerCase(),
     )?.options.FILM_OPTIONS || {};
 
-  const lang = localStorage.getItem(`${Anime?.anime?.anime}--lang`);
+  const lang = localStorage.getItem(`${Anime?.anime?.anime}--film--lang`);
 
   window.scrollTo({
     top: containerRef.current?.offsetTop,

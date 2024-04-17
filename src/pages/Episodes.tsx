@@ -89,7 +89,7 @@ const Episodes = () => {
         "1";
 
       let lang = localStorage.getItem(
-        `${currentAnime}--${currentSaison}--lang`,
+        `${currentAnime}--episode--lang`,
       ) as langType;
 
       if (!lang) {
@@ -130,10 +130,7 @@ const Episodes = () => {
       let retard = 0;
       let url = "";
 
-      localStorage.setItem(
-        `${anime.anime.anime}--${anime.saison}--lang`,
-        anime.lang,
-      );
+      localStorage.setItem(`${anime.anime.anime}--episode--lang`, anime.lang);
 
       const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
 
