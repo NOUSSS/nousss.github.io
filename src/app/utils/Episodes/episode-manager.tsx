@@ -24,10 +24,12 @@ export function Change(
 
   const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS || {};
 
-  const isHorsSerie = horsSeries?.find(
-    ({ saison }: { saison: string }) =>
-      saison === localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`),
-  );
+  const isHorsSerie =
+    AnimeInfo.lang === "vostfr" &&
+    horsSeries?.find(
+      ({ saison }: { saison: string }) =>
+        saison === localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`),
+    );
 
   if (isHorsSerie) {
     if (isHorsSerie.hs.includes(Number(indexEpisode) - 1)) {

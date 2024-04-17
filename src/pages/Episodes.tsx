@@ -267,10 +267,13 @@ const Episodes = () => {
           indexEpisode < anime.currentLecteur.length + 1;
           indexEpisode++
         ) {
-          const isHorsSerie = horsSeries?.find(
-            ({ saison }) =>
-              saison === localStorage.getItem(`${anime?.anime?.anime}--saison`),
-          );
+          const isHorsSerie =
+            anime.lang === "vostfr" &&
+            horsSeries?.find(
+              ({ saison }) =>
+                saison ===
+                localStorage.getItem(`${anime?.anime?.anime}--saison`),
+            );
 
           if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
             retard++;
