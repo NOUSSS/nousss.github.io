@@ -321,9 +321,15 @@ export default function Accueil() {
                 </div>
 
                 <Image
-                  className="aspect-video w-[900px] min-w-[900px] after:absolute max-lg:min-w-full max-lg:max-w-full"
+                  className="aspect-video w-[900px] min-w-[900px] cursor-pointer max-lg:min-w-full max-lg:max-w-full"
                   alt="affiche d'un anime aléatoire"
                   src={anime.options.affiche!}
+                  onClick={() => {
+                    router.push({
+                      pathname: "Home",
+                      query: { anime: anime.anime },
+                    });
+                  }}
                 />
               </div>
             </SwiperSlide>
