@@ -455,9 +455,7 @@ const Episodes = () => {
         ></p>
       ) : null}
 
-      <p className="m-7 mt-12 text-3xl">{anime?.episodeTitle}</p>
-
-      <div className="flex gap-11 max-md:flex-col max-md:gap-2">
+      <div className="mt-12 flex gap-11 max-md:flex-col max-md:gap-2">
         <Select
           placeholder="Changer de langue"
           placeholderRef={placeholderLangRef}
@@ -514,6 +512,10 @@ const Episodes = () => {
         <iframe className="video" src={anime?.video} allowFullScreen></iframe>
         <iframe className="ambiance" src={anime?.video}></iframe>
       </div>
+
+      <p className="mb-4 ml-4 text-left text-2xl drop-shadow-xl">
+        {anime?.episodeTitle}
+      </p>
 
       <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-px after:w-full after:bg-neutral-700">
         {anime.anime?.anime &&
