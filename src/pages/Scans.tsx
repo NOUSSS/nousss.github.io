@@ -168,6 +168,10 @@ const Scans = () => {
     }
   }, [status, anime.version]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, anime.scans);
+
   return (
     <main className="flex select-none flex-col items-center">
       <Head>

@@ -10,9 +10,7 @@ export const selectChapter = (
 
   placeholderRef: RefObject<HTMLElement>,
   newName: string | undefined,
-): React.ReactNode[] | undefined => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
+): React.ReactNode[] => {
   const { IMAGE_URL } = Anime?.anime?.options.SCANS_OPTIONS || {};
 
   const scansImages: React.ReactNode[] = [];
@@ -51,7 +49,7 @@ export const selectChapter = (
     return scansImages;
   }
 
-  return undefined;
+  return [];
 };
 
 function replaceName(url: string, query: string): string {
