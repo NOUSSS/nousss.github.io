@@ -30,7 +30,7 @@
 }
 
 .video {
-  @apply relative aspect-video h-[675px] w-[1200px] border-0 max-xl:h-[523px] max-xl:w-[930px] max-lg:h-full max-lg:w-full;
+  @apply relative aspect-video w-[1200px] border-0 max-xl:w-[930px] max-lg:w-full;
 }
 
 .ambiance {
