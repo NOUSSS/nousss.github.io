@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { Anime } from "@/typings/types";
 import { ItemsProps } from "@/app/components/Select";
-import replaceName from "@/app/lib/replaceName";
 
 export const selectChapter = (
   Anime: Anime.AnimeScansProps,
@@ -54,3 +53,11 @@ export const selectChapter = (
 
   return undefined;
 };
+
+function replaceName(url: string, query: string): string {
+  const segments = url.split("/");
+
+  segments[5] = query;
+
+  return segments.join("/");
+}

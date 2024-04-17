@@ -240,10 +240,6 @@ export default function Accueil() {
             ({ name }) => name === anime.anime,
           );
 
-          const historique = historiquesFiltered.find(
-            ({ name }) => name === anime.anime,
-          );
-
           return (
             <SwiperSlide key={index}>
               <div
@@ -274,14 +270,17 @@ export default function Accueil() {
                       } = { anime: anime.anime };
 
                       if (
-                        historique?.redirect &&
-                        historique?.redirect === "Episodes"
+                        historiquesFiltered[historiqueIndex]?.redirect &&
+                        historiquesFiltered[historiqueIndex]?.redirect ===
+                          "Episodes"
                       )
-                        query.saison = historique.saison;
+                        query.saison =
+                          historiquesFiltered[historiqueIndex].saison;
 
-                      if (historique?.redirect)
+                      if (historiquesFiltered[historiqueIndex]?.redirect)
                         router.push({
-                          pathname: historique.redirect,
+                          pathname:
+                            historiquesFiltered[historiqueIndex].redirect,
                           query,
                         });
                       else
