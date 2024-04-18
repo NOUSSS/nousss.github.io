@@ -402,7 +402,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Boruto",
-    aliases: ["NARUTO NEXT GENERATIONS"],
+    aliases: ["NARUTO NEXT GENERATIONS", "Two Blue Vortex"],
     options: new Boruto(),
     category: ["Action", "Aventure", "Fantasy", "Comédie"],
     synopsis:
