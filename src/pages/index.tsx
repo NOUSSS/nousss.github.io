@@ -403,8 +403,10 @@ export default function Accueil() {
 
                             toast.success("L'historique a bien été vidé");
 
-                            confirmRef.current?.classList.add("hidden");
-                            overlayRef?.current?.classList.add("hidden");
+                            if (confirmRef.current && overlayRef.current) {
+                              confirmRef.current.classList.add("hidden");
+                              overlayRef.current.classList.add("hidden");
+                            }
                           }}
                         >
                           Oui
@@ -414,7 +416,7 @@ export default function Accueil() {
                           className="bg-red-500 hover:bg-red-800"
                           onClick={() => {
                             confirmRef.current?.classList.add("hidden");
-                            overlayRef?.current?.classList.add("hidden");
+                            overlayRef.current?.classList.add("hidden");
                           }}
                         >
                           Annuler
@@ -425,13 +427,15 @@ export default function Accueil() {
                     <button
                       className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
                       onClick={() => {
-                        confirmRef.current?.classList.contains("hidden")
-                          ? confirmRef.current?.classList.remove("hidden")
-                          : confirmRef.current?.classList.add("hidden");
+                        if (confirmRef.current && overlayRef.current) {
+                          confirmRef.current.classList.contains("hidden")
+                            ? confirmRef.current.classList.remove("hidden")
+                            : confirmRef.current.classList.add("hidden");
 
-                        overlayRef?.current?.classList.contains("hidden")
-                          ? overlayRef?.current?.classList.remove("hidden")
-                          : overlayRef?.current?.classList.add("hidden");
+                          overlayRef.current.classList.contains("hidden")
+                            ? overlayRef.current.classList.remove("hidden")
+                            : overlayRef.current.classList.add("hidden");
+                        }
                       }}
                     >
                       Supprimer tout l'historique

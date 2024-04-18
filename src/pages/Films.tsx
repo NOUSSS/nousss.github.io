@@ -229,10 +229,12 @@ const Films = () => {
         ) : null}
       </div>
 
-      <div ref={containerRef} className="container">
-        <iframe className="video" src={anime?.video} allowFullScreen></iframe>
-        <iframe className="ambiance" src={anime?.video}></iframe>
-      </div>
+      {anime.video ? (
+        <div ref={containerRef} className="container">
+          <iframe className="video" src={anime.video} allowFullScreen></iframe>
+          <iframe className="ambiance" src={anime.video}></iframe>
+        </div>
+      ) : null}
 
       <SearchBar
         placeholder="Rechercher un film"
