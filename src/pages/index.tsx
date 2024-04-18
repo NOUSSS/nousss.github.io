@@ -442,7 +442,7 @@ export default function Accueil() {
                       href={{
                         pathname: `categories/${category}`,
                       }}
-                      className="cursor-pointer text-lg text-zinc-400"
+                      className="cursor-pointer text-lg text-zinc-400 hover:underline"
                     >
                       Voir tout
                     </Link>
