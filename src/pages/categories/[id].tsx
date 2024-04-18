@@ -77,6 +77,7 @@ export default function Category() {
                   query: { anime: name },
                 });
               }}
+              key={name}
             >
               <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
                 {image && (
