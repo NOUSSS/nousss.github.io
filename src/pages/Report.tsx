@@ -6,6 +6,7 @@ import React from "react";
 
 export default function Report() {
   const [message, setMessage] = React.useState("");
+  const [author, setAuthor] = React.useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ export default function Report() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          content: "Nouveau signalement",
+          content: `Signalement : ${author}`,
           embeds: [
             {
               description: message,
@@ -41,17 +42,25 @@ export default function Report() {
     <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
       <h1 className="mb-20 text-4xl">Signaler un problème</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <input
+          onChange={({ target: { value } }) => setAuthor(value)}
+          required
+          type="text"
+          placeholder="Nom"
+          className="rounded-md border border-neutral-700 bg-transparent p-2 focus:outline-none"
+        />
+
         <textarea
-          className="mb-8 h-64 w-full rounded-md border border-neutral-700 bg-transparent p-2 focus:outline-none"
+          className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2 focus:outline-none"
           value={message}
           onChange={({ target: { value } }) => setMessage(value)}
-          placeholder="Ton site il est guez"
+          placeholder="Signalement"
           required
         />
 
         <button
-          className="btn w-full border hover:border-green-500 hover:text-green-500"
+          className="btn border hover:border-green-500 hover:text-green-500"
           type="submit"
         >
           Envoyer
