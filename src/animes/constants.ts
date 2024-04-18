@@ -1,3 +1,5 @@
+import seedrandom from "seedrandom";
+
 import { Anime } from "@/app/class/anime";
 
 import AirGear from "./AirGear/air-gear";
@@ -99,7 +101,6 @@ import KaijuN8 from "./KaijuN8/kaiju-n8";
 import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 import Kingdom from "./Kingdom/kingdom";
 import Parasite from "./Parasite/parasite";
-import { shuffle } from "@/app/lib/shuffle";
 
 export interface AnimesType {
   anime: string;
@@ -1124,42 +1125,31 @@ export interface GroupedAnimes {
   category: string;
 }
 
-interface Group {
-  [key: string]: string[];
-}
+const rng = seedrandom("fix");
 
 export const groupAnimesByCategory = (
   animes: AnimeOption[],
   length: boolean,
-  double: boolean,
 ): GroupedAnimes[] => {
-  const grouped: Group = {};
-  const addedAnimes = new Set<string>();
-
-  const blacklistedCategories = ["Nouvelles saisons"];
+  const grouped: { [key: string]: string[] } = {};
 
   animes.forEach(({ anime, category }) => {
-    category.forEach((cat) => {
-      if (!grouped[cat]) grouped[cat] = [];
+    category.forEach((category) => {
+      if (!grouped[category]) grouped[category] = [];
 
-      const canAdd =
-        double ||
-        !addedAnimes.has(anime) ||
-        blacklistedCategories.includes(cat);
-
-      if (canAdd && !grouped[cat].includes(anime)) {
-        if ((length && grouped[cat].length < 10) || !length) {
-          grouped[cat].push(anime);
-
-          if (!double && !blacklistedCategories.includes(cat))
-            addedAnimes.add(anime);
-        }
+      if (!grouped[category].includes(anime)) {
+        if ((length && grouped[category].length < 10) || !length)
+          grouped[category].push(anime);
       }
     });
   });
 
-  return Object.keys(grouped).map((cat) => ({
-    names: grouped[cat],
-    category: cat,
+  for (const category in grouped) {
+    grouped[category].sort(() => rng() - 0.5);
+  }
+
+  return Object.keys(grouped).map((category) => ({
+    names: grouped[category],
+    category: category,
   }));
 };
