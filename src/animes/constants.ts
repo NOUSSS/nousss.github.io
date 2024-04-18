@@ -1136,15 +1136,23 @@ export const groupAnimesByCategory = (
   const grouped: Group = {};
   const addedAnimes = new Set<string>();
 
+  const blacklistedCategories = ["Nouvelles saisons"];
+
   animes.forEach(({ anime, category }) => {
     category.forEach((cat) => {
       if (!grouped[cat]) grouped[cat] = [];
+
       const canAdd =
-        double || !addedAnimes.has(anime) || cat === "Nouvelles saisons";
+        double ||
+        !addedAnimes.has(anime) ||
+        blacklistedCategories.includes(cat);
+
       if (canAdd && !grouped[cat].includes(anime)) {
         if ((length && grouped[cat].length < 10) || !length) {
           grouped[cat].push(anime);
-          if (!double && cat !== "Nouvelles saisons") addedAnimes.add(anime);
+
+          if (!double && !blacklistedCategories.includes(cat))
+            addedAnimes.add(anime);
         }
       }
     });
