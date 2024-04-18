@@ -99,6 +99,7 @@ import KaijuN8 from "./KaijuN8/kaiju-n8";
 import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 import Kingdom from "./Kingdom/kingdom";
 import Parasite from "./Parasite/parasite";
+import { shuffle } from "@/app/lib/shuffle";
 
 export interface AnimesType {
   anime: string;
@@ -1118,7 +1119,7 @@ interface AnimeOption {
   category: string[];
 }
 
-interface GroupedAnimes {
+export interface GroupedAnimes {
   names: string[];
   category: string;
 }
@@ -1129,13 +1130,17 @@ interface Group {
 
 export const groupAnimesByCategory = (
   animes: AnimeOption[],
+  length: boolean,
 ): GroupedAnimes[] => {
   const grouped: Group = {};
 
   animes.forEach(({ anime, category }) => {
     category.forEach((category) => {
       if (!grouped[category]) grouped[category] = [];
-      if (!grouped[category].includes(anime)) grouped[category].push(anime);
+      if (!grouped[category].includes(anime)) {
+        if ((length && grouped[category].length < 10) || !length)
+          grouped[category].push(anime);
+      }
     });
   });
 

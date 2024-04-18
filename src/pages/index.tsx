@@ -23,6 +23,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Select from "@/app/components/Select";
+import Link from "next/link";
+import { getWallpaper } from "@/app/lib/getWallpaper";
 
 export default function Accueil() {
   const categories: string[] = [];
@@ -36,6 +38,7 @@ export default function Accueil() {
   }
 
   const router = useRouter();
+
   const Trash = icons["Trash2"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
@@ -46,17 +49,6 @@ export default function Accueil() {
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const placeholderRef = useRef<HTMLParagraphElement | null>(null);
-
-  const getWallpaper = (animeName: string) => {
-    const anime = getAnime(animeName);
-    const images = anime?.options.saisons || anime?.options.FILM_OPTIONS?.names;
-
-    if (images) {
-      const values = Object.values(images);
-
-      return values[values.length - 1].image();
-    }
-  };
 
   useEffect(() => {
     let animesCopy = [...shuffle(ANIMES)];
@@ -132,7 +124,7 @@ export default function Accueil() {
   }, []);
 
   const [catalogues, setCatalogues] = useState(() =>
-    groupAnimesByCategory(animes).sort(
+    groupAnimesByCategory(animes, true).sort(
       (a, b) => b.names.length - a.names.length,
     ),
   );
@@ -145,12 +137,13 @@ export default function Accueil() {
         filteredCategories.every((cat) => category.includes(cat)),
       );
 
-      updatedCatalogues = groupAnimesByCategory(filteredAnimes).sort(
+      updatedCatalogues = groupAnimesByCategory(filteredAnimes, true).sort(
         (a, b) => b.names.length - a.names.length,
       );
     } else {
       updatedCatalogues = groupAnimesByCategory(
         ANIMES.map(({ anime, category }) => ({ anime, category })),
+        true,
       ).sort((a, b) => b.names.length - a.names.length);
     }
 
@@ -442,7 +435,18 @@ export default function Accueil() {
                     </button>
                   </>
                 ) : (
-                  <p className="font-normal">{category}</p>
+                  <div className="flex items-center gap-4">
+                    <p className="font-normal drop-shadow-2xl">{category}</p>
+
+                    <Link
+                      href={{
+                        pathname: `categories/${category}`,
+                      }}
+                      className="cursor-pointer text-lg text-zinc-400"
+                    >
+                      Voir tout
+                    </Link>
+                  </div>
                 )}
               </div>
 
