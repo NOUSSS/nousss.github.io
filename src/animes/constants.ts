@@ -1131,21 +1131,27 @@ interface Group {
 export const groupAnimesByCategory = (
   animes: AnimeOption[],
   length: boolean,
+  double: boolean,
 ): GroupedAnimes[] => {
   const grouped: Group = {};
+  const addedAnimes = new Set<string>();
 
   animes.forEach(({ anime, category }) => {
-    category.forEach((category) => {
-      if (!grouped[category]) grouped[category] = [];
-      if (!grouped[category].includes(anime)) {
-        if ((length && grouped[category].length < 10) || !length)
-          grouped[category].push(anime);
+    category.forEach((cat) => {
+      if (!grouped[cat]) grouped[cat] = [];
+      const canAdd =
+        double || !addedAnimes.has(anime) || cat === "Nouvelles saisons";
+      if (canAdd && !grouped[cat].includes(anime)) {
+        if ((length && grouped[cat].length < 10) || !length) {
+          grouped[cat].push(anime);
+          if (!double && cat !== "Nouvelles saisons") addedAnimes.add(anime);
+        }
       }
     });
   });
 
-  return Object.keys(grouped).map((category) => ({
-    names: grouped[category],
-    category: category,
+  return Object.keys(grouped).map((cat) => ({
+    names: grouped[cat],
+    category: cat,
   }));
 };

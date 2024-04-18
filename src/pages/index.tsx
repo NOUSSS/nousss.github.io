@@ -124,7 +124,7 @@ export default function Accueil() {
   }, []);
 
   const [catalogues, setCatalogues] = useState(() =>
-    groupAnimesByCategory(animes, true).sort(
+    groupAnimesByCategory(animes, true, false).sort(
       (a, b) => b.names.length - a.names.length,
     ),
   );
@@ -137,13 +137,16 @@ export default function Accueil() {
         filteredCategories.every((cat) => category.includes(cat)),
       );
 
-      updatedCatalogues = groupAnimesByCategory(filteredAnimes, true).sort(
-        (a, b) => b.names.length - a.names.length,
-      );
+      updatedCatalogues = groupAnimesByCategory(
+        filteredAnimes,
+        true,
+        false,
+      ).sort((a, b) => b.names.length - a.names.length);
     } else {
       updatedCatalogues = groupAnimesByCategory(
         ANIMES.map(({ anime, category }) => ({ anime, category })),
         true,
+        false,
       ).sort((a, b) => b.names.length - a.names.length);
     }
 

@@ -41,6 +41,7 @@ export default function Category() {
       const groupedAnimes = groupAnimesByCategory(
         ANIMES.map(({ anime, category }) => ({ anime, category })),
         false,
+        true,
       ).sort((a, b) => b.names.length - a.names.length);
 
       setAnimes(groupedAnimes.find((e) => e.category === currentCategory));
