@@ -3,6 +3,7 @@ import { Anime } from "@/app/class/anime";
 import { Options } from "@/typings/types";
 
 import Affiche from "@/assets/Animes/KaijuN8/affiche.webp";
+import names from "./constants/episodes-names";
 
 class KaijuN8 extends Anime {
   constructor() {
@@ -39,6 +40,8 @@ class KaijuN8 extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names,
     };
   }
 }
