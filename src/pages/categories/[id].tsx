@@ -5,11 +5,13 @@ import {
   GroupedAnimes,
   groupAnimesByCategory,
 } from "@/animes/constants";
+
 import { getAnime } from "@/app/lib/getAnime";
 import { getWallpaper } from "@/app/lib/getWallpaper";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+import Image from "next/image";
 
 export default function Category() {
   const router = useRouter();
@@ -50,6 +52,12 @@ export default function Category() {
   return (
     <main>
       <h1 className="text-3xl">{currentCategory}</h1>
+      {animes?.names ? (
+        <p className="text-zinc-400">
+          {animes.names.length} {pluriel(animes.names, "anime")}{" "}
+          {pluriel(animes.names, "trouvé")}
+        </p>
+      ) : null}
 
       <div className="mx-2 mt-16 sm:mx-12">
         {animes?.names.map((name) => {
@@ -101,4 +109,9 @@ export default function Category() {
       </div>
     </main>
   );
+}
+
+function pluriel(array: string[], query: string): string {
+  if (array.length > 1) return `${query}s`;
+  else return query;
 }
