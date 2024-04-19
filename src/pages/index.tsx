@@ -96,7 +96,7 @@ export default function Accueil() {
             const episode = localStorage.getItem(key);
             const saison = localStorage.getItem(`${name}--saison`) ?? "1";
 
-            if (!getAnime(name)) return localStorage.remove(key);
+            if (!getAnime(name)) return localStorage.removeItem(key);
 
             if (episode)
               loadedHistoriques.push({
@@ -111,7 +111,7 @@ export default function Accueil() {
             const name = key.replace("--chapitre", "");
             const chapitre = localStorage.getItem(key);
 
-            if (!getAnime(name)) return localStorage.remove(key);
+            if (!getAnime(name)) return localStorage.removeItem(key);
 
             if (chapitre)
               loadedHistoriques.push({ name, redirect: "Scans", chapitre });
@@ -121,7 +121,7 @@ export default function Accueil() {
             const name = key.replace("--currentFilm", "");
             const film = localStorage.getItem(key);
 
-            if (!getAnime(name)) return localStorage.remove(key);
+            if (!getAnime(name)) return localStorage.removeItem(key);
 
             if (film) loadedHistoriques.push({ name, redirect: "Films", film });
           }
@@ -131,7 +131,9 @@ export default function Accueil() {
       }
     };
 
-    setHistoriques(loadHistoriques());
+    const loadedHistoriques = loadHistoriques();
+
+    if (loadedHistoriques) setHistoriques(loadedHistoriques);
   }, []);
 
   const [catalogues, setCatalogues] = useState(() =>
