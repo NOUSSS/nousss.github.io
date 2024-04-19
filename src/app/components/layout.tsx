@@ -94,6 +94,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         }}
       />
 
+      {/* Google Analytics (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-F9N37DQQDM"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-F9N37DQQDM');
+          `,
+        }}
+      />
+
       <noscript>
         <iframe
           src="https://www.googletagmanager.com/ns.html?id=GTM-KVG6T32C"
