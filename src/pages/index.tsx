@@ -501,7 +501,7 @@ export default function Accueil() {
                               </div>
 
                               <Image
-                                className="-z-10 aspect-video w-44 rounded-md brightness-50 transition-transform group-hover:scale-110 md:w-56"
+                                className="-z-10 aspect-video w-44 rounded-md brightness-75 transition-transform group-hover:scale-110 md:w-56"
                                 src={fetchedAnime.options.affiche}
                                 alt="affiche d'un anime"
                               />
