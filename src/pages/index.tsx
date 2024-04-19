@@ -88,34 +88,34 @@ export default function Accueil() {
     const loadHistoriques = () => {
       const loadedHistoriques: Historique[] = [];
 
-      if (typeof window !== "undefined") {
-        for (const key of Object.keys(localStorage)) {
-          if (key.includes("--episode") && !key.includes("--lang")) {
-            const name = key.replace("--episode", "");
-            const episode = localStorage.getItem(key)!;
-            const saison = localStorage.getItem(`${name}--saison`) ?? "1";
+      for (const key of Object.keys(localStorage)) {
+        if (key.includes("--episode") && !key.includes("--lang")) {
+          const name = key.replace("--episode", "");
+          if (!getAnime(name)) return localStorage.remove(key);
 
-            loadedHistoriques.push({
-              name,
-              redirect: "Episodes",
-              episode,
-              saison,
-            });
-          }
+          const episode = localStorage.getItem(key)!;
+          const saison = localStorage.getItem(`${name}--saison`) ?? "1";
 
-          if (key.includes("--chapitre")) {
-            const name = key.replace("--chapitre", "");
-            const chapitre = localStorage.getItem(key)!;
+          loadedHistoriques.push({
+            name,
+            redirect: "Episodes",
+            episode,
+            saison,
+          });
+        }
 
-            loadedHistoriques.push({ name, redirect: "Scans", chapitre });
-          }
+        if (key.includes("--chapitre")) {
+          const name = key.replace("--chapitre", "");
+          const chapitre = localStorage.getItem(key)!;
 
-          if (key.includes("--currentFilm")) {
-            const name = key.replace("--currentFilm", "");
-            const film = localStorage.getItem(key)!;
+          loadedHistoriques.push({ name, redirect: "Scans", chapitre });
+        }
 
-            loadedHistoriques.push({ name, redirect: "Films", film });
-          }
+        if (key.includes("--currentFilm")) {
+          const name = key.replace("--currentFilm", "");
+          const film = localStorage.getItem(key)!;
+
+          loadedHistoriques.push({ name, redirect: "Films", film });
         }
       }
 
