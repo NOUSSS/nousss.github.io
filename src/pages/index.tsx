@@ -88,45 +88,47 @@ export default function Accueil() {
     const loadHistoriques = () => {
       const loadedHistoriques: Historique[] = [];
 
-      for (const key of Object.keys(localStorage)) {
-        if (key.includes("--episode") && !key.includes("--lang")) {
-          const name = key.replace("--episode", "");
+      if (typeof window !== "undefined") {
+        for (const key of Object.keys(localStorage)) {
+          if (key.includes("--episode") && !key.includes("--lang")) {
+            const name = key.replace("--episode", "");
 
-          const episode = localStorage.getItem(key);
-          const saison = localStorage.getItem(`${name}--saison`) ?? "1";
+            const episode = localStorage.getItem(key);
+            const saison = localStorage.getItem(`${name}--saison`) ?? "1";
 
-          if (!getAnime(name)) return localStorage.remove(key);
+            if (!getAnime(name)) return localStorage.remove(key);
 
-          if (episode)
-            loadedHistoriques.push({
-              name,
-              redirect: "Episodes",
-              episode,
-              saison,
-            });
+            if (episode)
+              loadedHistoriques.push({
+                name,
+                redirect: "Episodes",
+                episode,
+                saison,
+              });
+          }
+
+          if (key.includes("--chapitre")) {
+            const name = key.replace("--chapitre", "");
+            const chapitre = localStorage.getItem(key);
+
+            if (!getAnime(name)) return localStorage.remove(key);
+
+            if (chapitre)
+              loadedHistoriques.push({ name, redirect: "Scans", chapitre });
+          }
+
+          if (key.includes("--currentFilm")) {
+            const name = key.replace("--currentFilm", "");
+            const film = localStorage.getItem(key);
+
+            if (!getAnime(name)) return localStorage.remove(key);
+
+            if (film) loadedHistoriques.push({ name, redirect: "Films", film });
+          }
         }
 
-        if (key.includes("--chapitre")) {
-          const name = key.replace("--chapitre", "");
-          const chapitre = localStorage.getItem(key);
-
-          if (!getAnime(name)) return localStorage.remove(key);
-
-          if (chapitre)
-            loadedHistoriques.push({ name, redirect: "Scans", chapitre });
-        }
-
-        if (key.includes("--currentFilm")) {
-          const name = key.replace("--currentFilm", "");
-          const film = localStorage.getItem(key);
-
-          if (!getAnime(name)) return localStorage.remove(key);
-
-          if (film) loadedHistoriques.push({ name, redirect: "Films", film });
-        }
+        return loadedHistoriques;
       }
-
-      return loadedHistoriques;
     };
 
     setHistoriques(loadHistoriques());
