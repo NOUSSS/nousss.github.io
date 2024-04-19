@@ -40,6 +40,7 @@ export default function Accueil() {
   const router = useRouter();
 
   const Trash = icons["Trash2"];
+  const Play = icons["Play"];
   const ArrowUpRight = icons["ArrowUpRight"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
@@ -487,79 +488,84 @@ export default function Accueil() {
                     >
                       {category === "Reprendre" ? (
                         <div
+                          className="group w-44 md:w-56"
                           title={
                             fetchedAnime?.synopsis ??
                             "Aucun synopsis pour cette anime"
                           }
-                          className="relative mb-3 h-44 w-40 overflow-hidden rounded-xl shadow-md transition-all duration-300 ease-out before:absolute before:-top-12 before:left-6 before:z-[-5] before:h-[180%] before:w-6/12 before:rotate-45 before:bg-main before:opacity-0 before:transition-all after:absolute after:inset-[2px] after:z-[-5] after:rounded-xl after:bg-zinc-900 hover:before:animate-spin hover:before:opacity-100 max-sm:h-[170px]"
                         >
-                          <div
-                            className="absolute right-0 m-2 flex h-7 items-center rounded-sm border border-main bg-zinc-900 bg-opacity-50 p-1 transition-colors ease-out hover:border-red-500 hover:text-red-500"
-                            onClick={(event) => {
-                              event.stopPropagation();
+                          {fetchedAnime?.options.affiche && (
+                            <div className="relative overflow-hidden rounded-md">
+                              <div className="absolute left-2/4 top-2/4 z-10 -translate-x-2/4 -translate-y-2/4 rounded-full bg-zinc-900 bg-opacity-75 p-4">
+                                <Play />
+                              </div>
 
-                              removeAnimeFromHistorique(
-                                animeName!,
-                                historiques[i]!.redirect,
-                                setHistoriques,
-                              );
-                            }}
-                          >
-                            <Trash size={15} />
-                          </div>
+                              <Image
+                                className="-z-10 aspect-video w-44 rounded-md brightness-50 transition-transform group-hover:scale-110 md:w-56"
+                                src={fetchedAnime.options.affiche}
+                                alt="affiche d'un anime"
+                              />
+                            </div>
+                          )}
 
-                          {getWallpaper(animeName) ? (
-                            <Image
-                              className="relative top-1 z-[-1] aspect-video w-40 scale-90 rounded-t-xl max-sm:h-[85px]"
-                              src={fetchedAnime!.options.affiche!}
-                              alt="affiche d'un anime"
-                            />
-                          ) : null}
+                          <div className="my-3 flex justify-between text-left text-sm sm:text-base">
+                            <div>
+                              <p className="text-white">
+                                {animeName.length > 16
+                                  ? animeName.substring(0, 16) + "..."
+                                  : animeName}
+                              </p>
 
-                          <div className="relative top-2 p-1 text-sm">
-                            <p className="text-white">
-                              {animeName.length > 16
-                                ? animeName.substring(0, 16) + "..."
-                                : animeName}
-                            </p>
+                              <p className="text-main">
+                                {historiques[i]?.chapitre && (
+                                  <>
+                                    {getCurrentChapitre(
+                                      animeName!,
+                                      i,
+                                      historiques,
+                                    )}
+                                  </>
+                                )}
+                                {historiques[i]?.film && (
+                                  <>Film {Number(historiques[i]?.film) + 1}</>
+                                )}
+                                {historiques[i]?.episode && (
+                                  <>
+                                    Saison{" "}
+                                    {getScriptIndex({
+                                      currentSaison: historiques[i]?.saison,
+                                      parts:
+                                        fetchedAnime?.options.EPISODES_OPTIONS
+                                          ?.parts,
+                                    })}
+                                    {", "}
+                                    {getCurrentEpisode(
+                                      animeName!,
+                                      i,
+                                      historiques,
+                                    )}
+                                  </>
+                                )}
+                              </p>
+                            </div>
 
-                            <p className="text-main">
-                              {historiques[i]?.chapitre && (
-                                <>
-                                  <br />
+                            <div
+                              title={`Supprimer ${animeName} de l'historique`}
+                              onClick={(e) => {
+                                e.stopPropagation();
 
-                                  {getCurrentChapitre(
-                                    animeName!,
-                                    i,
-                                    historiques,
-                                  )}
-                                </>
-                              )}
-                              {historiques[i]?.film && (
-                                <>
-                                  <br />
-                                  Film {Number(historiques[i]?.film) + 1}
-                                </>
-                              )}
-                              {historiques[i]?.episode && (
-                                <>
-                                  <br />
-                                  Saison{" "}
-                                  {getScriptIndex({
-                                    currentSaison: historiques[i]?.saison,
-                                    parts:
-                                      fetchedAnime?.options.EPISODES_OPTIONS
-                                        ?.parts,
-                                  })}
-                                  {", "}
-                                  {getCurrentEpisode(
-                                    animeName!,
-                                    i,
-                                    historiques,
-                                  )}
-                                </>
-                              )}
-                            </p>
+                                removeAnimeFromHistorique(
+                                  animeName,
+                                  historiques[i].redirect,
+                                  setHistoriques,
+                                );
+                              }}
+                            >
+                              <Trash
+                                className="transition-colors hover:text-red-500"
+                                size={20}
+                              />
+                            </div>
                           </div>
                         </div>
                       ) : (
@@ -568,11 +574,11 @@ export default function Accueil() {
                             fetchedAnime?.synopsis ??
                             "Aucun synopsis pour cette anime"
                           }
-                          className="group w-36 rounded-xl max-md:mr-1 max-md:w-32"
+                          className="group w-36 max-md:mr-1 max-md:w-32"
                         >
-                          <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
+                          <div className="h-48 min-h-48 overflow-hidden rounded-md shadow-xl">
                             <Image
-                              className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
+                              className="h-48 min-h-48 overflow-hidden rounded-md transition-transform group-hover:scale-110"
                               src={getWallpaper(animeName)!}
                               alt="affiche d'un anime"
                             />
