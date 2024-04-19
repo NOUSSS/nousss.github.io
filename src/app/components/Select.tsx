@@ -37,9 +37,9 @@ export default function Select({
 
   const UpArrow = icons["ChevronUp"];
 
-  const labelRef = useRef<HTMLLabelElement | null>(null);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  const svgRef = useRef<SVGSVGElement | null>(null);
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   const itemsRef = useRef<ItemsRef[]>([]);
 

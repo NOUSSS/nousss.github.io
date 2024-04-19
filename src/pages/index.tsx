@@ -48,9 +48,9 @@ export default function Accueil() {
   const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const confirmRef = useRef<HTMLDivElement | null>(null);
-  const overlayRef = useRef<HTMLDivElement | null>(null);
-  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
+  const confirmRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const placeholderRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     let animesCopy = [...shuffle(ANIMES)];

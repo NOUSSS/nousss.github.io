@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 const ColorPicker = () => {
   const ResetIcon = icons["RotateCcw"];
 
-  const colorPickerRef = useRef<HTMLDivElement | null>(null);
-  const colorInputRef = useRef<HTMLInputElement | null>(null);
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const colorInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const main = localStorage.getItem("color");

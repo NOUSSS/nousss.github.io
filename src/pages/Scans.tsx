@@ -34,8 +34,8 @@ const Scans = () => {
 
   const [script, setScript] = useState<string>();
 
-  const placeholderRef = useRef<HTMLParagraphElement | null>(null);
-  const placeholderRefVersion = useRef<HTMLParagraphElement | null>(null);
+  const placeholderRef = useRef<HTMLParagraphElement>(null);
+  const placeholderRefVersion = useRef<HTMLParagraphElement>(null);
 
   const router = useRouter();
 

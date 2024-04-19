@@ -19,7 +19,7 @@ const Home = () => {
   const router = useRouter();
   const query = router.query;
 
-  const choicesRef = useRef<HTMLDivElement | null>(null);
+  const choicesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));

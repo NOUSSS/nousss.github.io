@@ -32,10 +32,10 @@ const Films = () => {
   );
   const [script, setScript] = useState<string>("");
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const filmsRef = useRef<HTMLUListElement[]>([]);
-  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
-  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
+  const placeholderLangRef = useRef<HTMLParagraphElement>(null);
+  const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 
   const status = useScript(script, {
     removeOnUnmount: true,

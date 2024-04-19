@@ -10,17 +10,21 @@ import Link from "next/link";
 import Head from "next/head";
 import Script from "next/script";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   const [output, setOutput] = useState<React.ReactNode>();
   const [isVisible, setIsVisible] = useState(false);
 
   const SearchIcon = icons["Search"];
 
-  const metaColorRef = useRef<HTMLMetaElement | null>(null);
+  const metaColorRef = useRef<HTMLMetaElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const searchTextRef = useRef<HTMLElement | null>(null);
-  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const searchTextRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const main = localStorage.getItem("color");

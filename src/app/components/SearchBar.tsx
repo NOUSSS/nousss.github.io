@@ -5,7 +5,7 @@ import { RefObject, useRef } from "react";
 type QueryType = "id" | "innerText";
 
 interface SearchBarProps {
-  containerRef: RefObject<HTMLUListElement[] | null>;
+  containerRef: RefObject<HTMLUListElement[]>;
   placeholder: string;
   className?: string;
   query: QueryType;
@@ -19,7 +19,7 @@ export default function SearchBar({
 }: SearchBarProps) {
   const SearchIcon = icons["Search"];
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <label

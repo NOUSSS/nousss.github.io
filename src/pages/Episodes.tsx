@@ -49,13 +49,14 @@ const Episodes = () => {
   );
   const [ErrorInterval, setErrorInterval] = useState<NodeJS.Timeout>();
 
-  const episodeTitleRef = useRef<HTMLParagraphElement | null>(null);
+  const episodeTitleRef = useRef<HTMLParagraphElement>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
-  const placeholderLangRef = useRef<HTMLParagraphElement | null>(null);
-  const placeholderLecteurRef = useRef<HTMLParagraphElement | null>(null);
-  const disclamerMessage = useRef("");
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const placeholderLangRef = useRef<HTMLParagraphElement>(null);
+  const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
+
+  const disclamerMessage = useRef("");
 
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();

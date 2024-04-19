@@ -5,7 +5,7 @@ type QueryType = "id" | "innerText";
 
 export function initSearchBar(
   input: RefObject<HTMLInputElement>,
-  containerRef: RefObject<HTMLUListElement[] | null>,
+  containerRef: RefObject<HTMLUListElement[]>,
   query: QueryType,
 ): void {
   const visible: Set<string> = new Set();
