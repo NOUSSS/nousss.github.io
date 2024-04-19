@@ -45,7 +45,7 @@ const Home = () => {
         )}
       </Head>
 
-      <div className="relative my-12 flex h-auto rounded-md bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
+      <div className="relative mb-12 flex h-auto rounded-md bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
         {anime?.options.affiche && (
           <div>
             <Image
@@ -93,10 +93,13 @@ const Home = () => {
         </div>
       </div>
 
-      <div ref={choicesRef} className="flex justify-center text-left">
+      <div
+        ref={choicesRef}
+        className="flex justify-center text-left text-orange-400"
+      >
         <ul>
           {anime?.options.FILM_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-main">
+            <li className="text-4xl transition-colors hover:text-main">
               <Link
                 href={{ pathname: "/Films", query: { anime: anime?.anime } }}
               >
@@ -105,7 +108,7 @@ const Home = () => {
             </li>
           )}
           {anime?.options.EPISODES_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-main">
+            <li className="text-4xl transition-colors hover:text-main">
               <Link
                 href={{
                   pathname: "/Saisons",
@@ -118,7 +121,7 @@ const Home = () => {
           )}
 
           {anime?.options.SCANS_OPTIONS && (
-            <li className="text-4xl text-sky-500 transition-colors hover:text-main">
+            <li className="text-4xl transition-colors hover:text-main">
               <Link
                 href={{ pathname: "/Scans", query: { anime: anime?.anime } }}
               >

@@ -40,6 +40,7 @@ export default function Accueil() {
   const router = useRouter();
 
   const Trash = icons["Trash2"];
+  const ArrowUpRight = icons["ArrowUpRight"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
@@ -386,7 +387,7 @@ export default function Accueil() {
 
                       <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
                         <button
-                          className="bg-green-500 hover:bg-green-600"
+                          className="border border-green-500 hover:border-green-600"
                           onClick={() => {
                             setHistoriques([]);
 
@@ -418,7 +419,7 @@ export default function Accueil() {
                     </div>
 
                     <button
-                      className="btn w-52 border leading-none hover:border-red-500 hover:text-red-500 max-sm:w-36 max-sm:p-0"
+                      className="btn"
                       onClick={() => {
                         if (confirmRef.current && overlayRef.current) {
                           confirmRef.current.classList.contains("hidden")
@@ -431,21 +432,25 @@ export default function Accueil() {
                         }
                       }}
                     >
-                      Supprimer tout l'historique
+                      Tout supprimer
                     </button>
                   </>
                 ) : (
                   <div className="flex items-center gap-4">
                     <p className="font-normal drop-shadow-2xl">{category}</p>
 
-                    <Link
-                      href={{
-                        pathname: `categories/${category}`,
-                      }}
-                      className="cursor-pointer text-lg text-zinc-400 hover:underline"
-                    >
-                      Voir tout
-                    </Link>
+                    <div className="flex items-center gap-2 text-lg text-zinc-400">
+                      <ArrowUpRight />
+
+                      <Link
+                        href={{
+                          pathname: `categories/${category}`,
+                        }}
+                        className="cursor-pointer hover:underline"
+                      >
+                        Voir tout
+                      </Link>
+                    </div>
                   </div>
                 )}
               </div>

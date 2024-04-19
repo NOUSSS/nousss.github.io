@@ -14,7 +14,7 @@
 }
 
 .btn {
-  @apply relative left-0 h-12 rounded border border-main bg-zinc-950 bg-opacity-30 p-2 text-sm transition-all duration-300;
+  @apply relative left-0 min-h-12 rounded border border-orange-400 bg-zinc-900 bg-opacity-40 p-3 text-sm font-normal uppercase transition-all duration-300;
 }
 
 .back {
