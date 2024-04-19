@@ -101,6 +101,7 @@ import KaijuN8 from "./KaijuN8/kaiju-n8";
 import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 import Kingdom from "./Kingdom/kingdom";
 import Parasite from "./Parasite/parasite";
+import SuperDragonBallHeroes from "./SuperDragonBallHeroes/super-dragon-ball-heroes";
 
 export interface AnimesType {
   anime: string;
@@ -115,7 +116,7 @@ export const ANIMES: AnimesType[] = [
     anime: "One Piece",
     aliases: ["op"],
     options: new OnePiece(),
-    category: ["Action", "Aventure", "Comédie", "Drame", "Fantasy"],
+    category: ["Aventure", "Comédie", "Drame", "Fantasy"],
     synopsis:
       "L'histoire suit principalement l'équipage de Chapeau de paille, mené par son capitaine Monkey D. Luffy, un jeune homme ayant mangé, enfant, sans le savoir, le fruit du Gum Gum qui lui permet d'étirer ses membres, et dont le rêve est de devenir le Roi des pirates.",
   },
@@ -123,7 +124,13 @@ export const ANIMES: AnimesType[] = [
     anime: "Dragon Ball",
     aliases: ["db"],
     options: new DragonBall(),
-    category: ["Action", "Aventure", "Comédie", "Arts Martiaux"],
+    category: [
+      "Action",
+      "Aventure",
+      "Science-fiction",
+      "Comédie",
+      "Arts Martiaux",
+    ],
     synopsis:
       "Son Gokû est un petit garçon exceptionnellement doué pour les arts martiaux, qui possède une mystérieuse queue de singe. Le jour où il rencontre Bulma, ils partent ensemble à la recherche des sept boules de cristal... Akira Toriyama - Paix à son âme.",
   },
@@ -131,15 +138,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Dragon Ball Z",
     aliases: ["dbz"],
     options: new DragonBallZ(),
-    category: [
-      "Action",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Science-fiction",
-      "Surnaturel",
-      "Arts Martiaux",
-    ],
+    category: ["Action", "Aventure", "Science-fiction", "Arts Martiaux"],
     synopsis:
       "Dragon Ball Z se déroule cinq ans après le mariage de Son Goku et de Chichi. Raditz, un mystérieux guerrier de l'espace, frère de Son Goku, arrive sur Terre pour retrouver Goku. Ce dernier apprend qu'il vient d'une planète de guerriers redoutables dont il ne reste plus que quatre survivants.",
   },
@@ -157,9 +156,9 @@ export const ANIMES: AnimesType[] = [
     options: new MyHeroAcademia(),
     category: [
       "Action",
-      "Comédie",
       "School Life",
-      "Surnaturel",
+      "Fantastique",
+      "Science-fiction",
       "Nouvelles saisons",
     ],
     synopsis: `Dans un futur proche suite à une mutation génétique, 80% de la population mondiale possède des super-pouvoirs appelés "Alters". Le plus célèbre des super-héros se nomme All Might. Izuku Midoriya en est fan, et rêve d'intégrer la filière super-héroïque du lycée Yuei pour suivre les traces de son idole.`,
@@ -168,7 +167,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Vinland Saga",
     aliases: ["no ennemies"],
     options: new VinlandSaga(),
-    category: ["Historique", "Action", "Aventure", "Drame"],
+    category: ["Historique", "Action", "Drame"],
     synopsis:
       "Vinland Saga nous raconte l'histoire d'un jeune Viking, Thorfinn. Ce dernier fait partie de l'équipage d'un chef de guerre du nom d'Askeladd, qui est l'assassin du ... de Thorfinn ! Enchainant les combats et les missions dangereuses, Thorfinn s'endurcit et gagne en maturité. Il a un objectif : venger son ... de manière loyale...",
   },
@@ -176,14 +175,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Solo Leveling",
     aliases: ["only i level up", "Ore dake Level Up na Ken"],
     options: new SoloLeveling(),
-    category: ["Action", "Aventure", "Fantasy", "Drame", "Webtoon"],
+    category: ["Action", "Fantasy", "Webtoon"],
     synopsis:
       "Dans un monde dans lequel les chasseurs - des guerriers humains dotés de capacités surnaturelles - doivent combattre des monstres mortels pour protéger l'humanité d'une annihilation certaine, un chasseur notoirement faible nommé Sung Jinwoo se retrouve dans une lutte apparemment sans fin pour sa survie.",
   },
   {
     anime: "Kuroko Basket",
     aliases: ["kuroko no basket", "knb"],
-    category: ["Sport", "Drame", "School Life", "Comédie"],
+    category: ["Sport", "School Life"],
     options: new KurokoBasket(),
     synopsis:
       'Les aventures de Tetsuyza Kuroko, un jeune garçon de 16 ans qui, sous son apparence chétive, cache un redoutable basketteur membre de la "génération des miracles" du collège Teiko. Tout juste arrivé au lycée de Seirin, il fait la connaissance de Taiga Kagami, jeune recrue fraîchement débarquée des États-unis.',
@@ -192,14 +191,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Jujutsu Kaisen",
     aliases: ["jjk", "Sorcery Fight"],
     options: new JujutsuKaisen(),
-    category: [
-      "Action",
-      "Aventure",
-      "Drame",
-      "Mystère",
-      "School Life",
-      "Surnaturel",
-    ],
+    category: ["Action", "Fantasy"],
     synopsis:
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
@@ -207,14 +199,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Black Clover",
     aliases: ["bc"],
     options: new BlackClover(),
-    category: ["Action", "Aventure", "Fantasy", "Surnaturel"],
+    category: ["Action", "Aventure", "Romance", "Fantastique"],
     synopsis: `Asta est un jeune garçon déterminé qui vit avec son ami d'enfance, Yuno, dans un orphelinat du royaume de Clover. Depuis tout petit, Asta a pour ambition de devenir le magicien le plus puissant du royaume, "l'Empereur-Mage", ce qui a aussi inspiré Yuno à vouloir la même chose.`,
   },
   {
     anime: "Hunter X Hunter",
     aliases: ["hxh"],
     options: new HunterXHunter(),
-    category: ["Aventure", "Fantasy", "Comédie", "Drame", "Surnaturel"],
+    category: ["Aventure", "Action", "Fantasy", "Drame", "Arts Martiaux"],
     synopsis:
       "Abandonné par son père qui est un Hunter, à la fois un aventurier et un chasseur de primes, Gon décide à l'âge de 12 ans de partir pour devenir un Hunter. Cela ne sera pas chose aisée, il devra passer une suite de tests et examens en compagnie de milliers d'autres prétendants au titre de Hunter.",
   },
@@ -222,7 +214,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Mashle",
     aliases: ["Magic and Muscles", "One punch man"],
     options: new Mashle(),
-    category: ["Action", "Aventure", "Comédie", "Fantasy"],
+    category: ["Action", "Aventure", "Comédie", "Fantastique", "Arts Martiaux"],
     synopsis:
       "Mash Burnedead est né sans pouvoirs magiques mais a survécu caché dans une épaisse forêt. Le jour où son secret est découvert, il se voit proposer un marché : intégrer Easton, la prestigieuse académie de magie, et y obtenir le titre d'élu divin. Pour retrouver sa vie tranquille, Mash accepte.",
   },
@@ -232,12 +224,10 @@ export const ANIMES: AnimesType[] = [
     options: new AttaqueDesTitans(),
     category: [
       "Action",
-      "Aventure",
-      "Drame",
-      "Horreur",
       "Mystère",
-      "Psychologique",
-      "Surnaturel",
+      "Horreur",
+      "Fantasy",
+      "Tragédie",
       "Thriller",
     ],
     synopsis:
@@ -247,7 +237,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Death Note",
     aliases: ["Carnet de la Mort"],
     options: new DeathNote(),
-    category: ["Drame", "Mystère", "Psychologique", "Surnaturel", "Thriller"],
+    category: [
+      "Fantasy",
+      "Thriller",
+      "Tragédie",
+      "Psychologique",
+      "Surnaturel",
+      "Mystère",
+    ],
     synopsis: `Light Yagami, un jeune étudiant surdoué, ramasse un jour le "Death Note", un carnet abandonné par un dieu de la mort, Ryuk, qui apparemment s'ennuyait dans son monde. Il suffit d'écrire le nom d'une personne dans ce carnet, et celle-ci meurt.`,
   },
   {
@@ -256,11 +253,11 @@ export const ANIMES: AnimesType[] = [
     options: new TheGodOfHighschool(),
     category: [
       "Action",
-      "Aventure",
       "Comédie",
-      "Fantasy",
       "Webtoon",
       "Surnaturel",
+      "Arts Martiaux",
+      "Science-fiction",
     ],
     synopsis:
       "Un lycéen et ses amis prennent part à un tournoi épique dans lequel le gagnant verra tous ses vœux s'exaucer. Cependant, les participants découvrent très vite qu'une mystérieuse organisation semble manipuler cette compétition dans l'ombre...",
@@ -272,7 +269,7 @@ export const ANIMES: AnimesType[] = [
     category: [
       "Action",
       "Aventure",
-      "Comédie",
+      "Science-fiction",
       "Drame",
       "Fantasy",
       "Mystère",
@@ -284,37 +281,21 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Naruto",
     options: new Naruto(),
-    category: [
-      "Action",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Fantasy",
-      "Surnaturel",
-      "Arts Martiaux",
-    ],
+    category: ["Action", "Arts Martiaux", "Drame"],
     synopsis:
       "Le ninja le plus puissant de Konoha à l'époque, Minato Namikaze, a réussi à sceller ce démon dans le corps de Naruto. C'est ainsi que douze ans plus tard, Naruto rêve de devenir le plus grand Hokage de Konoha afin que tous le reconnaissent à sa juste valeur.",
   },
   {
     anime: "Naruto Shippuden",
     options: new NarutoShippuden(),
-    category: [
-      "Action",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Fantasy",
-      "Surnaturel",
-      "Arts Martiaux",
-    ],
+    category: ["Action", "Arts Martiaux", "Drame"],
     synopsis:
       "Après deux ans et demi d'entraînement avec Jiraya, il retrouve ses camarades de l'Académie des ninja ainsi que ses professeurs de Konoha. Tous ont évolué, y compris les ninjas du village de Suna. Seul Kakashi, semble être resté fidèle à lui-même ! Hélas, les retrouvailles sont de courte durée.",
   },
   {
     anime: "Shangri-La Frontier",
     options: new ShangriLaFrontier(),
-    category: ["Action", "Aventure", "Fantasy"],
+    category: ["Action", "Aventure", "Fantastique"],
     synopsis:
       "Sunraku est un passionné de jeux vidéo, il s'essaye aux pires jeux existants. Un jour il décide de s'attaquer au MMORPG Shangri-La Frontier, jeu aux trente millions de membres inscrits, il va devoir faire affronter de multiples dangers avec un masque ridicule... en forme d'oiseau.",
   },
@@ -323,12 +304,11 @@ export const ANIMES: AnimesType[] = [
     aliases: ["Yōkoso Jitsuryoku Shijō Shugi no Kyōshitsu e"],
     options: new ClassroomOfTheElites(),
     category: [
-      "Comédie",
       "Drame",
       "Psychologique",
       "Romance",
-      "School Life",
       "Slice of Life",
+      "School Life",
     ],
     synopsis:
       "Kiyotaka Ayanokôji intègre le prestigieux lycée Tokyo Kôdo Ikusei où, une fois le diplôme en poche, quasiment 100 % des élèves trouvent un travail ou sont reçus à l'université. Pas de chance, il rate l'examen d'entrée et se retrouve dans la classe 1-D où finissent tous les élèves à problèmes !",
@@ -340,14 +320,7 @@ export const ANIMES: AnimesType[] = [
       "Xian Wang De Ri Chang Sheng Huo",
     ],
     options: new TheDailyLifeOfTheImmortalKing(),
-    category: [
-      "Aventure",
-      "Comédie",
-      "Fantasy",
-      "Romance",
-      "School Life",
-      "Slice of Life",
-    ],
+    category: ["Comédie", "Fantasy", "Romance", "School Life", "Slice of Life"],
     synopsis:
       "Wang Ling a développé depuis son plus jeune âge d'incroyables capacités. Cependant, afin de mener une vie ordinaire, ses pouvoirs sont confinés dans un talisman. Malgré cela ses pouvoirs restent puissants et son doux quotidien est menacé lors de son entrée au lycée.",
   },
@@ -355,27 +328,27 @@ export const ANIMES: AnimesType[] = [
     anime: "Haikyuu",
     aliases: ["Haikyu !!"],
     options: new Haikyuu(),
-    category: ["Sport", "Comédie", "Action"],
+    category: ["Sport"],
     synopsis:
       "Shôyô Hinata, surnommé Shô, aime plus que tout jouer au volley-ball et ce, malgré sa petite taille. Malheureusement, suite à une sévère défaite, son club de collège a été dissous, tous les membres étant partis. Mais Shô est bien décidé à jouer de nouveau et choisit son futur lycée en fonction de son ambition.",
   },
   {
     anime: "Blue Lock",
     options: new BlueLock(),
-    category: ["Sport", "Drame", "Action"],
+    category: ["Sport", "Thriller"],
     synopsis: `Coupe du monde 2018, l'équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l'Union japonaise de football à fonder le "Blue Lock" : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.`,
   },
   {
     anime: "Air Gear",
     options: new AirGear(),
-    category: ["Sport", "School Life", "Comédie", "Drame"],
+    category: ["Action", "Sport", "Comédie", "Romance"],
     synopsis:
       "Ikki est le leader du gang qui règne sur son lycée. Malgré sa force, il va connaître sa première défaite lors d'une altercation avec les Skull Sader, un groupe de Stormriders, des riders d'un genre nouveau qui se déplacent en bande sur des Air Trecks, des rollers motorisés.",
   },
   {
     anime: "Slam Dunk",
     options: new SlamDunk(),
-    category: ["Sport", "Comédie", "School Life"],
+    category: ["Sport"],
     synopsis:
       "Hanamichi Sakuragi, un jeune homme immature et impopulaire, est bien décidé à en finir avec les déceptions amoureuses lors de son entrée au lycée de Shohoku. Il y rencontre alors Haruko Akagi, une fille dont il tombe amoureux.",
   },
@@ -383,28 +356,21 @@ export const ANIMES: AnimesType[] = [
     anime: "Demon Slayer",
     aliases: ["kny", "kimetsu no yaiba", "Les Rôdeurs de la Nuit"],
     options: new DemonSlayer(),
-    category: ["Aventure", "Historique", "Surnaturel"],
+    category: ["Action", "Aventure", "Drame", "Surnaturel", "Horreur"],
     synopsis:
       "Les citadins locaux ne s'aventurent jamais dans les bois la nuit à cause de démons mangeurs d'hommes. Un jour, le jeune Tanjiro découvre que sa famille s'est fait massacrer et que la seule survivante, sa sœur Nezuko, est devenue un démon.",
   },
   {
     anime: "Bleach",
     options: new Bleach(),
-    category: [
-      "Action",
-      "Surnaturel",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Arts Martiaux",
-    ],
+    category: ["Action", "Drame"],
     synopsis: `Adolescent de quinze ans, Ichigo Kurosaki possède un don particulier : celui de voir les esprits. Un jour, il croise la route d'une belle Shinigami (un être spirituel) en train de pourchasser une "âme perdue", un esprit maléfique qui hante notre monde et n'arrive pas à trouver le repos.`,
   },
   {
     anime: "Boruto",
     aliases: ["NARUTO NEXT GENERATIONS", "Two Blue Vortex"],
     options: new Boruto(),
-    category: ["Action", "Aventure", "Fantasy", "Comédie"],
+    category: ["Action", "Comédie", "Drame", "Arts Martiaux"],
     synopsis:
       "UNE NOUVELLE GÉNÉRATION DE NINJAS DÉBARQUE À KONOHA ! Les grands affrontements dans le monde des ninjas appartiennent désormais au passé. Le village de Konoha est entré dans une ère de paix. Boruto, le fils du 7e Hokage, vit mal d'être dans l'ombre de son imminent paternel.",
   },
@@ -412,7 +378,7 @@ export const ANIMES: AnimesType[] = [
     anime: "Sword Art Online",
     aliases: ["sao"],
     options: new SwordArtOnline(),
-    category: ["Action", "Drame", "Fantasy", "Romance", "Science-fiction"],
+    category: ["Action", "Aventure", "Fantasy", "Romance", "Science-fiction"],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -422,10 +388,13 @@ export const ANIMES: AnimesType[] = [
     options: new OnePunchMan(),
     category: [
       "Action",
+      "Aventure",
+      "Drame",
       "Comédie",
       "Surnaturel",
       "Science-fiction",
       "Arts Martiaux",
+      "Fantastique",
     ],
     synopsis:
       "Histoire de passer le temps, Saitama est devenu un héros. Trois années d'un entraînement spécial lui ont donné un pouvoir le rendant invincible. Mais Saitama est devenu si fort qu'un seul coup de poing lui suffit à terrasser chaque adversaire se présentant, aussi puissant soit- il.",
@@ -434,20 +403,13 @@ export const ANIMES: AnimesType[] = [
     anime: "Tokyo Ghoul",
     aliases: ["Toukyou Kushu"],
     options: new TokyoGhoul(),
-    category: [
-      "Action",
-      "Drame",
-      "Horreur",
-      "Mystère",
-      "Psychologique",
-      "Surnaturel",
-    ],
+    category: ["Action", "Fantastique", "Drame", "Psychologique", "Horreur"],
     synopsis:
       "Dans la ville de Tokyo, des créatures nommées goules sont apparues et se nourrissent de chair humaine pour survivre. Un jour, Ken Kaneki, jeune étudiant, se fait attaquer par l'une d'entre elles et subit une grave blessure.",
   },
   {
     anime: "Chainsaw Man",
-    category: ["Action", "Aventure", "Horreur", "Surnaturel"],
+    category: ["Action", "Drame", "Surnaturel", "Fantasy"],
     options: new ChainsawMan(),
     synopsis:
       "Denji est un jeune homme sans argent qui travaille comme Devil Hunter auprès d'un mafieux. Avec l'aide de Pochita, son chien-démon-tronçonneuse, il continue de rembourser les dettes de son père. Cependant, après s'être fait trahir, il fusionne avec Pochita et devient un homme-tronçonneuse.",
@@ -455,7 +417,14 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Hell's Paradise",
     aliases: ["Jigokuraku"],
-    category: ["Action", "Drame", "Historique", "Surnaturel", "Arts Martiaux"],
+    category: [
+      "Action",
+      "Drame",
+      "Historique",
+      "Surnaturel",
+      "Arts Martiaux",
+      "Fantastique",
+    ],
     options: new HellsParadise(),
     synopsis:
       "Gabimaru, « Le Vide », le plus célèbre et puissant des assassins a été capturé et croupit en prison. Affirmant n'avoir plus aucune raison de vivre, il attend désespérément qu'un bourreau parvienne à lui ôter la vie car son entraînement surhumain lui permet de résister aux pires des châtiments.",
@@ -470,7 +439,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "The Eminence in Shadow",
     options: new EminenceInShadow(),
-    category: ["Action", "Aventure", "Comédie", "Fantasy", "Isekai"],
+    category: ["Fantasy", "Comédie", "Isekai"],
     synopsis:
       "L'histoire suit les péripéties de Cid, un jeune garçon transporté dans un autre monde. Souffrant du syndrome du chūnibyō, il parvient à convaincre son nouvel entourage qu'il est le chef d'une société secrète recrutant de puissants individus et visant à influencer le cours des événements.",
     aliases: ["Kage no Jitsuryokusha ni Naritakute"],
@@ -478,14 +447,21 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Mob Psycho 100",
     options: new MobPsycho100(),
-    category: ["Action", "Comédie", "Surnaturel", "Romance", "School Life"],
+    category: [
+      "Action",
+      "Drame",
+      "Thriller",
+      "Psychologique",
+      "Surnaturel",
+      "Science-fiction",
+    ],
     synopsis: `L'histoire suit Kageyama Shigeo, un élève de quatrième possédant des pouvoirs psychiques. Il peut plier et soulever n'importe quel objet avec son esprit. Cependant, il s'est lentement refusé d'exercer ses capacités en public car sa trop grande puissance peut infliger des conséquences négatives aux humains "normaux".`,
     aliases: ["One Hundred Mob Psycho", "Mob Psycho Hyaku"],
   },
   {
     anime: "Hajime no Ippo",
     options: new HajimeNoIppo(),
-    category: ["Sport", "Drame", "Action", "Comédie"],
+    category: ["Sport"],
     synopsis:
       "Ippo Makunouchi est un enfant doux et maladroit. Sa mère l'élève seule depuis qu'il est tout petit, et il l'aide dans son commerce de bateau de pêche. Au printemps de sa deuxième année de lycée, Ippo est martyrisé par le trio de brutes qui l'attaque régulièrement.",
     aliases: [
@@ -498,7 +474,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Tokyo Revengers",
     options: new TokyoRevengers(),
-    category: ["Action", "Drame", "Romance", "School Life"],
+    category: ["Action", "Drame", "Romance", "Science-fiction"],
     synopsis:
       "À 26 ans, Takemichi a le sentiment d'avoir déjà raté sa vie. Vivotant de petits boulots ingrats tout juste bons à payer le loyer d'un studio miteux, il se lamente sur le désert de sa vie amoureuse lorsqu'il apprend la mort de Hinata, la seule petite amie qu'il ait eue...",
     aliases: ["Tokyo Manji Revengers"],
@@ -506,14 +482,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: [
-      "Action",
-      "Surnaturel",
-      "Comédie",
-      "Aventure",
-      "School Life",
-      "Drame",
-    ],
+    category: ["Action", "Surnaturel"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["Ao no Exorcist"],
@@ -530,7 +499,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Tsubasa Ozora est déjà un petit génie du ballon rond malgré son jeune âge. Son rêve est d'offrir la Coupe du monde de football au Japon. Roberto Hongô, son mentor, est un joueur de légende revenu du Brésil et Tsubasa suit un entraînement particulièrement rigoureux.",
     aliases: ["Olive et Tom"],
-    category: ["Sport", "Action"],
+    category: ["Sport"],
     options: new CaptainTsubasa(),
   },
   {
@@ -539,18 +508,24 @@ export const ANIMES: AnimesType[] = [
       "Ryuma, un samouraï nomade sans le sou, est sauvé d'une mort certaine par Flare, une généreuse serveuse, dont l'admiration envers Cyrano, un escrimeur émérite, est sans faille. Cependant, lorsque ce dernier porte atteinte à l'honneur de Ryuma, le jeune homme se voit contraint de le provoquer en duel. Mais ce geste pourtant anodin pourrait bien avoir des conséquences irrémédiables.",
     options: new Monster103(),
     aliases: ["L'Enfer du Dragon Volant aux 103 Passions", "One Piece"],
-    category: ["Spin Off"],
+    category: ["Hors Series"],
   },
   {
     anime: "Monster",
-    category: ["Drame", "Mystère", "Psychologique", "Horreur", "Thriller"],
+    category: ["Drame", "Thriller", "Psychologique"],
     synopsis:
       "Talentueux, respecté et fiancé à une belle jeune femme, le Dr Kenzo Tenma est un neurochirurgien japonais qui exerce en Allemagne. Tout lui sourit jusqu'au jour où il décide de suivre son coeur et de sauver en priorité la vie d'un petit réfugié d'Allemagne de l'Est plutôt que celle du maire de Düsseldorf.",
     options: new Monster(),
   },
   {
     anime: "Fire Force",
-    category: ["Action", "Comédie", "Drame", "Science-fiction", "Surnaturel"],
+    category: [
+      "Action",
+      "Aventure",
+      "Science-fiction",
+      "Fantasy",
+      "Surnaturel",
+    ],
     aliases: ["Enen no Shouboutai"],
     synopsis:
       "L'humanité est terrifiée par le phénomène de combustion humaine. Des brigades spéciales Fire Force ont donc été mises en place avec pour mission de trouver la cause de ce mystérieux phénomène ! Le jeune Shinra, nouvelle recrue surnommée le Démon, rêve de devenir un héros.",
@@ -558,7 +533,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Assassination Classroom",
-    category: ["Action", "Comédie", "School Life", "Science-fiction"],
+    category: ["Action", "Comédie", "Science-fiction"],
     aliases: ["Ansatsu Kyoushitsu"],
     synopsis:
       "Koro Sensei devient enseignant de la classe 3-E de l'école de Kunugigaoka. Après avoir détruit la Lune et promis de faire exploser la Terre, ses élèves tentent de l'arrêter. Unis par un lien mystérieux, ils ont un an pour achever leur mission.",
@@ -568,19 +543,12 @@ export const ANIMES: AnimesType[] = [
     anime: "Ao Ashi",
     synopsis:
       "Doté d'un tempérament de feu, le jeune Ashito Aoi aime le football plus que quiconque. Son rêve : devenir joueur professionnel ! Mais ses dons ne lui évitent pas une terrible déconvenue lors d'un match de coupe inter collèges.",
-    category: ["Sport", "Slice of Life", "School Life"],
+    category: ["Slice of Life", "Sport"],
     options: new AoAshi(),
   },
   {
     anime: "Gurren Lagann",
-    category: [
-      "Action",
-      "Aventure",
-      "Science-fiction",
-      "Comédie",
-      "Drame",
-      "Romance",
-    ],
+    category: ["Aventure", "Comédie", "Drame"],
     options: new GurrenLagann(),
     aliases: ["Tengen Toppa"],
     synopsis:
@@ -588,7 +556,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Seven Deadly Sins",
-    category: ["Action", "Aventure", "Comédie", "Romance"],
+    category: ["Action", "Aventure", "Comédie", "Fantasy", "Romance"],
     options: new SevenDeadlySins(),
     aliases: ["nanatsu no taizai"],
     synopsis:
@@ -596,14 +564,19 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Ragna Crimson",
-    category: ["Action", "Fantasy", "Drame"],
+    category: ["Action", "Fantasy", "Aventure"],
     options: new RagnaCrimson(),
     synopsis:
       "Les chasseurs de dragons tuent leurs proies avec leur épée d'argent afin de toucher une récompense. Parmi eux, il y a Ragna, un jeune homme plutôt faible faisant équipe avec Léonica, une chasseuse de génie qui peut se vanter d'avoir tué bien plus de dragons que n'importe quel autre chasseur.",
   },
   {
     anime: "Ninja Kamui",
-    category: ["Action", "Nouvelles saisons"],
+    category: [
+      "Action",
+      "Nouvelles saisons",
+      "Science-fiction",
+      "Arts Martiaux",
+    ],
     options: new NinjaKamui(),
     synopsis:
       "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
@@ -615,7 +588,9 @@ export const ANIMES: AnimesType[] = [
       "Aventure",
       "Comédie",
       "Drame",
+      "Fantastique",
       "Horreur",
+      "Mystère",
       "Surnaturel",
       "Arts Martiaux",
     ],
@@ -633,14 +608,14 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Vagabond",
-    category: ["Action", "Historique", "Drame", "Arts Martiaux"],
+    category: ["Action", "Drame", "Historique"],
     options: new Vagabond(),
     synopsis:
       "En 1600 a lieu la terrible bataille de Sekigahara, qui assied le pouvoir du shôgun Tokugawa. Parmi les combattants se trouve Musashi, le fils d'un grand samurai, qui est prêt à tout pour survivre. Alors qu'il revient dans son village natal, il est pourchassé pour avoir déserté, et se trouve rejeté par les habitants. Commence alors pour lui une longue errance, avec un unique objectif : améliorer sa maitrise de la lame, et devenir le meilleur samurai du Japon.",
   },
   {
     anime: "The Boxer",
-    category: ["Sport", "Action", "School Life", "Webtoon"],
+    category: ["Sport", "Webtoon"],
     options: new TheBoxer(),
     synopsis: `"The Boxer" raconte l'histoire captivante d'un jeune prodige de la boxe doté d'un talent naturel remarquable et d'une force inégalée, mais qui monte sur le ring sans passion ni ambition. Repéré par un entraîneur visionnaire convaincu de pouvoir faire de lui le meilleur boxeur du monde, il se lance dans un parcours semé de défis. À travers des combats intenses contre des adversaires de plus en plus puissants, chacun porteur de sa propre histoire, il est contraint d'affronter non seulement ses rivaux mais aussi ses propres interrogations sur le sens de la victoire et de la défaite.`,
   },
@@ -662,23 +637,14 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Fullmetal Alchemist Brotherhood",
-    category: [
-      "Action",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Fantasy",
-      "Psychologique",
-      "Surnaturel",
-      "Thriller",
-    ],
+    category: ["Aventure", "Fantasy", "Action", "Drame", "Surnaturel"],
     options: new FMAB(),
     aliases: ["fmab", "Hagane no Renkinjutsushi", "Hagaren"],
     synopsis: `Dans un pays où l'alchimie permet de faire des choses extraordinaire, deux jeunes frères étudie cette science qui permet l'échange d'une chose contre une autre. Cette science repose sur le principe de "l'échange équivalent" qui requière de sacrifier une chose pour en obtenir une autre.`,
   },
   {
     anime: "Fullmetal Alchemist",
-    category: ["Action", "Comédie", "Drame", "Mystère", "Surnaturel"],
+    category: ["Aventure", "Fantasy"],
     options: new FMA(),
     aliases: ["Hagane no Renkinjutsushi", "fma"],
     synopsis:
@@ -693,7 +659,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Dragon Ball GT",
-    category: ["Action", "Aventure", "Arts Martiaux", "Science-fiction"],
+    category: ["Arts Martiaux", "Science-fiction", "Action"],
     aliases: ["Dragonball Grand Tour", "dbg"],
     options: new DragonBallGT(),
     synopsis:
@@ -702,7 +668,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "86: Eighty Six",
     options: new EightySix(),
-    category: ["Science-fiction", "Action", "Drame"],
+    category: ["Action", "Drame", "Science-fiction"],
     synopsis: `Pour répondre aux attaques de drones autonomes envoyés par l’Empire voisin de Giad, la République de San Magnolia a développé ses propres drones de combat surnommés les “Juggernaut", espérant ainsi limiter les pertes humaines. En réalité, ces appareils sont pilotés par les 86, les habitants d’un district secret considérés comme du bétail. Déterminé dans sa mission, Shin, le capitaine de l'escadron Spearhead composé de plusieurs 86, poursuit ces opérations suicidaires. C’est alors qu’arrive un nouvel officier et soldat de l’élite militaire, Lena, qui déteste la façon dont la République utilise les 86. Ils n’auraient jamais dû se croiser, mais face aux événements de cette guerre féroce, ils vont entrevoir ensemble un nouvel avenir…`,
   },
   {
@@ -710,18 +676,24 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Twilight, le plus grand espion du monde, doit pour sa nouvelle mission créer une famille de toutes pièces afin de pouvoir s'introduire dans la plus prestigieuse école de l'aristocratie. Totalement dépourvu d'expérience familiale, il va adopter une petite fille en ignorant qu'elle est télépathe, et s'associer à une jeune femme timide, sans se douter qu'elle est une redoutable tueuse à gages. Ce trio atypique va devoir composer pour passer inaperçu, tout en découvrant les vraies valeurs d'une famille unie et aimante.",
     options: new SpyXFamily(),
-    category: ["Action", "Aventure", "Comédie"],
+    category: ["Action", "Comédie", "Thriller", "Slice of Life"],
   },
   {
     anime: "Cyberpunk: Edgerunners",
     options: new CyberpunkEdgerunners(),
-    category: ["Action", "Drame", "Science-fiction"],
+    category: ["Action", "Drame", "Science-fiction", "School Life"],
     synopsis:
       "Elle raconte une histoire indépendante sur 10 épisodes à propos d’un enfant des rues essayant de survivre dans une ville du futur obsédée par la technologie et les modifications corporelles. Ayant tout à perdre, il choisit de rester en vie en devenant un edgerunner - un hors-la-loi mercenaire également connu comme un cyberpunk.",
   },
   {
     anime: "Oshi no Ko",
-    category: ["Drame", "Psychologique", "Slice of Life"],
+    category: [
+      "Drame",
+      "Psychologique",
+      "Mystère",
+      "Surnaturel",
+      "Slice of Life",
+    ],
     aliases: ["My Star"],
     synopsis:
       'Le docteur Gorô est obstétricien dans un hôpital de campagne. Il est loin du monde de paillettes dans lequel évolue Ai Hoshino, une chanteuse au succès grandissant dont il est "un fan absolu". Ces deux-là vont peut-être se rencontrer dans des circonstances peu favorables, mais cet événement changera leur vie à jamais !',
@@ -731,10 +703,11 @@ export const ANIMES: AnimesType[] = [
     anime: "Mushoku Tensei: Jobless Reincarnation",
     category: [
       "Action",
+      "Drame",
       "Fantasy",
       "Isekai",
       "Romance",
-      "Slice of Life",
+      "Psychologique",
       "Nouvelles saisons",
     ],
     aliases: ["Isekai Ittara Honki Dasu"],
@@ -744,7 +717,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Great Teacher Onizuka",
-    category: ["Comédie", "Drame", "School Life"],
+    category: ["Comédie", "School Life", "Drame"],
     synopsis: `Eikichi Onizuka, un ancien biker et leader de gang de yakuzas décide un jour de devenir professeur d'école. Il veut devenir le plus grand professeur du Japon. Lorsqu'il était jeune, Onizuka détestait les profs car ils n'étaient pas à l'écoute des élèves. C'est pour cela qu'il veut devenir professeur, pour être au près de ses élèves, mais aussi parce qu'il y a de jeunes innocentes étudiantes qui ne le laissent pas indifférent ! Il lui est alors donné la pire classe de la prestigieuse école privée "Holy Forest Academy", la classe 3-4. Onizuka doit alors faire face à de nombreux problèmes causés par ses élèves...`,
     options: new GTO(),
     aliases: ["GTO"],
@@ -755,9 +728,10 @@ export const ANIMES: AnimesType[] = [
       "Action",
       "Aventure",
       "Drame",
-      "Mystère",
-      "Psychologique",
       "Science-fiction",
+      "Mystère",
+      "Romance",
+      "Psychologique",
     ],
     synopsis:
       "Un groupe de 7 personnes atterrissent sur une île inconnue et probablement déserte, après un long sommeil, ils ne se connaissent pas et ne savent pas ce qui leur est arrivé. Malgré les tensions au sein du groupe, ils vont devoir s'entraider pour faire face aux dangers de la jungle et tenter de découvrir la raison pour laquelle ils sont ici...",
@@ -768,17 +742,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Tatsumi, jeune combattant, se rendait à la capitale dans l'optique de sauver son village. Mais, naïf, il se fait dérober tout ce qu'il possède par une mystérieuse jeune fille et se retrouve sans un sou. Heureusement, une autre jeune fille, une noble, propose de l'accueillir chez elle pendant quelque temps. Cependant, la poisse semble coller à la peau de Tatsumi quand un groupe d'assassins débarque pour s'en prendre à sa protectrice... qui n'est pas aussi innocente qu'elle en a l'air.",
     options: new AkameGaKill(),
-    category: [
-      "Action",
-      "Aventure",
-      "Comédie",
-      "Drame",
-      "Fantasy",
-      "Horreur",
-      "Psychologique",
-      "Romance",
-      "Thriller",
-    ],
+    category: ["Action", "Fantasy", "Tragédie", "Comédie"],
     aliases: ["Red Eyes Sword"],
   },
   {
@@ -786,14 +750,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "2006. Aspirant mangaka dont la carrière peine à décoller, Satoru Fujinuma travaille comme livreur de pizzas pour joindre les deux bouts. Effacé et peu enclin à s'ouvrir aux autres, il observe le monde qui l'entoure sans vraiment y prendre part. Pourtant, Satoru possède un don exceptionnel : à chaque fois qu'un incident ou une tragédie se déroule près de lui, il est projeté quelques minutes dans le passé pour empêcher l'inévitable avant qu'il se produise... Cette anomalie de l'espace-temps lui vaut un séjour à l'hôpital le jour où, pour rattraper le conducteur d'un camion fou, il est percuté par un autre véhicule de plein fouet. Après l'accident, petit à petit, les souvenirs effacés de l'enfance traumatisante de Satoru resurgissent...",
     options: new Erased(),
-    category: [
-      "Drame",
-      "Mystère",
-      "Psychologique",
-      "Romance",
-      "Slice of Life",
-      "Surnaturel",
-    ],
+    category: ["Fantastique", "Psychologique"],
     aliases: ["Boku Dake ga Inai Machi"],
   },
   {
@@ -801,14 +758,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Mitsuha, adolescente coincée dans une famille traditionnelle, rêve de quitter ses montagnes natales pour découvrir la vie trépidante de Tokyo. Elle est loin d'imaginer pouvoir vivre l'aventure urbaine dans la peau de... Taki, un jeune lycéen vivant à Tokyo, occupé entre son petit boulot dans un restaurant italien et ses nombreux amis.",
     options: new YourName(),
-    category: [
-      "Drame",
-      "Romance",
-      "School Life",
-      "Surnaturel",
-      "Slice of Life",
-      "Mystère",
-    ],
+    category: ["Comédie", "Romance", "Fantastique", "Drame", "Slice of Life"],
     aliases: ["Kimi no na wa"],
   },
   {
@@ -819,24 +769,15 @@ export const ANIMES: AnimesType[] = [
       "Action",
       "Aventure",
       "Comédie",
-      "Drame",
-      "Fantasy",
-      "Historique",
       "Science-fiction",
+      "Historique",
     ],
     aliases: ["Silver soul"],
     options: new Gintama(),
   },
   {
     anime: "Steins;Gate",
-    category: [
-      "Science-fiction",
-      "Thriller",
-      "Drame",
-      "Comédie",
-      "Psychologique",
-      "Mystère",
-    ],
+    category: ["Science-fiction", "Romance", "Mystère", "Thriller"],
     aliases: ["Steins Gate"],
     options: new SteinsGate(),
     synopsis:
@@ -847,15 +788,7 @@ export const ANIMES: AnimesType[] = [
     aliases: ["Hangyaku no lelouch", "lelouch of rebellion"],
     options: new CodeGeass(),
     synopsis: `En 2017, le Japon vit sous le joug de l'empire de Britannia. Rebaptisé "Zone Eleven", le pays subit quotidiennement la terreur de l'occupant qui réprime toute sédition grâce à ses armées de Mécas, les "Nightmare Frames". Mais le jour de la révolte a peut-être sonné lorsqu'un jeune étudiant du nom de Lelouch Lamperouge va se retrouver accidentellement impliqué dans un attentat terroriste. Alors qu'il aurait dû mourir, Lelouch va au contraire survivre, et même hériter d'un mystérieux pouvoir, le "Geass", qui donne à celui qui le détient la possibilité de contrôler la volonté d'autrui. Ce pouvoir permettra-t-il à Lelouch de faire vaciller l'empire de Britannia ?`,
-    category: [
-      "Action",
-      "Drame",
-      "Psychologique",
-      "Romance",
-      "Science-fiction",
-      "Surnaturel",
-      "Thriller",
-    ],
+    category: ["Fantastique", "Science-fiction", "Drame"],
   },
   {
     anime: "Re:Zero",
@@ -864,16 +797,7 @@ export const ANIMES: AnimesType[] = [
       "Starting Life in Another World",
       "kara Hajimeru Isekai Seikatsu",
     ],
-    category: [
-      "Comédie",
-      "Drame",
-      "Fantasy",
-      "Isekai",
-      "Mystère",
-      "Psychologique",
-      "Romance",
-      "Thriller",
-    ],
+    category: ["Action", "Aventure", "Drame", "Fantasy", "Isekai"],
     options: new ReZero(),
     synopsis:
       "Il s'agit de l'adaptation du roman Re:Zero de Nagatsuki Tappei et de Ootsuka Shinichirou. Un jour un jeune homme nommé Natsuki Subaru, à la sortie d'une supérette, est transporté dans un monde parallèle sans aucune explication. En essayant de comprendre pour quoi il se trouve ici, Subaru est attaqué par une bande de brigands mais est sauvé par une jeune fille : Emilia. Pour la remercier de l'aide qu'elle lui a fournie, il décide à son tour de l'aider à retrouver une voleuse qui lui a dérobé quelque chose. Un beau jour, Emilia et Subaru sont attaqués et tués par une mystérieuse personne. Cependant, Subaru se réveille au lieu et au jour où il est arrivé dans ce monde. C'est à ce moment-là qu'il se rend compte qu'il peut retourner dans le passé après être mort. Pour échapper à son funeste destin, Subaru décide d'utiliser son pouvoir pour sauver Emilia et pour se sauver lui-même.",
@@ -883,7 +807,7 @@ export const ANIMES: AnimesType[] = [
     aliases: ["Dai no Daibouken", "La quête de dai", "The adventure of dai"],
     synopsis:
       "Il y a 15 ans, Hadlar, le Roi du Mal, qui terrorisait le monde avec ses hordes de monstres, a été vaincu par un grand héros. Libérés de ses maléfices, les monstres ont recommencé à vivre discrètement sur une petite île des mers du Sud, l'île de Dermline. C'est sur cette île que Daï a été élevé, par son grand-père adoptif Brass. Daï, un jeune garçon de 12 ans, rêve de devenir un héros et de protéger l'île, alors que son grand-père, un sage incube d'environ 180 ans, veut à tout prix qu'il soit mage. Mais, le jeune garçon n'est pas doué pour la magie... Malheureusement, le Roi du Mal ressuscite, grâce à l'empereur du Mal, et recommence à semer la terreur dans le monde. Daï est alors formé aux techniques de combat par maître Avan, en vue de défaire le Dieu du Mal... Mais alors que son entraînement est à peine entamé, Avan se sacrifie pour sauver ses disciples de Hadlar, le Roi du Mal. C'est pour venger sa mémoire que Daï se battra, aidé par ses amis, Pop, Maam, et d'autres... Ainsi débute sa quête...",
-    category: ["Aventure", "Fantasy", "Action"],
+    category: ["Action", "Fantasy"],
     options: new DragonQuest(),
   },
   {
@@ -891,7 +815,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "En Angleterre, dans les années 1880, Jonathan, fils unique de la famille aristocrate Joestar, s’efforce de devenir un gentleman accompli. Son quotidien est bouleversé par l’adoption de Dio Brando, un jeune homme mystérieux du même âge. Cette adoption résulte d’une vieille promesse liant leurs pères respectifs : Dario a sauvé la vie de George Joestar dans le passé et lui demande, sur son lit de mort, de recueillir son fils. Mais Dio est fourbe, ambitieux et sans scrupule : il fera tout pour s’emparer de la fortune des Joestar et détruire la vie de Jonathan. Leur lutte fratricide va les mener dans les recoins les plus sombres de la magie noire et se perpétuer de génération en génération comme une malédiction. Retrouvez également le deuxième arc de la saga Jojo, Battle Tendency ! Suivez le petit-fils de Jonathan, Joseph Joestar, à New York et revivez toute son aventure sur ADN.",
     options: new JojoBizarreAdventure(),
-    category: ["Action", "Aventure", "Fantasy"],
+    category: ["Action", "Aventure", "Fantastique"],
     aliases: ["JoJo no Kimyou na Bouken"],
   },
   {
@@ -899,23 +823,23 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
     options: new WindBreaker(),
-    category: ["Action", "School Life", "Nouvelles saisons"],
+    category: ["Action", "Aventure", "Arts Martiaux", "Nouvelles saisons"],
   },
   {
     anime: "Re:Monster",
-    category: ["Action", "Aventure", "Fantasy", "Nouvelles saisons", "Isekai"],
+    category: ["Action", "Nouvelles saisons", "Isekai"],
     options: new ReMonster(),
     synopsis: `Après avoir été assassiné, Kanata Tomokui se réincarne dans le corps d'un faible gobelin du nom de Goburô. Cependant, ce dernier a conservé les souvenirs de sa vie antérieure. Bien que faible au départ, Goburô va rapidement devenir l'un des piliers de la race des gobelins grâce à sa compétence "d'absorption" qui lui permet d'obtenir les pouvoirs de ce qu'il mange. Dans ce monde où le plus fort survit, cette histoire va suivre l'ascension fulgurante de Goburô et de ses camarades.`,
   },
   {
     anime: "The Fable",
-    category: ["Action", "Comédie", "Drame", "Nouvelles saisons"],
+    category: ["Action", "Drame", "Nouvelles saisons"],
     options: new TheFable(),
     synopsis: `Muni de son arme favorite, un pistolet Nighthawk couleur anthracite, "Fable" est un tueur professionnel craint de toute la pègre japonaise. Hommes politiques, mafieux, personnalités publiques... Ce génie de l'assassinat peut envoyer n'importe laquelle de ses cibles six pieds sous terre. Et en six secondes, si le cœur lui en dit. Sauf qu'un beau jour, son commanditaire lui ordonne de tout mettre en pause et de mener la vie d'un citoyen ordinaire, dans la planque d'un clan de yakuzas à Osaka. Interdiction de tuer ou d'attaquer qui que ce soit pendant une année entière. Pour cette arme humaine au tempérament imprévisible, entourée de criminels à la gâchette facile, c'est le plus dur des contrats qui commence...`,
   },
   {
     anime: "No Game, No Life",
-    category: ["Aventure", "Comédie", "Fantasy", "Isekai"],
+    category: ["Isekai", "Fantasy", "Action", "Comédie", "Science-fiction"],
     options: new NoGameNoLife(),
     synopsis:
       "Sora et Shiro sont deux frère et sœur hikikomori. L'hikikomori désigne une pathologie psycho-sociale caractérisant les personnes (souvent des adolescents) qui vivent coupées du monde en restant cloîtrées chez elles, refusant toute communication. Dans le cas des deux protagonistes, leur condition vient de leur vision du monde réel, qui se résume à un jeu guère intéressant. Ensemble, ils forment un duo de joueurs invaincus, véritable légende urbaine. Un jour, un garçon se qualifiant de \"Dieu\" les transporte dans un monde fantastique, où il a interdit toute forme de violence entre les 16 races différentes y vivant. À la place, toute décision ou conflit est réglé par le jeu. Les deux adolescents y sont convoqués car ils pourraient bien être les sauveurs de l'humanité, la race Imanity qui, classée dernière parmi les 16 races, se retrouve confinée dans leur seule et unique cité restante. Durant leur quête pour sauver l'Imanity, ils rencontrent Stephanie Dola : reconnue comme la petite fille de l'ancien roi considéré comme fou, Jibril : une Flügel qui est l'une des races les plus puissantes et Kurami Zell : une ancienne ennemie devenue une alliée.",
@@ -926,8 +850,8 @@ export const ANIMES: AnimesType[] = [
       "Drame",
       "Psychologique",
       "Romance",
-      "School Life",
       "Slice of Life",
+      "School Life",
     ],
     options: new ASilentVoice(),
     aliases: ["Koe no Katachi", "The Shape of Voice"],
@@ -940,7 +864,7 @@ export const ANIMES: AnimesType[] = [
     options: new YourLieInApril(),
     synopsis:
       "Arima Kosei est un véritable prodige du piano : enfant, il dominait tous ses rivaux lors des concours et s'était déjà fait un nom dans le domaine musical. Mais, après la mort de sa mère, il sombre dans une forte dépression qui l'amène à être dégoûté de son propre instrument. Deux ans après le drame, continuant de considérer sa vie comme insipide, Arima se contente de vivre sa vie sans réel but... jusqu'à ce qu'il rencontre Miyazono Kaori, jeune violoniste extravertie qui, elle aussi, semble exceller dans son art...",
-    category: ["School Life", "Slice of Life"],
+    category: ["Slice of Life", "Comédie", "Drame", "Tragédie", "Romance"],
   },
   {
     anime: "Toradora!",
@@ -948,18 +872,18 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Malgré sa douce personnalité, Ryuji Takasu fait peur à toutes les personnes qu'il rencontre à cause de son regard d'assassin, il a donc beaucoup de mal à s'intégrer et à se faire des amis. C'est alors, qu'à la rentrée, il se retrouve dans la même classe que son meilleur ami, Yusaku Kitamura. Il est l'un des seuls à ne pas le juger par son physique. Mais, il se retrouve aussi avec la fille qu'il aime, Minori Kushieda, et la meilleure amie de celle-ci, Taïga Aisaka. Enfin, on apprend que Taïga est amoureuse de Yusaku. Donc cette dernière et Ryuji vont se serrer les coudes. C'est ainsi que vont naître des relations auxquelles on ne s'attendait pas.",
     options: new Toradora(),
-    category: ["Comédie", "Drame", "Romance", "School Life", "Slice of Life"],
+    category: ["Comédie", "Romance"],
   },
   {
     anime: "Noragami",
-    category: ["Action", "Aventure", "Comédie", "Fantasy", "Surnaturel"],
+    category: ["Fantasy", "Action", "Comédie"],
     options: new Noragami(),
     synopsis:
       "Yato est un dieu mineur dont le rêve est de devenir la divinité la plus vénérée du pays, avec son propre temple et ses cérémonies. Pour ce faire, il exauce n'importe quelle demande contre une rémunération de 5 yens. Au cours de l'une de ses missions, il manque de se faire écraser par un bus qu'il évite grâce à une lycéenne, Hiyori Iki. N'ayant pu éviter le véhicule, la jeune fille verra alors son âme se séparer de son corps lorsqu'elle s'endort. Refusant de rester dans cet état, Hiyori demandera à Yato de l'aider à retrouver son état originel. En attendant de trouver une solution, sa condition va lui permettre de découvrir un autre univers collé au sien, qui est aussi fascinant que dangereux : le monde des esprits.",
   },
   {
     anime: "Angel Beats!",
-    category: ["Action", "Comédie", "Drame", "School Life", "Surnaturel"],
+    category: ["Action", "Comédie", "Drame", "Fantasy", "Romance"],
     options: new AngelBeats(),
     synopsis:
       "Dans le monde de l'au-delà existe un lieu, un immense campus, où sont envoyés les adolescents après leur décès. C'est là que se réveille Yuzuru Otonashi après son trépas, mais il n'a pas vraiment le temps de comprendre ce qui lui arrive qu'il est subitement pris dans un feu croisé entre les membres de la Shinda Sekai Sensen (SSS) et Tenshi. Plus tard, Yuri Nakamura, leader du SSS, lui explique que le groupe se rebelle contre le dieu qui leur a imposé une vie vide de sens. C'est pourquoi Tenshi est leur ennemie jurée. Mais Yuzuru, qui n'a aucun souvenir de sa vie sur Terre, a l'intuition que la jeune fille n'est pas une envoyée de Dieu.",
@@ -967,15 +891,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Mirai Nikki",
     aliases: ["The Future Diary"],
-    category: [
-      "Action",
-      "Drame",
-      "Mystère",
-      "Psychologique",
-      "Romance",
-      "Surnaturel",
-      "Thriller",
-    ],
+    category: ["Action", "Horreur", "Psychologique", "Romance", "Surnaturel"],
     synopsis:
       "L'histoire nous entraîne dans le quotidien de Yukiteru Amano un jeune adolescent solitaire se renfermant sur lui-même détaché de la réalité. Il préfère se réfugier dans son monde avec ses amis imaginaires plutôt que de s'en faire de vrais dans la réalité. Seulement un jour, sa vie va basculer, lorsque Deus l'une de ses nombreuses créations se révèle être plus qu'un être imaginaire. Deus offre alors à Yukiteru la possibilité de voir dans le \"futur\" seulement, Deus est un dieu qui décide de céder sa place à celui qui survivra à un jeu de survie impitoyable.",
     options: new MiraiNikki(),
@@ -983,7 +899,16 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "The Promised Neverland",
     aliases: ["Yakusoku no Neverland"],
-    category: ["Aventure", "Drame", "Horreur", "Mystère", "Surnaturel"],
+    category: [
+      "Aventure",
+      "Drame",
+      "Thriller",
+      "Mystère",
+      "Psychologique",
+      "Surnaturel",
+      "Science-fiction",
+      "Fantasy",
+    ],
     synopsis:
       "Emma et ses amis, tous orphelins, ont été placés dans un établissement spécialisé lorsqu'ils étaient tout jeune. Bien que leur liberté soit limitée et que les règles soient parfois un peu strictes, ils mènent une vie agréable tous ensemble et la femme qui s'occupe d'eux est généreuse. Cependant, une question anime Emma et tous les autres : pourquoi n'ont-ils pas le droit de sortir de l'orphelinat ?",
     options: new ThePromisedNeverland(),
@@ -991,14 +916,14 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Neon Genesis Evangelion",
     aliases: ["Shinseiki Evangelion", "NGE"],
-    category: ["Action", "Drame", "Psychologique", "Science-fiction"],
+    category: ["Science-fiction", "Psychologique"],
     synopsis:
       "En 2000, une gigantesque explosion se produit en Antarctique, provoquant un cataclysme (raz-de-marée, fonte des calottes polaires) qui dévaste une grande partie de la planète. Les autorités déclarent que cette catastrophe était due à la chute d'un astéroïde sur la planète. Quinze ans plus tard, l'humanité a surmonté cet événement, appelé le Second Impact. Mais de mystérieuses créatures nommées Anges font leur apparition, et tentent de détruire Tokyo-3, la nouvelle capitale forteresse du Japon, construite après le Second Impact. Pour les combattre, l'organisation secrète NERV a mis au point une arme ultime, l'Evangelion ou l'Eva, robot géant anthropoïde piloté. Shinji Ikari, quatorze ans, se rend à Tokyo-3 sur invitation de son père, qu'il n'a pas revu depuis dix ans. Il est loin de se douter qu'il sera impliqué dans un conflit qui pourrait bien signifier la fin de l'humanité quoi qu'il arrive...",
     options: new Evangelion(),
   },
   {
     anime: "Cowboy Bebop",
-    category: ["Action", "Aventure", "Comédie", "Drame", "Science-fiction"],
+    category: ["Action", "Aventure", "Comédie", "Science-fiction"],
     options: new CowboyBebop(),
     synopsis:
       "L'histoire se déroule en l'an 2071, près de 50 ans après l'incident de la gate, et l'humanité s'est répandue à travers tout le système solaire grâce aux portes spatiales qu'elle a développé durant toutes ces années. Avec l'invention du MONO (Machine Operation Navigation of Outer space), les voyages interplanétaires se font de manière plus rapide, rendant les planètes distantes de la Terre comme Venus, mars ou encore Jupiter facilement accessibles, entraînant par la même occasion un trafic constant entre les différentes planètes et lunes du système solaire. Cowboy Bebop nous raconte les déboires de Spike et Jet, deux célibataires qui se sont associés dans la chasse aux hors-la-loi dont la tête est mise à prix. Tous les deux sans argent, ils sillonnent l'espace à bord du Bebop afin de renflouer leur compte en banque ainsi que leur frigo. Mais bientôt ils ne seront plus seuls car leurs chasses à l'homme les amèneront à croiser le chemin d'un chien intelligent, Ein, d'une belle brune, Faye et d'une jeune hackeur au comportement loufoque, Ed.",
@@ -1006,14 +931,20 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Kaguya-sama: Love is War",
     aliases: ["Kaguya-sama wa Kokurasetai: Ultra Romantic"],
-    category: ["Comédie", "Drame", "Romance", "School Life"],
+    category: [
+      "Comédie",
+      "Romance",
+      "Slice of Life",
+      "School Life",
+      "Psychologique",
+    ],
     synopsis:
       "Kaguya Shinomiya, vice-présidente du conseil des élèves ne voit pas l'amour comme tout le monde. Pour elle, c'est un combat qu'elle doit livrer avec la personne dont elle est amoureuse, Miyuki Shirogane, qui n'est autre que le président du conseil des élèves et qui partage une vision de l'amour assez similaire. Bien que tous les deux éprouvent des sentiments réciproques, leur orgueil fait que le premier qui osera se déclarer devra alors se soumettre à l'autre...",
     options: new KaguyaSama(),
   },
   {
     anime: "Fruits Basket",
-    category: ["Comédie", "Drame", "Fantasy", "Romance", "School Life"],
+    category: ["Romance", "Fantasy", "Drame", "Comédie"],
     aliases: ["Furuba"],
     synopsis:
       "Tohru Honda, récemment orpheline, choisit de vivre dans une tente sur un terrain vague plutôt que de déranger ses amies Arisa Uotani et Saki Hanajima, tandis que son grand-père rénove sa maison. Ce terrain s'avère appartenir à la famille Sôma, où vit Shigure Sôma avec son neveu Yuki, un camarade de classe distant de Tohru. Après un glissement de terrain qui détruit sa tente, Tohru est accueillie chez les Sôma en échange d'aide domestique. Peu après son arrivée, Tohru est témoin d'une altercation entre Yuki et un jeune homme aux cheveux oranges, Kyô, qui se transforme en chat lorsqu'elle le touche. Elle découvre alors le secret des Sôma : certains membres de la famille sont possédés par les esprits des 12 animaux du zodiaque chinois, plus le chat, exclu de la légende originale. Tohru a ainsi rencontré le rat (Yuki), le chien (Shigure), et le chat (Kyô). Intriguée, elle se demande quels autres membres de la famille partagent cette malédiction.",
@@ -1021,15 +952,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Clannad: After Story",
-    category: [
-      "Comédie",
-      "Drame",
-      "Psychologique",
-      "Romance",
-      "School Life",
-      "Slice of Life",
-      "Surnaturel",
-    ],
+    category: ["Drame", "Comédie", "Romance"],
     options: new Clannad(),
     synopsis:
       "Clannad After Story est la suite de la série Clannad. Cependant, elle ne reprend pas la même histoire et la même fin que le film. Il ne reste que quelques mois avant la fin du lycée pour Tomoya Okazaki et ses amis. En couple avec Nagisa Furukawa, il vit toujours chez cette dernière, mais souhaite songer à un avenir afin d'éviter de devenir un poids pour les parents de sa petite amie.",
@@ -1042,7 +965,7 @@ export const ANIMES: AnimesType[] = [
       "The Pharmacist's Monologue",
       "Drugstore Soliloquy",
     ],
-    category: ["Drame", "Historique", "Mystère", "Romance", "Slice of Life"],
+    category: ["Drame", "Mystère", "Romance"],
     options: new LesCarnetsDeLapothicaire(),
     synopsis:
       "À 17 ans, Mao Mao a une vie compliquée. Formée dès son jeune âge par un apothicaire du quartier des plaisirs, elle se retrouve enlevée et vendue comme servante dans le quartier des femmes du palais impérial ! Entouré de hauts murs, il est coupé du monde extérieur. Afin de survivre dans cette prison de luxe grouillant de complots et de basses manœuvres, la jeune fille tente de cacher ses connaissances pour se fondre dans la masse. Mais, quand les morts suspectes de princes nouveau-nés mettent la cour en émoi, sa passion pour les poisons prend le dessus. Elle observe, enquête... et trouve la solution ! En voulant bien faire, la voilà repérée... Jinshi, haut fonctionnaire aussi beau que calculateur, devine son talent et la promeut goûteuse personnelle d'une des favorites de l'empereur. Au beau milieu de ce nid de serpents, le moindre faux pas peut lui être fatal !",
@@ -1050,7 +973,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "March Comes in like a Lion",
     aliases: ["3-gatsu no Lion", "Sangatsu no Lion"],
-    category: ["Comédie", "Drame", "Slice of Life"],
+    category: ["Sport", "Drame", "Slice of Life"],
     synopsis:
       "Rei Kiriyama est un jeune homme de dix-sept ans au caractère pour le moins marginal : calme et réservé, celui-ci n'a ni famille ni ami et, contrairement aux autres garçons de son âge, il ne va pas à l'école. Vivant à Tokyo, il est un très bon joueur de shogi et peut au moins compter sur une personne : Akari Kawamoto, une jeune célibataire qui s'occupe de ses deux petites sœurs, Hinata et Momo.",
     options: new MarchComesinLikeaLion(),
@@ -1058,7 +981,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "The Dangers in My Heart",
     aliases: ["Boku no Kokoro no Yabai Yatsu"],
-    category: ["Comédie", "Romance", "School Life"],
+    category: ["Comédie", "Romance", "Slice of Life"],
     synopsis:
       "Kyôtarô Ichikawa est un garçon qui pense être secrètement le personnage principal torturé d'un thriller psychologique. Il passe ses journées à observer ses camarades de classe et en particulier Anna Yamada, l'idole de la classe, qui est la personne qu'il veut le plus tuer. Mais Kyôtarô est loin d'être l'adolescent perturbé qu'il prétend être et il s'avère qu'Anna est elle-même un peu bizarre !",
     options: new TheDangersInMyHeart(),
@@ -1066,33 +989,21 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Kaiju N°8",
     aliases: ["Monster 8"],
-    category: [
-      "Action",
-      "Comédie",
-      "Horreur",
-      "Science-fiction",
-      "Nouvelles saisons",
-    ],
+    category: ["Aventure", "Science-fiction", "Nouvelles saisons"],
     synopsis:
       "Les kaiju sont d'effroyables monstres géants qui surgissent de nulle part pour attaquer la population. Au Japon, ces apparitions font désormais partie du quotidien. Enfant, Kafka Hibino rêvait d'intégrer les Forces de Défense pour combattre ces terribles ennemis, mais après de nombreux échecs à l'examen d'entrée, ce trentenaire travaille à nettoyer les rues de leurs encombrants cadavres. Jusqu'au jour où une mystérieuse créature s'introduit dans son organisme et le métamorphose en une entité surpuissante mi-humaine, mi-kaiju. Son nouveau nom de code : \"Kaiju n° 8\" !",
     options: new KaijuN8(),
   },
   {
     anime: "Violet Evergarden",
-    category: [
-      "Drame",
-      "Fantasy",
-      "Romance",
-      "Science-fiction",
-      "Slice of Life",
-    ],
+    category: ["Drame", "Psychologique", "Romance", "Slice of Life"],
     synopsis:
       "Basé sur le roman Violet Evergarden de Akatsuki Kana. La guerre opposant Leidenschaftreich à l'Empire Gardarik a finalement pris fin après quatre longues années de conflit. Violet, une jeune fille formée dans le seul but de décimer les lignes ennemies, est hospitalisée suite à une violente opération. Après avoir tout perdu, elle se raccroche aux derniers mots du Major, son supérieur hiérarchique, mais sans comprendre leur signification. Se remettant de ses blessures, Violet est adoptée par la famille Evergarden mais ne se sentant pas à l'aise dans sa famille d'adoption, elle décide de commencer une nouvelle vie à CH Postal, une entreprise postale. Un jour, elle assiste par pur hasard au travail d'une «poupée de souvenirs automatiques», une personne qui retranscrit les pensées et les sentiments d'autrui dans des lettres. Intéressée, Violet commence à travailler en tant que poupée de souvenirs automatiques, un métier qui va lui permettre d'aider ses clients et de comprendre les derniers mots de celui qu'elle aimait.",
     options: new VioletEvergarden(),
   },
   {
     anime: "Kingdom",
-    category: ["Action", "Drame", "Historique"],
+    category: ["Action", "Aventure", "Drame", "Historique"],
     options: new Kingdom(),
     synopsis:
       "Au sein du Royaume de Qin vivent deux orphelins, Hyo et Shin. Au beau milieu des champs de bataille, les deux frères espèrent un jour qu'eux aussi, ils pourront servir leur royaume en combattant aux côtés des soldats qu'ils admirent. Alors qu'un jour, les deux orphelins se trouvent séparés, Shin décide de poursuivre son chemin pour devenir un grand général.",
@@ -1100,18 +1011,18 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Parasite",
     aliases: ["Kiseijuu: Sei no Kakuritsu", "the maxime"],
-    category: [
-      "Action",
-      "Drame",
-      "Horreur",
-      "Psychologique",
-      "Romance",
-      "School Life",
-      "Science-fiction",
-    ],
+    category: ["Science-fiction", "Horreur", "Thriller"],
     options: new Parasite(),
     synopsis:
       "Depuis des milliers d'années, l'Homme se trouve au sommet de la chaîne alimentaire. Jusqu'à ce jour où de mystérieuses sphères, abritant d'étranges parasites, se répandent un peu partout sur Terre. Rapidement, les entités prennent possession de certains habitants. Nul ne sait d'où elles viennent, mais ce qui semble certain, c'est qu'elles sont là pour débarrasser le monde de l'espèce humaine. Shinichi, jeune lycéen, est un « hôte » dont le cerveau a miraculeusement été épargné : et pour cause, Migi, son parasite, a pris possession de son bras droit ! Ce cas exceptionnel va déboucher sur une singulière cohabitation. Car au-delà de la fusion physique opérée entre Migi et Shinichi, qui partagent désormais le même corps et la même vie, va se développer un lien d'attachement particulier où les deux êtres vont apprendre chacun l'un de l'autre. Alors que Shinichi se découvre doté d'incroyables facultés physiques, il prend aussi conscience de la menace qui plane sur ses proches... et sur l'humanité tout entière.",
+  },
+  {
+    anime: "Super Dragon Ball Heroes",
+    aliases: ["sdbh"],
+    category: ["Hors Series"],
+    options: new SuperDragonBallHeroes(),
+    synopsis:
+      "Trunks est retenu prisonnier sur la Planète Prison. Gokû et Vegeta se rendent sur place, mais pour le libérer ils devront réunir les sept boules de cristal, chacune détenue par un guerrier surpuissant.",
   },
 ];
 
