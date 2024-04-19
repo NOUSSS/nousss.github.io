@@ -501,7 +501,7 @@ export default function Accueil() {
                               </div>
 
                               <Image
-                                className="-z-10 aspect-video w-44 rounded-md brightness-75 transition-transform group-hover:scale-110 md:w-56"
+                                className="-z-10 aspect-video w-44 rounded-md brightness-75 transition-transform group-hover:scale-105 md:w-56"
                                 src={fetchedAnime.options.affiche}
                                 alt="affiche d'un anime"
                               />
@@ -561,10 +561,9 @@ export default function Accueil() {
                                 );
                               }}
                             >
-                              <Trash
-                                className="transition-colors hover:text-red-500"
-                                size={20}
-                              />
+                              <div className="rounded-md p-1 transition-all hover:bg-gray-600 hover:bg-opacity-20">
+                                <Trash size={20} />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -578,7 +577,7 @@ export default function Accueil() {
                         >
                           <div className="h-48 min-h-48 overflow-hidden rounded-md shadow-xl">
                             <Image
-                              className="h-48 min-h-48 overflow-hidden rounded-md transition-transform group-hover:scale-110"
+                              className="h-48 min-h-48 overflow-hidden rounded-md transition-transform group-hover:scale-105"
                               src={getWallpaper(animeName)!}
                               alt="affiche d'un anime"
                             />
