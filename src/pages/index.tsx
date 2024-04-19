@@ -511,8 +511,8 @@ export default function Accueil() {
                           <div className="my-3 flex justify-between text-left text-sm sm:text-base">
                             <div>
                               <p className="text-white">
-                                {animeName.length > 16
-                                  ? animeName.substring(0, 16) + "..."
+                                {animeName.length > 20
+                                  ? animeName.substring(0, 20) + "..."
                                   : animeName}
                               </p>
 
