@@ -14,11 +14,12 @@ export default function getScriptIndex({
 }: ScriptIndexProps) {
   let scriptIndex;
 
-  if (!parts) {
+  if (!parts || parts.from === Number(currentSaison)) {
     scriptIndex = currentSaison;
   } else {
-    if (Number(currentSaison) > parts.to)
+    if (Number(currentSaison) > parts.to) {
       scriptIndex = (Number(currentSaison) - 1).toString();
+    }
 
     if (
       Number(currentSaison) > parts.from &&
@@ -28,5 +29,5 @@ export default function getScriptIndex({
     }
   }
 
-  return scriptIndex ?? 1;
+  return scriptIndex;
 }
