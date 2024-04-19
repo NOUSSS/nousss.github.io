@@ -364,7 +364,7 @@ export default function Accueil() {
           .map(({ names, category }) => (
             <div key={category}>
               <div
-                className={`${category === "Reprendre" ? "mb-3" : "mb-2"} mt-7 text-left text-2xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
+                className={`mb-3 mt-7 text-left text-2xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
               >
                 {category === "Reprendre" ? (
                   <>
