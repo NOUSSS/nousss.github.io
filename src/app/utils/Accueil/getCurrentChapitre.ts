@@ -6,43 +6,29 @@ export const getCurrentChapitre = (
   index: number,
   historiques: Historique[],
 ) => {
-  if (
-    getAnime(animeName)?.options?.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.includes(
-      Number(localStorage.getItem(`${animeName}--chapitre`)) - 1,
-    )
-  ) {
+  const anime = getAnime(animeName);
+  if (!anime || !anime.options?.SCANS_OPTIONS) return;
+
+  const { SCANS_OPTIONS } = anime.options;
+  const currentChapitreIndex =
+    Number(localStorage.getItem(`${animeName}--chapitre`)) - 1;
+
+  if (SCANS_OPTIONS.CHAPITRE_SPECIAUX?.includes(currentChapitreIndex)) {
     return `Chapitre Special`;
-  } else {
-    if (
-      getAnime(animeName)?.options?.SCANS_OPTIONS?.CHAPITRE_SPECIAUX?.length ??
-      0 > 0
-    ) {
-      const horsSeries =
-        getAnime(animeName)!.options.SCANS_OPTIONS?.CHAPITRE_SPECIAUX;
+  }
 
-      if (horsSeries) {
-        let retard = 0;
+  const fromZero = SCANS_OPTIONS.from === 0;
+  let chapterNumber = Number(historiques[index].chapitre);
 
-        for (const horsSerie of horsSeries) {
-          if (Number(historiques[index]!.chapitre) > horsSerie + 1) retard++;
-        }
-
-        return `Chapitre ${
-          Number(historiques[index].chapitre) -
-          retard -
-          (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
-        }`;
-      } else {
-        return `Chapitre ${
-          Number(historiques[index].chapitre) -
-          (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
-        }`;
+  if (SCANS_OPTIONS.CHAPITRE_SPECIAUX?.length) {
+    for (const specialIndex of SCANS_OPTIONS.CHAPITRE_SPECIAUX) {
+      if (chapterNumber > specialIndex + 1) {
+        chapterNumber--;
       }
-    } else {
-      return `Chapitre ${
-        Number(historiques[index].chapitre) -
-        (getAnime(animeName)?.options?.SCANS_OPTIONS?.from === 0 ? 1 : 0)
-      }`;
     }
   }
+
+  chapterNumber -= fromZero ? 1 : 0;
+
+  return `Chapitre ${chapterNumber}`;
 };

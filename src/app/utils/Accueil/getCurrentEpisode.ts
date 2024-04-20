@@ -4,41 +4,38 @@ import { getAnime } from "@/app/lib/getAnime";
 export const getCurrentEpisode = (
   animeName: string,
   index: number,
-
   historiques: Historique[],
 ) => {
   const anime = getAnime(animeName);
 
-  if (
-    anime?.options.EPISODES_OPTIONS?.horsSeries &&
-    anime.options.EPISODES_OPTIONS.horsSeries
-      .find(
-        ({ saison }) => saison === localStorage.getItem(`${animeName}--saison`),
-      )
-      ?.hs.includes(Number(localStorage.getItem(`${animeName}--episode`)))
-  ) {
-    return localStorage.getItem(`${animeName}--episode`)!;
-  } else {
-    if (anime?.options.EPISODES_OPTIONS?.horsSeries?.length ?? 0 > 0) {
-      const horsSeries = getAnime(
-        animeName,
-      )!.options.EPISODES_OPTIONS?.horsSeries!.find(
-        ({ saison }) => saison === historiques?.[index].saison,
-      )?.hs;
+  if (!anime || !anime.options?.EPISODES_OPTIONS) return;
 
-      if (horsSeries) {
-        let retard = 0;
+  const currentSeason = localStorage.getItem(`${animeName}--saison`);
+  const currentEpisode = Number(localStorage.getItem(`${animeName}--episode`));
 
-        for (const horsSerie of horsSeries) {
-          if (Number(historiques[index]!.episode) > horsSerie + 1) retard++;
-        }
+  const { horsSeries } = anime.options.EPISODES_OPTIONS;
 
-        return `Episode ${Number(historiques[index].episode) - retard}`;
-      } else {
-        return `Episode ${historiques[index].episode}`;
-      }
-    } else {
-      return `Episode ${historiques[index].episode}`;
+  let retard = 0;
+
+  const isHorsSerie = horsSeries?.find(
+    ({ saison }) => saison === historiques[index].saison,
+  )?.hs;
+
+  if (isHorsSerie)
+    for (const specialEpisode of isHorsSerie) {
+      console.log(specialEpisode);
+      console.log(Number(historiques[index].episode));
+
+      if (Number(historiques[index].episode) > specialEpisode + 1) retard++;
     }
+
+  const isSpecialEpisode = horsSeries
+    ?.find(({ saison }) => saison === currentSeason)
+    ?.hs.includes(currentEpisode - 1);
+
+  if (isSpecialEpisode) {
+    return `Episode Special`;
   }
+
+  return `Episode ${Number(historiques[index].episode) - retard}`;
 };
