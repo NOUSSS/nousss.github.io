@@ -180,7 +180,7 @@ export default function Select({
                   el: el!,
                 })
               }
-              className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md text-base transition-colors ${item.disabled ? "opacity-50" : "hover:bg-orange-500 hover:text-white"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-orange-500 text-white" : ""}`}
+              className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50" : "hover:border-orange-500"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-orange-500 text-white" : ""}`}
             >
               <p>{item.name}</p>
             </li>
