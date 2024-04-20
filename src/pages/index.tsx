@@ -369,7 +369,7 @@ export default function Accueil() {
         />
       </div>
 
-      <div className="relative mx-4 overflow-hidden md:mx-24">
+      <div className="relative mx-4 overflow-hidden lg:mx-28">
         {catalogues
           .filter(({ category }) =>
             filteredCategories.length > 0
@@ -473,7 +473,7 @@ export default function Accueil() {
                 )}
               </div>
 
-              <ul className="flex overflow-auto">
+              <ul className="flex gap-6 overflow-auto">
                 {names.map((animeName: string, i) => {
                   const fetchedAnime = getAnime(animeName);
                   const disponibles = [];
@@ -487,7 +487,7 @@ export default function Accueil() {
 
                   return (
                     <li
-                      className="mr-7 cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => goToAnime(animeName!, category, i)}
                       id={
                         animeName +
