@@ -102,6 +102,7 @@ import VioletEvergarden from "./VioletEvergarden/violet-evergarden";
 import Kingdom from "./Kingdom/kingdom";
 import Parasite from "./Parasite/parasite";
 import SuperDragonBallHeroes from "./SuperDragonBallHeroes/super-dragon-ball-heroes";
+import Yatagarasu from "./Yatagarasu/yatagarasu";
 
 export interface AnimesType {
   anime: string;
@@ -1023,6 +1024,24 @@ export const ANIMES: AnimesType[] = [
     options: new SuperDragonBallHeroes(),
     synopsis:
       "Trunks est retenu prisonnier sur la Planète Prison. Gokû et Vegeta se rendent sur place, mais pour le libérer ils devront réunir les sept boules de cristal, chacune détenue par un guerrier surpuissant.",
+  },
+  {
+    anime: "Yatagarasu",
+    aliases: [
+      "Karasu wa Aruji wo Erabanai",
+      "The Raven Does Not Choose Its Master",
+      "The Crow Does Not Choose the Lord",
+    ],
+    category: [
+      "Surnaturel",
+      "Drame",
+      "Historique",
+      "Fantasy",
+      "Nouvelles saisons",
+    ],
+    options: new Yatagarasu(),
+    synopsis:
+      "Le monde alternatif de Yamauchi est gouverné par le clan Yatagarasu, dont les membres ont la faculté de se transformer en corbeaux. Yukiya, jeune membre du clan, est un jour choisi pour servir le prince. Entre complots et lutte de pouvoir, les deux garçons nouent une étroite amitié.",
   },
 ];
 
