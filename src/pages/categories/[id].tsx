@@ -1,5 +1,10 @@
 "use client";
 
+import Image from "next/image";
+
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 import {
   ANIMES,
   GroupedAnimes,
@@ -8,54 +13,53 @@ import {
 
 import { getAnime } from "@/app/lib/getAnime";
 import { getWallpaper } from "@/app/lib/getWallpaper";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-
-import Image from "next/image";
 
 export default function Category() {
   const router = useRouter();
 
   const [currentCategory, setCurrentCategory] = useState<string>();
-  const [animes, setAnimes] = useState<GroupedAnimes>();
+  const [animes, setAnimes] = useState<GroupedAnimes | null>(null);
 
   useEffect(() => {
-    if (router.query) {
-      const category = router.query.id as string;
-      const categories: string[] = [];
+    const category = router.query.id as string;
 
+    if (category) {
       setCurrentCategory(category);
 
-      const animes = ANIMES.map(({ anime, category }) => ({ anime, category }));
-
-      for (const anime of animes) {
-        for (const cat of anime.category) {
-          if (!categories.includes(cat)) categories.push(cat);
-        }
+      if (!ANIMES.some(({ category: catList }) => catList.includes(category))) {
+        router.push("/");
       }
-
-      if (category && !categories.includes(category)) router.push("/");
     }
-  }, [router]);
+  }, [router.query.id]);
 
   useEffect(() => {
     if (currentCategory) {
-      const groupedAnimes = groupAnimesByCategory(
-        ANIMES.map(({ anime, category }) => ({ anime, category })),
-        false,
-      ).sort((a, b) => b.names.length - a.names.length);
+      const filteredAnimes = ANIMES.filter(({ category }) =>
+        category.includes(currentCategory),
+      );
 
-      setAnimes(groupedAnimes.find((e) => e.category === currentCategory));
+      const groupedAnimes = groupAnimesByCategory(filteredAnimes, false);
+      const foundAnimes = groupedAnimes.find(
+        (e) => e.category === currentCategory,
+      );
+
+      setAnimes(foundAnimes ?? null);
     }
   }, [currentCategory]);
+
+  function pluriel(count: number, singular: string, plural: string): string {
+    return count > 1 ? plural : singular;
+  }
 
   return (
     <main>
       <h1 className="text-3xl">{currentCategory}</h1>
+
       {animes?.names ? (
         <p className="text-zinc-400">
-          {animes.names.length} {pluriel(animes.names, "anime")}{" "}
-          {pluriel(animes.names, "trouvé")}
+          {animes.names.length}{" "}
+          {pluriel(animes.names.length, "anime", "animes")} trouvé
+          {pluriel(animes.names.length, "", "s")}
         </p>
       ) : null}
 
@@ -64,41 +68,36 @@ export default function Category() {
           const image = getWallpaper(name);
           const fetchedAnime = getAnime(name);
 
-          const disponibles = [];
-
-          if (fetchedAnime && fetchedAnime.options.EPISODES_OPTIONS)
-            disponibles.push("Episodes");
-          if (fetchedAnime && fetchedAnime.options.SCANS_OPTIONS)
-            disponibles.push("Scans");
-          if (fetchedAnime && fetchedAnime.options.FILM_OPTIONS)
-            disponibles.push("Films");
+          const disponibles = [
+            fetchedAnime?.options.EPISODES_OPTIONS && "Episodes",
+            fetchedAnime?.options.SCANS_OPTIONS && "Scans",
+            fetchedAnime?.options.FILM_OPTIONS && "Films",
+          ].filter(Boolean);
 
           return (
             <div
               title={
-                fetchedAnime?.synopsis ?? "Aucun synopsis pour cette anime"
+                fetchedAnime?.synopsis ||
+                "Aucun synopsis disponible pour cet anime"
               }
-              className="group mr-6 inline-flex w-36 cursor-pointer flex-col rounded-xl max-md:max-md:w-32"
-              onClick={() => {
-                router.push({
-                  pathname: "/Home",
-                  query: { anime: name },
-                });
-              }}
+              className="group mr-6 inline-flex w-36 cursor-pointer flex-col rounded-xl max-md:w-32"
+              onClick={() =>
+                router.push({ pathname: "Home", query: { anime: name } })
+              }
               key={name}
             >
               <div className="relative top-1 overflow-hidden rounded-md shadow-xl">
                 {image && (
                   <Image
-                    className=" z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-105"
+                    className="z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-105"
                     src={image}
-                    alt="affiche d'un anime"
+                    alt={`Affiche de l'anime ${name}`}
                   />
                 )}
               </div>
 
               <p className="my-2 text-center text-base max-md:text-sm">
-                {name} <br />{" "}
+                {name} <br />
                 <span className="text-sm max-md:text-xs">
                   {disponibles.join(", ")}
                 </span>
@@ -109,9 +108,4 @@ export default function Category() {
       </div>
     </main>
   );
-}
-
-function pluriel(array: string[], query: string): string {
-  if (array.length > 1) return `${query}s`;
-  else return query;
 }

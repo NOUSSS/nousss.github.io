@@ -476,14 +476,12 @@ export default function Accueil() {
               <ul className="flex gap-6 overflow-auto">
                 {names.map((animeName: string, i) => {
                   const fetchedAnime = getAnime(animeName);
-                  const disponibles = [];
 
-                  if (fetchedAnime && fetchedAnime.options.EPISODES_OPTIONS)
-                    disponibles.push("Episodes");
-                  if (fetchedAnime && fetchedAnime.options.SCANS_OPTIONS)
-                    disponibles.push("Scans");
-                  if (fetchedAnime && fetchedAnime.options.FILM_OPTIONS)
-                    disponibles.push("Films");
+                  const disponibles = [
+                    fetchedAnime?.options.EPISODES_OPTIONS && "Episodes",
+                    fetchedAnime?.options.SCANS_OPTIONS && "Scans",
+                    fetchedAnime?.options.FILM_OPTIONS && "Films",
+                  ].filter(Boolean);
 
                   return (
                     <li
