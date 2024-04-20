@@ -52,7 +52,7 @@ export function getFilms(
         >
           <div className="overflow-hidden rounded-md">
             <Image
-              className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-110"
+              className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-105"
               src={names[i].image()}
               id={`${url} ${i}`}
               onClick={() => {

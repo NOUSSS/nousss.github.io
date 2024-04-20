@@ -87,10 +87,10 @@ export default function Category() {
               }}
               key={name}
             >
-              <div className="min-h-48 overflow-hidden rounded-md shadow-xl">
+              <div className="relative top-1 overflow-hidden rounded-md shadow-xl">
                 {image && (
                   <Image
-                    className="relative top-1 z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-110"
+                    className=" z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-105"
                     src={image}
                     alt="affiche d'un anime"
                   />

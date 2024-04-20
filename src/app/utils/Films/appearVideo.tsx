@@ -38,7 +38,7 @@ export async function appearVideo(
       filmTitle: (
         <>
           <span>{Object.values(names)[Number(index)].name}</span> [
-          <span style={{ color: "white" }}>{lang?.toUpperCase()}</span>]
+          <span className="text-white">{lang?.toUpperCase()}</span>]
         </>
       ),
     }));

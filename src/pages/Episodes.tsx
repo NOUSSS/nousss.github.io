@@ -386,11 +386,11 @@ const Episodes = () => {
                 <span>
                   {saisonName} ({anime.currentLecteur?.length})
                 </span>{" "}
-                {"["}
-                <span style={{ color: "white" }}>
+                [
+                <span className="text-white">
                   {anime?.lang?.toUpperCase() || "VOSTFR"}
                 </span>
-                {"]"}
+                ]
               </>
             ),
           }));
