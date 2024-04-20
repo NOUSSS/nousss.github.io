@@ -973,7 +973,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "March Comes in like a Lion",
     aliases: ["3-gatsu no Lion", "Sangatsu no Lion"],
-    category: ["Sport", "Drame", "Slice of Life"],
+    category: ["Drame", "Slice of Life"],
     synopsis:
       "Rei Kiriyama est un jeune homme de dix-sept ans au caractère pour le moins marginal : calme et réservé, celui-ci n'a ni famille ni ami et, contrairement aux autres garçons de son âge, il ne va pas à l'école. Vivant à Tokyo, il est un très bon joueur de shogi et peut au moins compter sur une personne : Akari Kawamoto, une jeune célibataire qui s'occupe de ses deux petites sœurs, Hinata et Momo.",
     options: new MarchComesinLikeaLion(),
