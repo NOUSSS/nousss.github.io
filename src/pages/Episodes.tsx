@@ -298,10 +298,7 @@ const Episodes = () => {
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
             const episodeTitle =
-              names?.find(
-                ({ index }: { index: string }) =>
-                  index === episodeNumber.toString(),
-              )?.name || "";
+              names?.find((_, i) => i + 1 === episodeNumber)?.name || "";
 
             listEpisodes.push(
               <EpisodeComponent
@@ -347,9 +344,7 @@ const Episodes = () => {
 
             const title =
               names?.find(
-                ({ index }) =>
-                  index ===
-                  (episodeIndex + Number(episode) - retardEsp).toString(),
+                (_, i) => i + 1 === episodeIndex + Number(episode) - retardEsp,
               )?.name || "";
 
             updateAnime((currentState) => ({
