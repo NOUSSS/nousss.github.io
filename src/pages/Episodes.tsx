@@ -333,13 +333,11 @@ const Episodes = () => {
             }
           });
 
-          const e_sp =
-            horsSeries &&
-            horsSeries
-              ?.find(({ saison }) => saison === anime.saison)
-              ?.hs.includes(Number(episode) - 1);
+          const episodeSpecial = horsSeries
+            ?.find(({ saison }) => saison === anime.saison)
+            ?.hs.includes(Number(episode) - 1);
 
-          if (!e_sp) {
+          if (!episodeSpecial) {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
 
             const title =
