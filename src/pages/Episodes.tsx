@@ -254,7 +254,7 @@ const Episodes = () => {
             setTimeout(() => {
               updateAnime((currentState) => ({
                 ...currentState,
-                episodeTitle: "Un problème est survenue",
+                saisonTitle: "Un problème est survenue",
               }));
             }, 1000),
           );
@@ -507,11 +507,11 @@ const Episodes = () => {
         <iframe className="ambiance" src={anime?.video}></iframe>
       </div>
 
-      <p className="mb-4 ml-4 text-left text-2xl drop-shadow-xl">
+      <p className="mb-4 ml-4 text-left text-xl drop-shadow-xl sm:text-2xl">
         {anime?.episodeTitle}
       </p>
 
-      <div className="relative mb-8 flex gap-5 after:absolute after:-bottom-6 after:h-px after:w-full after:bg-neutral-700">
+      <div className="relative my-8 flex gap-5 after:absolute after:-bottom-6 after:h-px after:w-full after:bg-neutral-700">
         {anime.anime?.anime &&
         localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
           <button
