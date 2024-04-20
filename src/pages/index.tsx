@@ -365,7 +365,7 @@ export default function Accueil() {
         />
       </div>
 
-      <div className="relative mx-4 overflow-hidden md:mx-16">
+      <div className="relative mx-4 overflow-hidden md:mx-20">
         {catalogues
           .filter(({ category }) =>
             filteredCategories.length > 0
@@ -399,7 +399,7 @@ export default function Accueil() {
 
                       <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
                         <button
-                          className="border border-green-500 hover:border-green-600"
+                          className="bg-green-500 hover:bg-green-700"
                           onClick={() => {
                             setHistoriques([]);
 
@@ -419,7 +419,7 @@ export default function Accueil() {
                         </button>
 
                         <button
-                          className="bg-red-500 hover:bg-red-800"
+                          className="border border-red-500 hover:bg-red-800 hover:bg-opacity-20"
                           onClick={() => {
                             confirmRef.current?.classList.add("hidden");
                             overlayRef.current?.classList.add("hidden");
