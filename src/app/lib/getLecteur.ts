@@ -10,10 +10,10 @@ export const getLecteur = (): Anime.LecteurReturnType => {
     (acc, cur) => {
       const value = window[cur];
 
-      if (value && contains(value, "vk")) {
-        acc.vkEps[cur] = value;
-      } else if (value && contains(value, "sibnet")) {
+      if (value && contains(value, "sibnet")) {
         acc.sibnetEps[cur] = value;
+      } else if (value && contains(value, "vk")) {
+        acc.vkEps[cur] = value;
       } else if (value && !contains(value, "myvi")) {
         acc.otherEps[cur] = value;
       }
@@ -21,13 +21,13 @@ export const getLecteur = (): Anime.LecteurReturnType => {
       return acc;
     },
     {
-      vkEps: {} as Anime.LecteurReturnType,
       sibnetEps: {} as Anime.LecteurReturnType,
+      vkEps: {} as Anime.LecteurReturnType,
       otherEps: {} as Anime.LecteurReturnType,
     },
   );
 
-  const orderedEps = { ...vkEps, ...sibnetEps, ...otherEps };
+  const orderedEps = { ...sibnetEps, ...vkEps, ...otherEps };
 
   return orderedEps;
 };
