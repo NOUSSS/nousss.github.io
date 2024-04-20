@@ -76,23 +76,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-F9N37DQQDM"
-        ></script>
-
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'G-F9N37DQQDM');
-              `,
-          }}
-        />
-
         <meta charSet="UTF-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -106,6 +89,20 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         <title>Mugiwara-no Streaming</title>
       </Head>
+
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-F9N37DQQDM`}
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-F9N37DQQDM');
+        `}
+      </Script>
 
       <Image
         className="fixed left-0 top-0 h-full w-full opacity-5 blur-2xl"

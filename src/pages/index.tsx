@@ -451,18 +451,20 @@ export default function Accueil() {
                   <div className="flex items-center gap-4">
                     <p className="font-normal drop-shadow-2xl">{category}</p>
 
-                    <div className="flex items-center gap-2 text-lg text-zinc-400">
-                      <ArrowUpRight />
+                    {names.length === 10 ? (
+                      <div className="flex items-center gap-2 text-lg text-zinc-400">
+                        <ArrowUpRight />
 
-                      <Link
-                        href={{
-                          pathname: `categories/${category}`,
-                        }}
-                        className="cursor-pointer hover:underline"
-                      >
-                        Voir tout
-                      </Link>
-                    </div>
+                        <Link
+                          href={{
+                            pathname: `categories/${category}`,
+                          }}
+                          className="cursor-pointer hover:underline"
+                        >
+                          Voir tout
+                        </Link>
+                      </div>
+                    ) : null}
                   </div>
                 )}
               </div>
