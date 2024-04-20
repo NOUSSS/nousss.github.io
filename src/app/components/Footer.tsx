@@ -11,14 +11,25 @@ export function Footer({
     <div
       className={`${!style ? "" : "w-full bg-zinc-900 bg-opacity-50"} mt-4 p-8`}
     >
-      <Link
-        className="text-sm text-main underline"
-        href={{
-          pathname: "Report",
-        }}
-      >
-        Signaler un problème ?
-      </Link>
+      <div className="flex flex-col text-base">
+        <Link
+          className="text-main underline"
+          href={{
+            pathname: "/Suggest",
+          }}
+        >
+          Suggérer une oeuvre
+        </Link>
+
+        <Link
+          className="text-main underline"
+          href={{
+            pathname: "/Report",
+          }}
+        >
+          Signaler un problème ?
+        </Link>
+      </div>
 
       {media ? (
         <p className="mb-5">
