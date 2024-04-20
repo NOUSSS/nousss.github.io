@@ -270,10 +270,12 @@ export default function Accueil() {
                   <button
                     className="btn"
                     onClick={() => {
-                      const query: {
+                      interface Query {
                         anime: string;
                         saison?: string;
-                      } = { anime: anime.anime };
+                      }
+
+                      const query: Query = { anime: anime.anime };
 
                       if (
                         historiquesFiltered[historiqueIndex]?.redirect &&
@@ -287,7 +289,7 @@ export default function Accueil() {
                         router.push({
                           pathname:
                             historiquesFiltered[historiqueIndex].redirect,
-                          query,
+                          query: { ...query },
                         });
                       else
                         router.push({
