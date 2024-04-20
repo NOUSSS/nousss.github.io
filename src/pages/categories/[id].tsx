@@ -82,7 +82,7 @@ export default function Category() {
               }
               className="group mr-6 inline-flex w-36 cursor-pointer flex-col rounded-xl max-md:w-32"
               onClick={() =>
-                router.push({ pathname: "Home", query: { anime: name } })
+                router.push({ pathname: "/Home", query: { anime: name } })
               }
               key={name}
             >
