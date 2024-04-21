@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
@@ -16,6 +16,7 @@ import { getAnime } from "@/app/lib/getAnime";
 import { shuffle } from "@/app/lib/shuffle";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
+import { getWallpaper } from "@/app/lib/getWallpaper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -24,7 +25,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Select from "@/app/components/Select";
 import Link from "next/link";
-import { getWallpaper } from "@/app/lib/getWallpaper";
+
+interface AmbiancePros {
+  image?: StaticImageData | null;
+  opacity: number;
+}
 
 export default function Accueil() {
   const categories: string[] = [];
@@ -47,6 +52,24 @@ export default function Accueil() {
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
   const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [ambiance, setAmbiance] = useState<AmbiancePros>();
+
+  useEffect(() => {
+    if (randomAnimes && randomAnimes[currentIndex]) {
+      setAmbiance({
+        opacity: 0,
+        image: ambiance?.image,
+      });
+
+      setTimeout(() => {
+        setAmbiance({
+          image: randomAnimes[currentIndex].options.affiche,
+          opacity: 1,
+        });
+      }, 300);
+    }
+  }, [currentIndex, randomAnimes]);
 
   const confirmRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -225,6 +248,17 @@ export default function Accueil() {
         className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
       ></div>
 
+      {ambiance?.image && (
+        <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
+          <Image
+            alt="ambiance"
+            src={ambiance.image}
+            className={`h-full w-full scale-110 transition-opacity`}
+            style={{ opacity: ambiance.opacity }}
+          />
+        </div>
+      )}
+
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={30}
@@ -344,16 +378,6 @@ export default function Accueil() {
           );
         })}
       </Swiper>
-
-      {randomAnimes && randomAnimes.length > 0 ? (
-        <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
-          <Image
-            alt="ambiance"
-            src={randomAnimes![currentIndex].options.affiche!}
-            className="h-full w-full scale-110"
-          />
-        </div>
-      ) : null}
 
       <ColorPicker />
 
