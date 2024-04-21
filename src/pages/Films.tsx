@@ -237,6 +237,7 @@ const Films = () => {
       ) : null}
 
       <SearchBar
+        className="mt-6"
         placeholder="Rechercher un film"
         containerRef={filmsRef}
         query="id"
