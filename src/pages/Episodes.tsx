@@ -421,7 +421,7 @@ const Episodes = () => {
     <main className="flex flex-col items-center">
       <Head>
         {anime?.anime ? (
-          <title>{anime.anime.anime} - Episodes - Mugiwara-no Streaming</title>
+          <title>{anime.anime.anime} - Episodes | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
 

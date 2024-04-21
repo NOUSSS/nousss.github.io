@@ -41,7 +41,7 @@ const Home = () => {
     <main className="top-24 mx-12 max-sm:mx-0">
       <Head>
         {anime?.anime && (
-          <title>{anime.anime} - Accueil - Mugiwara-no Streaming</title>
+          <title>{anime.anime} - Accueil | Mugiwara-no Streaming</title>
         )}
       </Head>
 

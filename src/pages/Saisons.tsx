@@ -39,7 +39,7 @@ const Saisons = () => {
     <main>
       <Head>
         {anime?.anime && (
-          <title>{anime.anime.anime} - Saisons - Mugiwara-no Streaming</title>
+          <title>{anime.anime.anime} - Saisons | Mugiwara-no Streaming</title>
         )}
       </Head>
 

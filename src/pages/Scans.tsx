@@ -176,7 +176,7 @@ const Scans = () => {
     <main className="flex select-none flex-col items-center">
       <Head>
         {anime?.anime ? (
-          <title>{anime?.anime.anime} - Scans - Mugiwara-no Streaming</title>
+          <title>{anime?.anime.anime} - Scans | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
 

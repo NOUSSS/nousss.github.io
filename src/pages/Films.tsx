@@ -160,7 +160,7 @@ const Films = () => {
     <main className="flex flex-col items-center">
       <Head>
         {anime?.anime?.anime ? (
-          <title>{anime?.anime?.anime} - Films - Mugiwara-no Streaming</title>
+          <title>{anime?.anime?.anime} - Films | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
 
