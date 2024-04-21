@@ -70,9 +70,9 @@
 }
 
 *::-webkit-scrollbar {
-  @apply bg-transparent;
+  @apply w-3 bg-transparent;
 }
 
 .select::-webkit-scrollbar-thumb {
-  @apply w-px rounded-md border-transparent bg-gray-400 bg-opacity-50;
+  @apply border-transparent bg-zinc-500;
 }
