@@ -3412,6 +3412,14 @@ const episodes = [
     index: "1100",
     name: "La puissance d'une autre dimension. Luffy contre Lucci !",
   },
+  {
+    index: "1101",
+    name: "Au sommet du genre humain. La puissance des Séraphins !",
+  },
+  {
+    index: "1102",
+    name: "Des projets sinistres. L'opération pour échapper d'Egg Head !",
+  },
 ];
 
 export default episodes;
