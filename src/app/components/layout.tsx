@@ -153,30 +153,27 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </h1>
           </Link>
 
-          <div className="flex items-center gap-2">
-            <Link
-              className="rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2 hover:text-orange-400"
-              href="/Settings"
-              title="Paramètres"
-            >
-              <Settings className="transition-colors" />
+          <div className="flex items-center gap-3 *:flex *:cursor-pointer *:items-center *:rounded-md *:border *:border-neutral-700 *:bg-zinc-800 *:bg-opacity-50 *:p-2">
+            <Link href="/Settings" title="Paramètres">
+              <Settings className="lg:mr-3" />
+
+              <span className="text-base text-white max-lg:hidden">
+                Paramètres
+              </span>
             </Link>
 
-            <Link
-              className="rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2 hover:text-orange-400"
-              href="/Catalogue"
-              title="Catalogue"
-            >
-              <Gallery className="transition-colors" />
+            <Link href="/Catalogue" title="Catalogue">
+              <Gallery className="lg:mr-3" />
+
+              <span className="text-base text-white max-lg:hidden">
+                Catalogue
+              </span>
             </Link>
 
-            <div
-              onClick={() => setIsVisible(!isVisible)}
-              className="flex cursor-pointer items-center rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
-            >
-              <SearchIcon size={22} className="md:mr-4" />
+            <div onClick={() => setIsVisible(!isVisible)}>
+              <SearchIcon className="lg:mr-3" />
 
-              <span className="text-base text-white max-md:hidden">
+              <span className="text-base text-white max-lg:hidden">
                 Recherche rapide (Ctrl + K)
               </span>
             </div>
