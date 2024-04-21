@@ -103,6 +103,7 @@ import Kingdom from "./Kingdom/kingdom";
 import Parasite from "./Parasite/parasite";
 import SuperDragonBallHeroes from "./SuperDragonBallHeroes/super-dragon-ball-heroes";
 import Yatagarasu from "./Yatagarasu/yatagarasu";
+import DrStone from "./DrStone/dr-stone";
 
 export interface AnimesType {
   anime: string;
@@ -1042,6 +1043,13 @@ export const ANIMES: AnimesType[] = [
     options: new Yatagarasu(),
     synopsis:
       "Le monde alternatif de Yamauchi est gouverné par le clan Yatagarasu, dont les membres ont la faculté de se transformer en corbeaux. Yukiya, jeune membre du clan, est un jour choisi pour servir le prince. Entre complots et lutte de pouvoir, les deux garçons nouent une étroite amitié.",
+  },
+  {
+    anime: "Dr. Stone",
+    synopsis:
+      "Un jour, une lumière éclaira la Terre, changeant tous les humains en pierre. Ainsi, l'humanité s'éteignit. Plusieurs millénaires plus tard, Taiju parvient à s'échapper de son enveloppe de pierre pour découvrir un monde dans lequel la nature a repris ses droits. Avec son ami Senku, ils décident de tout mettre en œuvres pour faire renaître l'humanité de ses cendres et survivre.",
+    options: new DrStone(),
+    category: ["Aventure", "Science-fiction", "Fantastique"],
   },
 ];
 

@@ -135,8 +135,9 @@ const Episodes = () => {
       const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
 
       if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
+
       if (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison)) {
-        url = SCRIPT_URL!({
+        url = SCRIPT_URL({
           index: 1,
           lang: anime.lang!,
         }).replace(/saison\d+(-\d+)?/g, "oav");
@@ -149,7 +150,7 @@ const Episodes = () => {
             lang: anime.lang!,
           }).replace(/saison\d+(-\d+)?/g, "saison1hs");
         } else {
-          url = SCRIPT_URL!({
+          url = SCRIPT_URL({
             index: Number(scriptIndex)
               ? Number(scriptIndex) - retard
               : scriptIndex!,
