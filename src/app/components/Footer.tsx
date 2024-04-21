@@ -8,7 +8,7 @@ export function Footer({
   style?: boolean;
 }) {
   return (
-    <div
+    <footer
       className={`${!style ? "" : "w-full bg-zinc-900 bg-opacity-50"} mt-4 p-8`}
     >
       <div className="flex flex-col text-base">
@@ -37,7 +37,8 @@ export function Footer({
           réclamations de droits relatifs aux contenus en question.
         </p>
       ) : null}
-      <footer>© 2024 Mugiwara-no Streaming - Tous droits réservés.</footer>
-    </div>
+
+      <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>
+    </footer>
   );
 }

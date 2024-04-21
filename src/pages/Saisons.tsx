@@ -100,7 +100,7 @@ const Saisons = () => {
           <div
             key={id}
             id={id}
-            className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-2.5"
+            className="group m-4 inline-flex w-24 cursor-pointer flex-col items-center gap-2.5 md:w-32"
             onClick={() => {
               router.push({
                 pathname: `/Episodes`,

@@ -45,7 +45,7 @@ const Home = () => {
         )}
       </Head>
 
-      <div className="relative mb-12 flex h-auto rounded-md bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
+      <div className="relative mb-12 flex h-auto rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
         {anime?.options.affiche && (
           <div>
             <Image
@@ -53,14 +53,6 @@ const Home = () => {
               src={anime.options.affiche!}
               className="rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-sm:rounded-none md:h-full md:w-[654px] md:max-w-[654px]"
             />
-
-            <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
-              <Image
-                alt={`ambiance de ${anime.anime}`}
-                src={anime.options.affiche!}
-                className="h-full w-full scale-110"
-              />
-            </div>
           </div>
         )}
 
