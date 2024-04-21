@@ -23,9 +23,6 @@ export const getCurrentEpisode = (
 
   if (isHorsSerie)
     for (const specialEpisode of isHorsSerie) {
-      console.log(specialEpisode);
-      console.log(Number(historiques[index].episode));
-
       if (Number(historiques[index].episode) > specialEpisode + 1) retard++;
     }
 
