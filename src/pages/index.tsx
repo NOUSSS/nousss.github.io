@@ -357,7 +357,13 @@ export default function Accueil() {
 
       <div className="relative mx-4 overflow-hidden lg:mx-28">
         {catalogues
-          .filter(({ names }) => names.length === 10)
+          .filter(
+            ({ names, category }) =>
+              category === "Nouvelles saisons" ||
+              category === "Reprendre" ||
+              names.length === 10,
+          )
+
           .map(({ names, category }) => (
             <div key={category}>
               <div
