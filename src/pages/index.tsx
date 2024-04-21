@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
+import Link from "next/link";
 
 import { Footer } from "@/app/components/Footer";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
@@ -22,8 +23,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Select from "@/app/components/Select";
-import Link from "next/link";
 
 interface AmbiancePros {
   image?: StaticImageData | null;
@@ -31,15 +30,7 @@ interface AmbiancePros {
 }
 
 export default function Accueil() {
-  const categories: string[] = [];
-
   const animes = ANIMES.map(({ anime, category }) => ({ anime, category }));
-
-  for (const anime of animes) {
-    for (const cat of anime.category) {
-      if (!categories.includes(cat)) categories.push(cat);
-    }
-  }
 
   const router = useRouter();
 
@@ -49,7 +40,6 @@ export default function Accueil() {
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
-  const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [ambiance, setAmbiance] = useState<AmbiancePros>();
@@ -72,7 +62,6 @@ export default function Accueil() {
 
   const confirmRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const placeholderRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     let animesCopy = [...shuffle(ANIMES)];
@@ -165,22 +154,10 @@ export default function Accueil() {
   );
 
   useEffect(() => {
-    let updatedCatalogues;
-
-    if (filteredCategories.length > 0) {
-      const filteredAnimes = ANIMES.filter(({ category }) =>
-        filteredCategories.every((cat) => category.includes(cat)),
-      );
-
-      updatedCatalogues = groupAnimesByCategory(filteredAnimes, true).sort(
-        (a, b) => b.names.length - a.names.length,
-      );
-    } else {
-      updatedCatalogues = groupAnimesByCategory(
-        ANIMES.map(({ anime, category }) => ({ anime, category })),
-        true,
-      ).sort((a, b) => b.names.length - a.names.length);
-    }
+    const updatedCatalogues = groupAnimesByCategory(
+      ANIMES.map(({ anime, category }) => ({ anime, category })),
+      true,
+    ).sort((a, b) => b.names.length - a.names.length);
 
     const momentIndex = updatedCatalogues.findIndex(
       ({ category }) => category === "Nouvelles saisons",
@@ -203,7 +180,7 @@ export default function Accueil() {
     if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
     setCatalogues(updatedCatalogues);
-  }, [historiques, filteredCategories]);
+  }, [historiques]);
 
   const goToAnime = useCallback(
     (animeName: string, category: string, index: number) => {
@@ -283,7 +260,7 @@ export default function Accueil() {
             <SwiperSlide key={index}>
               <div
                 key={index}
-                className="flex h-[525px] min-h-[525px] justify-between bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:min-h-full max-lg:flex-col-reverse"
+                className="flex h-[525px] min-h-[525px] justify-between border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:min-h-full max-lg:flex-col-reverse"
               >
                 <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
                   <div className="my-4">
@@ -378,25 +355,9 @@ export default function Accueil() {
         })}
       </Swiper>
 
-      <div className="mt-16 flex justify-center">
-        <Select
-          multiple={true}
-          placeholder="Filtrer"
-          placeholderRef={placeholderRef}
-          items={categories.map((cat) => ({ name: cat, value: cat }))}
-          onSelect={(items) =>
-            setFilteredCategories(items.map(({ value }) => value))
-          }
-        />
-      </div>
-
       <div className="relative mx-4 overflow-hidden lg:mx-28">
         {catalogues
-          .filter(({ category }) =>
-            filteredCategories.length > 0
-              ? filteredCategories.includes(category)
-              : true,
-          )
+          .filter(({ names }) => names.length === 10)
           .map(({ names, category }) => (
             <div key={category}>
               <div
@@ -476,20 +437,18 @@ export default function Accueil() {
                   <div className="flex items-center gap-4">
                     <p className="font-normal drop-shadow-2xl">{category}</p>
 
-                    {names.length === 10 ? (
-                      <div className="flex items-center gap-2 text-lg text-zinc-400">
-                        <ArrowUpRight />
+                    <div className="flex items-center gap-2 text-lg text-zinc-400">
+                      <ArrowUpRight />
 
-                        <Link
-                          href={{
-                            pathname: `categories/${category}`,
-                          }}
-                          className="cursor-pointer hover:underline"
-                        >
-                          Voir tout
-                        </Link>
-                      </div>
-                    ) : null}
+                      <Link
+                        href={{
+                          pathname: `/Catalogue`,
+                        }}
+                        className="cursor-pointer hover:underline"
+                      >
+                        Voir tout
+                      </Link>
+                    </div>
                   </div>
                 )}
               </div>

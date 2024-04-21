@@ -1,13 +1,10 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import background from "@/assets/Background3.jpg";
-
 import { icons } from "lucide-react";
-import { isMobile } from "../lib/isMobile";
 
-import FastSearchBar from "./Fast-Searchbar";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import FastSearchBar from "./Fast-Searchbar";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -19,6 +16,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   const SearchIcon = icons["Search"];
   const Settings = icons["Settings"];
+  const Gallery = icons["GalleryVerticalEnd"];
 
   const metaColorRef = useRef<HTMLMetaElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
@@ -155,12 +153,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </h1>
           </Link>
 
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-2">
             <Link
               className="rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2 hover:text-orange-400"
               href="/Settings"
+              title="Paramètres"
             >
               <Settings className="transition-colors" />
+            </Link>
+
+            <Link
+              className="rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2 hover:text-orange-400"
+              href="/Catalogue"
+              title="Catalogue"
+            >
+              <Gallery className="transition-colors" />
             </Link>
 
             <div
