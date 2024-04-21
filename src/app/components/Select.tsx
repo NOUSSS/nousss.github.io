@@ -161,31 +161,33 @@ export default function Select({
 
       <div
         ref={menuRef}
-        className="select absolute left-0 top-14 z-10 hidden max-h-64 w-full animate-appear overflow-auto rounded-md bg-white p-2 text-black shadow-xl transition-all duration-200 ease-in-out"
+        className="select absolute left-0 top-14 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl transition-all duration-200 ease-in-out"
       >
-        {items?.map((item, index) => (
-          <ul key={index}>
-            <li
-              onClick={() => {
-                if (!multiple) toggleBodyScroll(false);
+        <div className="bg-white bg-opacity-75 p-2">
+          {items?.map((item, index) => (
+            <ul key={index}>
+              <li
+                onClick={() => {
+                  if (!multiple) toggleBodyScroll(false);
 
-                if (!item.disabled) {
-                  handleSelect(item);
-                  appear();
+                  if (!item.disabled) {
+                    handleSelect(item);
+                    appear();
+                  }
+                }}
+                ref={(el) =>
+                  (itemsRef.current[index] = {
+                    name: item.name,
+                    el: el!,
+                  })
                 }
-              }}
-              ref={(el) =>
-                (itemsRef.current[index] = {
-                  name: item.name,
-                  el: el!,
-                })
-              }
-              className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50" : "hover:border-orange-500"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-orange-500 text-white" : ""}`}
-            >
-              <p>{item.name}</p>
-            </li>
-          </ul>
-        ))}
+                className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50" : "hover:border-orange-500"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-orange-500 text-white" : ""}`}
+              >
+                <p className="font-normal">{item.name}</p>
+              </li>
+            </ul>
+          ))}
+        </div>
       </div>
     </label>
   );
