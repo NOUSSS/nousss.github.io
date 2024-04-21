@@ -20,7 +20,6 @@ import Select from "@/app/components/Select";
 import getHostname from "@/app/lib/getHostname";
 
 import Head from "next/head";
-import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 import clearCache from "@/app/cache/ClearCache";
 import Link from "next/link";
@@ -163,8 +162,6 @@ const Films = () => {
           <title>{anime?.anime?.anime} - Films | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
-
-      <ColorPicker />
 
       {anime?.anime && (
         <h1 className="animate-title text-5xl">

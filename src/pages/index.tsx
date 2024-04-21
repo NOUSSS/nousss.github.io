@@ -2,7 +2,6 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 
 import { Footer } from "@/app/components/Footer";
@@ -378,8 +377,6 @@ export default function Accueil() {
           );
         })}
       </Swiper>
-
-      <ColorPicker />
 
       <div className="mt-16 flex justify-center">
         <Select

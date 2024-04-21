@@ -24,7 +24,6 @@ import random from "@/app/lib/random";
 import getHostname from "@/app/lib/getHostname";
 
 import Switch from "@/app/components/Switch";
-import ColorPicker from "@/app/components/ColorPicker";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
@@ -424,8 +423,6 @@ const Episodes = () => {
           <title>{anime.anime.anime} - Episodes | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
-
-      <ColorPicker />
 
       {anime?.anime && (
         <h1 className="animate-title text-5xl">

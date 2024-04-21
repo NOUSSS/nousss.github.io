@@ -8,7 +8,6 @@ import FastSearchBar from "./Fast-Searchbar";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import Script from "next/script";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -19,11 +18,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const SearchIcon = icons["Search"];
+  const Settings = icons["Settings"];
 
   const metaColorRef = useRef<HTMLMetaElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const searchTextRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,10 +37,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   }, [metaColorRef.current]);
 
   useEffect(() => {
-    if (searchTextRef.current && !isMobile()) {
-      searchTextRef.current.innerText += "(Ctrl + K)";
-    }
-
     const colorPerso = localStorage.getItem("color");
 
     if (colorPerso)
@@ -151,7 +146,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 className="w-10"
               />
 
-              <p className="text-2xl font-normal max-md:hidden">
+              <p className="text-2xl font-normal max-sm:hidden">
                 <span className="font-normal transition-colors group-hover:text-white">
                   Mugiwara-no
                 </span>{" "}
@@ -160,15 +155,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </h1>
           </Link>
 
-          <div
-            onClick={() => setIsVisible(!isVisible)}
-            className="flex cursor-pointer items-center rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
-          >
-            <SearchIcon size={22} className="mr-4 w-6" />
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link
+              className="rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2 hover:text-orange-400"
+              href="/Settings"
+            >
+              <Settings className="transition-colors" />
+            </Link>
 
-            <span ref={searchTextRef} className="text-base text-white">
-              Recherche rapide&nbsp;
-            </span>
+            <div
+              onClick={() => setIsVisible(!isVisible)}
+              className="flex cursor-pointer items-center rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
+            >
+              <SearchIcon size={22} className="w-6 md:mr-4" />
+
+              <span className="text-base text-white max-md:hidden">
+                Recherche rapide (Ctrl + K)
+              </span>
+            </div>
           </div>
         </nav>
       </header>

@@ -19,7 +19,6 @@ import Head from "next/head";
 import Select, { ItemsProps } from "@/app/components/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import random from "@/app/lib/random";
-import ColorPicker from "@/app/components/ColorPicker";
 import useAnime from "@/app/lib/hooks/useAnime";
 import Link from "next/link";
 
@@ -179,8 +178,6 @@ const Scans = () => {
           <title>{anime?.anime.anime} - Scans | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
-
-      <ColorPicker />
 
       {anime?.anime && (
         <h1 className="animate-title text-5xl">
