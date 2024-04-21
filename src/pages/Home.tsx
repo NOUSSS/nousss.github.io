@@ -87,10 +87,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div
-        ref={choicesRef}
-        className="flex justify-center text-left text-orange-400"
-      >
+      <div ref={choicesRef} className="flex justify-center text-left">
         <ul>
           {anime?.options.FILM_OPTIONS && (
             <li className="text-4xl transition-colors hover:text-main">
