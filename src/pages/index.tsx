@@ -509,15 +509,13 @@ export default function Accueil() {
                             </div>
                           )}
 
-                          <div className="my-3 flex justify-between text-left text-sm sm:text-base">
+                          <div className="my-3 flex justify-between text-left">
                             <div>
-                              <p className="text-white">
-                                {animeName.length > 20
-                                  ? animeName.substring(0, 20) + "..."
-                                  : animeName}
+                              <p className="text-xs text-zinc-400">
+                                {animeName}
                               </p>
 
-                              <p className="text-main">
+                              <p className="text-sm text-main sm:text-base">
                                 {historiques[i]?.chapitre && (
                                   <>
                                     {getCurrentChapitre(
