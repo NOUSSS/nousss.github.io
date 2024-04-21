@@ -167,7 +167,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               onClick={() => setIsVisible(!isVisible)}
               className="flex cursor-pointer items-center rounded-md border border-neutral-700 bg-zinc-800 bg-opacity-50 p-2"
             >
-              <SearchIcon size={22} className="w-6 md:mr-4" />
+              <SearchIcon size={22} className="md:mr-4" />
 
               <span className="text-base text-white max-md:hidden">
                 Recherche rapide (Ctrl + K)
