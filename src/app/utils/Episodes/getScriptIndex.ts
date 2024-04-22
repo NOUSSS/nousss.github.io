@@ -16,8 +16,7 @@ export default function getScriptIndex({
 
   if (
     !parts ||
-    parts.from === Number(currentSaison) ||
-    parts.from > Number(currentSaison)
+    parts.from === Number(currentSaison)
   ) {
     scriptIndex = currentSaison;
   } else {
