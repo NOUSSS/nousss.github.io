@@ -57,6 +57,7 @@ class SpyXFamily extends Anime {
       parts: {
         from: 1,
         to: 2,
+        startToFirst: false,
       },
 
       names,

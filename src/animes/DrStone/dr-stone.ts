@@ -79,6 +79,7 @@ class DrStone extends Anime {
       parts: {
         from: 3,
         to: 4,
+        startToFirst: false,
       },
 
       names: episodes,

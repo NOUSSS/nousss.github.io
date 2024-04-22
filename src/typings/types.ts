@@ -124,6 +124,7 @@ export namespace Options {
   interface PartsProps {
     from: number;
     to: number;
+    startToFirst: boolean;
   }
 
   export interface EpisodesOptions {

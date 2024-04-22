@@ -4,6 +4,7 @@ interface ScriptIndexProps {
     | {
         from: number;
         to: number;
+        startToFirst: boolean;
       }
     | undefined;
 }
@@ -16,7 +17,9 @@ export default function getScriptIndex({
 
   if (
     !parts ||
-    parts.from === Number(currentSaison)
+    (parts.startToFirst
+      ? parts.from > Number(currentSaison)
+      : parts.from >= Number(currentSaison))
   ) {
     scriptIndex = currentSaison;
   } else {
@@ -25,7 +28,9 @@ export default function getScriptIndex({
     }
 
     if (
-      Number(currentSaison) > parts.from &&
+      (parts.startToFirst
+        ? Number(currentSaison) >= parts.from
+        : Number(currentSaison) > parts.from) &&
       Number(currentSaison) <= parts.to
     ) {
       scriptIndex = `${parts.from}-${Number(currentSaison) - (parts.from - 1)}`;

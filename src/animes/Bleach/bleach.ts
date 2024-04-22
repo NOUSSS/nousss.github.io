@@ -65,7 +65,9 @@ class Bleach extends Anime {
       parts: {
         from: 2,
         to: 3,
+        startToFirst: false,
       },
+
       names,
     };
   }
