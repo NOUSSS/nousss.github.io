@@ -104,6 +104,7 @@ import Parasite from "./Parasite/parasite";
 import SuperDragonBallHeroes from "./SuperDragonBallHeroes/super-dragon-ball-heroes";
 import Yatagarasu from "./Yatagarasu/yatagarasu";
 import DrStone from "./DrStone/dr-stone";
+import MadeInAbyss from "./MadeInAbyss/made-in-abyss";
 
 export interface AnimesType {
   anime: string;
@@ -1050,6 +1051,20 @@ export const ANIMES: AnimesType[] = [
       "Un jour, une lumière éclaira la Terre, changeant tous les humains en pierre. Ainsi, l'humanité s'éteignit. Plusieurs millénaires plus tard, Taiju parvient à s'échapper de son enveloppe de pierre pour découvrir un monde dans lequel la nature a repris ses droits. Avec son ami Senku, ils décident de tout mettre en œuvres pour faire renaître l'humanité de ses cendres et survivre.",
     options: new DrStone(),
     category: ["Aventure", "Science-fiction", "Fantastique"],
+  },
+  {
+    anime: "Made in Abyss",
+    category: [
+      "Action",
+      "Aventure",
+      "Fantasy",
+      "Drame",
+      "Mystère",
+      "Surnaturel",
+    ],
+    synopsis:
+      "\"Abyss\", un lieu intriguant et nimbé de mystère. Un trou béant, seul lieu inexploré du monde. Un endroit fascinant et dangereux. Riko, jeune orpheline, a grandi dans une petite ville située au bord du gouffre tout en rêvant de devenir exploratrice, comme sa mère. Un jour, alors qu'elle explore le premier niveau de l'Abyss, elle rencontre un étrange robot qui ressemble à s'y méprendre à un être humain.",
+    options: new MadeInAbyss(),
   },
 ];
 

@@ -1,0 +1,30 @@
+const episodes = [
+  { name: "La Cité de l'abîme", index: 1 },
+  { name: "La fête de la renaissance", index: 2 },
+  { name: "Départ", index: 3 },
+  { name: "Le bord de l'Abysse", index: 4 },
+  { name: "L'incinérateur", index: 5 },
+  { name: "Le camp d'explorateur", index: 6 },
+  { name: "Le Seigneur figé", index: 7 },
+  { name: "Entraînement de survie", index: 8 },
+  { name: "La Grande Fissure", index: 9 },
+  { name: "Poison et malédiction", index: 10 },
+  { name: "Nanatchy", index: 11 },
+  { name: "La Véritable Malédiction", index: 12 },
+  { name: "Braver les tréfonds", index: 13 },
+  // Saison 2
+  { name: "La boussole qui pointe vers les ténèbres", index: 14 },
+  { name: "La cité du non-retour", index: 15 },
+  { name: "Le village des ombres", index: 16 },
+  { name: "Amitié", index: 17 },
+  { name: "Secret", index: 18 },
+  { name: "L'appel", index: 19 },
+  { name: "Le berceau des désirs", index: 20 },
+  { name: "La forme du souhait", index: 21 },
+  { name: "Le retour", index: 22 },
+  { name: "Tout ce qui se ramasse", index: 23 },
+  { name: "La valeur", index: 24 },
+  { name: "L'or", index: 25 },
+];
+
+export default episodes;

@@ -112,7 +112,7 @@ export namespace Options {
   }
 
   interface NameProps {
-    index: string;
+    index: string | number;
     name: string;
   }
 
