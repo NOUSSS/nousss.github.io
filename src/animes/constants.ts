@@ -105,6 +105,7 @@ import SuperDragonBallHeroes from "./SuperDragonBallHeroes/super-dragon-ball-her
 import Yatagarasu from "./Yatagarasu/yatagarasu";
 import DrStone from "./DrStone/dr-stone";
 import MadeInAbyss from "./MadeInAbyss/made-in-abyss";
+import Rainbow from "./Rainbow/rainbow";
 
 export interface AnimesType {
   anime: string;
@@ -1065,6 +1066,17 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "\"Abyss\", un lieu intriguant et nimbé de mystère. Un trou béant, seul lieu inexploré du monde. Un endroit fascinant et dangereux. Riko, jeune orpheline, a grandi dans une petite ville située au bord du gouffre tout en rêvant de devenir exploratrice, comme sa mère. Un jour, alors qu'elle explore le premier niveau de l'Abyss, elle rencontre un étrange robot qui ressemble à s'y méprendre à un être humain.",
     options: new MadeInAbyss(),
+  },
+  {
+    anime: "Rainbow",
+    aliases: [
+      "Nisha Rokubou no Shichinin",
+      "Criminal Seven of Compound Two Cell Six",
+    ],
+    options: new Rainbow(),
+    category: ["Historique", "Thriller", "Psychologique", "Drame"],
+    synopsis:
+      "Japon 1955, 10 ans après la seconde guerre mondiale, la pauvreté et la criminalité augmente à très grande vitesse, causant d'énormes dégâts à la société ! Cette série raconte l'histoire de sept détenus mineurs incarcérés dans une maison de redressement pour divers crimes, braquages, violences, meurtres... Il seront tout les sept confrontés à un monde de violence sans pitié et d'humiliation, ces derniers n'attendront qu'une seule chose... Une lueur d'espoir qui pourrait les guider tout droit vers la sortie de cet enfer carcéral !",
   },
 ];
 
