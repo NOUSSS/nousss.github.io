@@ -510,7 +510,7 @@ const Episodes = () => {
       <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
           <p className="text-left text-xl drop-shadow-xl sm:text-2xl">
-            {anime?.episodeTitle}
+            Episode {anime?.episodeTitle}
           </p>
 
           <div className="my-8 flex gap-5 lg:max-w-[600px]">
