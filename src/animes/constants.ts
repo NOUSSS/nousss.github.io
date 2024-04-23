@@ -106,6 +106,7 @@ import Yatagarasu from "./Yatagarasu/yatagarasu";
 import DrStone from "./DrStone/dr-stone";
 import MadeInAbyss from "./MadeInAbyss/made-in-abyss";
 import Rainbow from "./Rainbow/rainbow";
+import ViralHit from "./ViralHit/viral-hit";
 
 export interface AnimesType {
   anime: string;
@@ -1077,6 +1078,20 @@ export const ANIMES: AnimesType[] = [
     category: ["Historique", "Thriller", "Psychologique", "Drame"],
     synopsis:
       "Japon 1955, 10 ans après la seconde guerre mondiale, la pauvreté et la criminalité augmente à très grande vitesse, causant d'énormes dégâts à la société ! Cette série raconte l'histoire de sept détenus mineurs incarcérés dans une maison de redressement pour divers crimes, braquages, violences, meurtres... Il seront tout les sept confrontés à un monde de violence sans pitié et d'humiliation, ces derniers n'attendront qu'une seule chose... Une lueur d'espoir qui pourrait les guider tout droit vers la sortie de cet enfer carcéral !",
+  },
+  {
+    anime: "Viral Hit",
+    aliases: ["Ssaumdokhak", "Kenka Dokugaku"],
+    category: [
+      "School Life",
+      "Action",
+      "Arts Martiaux",
+      "Drame",
+      "Nouvelles saisons",
+    ],
+    synopsis:
+      "Le lycéen tout maigre et fragile Yoo Ho Bin est probablement le dernier gars qu'on s'attendrait à voir sur une chaîne Newtube qui tourne autour des combats. Mais après avoir suivi les conseils d'une mystérieuse chaîne Newtube, Ho Bin assomme des gars plus forts que lui et engrange plus d'argent qu'il n'aurait jamais pu rêver. Ho Bin pourra-t-il continuer comme ça ou finira-t-il par rencontrer son égal ?",
+    options: new ViralHit(),
   },
 ];
 
