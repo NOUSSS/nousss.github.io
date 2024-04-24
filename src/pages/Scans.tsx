@@ -182,6 +182,7 @@ const Scans = () => {
       {anime?.anime && (
         <h1 className="animate-title text-5xl">
           <Link
+            className="font-normal"
             href={{
               pathname: "/Home",
               query: { anime: anime!.anime.anime },

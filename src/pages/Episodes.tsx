@@ -430,6 +430,7 @@ const Episodes = () => {
       {anime?.anime && (
         <h1 className="animate-title text-5xl">
           <Link
+            className="font-normal"
             href={{
               pathname: "/Saisons",
               query: { anime: anime!.anime.anime },
