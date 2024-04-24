@@ -154,32 +154,34 @@ export default function Accueil() {
   );
 
   useEffect(() => {
-    const updatedCatalogues = groupAnimesByCategory(
-      ANIMES.map(({ anime, category }) => ({ anime, category })),
-      true,
-    ).sort((a, b) => b.names.length - a.names.length);
+    setTimeout(() => {
+      const updatedCatalogues = groupAnimesByCategory(
+        ANIMES.map(({ anime, category }) => ({ anime, category })),
+        true,
+      ).sort((a, b) => b.names.length - a.names.length);
 
-    const momentIndex = updatedCatalogues.findIndex(
-      ({ category }) => category === "Nouvelles saisons",
-    );
+      const momentIndex = updatedCatalogues.findIndex(
+        ({ category }) => category === "Nouvelles saisons",
+      );
 
-    let momentItem;
-    let resumeItem;
+      let momentItem;
+      let resumeItem;
 
-    if (momentIndex !== -1)
-      [momentItem] = updatedCatalogues.splice(momentIndex, 1);
+      if (momentIndex !== -1)
+        [momentItem] = updatedCatalogues.splice(momentIndex, 1);
 
-    if (historiques.length > 0) {
-      resumeItem = {
-        category: "Reprendre",
-        names: historiques.map(({ name }) => name),
-      };
-    }
+      if (historiques.length > 0) {
+        resumeItem = {
+          category: "Reprendre",
+          names: historiques.map(({ name }) => name),
+        };
+      }
 
-    if (momentItem) updatedCatalogues.unshift(momentItem);
-    if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
+      if (momentItem) updatedCatalogues.unshift(momentItem);
+      if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
-    setCatalogues(updatedCatalogues);
+      setCatalogues(updatedCatalogues);
+    }, 250);
   }, [historiques]);
 
   const goToAnime = useCallback(

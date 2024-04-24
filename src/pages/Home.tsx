@@ -98,11 +98,14 @@ const Home = () => {
               </Link>
             </li>
           )}
-          {anime?.options.EPISODES_OPTIONS && (
+          {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
             <li className="text-4xl transition-colors hover:text-main">
               <Link
                 href={{
-                  pathname: "/Saisons",
+                  pathname:
+                    Object.keys(anime.options.saisons).length > 1
+                      ? "/Saisons"
+                      : `/Episodes`,
                   query: { anime: anime?.anime },
                 }}
               >
