@@ -62,7 +62,7 @@ export default function EpisodeComponent({
       key={episodeNumber.toString() + episodeIndex.toString()}
       onClick={handleEpisode}
     >
-      <span className="transition-all duration-200 ease-out group-hover:text-white">
+      <span className="transition-colors group-hover:text-white">
         {episodeNumber}{" "}
         {AnimeInfo?.saison === "1" || episodeSpecial ? "" : `(${episodeIndex})`}
       </span>{" "}
@@ -73,7 +73,7 @@ export default function EpisodeComponent({
             ? null
             : (el) => (namesRef.current[episodeIndex - 1] = el!)
         }
-        className="text-white transition-all duration-200 ease-out hover:text-main group-hover:text-main"
+        className="text-white transition-colors hover:text-main group-hover:text-main"
       >
         {episodeTitle}
       </span>

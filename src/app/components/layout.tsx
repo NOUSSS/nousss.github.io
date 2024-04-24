@@ -85,7 +85,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </Head>
 
       <div
-        className={`${isVisible ? "" : "hidden"} fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-neutral-700 text-sm shadow-xl backdrop-blur-md transition-all duration-300 ease-out max-sm:w-full`}
+        className={`${isVisible ? "" : "hidden"} fixed left-2/4 top-2/4 z-[2026] h-[420px] w-[600px] -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-neutral-700 text-sm shadow-xl backdrop-blur-md max-sm:w-full`}
         ref={searchContainerRef}
       >
         <div className="flex h-16 items-center border-b border-neutral-700 bg-zinc-900 bg-opacity-50 p-2">
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
           <Link href="/">
             <h1
-              className="group flex items-center gap-3 tracking-widest transition-all duration-300 ease-out"
+              className="group flex items-center gap-3 tracking-widest"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}

@@ -74,15 +74,13 @@ const Home = () => {
           <div>
             Catégories
             <p className="ml-1 text-sm text-zinc-300">
-              {anime?.category && anime.category.join(", ")}
+              {anime?.category.join(", ")}
             </p>
           </div>
 
           <div className="mt-4">
             Synopsis
-            <p className="ml-1 text-sm text-zinc-300">
-              {anime?.synopsis && anime.synopsis}
-            </p>
+            <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
           </div>
         </div>
       </div>
@@ -90,8 +88,9 @@ const Home = () => {
       <div ref={choicesRef} className="flex justify-center text-left">
         <ul>
           {anime?.options.FILM_OPTIONS && (
-            <li className="text-4xl transition-colors hover:text-main">
+            <li className="text-4xl">
               <Link
+                className="transition-colors hover:text-main"
                 href={{ pathname: "/Films", query: { anime: anime?.anime } }}
               >
                 Films
@@ -99,8 +98,9 @@ const Home = () => {
             </li>
           )}
           {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
-            <li className="text-4xl transition-colors hover:text-main">
+            <li className="text-4xl">
               <Link
+                className="transition-colors hover:text-main"
                 href={{
                   pathname:
                     Object.keys(anime.options.saisons).length > 1
@@ -115,8 +115,9 @@ const Home = () => {
           )}
 
           {anime?.options.SCANS_OPTIONS && (
-            <li className="text-4xl transition-colors hover:text-main">
+            <li className="text-4xl">
               <Link
+                className="transition-colors hover:text-main"
                 href={{ pathname: "/Scans", query: { anime: anime.anime } }}
               >
                 {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
