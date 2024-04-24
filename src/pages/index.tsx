@@ -164,8 +164,7 @@ export default function Accueil() {
         ({ category }) => category === "Nouvelles saisons",
       );
 
-      let momentItem;
-      let resumeItem;
+      let momentItem, resumeItem;
 
       if (momentIndex !== -1)
         [momentItem] = updatedCatalogues.splice(momentIndex, 1);
@@ -181,7 +180,7 @@ export default function Accueil() {
       if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
       setCatalogues(updatedCatalogues);
-    }, 250);
+    }, 500);
   }, [historiques]);
 
   const goToAnime = useCallback(

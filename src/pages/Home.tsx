@@ -106,7 +106,7 @@ const Home = () => {
                     Object.keys(anime.options.saisons).length > 1
                       ? "/Saisons"
                       : `/Episodes`,
-                  query: { anime: anime?.anime },
+                  query: { anime: anime.anime },
                 }}
               >
                 Saisons
@@ -117,7 +117,7 @@ const Home = () => {
           {anime?.options.SCANS_OPTIONS && (
             <li className="text-4xl transition-colors hover:text-main">
               <Link
-                href={{ pathname: "/Scans", query: { anime: anime?.anime } }}
+                href={{ pathname: "/Scans", query: { anime: anime.anime } }}
               >
                 {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
               </Link>
