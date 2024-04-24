@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -69,21 +70,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-F9N37DQQDM"
-        ></script>
-
-        <script>
-          {`
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F9N37DQQDM');
-`}
-        </script>
-
         <meta charSet="UTF-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -180,6 +166,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </nav>
       </header>
+
+      <GoogleAnalytics gaId="G-F9N37DQQDM" />
 
       {children}
     </>
