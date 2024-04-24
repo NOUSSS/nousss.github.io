@@ -3,6 +3,7 @@ import { Anime } from "@/app/class/anime";
 import { Options } from "@/typings/types";
 
 import Affiche from "@/assets/Animes/ViralHit/affiche.jpeg";
+import names from "./constants/episodes-names";
 
 class ViralHit extends Anime {
   constructor() {
@@ -39,6 +40,8 @@ class ViralHit extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names: names,
     };
   }
 }
