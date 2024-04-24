@@ -230,7 +230,7 @@ export default function Accueil() {
           <Image
             alt="ambiance"
             src={ambiance.image}
-            className={`h-full w-full scale-110 transition-opacity`}
+            className="h-full w-full scale-110 transition-opacity"
             style={{ opacity: ambiance.opacity }}
           />
         </div>
