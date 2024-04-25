@@ -139,8 +139,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </h1>
           </Link>
 
-          <div className="flex items-center gap-3 *:flex *:cursor-pointer *:items-center *:rounded-md *:border *:border-neutral-700 *:bg-zinc-800 *:bg-opacity-50 *:p-2">
-            <Link href="/Settings" title="Paramètres">
+          <div className="flex items-center gap-3 *:flex *:cursor-pointer *:items-center *:rounded-md *:p-2">
+            <Link
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              href="/Settings"
+              title="Paramètres"
+            >
               <Settings className="lg:mr-3" />
 
               <span className="text-base text-white max-lg:hidden">
@@ -148,7 +152,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </span>
             </Link>
 
-            <Link href="/Catalogue" title="Catalogue">
+            <Link
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              href="/Catalogue"
+              title="Catalogue"
+            >
               <Gallery className="lg:mr-3" />
 
               <span className="text-base text-white max-lg:hidden">
@@ -156,7 +164,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </span>
             </Link>
 
-            <div onClick={() => setIsVisible(!isVisible)}>
+            <div
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              onClick={() => setIsVisible(!isVisible)}
+            >
               <SearchIcon className="lg:mr-3" />
 
               <span className="text-base text-white max-lg:hidden">
