@@ -7,6 +7,10 @@ const names = [
     name: "Devenir plus fort",
     index: 2,
   },
+  {
+    name: "Rencard",
+    index: 3,
+  },
 ];
 
 export default names;
