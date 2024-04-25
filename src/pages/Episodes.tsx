@@ -427,20 +427,6 @@ const Episodes = () => {
         ) : null}
       </Head>
 
-      {anime?.anime && (
-        <h1 className="animate-title text-5xl">
-          <Link
-            className="font-normal"
-            href={{
-              pathname: "/Saisons",
-              query: { anime: anime!.anime.anime },
-            }}
-          >
-            {anime.anime.anime}
-          </Link>
-        </h1>
-      )}
-
       <p className="m-4 text-4xl">{anime?.saisonTitle}</p>
 
       {disclamerMessage.current ? (
@@ -510,9 +496,23 @@ const Episodes = () => {
 
       <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
-          <p className="text-left text-xl drop-shadow-xl sm:text-2xl">
-            Episode {anime?.episodeTitle}
-          </p>
+          <div className="flex flex-col text-left">
+            {anime?.anime && (
+              <Link
+                className="text-base font-normal text-zinc-400"
+                href={{
+                  pathname: "/Saisons",
+                  query: { anime: anime!.anime.anime },
+                }}
+              >
+                {anime.anime.anime}
+              </Link>
+            )}
+
+            <p className="text-2xl drop-shadow-xl">
+              Episode {anime?.episodeTitle}
+            </p>
+          </div>
 
           <div className="my-8 flex gap-5 lg:max-w-[600px]">
             {anime.anime?.anime &&
