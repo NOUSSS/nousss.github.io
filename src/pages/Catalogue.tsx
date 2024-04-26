@@ -76,7 +76,7 @@ export default function Catalogue() {
               <div className="relative top-1 overflow-hidden rounded-md shadow-xl">
                 {image && (
                   <Image
-                    className="z-[-1] h-48 min-h-48 rounded-md transition-transform group-hover:scale-105"
+                    className="z-[-1] h-44 min-h-44 rounded-md transition-transform group-hover:scale-105"
                     src={image}
                     alt={`Affiche de l'anime ${anime}`}
                   />
