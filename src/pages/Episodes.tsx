@@ -383,11 +383,7 @@ const Episodes = () => {
 
           updateAnime((currentState) => ({
             ...currentState,
-            saisonTitle: (
-              <span>
-                {saisonName} ({anime.currentLecteur?.length})
-              </span>
-            ),
+            saisonTitle: `${saisonName} (${anime.currentLecteur?.length})`
           }));
         }, 100);
 
