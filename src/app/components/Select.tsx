@@ -59,10 +59,13 @@ export default function Select({
     }
   };
 
-  useEffect(() => toggleBodyScroll(isSelected), [isSelected]);
+  useEffect(() => {
+    toggleBodyScroll(isSelected);
+    console.log(isSelected);
+  }, [isSelected]);
 
   const appear = () => {
-    setIsSelected(true);
+    setIsSelected(!svgRef.current?.classList.contains("rotate-180"));
 
     if (labelRef.current && menuRef.current && svgRef.current) {
       if (svgRef.current.classList.contains("rotate-180")) {
