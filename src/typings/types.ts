@@ -33,7 +33,7 @@ export namespace Anime {
     currentLecteur?: string[];
     lecteurs?: LecteurReturnType;
     saison?: string;
-    saisonTitle?: React.ReactNode;
+    saisonTitle?: string;
     episodeTitle?: React.ReactNode;
     episodes?: React.ReactNode[];
   }
