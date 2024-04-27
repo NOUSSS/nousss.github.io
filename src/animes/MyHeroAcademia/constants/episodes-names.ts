@@ -144,6 +144,7 @@ const names = [
   { index: "140", name: "Toshinori Yagi: Embers" },
   { index: "141", name: "Heroes: Thoughts" },
   { index: "142", name: "Tomura Shigaraki : Destruction" },
+  { index: "143", name: "Une tornade de puissance venue de l'ouest" },
 ];
 
 export default names;
