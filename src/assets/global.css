@@ -65,9 +65,14 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply bg-neutral-800;
+  @apply rounded-md bg-neutral-800;
 }
 
 *::-webkit-scrollbar {
   width: 12px;
+  @apply bg-opacity-50;
+}
+
+body::-webkit-scrollbar {
+  @apply bg-neutral-500;
 }
