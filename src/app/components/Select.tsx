@@ -40,24 +40,17 @@ export default function Select({
   const labelRef = useRef<HTMLLabelElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-
   const itemsRef = useRef<ItemsRef[]>([]);
 
   useEffect(() => {
-    if (selectedItems.length === 0) {
-      if (placeholderRef.current) {
-        placeholderRef.current.innerText = placeholder;
-      }
-    }
+    if (placeholderRef.current && selectedItems.length === 0)
+      placeholderRef.current.innerText = placeholder;
   }, [selectedItems]);
 
-  const toggleBodyScroll = (toggle: boolean): void => {
-    if (toggle) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  };
+  const toggleBodyScroll = (toggle: boolean): void =>
+    toggle
+      ? document.body.classList.add("overflow-hidden")
+      : document.body.classList.remove("overflow-hidden");
 
   useEffect(() => toggleBodyScroll(isSelected), [isSelected]);
 
