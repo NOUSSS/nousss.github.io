@@ -486,7 +486,7 @@ const Episodes = () => {
           <div className="flex flex-col text-left">
             {anime?.anime && anime.saisonTitle && (
               <Link
-                className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
+                className="text-sm text-zinc-400 hover:underline sm:text-base"
                 href={{
                   pathname: "/Saisons",
                   query: { anime: anime!.anime.anime },
@@ -496,7 +496,7 @@ const Episodes = () => {
               </Link>
             )}
 
-            <p className="text-xl drop-shadow-xl sm:text-2xl">
+            <p className="text-xl font-normal drop-shadow-xl sm:text-2xl">
               Episode {anime?.episodeTitle}
             </p>
           </div>
