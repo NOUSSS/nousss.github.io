@@ -383,7 +383,7 @@ const Episodes = () => {
 
           updateAnime((currentState) => ({
             ...currentState,
-            saisonTitle: `${saisonName} (${anime.currentLecteur?.length})`
+            saisonTitle: `${saisonName} (${anime.currentLecteur?.length})`,
           }));
         }, 100);
 
@@ -481,12 +481,12 @@ const Episodes = () => {
         <iframe className="ambiance" src={anime?.video}></iframe>
       </div>
 
-      <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:flex-row xl:w-[1200px]">
+      <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
-          <div className="flex flex-col text-left">
+          <div className="flex w-full flex-col text-left md:w-auto">
             {anime?.anime && anime.saisonTitle && (
               <Link
-                className="text-sm text-zinc-400 font-normal hover:underline sm:text-base"
+                className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
                 href={{
                   pathname: "/Saisons",
                   query: { anime: anime!.anime.anime },
@@ -501,7 +501,7 @@ const Episodes = () => {
             </p>
           </div>
 
-          <div className="my-8 flex gap-5 lg:max-w-[600px]">
+          <div className="my-8 flex w-full justify-between gap-5 md:w-auto md:justify-center lg:max-w-[600px]">
             {anime.anime?.anime &&
             localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
               <button
