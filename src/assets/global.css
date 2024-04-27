@@ -65,14 +65,9 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  border: 1px solid var(--mainColor);
+  @apply bg-neutral-800;
 }
 
 *::-webkit-scrollbar {
-  @apply w-3 bg-transparent;
-}
-
-.select::-webkit-scrollbar-thumb {
-  @apply border-transparent bg-zinc-500;
+  width: 12px;
 }
