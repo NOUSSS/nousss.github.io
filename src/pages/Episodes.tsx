@@ -384,16 +384,9 @@ const Episodes = () => {
           updateAnime((currentState) => ({
             ...currentState,
             saisonTitle: (
-              <>
-                <span>
-                  {saisonName} ({anime.currentLecteur?.length})
-                </span>{" "}
-                [
-                <span className="text-white">
-                  {anime?.lang?.toUpperCase() || "VOSTFR"}
-                </span>
-                ]
-              </>
+              <span>
+                {saisonName} ({anime.currentLecteur?.length})
+              </span>
             ),
           }));
         }, 100);
@@ -426,8 +419,6 @@ const Episodes = () => {
           <title>{anime.anime.anime} - Episodes | Mugiwara-no Streaming</title>
         ) : null}
       </Head>
-
-      <p className="m-4 text-4xl">{anime?.saisonTitle}</p>
 
       {disclamerMessage.current ? (
         <p
@@ -497,7 +488,7 @@ const Episodes = () => {
       <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
           <div className="flex flex-col text-left">
-            {anime?.anime && (
+            {anime?.anime && anime.saisonTitle && (
               <Link
                 className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
                 href={{
@@ -505,7 +496,7 @@ const Episodes = () => {
                   query: { anime: anime!.anime.anime },
                 }}
               >
-                {anime.anime.anime}
+                {anime.anime.anime} | {anime.saisonTitle}
               </Link>
             )}
 
