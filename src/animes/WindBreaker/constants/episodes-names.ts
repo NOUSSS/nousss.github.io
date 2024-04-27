@@ -11,6 +11,10 @@ const episodes = [
     index: "3",
     name: "Celui qui se tient au sommet",
   },
+  {
+    index: "4",
+    name: "Conflit",
+  },
 ];
 
 export default episodes;
