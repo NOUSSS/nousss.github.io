@@ -434,7 +434,7 @@ const Episodes = () => {
           />
         )}
 
-      <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
+      <div className="flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
           <div className="flex w-full flex-col text-left md:w-auto">
             {anime?.anime && anime.saisonTitle && (
@@ -454,7 +454,7 @@ const Episodes = () => {
             </p>
           </div>
 
-          <div className="my-8 flex w-full justify-between gap-5 md:w-auto md:justify-center lg:max-w-[600px]">
+          <div className="my-8 flex w-full justify-between gap-5 lg:max-w-[600px]">
             {anime.anime?.anime &&
             localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
               <button
