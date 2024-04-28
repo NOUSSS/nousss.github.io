@@ -16,13 +16,9 @@ import { useScript } from "@/app/lib/hooks/useScript";
 import { useRouter } from "next/router";
 
 import SearchBar from "@/app/components/SearchBar";
-import Select from "@/app/components/Select";
-import getHostname from "@/app/lib/getHostname";
-
 import Head from "next/head";
 import useAnime from "@/app/lib/hooks/useAnime";
-import clearCache from "@/app/cache/ClearCache";
-import Link from "next/link";
+import Watcher from "@/app/components/Watcher";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
@@ -33,8 +29,6 @@ const Films = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const filmsRef = useRef<HTMLUListElement[]>([]);
-  const placeholderLangRef = useRef<HTMLParagraphElement>(null);
-  const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 
   const status = useScript(script, {
     removeOnUnmount: true,
@@ -63,10 +57,6 @@ const Films = () => {
         anime: getAnime(currentAnime),
         lang,
       });
-
-      if (placeholderLangRef.current) {
-        placeholderLangRef.current.innerText = formatLang(lang);
-      }
     }
   }, []);
 
@@ -163,76 +153,24 @@ const Films = () => {
         ) : null}
       </Head>
 
-      {anime?.anime && (
-        <h1 className="animate-title text-5xl">
-          <Link
-            className="font-normal"
-            href={{
-              pathname: "/Home",
-              query: { anime: anime!.anime.anime },
-            }}
-          >
-            {anime.anime.anime}
-          </Link>
-        </h1>
-      )}
-
-      <div className="m-4 mb-12 text-4xl">{anime?.filmTitle}</div>
-
-      <div className="flex gap-11 max-md:flex-col max-md:gap-2">
-        <Select
-          placeholder="Changer de langue"
-          placeholderRef={placeholderLangRef}
-          items={[
-            {
-              name: "VostFR",
-              value: "vostfr",
-              disabled: anime?.lang === "vostfr" ? true : false,
-            },
-            {
-              name: "VF",
-              value: "vf",
-              disabled: anime?.lang === "vostfr" ? false : true,
-            },
-          ]}
-          onSelect={(items) => {
-            clearCache();
-
-            updateAnime((currentState) => ({
-              ...currentState,
-              lang: items[0].value,
-            }));
-          }}
-        />
-
-        {anime.lecteurs ? (
-          Object.keys(anime.lecteurs).length > 1 ? (
-            <Select
-              placeholder="Changer de lecteur"
-              placeholderRef={placeholderLecteurRef}
-              onSelect={(items) => {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  lecteur: items[0].value,
-                  currentLecteur: anime?.lecteurs?.[items[0].value],
-                }));
-              }}
-              items={Object.keys(anime.lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(anime.lecteurs!)[i][0]),
-                value: l,
-                disabled: anime?.lecteur === l ? true : false,
-              }))}
-            />
-          ) : null
-        ) : null}
-      </div>
-
-      {anime.video ? (
-        <div ref={containerRef} className="container">
-          <iframe className="video" src={anime.video} allowFullScreen></iframe>
-          <iframe className="ambiance" src={anime.video}></iframe>
-        </div>
-      ) : null}
+      {anime.video &&
+        anime.anime?.anime &&
+        anime.lang &&
+        anime.lecteur &&
+        anime.lecteurs &&
+        anime.filmTitle && (
+          <Watcher
+            prefix={false}
+            video={anime.video}
+            context="Films"
+            anime={anime.anime.anime}
+            lang={anime.lang}
+            name={true}
+            lecteur={anime.lecteur}
+            lecteurs={anime.lecteurs}
+            episode={anime.filmTitle as string}
+          />
+        )}
 
       <SearchBar
         className="mt-6"

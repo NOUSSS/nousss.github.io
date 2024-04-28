@@ -20,8 +20,6 @@ export async function appearVideo(
       ({ anime }) => anime.toLowerCase() === Anime?.anime?.anime.toLowerCase(),
     )?.options.FILM_OPTIONS || {};
 
-  const lang = localStorage.getItem(`${Anime?.anime?.anime}--film--lang`);
-
   window.scrollTo({
     top: containerRef.current?.offsetTop,
     behavior: "smooth",
@@ -35,12 +33,7 @@ export async function appearVideo(
     updateAnime((currentState) => ({
       ...currentState,
       video: url,
-      filmTitle: (
-        <>
-          <span>{Object.values(names)[Number(index)].name}</span> [
-          <span className="text-white">{lang?.toUpperCase()}</span>]
-        </>
-      ),
+      filmTitle: `${Object.values(names)[Number(index)].name}`,
     }));
   }
 

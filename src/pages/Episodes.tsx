@@ -29,6 +29,7 @@ import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import getNote from "@/app/utils/Episodes/getNote";
 import Link from "next/link";
+import Watcher from "@/app/components/Watcher";
 
 const Episodes = () => {
   const router = useRouter();
@@ -423,63 +424,21 @@ const Episodes = () => {
         ></p>
       ) : null}
 
-      <div className="mt-12 flex gap-11 max-lg:flex-col max-lg:gap-2">
-        <Select
-          placeholder="Changer de langue"
-          placeholderRef={placeholderLangRef}
-          items={[
-            {
-              name: "VostFR",
-              value: "vostfr",
-              disabled: anime?.lang === "vostfr" ? true : false,
-            },
-            {
-              name: "VF",
-              value: "vf",
-              disabled: anime?.lang === "vostfr" ? false : true,
-            },
-          ]}
-          onSelect={(value) => {
-            ClearCache();
-
-            updateAnime((currentState) => ({
-              ...currentState,
-              lang: value[0].value,
-            }));
-          }}
-        />
-
-        {anime.lecteurs ? (
-          Object.keys(anime.lecteurs).length > 1 ? (
-            <Select
-              placeholder="Changer de lecteur"
-              placeholderRef={placeholderLecteurRef}
-              onSelect={(items) => {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  lecteur: items[0].value,
-                  currentLecteur: anime.lecteurs?.[items[0].value],
-                }));
-
-                window.localStorage.setItem(
-                  `${anime.anime?.anime}-${anime.saison}--lecteur`,
-                  items[0].value,
-                );
-              }}
-              items={Object.keys(anime.lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(anime.lecteurs!)[i][0]),
-                value: l,
-                disabled: anime?.lecteur === l ? true : false,
-              }))}
-            />
-          ) : null
-        ) : null}
-      </div>
-
-      <div ref={containerRef} className="container">
-        <iframe className="video" src={anime?.video} allowFullScreen></iframe>
-        <iframe className="ambiance" src={anime?.video}></iframe>
-      </div>
+      {anime.anime?.anime &&
+        anime.video &&
+        anime.lecteurs &&
+        anime.lecteur &&
+        anime.episodeTitle &&
+        anime.saisonTitle &&
+        anime.lang && (
+          <Watcher
+            video={anime.video}
+            lecteurs={anime.lecteurs}
+            anime={anime.anime.anime}
+            lang={anime.lang}
+            lecteur={anime.lecteur}
+          />
+        )}
 
       <div className="mt-4 flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">
