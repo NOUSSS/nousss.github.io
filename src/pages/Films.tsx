@@ -9,7 +9,7 @@ import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { getLecteur } from "@/app/lib/getLecteur";
 import { getAnime } from "@/app/lib/getAnime";
-import { formatLang, langType } from "@/app/lib/formatLang";
+import { langType } from "@/app/lib/formatLang";
 
 import { toast } from "sonner";
 import { useScript } from "@/app/lib/hooks/useScript";
@@ -140,7 +140,7 @@ const Films = () => {
           containerRef,
         );
 
-        getFilms(anime!, updateAnime, containerRef);
+        getFilms(anime!, updateAnime);
       }, 400);
     }
   }, [status, anime?.currentLecteur, anime?.lang]);
@@ -169,17 +169,31 @@ const Films = () => {
             lecteur={anime.lecteur}
             lecteurs={anime.lecteurs}
             episode={anime.filmTitle as string}
+            containerRef={containerRef}
+            updateAnime={updateAnime}
           />
         )}
 
       <SearchBar
-        className="mt-6"
+        className="my-6"
         placeholder="Rechercher un film"
         containerRef={filmsRef}
         query="id"
       />
 
-      <ul ref={(el) => (filmsRef.current[0] = el!)}>{anime?.films}</ul>
+      <ul ref={(el) => (filmsRef.current[0] = el!)}>
+        {anime.films?.map(({ url, index, element }) => (
+          <div
+            key={index}
+            className="group m-4 inline-flex w-24 cursor-pointer flex-col items-center gap-2.5 md:w-32"
+            onClick={() => {
+              appearVideo(`${url} ${index}`, anime, updateAnime, containerRef);
+            }}
+          >
+            {element}
+          </div>
+        ))}
+      </ul>
 
       <Footer style={true} media />
     </main>

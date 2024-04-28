@@ -15,19 +15,17 @@ import { useSearchParams } from "next/navigation";
 import { langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
+import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
+import random from "@/app/lib/random";
+import getNote from "@/app/utils/Episodes/getNote";
+
+import useAnime from "@/app/lib/hooks/useAnime";
+
 import SearchBar from "@/app/components/SearchBar";
-import Select from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
-
-import random from "@/app/lib/random";
-import getHostname from "@/app/lib/getHostname";
-
 import Switch from "@/app/components/Switch";
-import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
-import useAnime from "@/app/lib/hooks/useAnime";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
-import getNote from "@/app/utils/Episodes/getNote";
 import Link from "next/link";
 import Watcher from "@/app/components/Watcher";
 
@@ -51,8 +49,6 @@ const Episodes = () => {
 
   const episodeTitleRef = useRef<HTMLParagraphElement>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
-  const placeholderLangRef = useRef<HTMLParagraphElement>(null);
-  const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
 
@@ -437,6 +433,8 @@ const Episodes = () => {
             anime={anime.anime.anime}
             lang={anime.lang}
             lecteur={anime.lecteur}
+            containerRef={containerRef}
+            updateAnime={updateAnime}
           />
         )}
 

@@ -38,6 +38,12 @@ export namespace Anime {
     episodes?: React.ReactNode[];
   }
 
+  export interface FilmNodes {
+    element: React.ReactNode;
+    url: string;
+    index: number;
+  }
+
   export interface AnimeFilmsProps extends AnimeInfoProps {
     video?: string;
     lang?: string;
@@ -45,7 +51,7 @@ export namespace Anime {
     currentLecteur?: string[];
     lecteurs?: LecteurReturnType;
     filmTitle?: React.ReactNode;
-    films?: React.ReactNode[];
+    films?: FilmNodes[];
   }
 
   interface SaisonsProps {

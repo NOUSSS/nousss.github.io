@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { RefObject, useRef } from "react";
 import { Anime } from "@/typings/types";
 
 import getHostname from "../lib/getHostname";
@@ -18,13 +18,15 @@ interface WatcherProps {
   prefix?: boolean;
   name?: boolean;
 
-  updateAnime?: (
+  updateAnime: (
     newData:
       | Partial<Anime.AnimeEpisodesProps | Anime.AnimeFilmsProps>
       | ((
           prevState: Anime.AnimeEpisodesProps | Anime.AnimeFilmsProps,
         ) => Partial<Anime.AnimeEpisodesProps | Anime.AnimeFilmsProps>),
   ) => void;
+
+  containerRef: RefObject<HTMLDivElement>;
 }
 
 export default function Watcher({
@@ -40,8 +42,8 @@ export default function Watcher({
   prefix,
 
   updateAnime,
+  containerRef,
 }: WatcherProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const placeholderLangRef = useRef<HTMLParagraphElement>(null);
   const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 

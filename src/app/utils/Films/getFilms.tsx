@@ -1,9 +1,7 @@
 import Image from "next/image";
 
 import { getLecteur } from "@/app/lib/getLecteur";
-import { appearVideo } from "./appearVideo";
 import { Anime } from "@/typings/types";
-import { RefObject } from "react";
 
 export function getFilms(
   Anime: Anime.AnimeFilmsProps,
@@ -13,13 +11,11 @@ export function getFilms(
       | Partial<Anime.AnimeFilmsProps>
       | ((prevState: Anime.AnimeFilmsProps) => Partial<Anime.AnimeFilmsProps>),
   ) => void,
-
-  containerRef: RefObject<HTMLElement>,
 ) {
   let LecteursFilms: string[] = [];
   const Lecteurs = getLecteur();
 
-  const filmsNodes: React.ReactNode[] = [];
+  const filmsNodes: Anime.FilmNodes[] = [];
 
   if (Anime?.lecteur) {
     LecteursFilms = Lecteurs[Anime?.lecteur]!;
@@ -44,27 +40,24 @@ export function getFilms(
           : names[i].aliases?.join(", ")
       }`;
 
-      filmsNodes.push(
-        <div
-          id={id}
-          key={id}
-          className="group m-8 inline-flex w-20 cursor-pointer flex-col gap-3 overflow-hidden rounded-md"
-        >
-          <div className="overflow-hidden rounded-md">
-            <Image
-              className="h-28 min-h-28 rounded-md transition-transform group-hover:scale-105"
-              src={names[i].image()}
-              id={`${url} ${i}`}
-              onClick={() => {
-                appearVideo(`${url} ${i}`, Anime, updateAnime, containerRef);
-              }}
-              alt="poster de film"
-            />
-          </div>
+      filmsNodes.push({
+        element: (
+          <>
+            <div className="flex-col overflow-hidden rounded-md text-center">
+              <Image
+                src={names[i].image()}
+                id={i.toString()}
+                alt="poster de film"
+                className="h-36 min-h-36 w-24 min-w-24 rounded-md transition-transform group-hover:scale-105 md:h-44 md:max-h-44 md:w-32 md:min-w-32"
+              />
+            </div>
 
-          <p className="text-sm">{names[i].name}</p>
-        </div>,
-      );
+            <p className="text-sm md:text-base">{names[i].name}</p>
+          </>
+        ),
+        url,
+        index: i,
+      });
     }
   }
 

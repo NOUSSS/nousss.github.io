@@ -98,7 +98,7 @@ const Saisons = () => {
         ref={(el) => (saisonsRef.current[0] = el!)}
       >
         {anime?.saisons?.map(({ element, id }, index) => (
-          <div
+          <li
             key={id}
             id={id}
             className="group m-4 inline-flex w-24 cursor-pointer flex-col items-center gap-2.5 md:w-32"
@@ -115,7 +115,7 @@ const Saisons = () => {
             }}
           >
             {element}
-          </div>
+          </li>
         ))}
       </ul>
 
