@@ -41,7 +41,7 @@ export namespace Anime {
   export interface FilmNodes {
     element: React.ReactNode;
     url: string;
-    index: number;
+    id: string;
   }
 
   export interface AnimeFilmsProps extends AnimeInfoProps {

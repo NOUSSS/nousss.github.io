@@ -180,16 +180,17 @@ const Films = () => {
       />
 
       <ul ref={(el) => (filmsRef.current[0] = el!)}>
-        {anime.films?.map(({ url, index, element }) => (
-          <div
-            key={index}
+        {anime.films?.map(({ url, id, element }, index) => (
+          <li
+            key={id}
+            id={id}
             className="group m-4 inline-flex w-24 cursor-pointer flex-col items-center gap-2.5 md:w-32"
             onClick={() => {
               appearVideo(`${url} ${index}`, anime, updateAnime, containerRef);
             }}
           >
             {element}
-          </div>
+          </li>
         ))}
       </ul>
 
