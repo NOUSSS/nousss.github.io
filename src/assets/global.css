@@ -55,7 +55,8 @@
     font-weight: 400;
   }
 
-  input {
+  input,
+  textarea {
     @apply focus:outline-none;
   }
 

@@ -52,11 +52,11 @@ export default function Report() {
           required
           type="text"
           placeholder="Nom"
-          className="rounded-md border border-neutral-700 bg-transparent p-2 focus:outline-none"
+          className="rounded-md border border-neutral-700 bg-transparent p-2"
         />
 
         <textarea
-          className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2 focus:outline-none"
+          className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2"
           value={message}
           onChange={({ target: { value } }) => setMessage(value)}
           placeholder="Signalement"
