@@ -3,23 +3,17 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { Footer } from "@/app/components/Footer";
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
+import { getCurrentAnime, getLecteur, getAnime, random } from "@/app/lib/";
 import { Anime as AnimeType } from "@/typings/types";
-import { getLecteur } from "@/app/lib/getLecteur";
 import { useRouter } from "next/router";
-import { getAnime } from "@/app/lib/getAnime";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
-import { useScript } from "@/app/lib/hooks/useScript";
+import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useSearchParams } from "next/navigation";
-import { langType } from "@/app/lib/formatLang";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
-import random from "@/app/lib/random";
 import getNote from "@/app/utils/Episodes/getNote";
-
-import useAnime from "@/app/lib/hooks/useAnime";
 
 import SearchBar from "@/app/components/SearchBar";
 import Head from "next/head";
@@ -28,6 +22,8 @@ import Switch from "@/app/components/Switch";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import Link from "next/link";
 import Watcher from "@/app/components/Watcher";
+
+type langType = "vostfr" | "vf";
 
 const Episodes = () => {
   const router = useRouter();

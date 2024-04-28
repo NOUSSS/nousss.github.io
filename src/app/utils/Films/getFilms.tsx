@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getLecteur } from "@/app/lib/getLecteur";
+import { getLecteur } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 
 export function getFilms(

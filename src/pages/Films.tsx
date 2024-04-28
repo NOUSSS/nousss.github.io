@@ -3,22 +3,20 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { Footer } from "@/app/components/Footer";
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
+import { getCurrentAnime, getLecteur, getAnime } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
 import { getFilms } from "@/app/utils/Films/getFilms";
-import { getLecteur } from "@/app/lib/getLecteur";
-import { getAnime } from "@/app/lib/getAnime";
-import { langType } from "@/app/lib/formatLang";
 
 import { toast } from "sonner";
-import { useScript } from "@/app/lib/hooks/useScript";
+import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
 
 import SearchBar from "@/app/components/SearchBar";
 import Head from "next/head";
-import useAnime from "@/app/lib/hooks/useAnime";
 import Watcher from "@/app/components/Watcher";
+
+type langType = "vostfr" | "vf";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});

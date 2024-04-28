@@ -1,4 +1,4 @@
-export const isMobile = () => {
+export default function isMobile() {
   if (typeof navigator !== "undefined") {
     const regExp =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
@@ -7,4 +7,4 @@ export const isMobile = () => {
   }
 
   return false;
-};
+}

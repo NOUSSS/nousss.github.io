@@ -1,4 +1,7 @@
 import { ANIMES } from "@/animes/constants";
 
-export const getAnime = (animeName: string) =>
-  ANIMES.find(({ anime }) => anime.toLowerCase() === animeName?.toLowerCase());
+export default function getAnime(animeName: string) {
+  return ANIMES.find(
+    ({ anime }) => anime.toLowerCase() === animeName?.toLowerCase(),
+  );
+}

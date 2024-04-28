@@ -3,7 +3,7 @@ import { Anime } from "@/typings/types";
 const contains = (episodes: string[], query: string): boolean =>
   episodes?.[0].includes(query) ?? false;
 
-export const getLecteur = (): Anime.LecteurReturnType => {
+export default function getLecteur(): Anime.LecteurReturnType {
   const eps = ["eps1", "eps2", "eps3", "eps4"];
 
   const { vkEps, sibnetEps, otherEps } = eps.reduce(
@@ -30,4 +30,4 @@ export const getLecteur = (): Anime.LecteurReturnType => {
   const orderedEps = { ...sibnetEps, ...vkEps, ...otherEps };
 
   return orderedEps;
-};
+}

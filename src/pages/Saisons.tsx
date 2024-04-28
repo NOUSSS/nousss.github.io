@@ -3,16 +3,15 @@
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
 import { Footer } from "@/app/components/Footer";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { getAnime } from "@/app/lib/getAnime";
+import { getCurrentAnime, getAnime } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
+import { useAnime } from "@/app/lib/hooks/";
 
 import Head from "next/head";
 import SearchBar from "@/app/components/SearchBar";
-import useAnime from "@/app/lib/hooks/useAnime";
 import Link from "next/link";
 
 const Saisons = () => {

@@ -1,6 +1,6 @@
-import { getAnime } from "./getAnime";
+import { getAnime } from "./";
 
-export const getWallpaper = (animeName: string) => {
+export default function getWallpaper(animeName: string) {
   const anime = getAnime(animeName);
   const images = anime?.options.saisons || anime?.options.FILM_OPTIONS?.names;
 
@@ -9,4 +9,4 @@ export const getWallpaper = (animeName: string) => {
 
     return values[values.length - 1].image();
   }
-};
+}

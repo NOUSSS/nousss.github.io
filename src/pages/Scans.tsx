@@ -5,21 +5,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
 import { Footer } from "@/app/components/Footer";
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { getAnime } from "@/app/lib/getAnime";
+import { getCurrentAnime, getAnime, random } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
 import { toast } from "sonner";
 import { icons } from "lucide-react";
-import { useScript } from "@/app/lib/hooks/useScript";
+
+import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
 import Select, { ItemsProps } from "@/app/components/Select";
 import ClearCache from "@/app/cache/ClearCache";
-import random from "@/app/lib/random";
-import useAnime from "@/app/lib/hooks/useAnime";
 import Link from "next/link";
 
 const Scans = () => {

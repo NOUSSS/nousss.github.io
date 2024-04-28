@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
+
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
 
@@ -12,11 +13,9 @@ import { Historique } from "@/typings/types";
 import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
-import { getAnime } from "@/app/lib/getAnime";
-import { shuffle } from "@/app/lib/shuffle";
+import { getAnime, shuffle, getWallpaper } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
-import { getWallpaper } from "@/app/lib/getWallpaper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";

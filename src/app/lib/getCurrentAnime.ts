@@ -1,7 +1,10 @@
-import { formatName } from "./formatName";
-import { getAnime } from "./getAnime";
+import { formatName, getAnime } from "./";
 
-export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
+export default function getCurrentAnime({
+  wSaison,
+}: {
+  wSaison: boolean;
+}): string {
   const hash = window.location.href;
   const queryParams = hash.substring(hash.indexOf("?") + 1);
 
@@ -44,4 +47,4 @@ export const getCurrentAnime = ({ wSaison }: { wSaison: boolean }): string => {
   }
 
   return formatName(anime)!;
-};
+}

@@ -8,7 +8,7 @@ interface NavMotionProps {
   size: number;
 }
 
-export default function NavMotion({
+export default function navMotion({
   container,
   direction,
   size,

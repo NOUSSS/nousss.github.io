@@ -1,5 +1,4 @@
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { getAnime } from "@/app/lib/getAnime";
+import { getCurrentAnime, getAnime } from "@/app/lib/";
 
 import Image from "next/image";
 

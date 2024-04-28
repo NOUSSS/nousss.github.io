@@ -1,6 +1,5 @@
 import { ANIMES } from "@/animes/constants";
-import { getAnime } from "@/app/lib/getAnime";
-import { getWallpaper } from "@/app/lib/getWallpaper";
+import { getAnime, getWallpaper } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 

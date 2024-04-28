@@ -1,5 +1,5 @@
 import { icons } from "lucide-react";
-import { initSearchBar } from "@/app/lib/initSearchBar";
+import { initSearchBar } from "@/app/lib/";
 import { RefObject, useRef } from "react";
 
 type QueryType = "id" | "innerText";

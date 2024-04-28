@@ -3,10 +3,10 @@
 import React, { RefObject } from "react";
 
 import { ANIMES } from "@/animes/constants";
+import { normalizeString } from "../lib/";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
-import normalizeString from "../lib/normalizeString";
 
 interface FastSearchBarProps {
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;

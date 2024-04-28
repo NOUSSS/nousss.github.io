@@ -4,14 +4,12 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-import NavMotion from "@/app/lib/navMotion";
+import { navMotion, getAnime, getCurrentAnime } from "@/app/lib/";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Footer } from "@/app/components/Footer";
 import { AnimesType } from "@/animes/constants";
-import { getCurrentAnime } from "@/app/lib/getCurrentAnime";
-import { getAnime } from "@/app/lib/getAnime";
 
 const Home = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
@@ -27,7 +25,7 @@ const Home = () => {
     if (currentAnime) {
       setAnime(currentAnime);
 
-      NavMotion({
+      navMotion({
         container: choicesRef,
         direction: "vertical",
         size: 2,

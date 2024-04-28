@@ -3,7 +3,7 @@ import normalizeString from "./normalizeString";
 
 type QueryType = "id" | "innerText";
 
-export function initSearchBar(
+export default function initSearchBar(
   input: RefObject<HTMLInputElement>,
   containerRef: RefObject<HTMLUListElement[]>,
   query: QueryType,

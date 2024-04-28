@@ -1,7 +1,7 @@
 import { RefObject, useRef } from "react";
 import { Anime } from "@/typings/types";
+import { getHostname } from "../lib/";
 
-import getHostname from "../lib/getHostname";
 import Select from "./Select";
 import clearCache from "../cache/ClearCache";
 import Link from "next/link";

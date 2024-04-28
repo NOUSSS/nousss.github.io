@@ -1,5 +1,5 @@
 import { Historique } from "@/typings/types";
-import { getAnime } from "@/app/lib/getAnime";
+import { getAnime } from "@/app/lib/";
 
 export const getCurrentChapitre = (
   animeName: string,
