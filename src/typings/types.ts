@@ -17,6 +17,30 @@ export interface Historique {
   film?: string;
 }
 
+export namespace Data {
+  export interface EpisodesData {
+    episode: string;
+    lang: string;
+    saison: string;
+    lecteur: string;
+    name: string;
+  }
+
+  export interface FilmsData {
+    film: string;
+    lang: string;
+    lecteur: string;
+    name: string;
+  }
+
+  export interface ScansData {
+    chapitre: string;
+    version: string;
+    name: string;
+    method: string;
+  }
+}
+
 export namespace Anime {
   export interface LecteurReturnType {
     [key: string]: string[];
@@ -68,6 +92,7 @@ export namespace Anime {
     scans?: React.ReactNode[];
     chapitresOptions?: ItemsProps[];
     version?: string;
+    method?: "horizontal" | "vertical";
   }
 }
 

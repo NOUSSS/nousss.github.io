@@ -4,13 +4,15 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
-import { Footer, Select } from "@/app/components/";
+import { Footer, Select, SelectDouble } from "@/app/components/";
 import { getCurrentAnime, getAnime, random } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
 import { toast } from "sonner";
 import { icons } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
@@ -19,6 +21,10 @@ import { ItemsProps } from "@/app/components/Select";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 import Link from "next/link";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import Image from "next/image";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -66,9 +72,22 @@ const Scans = () => {
         `${currentAnime.anime}--version`,
       );
 
+      const lastMethod = localStorage.getItem(`${currentAnime.anime}--method`);
+
       if (lastVersion) {
         updateAnime({ version: lastVersion });
       }
+
+      console.log(
+        lastMethod ? (lastMethod as "horizontal" | "vertical") : "vertical",
+      );
+
+      updateAnime((currentState) => ({
+        ...currentState,
+        method: lastMethod
+          ? (lastMethod as "horizontal" | "vertical")
+          : "vertical",
+      }));
     }
   }, []);
 
@@ -192,6 +211,33 @@ const Scans = () => {
       )}
 
       <div className="relative top-12">
+        <div className="mb-4">
+          {anime?.method && (
+            <SelectDouble
+              items={[
+                {
+                  name: "Horizontal",
+                  value: "horizontal",
+                  defaultValue: anime.method === "horizontal",
+                },
+                {
+                  name: "Vertical",
+                  value: "vertical",
+                  defaultValue: anime.method === "vertical",
+                },
+              ]}
+              click={(value) => {
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  method: value as "horizontal" | "vertical",
+                }));
+
+                localStorage.setItem(`${anime.anime?.anime}--method`, value);
+              }}
+            />
+          )}
+        </div>
+
         <Select
           scroll={true}
           onSelect={(items) => {
@@ -318,7 +364,19 @@ const Scans = () => {
       </div>
 
       <div className="relative -top-16 -mb-32 before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
-        {anime?.scans}
+        {anime.method === "vertical" ? (
+          anime?.scans
+        ) : (
+          <Swiper
+            slidesPerView={"auto"}
+            pagination={{ type: "progressbar", clickable: true }}
+            modules={[Pagination]}
+          >
+            {anime.scans?.map((e) => (
+              <SwiperSlide className="mt-4 justify-center">{e}</SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
 
       <div className="relative top-24 mb-60 flex flex-col gap-4">
