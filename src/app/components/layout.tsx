@@ -142,6 +142,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="flex items-center gap-3 *:flex *:items-center *:rounded-md *:p-2">
             <Link
               className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              href="/Catalogue"
+              title="Catalogue"
+            >
+              <Gallery className="mr-3" />
+
+              <span className="text-base text-white">Catalogue</span>
+            </Link>
+
+            <Link
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
               href="/Settings"
               title="Paramètres"
             >
@@ -149,18 +159,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               <span className="text-base text-white max-lg:hidden">
                 Paramètres
-              </span>
-            </Link>
-
-            <Link
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
-              href="/Catalogue"
-              title="Catalogue"
-            >
-              <Gallery className="lg:mr-3" />
-
-              <span className="text-base text-white max-lg:hidden">
-                Catalogue
               </span>
             </Link>
 
