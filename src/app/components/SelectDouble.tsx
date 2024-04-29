@@ -37,8 +37,8 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
   }, [selected, follower]);
 
   return (
-    <div className="h-12 w-60 rounded-full bg-zinc-800">
-      <div className="relative z-50 flex h-full w-full items-center justify-around text-lg">
+    <div className="h-12 w-60 rounded-full bg-zinc-800 bg-opacity-60">
+      <div className="relative z-50 flex h-full w-full items-center justify-around text-lg font-normal">
         {items.map(({ name, value }) => (
           <button
             key={value}
