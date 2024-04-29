@@ -60,17 +60,19 @@ const Saisons = () => {
       </p>
 
       <p>
-        {anime?.saison && (
+        {anime.saison && anime.anime?.anime && (
           <>
             Historique Saison :{" "}
-            <span
+            <Link
               onClick={() => {
-                router.push({
-                  pathname: `/Episodes`,
-                  query: { anime: anime?.anime?.anime!, saison: anime.saison },
-                });
-
-                changeSaison(anime.saison!, anime?.anime?.anime!);
+                changeSaison(
+                  anime.saison as string,
+                  anime.anime?.anime as string,
+                );
+              }}
+              href={{
+                pathname: "/Episodes",
+                query: { anime: anime.anime.anime, saison: anime.saison },
               }}
               className="cursor-pointer underline"
             >
@@ -79,7 +81,7 @@ const Saisons = () => {
                   Number(anime?.saison) - 1
                 ]?.name
               }
-            </span>
+            </Link>
           </>
         )}
       </p>
@@ -101,18 +103,20 @@ const Saisons = () => {
             id={id}
             className="group m-4 inline-flex w-24 cursor-pointer flex-col items-center gap-2.5 md:w-32"
             onClick={() => {
-              router.push({
-                pathname: `/Episodes`,
-                query: {
-                  anime: anime?.anime?.anime!,
-                  saison: (index + 1).toString(),
-                },
-              });
-
               changeSaison((index + 1).toString(), anime?.anime?.anime!);
             }}
           >
-            {element}
+            <Link
+              href={{
+                pathname: "/Episodes",
+                query: {
+                  anime: anime.anime?.anime,
+                  saison: (index + 1).toString(),
+                },
+              }}
+            >
+              {element}
+            </Link>
           </li>
         ))}
       </ul>

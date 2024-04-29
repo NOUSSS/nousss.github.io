@@ -139,7 +139,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </h1>
           </Link>
 
-          <div className="flex items-center gap-3 *:flex *:cursor-pointer *:items-center *:rounded-md *:p-2">
+          <div className="flex items-center gap-3 *:flex *:items-center *:rounded-md *:p-2">
             <Link
               className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
               href="/Settings"
@@ -165,7 +165,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </Link>
 
             <div
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
               onClick={() => setIsVisible(!isVisible)}
             >
               <SearchIcon className="lg:mr-3" />

@@ -5,11 +5,10 @@ import { useRef, useState } from "react";
 import { Select } from "@/app/components/";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Catalogue() {
-  const router = useRouter();
   const placeholderRef = useRef<HTMLParagraphElement>(null);
-
   const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
 
   const categories: string[] = [];
@@ -63,15 +62,16 @@ export default function Catalogue() {
           const image = getWallpaper(anime);
 
           return (
-            <div
+            <Link
               title={
                 fetchedAnime?.synopsis ||
                 "Aucun synopsis disponible pour cet anime"
               }
-              className="group mr-6 inline-flex w-32 cursor-pointer flex-col rounded-xl md:w-36"
-              onClick={() =>
-                router.push({ pathname: "/Home", query: { anime: anime } })
-              }
+              className="group mb-2 mr-6 inline-flex w-32 cursor-pointer flex-col rounded-xl md:w-36"
+              href={{
+                pathname: "/Home",
+                query: { anime: anime },
+              }}
               key={anime}
             >
               <div className="relative top-1 overflow-hidden rounded-md shadow-xl">
@@ -90,7 +90,7 @@ export default function Catalogue() {
                   {disponibles.join(", ")}
                 </span>
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>
