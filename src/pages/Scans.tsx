@@ -371,7 +371,7 @@ const Scans = () => {
           anime?.scans
         ) : (
           <Swiper
-            dir="rtl"
+            dir={`${anime.anime?.category.includes("Webtoon") ? "" : "rtl"}`}
             pagination={{
               clickable: true,
               type: "progressbar",
