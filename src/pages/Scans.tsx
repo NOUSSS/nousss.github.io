@@ -210,9 +210,9 @@ const Scans = () => {
         </h1>
       )}
 
-      <div className="mb-12">
-        <div className="mb-4">
-          {anime?.method && (
+      <div className="mb-12 flex flex-col">
+        {anime?.method && (
+          <div className="mb-4">
             <SelectDouble
               items={[
                 {
@@ -235,31 +235,33 @@ const Scans = () => {
                 localStorage.setItem(`${anime.anime?.anime}--method`, value);
               }}
             />
-          )}
+          </div>
+        )}
+
+        <div className="mb-2">
+          <Select
+            scroll={true}
+            onSelect={(items) => {
+              localStorage.setItem(
+                `${anime?.anime?.anime}--chapitre`,
+                items[0].value,
+              );
+
+              updateAnime((currentState) => ({
+                ...currentState,
+                scans: selectChapter(
+                  anime!,
+                  items[0],
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                ),
+              }));
+            }}
+            items={anime?.chapitresOptions!}
+            placeholder="Selectionnez un chapitre"
+            placeholderRef={placeholderRef}
+          />
         </div>
-
-        <Select
-          scroll={true}
-          onSelect={(items) => {
-            localStorage.setItem(
-              `${anime?.anime?.anime}--chapitre`,
-              items[0].value,
-            );
-
-            updateAnime((currentState) => ({
-              ...currentState,
-              scans: selectChapter(
-                anime!,
-                items[0],
-                placeholderRef,
-                !anime.version ? undefined : anime.version.split("|")[1],
-              ),
-            }));
-          }}
-          items={anime?.chapitresOptions!}
-          placeholder="Selectionnez un chapitre"
-          placeholderRef={placeholderRef}
-        />
 
         {anime.anime?.options.SCANS_OPTIONS?.versions ? (
           <Select
