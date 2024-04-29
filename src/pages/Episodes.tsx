@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { Footer } from "@/app/components/Footer";
+import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
 import { getCurrentAnime, getLecteur, getAnime, random } from "@/app/lib/";
 import { Anime as AnimeType } from "@/typings/types";
 import { useRouter } from "next/router";
@@ -15,13 +15,10 @@ import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import getNote from "@/app/utils/Episodes/getNote";
 
-import SearchBar from "@/app/components/SearchBar";
 import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
-import Switch from "@/app/components/Switch";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import Link from "next/link";
-import Watcher from "@/app/components/Watcher";
 
 type langType = "vostfr" | "vf";
 

@@ -1,4 +1,4 @@
-import ColorPicker from "@/app/components/ColorPicker";
+import { ColorPicker } from "@/app/components/";
 
 export default function Settings() {
   return (

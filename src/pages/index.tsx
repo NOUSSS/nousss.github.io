@@ -6,7 +6,7 @@ import Image, { StaticImageData } from "next/image";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
 
-import { Footer } from "@/app/components/Footer";
+import { Footer } from "@/app/components/";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
 import { Historique } from "@/typings/types";

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { Footer } from "@/app/components/Footer";
+import { Footer, SearchBar, Watcher } from "@/app/components/";
 import { getCurrentAnime, getLecteur, getAnime } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { appearVideo } from "@/app/utils/Films/appearVideo";
@@ -12,9 +12,7 @@ import { toast } from "sonner";
 import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
 
-import SearchBar from "@/app/components/SearchBar";
 import Head from "next/head";
-import Watcher from "@/app/components/Watcher";
 
 type langType = "vostfr" | "vf";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
-import { Footer } from "@/app/components/Footer";
+import { Footer, SearchBar } from "@/app/components/";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getCurrentAnime, getAnime } from "@/app/lib/";
 import { Anime } from "@/typings/types";
@@ -11,7 +11,6 @@ import { useEffect, useRef } from "react";
 import { useAnime } from "@/app/lib/hooks/";
 
 import Head from "next/head";
-import SearchBar from "@/app/components/SearchBar";
 import Link from "next/link";
 
 const Saisons = () => {

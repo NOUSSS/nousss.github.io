@@ -8,7 +8,7 @@ import { navMotion, getAnime, getCurrentAnime } from "@/app/lib/";
 
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Footer } from "@/app/components/Footer";
+import { Footer } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
 
 const Home = () => {

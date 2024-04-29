@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
-import { Footer } from "@/app/components/Footer";
+import { Footer, Select } from "@/app/components/";
 import { getCurrentAnime, getAnime, random } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
@@ -14,9 +14,9 @@ import { icons } from "lucide-react";
 
 import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
+import { ItemsProps } from "@/app/components/Select";
 
 import Head from "next/head";
-import Select, { ItemsProps } from "@/app/components/Select";
 import ClearCache from "@/app/cache/ClearCache";
 import Link from "next/link";
 
