@@ -143,10 +143,10 @@ export default function Select({
   return (
     <label
       ref={labelRef}
-      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "ring-2 ring-main" : ""}`}
+      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "ring-2 ring-main" : ""}`}
       onClick={appear}
     >
-      <p className="font-normal" ref={placeholderRef}>
+      <p className="relative left-1 font-normal" ref={placeholderRef}>
         {placeholder}
       </p>
 
