@@ -361,10 +361,13 @@ const Scans = () => {
         </div>
       </div>
 
-      <p className="relative -top-8">
-        {anime.method === "horizontal" &&
-          "Les mangas se lisent de la droite vers la gauche et les webtoon de la gauche vers la droite"}
-      </p>
+      {anime.method === "horizontal" && (
+        <p className="relative -top-8">
+          Manga : droite à gauche
+          <br />
+          Webtoon : gauche à droite
+        </p>
+      )}
 
       <div className="relative before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
         {anime.method === "vertical" ? (
