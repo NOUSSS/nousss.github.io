@@ -12,7 +12,7 @@ import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 import { toast } from "sonner";
 import { icons } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
@@ -24,7 +24,7 @@ import Link from "next/link";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Image from "next/image";
+import "swiper/css/navigation";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -197,7 +197,7 @@ const Scans = () => {
       </Head>
 
       {anime?.anime && (
-        <h1 className="animate-title text-5xl">
+        <h1 className="mb-12 animate-title text-5xl">
           <Link
             className="font-normal"
             href={{
@@ -210,7 +210,7 @@ const Scans = () => {
         </h1>
       )}
 
-      <div className="relative top-12">
+      <div className="mb-12">
         <div className="mb-4">
           {anime?.method && (
             <SelectDouble
@@ -262,54 +262,52 @@ const Scans = () => {
         />
 
         {anime.anime?.options.SCANS_OPTIONS?.versions ? (
-          <div className="mt-2">
-            <Select
-              placeholder="Changer de version"
-              placeholderRef={placeholderRefVersion}
-              items={[
-                {
-                  name: "Normal",
-                  value: "return-normal",
-                  disabled: anime.version ? false : true,
-                },
-                ...anime.anime.options.SCANS_OPTIONS.versions.map(
-                  ({ value, name }) => ({
-                    value,
-                    name,
-                    disabled: anime.version === value,
-                  }),
-                ),
-              ]}
-              onSelect={(items) => {
-                ClearCache();
+          <Select
+            placeholder="Changer de version"
+            placeholderRef={placeholderRefVersion}
+            items={[
+              {
+                name: "Normal",
+                value: "return-normal",
+                disabled: anime.version ? false : true,
+              },
+              ...anime.anime.options.SCANS_OPTIONS.versions.map(
+                ({ value, name }) => ({
+                  value,
+                  name,
+                  disabled: anime.version === value,
+                }),
+              ),
+            ]}
+            onSelect={(items) => {
+              ClearCache();
 
-                if (items[0].value === "return-normal") {
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    version: undefined,
-                  }));
+              if (items[0].value === "return-normal") {
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  version: undefined,
+                }));
 
-                  localStorage.removeItem(`${anime.anime?.anime}--version`);
-                } else {
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    version: items[0].value,
-                  }));
+                localStorage.removeItem(`${anime.anime?.anime}--version`);
+              } else {
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  version: items[0].value,
+                }));
 
-                  localStorage.setItem(
-                    `${anime.anime?.anime}--version`,
-                    items[0].value,
-                  );
-                }
-              }}
-            />
-          </div>
+                localStorage.setItem(
+                  `${anime.anime?.anime}--version`,
+                  items[0].value,
+                );
+              }
+            }}
+          />
         ) : null}
       </div>
 
-      <div className="relative top-24 mb-60 flex flex-col gap-4">
+      <div className="relative flex flex-col gap-8">
         <button
-          className="btn next relative top-4"
+          className="btn relative top-4"
           onClick={() => {
             const lastScan =
               anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
@@ -328,10 +326,10 @@ const Scans = () => {
           Dernier chapitre
         </button>
 
-        <div className="relative top-4 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
+        <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
           {!isFirst ? (
             <button
-              className="btn back"
+              className="btn"
               onClick={() =>
                 PrevChapter(
                   anime!,
@@ -347,7 +345,7 @@ const Scans = () => {
 
           {!isLast ? (
             <button
-              className="btn next"
+              className="btn"
               onClick={() =>
                 NextChapter(
                   anime!,
@@ -363,14 +361,23 @@ const Scans = () => {
         </div>
       </div>
 
-      <div className="relative -top-16 -mb-32 before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
+      <p className="relative -top-8">
+        {anime.method === "horizontal" &&
+          "Les mangas se lisent de la droite vers la gauche et les webtoon de la gauche vers la droite"}
+      </p>
+
+      <div className="relative before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
         {anime.method === "vertical" ? (
           anime?.scans
         ) : (
           <Swiper
+            dir="rtl"
+            pagination={{
+              clickable: true,
+              type: "progressbar",
+            }}
+            modules={[Navigation, Pagination]}
             slidesPerView={"auto"}
-            pagination={{ type: "progressbar", clickable: true }}
-            modules={[Pagination]}
           >
             {anime.scans?.map((e, i) => (
               <SwiperSlide key={i} className="mt-4 justify-center">
@@ -385,7 +392,7 @@ const Scans = () => {
         <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
           {!isFirst ? (
             <button
-              className="btn back"
+              className="btn"
               onClick={() =>
                 PrevChapter(
                   anime!,
@@ -401,7 +408,7 @@ const Scans = () => {
 
           {!isLast ? (
             <button
-              className="btn next"
+              className="btn"
               onClick={() =>
                 NextChapter(
                   anime!,

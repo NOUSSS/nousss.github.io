@@ -21,14 +21,6 @@
   @apply relative left-0 min-h-12 rounded border border-orange-400 bg-zinc-900 bg-opacity-40 p-3 text-sm font-normal uppercase transition-all duration-300;
 }
 
-.back {
-  @apply hover:-left-2;
-}
-
-.next {
-  @apply hover:left-2;
-}
-
 .container {
   @apply relative my-10 flex w-full justify-center;
 }

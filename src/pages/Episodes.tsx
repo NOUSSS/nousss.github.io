@@ -456,7 +456,7 @@ const Episodes = () => {
             {anime.anime?.anime &&
             localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
               <button
-                className="btn back"
+                className="btn"
                 onClick={() =>
                   PrevEpisode(
                     anime.currentLecteur!,
@@ -477,7 +477,7 @@ const Episodes = () => {
             localStorage.getItem(`${anime.anime.anime}--episode`) !==
               anime.currentLecteur.length.toString() ? (
               <button
-                className="btn next"
+                className="btn"
                 onClick={() =>
                   NextEpisode(
                     anime?.currentLecteur!,
@@ -541,7 +541,7 @@ const Episodes = () => {
                     saison: prevSaison.toString(),
                   }));
                 }}
-                className="btn back"
+                className="btn"
               >
                 Saison précédente
               </button>
@@ -574,7 +574,7 @@ const Episodes = () => {
                     saison: newSaison.toString(),
                   }));
                 }}
-                className="btn next"
+                className="btn"
               >
                 Saison suivante
               </button>
