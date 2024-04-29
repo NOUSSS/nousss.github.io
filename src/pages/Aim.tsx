@@ -1,20 +1,21 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Aim() {
   const refs = useRef<HTMLDivElement[]>([]);
+  const [currentAim, setCurrentAim] = useState<number>();
 
   function randomAim() {
-    console.log(refs.current);
-
     refs.current.forEach((e) => {
       e.classList.add("bg-transparent");
-      e.classList.remove("bg-sky-700");
+      e.classList.remove("bg-sky-600");
     });
 
     const random = Math.floor(Math.random() * refs.current.length);
     const element = refs.current[random];
 
-    element.classList.add("bg-sky-700");
+    setCurrentAim(random);
+
+    element.classList.add("bg-sky-600");
     element.classList.remove("bg-transparent");
   }
 
@@ -31,8 +32,10 @@ export default function Aim() {
           <div
             key={i}
             ref={(el) => (refs.current[i] = el!)}
-            onClick={() => randomAim()}
-            className="inline-flex size-12 bg-transparent"
+            onClick={() => {
+              if (currentAim === i) randomAim();
+            }}
+            className="inline-flex size-16 bg-transparent"
           ></div>
         ))}
       </div>
