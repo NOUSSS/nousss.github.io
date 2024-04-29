@@ -41,6 +41,7 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
       <div className="relative z-50 flex h-full w-full items-center justify-around text-lg">
         {items.map(({ name, value }) => (
           <button
+            key={value}
             className="h-10 w-28"
             onClick={() => {
               const element = buttons.current[value];

@@ -372,8 +372,10 @@ const Scans = () => {
             pagination={{ type: "progressbar", clickable: true }}
             modules={[Pagination]}
           >
-            {anime.scans?.map((e) => (
-              <SwiperSlide className="mt-4 justify-center">{e}</SwiperSlide>
+            {anime.scans?.map((e, i) => (
+              <SwiperSlide key={i} className="mt-4 justify-center">
+                {e}
+              </SwiperSlide>
             ))}
           </Swiper>
         )}
