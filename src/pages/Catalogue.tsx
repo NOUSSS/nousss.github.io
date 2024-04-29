@@ -21,17 +21,18 @@ export default function Catalogue() {
     }
   }
 
+  const finded =
+    filteredCategories.length === 0
+      ? ANIMES.length
+      : ANIMES.filter(({ category }) =>
+          filteredCategories.every((cat) => category.includes(cat)),
+        ).length;
+
   return (
     <main className="mx-2 md:mx-16 lg:mx-36">
       <div className="mb-12 flex flex-col gap-5">
         <h3 className="text-2xl md:text-4xl">
-          Le catalogue (
-          {filteredCategories.length === 0
-            ? ANIMES.length
-            : ANIMES.filter(({ category }) =>
-                filteredCategories.every((cat) => category.includes(cat)),
-              ).length}{" "}
-          trouvés)
+          Le catalogue ({finded} trouvé{finded > 1 ? "s" : ""})
         </h3>
 
         <div className="flex justify-center">
