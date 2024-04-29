@@ -246,7 +246,7 @@ const Episodes = () => {
             setTimeout(() => {
               updateAnime((currentState) => ({
                 ...currentState,
-                saisonTitle: "Un problème est survenue",
+                episodeTitle: "Un problème est survenue",
               }));
             }, 1000),
           );
@@ -428,6 +428,7 @@ const Episodes = () => {
             lecteur={anime.lecteur}
             containerRef={containerRef}
             updateAnime={updateAnime}
+            context={anime.saison}
           />
         )}
 
