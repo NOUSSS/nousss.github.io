@@ -5,6 +5,7 @@ import { getHostname } from "../lib/";
 import Select from "./Select";
 import clearCache from "../cache/ClearCache";
 import Link from "next/link";
+import SelectDouble from "./SelectDouble";
 
 interface WatcherProps {
   video: string;
@@ -44,34 +45,31 @@ export default function Watcher({
   updateAnime,
   containerRef,
 }: WatcherProps) {
-  const placeholderLangRef = useRef<HTMLParagraphElement>(null);
   const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 
   return (
     <>
       <div className="mt-12 flex gap-11 max-lg:flex-col max-lg:gap-2">
-        <Select
-          placeholder="Changer de langue"
-          placeholderRef={placeholderLangRef}
+        <SelectDouble
           items={[
             {
               name: "VostFR",
               value: "vostfr",
-              disabled: lang === "vostfr" ? true : false,
+              defaultValue: lang === "vostfr" ? true : false,
             },
             {
               name: "VF",
               value: "vf",
-              disabled: lang === "vostfr" ? false : true,
+              defaultValue: lang === "vostfr" ? false : true,
             },
           ]}
-          onSelect={(value) => {
+          click={(value) => {
             clearCache();
 
             if (updateAnime)
               updateAnime((currentState) => ({
                 ...currentState,
-                lang: value[0].value,
+                lang: value,
               }));
           }}
         />
