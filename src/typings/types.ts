@@ -7,11 +7,17 @@ export interface Note {
   message: string;
 }
 
+export type Datas = Data.EpisodesData | Data.FilmsData | Data.ScansData;
+export type DatasArr =
+  | Data.EpisodesData[]
+  | Data.FilmsData[]
+  | Data.ScansData[];
+
 export interface Historique {
   name: string;
   redirect: string;
 
-  detail: Data.EpisodesData | Data.FilmsData | Data.ScansData;
+  detail: Datas;
 }
 
 export namespace Data {

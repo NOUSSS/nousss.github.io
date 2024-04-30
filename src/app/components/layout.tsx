@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { restoreLocalStorage } from "../lib";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -54,6 +55,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
         "border-radius: 2px;",
       ].join(";"),
     );
+
+    if (
+      !localStorage.getItem("episodes") ||
+      !localStorage.getItem("scans") ||
+      !localStorage.getItem("films")
+    )
+      restoreLocalStorage();
   }, []);
 
   useEffect(() => {

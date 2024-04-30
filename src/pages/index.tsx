@@ -7,18 +7,17 @@ import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
 
 import { Footer } from "@/app/components/";
-import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
+import {
+  ANIMES,
+  AnimesType,
+  GroupedAnimes,
+  groupAnimesByCategory,
+} from "@/animes/constants";
 import { toast } from "sonner";
-import { Data, Historique } from "@/typings/types";
-import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
+import { Data, DatasArr, Historique } from "@/typings/types";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
-import {
-  getAnime,
-  shuffle,
-  getWallpaper,
-  restoreLocalStorage,
-} from "@/app/lib/";
+import { getAnime, shuffle, getWallpaper } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
 
@@ -72,23 +71,13 @@ export default function Accueil() {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (
-      !localStorage.getItem("episodes") ||
-      !localStorage.getItem("scans") ||
-      !localStorage.getItem("films")
-    )
-      restoreLocalStorage();
-
-    let shuffledAnimes = shuffle(ANIMES);
+    let shuffledAnimes = [...shuffle(ANIMES)];
     setRandomAnimes(shuffledAnimes.slice(0, 6));
 
     const loadedHistoriques: Historique[] = [];
 
     ["episodes", "scans", "films"].forEach((type) => {
-      const items = JSON.parse(localStorage.getItem(type) || "[]") as
-        | Data.EpisodesData[]
-        | Data.FilmsData[]
-        | Data.ScansData[];
+      const items = JSON.parse(localStorage.getItem(type) || "[]") as DatasArr;
 
       items.forEach((item) => {
         loadedHistoriques.push({
@@ -102,40 +91,34 @@ export default function Accueil() {
     setHistoriques(loadedHistoriques);
   }, []);
 
-  const [catalogues, setCatalogues] = useState(() =>
-    groupAnimesByCategory(animes, true).sort(
-      (a, b) => b.names.length - a.names.length,
-    ),
-  );
+  const [catalogues, setCatalogues] = useState<GroupedAnimes[]>();
 
   useEffect(() => {
-    setTimeout(() => {
-      const updatedCatalogues = groupAnimesByCategory(
-        ANIMES.map(({ anime, category }) => ({ anime, category })),
-        true,
-      ).sort((a, b) => b.names.length - a.names.length);
+    const updatedCatalogues = groupAnimesByCategory(
+      ANIMES.map(({ anime, category }) => ({ anime, category })),
+      true,
+    ).sort((a, b) => b.names.length - a.names.length);
 
-      const momentIndex = updatedCatalogues.findIndex(
-        ({ category }) => category === "Nouvelles saisons",
-      );
+    const momentIndex = updatedCatalogues.findIndex(
+      ({ category }) => category === "Nouvelles saisons",
+    );
 
-      let momentItem, resumeItem;
+    let momentItem, resumeItem;
 
-      if (momentIndex !== -1)
-        [momentItem] = updatedCatalogues.splice(momentIndex, 1);
+    if (momentIndex !== -1)
+      [momentItem] = updatedCatalogues.splice(momentIndex, 1);
 
-      if (historiques.length > 0) {
-        resumeItem = {
-          category: "Reprendre",
-          names: historiques.map(({ name }) => name),
-        };
-      }
+    if (historiques.length > 0) {
+      resumeItem = {
+        category: "Reprendre",
+        names: historiques.map(({ name }) => name),
+      };
+    }
 
-      if (momentItem) updatedCatalogues.unshift(momentItem);
-      if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
+    if (momentItem) updatedCatalogues.unshift(momentItem);
+    if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
-      setCatalogues(updatedCatalogues);
-    }, 500);
+    setCatalogues(updatedCatalogues);
   }, [historiques]);
 
   const goToAnime = useCallback(
@@ -171,6 +154,31 @@ export default function Accueil() {
     },
     [historiques, router],
   );
+
+  const removeFromHistorique = (animeName: string, index: number) => {
+    const historique = historiques[index];
+    const type = historique.redirect.toLowerCase();
+
+    const storedItems = JSON.parse(
+      localStorage.getItem(type) || "[]",
+    ) as DatasArr;
+
+    const updatedItems = storedItems.filter((item) =>
+      type === "episodes"
+        ? !((item as Data.EpisodesData).saison && animeName === item.name)
+        : type === "films"
+          ? !((item as Data.FilmsData).film && animeName === item.name)
+          : !((item as Data.ScansData).chapitre && animeName === item.name),
+    );
+
+    localStorage.setItem(type, JSON.stringify(updatedItems));
+
+    setHistoriques((current) => current.filter((_, idx) => idx !== index));
+
+    toast.success(
+      `Les ${historique.redirect} de ${animeName} ont bien été retirés de l'historique !`,
+    );
+  };
 
   return (
     <main className="top-16">
@@ -318,7 +326,7 @@ export default function Accueil() {
 
       <div className="relative mx-4 overflow-hidden lg:mx-28">
         {catalogues
-          .filter(
+          ?.filter(
             ({ names, category }) =>
               category === "Nouvelles saisons" ||
               category === "Reprendre" ||
@@ -486,8 +494,8 @@ export default function Accueil() {
                               <p className="text-sm text-main sm:text-base">
                                 {(
                                   historiques[i]
-                                    .detail as unknown as Data.ScansData
-                                ).chapitre && (
+                                    ?.detail as unknown as Data.ScansData
+                                )?.chapitre && (
                                   <>
                                     {getCurrentChapitre(
                                       animeName!,
@@ -498,28 +506,28 @@ export default function Accueil() {
                                 )}
                                 {(
                                   historiques[i]
-                                    .detail as unknown as Data.FilmsData
-                                ).film && (
+                                    ?.detail as unknown as Data.FilmsData
+                                )?.film && (
                                   <>
                                     Film{" "}
                                     {Number(
                                       (
                                         historiques[i]
-                                          .detail as unknown as Data.FilmsData
-                                      ).film,
+                                          ?.detail as unknown as Data.FilmsData
+                                      )?.film,
                                     ) + 1}
                                   </>
                                 )}
                                 {(
                                   historiques[i]
-                                    .detail as unknown as Data.EpisodesData
-                                ).episode && (
+                                    ?.detail as unknown as Data.EpisodesData
+                                )?.episode && (
                                   <>
                                     Saison{" "}
                                     {getScriptIndex({
                                       currentSaison: (
                                         historiques[i]
-                                          .detail as unknown as Data.EpisodesData
+                                          ?.detail as unknown as Data.EpisodesData
                                       ).saison,
                                       parts:
                                         fetchedAnime?.options.EPISODES_OPTIONS
@@ -537,16 +545,13 @@ export default function Accueil() {
                             </div>
 
                             <div
-                              title={`Supprimer ${animeName} de l'historique`}
                               onClick={(e) => {
+                                e.preventDefault();
                                 e.stopPropagation();
 
-                                removeAnimeFromHistorique(
-                                  animeName,
-                                  historiques[i].redirect,
-                                  setHistoriques,
-                                );
+                                removeFromHistorique(animeName, i);
                               }}
+                              title={`Supprimer ${animeName} de l'historique`}
                             >
                               <div className="rounded-md p-1 transition-all hover:bg-gray-600 hover:bg-opacity-20">
                                 <Trash size={20} />
