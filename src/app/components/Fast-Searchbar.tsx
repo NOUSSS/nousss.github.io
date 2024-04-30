@@ -113,8 +113,8 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
                     </h1>
 
                     <p className="mx-4 text-xs opacity-75">
-                      {synopsis.length > 300
-                        ? synopsis.substring(0, 300) + "..."
+                      {synopsis.length > 200
+                        ? synopsis.substring(0, 200) + "..."
                         : synopsis}
                     </p>
                   </div>
