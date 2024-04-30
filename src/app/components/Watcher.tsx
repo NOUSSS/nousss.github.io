@@ -6,6 +6,8 @@ import Select from "./Select";
 import clearCache from "../cache/ClearCache";
 import Link from "next/link";
 import SelectDouble from "./SelectDouble";
+import EpisodeData from "../class/episodeData";
+import FilmData from "../class/filmData";
 
 interface WatcherProps {
   video: string;
@@ -47,6 +49,9 @@ export default function Watcher({
 }: WatcherProps) {
   const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 
+  const StorageEpisodes = new EpisodeData(anime);
+  const StorageFilms = new FilmData(anime);
+
   return (
     <>
       <div className="mt-12 flex gap-11 max-lg:flex-col max-lg:gap-2">
@@ -87,10 +92,11 @@ export default function Watcher({
                     currentLecteur: lecteurs?.[items[0].value],
                   }));
 
-                window.localStorage.setItem(
-                  `${anime}-${context}--lecteur`,
-                  items[0].value,
-                );
+                if (context === "Films") {
+                  StorageFilms.setLecteur(items[0].value);
+                } else {
+                  StorageEpisodes.setLecteur(items[0].value);
+                }
               }}
               items={Object.keys(lecteurs).map((l, i) => ({
                 name: getHostname(Object.values(lecteurs!)[i][0]),
@@ -103,7 +109,7 @@ export default function Watcher({
       </div>
 
       <div ref={containerRef} className="container">
-        <iframe className="video" src={video}></iframe>
+        <iframe className="video" src={video} allowFullScreen></iframe>
         <iframe className="ambiance" src={video}></iframe>
       </div>
 

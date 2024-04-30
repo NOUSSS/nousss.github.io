@@ -37,8 +37,8 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
   }, [selected, follower]);
 
   return (
-    <div className="h-12 w-60 rounded-full bg-zinc-800 bg-opacity-60">
-      <div className="relative z-50 flex h-full w-full items-center justify-around text-lg font-normal">
+    <div className="h-12 w-64 rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50">
+      <div className="text-md relative z-50 flex h-full w-full items-center justify-around font-normal">
         {items.map(({ name, value }) => (
           <button
             key={value}
@@ -59,7 +59,7 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
 
         <div
           ref={(el) => (follower.current = el!)}
-          className="absolute -z-10 h-10 w-28 rounded-full bg-white shadow-2xl shadow-black transition-all duration-300"
+          className="absolute -z-10 h-9 w-28 rounded-full bg-white shadow-2xl shadow-black transition-all duration-300"
         ></div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import { useAnime } from "@/app/lib/hooks/";
 
 import Head from "next/head";
 import Link from "next/link";
+import EpisodeData from "@/app/class/episodeData";
 
 const Saisons = () => {
   const router = useRouter();
@@ -25,10 +26,12 @@ const Saisons = () => {
     if (!currentAnime || !currentAnime.options.saisons) {
       router.push("/");
     } else {
+      const episodeData = new EpisodeData(currentAnime.anime);
+
       updateAnime({
         anime: currentAnime,
         saisons: getSaisons(),
-        saison: localStorage.getItem(`${currentAnime?.anime!}--saison`)!,
+        saison: episodeData.get()?.saison,
       });
     }
   }, [router]);

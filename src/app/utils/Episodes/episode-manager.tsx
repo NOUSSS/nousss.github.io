@@ -1,5 +1,6 @@
 import React, { RefObject } from "react";
 import { Anime } from "@/typings/types";
+import EpisodeData from "@/app/class/episodeData";
 
 export function Change(
   indexEpisode: number | string,
@@ -19,17 +20,19 @@ export function Change(
   episodeTitleRef: RefObject<HTMLSpanElement>,
   episodesListRef: RefObject<HTMLElement[]>,
 ): void {
+  const StorageEpisodes = new EpisodeData(AnimeInfo.anime?.anime);
+  const Episodes = StorageEpisodes.get();
+
+  if (!Episodes) return;
+
   const options = AnimeInfo.anime?.options;
-  const saison = localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`);
+  const saison = Episodes.saison;
 
   const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS || {};
 
   const isHorsSerie =
     AnimeInfo.lang === "vostfr" &&
-    horsSeries?.find(
-      ({ saison }) =>
-        saison === localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`),
-    );
+    horsSeries?.find(({ saison }) => saison === Episodes.saison);
 
   if (isHorsSerie) {
     if (isHorsSerie.hs.includes(Number(indexEpisode) - 1)) {
@@ -51,10 +54,7 @@ export function Change(
         episodeTitle: <span>E-SP{esp}</span>,
       }));
 
-      localStorage.setItem(
-        `${AnimeInfo.anime?.anime}--episode`,
-        indexEpisode.toString(),
-      );
+      StorageEpisodes.setEpisode(indexEpisode.toString());
     } else {
       let retard = 0;
 
@@ -64,13 +64,12 @@ export function Change(
         }
       });
 
-      const saison = localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`);
+      const saison = Episodes.saison;
 
       const numberEpisode =
         Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
 
-      const title =
-        names?.find((_, i) => i + 1 === numberEpisode)?.name || "";
+      const title = names?.find((_, i) => i + 1 === numberEpisode)?.name || "";
 
       const url = lecteur[Number(indexEpisode) - 1];
 
@@ -91,18 +90,11 @@ export function Change(
         ),
       }));
 
-      localStorage.setItem(
-        `${AnimeInfo.anime?.anime}--episode`,
-        indexEpisode.toString(),
-      );
+      StorageEpisodes.setEpisode(indexEpisode.toString());
     }
   } else {
     const numberEpisode =
-      Number(
-        allIndex?.[
-          localStorage.getItem(`${AnimeInfo.anime?.anime}--saison`) ?? 0
-        ],
-      ) + Number(indexEpisode);
+      Number(allIndex?.[Episodes.saison]) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
 
@@ -125,10 +117,7 @@ export function Change(
       ),
     }));
 
-    localStorage.setItem(
-      `${AnimeInfo.anime?.anime}--episode`,
-      indexEpisode.toString(),
-    );
+    StorageEpisodes.setEpisode(indexEpisode.toString());
   }
 
   window.scrollTo({
@@ -154,8 +143,12 @@ export function NextEpisode(
   episodeTitleRef: RefObject<HTMLSpanElement>,
   episodesListRef: RefObject<HTMLElement[]>,
 ) {
-  const newEpisodeIndex =
-    Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) + 1;
+  const StorageEpisodes = new EpisodeData(AnimeInfo.anime?.anime);
+  const Episodes = StorageEpisodes.get();
+
+  if (!Episodes) return;
+
+  const newEpisodeIndex = Number(Episodes.episode) + 1;
 
   Change(
     newEpisodeIndex,
@@ -185,8 +178,12 @@ export function PrevEpisode(
   episodeTitleRef: RefObject<HTMLSpanElement>,
   episodesListRef: RefObject<HTMLElement[]>,
 ) {
-  const newEpisodeIndex =
-    Number(localStorage.getItem(`${AnimeInfo.anime?.anime}--episode`)) - 1;
+  const StorageEpisodes = new EpisodeData(AnimeInfo.anime?.anime);
+  const Episodes = StorageEpisodes.get();
+
+  if (!Episodes) return;
+
+  const newEpisodeIndex = Number(Episodes.episode) - 1;
 
   Change(
     newEpisodeIndex,

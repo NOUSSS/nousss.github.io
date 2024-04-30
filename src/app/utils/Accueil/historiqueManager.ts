@@ -1,33 +1,28 @@
 import { Historique } from "@/typings/types";
 import { toast } from "sonner";
+import { Data } from "@/typings/types";
 
 export const removeAnimeFromHistorique = (
   animeName: string,
   redirectAnime: string,
   setHistoriques: React.Dispatch<React.SetStateAction<Historique[]>>,
 ) => {
-  const keysToRemove = [];
+  const episodes = JSON.parse(localStorage.getItem("episodes") || "[]");
+  const scans = JSON.parse(localStorage.getItem("scans") || "[]");
+  const films = JSON.parse(localStorage.getItem("films") || "[]");
 
-  if (redirectAnime === "Episodes" || redirectAnime === "Films") {
-    keysToRemove.push(
-      `${animeName}--saison`,
-      `${animeName}--episode`,
-      `${animeName}--currentFilm`,
-      `${animeName}--lecteur`,
+  const filterData = (data: Data.EpisodesData[], name: string) =>
+    data.filter((item) => item.name !== name);
+
+  if (redirectAnime === "Episodes") {
+    localStorage.setItem(
+      "episodes",
+      JSON.stringify(filterData(episodes, animeName)),
     );
-
-    Object.keys(localStorage).forEach((key) => {
-      if (key.includes("--lang") && key.includes(animeName)) {
-        keysToRemove.push(key);
-      }
-    });
   } else if (redirectAnime === "Scans") {
-    keysToRemove.push(`${animeName}--chapitre`);
+    localStorage.setItem("scans", JSON.stringify(filterData(scans, animeName)));
+    localStorage.setItem("films", JSON.stringify(filterData(films, animeName)));
   }
-
-  keysToRemove.forEach((key) => {
-    localStorage.removeItem(key);
-  });
 
   setHistoriques((currentHistoriques) =>
     currentHistoriques.filter(

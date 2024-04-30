@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { Anime } from "@/typings/types";
 import { ItemsProps } from "@/app/components/Select";
+import ScanData from "@/app/class/scanData";
 
 export const selectChapter = (
   Anime: Anime.AnimeScansProps,
@@ -15,12 +16,13 @@ export const selectChapter = (
 
   const scansImages: React.ReactNode[] = [];
 
-  if (item?.name && item?.value) {
-    if (placeholderRef.current) placeholderRef.current.innerText = item.name;
-
+  if (item?.name && item?.value && Anime.anime) {
+    const StorageScans = new ScanData(Anime.anime.anime);
     const scans = window[`eps${item.value}`];
 
-    localStorage.setItem(`${Anime?.anime?.anime}--chapitre`, item.value);
+    if (placeholderRef.current) placeholderRef.current.innerText = item.name;
+
+    StorageScans.setChapitre(item.value);
 
     for (let i = 1; i <= scans!.length; i++) {
       scansImages.push(

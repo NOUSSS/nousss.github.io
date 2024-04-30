@@ -1,17 +1,14 @@
-export function changeSaison(index: string, currentAnime: string) {
-  if (localStorage.getItem(`${currentAnime}--saison`) !== index) {
-    for (const key of Object.keys(localStorage)) {
-      if (
-        key.includes(currentAnime) &&
-        key.includes("--lang") &&
-        key.match(/[0-9]/g)
-      ) {
-        localStorage.removeItem(key);
-      }
-    }
+import EpisodeData from "@/app/class/episodeData";
 
-    localStorage.setItem(`${currentAnime}--episode`, "1");
+export function changeSaison(index: string, currentAnime: string) {
+  const StorageEpisodes = new EpisodeData(currentAnime);
+  const Episodes = StorageEpisodes.get();
+
+  if (!Episodes) return;
+
+  if (Episodes.saison !== index) {
+    StorageEpisodes.setEpisode("1");
   }
 
-  localStorage.setItem(`${currentAnime}--saison`, index);
+  StorageEpisodes.setSaison(index);
 }

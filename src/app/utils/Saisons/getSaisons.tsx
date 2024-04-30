@@ -24,7 +24,7 @@ export function getSaisons() {
         } ${i === Object.keys(saisonsValues).length - 1 ? "" : intervalEpisodes}`,
         element: (
           <>
-            <div className="flex-col overflow-hidden rounded-md text-center">
+            <div className="overflow-hidden rounded-md text-center">
               <Image
                 src={saisonsValues[i].image()}
                 id={i.toString()}
@@ -33,7 +33,7 @@ export function getSaisons() {
               />
             </div>
 
-            <p className="text-sm md:text-base">
+            <p className="relative top-2 text-sm md:text-base">
               <span>{saisonsValues[i].name}</span>
               <br />
               {i === Object.keys(saisonsValues).length - 1 && !allIndex[i + 2]
