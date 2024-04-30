@@ -555,7 +555,7 @@ export default function Accueil() {
                               }}
                               title={`Supprimer ${animeName} de l'historique`}
                             >
-                              <div className="rounded-md p-1 transition-all hover:bg-gray-600 hover:bg-opacity-20">
+                              <div className="rounded-md p-1 ring-0 transition-all hover:bg-gray-600 hover:bg-opacity-20 active:ring-2 active:ring-white">
                                 <Trash size={20} />
                               </div>
                             </div>
