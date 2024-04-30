@@ -51,7 +51,7 @@ export function Change(
       updateAnime((currentState) => ({
         ...currentState,
         video: url,
-        episodeTitle: <span>E-SP{esp}</span>,
+        episodeTitle: <p className="font-normal">E-SP{esp}</p>,
       }));
 
       StorageEpisodes.setEpisode(indexEpisode.toString());
@@ -78,12 +78,13 @@ export function Change(
         video: url,
         episodeTitle: (
           <>
-            <span>
+            E
+            <span className="font-normal text-white">
               {numberEpisode}{" "}
               {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
             </span>{" "}
             -{" "}
-            <span ref={episodeTitleRef} className="text-white">
+            <span ref={episodeTitleRef} className="font-normal text-white">
               {title}
             </span>
           </>
@@ -106,11 +107,12 @@ export function Change(
       video: url,
       episodeTitle: (
         <>
-          <span>
+          E
+          <span className="font-normal text-white">
             {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
           </span>{" "}
           -{" "}
-          <span ref={episodeTitleRef} className="text-white">
+          <span ref={episodeTitleRef} className="font-normal text-white">
             {episodeTitle}
           </span>
         </>

@@ -335,14 +335,18 @@ const Episodes = () => {
               video: URL_EPISODE,
               episodeTitle: (
                 <>
-                  <span>
+                  E
+                  <span className="font-normal text-white">
                     {Number(episodeIndex) + Number(episode) - retardEsp}{" "}
                     {anime?.saison === "1"
                       ? ""
                       : `(${Number(episode) - retardEsp})`}
                   </span>{" "}
                   -{" "}
-                  <span ref={episodeTitleRef} className="text-white">
+                  <span
+                    ref={episodeTitleRef}
+                    className="font-normal text-white"
+                  >
                     {title}
                   </span>
                 </>
@@ -354,7 +358,7 @@ const Episodes = () => {
             updateAnime((currentState) => ({
               ...currentState,
               video: URL_EPISODE,
-              episodeTitle: <span>E-SP{retardEsp + 1}</span>,
+              episodeTitle: <>E-SP{retardEsp + 1}</>,
             }));
           }
 
@@ -443,9 +447,9 @@ const Episodes = () => {
               </Link>
             )}
 
-            <p className="text-xl drop-shadow-xl sm:text-2xl">
-              Episode {anime?.episodeTitle}
-            </p>
+            <div className="text-xl font-normal sm:text-2xl">
+              {anime?.episodeTitle}
+            </div>
           </div>
 
           <div className="my-8 flex w-full justify-between gap-5 lg:max-w-[600px]">
