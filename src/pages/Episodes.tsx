@@ -341,7 +341,7 @@ const Episodes = () => {
                       ? ""
                       : `(${Number(episode) - retardEsp})`}
                   </span>{" "}
-                  :{" "}
+                  -{" "}
                   <span ref={episodeTitleRef} className="text-white">
                     {title}
                   </span>

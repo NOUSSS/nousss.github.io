@@ -82,7 +82,7 @@ export function Change(
               {numberEpisode}{" "}
               {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
             </span>{" "}
-            :{" "}
+            -{" "}
             <span ref={episodeTitleRef} className="text-white">
               {title}
             </span>
@@ -109,7 +109,7 @@ export function Change(
           <span>
             {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
           </span>{" "}
-          :{" "}
+          -{" "}
           <span ref={episodeTitleRef} className="text-white">
             {episodeTitle}
           </span>
