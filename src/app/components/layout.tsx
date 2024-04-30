@@ -15,6 +15,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   const [output, setOutput] = useState<React.ReactNode>();
   const [isVisible, setIsVisible] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
 
   const SearchIcon = icons["Search"];
   const Settings = icons["Settings"];
@@ -62,6 +63,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
       !localStorage.getItem("films")
     )
       restoreLocalStorage();
+
+    const handleScroll = () => {
+      const show = window.scrollY > 15;
+      setShowBackground(show);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -126,7 +138,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <div className="fixed top-0 -z-50 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 
-      <header className="fixed left-0 top-0 z-[2024] flex h-16 w-full justify-center border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 shadow-lg backdrop-blur-3xl">
+      <header
+        className={cn(
+          "fixed left-0 top-0 z-[2024] flex h-16 w-full justify-center border-b border-b-neutral-700 transition-all duration-500",
+          {
+            "bg-zinc-900 bg-opacity-80 shadow-lg backdrop-blur-3xl":
+              showBackground,
+          },
+        )}
+      >
         <nav className="flex w-full items-center justify-around max-xl:w-[95%] max-xl:justify-between">
           <Link href="/">
             <h1
