@@ -33,6 +33,10 @@ interface AmbiancePros {
   opacity: number;
 }
 
+interface Query {
+  [key: string]: string;
+}
+
 export default function Accueil() {
   const animes = ANIMES.map(({ anime, category }) => ({ anime, category }));
 
@@ -137,30 +141,33 @@ export default function Accueil() {
   const goToAnime = useCallback(
     (
       animeName: string,
-      redirect?: string,
-      detail?: Data.EpisodesData | Data.FilmsData | Data.ScansData,
-    ) => {
-      if (redirect) {
-        if (redirect === "Episodes") {
-          router.push({
-            pathname: "/Episodes",
-            query: {
-              anime: animeName,
-              saison: (detail as Data.EpisodesData).saison,
-            },
-          });
-        } else if (redirect === "Scans" || redirect === "Films") {
-          router.push({
-            pathname: "/" + redirect,
-            query: { anime: animeName },
-          });
-        }
-      } else {
-        router.push({
-          pathname: "/Home",
+      i: number,
+    ): {
+      pathname: string;
+      query: Query;
+    } => {
+      const redirect = historiques[i]?.redirect;
+      const detail = historiques[i]?.detail;
+
+      if (redirect === "Episodes") {
+        return {
+          pathname: "/Episodes",
+          query: {
+            anime: animeName,
+            saison: (detail as Data.EpisodesData).saison,
+          },
+        };
+      } else if (redirect === "Scans" || redirect === "Films") {
+        return {
+          pathname: "/" + redirect,
           query: { anime: animeName },
-        });
+        };
       }
+
+      return {
+        pathname: "/Home",
+        query: { anime: animeName },
+      };
     },
     [historiques, router],
   );
@@ -228,11 +235,6 @@ export default function Accueil() {
                   <button
                     className="btn"
                     onClick={() => {
-                      interface Query {
-                        anime: string;
-                        saison?: string;
-                      }
-
                       const query: Query = { anime: anime.anime };
 
                       if (
@@ -429,14 +431,15 @@ export default function Accueil() {
                   ].filter(Boolean);
 
                   return (
-                    <li
+                    <Link
                       className="cursor-pointer"
-                      onClick={() =>
-                        goToAnime(
-                          animeName,
-                          historiques[i].redirect,
-                          historiques[i].detail,
-                        )
+                      href={
+                        category === "Reprendre"
+                          ? goToAnime(animeName, i)
+                          : {
+                              pathname: "/Home",
+                              query: { anime: animeName },
+                            }
                       }
                       id={
                         animeName +
@@ -575,7 +578,7 @@ export default function Accueil() {
                           </p>
                         </div>
                       )}
-                    </li>
+                    </Link>
                   );
                 })}
               </ul>
