@@ -25,6 +25,7 @@ import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import ScanData from "@/app/class/scanData";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];
@@ -34,6 +35,7 @@ const Scans = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
+  const [scanData, setScanData] = useState<ScanData>();
 
   const [script, setScript] = useState<string>();
 
@@ -62,25 +64,21 @@ const Scans = () => {
         pathname: "/",
       });
     } else {
+      const StorageScans = new ScanData(currentAnime.anime);
+      setScanData(StorageScans);
+
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       updateAnime({ anime: currentAnime });
       setFilever(random());
 
       setScript(currentAnime.options.SCANS_OPTIONS.SCRIPT_URL);
 
-      const lastVersion = localStorage.getItem(
-        `${currentAnime.anime}--version`,
-      );
-
-      const lastMethod = localStorage.getItem(`${currentAnime.anime}--method`);
+      const lastVersion = StorageScans.get()?.version;
+      const lastMethod = StorageScans.get()?.method;
 
       if (lastVersion) {
         updateAnime({ version: lastVersion });
       }
-
-      console.log(
-        lastMethod ? (lastMethod as "horizontal" | "vertical") : "vertical",
-      );
 
       updateAnime((currentState) => ({
         ...currentState,
@@ -112,12 +110,9 @@ const Scans = () => {
 
   const isLast =
     anime.anime?.anime &&
-    localStorage.getItem(`${anime?.anime?.anime}--chapitre`) ===
-      anime?.chapitresOptions?.length.toString();
+    scanData?.get()?.chapitre === anime?.chapitresOptions?.length.toString();
 
-  const isFirst =
-    anime.anime?.anime &&
-    localStorage.getItem(`${anime?.anime?.anime}--chapitre`) === "1";
+  const isFirst = anime.anime?.anime && scanData?.get()?.chapitre === "1";
 
   useEffect(() => {
     if (status === "error") {
@@ -163,9 +158,7 @@ const Scans = () => {
             chapitresOptions: options,
           }));
 
-          const storedChapter = localStorage.getItem(
-            `${anime?.anime?.anime}--chapitre`,
-          );
+          const storedChapter = scanData?.get()?.chapitre;
 
           const indexOption = storedChapter ? Number(storedChapter) - 1 : 0;
           const option = options[indexOption];
@@ -232,7 +225,7 @@ const Scans = () => {
                   method: value as "horizontal" | "vertical",
                 }));
 
-                localStorage.setItem(`${anime.anime?.anime}--method`, value);
+                scanData?.setMethod(value);
               }}
             />
           </div>
@@ -242,10 +235,7 @@ const Scans = () => {
           <Select
             scroll={true}
             onSelect={(items) => {
-              localStorage.setItem(
-                `${anime?.anime?.anime}--chapitre`,
-                items[0].value,
-              );
+              scanData?.setChapitre(items[0].value);
 
               updateAnime((currentState) => ({
                 ...currentState,
@@ -290,17 +280,14 @@ const Scans = () => {
                   version: undefined,
                 }));
 
-                localStorage.removeItem(`${anime.anime?.anime}--version`);
+                scanData?.setVersion("");
               } else {
                 updateAnime((currentState) => ({
                   ...currentState,
                   version: items[0].value,
                 }));
 
-                localStorage.setItem(
-                  `${anime.anime?.anime}--version`,
-                  items[0].value,
-                );
+                scanData?.setVersion(items[0].value);
               }
             }}
           />

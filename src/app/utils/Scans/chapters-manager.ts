@@ -1,6 +1,7 @@
 import { selectChapter } from "./chapters-utils";
 import { RefObject } from "react";
 import { Anime } from "@/typings/types";
+import ScanData from "@/app/class/scanData";
 
 export const PrevChapter = (
   Anime: Anime.AnimeScansProps,
@@ -14,13 +15,18 @@ export const PrevChapter = (
   placeholderRef: RefObject<HTMLElement>,
   newName: string | undefined,
 ) => {
+  if (!Anime.anime) return;
+
+  const StorageScans = new ScanData(Anime.anime.anime);
+  const Scans = StorageScans.get();
+
+  if (!Scans) return;
+
   setAnime((currentState) => ({
     ...currentState,
     scans: selectChapter(
       Anime,
-      Anime.chapitresOptions![
-        Number(localStorage.getItem(`${Anime?.anime?.anime}--chapitre`)) - 2
-      ],
+      Anime.chapitresOptions![Number(Scans.chapitre) - 2],
       placeholderRef,
       newName,
     ),
@@ -39,13 +45,16 @@ export const NextChapter = (
   placeholderRef: RefObject<HTMLElement>,
   newName: string | undefined,
 ) => {
+  const StorageScans = new ScanData(Anime.anime?.anime);
+  const Scans = StorageScans.get();
+
+  if (!Scans) return;
+
   setAnime((currentState) => ({
     ...currentState,
     scans: selectChapter(
       Anime,
-      Anime.chapitresOptions![
-        Number(localStorage.getItem(`${Anime?.anime?.anime}--chapitre`))
-      ],
+      Anime.chapitresOptions![Number(Scans.chapitre)],
       placeholderRef,
       newName,
     ),

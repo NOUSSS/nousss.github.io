@@ -1,10 +1,13 @@
+import EpisodeData from "../class/episodeData";
 import { formatName, getAnime } from "./";
+
+interface CurrentAnimeProps {
+  wSaison: boolean;
+}
 
 export default function getCurrentAnime({
   wSaison,
-}: {
-  wSaison: boolean;
-}): string {
+}: CurrentAnimeProps): string {
   const hash = window.location.href;
   const queryParams = hash.substring(hash.indexOf("?") + 1);
 
@@ -23,16 +26,21 @@ export default function getCurrentAnime({
 
   if (!anime) {
     localStorage.setItem("anime", currentAnimeURL!);
+
     anime = localStorage.getItem("anime")!;
 
+    const episodeData = new EpisodeData(anime);
+
     if (wSaison) {
-      localStorage.setItem(`${formatName(anime)}--saison`, saison ?? "1");
+      episodeData?.setSaison(saison ?? "1");
     }
   }
 
   if (wSaison) {
-    if (anime && !localStorage.getItem(`${anime}--saison`)) {
-      localStorage.setItem(`${formatName(anime)}--saison`, saison ?? "1");
+    const episodeData = new EpisodeData(anime);
+
+    if (anime && !episodeData.get()?.saison) {
+      episodeData?.setSaison(saison ?? "1");
     }
   }
 

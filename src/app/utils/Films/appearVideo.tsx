@@ -2,10 +2,12 @@ import { ANIMES } from "@/animes/constants";
 import { Anime } from "@/typings/types";
 import { RefObject } from "react";
 
+import FilmData from "@/app/class/filmData";
+
 export async function appearVideo(
   id: string,
 
-  Anime: Anime.AnimeFilmsProps,
+  AnimeInfo: Anime.AnimeFilmsProps,
 
   updateAnime: (
     newData:
@@ -15,9 +17,12 @@ export async function appearVideo(
 
   containerRef: RefObject<HTMLElement>,
 ) {
+  const StorageFilms = new FilmData(AnimeInfo.anime?.anime);
+
   const { names } =
     ANIMES.find(
-      ({ anime }) => anime.toLowerCase() === Anime?.anime?.anime.toLowerCase(),
+      ({ anime }) =>
+        anime.toLowerCase() === AnimeInfo?.anime?.anime.toLowerCase(),
     )?.options.FILM_OPTIONS || {};
 
   window.scrollTo({
@@ -27,13 +32,13 @@ export async function appearVideo(
 
   const [url, index] = id.split(" ");
 
-  localStorage.setItem(`${Anime?.anime?.anime}--currentFilm`, index);
+  StorageFilms.setFilm(index);
 
   if (names) {
     updateAnime((currentState) => ({
       ...currentState,
       video: url,
-      filmTitle: `${Object.values(names)[Number(index)].name}`,
+      filmTitle: Object.values(names)[Number(index)].name,
     }));
   }
 

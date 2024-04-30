@@ -19,6 +19,7 @@ import Head from "next/head";
 import ClearCache from "@/app/cache/ClearCache";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import Link from "next/link";
+import EpisodeData from "@/app/class/episodeData";
 
 type langType = "vostfr" | "vf";
 
@@ -50,6 +51,8 @@ const Episodes = () => {
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<number>();
 
+  const [episodeData, setEpisodeData] = useState<EpisodeData>();
+
   useEffect(() => {
     if (loadingToast) toast.dismiss(loadingToast);
 
@@ -60,13 +63,16 @@ const Episodes = () => {
       },
     );
 
-    const currentAnime = getCurrentAnime({
+    const currentAnimeName = getCurrentAnime({
       wSaison: true,
     });
 
-    const animeFetched = getAnime(currentAnime);
+    const episodeData = new EpisodeData(currentAnimeName);
+    const currentAnimeData = episodeData.get();
 
-    if (!currentAnime || !animeFetched?.options.EPISODES_OPTIONS) {
+    setEpisodeData(episodeData);
+
+    if (!currentAnimeName || !currentAnimeData) {
       router.push({
         pathname: "/",
       });
@@ -75,23 +81,14 @@ const Episodes = () => {
         toast.loading("Les épisodes sont en cours de chargement"),
       );
 
-      const currentSaison =
-        params?.get("saison") ??
-        localStorage.getItem(`${currentAnime}--saison`) ??
-        "1";
-
-      let lang = localStorage.getItem(
-        `${currentAnime}--episode--lang`,
-      ) as langType;
-
-      if (!lang) {
-        updateAnime({ lang: "vostfr" });
-      } else updateAnime({ lang });
+      const currentSaison = currentAnimeData.saison || "1";
+      const lang = (currentAnimeData.lang as langType) || "vostfr";
 
       updateAnime((currentState) => ({
         ...currentState,
-        anime: getAnime(currentAnime),
+        anime: getAnime(currentAnimeName),
         saison: currentSaison,
+        lang,
       }));
     }
   }, []);
@@ -122,7 +119,7 @@ const Episodes = () => {
       let retard = 0;
       let url = "";
 
-      localStorage.setItem(`${anime.anime.anime}--episode--lang`, anime.lang);
+      episodeData?.setLang(anime.lang);
 
       const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
 
@@ -187,10 +184,7 @@ const Episodes = () => {
         if (anime?.saison && anime.saison > saisonsEntries[oavIndex]) {
           const newIndexSaison = (Number(anime?.saison) - 1).toString();
 
-          localStorage.setItem(
-            `${anime?.anime?.anime}--saison`,
-            newIndexSaison,
-          );
+          episodeData?.setSaison(newIndexSaison);
           anime!.saison = newIndexSaison;
         }
 
@@ -209,9 +203,8 @@ const Episodes = () => {
         } else {
           const lecteur = Object.keys(fetchedLecteurs)[0];
 
-          const lastLecteur = localStorage.getItem(
-            `${anime.anime?.anime}-${anime.saison}--lecteur`,
-          );
+          let lastLecteur: any = episodeData?.get();
+          if (lastLecteur) lastLecteur = lastLecteur.lecteur;
 
           if (lastLecteur) {
             updateAnime((currentState) => ({
@@ -229,11 +222,12 @@ const Episodes = () => {
         }
 
         const episodeIndex = allIndex![anime?.saison ?? 0];
-        let episode = localStorage.getItem(`${anime?.anime?.anime}--episode`);
+
+        let episode: any = episodeData?.get();
+        if (episode) episode = episode.episode;
 
         if (!episode) {
-          localStorage.setItem(`${anime?.anime?.anime}--episode`, "1");
-
+          episodeData?.setEpisode("1");
           episode = "1";
         }
 
@@ -259,13 +253,12 @@ const Episodes = () => {
           indexEpisode < anime.currentLecteur.length + 1;
           indexEpisode++
         ) {
+          let saisonStorage: any = episodeData?.get();
+          if (saisonStorage) saisonStorage = saisonStorage.saison;
+
           const isHorsSerie =
             anime.lang === "vostfr" &&
-            horsSeries?.find(
-              ({ saison }) =>
-                saison ===
-                localStorage.getItem(`${anime?.anime?.anime}--saison`),
-            );
+            horsSeries?.find(({ saison }) => saison === saisonStorage);
 
           if (isHorsSerie && isHorsSerie?.hs?.includes(indexEpisode - 1)) {
             retard++;
@@ -365,10 +358,13 @@ const Episodes = () => {
             }));
           }
 
+          let saisonStorage: any = episodeData?.get();
+          if (saisonStorage) saisonStorage = saisonStorage.saison;
+
           const saisonName =
             anime?.anime &&
             Object.values(anime.anime?.options?.saisons!)[
-              Number(localStorage.getItem(`${anime?.anime?.anime}--saison`)) - 1
+              Number(saisonStorage) - 1
             ]?.name;
 
           updateAnime((currentState) => ({
@@ -453,8 +449,7 @@ const Episodes = () => {
           </div>
 
           <div className="my-8 flex w-full justify-between gap-5 lg:max-w-[600px]">
-            {anime.anime?.anime &&
-            localStorage.getItem(`${anime.anime.anime}--episode`) !== "1" ? (
+            {anime.anime?.anime && episodeData?.get()?.episode !== "1" ? (
               <button
                 className="btn"
                 onClick={() =>
@@ -474,7 +469,7 @@ const Episodes = () => {
 
             {anime.anime?.anime &&
             anime.currentLecteur &&
-            localStorage.getItem(`${anime.anime.anime}--episode`) !==
+            episodeData?.get()?.episode !==
               anime.currentLecteur.length.toString() ? (
               <button
                 className="btn"
@@ -521,10 +516,7 @@ const Episodes = () => {
                 onClick={() => {
                   ClearCache();
 
-                  const prevSaison =
-                    Number(
-                      localStorage.getItem(`${anime?.anime?.anime}--saison`),
-                    ) - 1;
+                  const prevSaison = Number(episodeData?.get()?.saison) - 1;
 
                   router.push({
                     pathname: `/Episodes`,
@@ -554,10 +546,7 @@ const Episodes = () => {
                 onClick={() => {
                   ClearCache();
 
-                  const newSaison =
-                    Number(
-                      localStorage.getItem(`${anime?.anime?.anime}--saison`),
-                    ) + 1;
+                  const newSaison = Number(episodeData?.get()?.saison) + 1;
 
                   router.push({
                     pathname: `/Episodes`,

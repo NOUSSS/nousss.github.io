@@ -11,10 +11,7 @@ export interface Historique {
   name: string;
   redirect: string;
 
-  chapitre?: string;
-  episode?: string;
-  saison?: string;
-  film?: string;
+  detail: Data.EpisodesData | Data.FilmsData | Data.ScansData;
 }
 
 export namespace Data {

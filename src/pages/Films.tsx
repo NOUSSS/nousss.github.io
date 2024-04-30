@@ -13,6 +13,7 @@ import { useScript, useAnime } from "@/app/lib/hooks/";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
+import FilmData from "@/app/class/filmData";
 
 type langType = "vostfr" | "vf";
 
@@ -22,6 +23,7 @@ const Films = () => {
     null,
   );
   const [script, setScript] = useState<string>("");
+  const [filmData, setFilmData] = useState<FilmData>();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const filmsRef = useRef<HTMLUListElement[]>([]);
@@ -37,6 +39,11 @@ const Films = () => {
       wSaison: false,
     });
 
+    const StorageFilms = new FilmData(currentAnime);
+    const FilmsData = StorageFilms.get();
+
+    setFilmData(StorageFilms);
+
     const fetchedAnime = getAnime(currentAnime);
 
     if (!currentAnime || !fetchedAnime?.options.FILM_OPTIONS) {
@@ -44,8 +51,7 @@ const Films = () => {
         pathname: "/",
       });
     } else {
-      const lang = (localStorage.getItem(`${currentAnime}--film--lang`) ??
-        "vostfr") as langType;
+      const lang = (FilmsData?.lang ?? "vostfr") as langType;
 
       setLoadingToast(toast.loading("Les films sont en cours de chargement"));
 
@@ -61,7 +67,7 @@ const Films = () => {
       const options = anime?.anime?.options.FILM_OPTIONS;
 
       if (options) {
-        localStorage.setItem(`${anime?.anime?.anime}--film--lang`, anime?.lang);
+        filmData?.setLang(anime?.lang);
         setScript(options?.SCRIPT_URL(anime.lang));
       }
     }
@@ -84,12 +90,9 @@ const Films = () => {
   useEffect(() => {
     if (status === "ready") {
       setTimeout(() => {
-        const lastFilm = localStorage.getItem(
-          `${anime?.anime?.anime}--currentFilm`,
-        );
+        const lastFilm = filmData?.get()?.film;
 
         const options = anime?.anime?.options.FILM_OPTIONS;
-
         const fetchedLecteurs = getLecteur();
 
         updateAnime((currentState) => ({
@@ -125,10 +128,7 @@ const Films = () => {
         appearVideo(
           lastFilm
             ? `${anime.currentLecteur?.[Number(lastFilm)]} ${Number(lastFilm)}`
-            : `${anime.currentLecteur?.[0]} ${
-                localStorage.getItem(`${anime?.anime?.anime}--currentFilm`) ??
-                "0"
-              }`,
+            : `${anime.currentLecteur?.[0]} 0`,
 
           anime!,
           updateAnime,

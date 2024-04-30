@@ -11,6 +11,7 @@ import shuffle from "./shuffle";
 import normalizeString from "./normalizeString";
 import random from "./random";
 import navMotion from "./navMotion";
+import restoreLocalStorage from "./restoreLocalStorage";
 
 export {
   formatLang,
@@ -26,4 +27,5 @@ export {
   normalizeString,
   random,
   navMotion,
+  restoreLocalStorage,
 };

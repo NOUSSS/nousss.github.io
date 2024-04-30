@@ -9,11 +9,16 @@ import Link from "next/link";
 import { Footer } from "@/app/components/";
 import { ANIMES, AnimesType, groupAnimesByCategory } from "@/animes/constants";
 import { toast } from "sonner";
-import { Historique } from "@/typings/types";
+import { Data, Historique } from "@/typings/types";
 import { removeAnimeFromHistorique } from "@/app/utils/Accueil/historiqueManager";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
-import { getAnime, shuffle, getWallpaper } from "@/app/lib/";
+import {
+  getAnime,
+  shuffle,
+  getWallpaper,
+  restoreLocalStorage,
+} from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
 
@@ -63,87 +68,34 @@ export default function Accueil() {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let animesCopy = [...shuffle(ANIMES)];
-    const animes = [];
+    if (
+      !localStorage.getItem("episodes") ||
+      !localStorage.getItem("scans") ||
+      !localStorage.getItem("films")
+    )
+      restoreLocalStorage();
 
-    for (let i = 0; i < 6; i++) {
-      if (animesCopy.length > 0) {
-        const index = Math.floor(Math.random() * animesCopy.length);
+    let shuffledAnimes = shuffle(ANIMES);
+    setRandomAnimes(shuffledAnimes.slice(0, 6));
 
-        animes.push(animesCopy[index]);
-        animesCopy.splice(index, 1);
-      }
-    }
+    const loadedHistoriques: Historique[] = [];
 
-    setRandomAnimes(animes);
+    ["episodes", "scans", "films"].forEach((type) => {
+      const items = JSON.parse(localStorage.getItem(type) || "[]") as
+        | Data.EpisodesData[]
+        | Data.FilmsData[]
+        | Data.ScansData[];
 
-    const keys = Object.keys(localStorage);
-    const lowercaseKeys = keys.map((key) => key.toLowerCase());
-    const duplicates: string[] = [];
-
-    keys.forEach((key) => {
-      if (
-        lowercaseKeys.indexOf(key.toLowerCase()) !==
-          lowercaseKeys.lastIndexOf(key.toLowerCase()) &&
-        key === key.toLowerCase()
-      ) {
-        duplicates.push(key);
-      }
+      items.forEach((item) => {
+        loadedHistoriques.push({
+          name: item.name,
+          redirect: type.charAt(0).toUpperCase() + type.slice(1),
+          detail: item,
+        });
+      });
     });
 
-    duplicates.forEach((duplicate) => {
-      localStorage.removeItem(duplicate);
-    });
-
-    const loadHistoriques = () => {
-      const loadedHistoriques: Historique[] = [];
-
-      if (typeof window !== "undefined") {
-        for (const key of Object.keys(localStorage)) {
-          if (key.includes("--episode") && !key.includes("--lang")) {
-            const name = key.replace("--episode", "");
-
-            const episode = localStorage.getItem(key);
-            const saison = localStorage.getItem(`${name}--saison`) ?? "1";
-
-            if (!getAnime(name)) return localStorage.removeItem(key);
-
-            if (episode)
-              loadedHistoriques.push({
-                name,
-                redirect: "Episodes",
-                episode,
-                saison,
-              });
-          }
-
-          if (key.includes("--chapitre")) {
-            const name = key.replace("--chapitre", "");
-            const chapitre = localStorage.getItem(key);
-
-            if (!getAnime(name)) return localStorage.removeItem(key);
-
-            if (chapitre)
-              loadedHistoriques.push({ name, redirect: "Scans", chapitre });
-          }
-
-          if (key.includes("--currentFilm")) {
-            const name = key.replace("--currentFilm", "");
-            const film = localStorage.getItem(key);
-
-            if (!getAnime(name)) return localStorage.removeItem(key);
-
-            if (film) loadedHistoriques.push({ name, redirect: "Films", film });
-          }
-        }
-
-        return loadedHistoriques;
-      }
-    };
-
-    const loadedHistoriques = loadHistoriques();
-
-    if (loadedHistoriques) setHistoriques(loadedHistoriques);
+    setHistoriques(loadedHistoriques);
   }, []);
 
   const [catalogues, setCatalogues] = useState(() =>
@@ -183,32 +135,28 @@ export default function Accueil() {
   }, [historiques]);
 
   const goToAnime = useCallback(
-    (animeName: string, category: string, index: number) => {
-      if (historiques[index] && category === "Reprendre") {
-        const historique = historiques[index];
-
-        localStorage.setItem("anime", animeName);
-
-        if (historique?.redirect === "Episodes") {
-          router?.push({
-            pathname: historique?.redirect,
-            query: { anime: animeName, saison: historique.saison },
+    (
+      animeName: string,
+      redirect?: string,
+      detail?: Data.EpisodesData | Data.FilmsData | Data.ScansData,
+    ) => {
+      if (redirect) {
+        if (redirect === "Episodes") {
+          router.push({
+            pathname: "/Episodes",
+            query: {
+              anime: animeName,
+              saison: (detail as Data.EpisodesData).saison,
+            },
           });
-        }
-
-        if (
-          historique?.redirect === "Scans" ||
-          historique?.redirect === "Films"
-        ) {
-          router?.push({
-            pathname: historique.redirect,
+        } else if (redirect === "Scans" || redirect === "Films") {
+          router.push({
+            pathname: "/" + redirect,
             query: { anime: animeName },
           });
         }
       } else {
-        localStorage.setItem("anime", animeName);
-
-        router?.push({
+        router.push({
           pathname: "/Home",
           query: { anime: animeName },
         });
@@ -292,8 +240,10 @@ export default function Accueil() {
                         historiquesFiltered[historiqueIndex]?.redirect ===
                           "Episodes"
                       )
-                        query.saison =
-                          historiquesFiltered[historiqueIndex].saison;
+                        query.saison = (
+                          historiquesFiltered[historiqueIndex]
+                            .detail as unknown as Data.EpisodesData
+                        ).saison;
 
                       if (historiquesFiltered[historiqueIndex]?.redirect)
                         router.push({
@@ -303,7 +253,7 @@ export default function Accueil() {
                         });
                       else
                         router.push({
-                          pathname: "Home",
+                          pathname: "/Home",
                           query: { anime: anime.anime },
                         });
                     }}
@@ -311,10 +261,15 @@ export default function Accueil() {
                     {historiquesFiltered.find((e) => e.name === anime.anime)
                       ? "Reprendre " +
                         `${
-                          historiquesFiltered[historiqueIndex]?.episode
+                          (
+                            historiquesFiltered[historiqueIndex]
+                              .detail as unknown as Data.EpisodesData
+                          ).episode
                             ? `Saison ${getScriptIndex({
-                                currentSaison:
-                                  historiquesFiltered[historiqueIndex]?.saison,
+                                currentSaison: (
+                                  historiquesFiltered[historiqueIndex]
+                                    .detail as unknown as Data.EpisodesData
+                                ).saison,
                                 parts:
                                   randomAnimes[historiqueIndex].options
                                     .EPISODES_OPTIONS?.parts,
@@ -323,9 +278,15 @@ export default function Accueil() {
                                 historiqueIndex,
                                 historiquesFiltered,
                               )}`
-                            : historiquesFiltered[historiqueIndex]?.film
-                              ? `Film ${Number(historiquesFiltered[historiqueIndex]?.film) + 1}`
-                              : historiquesFiltered[historiqueIndex]?.chapitre
+                            : (
+                                  historiquesFiltered[historiqueIndex]
+                                    .detail as unknown as Data.FilmsData
+                                ).film
+                              ? `Film ${Number((historiquesFiltered[historiqueIndex].detail as unknown as Data.FilmsData).film) + 1}`
+                              : (
+                                    historiquesFiltered[historiqueIndex]
+                                      .detail as unknown as Data.ScansData
+                                  ).chapitre
                                 ? `
                       ${getCurrentChapitre(
                         randomAnimes[historiqueIndex].anime,
@@ -470,7 +431,13 @@ export default function Accueil() {
                   return (
                     <li
                       className="cursor-pointer"
-                      onClick={() => goToAnime(animeName!, category, i)}
+                      onClick={() =>
+                        goToAnime(
+                          animeName,
+                          historiques[i].redirect,
+                          historiques[i].detail,
+                        )
+                      }
                       id={
                         animeName +
                         `${
@@ -514,7 +481,10 @@ export default function Accueil() {
                               </p>
 
                               <p className="text-sm text-main sm:text-base">
-                                {historiques[i]?.chapitre && (
+                                {(
+                                  historiques[i]
+                                    .detail as unknown as Data.ScansData
+                                ).chapitre && (
                                   <>
                                     {getCurrentChapitre(
                                       animeName!,
@@ -523,14 +493,31 @@ export default function Accueil() {
                                     )}
                                   </>
                                 )}
-                                {historiques[i]?.film && (
-                                  <>Film {Number(historiques[i]?.film) + 1}</>
+                                {(
+                                  historiques[i]
+                                    .detail as unknown as Data.FilmsData
+                                ).film && (
+                                  <>
+                                    Film{" "}
+                                    {Number(
+                                      (
+                                        historiques[i]
+                                          .detail as unknown as Data.FilmsData
+                                      ).film,
+                                    ) + 1}
+                                  </>
                                 )}
-                                {historiques[i]?.episode && (
+                                {(
+                                  historiques[i]
+                                    .detail as unknown as Data.EpisodesData
+                                ).episode && (
                                   <>
                                     Saison{" "}
                                     {getScriptIndex({
-                                      currentSaison: historiques[i]?.saison,
+                                      currentSaison: (
+                                        historiques[i]
+                                          .detail as unknown as Data.EpisodesData
+                                      ).saison,
                                       parts:
                                         fetchedAnime?.options.EPISODES_OPTIONS
                                           ?.parts,
