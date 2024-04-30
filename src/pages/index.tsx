@@ -184,7 +184,7 @@ export default function Accueil() {
     <main className="top-16">
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-40 hidden h-full w-full bg-black bg-opacity-20"
+        className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
       ></div>
 
       {ambiance?.image && (
