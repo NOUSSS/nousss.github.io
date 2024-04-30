@@ -12,6 +12,7 @@ import normalizeString from "./normalizeString";
 import random from "./random";
 import navMotion from "./navMotion";
 import restoreLocalStorage from "./restoreLocalStorage";
+import cn from "./cn";
 
 export {
   formatLang,
@@ -28,4 +29,5 @@ export {
   random,
   navMotion,
   restoreLocalStorage,
+  cn,
 };

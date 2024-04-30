@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { restoreLocalStorage } from "../lib";
+import { cn, restoreLocalStorage } from "../lib";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -93,7 +93,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </Head>
 
       <div
-        className={`${isVisible ? "" : "hidden"} fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-neutral-700 text-sm shadow-xl backdrop-blur-md sm:w-[600px] sm:rounded-xl`}
+        className={cn(
+          "fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-neutral-700 text-sm shadow-xl backdrop-blur-md sm:w-[600px] sm:rounded-xl",
+          {
+            hidden: !isVisible,
+          },
+        )}
         ref={searchContainerRef}
       >
         <div className="flex h-16 items-center gap-4 border-b border-neutral-700 bg-zinc-900 bg-opacity-50 p-2 sm:rounded-t-xl">

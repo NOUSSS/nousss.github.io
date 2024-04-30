@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "../lib";
 
 export default function Footer({
   media = false,
@@ -9,7 +10,9 @@ export default function Footer({
 }) {
   return (
     <footer
-      className={`${!style ? "" : "w-full bg-zinc-900 bg-opacity-50"} mt-4 p-8`}
+      className={cn("mt-4 p-8", {
+        "w-full bg-zinc-900 bg-opacity-50": style,
+      })}
     >
       <div className="flex flex-col text-base">
         <Link

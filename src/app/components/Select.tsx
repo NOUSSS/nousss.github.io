@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
+import { cn } from "../lib";
 
 export interface ItemsProps {
   name: string;
@@ -143,7 +144,10 @@ export default function Select({
   return (
     <label
       ref={labelRef}
-      className={`relative flex w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white ${isSelected ? "ring-2 ring-main" : ""}`}
+      className={cn(
+        "relative flex w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
+        { "ring-2 ring-main": isSelected },
+      )}
       onClick={appear}
     >
       <p className="relative left-1 font-normal" ref={placeholderRef}>
@@ -174,7 +178,17 @@ export default function Select({
                     el: el!,
                   })
                 }
-                className={`${multiple ? "mt-1" : ""} flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors ${item.disabled ? "opacity-50" : "hover:border-orange-500"} ${selectedItems.find((i) => i.name === item.name) && multiple ? "bg-orange-500 text-white" : ""}`}
+                className={cn(
+                  "flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
+                  {
+                    "mt-1": multiple,
+                    "bg-orange-500 text-white":
+                      selectedItems.find((i) => i.name === item.name) &&
+                      multiple,
+                    "opacity-50": item.disabled,
+                    "hover:border-orange-500": !item.disabled,
+                  },
+                )}
               >
                 <p className="font-normal">{item.name}</p>
               </li>

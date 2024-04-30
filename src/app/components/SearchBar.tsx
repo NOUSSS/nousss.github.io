@@ -1,5 +1,5 @@
 import { icons } from "lucide-react";
-import { initSearchBar } from "@/app/lib/";
+import { cn, initSearchBar } from "@/app/lib/";
 import { RefObject, useRef } from "react";
 
 type QueryType = "id" | "innerText";
@@ -23,7 +23,10 @@ export default function SearchBar({
 
   return (
     <label
-      className={`flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2.5 shadow-xl ${className}`}
+      className={cn(
+        "flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2.5 shadow-xl",
+        className,
+      )}
       title="Système de recherche super cool"
     >
       <SearchIcon size="25" />

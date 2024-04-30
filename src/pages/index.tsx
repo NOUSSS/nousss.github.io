@@ -17,7 +17,7 @@ import { toast } from "sonner";
 import { Data, DatasArr, Historique } from "@/typings/types";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
-import { getAnime, shuffle, getWallpaper } from "@/app/lib/";
+import { getAnime, shuffle, getWallpaper, cn } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
 
@@ -336,7 +336,9 @@ export default function Accueil() {
           .map(({ names, category }) => (
             <div key={category}>
               <div
-                className={`mb-3 mt-7 text-left text-2xl ${category !== "Reprendre" ? "" : "flex items-center"}`}
+                className={cn("mb-3 mt-7 text-left text-2xl", {
+                  "flex items-center": category === "Reprendre",
+                })}
               >
                 {category === "Reprendre" ? (
                   <>

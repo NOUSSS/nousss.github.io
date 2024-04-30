@@ -3,7 +3,7 @@
 import React, { RefObject } from "react";
 
 import { ANIMES } from "@/animes/constants";
-import { normalizeString } from "../lib/";
+import { cn, normalizeString } from "../lib/";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -65,7 +65,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   return (
     <input
-      className={`bg-transparent ${className ?? ""}`}
+      className={cn("bg-transparent", className)}
       ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = normalizeString(e.target.value);
