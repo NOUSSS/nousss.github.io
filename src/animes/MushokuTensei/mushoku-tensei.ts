@@ -48,13 +48,6 @@ class MushokuTensei extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/mushoku-tensei/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [
-        {
-          saison: "2",
-          hs: [0],
-        },
-      ],
-
       parts: {
         from: 2,
         to: 3,
@@ -64,7 +57,7 @@ class MushokuTensei extends Anime {
       allIndex: {
         1: 0,
         2: 24,
-        3: 36,
+        3: 37,
       },
 
       names: episodes,
