@@ -43,7 +43,7 @@ const Home = () => {
         )}
       </Head>
 
-      <div className="relative mb-12 flex h-auto rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-xl:flex-col max-sm:rounded-none">
+      <div className="relative mb-12 flex h-auto flex-col rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:rounded-none xl:flex-row">
         {anime?.options.affiche && (
           <div>
             <Image

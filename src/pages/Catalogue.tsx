@@ -66,17 +66,17 @@ export default function Catalogue() {
                 fetchedAnime?.synopsis ||
                 "Aucun synopsis disponible pour cet anime"
               }
-              className="group mb-2 mr-6 inline-flex w-32 cursor-pointer flex-col rounded-xl md:w-36"
+              className="group mb-2 mr-4 inline-flex w-36 cursor-pointer flex-col rounded-xl md:mr-6 md:w-40"
               href={{
                 pathname: "/Home",
                 query: { anime: anime },
               }}
               key={anime}
             >
-              <div className="relative top-1 overflow-hidden rounded-md shadow-xl">
+              <div className="relative top-1 w-36 overflow-hidden rounded-md shadow-xl md:w-40">
                 {image && (
                   <Image
-                    className="z-[-1] h-44 min-h-44 rounded-md transition-transform group-hover:scale-105 md:h-48 md:min-h-48"
+                    className="z-[-1] aspect-[2/3] w-40 rounded-md transition-transform group-hover:scale-105 md:w-44"
                     src={image}
                     alt={`Affiche de l'anime ${anime}`}
                   />

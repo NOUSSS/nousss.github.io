@@ -29,7 +29,7 @@ export function getSaisons() {
                 src={saisonsValues[i].image()}
                 id={i.toString()}
                 alt="poster de saison"
-                className="h-36 min-h-36 w-24 min-w-24 rounded-md transition-transform group-hover:scale-105 md:h-44 md:max-h-44 md:w-32 md:min-w-32"
+                className="aspect-[2/3] w-32 rounded-md transition-transform group-hover:scale-105 md:w-44"
               />
             </div>
 
