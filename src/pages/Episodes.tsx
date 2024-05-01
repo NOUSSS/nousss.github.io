@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
 import { useScript, useAnime } from "@/app/lib/hooks/";
-import { useSearchParams } from "next/navigation";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
+import { icons } from "lucide-react";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import getNote from "@/app/utils/Episodes/getNote";
@@ -51,6 +51,9 @@ const Episodes = () => {
   const [filever, setFilever] = useState<number>();
 
   const [episodeData, setEpisodeData] = useState<EpisodeData>();
+
+  const Next = icons["ChevronLast"];
+  const Prev = icons["ChevronFirst"];
 
   useEffect(() => {
     if (loadingToast) toast.dismiss(loadingToast);
@@ -455,6 +458,7 @@ const Episodes = () => {
                   )
                 }
               >
+                <Prev />
                 Épisode précedent
               </button>
             ) : null}
@@ -477,6 +481,7 @@ const Episodes = () => {
                 }
               >
                 Épisode suivant
+                <Next />
               </button>
             ) : null}
           </div>
@@ -527,6 +532,7 @@ const Episodes = () => {
                 }}
                 className="btn"
               >
+                <Prev />
                 Saison précédente
               </button>
             ) : null}
@@ -558,6 +564,7 @@ const Episodes = () => {
                 className="btn"
               >
                 Saison suivante
+                <Next />
               </button>
             ) : null}
           </div>

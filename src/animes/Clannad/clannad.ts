@@ -12,7 +12,7 @@ class Clannad extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Saison 2",
+        name: "Saison 1",
         aliases: [""],
         image: () => getImageSaisons(1),
       },

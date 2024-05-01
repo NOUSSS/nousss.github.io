@@ -37,13 +37,15 @@ const Scans = () => {
     null,
   );
   const [scanData, setScanData] = useState<ScanData>();
-
   const [script, setScript] = useState<string>();
 
   const placeholderRef = useRef<HTMLParagraphElement>(null);
   const placeholderRefVersion = useRef<HTMLParagraphElement>(null);
 
   const router = useRouter();
+
+  const Next = icons["ChevronLast"];
+  const Prev = icons["ChevronFirst"];
 
   useEffect(() => {
     router.events.on("routeChangeStart", ClearCache);
@@ -329,6 +331,7 @@ const Scans = () => {
                 )
               }
             >
+              <Prev />
               Chapitre précédent
             </button>
           ) : null}
@@ -346,6 +349,7 @@ const Scans = () => {
               }
             >
               Chapitre suivant
+              <Next />
             </button>
           ) : null}
         </div>
@@ -395,6 +399,7 @@ const Scans = () => {
                 )
               }
             >
+              <Prev />
               Chapitre précédent
             </button>
           ) : null}
@@ -412,6 +417,7 @@ const Scans = () => {
               }
             >
               Chapitre suivant
+              <Next />
             </button>
           ) : null}
         </div>

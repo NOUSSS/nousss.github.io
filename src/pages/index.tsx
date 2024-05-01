@@ -266,6 +266,7 @@ export default function Accueil() {
                         });
                     }}
                   >
+                    <Play />
                     {historiquesFiltered.find((e) => e.name === anime.anime)
                       ? "Reprendre " +
                         `${
@@ -281,7 +282,7 @@ export default function Accueil() {
                                 parts:
                                   randomAnimes[historiqueIndex].options
                                     .EPISODES_OPTIONS?.parts,
-                              })} ${getCurrentEpisode(
+                              })}, ${getCurrentEpisode(
                                 randomAnimes[historiqueIndex].anime,
                                 historiqueIndex,
                                 historiquesFiltered,
@@ -303,7 +304,7 @@ export default function Accueil() {
                       )}`
                                 : ""
                         }`
-                      : "Regarder"}
+                      : "REGARDER"}
                   </button>
                 </div>
 
@@ -405,7 +406,7 @@ export default function Accueil() {
                         }
                       }}
                     >
-                      Tout supprimer
+                      <Trash /> Tout supprimer
                     </button>
                   </>
                 ) : (
