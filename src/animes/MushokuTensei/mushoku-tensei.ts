@@ -2,6 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/MushokuTensei/affiche.jpg";
+import episodes from "./constants/episodes-names";
 
 class MushokuTensei extends Anime {
   constructor() {
@@ -49,10 +50,6 @@ class MushokuTensei extends Anime {
 
       horsSeries: [
         {
-          saison: "1",
-          hs: [23],
-        },
-        {
           saison: "2",
           hs: [0],
         },
@@ -66,9 +63,11 @@ class MushokuTensei extends Anime {
 
       allIndex: {
         1: 0,
-        2: 23,
-        3: 35,
+        2: 24,
+        3: 36,
       },
+
+      names: episodes,
     };
   }
 }

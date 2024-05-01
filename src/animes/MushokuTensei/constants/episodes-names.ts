@@ -1,0 +1,31 @@
+const episodes = [
+  { name: "Le Chômeur réincarné", index: 1 },
+  { name: "Le Professeur", index: 2 },
+  { name: "Amis", index: 3 },
+  { name: "Conseil de famille au pied levé", index: 4 },
+  { name: "La violence de la jeune demoiselle", index: 5 },
+  { name: "Jour de congé à Roa", index: 6 },
+  { name: "Ce que réservent les efforts fournis", index: 7 },
+  { name: "Le premier tournant", index: 8 },
+  { name: "Rencontre fortuite", index: 9 },
+  { name: "La valeur de la vie et le premier travail", index: 10 },
+  { name: "Les Enfants et le Guerrier", index: 11 },
+  { name: "La demoiselle aux yeux démoniaques", index: 12 },
+  { name: "Chassé-croisé", index: 13 },
+  { name: "Coûteuse gratuité", index: 14 },
+  { name: "Quiétude à Doldia", index: 15 },
+  { name: "Dispute de famille", index: 16 },
+  { name: "Retrouvailles", index: 17 },
+  { name: "À chacun son périple", index: 18 },
+  { name: "Choix de parcours", index: 19 },
+  { name: "Le jour où ma petite sœur est née", index: 20 },
+  { name: "Le deuxième tournant", index: 21 },
+  { name: "Le rêve devenu réalité", index: 22 },
+  { name: "Pas à pas après l'éveil", index: 23 },
+  {
+    name: "La chasse aux gobelins d'Eris",
+    index: 24,
+  },
+];
+
+export default episodes;
