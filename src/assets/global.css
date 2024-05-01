@@ -18,7 +18,7 @@
 }
 
 .btn {
-  @apply relative left-0 min-h-12 rounded-xl border-0 bg-orange-600 p-3 text-base font-normal transition-all duration-300 hover:bg-orange-500;
+  @apply relative left-0 min-h-12 rounded-xl border-0 bg-orange-500 p-3 text-base font-normal transition-all duration-300 hover:bg-orange-400;
 }
 
 .container {
