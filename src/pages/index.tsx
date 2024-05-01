@@ -37,8 +37,6 @@ interface Query {
 }
 
 export default function Accueil() {
-  const animes = ANIMES.map(({ anime, category }) => ({ anime, category }));
-
   const router = useRouter();
 
   const Trash = icons["Trash2"];
@@ -474,13 +472,13 @@ export default function Accueil() {
                           }
                         >
                           {fetchedAnime?.options.affiche && (
-                            <div className="relative overflow-hidden rounded-md">
+                            <div className="relative overflow-hidden">
                               <div className="absolute left-2/4 top-2/4 z-10 -translate-x-2/4 -translate-y-2/4 rounded-full bg-zinc-900 bg-opacity-75 p-4">
                                 <Play />
                               </div>
 
                               <Image
-                                className="-z-10 aspect-video w-44 rounded-md brightness-75 transition-transform group-hover:scale-105 md:w-56"
+                                className="-z-10 aspect-video w-44 brightness-75 transition-transform group-hover:scale-105 md:w-56"
                                 src={fetchedAnime.options.affiche}
                                 alt="affiche d'un anime"
                               />

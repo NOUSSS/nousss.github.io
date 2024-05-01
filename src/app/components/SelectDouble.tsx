@@ -37,7 +37,7 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
   }, [selected, follower]);
 
   return (
-    <div className="h-12 w-64 rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50">
+    <div className="h-14 w-64 rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50">
       <div className="text-md relative z-50 flex h-full w-full items-center justify-around font-normal">
         {items.map(({ name, value }) => (
           <button
