@@ -111,12 +111,12 @@ export default function Accueil() {
       const updatedCatalogues = [...catalogues];
 
       if (historiques.length > 0) {
-        updatedCatalogues.splice(1, 0, {
+        updatedCatalogues.splice(1, 1, {
           category: "Reprendre",
           names: historiques.map(({ name }) => name),
         });
       } else {
-        updatedCatalogues.splice(1, 0);
+        updatedCatalogues.splice(1, 1);
       }
 
       setCatalogues(updatedCatalogues);
