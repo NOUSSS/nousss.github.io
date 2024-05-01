@@ -10,13 +10,13 @@ import EpisodeData from "../class/episodeData";
 import FilmData from "../class/filmData";
 
 interface WatcherProps {
-  video: string;
+  video: string | undefined;
   lang: string;
-  lecteur: string;
-  lecteurs: Anime.LecteurReturnType;
-  anime: string;
-  context?: string;
-  episode?: string;
+  lecteur: string | undefined;
+  lecteurs: Anime.LecteurReturnType | undefined;
+  anime: string | undefined;
+  context?: string | undefined;
+  episode?: string | undefined;
 
   prefix?: boolean;
   name?: boolean;

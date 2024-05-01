@@ -413,24 +413,18 @@ const Episodes = () => {
         ></p>
       ) : null}
 
-      {anime.anime?.anime &&
-        anime.video &&
-        anime.lecteurs &&
-        anime.lecteur &&
-        anime.episodeTitle &&
-        anime.saisonTitle &&
-        anime.lang && (
-          <Watcher
-            video={anime.video}
-            lecteurs={anime.lecteurs}
-            anime={anime.anime.anime}
-            lang={anime.lang}
-            lecteur={anime.lecteur}
-            containerRef={containerRef}
-            updateAnime={updateAnime}
-            context={anime.saison}
-          />
-        )}
+      {anime.lang && (
+        <Watcher
+          video={anime.video}
+          lecteurs={anime.lecteurs}
+          anime={anime.anime?.anime}
+          lang={anime.lang}
+          lecteur={anime.lecteur}
+          containerRef={containerRef}
+          updateAnime={updateAnime}
+          context={anime.saison}
+        />
+      )}
 
       <div className="flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
         <div className="mx:mb-0 mb-5">

@@ -149,26 +149,21 @@ const Films = () => {
         ) : null}
       </Head>
 
-      {anime.video &&
-        anime.anime?.anime &&
-        anime.lang &&
-        anime.lecteur &&
-        anime.lecteurs &&
-        anime.filmTitle && (
-          <Watcher
-            prefix={false}
-            video={anime.video}
-            context="Films"
-            anime={anime.anime.anime}
-            lang={anime.lang}
-            name={true}
-            lecteur={anime.lecteur}
-            lecteurs={anime.lecteurs}
-            episode={anime.filmTitle as string}
-            containerRef={containerRef}
-            updateAnime={updateAnime}
-          />
-        )}
+      {anime.lang && (
+        <Watcher
+          prefix={false}
+          video={anime.video}
+          context="Films"
+          anime={anime.anime?.anime}
+          lang={anime.lang}
+          name={true}
+          lecteur={anime.lecteur}
+          lecteurs={anime.lecteurs}
+          episode={anime.filmTitle as string}
+          containerRef={containerRef}
+          updateAnime={updateAnime}
+        />
+      )}
 
       <SearchBar
         className="my-6"
