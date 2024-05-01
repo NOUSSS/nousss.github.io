@@ -88,4 +88,6 @@ export default function restoreLocalStorage() {
       }
     }
   }, 500);
+
+  window.location.reload();
 }
