@@ -410,9 +410,9 @@ const Episodes = () => {
         />
       )}
 
-      <div className="flex w-full flex-col justify-between *:mx-5 *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
-        <div className="mx:mb-0 mb-5">
-          <div className="flex w-full flex-col text-left md:w-auto">
+      <div className="flex w-11/12 flex-col justify-between *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
+        <div className="mb-5 w-full">
+          <div className="flex w-full flex-col text-left">
             {anime?.anime && anime.saisonTitle && (
               <Link
                 className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
@@ -430,7 +430,7 @@ const Episodes = () => {
             </div>
           </div>
 
-          <div className="my-8 flex w-full justify-between gap-5 lg:max-w-[600px]">
+          <div className="my-8 flex w-full justify-between gap-5 lg:justify-around">
             {anime.anime?.anime && episodeData?.get()?.episode !== "1" ? (
               <button
                 className="btn"
@@ -474,7 +474,7 @@ const Episodes = () => {
           </div>
         </div>
 
-        <div className="lg:max-w-[450px]">
+        <div className="w-full lg:max-w-[450px]">
           <SearchBar
             placeholder="Rechercher un épisode"
             containerRef={episodesListRef}
