@@ -44,6 +44,7 @@ const Scans = () => {
 
   const router = useRouter();
 
+  const Last = icons["ChevronsRight"];
   const Next = icons["ChevronLast"];
   const Prev = icons["ChevronFirst"];
 
@@ -315,7 +316,7 @@ const Scans = () => {
             }));
           }}
         >
-          Dernier chapitre
+          Dernier chapitre <Last />
         </button>
 
         <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
