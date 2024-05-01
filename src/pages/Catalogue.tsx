@@ -1,6 +1,5 @@
 import { ANIMES } from "@/animes/constants";
 import { getAnime, getWallpaper } from "@/app/lib/";
-import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { Select } from "@/app/components/";
 

@@ -19,13 +19,14 @@ import { useRouter } from "next/router";
 import { ItemsProps } from "@/app/components/Select";
 
 import Head from "next/head";
-import ClearCache from "@/app/cache/ClearCache";
 import Link from "next/link";
+
+import ClearCache from "@/app/cache/ClearCache";
+import ScanData from "@/app/class/scanData";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import ScanData from "@/app/class/scanData";
 
 const Scans = () => {
   const UpArrow = icons["ArrowUp"];

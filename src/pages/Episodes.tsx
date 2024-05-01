@@ -25,7 +25,6 @@ type langType = "vostfr" | "vf";
 
 const Episodes = () => {
   const router = useRouter();
-  const params = useSearchParams();
 
   useEffect(() => {
     router.events.on("routeChangeStart", ClearCache);
@@ -95,17 +94,18 @@ const Episodes = () => {
 
   useEffect(() => {
     if (
-      anime?.lang &&
-      anime?.anime &&
+      anime.lang &&
+      anime.anime &&
       anime.saison &&
       anime.anime.options.EPISODES_OPTIONS
     ) {
-      const options = anime?.anime && anime!.anime?.options;
+      const options = anime.anime.options;
 
-      const { SCRIPT_URL } = options?.EPISODES_OPTIONS!;
+      const { saisons } = options!;
+      const { SCRIPT_URL } = options.EPISODES_OPTIONS!;
 
-      const saisonsEntries = Object.keys(options?.saisons!);
-      const saisonsValues = Object.values(options?.saisons!);
+      const saisonsEntries = Object.keys(saisons!);
+      const saisonsValues = Object.values(saisons!);
 
       const oavIndex = saisonsEntries.findIndex((e) => e === "oav");
 
