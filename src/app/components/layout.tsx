@@ -195,7 +195,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </span>
             </Link>
 
-            <div
+            <Link
+              href="#search"
               className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
               onClick={() => setIsVisible(!isVisible)}
             >
@@ -204,7 +205,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <span className="text-base text-white max-lg:hidden">
                 Recherche rapide (Ctrl + K)
               </span>
-            </div>
+            </Link>
           </div>
         </nav>
       </header>

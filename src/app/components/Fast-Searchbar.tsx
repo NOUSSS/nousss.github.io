@@ -63,6 +63,19 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
     };
   }, [isVisible]);
 
+  React.useEffect(() => {
+    setIsVisible(window.location.hash === "#search");
+  }, [setIsVisible]);
+
+  React.useEffect(() => {
+    if (isVisible) {
+      router.push("#search", undefined, { shallow: true }).catch(() => 0);
+    } else {
+      const newUrl = window.location.pathname + window.location.search;
+      router.push(newUrl, undefined, { shallow: true }).catch(() => 0);
+    }
+  }, [isVisible]);
+
   return (
     <input
       className={cn("bg-transparent", className)}
