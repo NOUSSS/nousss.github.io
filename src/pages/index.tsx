@@ -35,7 +35,6 @@ interface AmbiancePros {
 interface Query {
   [key: string]: string;
 }
-
 export default function Accueil() {
   const router = useRouter();
 
@@ -46,7 +45,7 @@ export default function Accueil() {
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [catalogues, setCatalogues] = useState<GroupedAnimes[]>();
   const [ambiance, setAmbiance] = useState<AmbiancePros>();
 
   useEffect(() => {
@@ -87,11 +86,7 @@ export default function Accueil() {
     });
 
     setHistoriques(loadedHistoriques);
-  }, []);
 
-  const [catalogues, setCatalogues] = useState<GroupedAnimes[]>();
-
-  useEffect(() => {
     const updatedCatalogues = groupAnimesByCategory(
       ANIMES.map(({ anime, category }) => ({ anime, category })),
       true,
@@ -101,22 +96,31 @@ export default function Accueil() {
       ({ category }) => category === "Nouvelles saisons",
     );
 
-    let momentItem, resumeItem;
+    let momentItem;
 
     if (momentIndex !== -1)
       [momentItem] = updatedCatalogues.splice(momentIndex, 1);
 
-    if (historiques.length > 0) {
-      resumeItem = {
-        category: "Reprendre",
-        names: historiques.map(({ name }) => name),
-      };
-    }
-
     if (momentItem) updatedCatalogues.unshift(momentItem);
-    if (resumeItem) updatedCatalogues.splice(1, 0, resumeItem);
 
     setCatalogues(updatedCatalogues);
+  }, []);
+
+  useEffect(() => {
+    if (historiques && catalogues) {
+      const updatedCatalogues = [...catalogues];
+
+      if (historiques.length > 0) {
+        updatedCatalogues.splice(1, 0, {
+          category: "Reprendre",
+          names: historiques.map(({ name }) => name),
+        });
+      } else {
+        updatedCatalogues.splice(1, 0);
+      }
+
+      setCatalogues(updatedCatalogues);
+    }
   }, [historiques]);
 
   const goToAnime = useCallback(
@@ -420,7 +424,7 @@ export default function Accueil() {
                         href={{
                           pathname: `/Catalogue`,
                         }}
-                        className="cursor-pointer hover:underline"
+                        className="hover:underline"
                       >
                         Voir tout
                       </Link>
@@ -441,7 +445,6 @@ export default function Accueil() {
 
                   return (
                     <Link
-                      className="cursor-pointer"
                       href={
                         category === "Reprendre"
                           ? goToAnime(animeName, i)
@@ -466,7 +469,7 @@ export default function Accueil() {
                     >
                       {category === "Reprendre" ? (
                         <div
-                          className="group w-44 md:w-56"
+                          className="group w-72"
                           title={
                             fetchedAnime?.synopsis ??
                             "Aucun synopsis pour cette anime"
@@ -479,7 +482,7 @@ export default function Accueil() {
                               </div>
 
                               <Image
-                                className="-z-10 aspect-video w-44 brightness-75 transition-transform group-hover:scale-105 md:w-56"
+                                className="-z-10 aspect-video w-72 brightness-75 transition-transform group-hover:scale-105"
                                 src={fetchedAnime.options.affiche}
                                 alt="affiche d'un anime"
                               />
@@ -488,11 +491,11 @@ export default function Accueil() {
 
                           <div className="my-3 flex justify-between text-left">
                             <div>
-                              <p className="text-xs text-zinc-400">
+                              <p className="text-xs uppercase text-zinc-400">
                                 {animeName}
                               </p>
 
-                              <p className="text-sm text-main sm:text-base">
+                              <p className="text-lg text-main">
                                 {(
                                   historiques[i]
                                     ?.detail as unknown as Data.ScansData
@@ -566,17 +569,17 @@ export default function Accueil() {
                             fetchedAnime?.synopsis ??
                             "Aucun synopsis pour cette anime"
                           }
-                          className="group w-36 max-md:mr-1 max-md:w-32"
+                          className="group w-40 max-md:mr-1 md:w-44"
                         >
-                          <div className="h-48 min-h-48 overflow-hidden rounded-md shadow-xl">
+                          <div className="overflow-hidden rounded-md shadow-xl">
                             <Image
-                              className="h-48 min-h-48 overflow-hidden rounded-md transition-transform group-hover:scale-105"
+                              className="aspect-[2/3] w-40 rounded-md transition-transform group-hover:scale-105 md:w-44"
                               src={getWallpaper(animeName)!}
                               alt="affiche d'un anime"
                             />
                           </div>
 
-                          <p className="my-2 text-center text-base max-md:text-sm">
+                          <p className="my-2 text-left text-base max-md:text-sm">
                             {animeName} <br />{" "}
                             <span className="text-sm max-md:text-xs">
                               {disponibles.join(", ")}
