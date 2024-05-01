@@ -53,10 +53,7 @@ export default function Suggest() {
           required
         />
 
-        <button
-          className="btn border hover:border-green-500 hover:text-green-500"
-          type="submit"
-        >
+        <button className="btn" type="submit">
           Envoyer
         </button>
       </form>
