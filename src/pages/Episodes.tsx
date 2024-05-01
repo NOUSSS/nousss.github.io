@@ -38,7 +38,6 @@ const Episodes = () => {
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
-  const [ErrorInterval, setErrorInterval] = useState<NodeJS.Timeout>();
 
   const episodeTitleRef = useRef<HTMLParagraphElement>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
@@ -231,21 +230,9 @@ const Episodes = () => {
         }
 
         const listEpisodes: React.ReactNode[] = [];
-
         let retard = 0;
 
-        if (!anime.currentLecteur || anime.currentLecteur.length < 1) {
-          return setErrorInterval(
-            setTimeout(() => {
-              updateAnime((currentState) => ({
-                ...currentState,
-                episodeTitle: "Un problème est survenue",
-              }));
-            }, 2000),
-          );
-        } else {
-          clearInterval(ErrorInterval);
-        }
+        if (!anime.currentLecteur) return;
 
         for (
           let indexEpisode = 1;
