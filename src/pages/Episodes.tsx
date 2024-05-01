@@ -202,9 +202,7 @@ const Episodes = () => {
           }));
         } else {
           const lecteur = Object.keys(fetchedLecteurs)[0];
-
-          let lastLecteur: any = episodeData?.get();
-          if (lastLecteur) lastLecteur = lastLecteur.lecteur;
+          const lastLecteur = episodeData?.get()?.lecteur;
 
           if (lastLecteur) {
             updateAnime((currentState) => ({
@@ -222,9 +220,7 @@ const Episodes = () => {
         }
 
         const episodeIndex = allIndex![anime?.saison ?? 0];
-
-        let episode: any = episodeData?.get();
-        if (episode) episode = episode.episode;
+        let episode = episodeData?.get()?.episode;
 
         if (!episode) {
           episodeData?.setEpisode("1");
@@ -242,7 +238,7 @@ const Episodes = () => {
                 ...currentState,
                 episodeTitle: "Un problème est survenue",
               }));
-            }, 1000),
+            }, 2000),
           );
         } else {
           clearInterval(ErrorInterval);
@@ -253,8 +249,7 @@ const Episodes = () => {
           indexEpisode < anime.currentLecteur.length + 1;
           indexEpisode++
         ) {
-          let saisonStorage: any = episodeData?.get();
-          if (saisonStorage) saisonStorage = saisonStorage.saison;
+          const saisonStorage = episodeData?.get()?.saison;
 
           const isHorsSerie =
             anime.lang === "vostfr" &&
@@ -362,8 +357,7 @@ const Episodes = () => {
             }));
           }
 
-          let saisonStorage: any = episodeData?.get();
-          if (saisonStorage) saisonStorage = saisonStorage.saison;
+          const saisonStorage = episodeData?.get()?.saison;
 
           const saisonName =
             anime?.anime &&
