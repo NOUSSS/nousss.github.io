@@ -104,10 +104,10 @@ const Episodes = () => {
       const { saisons } = options!;
       const { SCRIPT_URL } = options.EPISODES_OPTIONS!;
 
-      const saisonsEntries = Object.keys(saisons!);
+      const saisonsKeys = Object.keys(saisons!);
       const saisonsValues = Object.values(saisons!);
 
-      const oavIndex = saisonsEntries.findIndex((e) => e === "oav");
+      const oavIndex = saisonsKeys.findIndex((e) => e === "oav");
 
       const parts = options?.EPISODES_OPTIONS?.parts;
 
@@ -178,10 +178,10 @@ const Episodes = () => {
 
         const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS!;
 
-        const saisonsEntries = Object.keys(options?.saisons!);
-        const oavIndex = saisonsEntries.findIndex((e) => e === "oav");
+        const saisonsKeys = Object.keys(options?.saisons!);
+        const oavIndex = saisonsKeys.findIndex((e) => e === "oav");
 
-        if (anime?.saison && anime.saison > saisonsEntries[oavIndex]) {
+        if (anime?.saison && anime.saison > saisonsKeys[oavIndex]) {
           const newIndexSaison = (Number(anime?.saison) - 1).toString();
 
           episodeData?.setSaison(newIndexSaison);
