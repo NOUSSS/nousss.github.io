@@ -24,7 +24,7 @@ export default class KaguraBachi extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Kagura%20Bachi/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Kagura Bachi/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [],
     };
   }

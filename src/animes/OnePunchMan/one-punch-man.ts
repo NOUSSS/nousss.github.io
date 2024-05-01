@@ -33,7 +33,7 @@ export default class OnePunchMan extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/One%20Punch%20Man/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/One Punch Man/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

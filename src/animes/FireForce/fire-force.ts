@@ -33,7 +33,7 @@ export default class FireForce extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Fire%20Force/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Fire Force/${chapitre}/${index}.jpg`,
 
       from: 0,
     };

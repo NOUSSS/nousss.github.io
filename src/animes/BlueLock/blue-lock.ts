@@ -27,8 +27,7 @@ export default class BlueLock extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) =>
-        `https://anime-sama.fr/s1/scans/Blue%20Lock/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s1/scans/Blue Lock/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

@@ -33,7 +33,7 @@ export default class VinlandSaga extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Vinland%20Saga/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s1/scans/Vinland Saga/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [] as number[],
     };
 
