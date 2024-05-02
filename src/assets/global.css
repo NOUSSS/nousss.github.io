@@ -30,7 +30,7 @@
 }
 
 .ambiance {
-  @apply absolute -z-10 h-full w-full blur-[150px];
+  @apply absolute -z-10 h-full w-full scale-[.8] blur-[150px];
 }
 
 @layer base {
