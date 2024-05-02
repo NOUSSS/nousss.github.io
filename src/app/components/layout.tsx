@@ -126,9 +126,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <header
         className={cn(
-          "fixed left-0 top-0 z-[2024] flex h-16 w-full justify-center border-b border-b-neutral-700 transition-all duration-500",
+          "fixed left-0 top-0 z-[2024] flex h-16 w-full justify-center border-b border-b-transparent transition-all duration-500",
           {
-            "bg-zinc-900 bg-opacity-80 shadow-lg backdrop-blur-3xl":
+            "border-b-neutral-700 bg-zinc-900 bg-opacity-80 shadow-lg backdrop-blur-3xl":
               showBackground,
           },
         )}
