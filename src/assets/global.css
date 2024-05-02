@@ -18,7 +18,7 @@
 }
 
 .btn {
-  @apply relative left-0 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent bg-sky-500 p-3 text-base font-normal text-zinc-950 transition-all hover:border-sky-500 hover:bg-opacity-10 hover:text-white active:bg-opacity-40 sm:gap-2 sm:text-lg;
+  @apply relative left-0 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent bg-sky-500 p-3 text-base font-normal text-zinc-950 transition-all hover:border-sky-500 hover:bg-opacity-10 hover:text-white active:bg-opacity-30 sm:gap-2 sm:text-lg;
 }
 
 .container {
@@ -58,16 +58,4 @@
   main {
     @apply relative top-20;
   }
-}
-
-*::-webkit-scrollbar-thumb {
-  @apply rounded-md bg-neutral-800;
-}
-
-*::-webkit-scrollbar {
-  @apply w-3 bg-opacity-50;
-}
-
-body::-webkit-scrollbar {
-  @apply bg-neutral-500;
 }
