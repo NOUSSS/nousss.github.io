@@ -421,7 +421,7 @@ const Episodes = () => {
             <div className="flex w-full flex-col text-left">
               {anime?.anime && anime.saisonTitle && (
                 <Link
-                  className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
+                  className="text-sm font-normal text-main hover:underline sm:text-base"
                   href={{
                     pathname: "/Saisons",
                     query: { anime: anime!.anime.anime },

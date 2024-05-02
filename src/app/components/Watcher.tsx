@@ -125,7 +125,7 @@ export default function Watcher({
             <div className="flex w-full flex-col text-left">
               {anime && context && (
                 <Link
-                  className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
+                  className="text-sm font-normal text-main hover:underline sm:text-base"
                   href={{
                     pathname: `/${context === "Films" ? "Home" : "Saisons"}`,
                     query: { anime: anime },
