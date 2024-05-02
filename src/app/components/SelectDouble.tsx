@@ -11,10 +11,14 @@ interface SelectDoubleProps {
   click: (value: string) => void;
 }
 
+interface ButtonsRef {
+  [key: string]: HTMLButtonElement;
+}
+
 export default function SelectDouble({ items, click }: SelectDoubleProps) {
   const [selected, setSelected] = useState<HTMLButtonElement>();
 
-  const buttons = useRef<{ [key: string]: HTMLButtonElement }>({});
+  const buttons = useRef<ButtonsRef>({});
   const follower = useRef<HTMLDivElement>();
 
   useEffect(() => {
