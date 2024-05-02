@@ -1088,6 +1088,7 @@ export const ANIMES: AnimesType[] = [
       "Arts Martiaux",
       "Drame",
       "Nouvelles saisons",
+      "Webtoon",
     ],
     synopsis:
       "Le lycéen tout maigre et fragile Yoo Ho Bin est probablement le dernier gars qu'on s'attendrait à voir sur une chaîne Newtube qui tourne autour des combats. Mais après avoir suivi les conseils d'une mystérieuse chaîne Newtube, Ho Bin assomme des gars plus forts que lui et engrange plus d'argent qu'il n'aurait jamais pu rêver. Ho Bin pourra-t-il continuer comme ça ou finira-t-il par rencontrer son égal ?",
