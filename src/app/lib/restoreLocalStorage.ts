@@ -81,7 +81,8 @@ export default function restoreLocalStorage() {
         key === "scans" ||
         key === "films" ||
         key === "anime" ||
-        key === "color"
+        key === "color" ||
+        key === "filever"
       ) {
       } else {
         localStorage.removeItem(key);

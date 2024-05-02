@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { cn, restoreLocalStorage } from "../lib";
+import { cn, random, restoreLocalStorage } from "../lib";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -38,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   }, [metaColorRef.current]);
 
   useEffect(() => {
+    localStorage.setItem("filever", random().toString());
     const colorPerso = localStorage.getItem("color");
 
     if (colorPerso)

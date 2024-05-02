@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
-import { getCurrentAnime, getLecteur, getAnime, random } from "@/app/lib/";
+import { getCurrentAnime, getLecteur, getAnime } from "@/app/lib/";
 import { Anime as AnimeType } from "@/typings/types";
 import { useRouter } from "next/router";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
@@ -43,12 +43,10 @@ const Episodes = () => {
   const episodesListRef = useRef<HTMLUListElement[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
-
   const disclamerMessage = useRef("");
 
   const [url_script, setUrlScript] = useState<string>();
-  const [filever, setFilever] = useState<number>();
-
+  const [filever, setFilever] = useState<string>();
   const [episodeData, setEpisodeData] = useState<EpisodeData>();
 
   const Next = icons["ChevronLast"];
@@ -150,8 +148,10 @@ const Episodes = () => {
         }
       }
 
+      const filever = localStorage.getItem("filever");
+
       setUrlScript(url);
-      setFilever(random());
+      if (filever) setFilever(filever);
     }
   }, [anime.saison, anime.lang]);
 

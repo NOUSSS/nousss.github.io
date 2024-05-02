@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
 import { Footer, Select, SelectDouble } from "@/app/components/";
-import { getCurrentAnime, getAnime, random } from "@/app/lib/";
+import { getCurrentAnime, getAnime } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
@@ -32,7 +32,7 @@ const Scans = () => {
   const UpArrow = icons["ArrowUp"];
 
   const [anime, updateAnime] = useAnime<Anime.AnimeScansProps>({});
-  const [filever, setFilever] = useState<number>();
+  const [filever, setFilever] = useState<string>();
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
   );
@@ -73,7 +73,9 @@ const Scans = () => {
 
       setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       updateAnime({ anime: currentAnime });
-      setFilever(random());
+
+      const filever = localStorage.getItem("filever");
+      if (filever) setFilever(filever);
 
       setScript(currentAnime.options.SCANS_OPTIONS.SCRIPT_URL);
 

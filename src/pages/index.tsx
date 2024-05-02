@@ -394,7 +394,10 @@ export default function Accueil() {
                             setHistoriques([]);
 
                             for (const key of Object.keys(localStorage)) {
-                              if (key !== "color") localStorage.removeItem(key);
+                              if (key === "color" || key === "filever") {
+                              } else {
+                                localStorage.removeItem(key);
+                              }
                             }
 
                             toast.success("L'historique a bien été vidé");
