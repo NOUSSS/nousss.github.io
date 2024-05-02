@@ -36,97 +36,104 @@ const Home = () => {
   }, [query.anime]);
 
   return (
-    <main className="top-24 mx-12 max-sm:mx-0">
+    <>
       <Head>
         {anime?.anime && (
           <title>{anime.anime} - Accueil | Mugiwara-no Streaming</title>
         )}
+
+        <meta
+          property="og:description"
+          content="L'accueil. Là où vous pouvez choisir entre : Films, Scans ou Episodes"
+        />
       </Head>
 
-      <div className="relative mb-12 flex h-auto flex-col rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:rounded-none xl:flex-row">
-        {anime?.options.affiche && (
-          <div>
-            <Image
-              alt={`affiche de ${anime.anime}`}
-              src={anime.options.affiche!}
-              className="rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-sm:rounded-none md:h-full md:w-[654px] md:max-w-[654px]"
-            />
-          </div>
-        )}
-
-        <div className="m-5 text-lg">
-          {anime?.anime && (
-            <h1 className="animate-title text-center text-4xl">
-              {anime.anime}
-            </h1>
-          )}
-          {anime?.aliases && anime.aliases.length > 0 && (
+      <main className="top-24 mx-12 max-sm:mx-0">
+        <div className="relative mb-12 flex h-auto flex-col rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:rounded-none xl:flex-row">
+          {anime?.options.affiche && (
             <div>
-              Aliases
-              <p className="ml-1 text-sm text-zinc-300">
-                {anime.aliases.join(", ")}
-              </p>
+              <Image
+                alt={`affiche de ${anime.anime}`}
+                src={anime.options.affiche!}
+                className="rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-sm:rounded-none md:h-full md:w-[654px] md:max-w-[654px]"
+              />
             </div>
           )}
 
-          <div>
-            Catégories
-            <p className="ml-1 text-sm text-zinc-300">
-              {anime?.category.join(", ")}
-            </p>
-          </div>
+          <div className="m-5 text-lg">
+            {anime?.anime && (
+              <h1 className="animate-title text-center text-4xl">
+                {anime.anime}
+              </h1>
+            )}
+            {anime?.aliases && anime.aliases.length > 0 && (
+              <div>
+                Aliases
+                <p className="ml-1 text-sm text-zinc-300">
+                  {anime.aliases.join(", ")}
+                </p>
+              </div>
+            )}
 
-          <div className="mt-4">
-            Synopsis
-            <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
+            <div>
+              Catégories
+              <p className="ml-1 text-sm text-zinc-300">
+                {anime?.category.join(", ")}
+              </p>
+            </div>
+
+            <div className="mt-4">
+              Synopsis
+              <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div ref={choicesRef} className="flex justify-center text-left">
-        <ul>
-          {anime?.options.FILM_OPTIONS && (
-            <li className="text-4xl">
-              <Link
-                className="transition-colors hover:text-main"
-                href={{ pathname: "/Films", query: { anime: anime?.anime } }}
-              >
-                Films
-              </Link>
-            </li>
-          )}
-          {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
-            <li className="text-4xl">
-              <Link
-                className="transition-colors hover:text-main"
-                href={{
-                  pathname:
-                    Object.keys(anime.options.saisons).length > 1
-                      ? "/Saisons"
-                      : `/Episodes`,
-                  query: { anime: anime.anime },
-                }}
-              >
-                Saisons
-              </Link>
-            </li>
-          )}
+        <div ref={choicesRef} className="flex justify-center text-left">
+          <ul>
+            {anime?.options.FILM_OPTIONS && (
+              <li className="text-4xl">
+                <Link
+                  className="transition-colors hover:text-main"
+                  href={{ pathname: "/Films", query: { anime: anime?.anime } }}
+                >
+                  Films
+                </Link>
+              </li>
+            )}
+            {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
+              <li className="text-4xl">
+                <Link
+                  className="transition-colors hover:text-main"
+                  href={{
+                    pathname:
+                      Object.keys(anime.options.saisons).length > 1
+                        ? "/Saisons"
+                        : `/Episodes`,
+                    query: { anime: anime.anime },
+                  }}
+                >
+                  Saisons
+                </Link>
+              </li>
+            )}
 
-          {anime?.options.SCANS_OPTIONS && (
-            <li className="text-4xl">
-              <Link
-                className="transition-colors hover:text-main"
-                href={{ pathname: "/Scans", query: { anime: anime.anime } }}
-              >
-                {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
+            {anime?.options.SCANS_OPTIONS && (
+              <li className="text-4xl">
+                <Link
+                  className="transition-colors hover:text-main"
+                  href={{ pathname: "/Scans", query: { anime: anime.anime } }}
+                >
+                  {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
 
-      <Footer style={false} />
-    </main>
+        <Footer style={false} />
+      </main>
+    </>
   );
 };
 

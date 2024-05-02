@@ -21,28 +21,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const Settings = icons["Settings"];
   const Gallery = icons["GalleryVerticalEnd"];
 
-  const metaColorRef = useRef<HTMLMetaElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const main = localStorage.getItem("color");
-    const color =
-      main ??
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--defaultColor",
-      );
-
-    if (metaColorRef.current) metaColorRef.current.content = color;
-  }, [metaColorRef.current]);
-
-  useEffect(() => {
     localStorage.setItem("filever", random().toString());
     const colorPerso = localStorage.getItem("color");
 
-    if (colorPerso)
+    if (colorPerso) {
       document.documentElement.style.setProperty("--mainColor", colorPerso);
+    }
 
     console.log(
       "%c Salut !",
@@ -95,13 +84,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Mugiwara-no Streaming" />
-        <meta
-          property="og:description"
-          content="À mon avis c'est le meilleur site pour regarder des animes / films ou lire des scans gratuitement et sans pub."
-        />
-        <meta ref={metaColorRef} data-react-helmet="true" name="theme-color" />
-        <link rel="icon" href="/Logo.png" />
+        <meta color="#ff9d00" data-react-helmet="true" name="theme-color" />
 
+        <link rel="icon" href="/Logo.png" />
         <title>Mugiwara-no Streaming</title>
       </Head>
 

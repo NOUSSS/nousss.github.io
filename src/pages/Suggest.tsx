@@ -1,7 +1,9 @@
 "use client";
 
 import { toast } from "sonner";
+
 import React from "react";
+import Head from "next/head";
 
 export default function Suggest() {
   const [message, setMessage] = React.useState("");
@@ -41,22 +43,33 @@ export default function Suggest() {
   };
 
   return (
-    <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
-      <h1 className="mb-20 text-4xl">Suggérer un anime</h1>
+    <>
+      <Head>
+        <title>Suggestion | Mugiwara-no Streaming</title>
 
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <textarea
-          className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2"
-          value={message}
-          onChange={({ target: { value } }) => setMessage(value)}
-          placeholder="Nom de l'anime ou des animes"
-          required
+        <meta
+          property="og:description"
+          content="Page de suggestion, si vous voulez que j'ajoute un anime"
         />
+      </Head>
 
-        <button className="btn" type="submit">
-          Envoyer
-        </button>
-      </form>
-    </main>
+      <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
+        <h1 className="mb-20 text-4xl">Suggérer un anime</h1>
+
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <textarea
+            className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2"
+            value={message}
+            onChange={({ target: { value } }) => setMessage(value)}
+            placeholder="Nom de l'anime ou des animes"
+            required
+          />
+
+          <button className="btn" type="submit">
+            Envoyer
+          </button>
+        </form>
+      </main>
+    </>
   );
 }

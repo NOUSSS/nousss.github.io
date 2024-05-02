@@ -388,6 +388,11 @@ const Episodes = () => {
         {anime?.anime ? (
           <title>{anime.anime.anime} - Episodes | Mugiwara-no Streaming</title>
         ) : null}
+
+        <meta
+          property="og:description"
+          content="Les episodes de l'anime que vous souhaitez"
+        />
       </Head>
 
       {disclamerMessage.current ? (

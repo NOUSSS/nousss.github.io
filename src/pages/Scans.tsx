@@ -193,6 +193,11 @@ const Scans = () => {
         {anime?.anime ? (
           <title>{anime?.anime.anime} - Scans | Mugiwara-no Streaming</title>
         ) : null}
+
+        <meta
+          property="og:description"
+          content="Les scans de l'anime que vous souhaitez"
+        />
       </Head>
 
       {anime?.anime && (

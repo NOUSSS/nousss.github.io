@@ -42,6 +42,11 @@ const Saisons = () => {
         {anime?.anime && (
           <title>{anime.anime.anime} - Saisons | Mugiwara-no Streaming</title>
         )}
+
+        <meta
+          property="og:description"
+          content="Les saisons disponible de l'anime que vous souhaitez"
+        />
       </Head>
 
       {anime?.anime && (

@@ -147,6 +147,11 @@ const Films = () => {
         {anime?.anime?.anime ? (
           <title>{anime?.anime?.anime} - Films | Mugiwara-no Streaming</title>
         ) : null}
+
+        <meta
+          property="og:description"
+          content="Les films de l'anime que vous souhaitez"
+        />
       </Head>
 
       {anime.lang && (
