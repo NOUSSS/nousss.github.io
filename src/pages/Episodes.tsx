@@ -436,7 +436,7 @@ const Episodes = () => {
               </div>
             </div>
 
-            <div className="my-8 flex w-full justify-between gap-5 lg:justify-around">
+            <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-around">
               {anime.anime?.anime && episodeData?.get()?.episode !== "1" ? (
                 <button
                   className="btn"
@@ -500,7 +500,7 @@ const Episodes = () => {
               </ul>
             </div>
 
-            <div className="my-6 flex gap-5">
+            <div className="my-6 flex w-full flex-col gap-5 min-[450px]:w-auto min-[450px]:flex-row">
               {anime?.saison !== "1" ? (
                 <button
                   onClick={() => {
