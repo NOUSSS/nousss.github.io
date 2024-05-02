@@ -235,11 +235,35 @@ export default function Accueil() {
                         : anime.anime}
                     </h1>
 
-                    <p className="m-4 text-left text-base max-xl:hidden max-lg:block max-md:text-xs">
+                    <p className="m-4 text-left text-xs max-xl:hidden max-lg:block md:text-lg">
                       {anime.synopsis.length > 300
                         ? `${anime.synopsis.substring(0, 300)}...`
                         : anime.synopsis}
                     </p>
+
+                    <Link
+                      href={{
+                        pathname: "/Home",
+                        query: { anime: anime.anime },
+                      }}
+                      className="mt-8 flex gap-2 *:rounded-full *:border *:border-orange-500 *:bg-orange-500 *:bg-opacity-20 *:px-4 *:py-2"
+                    >
+                      {Array.from(
+                        {
+                          length:
+                            anime.category.length > 2
+                              ? 2
+                              : anime.category.length,
+                        },
+                        (_, i) => (
+                          <div>{anime.category[i]}</div>
+                        ),
+                      )}
+
+                      {anime.category.length > 3 && (
+                        <div>+{anime.category.length - 3}</div>
+                      )}
+                    </Link>
                   </div>
 
                   <button
