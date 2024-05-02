@@ -122,7 +122,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
       ></div>
 
-      <div className="fixed top-0 -z-50 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+      <div className="bg-noise fixed top-0 -z-50 h-full w-full opacity-30"></div>
 
       <header
         className={cn(

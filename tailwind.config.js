@@ -8,6 +8,10 @@ module.exports = {
         main: "var(--mainColor)",
       },
 
+      backgroundImage: {
+        noise: "url(./noise-light.png)",
+      },
+
       keyframes: {
         borderAnime: {
           from: { transform: "rotate(0deg)" },
