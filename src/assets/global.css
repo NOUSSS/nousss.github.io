@@ -35,8 +35,7 @@
 
 @layer base {
   body {
-    font-family: Fredoka;
-    @apply bg-zinc-950 text-center text-white;
+    @apply font-mns bg-zinc-950 text-center text-white;
   }
 
   span {
@@ -48,7 +47,7 @@
   }
 
   h1 {
-    font-weight: 400;
+    @apply font-normal;
   }
 
   input,
@@ -66,8 +65,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 12px;
-  @apply bg-opacity-50;
+  @apply w-3 bg-opacity-50;
 }
 
 body::-webkit-scrollbar {

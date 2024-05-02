@@ -3,6 +3,10 @@
 module.exports = {
   content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.tsx"],
   theme: {
+    fontFamily: {
+      mns: "Fredoka",
+    },
+
     extend: {
       colors: {
         main: "var(--mainColor)",
