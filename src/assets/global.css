@@ -9,6 +9,10 @@
   --mainColor: #ff9d00;
 }
 
+.noise {
+  background-image: url(./noise-light.png);
+}
+
 .swiper-pagination-progressbar-fill {
   background: var(--mainColor) !important;
 }
