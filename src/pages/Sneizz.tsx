@@ -27,6 +27,10 @@ export default function Aim() {
 
   return (
     <main className="flex flex-col items-center">
+      <h1 className="my-8 text-2xl">
+        Pour que Sneizz s'entraine vu qu'il en a besoin
+      </h1>
+
       <div className="w-full border border-neutral-700 md:w-[525px]">
         {Array.from({ length: 40 }, (_, i) => (
           <div
