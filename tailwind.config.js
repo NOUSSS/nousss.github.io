@@ -13,7 +13,7 @@ module.exports = {
       },
 
       backgroundImage: {
-        noise: "url(/src/assets/noise-light.png)",
+        noise: "url(./noise-light.png)",
       },
 
       keyframes: {
