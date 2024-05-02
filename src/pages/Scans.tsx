@@ -188,7 +188,7 @@ const Scans = () => {
   }, anime.scans);
 
   return (
-    <main className="flex select-none flex-col items-center">
+    <>
       <Head>
         {anime?.anime ? (
           <title>{anime?.anime.anime} - Scans | Mugiwara-no Streaming</title>
@@ -200,246 +200,248 @@ const Scans = () => {
         />
       </Head>
 
-      {anime?.anime && (
-        <h1 className="mb-12 animate-title text-5xl">
-          <Link
-            className="font-normal"
-            href={{
-              pathname: "/Home",
-              query: { anime: anime!.anime.anime },
-            }}
-          >
-            {anime.anime.anime}
-          </Link>
-        </h1>
-      )}
-
-      <div className="mb-12 flex flex-col">
-        {anime?.method && (
-          <div className="mb-4">
-            <SelectDouble
-              items={[
-                {
-                  name: "Horizontal",
-                  value: "horizontal",
-                  defaultValue: anime.method === "horizontal",
-                },
-                {
-                  name: "Vertical",
-                  value: "vertical",
-                  defaultValue: anime.method === "vertical",
-                },
-              ]}
-              click={(value) => {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  method: value as "horizontal" | "vertical",
-                }));
-
-                scanData?.setMethod(value);
+      <main className="flex select-none flex-col items-center">
+        {anime?.anime && (
+          <h1 className="mb-12 animate-title text-5xl">
+            <Link
+              className="font-normal"
+              href={{
+                pathname: "/Home",
+                query: { anime: anime!.anime.anime },
               }}
-            />
-          </div>
+            >
+              {anime.anime.anime}
+            </Link>
+          </h1>
         )}
 
-        <div className="mb-2">
-          <Select
-            scroll={true}
-            onSelect={(items) => {
-              scanData?.setChapitre(items[0].value);
+        <div className="mb-12 flex flex-col">
+          {anime?.method && (
+            <div className="mb-4">
+              <SelectDouble
+                items={[
+                  {
+                    name: "Horizontal",
+                    value: "horizontal",
+                    defaultValue: anime.method === "horizontal",
+                  },
+                  {
+                    name: "Vertical",
+                    value: "vertical",
+                    defaultValue: anime.method === "vertical",
+                  },
+                ]}
+                click={(value) => {
+                  updateAnime((currentState) => ({
+                    ...currentState,
+                    method: value as "horizontal" | "vertical",
+                  }));
+
+                  scanData?.setMethod(value);
+                }}
+              />
+            </div>
+          )}
+
+          <div className="mb-2">
+            <Select
+              scroll={true}
+              onSelect={(items) => {
+                scanData?.setChapitre(items[0].value);
+
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  scans: selectChapter(
+                    anime!,
+                    items[0],
+                    placeholderRef,
+                    !anime.version ? undefined : anime.version.split("|")[1],
+                  ),
+                }));
+              }}
+              items={anime?.chapitresOptions!}
+              placeholder="Selectionnez un chapitre"
+              placeholderRef={placeholderRef}
+            />
+          </div>
+
+          {anime.anime?.options.SCANS_OPTIONS?.versions ? (
+            <Select
+              placeholder="Changer de version"
+              placeholderRef={placeholderRefVersion}
+              items={[
+                {
+                  name: "Normal",
+                  value: "return-normal",
+                  disabled: anime.version ? false : true,
+                },
+                ...anime.anime.options.SCANS_OPTIONS.versions.map(
+                  ({ value, name }) => ({
+                    value,
+                    name,
+                    disabled: anime.version === value,
+                  }),
+                ),
+              ]}
+              onSelect={(items) => {
+                ClearCache();
+
+                if (items[0].value === "return-normal") {
+                  updateAnime((currentState) => ({
+                    ...currentState,
+                    version: undefined,
+                  }));
+
+                  scanData?.setVersion("");
+                } else {
+                  updateAnime((currentState) => ({
+                    ...currentState,
+                    version: items[0].value,
+                  }));
+
+                  scanData?.setVersion(items[0].value);
+                }
+              }}
+            />
+          ) : null}
+        </div>
+
+        <div className="relative flex flex-col gap-8">
+          <button
+            className="btn relative top-4"
+            onClick={() => {
+              const lastScan =
+                anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
 
               updateAnime((currentState) => ({
                 ...currentState,
                 scans: selectChapter(
                   anime!,
-                  items[0],
+                  lastScan,
                   placeholderRef,
                   !anime.version ? undefined : anime.version.split("|")[1],
                 ),
               }));
             }}
-            items={anime?.chapitresOptions!}
-            placeholder="Selectionnez un chapitre"
-            placeholderRef={placeholderRef}
-          />
-        </div>
-
-        {anime.anime?.options.SCANS_OPTIONS?.versions ? (
-          <Select
-            placeholder="Changer de version"
-            placeholderRef={placeholderRefVersion}
-            items={[
-              {
-                name: "Normal",
-                value: "return-normal",
-                disabled: anime.version ? false : true,
-              },
-              ...anime.anime.options.SCANS_OPTIONS.versions.map(
-                ({ value, name }) => ({
-                  value,
-                  name,
-                  disabled: anime.version === value,
-                }),
-              ),
-            ]}
-            onSelect={(items) => {
-              ClearCache();
-
-              if (items[0].value === "return-normal") {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  version: undefined,
-                }));
-
-                scanData?.setVersion("");
-              } else {
-                updateAnime((currentState) => ({
-                  ...currentState,
-                  version: items[0].value,
-                }));
-
-                scanData?.setVersion(items[0].value);
-              }
-            }}
-          />
-        ) : null}
-      </div>
-
-      <div className="relative flex flex-col gap-8">
-        <button
-          className="btn relative top-4"
-          onClick={() => {
-            const lastScan =
-              anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
-
-            updateAnime((currentState) => ({
-              ...currentState,
-              scans: selectChapter(
-                anime!,
-                lastScan,
-                placeholderRef,
-                !anime.version ? undefined : anime.version.split("|")[1],
-              ),
-            }));
-          }}
-        >
-          Dernier chapitre <Last />
-        </button>
-
-        <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-          {!isFirst ? (
-            <button
-              className="btn"
-              onClick={() =>
-                PrevChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              <Prev />
-              Chapitre précédent
-            </button>
-          ) : null}
-
-          {!isLast ? (
-            <button
-              className="btn"
-              onClick={() =>
-                NextChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              Chapitre suivant
-              <Next />
-            </button>
-          ) : null}
-        </div>
-      </div>
-
-      {anime.method === "horizontal" && (
-        <p className="relative -top-8">
-          Manga : droite à gauche
-          <br />
-          Webtoon : gauche à droite
-        </p>
-      )}
-
-      <div className="relative before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
-        {anime.method === "vertical" ? (
-          anime?.scans
-        ) : (
-          <Swiper
-            dir={`${anime.anime?.category.includes("Webtoon") ? "" : "rtl"}`}
-            pagination={{
-              clickable: true,
-              type: "progressbar",
-            }}
-            modules={[Navigation, Pagination]}
-            slidesPerView={"auto"}
           >
-            {anime.scans?.map((e, i) => (
-              <SwiperSlide key={i} className="mt-4 justify-center">
-                {e}
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-      </div>
+            Dernier chapitre <Last />
+          </button>
 
-      <div className="relative top-24 mb-60 flex flex-col gap-4">
-        <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-          {!isFirst ? (
-            <button
-              className="btn"
-              onClick={() =>
-                PrevChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              <Prev />
-              Chapitre précédent
-            </button>
-          ) : null}
+          <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
+            {!isFirst ? (
+              <button
+                className="btn"
+                onClick={() =>
+                  PrevChapter(
+                    anime!,
+                    updateAnime,
+                    placeholderRef,
+                    !anime.version ? undefined : anime.version.split("|")[1],
+                  )
+                }
+              >
+                <Prev />
+                Chapitre précédent
+              </button>
+            ) : null}
 
-          {!isLast ? (
-            <button
-              className="btn"
-              onClick={() =>
-                NextChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              Chapitre suivant
-              <Next />
-            </button>
-          ) : null}
+            {!isLast ? (
+              <button
+                className="btn"
+                onClick={() =>
+                  NextChapter(
+                    anime!,
+                    updateAnime,
+                    placeholderRef,
+                    !anime.version ? undefined : anime.version.split("|")[1],
+                  )
+                }
+              >
+                Chapitre suivant
+                <Next />
+              </button>
+            ) : null}
+          </div>
         </div>
-      </div>
 
-      <div className="fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border border-main bg-zinc-900 p-2">
-        <UpArrow
-          size="25px"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        />
-      </div>
+        {anime.method === "horizontal" && (
+          <p className="relative -top-8">
+            Manga : droite à gauche
+            <br />
+            Webtoon : gauche à droite
+          </p>
+        )}
 
-      <Footer style={true} media />
-    </main>
+        <div className="relative before:absolute before:left-0 before:h-full before:w-full before:bg-transparent">
+          {anime.method === "vertical" ? (
+            anime?.scans
+          ) : (
+            <Swiper
+              dir={`${anime.anime?.category.includes("Webtoon") ? "" : "rtl"}`}
+              pagination={{
+                clickable: true,
+                type: "progressbar",
+              }}
+              modules={[Navigation, Pagination]}
+              slidesPerView={"auto"}
+            >
+              {anime.scans?.map((e, i) => (
+                <SwiperSlide key={i} className="mt-4 justify-center">
+                  {e}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
+        </div>
+
+        <div className="relative top-24 mb-60 flex flex-col gap-4">
+          <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
+            {!isFirst ? (
+              <button
+                className="btn"
+                onClick={() =>
+                  PrevChapter(
+                    anime!,
+                    updateAnime,
+                    placeholderRef,
+                    !anime.version ? undefined : anime.version.split("|")[1],
+                  )
+                }
+              >
+                <Prev />
+                Chapitre précédent
+              </button>
+            ) : null}
+
+            {!isLast ? (
+              <button
+                className="btn"
+                onClick={() =>
+                  NextChapter(
+                    anime!,
+                    updateAnime,
+                    placeholderRef,
+                    !anime.version ? undefined : anime.version.split("|")[1],
+                  )
+                }
+              >
+                Chapitre suivant
+                <Next />
+              </button>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border border-main bg-zinc-900 p-2">
+          <UpArrow
+            size="25px"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
+        </div>
+
+        <Footer style={true} media />
+      </main>
+    </>
   );
 };
 

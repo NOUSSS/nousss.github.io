@@ -142,7 +142,7 @@ const Films = () => {
   }, [status, anime?.currentLecteur, anime?.lang]);
 
   return (
-    <main className="flex flex-col items-center">
+    <>
       <Head>
         {anime?.anime?.anime ? (
           <title>{anime?.anime?.anime} - Films | Mugiwara-no Streaming</title>
@@ -154,46 +154,53 @@ const Films = () => {
         />
       </Head>
 
-      {anime.lang && (
-        <Watcher
-          prefix={false}
-          video={anime.video}
-          context="Films"
-          anime={anime.anime?.anime}
-          lang={anime.lang}
-          name={true}
-          lecteur={anime.lecteur}
-          lecteurs={anime.lecteurs}
-          episode={anime.filmTitle as string}
-          containerRef={containerRef}
-          updateAnime={updateAnime}
+      <main className="flex flex-col items-center">
+        {anime.lang && (
+          <Watcher
+            prefix={false}
+            video={anime.video}
+            context="Films"
+            anime={anime.anime?.anime}
+            lang={anime.lang}
+            name={true}
+            lecteur={anime.lecteur}
+            lecteurs={anime.lecteurs}
+            episode={anime.filmTitle as string}
+            containerRef={containerRef}
+            updateAnime={updateAnime}
+          />
+        )}
+
+        <SearchBar
+          className="my-6"
+          placeholder="Rechercher un film"
+          containerRef={filmsRef}
+          query="id"
         />
-      )}
 
-      <SearchBar
-        className="my-6"
-        placeholder="Rechercher un film"
-        containerRef={filmsRef}
-        query="id"
-      />
+        <ul ref={(el) => (filmsRef.current[0] = el!)}>
+          {anime.films?.map(({ url, id, element }, index) => (
+            <li
+              key={id}
+              id={id}
+              className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 md:w-36"
+              onClick={() => {
+                appearVideo(
+                  `${url} ${index}`,
+                  anime,
+                  updateAnime,
+                  containerRef,
+                );
+              }}
+            >
+              {element}
+            </li>
+          ))}
+        </ul>
 
-      <ul ref={(el) => (filmsRef.current[0] = el!)}>
-        {anime.films?.map(({ url, id, element }, index) => (
-          <li
-            key={id}
-            id={id}
-            className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 md:w-36"
-            onClick={() => {
-              appearVideo(`${url} ${index}`, anime, updateAnime, containerRef);
-            }}
-          >
-            {element}
-          </li>
-        ))}
-      </ul>
-
-      <Footer style={true} media />
-    </main>
+        <Footer style={true} media />
+      </main>
+    </>
   );
 };
 

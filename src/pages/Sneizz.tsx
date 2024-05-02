@@ -29,9 +29,12 @@ export default function Aim() {
   return (
     <>
       <Head>
-        <title>
-          Page dans laquelle Sneizz peut s'entrainer pour devenir meilleur
-        </title>
+        <title>Aim Training</title>
+
+        <meta
+          property="og:description"
+          content="Page dans laquelle Sneizz peut s'entrainer pour devenir meilleur"
+        />
       </Head>
 
       <main className="flex flex-col items-center">

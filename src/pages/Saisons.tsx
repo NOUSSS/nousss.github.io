@@ -37,7 +37,7 @@ const Saisons = () => {
   }, [router]);
 
   return (
-    <main>
+    <>
       <Head>
         {anime?.anime && (
           <title>{anime.anime.anime} - Saisons | Mugiwara-no Streaming</title>
@@ -49,88 +49,90 @@ const Saisons = () => {
         />
       </Head>
 
-      {anime?.anime && (
-        <h1 className="animate-title text-5xl">
-          <Link
-            className="font-normal"
-            href={{
-              pathname: "/Home",
-              query: { anime: anime!.anime.anime },
-            }}
-          >
-            {anime.anime.anime}
-          </Link>
-        </h1>
-      )}
-
-      <p className="m-4 text-5xl">
-        Les <span>saisons</span> disponibles.
-      </p>
-
-      <p>
-        {anime.saison && anime.anime?.anime && (
-          <>
-            Historique Saison :{" "}
+      <main>
+        {anime?.anime && (
+          <h1 className="animate-title text-5xl">
             <Link
-              onClick={() => {
-                changeSaison(
-                  anime.saison as string,
-                  anime.anime?.anime as string,
-                );
-              }}
+              className="font-normal"
               href={{
-                pathname: "/Episodes",
-                query: { anime: anime.anime.anime, saison: anime.saison },
+                pathname: "/Home",
+                query: { anime: anime!.anime.anime },
               }}
-              className="cursor-pointer underline"
             >
-              {
-                Object.values(anime?.anime?.options.saisons!)[
-                  Number(anime?.saison) - 1
-                ]?.name
-              }
+              {anime.anime.anime}
             </Link>
-          </>
+          </h1>
         )}
-      </p>
 
-      <SearchBar
-        placeholder="Rechercher une saison"
-        className="m-8"
-        containerRef={saisonsRef}
-        query="id"
-      />
+        <p className="m-4 text-5xl">
+          Les <span>saisons</span> disponibles.
+        </p>
 
-      <ul
-        className="overflow-x-auto"
-        ref={(el) => (saisonsRef.current[0] = el!)}
-      >
-        {anime?.saisons?.map(({ element, id }, index) => (
-          <li
-            key={id}
-            id={id}
-            className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 md:w-36"
-            onClick={() => {
-              changeSaison((index + 1).toString(), anime?.anime?.anime!);
-            }}
-          >
-            <Link
-              href={{
-                pathname: "/Episodes",
-                query: {
-                  anime: anime.anime?.anime,
-                  saison: (index + 1).toString(),
-                },
+        <p>
+          {anime.saison && anime.anime?.anime && (
+            <>
+              Historique Saison :{" "}
+              <Link
+                onClick={() => {
+                  changeSaison(
+                    anime.saison as string,
+                    anime.anime?.anime as string,
+                  );
+                }}
+                href={{
+                  pathname: "/Episodes",
+                  query: { anime: anime.anime.anime, saison: anime.saison },
+                }}
+                className="cursor-pointer underline"
+              >
+                {
+                  Object.values(anime?.anime?.options.saisons!)[
+                    Number(anime?.saison) - 1
+                  ]?.name
+                }
+              </Link>
+            </>
+          )}
+        </p>
+
+        <SearchBar
+          placeholder="Rechercher une saison"
+          className="m-8"
+          containerRef={saisonsRef}
+          query="id"
+        />
+
+        <ul
+          className="overflow-x-auto"
+          ref={(el) => (saisonsRef.current[0] = el!)}
+        >
+          {anime?.saisons?.map(({ element, id }, index) => (
+            <li
+              key={id}
+              id={id}
+              className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 md:w-36"
+              onClick={() => {
+                changeSaison((index + 1).toString(), anime?.anime?.anime!);
               }}
             >
-              {element}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                href={{
+                  pathname: "/Episodes",
+                  query: {
+                    anime: anime.anime?.anime,
+                    saison: (index + 1).toString(),
+                  },
+                }}
+              >
+                {element}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 };
 
