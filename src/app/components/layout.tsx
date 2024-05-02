@@ -122,7 +122,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
       ></div>
 
-      <div className="bg-noise fixed top-0 -z-50 h-full w-full opacity-30"></div>
+      <div className="fixed top-0 -z-50 h-full w-full bg-noise opacity-20"></div>
 
       <header
         className={cn(
@@ -160,7 +160,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
           <div className="flex items-center gap-3 *:flex *:items-center *:rounded-md *:p-2">
             <Link
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
               href="/Catalogue"
               title="Catalogue"
             >
@@ -170,7 +170,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </Link>
 
             <Link
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              className="bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
               href="/Settings"
               title="Paramètres"
             >
@@ -183,7 +183,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
             <Link
               href="#search"
-              className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:bg-opacity-50"
+              className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
               onClick={() => setIsVisible(!isVisible)}
             >
               <SearchIcon className="lg:mr-3" />
