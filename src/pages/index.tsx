@@ -260,8 +260,8 @@ export default function Accueil() {
                         ),
                       )}
 
-                      {anime.category.length > 3 && (
-                        <div>+{anime.category.length - 3}</div>
+                      {anime.category.length > 2 && (
+                        <div>+{anime.category.length - 2}</div>
                       )}
                     </Link>
                   </div>
