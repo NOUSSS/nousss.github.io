@@ -256,7 +256,7 @@ export default function Accueil() {
                               : anime.category.length,
                         },
                         (_, i) => (
-                          <div>{anime.category[i]}</div>
+                          <div key={i}>{anime.category[i]}</div>
                         ),
                       )}
 
