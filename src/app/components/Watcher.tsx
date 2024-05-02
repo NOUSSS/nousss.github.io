@@ -114,23 +114,27 @@ export default function Watcher({
       </div>
 
       {name && (
-        <div className="ml-8 flex w-full flex-col text-left md:ml-0 md:w-auto">
-          {anime && context && (
-            <Link
-              className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
-              href={{
-                pathname: "/Saisons",
-                query: { anime: anime },
-              }}
-            >
-              {anime} | {context}
-            </Link>
-          )}
+        <div className="flex w-11/12 flex-col justify-between *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
+          <div className="mb-5 w-full">
+            <div className="flex w-full flex-col text-left">
+              {anime && context && (
+                <Link
+                  className="text-sm font-normal text-zinc-400 hover:underline sm:text-base"
+                  href={{
+                    pathname: `/${context === "Films" ? "Home" : "Saisons"}`,
+                    query: { anime: anime },
+                  }}
+                >
+                  {anime} | {context}
+                </Link>
+              )}
 
-          <p className="text-xl drop-shadow-xl sm:text-2xl">
-            {prefix ? "Episode " : ""}
-            {episode}
-          </p>
+              <div className="text-xl font-normal sm:text-2xl">
+                {prefix ? "Episode " : ""}
+                {episode}
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>
