@@ -76,6 +76,12 @@ export default function Watcher({
                 ...currentState,
                 lang: value,
               }));
+
+            if (context === "Films") {
+              StorageFilms.setLecteur("");
+            } else {
+              StorageEpisodes.setLecteur("");
+            }
           }}
         />
 
