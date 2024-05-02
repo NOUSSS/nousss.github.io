@@ -18,7 +18,7 @@
 }
 
 .btn {
-  @apply relative left-0 flex min-h-12 items-center justify-center gap-1 rounded-full border-0 bg-sky-500 p-3 text-base font-normal text-zinc-950 transition-all duration-300 hover:bg-sky-400 sm:gap-2 sm:text-lg;
+  @apply relative left-0 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent bg-sky-500 p-3 text-base font-normal text-zinc-950 transition-all hover:border-sky-500 hover:bg-opacity-0 hover:text-white active:bg-opacity-20 sm:gap-2 sm:text-lg;
 }
 
 .container {
