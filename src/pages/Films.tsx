@@ -47,9 +47,7 @@ const Films = () => {
     const fetchedAnime = getAnime(currentAnime);
 
     if (!currentAnime || !fetchedAnime?.options.FILM_OPTIONS) {
-      router.push({
-        pathname: "/",
-      });
+      router.push("/");
     } else {
       const lang = (FilmsData?.lang ?? "vostfr") as langType;
 

@@ -72,9 +72,7 @@ const Episodes = () => {
     setEpisodeData(episodeData);
 
     if (!currentAnimeName || !currentAnimeData) {
-      router.push({
-        pathname: "/",
-      });
+      router.push("/");
     } else {
       setLoadingToast(
         toast.loading("Les épisodes sont en cours de chargement"),

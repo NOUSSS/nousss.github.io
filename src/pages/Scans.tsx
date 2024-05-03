@@ -64,9 +64,7 @@ const Scans = () => {
     );
 
     if (!currentAnime || !currentAnime.options.SCANS_OPTIONS) {
-      router.push({
-        pathname: "/",
-      });
+      router.push("/");
     } else {
       const StorageScans = new ScanData(currentAnime.anime);
       setScanData(StorageScans);
