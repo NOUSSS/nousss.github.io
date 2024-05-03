@@ -57,26 +57,25 @@ export default function EpisodeComponent({
 
   return (
     <li
-      className="group cursor-pointer border-b border-neutral-700 p-1.5 text-left last:border-0"
+      className="group flex cursor-pointer border-b border-neutral-700 py-2 text-left *:transition-all last:border-0 hover:text-main"
       data-id={id}
       key={episodeNumber.toString() + episodeIndex.toString()}
       onClick={handleEpisode}
     >
-      <span className="transition-colors group-hover:text-white">
-        {episodeNumber}{" "}
-        {AnimeInfo?.saison === "1" || episodeSpecial ? "" : `(${episodeIndex})`}
-      </span>{" "}
-      :{" "}
-      <span
-        ref={
-          episodeSpecial
-            ? null
-            : (el) => (namesRef.current[episodeIndex - 1] = el!)
-        }
-        className="text-white transition-colors hover:text-main group-hover:text-main"
-      >
-        {episodeTitle}
-      </span>
+      <p className="font-normal">
+        {!episodeSpecial ? "E-" : ""}
+        {episodeNumber} {!episodeSpecial ? "-" : ""}{" "}
+        <span
+          className="font-normal text-white transition-all group-hover:text-main"
+          ref={
+            episodeSpecial
+              ? null
+              : (el) => (namesRef.current[episodeIndex - 1] = el!)
+          }
+        >
+          {episodeTitle}
+        </span>
+      </p>
     </li>
   );
 }
