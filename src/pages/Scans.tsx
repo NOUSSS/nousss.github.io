@@ -188,9 +188,9 @@ const Scans = () => {
   return (
     <>
       <Head>
-        {anime?.anime ? (
+        {anime?.anime && (
           <title>{anime?.anime.anime} - Scans | Mugiwara-no Streaming</title>
-        ) : null}
+        )}
 
         <meta
           property="og:description"
@@ -263,7 +263,7 @@ const Scans = () => {
             />
           </div>
 
-          {anime.anime?.options.SCANS_OPTIONS?.versions ? (
+          {anime.anime?.options.SCANS_OPTIONS?.versions && (
             <Select
               placeholder="Changer de version"
               placeholderRef={placeholderRefVersion}
@@ -301,7 +301,7 @@ const Scans = () => {
                 }
               }}
             />
-          ) : null}
+          )}
         </div>
 
         <div className="relative flex flex-col gap-8">
@@ -326,7 +326,7 @@ const Scans = () => {
           </button>
 
           <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            {!isFirst ? (
+            {!isFirst && (
               <button
                 className="btn"
                 onClick={() =>
@@ -341,9 +341,9 @@ const Scans = () => {
                 <Prev />
                 Chapitre précédent
               </button>
-            ) : null}
+            )}
 
-            {!isLast ? (
+            {!isLast && (
               <button
                 className="btn"
                 onClick={() =>
@@ -358,7 +358,7 @@ const Scans = () => {
                 Chapitre suivant
                 <Next />
               </button>
-            ) : null}
+            )}
           </div>
         </div>
 
@@ -394,7 +394,7 @@ const Scans = () => {
 
         <div className="relative top-24 mb-60 flex flex-col gap-4">
           <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            {!isFirst ? (
+            {!isFirst && (
               <button
                 className="btn"
                 onClick={() =>
@@ -409,9 +409,9 @@ const Scans = () => {
                 <Prev />
                 Chapitre précédent
               </button>
-            ) : null}
+            )}
 
-            {!isLast ? (
+            {!isLast && (
               <button
                 className="btn"
                 onClick={() =>
@@ -426,7 +426,7 @@ const Scans = () => {
                 Chapitre suivant
                 <Next />
               </button>
-            ) : null}
+            )}
           </div>
         </div>
 

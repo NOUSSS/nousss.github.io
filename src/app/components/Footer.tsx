@@ -34,12 +34,12 @@ export default function Footer({
         </Link>
       </div>
 
-      {media ? (
+      {media && (
         <p className="mb-5">
           Contactez directement la plateforme d'hébergement vidéo pour toutes
           réclamations de droits relatifs aux contenus en question.
         </p>
-      ) : null}
+      )}
 
       <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>
     </footer>

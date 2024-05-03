@@ -142,9 +142,9 @@ const Films = () => {
   return (
     <>
       <Head>
-        {anime?.anime?.anime ? (
+        {anime?.anime?.anime && (
           <title>{anime?.anime?.anime} - Films | Mugiwara-no Streaming</title>
-        ) : null}
+        )}
 
         <meta
           property="og:description"

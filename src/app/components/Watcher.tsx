@@ -85,33 +85,31 @@ export default function Watcher({
           }}
         />
 
-        {lecteurs ? (
-          Object.keys(lecteurs).length > 1 ? (
-            <Select
-              placeholder="Changer de lecteur"
-              placeholderRef={placeholderLecteurRef}
-              onSelect={(items) => {
-                if (updateAnime)
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    lecteur: items[0].value,
-                    currentLecteur: lecteurs?.[items[0].value],
-                  }));
+        {lecteurs && Object.keys(lecteurs).length > 1 && (
+          <Select
+            placeholder="Changer de lecteur"
+            placeholderRef={placeholderLecteurRef}
+            onSelect={(items) => {
+              if (updateAnime)
+                updateAnime((currentState) => ({
+                  ...currentState,
+                  lecteur: items[0].value,
+                  currentLecteur: lecteurs?.[items[0].value],
+                }));
 
-                if (context === "Films") {
-                  StorageFilms.setLecteur(items[0].value);
-                } else {
-                  StorageEpisodes.setLecteur(items[0].value);
-                }
-              }}
-              items={Object.keys(lecteurs).map((l, i) => ({
-                name: getHostname(Object.values(lecteurs!)[i][0]),
-                value: l,
-                disabled: lecteur === l ? true : false,
-              }))}
-            />
-          ) : null
-        ) : null}
+              if (context === "Films") {
+                StorageFilms.setLecteur(items[0].value);
+              } else {
+                StorageEpisodes.setLecteur(items[0].value);
+              }
+            }}
+            items={Object.keys(lecteurs).map((l, i) => ({
+              name: getHostname(Object.values(lecteurs!)[i][0]),
+              value: l,
+              disabled: lecteur === l ? true : false,
+            }))}
+          />
+        )}
       </div>
 
       <div ref={containerRef} className="container">

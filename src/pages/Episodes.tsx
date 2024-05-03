@@ -383,9 +383,9 @@ const Episodes = () => {
   return (
     <>
       <Head>
-        {anime?.anime ? (
+        {anime?.anime && (
           <title>{anime.anime.anime} - Episodes | Mugiwara-no Streaming</title>
-        ) : null}
+        )}
 
         <meta
           property="og:description"
@@ -394,12 +394,12 @@ const Episodes = () => {
       </Head>
 
       <main className="flex flex-col items-center">
-        {disclamerMessage.current ? (
+        {disclamerMessage.current && (
           <p
             className="mt-12 text-xl text-red-500"
             dangerouslySetInnerHTML={{ __html: disclamerMessage.current }}
           ></p>
-        ) : null}
+        )}
 
         {anime.lang && (
           <Watcher
@@ -435,7 +435,7 @@ const Episodes = () => {
             </div>
 
             <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-around">
-              {anime.anime?.anime && episodeData?.get()?.episode !== "1" ? (
+              {anime.anime?.anime && episodeData?.get()?.episode !== "1" && (
                 <button
                   className="btn"
                   onClick={() =>
@@ -452,29 +452,29 @@ const Episodes = () => {
                   <Prev />
                   Épisode précedent
                 </button>
-              ) : null}
+              )}
 
               {anime.anime?.anime &&
-              anime.currentLecteur &&
-              episodeData?.get()?.episode !==
-                anime.currentLecteur.length.toString() ? (
-                <button
-                  className="btn"
-                  onClick={() =>
-                    NextEpisode(
-                      anime?.currentLecteur!,
-                      updateAnime,
-                      anime!,
-                      containerRef,
-                      episodeTitleRef,
-                      episodesListRef,
-                    )
-                  }
-                >
-                  Épisode suivant
-                  <Next />
-                </button>
-              ) : null}
+                anime.currentLecteur &&
+                episodeData?.get()?.episode !==
+                  anime.currentLecteur.length.toString() && (
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      NextEpisode(
+                        anime?.currentLecteur!,
+                        updateAnime,
+                        anime!,
+                        containerRef,
+                        episodeTitleRef,
+                        episodesListRef,
+                      )
+                    }
+                  >
+                    Épisode suivant
+                    <Next />
+                  </button>
+                )}
             </div>
           </div>
 
@@ -499,7 +499,7 @@ const Episodes = () => {
             </div>
 
             <div className="my-6 flex w-full flex-col gap-5 min-[450px]:w-auto min-[450px]:flex-row">
-              {anime?.saison !== "1" ? (
+              {anime?.saison !== "1" && (
                 <button
                   onClick={() => {
                     ClearCache();
@@ -526,40 +526,40 @@ const Episodes = () => {
                   <Prev />
                   Saison précédente
                 </button>
-              ) : null}
+              )}
 
               {anime.anime &&
-              anime?.saison !==
-                Object.keys(
-                  anime.anime?.options.saisons!,
-                )?.length.toString() ? (
-                <button
-                  onClick={() => {
-                    ClearCache();
+                anime?.saison !==
+                  Object.keys(
+                    anime.anime?.options.saisons!,
+                  )?.length.toString() && (
+                  <button
+                    onClick={() => {
+                      ClearCache();
 
-                    const newSaison = Number(episodeData?.get()?.saison) + 1;
+                      const newSaison = Number(episodeData?.get()?.saison) + 1;
 
-                    router.push({
-                      pathname: `/Episodes`,
-                      query: {
-                        anime: anime?.anime?.anime!,
-                        saison: newSaison,
-                      },
-                    });
+                      router.push({
+                        pathname: `/Episodes`,
+                        query: {
+                          anime: anime?.anime?.anime!,
+                          saison: newSaison,
+                        },
+                      });
 
-                    changeSaison(newSaison.toString(), anime?.anime?.anime!);
+                      changeSaison(newSaison.toString(), anime?.anime?.anime!);
 
-                    updateAnime((currentState) => ({
-                      ...currentState,
-                      saison: newSaison.toString(),
-                    }));
-                  }}
-                  className="btn"
-                >
-                  Saison suivante
-                  <Next />
-                </button>
-              ) : null}
+                      updateAnime((currentState) => ({
+                        ...currentState,
+                        saison: newSaison.toString(),
+                      }));
+                    }}
+                    className="btn"
+                  >
+                    Saison suivante
+                    <Next />
+                  </button>
+                )}
             </div>
           </div>
         </div>

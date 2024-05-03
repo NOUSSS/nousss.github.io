@@ -8,7 +8,7 @@ interface SwitchProps {
 export default function Switch({ placeholder, onChange }: SwitchProps) {
   return (
     <label className="relative flex gap-8">
-      {placeholder ? <p>{placeholder}</p> : null}
+      {placeholder && <p>{placeholder}</p>}
 
       <div className="relative transition-colors before:absolute before:-right-12 before:h-7 before:w-14 before:rounded-full before:border before:border-neutral-700 before:border-opacity-50 before:bg-transparent before:transition-all before:hover:border-opacity-100 before:has-[:checked]:bg-main before:has-[:checked]:brightness-50">
         <input
