@@ -63,7 +63,7 @@ export default function EpisodeComponent({
       onClick={handleEpisode}
     >
       <p className="font-normal">
-        {!episodeSpecial ? "E-" : ""}
+        {!episodeSpecial ? "E" : ""}
         {episodeNumber} {!episodeSpecial ? "-" : ""}{" "}
         <span
           className="font-normal text-white transition-all group-hover:text-main"
