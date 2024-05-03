@@ -149,11 +149,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 className="w-10"
               />
 
-              <p className="text-2xl font-normal max-sm:hidden">
-                <span className="font-normal transition-colors group-hover:text-white">
-                  Mugiwara-no
-                </span>{" "}
-                Streaming
+              <p className="text-2xl font-normal transition-colors hover:text-main max-sm:hidden">
+                Mugiwara-no Streaming
               </p>
             </h1>
           </Link>
