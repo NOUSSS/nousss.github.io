@@ -92,7 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <div
         className={cn(
-          "fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter bg-zinc-800 bg-opacity-80 text-sm shadow-2xl shadow-black backdrop-blur-md sm:w-[600px] sm:rounded-xl",
+          "fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter bg-zinc-800 bg-opacity-80 text-sm backdrop-blur-md sm:w-[600px] sm:rounded-xl",
           {
             hidden: !isVisible,
           },
