@@ -99,8 +99,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         ref={searchContainerRef}
       >
-        <div className="flex h-16 items-center gap-4 border-b border-neutral-700 bg-zinc-900 bg-opacity-50 p-2 sm:rounded-t-xl">
-          <SearchIcon size={30} />
+        <div className="flex h-16 items-center gap-4 border-b border-neutral-700 border-opacity-50 bg-zinc-900 bg-opacity-50 p-4 sm:rounded-t-xl">
+          <SearchIcon size={20} />
 
           <FastSearchBar
             className="w-full text-xl"
@@ -122,7 +122,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
       ></div>
 
-      <div className="fixed top-0 -z-50 h-full w-full bg-noise opacity-20"></div>
+      <div className="fixed top-0 -z-50 h-full w-full bg-noise opacity-50"></div>
 
       <header
         className={cn(

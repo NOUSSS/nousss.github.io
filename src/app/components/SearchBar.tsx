@@ -29,7 +29,7 @@ export default function SearchBar({
       )}
       title="Système de recherche super cool"
     >
-      <SearchIcon size="25" />
+      <SearchIcon size="20" />
 
       <input
         ref={inputRef}

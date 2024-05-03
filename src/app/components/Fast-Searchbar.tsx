@@ -7,6 +7,7 @@ import { cn, normalizeString } from "../lib/";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface FastSearchBarProps {
   setOutput: React.Dispatch<React.SetStateAction<React.ReactNode>>;
@@ -96,18 +97,14 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
           setOutput(<p>Aucun résultat trouvé.</p>);
         } else if (filteredAnimes.length > 0) {
           setOutput(
-            <ul>
+            <ul className="p-1">
               {filteredAnimes.map(({ options, anime, synopsis }) => (
-                <li
-                  className="flex cursor-pointer border border-transparent py-2 text-left opacity-60 transition-all hover:border-neutral-700 hover:bg-zinc-900 hover:bg-opacity-50 hover:opacity-100"
+                <Link
+                  href={{ pathname: "/Home", query: { anime: anime } }}
+                  className="flex cursor-pointer rounded bg-opacity-50 p-3 text-left transition-colors hover:bg-indigo-600"
                   key={anime}
                   onClick={() => {
                     setIsVisible(!isVisible);
-
-                    router?.push({
-                      pathname: "/Home",
-                      query: { anime: anime },
-                    });
                   }}
                 >
                   <div>
@@ -131,7 +128,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
                         : synopsis}
                     </p>
                   </div>
-                </li>
+                </Link>
               ))}
             </ul>,
           );
