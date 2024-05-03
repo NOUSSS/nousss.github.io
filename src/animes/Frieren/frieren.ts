@@ -25,7 +25,7 @@ export default class Frieren extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Frieren/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s1/scans/frieren/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [110, 111, 112],
     };
