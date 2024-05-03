@@ -41,7 +41,7 @@ export default function Catalogue() {
       <main className="mx-2 md:mx-16 lg:mx-36">
         <div className="mb-12 flex flex-col gap-5">
           <h3 className="text-2xl md:text-4xl">
-            Le catalogue ({finded} trouvé{finded > 1 ? "s" : ""})
+            {finded} trouvé{finded > 1 ? "s" : ""}
           </h3>
 
           <div className="flex justify-center">
