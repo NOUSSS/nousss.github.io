@@ -360,7 +360,7 @@ const Episodes = () => {
         }, 100);
 
         if (options) disclamerMessage.current = getNote(options.note, anime);
-      }, 400);
+      }, 500);
     }
   }, [anime.currentLecteur, anime.lang, anime.saison, status]);
 
