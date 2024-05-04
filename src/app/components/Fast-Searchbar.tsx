@@ -66,7 +66,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 
   React.useEffect(() => {
     setIsVisible(window.location.hash === "#search");
-  }, [setIsVisible]);
+  }, [setIsVisible, router.query]);
 
   React.useEffect(() => {
     if (isVisible) {

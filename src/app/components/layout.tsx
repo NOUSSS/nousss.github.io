@@ -157,6 +157,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
           <div className="flex items-center gap-3 *:flex *:items-center *:rounded-md *:p-2">
             <Link
+              href="#search"
+              className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
+              onClick={() => setIsVisible(!isVisible)}
+            >
+              <SearchIcon className="lg:mr-3" />
+
+              <span className="text-base text-white max-lg:hidden">
+                Recherche rapide (Ctrl + K)
+              </span>
+            </Link>
+
+            <Link
               className="bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
               href="/Catalogue"
               title="Catalogue"
@@ -175,18 +187,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               <span className="text-base text-white max-lg:hidden">
                 Paramètres
-              </span>
-            </Link>
-
-            <Link
-              href="#search"
-              className="cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
-              onClick={() => setIsVisible(!isVisible)}
-            >
-              <SearchIcon className="lg:mr-3" />
-
-              <span className="text-base text-white max-lg:hidden">
-                Recherche rapide (Ctrl + K)
               </span>
             </Link>
           </div>
