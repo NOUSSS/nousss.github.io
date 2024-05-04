@@ -250,6 +250,7 @@ const Episodes = () => {
 
             listEpisodes.push(
               <EpisodeComponent
+                key={indexEpisode + title}
                 episodeIndex={indexEpisode - retard}
                 id={indexEpisode.toString()}
                 episodeNumber={title}
@@ -270,6 +271,7 @@ const Episodes = () => {
 
             listEpisodes.push(
               <EpisodeComponent
+                key={indexEpisode + episodeNumber}
                 episodeIndex={indexEpisode - retard}
                 id={indexEpisode.toString()}
                 episodeTitle={episodeTitle}

@@ -59,7 +59,6 @@ export default function EpisodeComponent({
     <li
       className="group flex cursor-pointer border-b border-neutral-700 py-2 text-left *:transition-all last:border-0 hover:text-main"
       data-id={id}
-      key={episodeNumber.toString() + episodeIndex.toString()}
       onClick={handleEpisode}
     >
       <p className="font-normal">
