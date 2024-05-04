@@ -34,11 +34,13 @@ export function getSaisons() {
             </div>
 
             <p className="relative top-2 text-sm md:text-base">
-              <span>{saisonsValues[i].name}</span>
+              {saisonsValues[i].name}
               <br />
-              {i === Object.keys(saisonsValues).length - 1 && !allIndex[i + 2]
-                ? ""
-                : `(${intervalEpisodes})`}
+              <span>
+                {i === Object.keys(saisonsValues).length - 1 && !allIndex[i + 2]
+                  ? ""
+                  : `(${intervalEpisodes})`}
+              </span>
             </p>
           </>
         ),
