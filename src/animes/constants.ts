@@ -107,6 +107,7 @@ import DrStone from "./DrStone/dr-stone";
 import MadeInAbyss from "./MadeInAbyss/made-in-abyss";
 import Rainbow from "./Rainbow/rainbow";
 import ViralHit from "./ViralHit/viral-hit";
+import SaintSeiya from "./SaintSeiya/saint-seiya";
 
 export interface AnimesType {
   anime: string;
@@ -1093,6 +1094,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Le lycéen tout maigre et fragile Yoo Ho Bin est probablement le dernier gars qu'on s'attendrait à voir sur une chaîne Newtube qui tourne autour des combats. Mais après avoir suivi les conseils d'une mystérieuse chaîne Newtube, Ho Bin assomme des gars plus forts que lui et engrange plus d'argent qu'il n'aurait jamais pu rêver. Ho Bin pourra-t-il continuer comme ça ou finira-t-il par rencontrer son égal ?",
     options: new ViralHit(),
+  },
+  {
+    anime: "Saint Seiya",
+    aliases: ["Les Chevaliers du Zodiaque", "Knights of the Zodiac"],
+    synopsis:
+      "On raconte que quand les forces du mal veulent dominer la planète, Athéna et ses vaillants guerriers se dresseront contre l'envahisseur. Ces guerriers s'appellent les Saints (Chevaliers en VF), de leurs poings, ils pouvaient pourfendre le ciel et de leurs pieds, entrouvrir la terre. Aujourd'hui encore, la planète est la proie des forces maléfiques. Pour se préparer à lutter, la déesse Athéna se réincarne sous les traits de Saori Kido accompagnée des chevaliers de Bronze recueillis par son défunt grand-père : Seiya de Pégase de Grèce, Shiryu du Dragon des cinq Pics en Chine, Hyoga du Cygne de Sibérie, Shun d'Andromède de l'Ile d'Andromède et Ikki du Phénix de l'île de la Reine Morte et frère aîné de Shun.",
+    category: ["Action", "Aventure", "Fantasy", "Science-fiction"],
+    options: new SaintSeiya(),
   },
 ];
 
