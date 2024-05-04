@@ -140,10 +140,10 @@ const names = [
   { index: "136", name: "Deku vs la 2de A" },
   { index: "137", name: "Cri du cœur" },
   { index: "138", name: "Connexion" },
-  { index: "139", name: "Izuku Midoriya: Mind" },
-  { index: "140", name: "Toshinori Yagi: Embers" },
-  { index: "141", name: "Heroes: Thoughts" },
-  { index: "142", name: "Tomura Shigaraki : Destruction" },
+  { index: "139", name: "Izuku Midoriya: Mind (récapitulatif)" },
+  { index: "140", name: "Toshinori Yagi: Embers (récapitulatif)" },
+  { index: "141", name: "Heroes: Thoughts (récapitulatif)" },
+  { index: "142", name: "Tomura Shigaraki : Destruction (récapitulatif)" },
   { index: "143", name: "Une tornade de puissance venue de l'ouest" },
 ];
 
