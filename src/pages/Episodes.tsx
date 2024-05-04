@@ -382,6 +382,48 @@ const Episodes = () => {
     [],
   );
 
+  const PrevSaison = useCallback(() => {
+    ClearCache();
+
+    const prevSaison = Number(episodeData?.get()?.saison) - 1;
+
+    router.push({
+      pathname: `/Episodes`,
+      query: {
+        anime: anime?.anime!.anime,
+        saison: prevSaison,
+      },
+    });
+
+    changeSaison(prevSaison.toString(), anime?.anime?.anime!);
+
+    updateAnime((currentState) => ({
+      ...currentState,
+      saison: prevSaison.toString(),
+    }));
+  }, [anime.anime?.anime]);
+
+  const NextSaison = useCallback(() => {
+    ClearCache();
+
+    const newSaison = Number(episodeData?.get()?.saison) + 1;
+
+    router.push({
+      pathname: `/Episodes`,
+      query: {
+        anime: anime?.anime?.anime!,
+        saison: newSaison,
+      },
+    });
+
+    changeSaison(newSaison.toString(), anime?.anime?.anime!);
+
+    updateAnime((currentState) => ({
+      ...currentState,
+      saison: newSaison.toString(),
+    }));
+  }, [anime.anime?.anime]);
+
   return (
     <>
       <Head>
@@ -439,19 +481,23 @@ const Episodes = () => {
             <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-around">
               <button
                 disabled={
-                  !(anime.anime?.anime && episodeData?.get()?.episode !== "1")
+                  episodeData?.get()?.episode === "1" && anime.saison === "1"
                 }
                 className="btn"
-                onClick={() =>
-                  PrevEpisode(
-                    anime.currentLecteur!,
-                    updateAnime,
-                    anime!,
-                    containerRef,
-                    episodeTitleRef,
-                    episodesListRef,
-                  )
-                }
+                onClick={() => {
+                  if (episodeData?.get()?.episode === "1") {
+                    PrevSaison();
+                  } else {
+                    PrevEpisode(
+                      anime.currentLecteur!,
+                      updateAnime,
+                      anime!,
+                      containerRef,
+                      episodeTitleRef,
+                      episodesListRef,
+                    );
+                  }
+                }}
               >
                 <Prev />
                 Épisode précedent
@@ -459,24 +505,32 @@ const Episodes = () => {
 
               <button
                 disabled={
-                  !(
-                    anime.anime?.anime &&
-                    anime.currentLecteur &&
-                    episodeData?.get()?.episode !==
-                      anime.currentLecteur.length.toString()
-                  )
+                  (anime.anime?.options.saisons &&
+                    episodeData?.get()?.episode ===
+                      anime.currentLecteur?.length.toString() &&
+                    anime.saison ===
+                      Object.keys(
+                        anime.anime?.options.saisons!,
+                      ).length.toString()) as boolean
                 }
                 className="btn"
-                onClick={() =>
-                  NextEpisode(
-                    anime?.currentLecteur!,
-                    updateAnime,
-                    anime!,
-                    containerRef,
-                    episodeTitleRef,
-                    episodesListRef,
-                  )
-                }
+                onClick={() => {
+                  if (
+                    episodeData?.get()?.episode ===
+                    anime.currentLecteur?.length.toString()
+                  ) {
+                    NextSaison();
+                  } else {
+                    NextEpisode(
+                      anime?.currentLecteur!,
+                      updateAnime,
+                      anime!,
+                      containerRef,
+                      episodeTitleRef,
+                      episodesListRef,
+                    );
+                  }
+                }}
               >
                 Épisode suivant
                 <Next />
@@ -507,26 +561,7 @@ const Episodes = () => {
             <div className="my-6 flex w-full flex-col gap-5 min-[450px]:w-auto min-[450px]:flex-row">
               <button
                 disabled={anime?.saison === "1"}
-                onClick={() => {
-                  ClearCache();
-
-                  const prevSaison = Number(episodeData?.get()?.saison) - 1;
-
-                  router.push({
-                    pathname: `/Episodes`,
-                    query: {
-                      anime: anime?.anime!.anime,
-                      saison: prevSaison,
-                    },
-                  });
-
-                  changeSaison(prevSaison.toString(), anime?.anime?.anime!);
-
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    saison: prevSaison.toString(),
-                  }));
-                }}
+                onClick={PrevSaison}
                 className="btn"
               >
                 <Prev />
@@ -543,26 +578,7 @@ const Episodes = () => {
                       )?.length.toString()
                   )
                 }
-                onClick={() => {
-                  ClearCache();
-
-                  const newSaison = Number(episodeData?.get()?.saison) + 1;
-
-                  router.push({
-                    pathname: `/Episodes`,
-                    query: {
-                      anime: anime?.anime?.anime!,
-                      saison: newSaison,
-                    },
-                  });
-
-                  changeSaison(newSaison.toString(), anime?.anime?.anime!);
-
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    saison: newSaison.toString(),
-                  }));
-                }}
+                onClick={NextSaison}
                 className="btn"
               >
                 Saison suivante
