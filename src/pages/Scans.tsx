@@ -324,39 +324,37 @@ const Scans = () => {
           </button>
 
           <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            {!isFirst && (
-              <button
-                className="btn"
-                onClick={() =>
-                  PrevChapter(
-                    anime!,
-                    updateAnime,
-                    placeholderRef,
-                    !anime.version ? undefined : anime.version.split("|")[1],
-                  )
-                }
-              >
-                <Prev />
-                Chapitre précédent
-              </button>
-            )}
+            <button
+              disabled={isFirst as boolean}
+              className="btn"
+              onClick={() =>
+                PrevChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
+            >
+              <Prev />
+              Chapitre précédent
+            </button>
 
-            {!isLast && (
-              <button
-                className="btn"
-                onClick={() =>
-                  NextChapter(
-                    anime!,
-                    updateAnime,
-                    placeholderRef,
-                    !anime.version ? undefined : anime.version.split("|")[1],
-                  )
-                }
-              >
-                Chapitre suivant
-                <Next />
-              </button>
-            )}
+            <button
+              disabled={isLast as boolean}
+              className="btn"
+              onClick={() =>
+                NextChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
+            >
+              Chapitre suivant
+              <Next />
+            </button>
           </div>
         </div>
 
@@ -392,39 +390,37 @@ const Scans = () => {
 
         <div className="relative top-24 mb-60 flex flex-col gap-4">
           <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            {!isFirst && (
-              <button
-                className="btn"
-                onClick={() =>
-                  PrevChapter(
-                    anime!,
-                    updateAnime,
-                    placeholderRef,
-                    !anime.version ? undefined : anime.version.split("|")[1],
-                  )
-                }
-              >
-                <Prev />
-                Chapitre précédent
-              </button>
-            )}
+            <button
+              disabled={isFirst as boolean}
+              className="btn"
+              onClick={() =>
+                PrevChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
+            >
+              <Prev />
+              Chapitre précédent
+            </button>
 
-            {!isLast && (
-              <button
-                className="btn"
-                onClick={() =>
-                  NextChapter(
-                    anime!,
-                    updateAnime,
-                    placeholderRef,
-                    !anime.version ? undefined : anime.version.split("|")[1],
-                  )
-                }
-              >
-                Chapitre suivant
-                <Next />
-              </button>
-            )}
+            <button
+              disabled={isLast as boolean}
+              className="btn"
+              onClick={() =>
+                NextChapter(
+                  anime!,
+                  updateAnime,
+                  placeholderRef,
+                  !anime.version ? undefined : anime.version.split("|")[1],
+                )
+              }
+            >
+              Chapitre suivant
+              <Next />
+            </button>
           </div>
         </div>
 
