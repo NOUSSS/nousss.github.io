@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Aim() {
   const refs = useRef<HTMLDivElement[]>([]);
   const [currentAim, setCurrentAim] = useState<number>();
+  const [score, setScore] = useState(0);
 
   function randomAim() {
     refs.current.forEach((e) => {
@@ -38,9 +39,13 @@ export default function Aim() {
       </Head>
 
       <main className="flex flex-col items-center">
-        <h1 className="my-8 text-2xl">
+        <h1 className="mb-4 mt-8 text-2xl">
           Pour que Sneizz s'entraine vu qu'il en a besoin
         </h1>
+
+        <p className="mb-4 text-2xl">
+          Score : <span className="font-normal">{score}</span>
+        </p>
 
         <div className="w-full border border-neutral-700 md:w-[525px]">
           {Array.from({ length: 40 }, (_, i) => (
@@ -48,7 +53,10 @@ export default function Aim() {
               key={i}
               ref={(el) => (refs.current[i] = el!)}
               onClick={() => {
-                if (currentAim === i) randomAim();
+                if (currentAim === i) {
+                  randomAim();
+                  setScore((state) => state + 1);
+                }
               }}
               className="inline-flex size-16 bg-transparent"
             ></div>
