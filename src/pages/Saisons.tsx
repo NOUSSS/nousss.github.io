@@ -16,7 +16,6 @@ import EpisodeData from "@/app/class/episodeData";
 
 const Saisons = () => {
   const router = useRouter();
-
   const [anime, updateAnime] = useAnime<Anime.AnimeSaisonsProps>({});
 
   const saisonsRef = useRef<HTMLUListElement[]>([]);
@@ -71,7 +70,7 @@ const Saisons = () => {
         <p>
           {anime.saison && anime.anime?.anime && (
             <>
-              Historique Saison :{" "}
+              Historique Saison:{" "}
               <Link
                 onClick={() => {
                   changeSaison(
@@ -83,7 +82,7 @@ const Saisons = () => {
                   pathname: "/Episodes",
                   query: { anime: anime.anime.anime, saison: anime.saison },
                 }}
-                className="cursor-pointer underline"
+                className="text-main hover:underline"
               >
                 {
                   Object.values(anime?.anime?.options.saisons!)[
