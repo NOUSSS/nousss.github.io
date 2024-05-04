@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 interface ItemsProps {
   name: string;
@@ -15,7 +15,7 @@ interface ButtonsRef {
   [key: string]: HTMLButtonElement;
 }
 
-export default function SelectDouble({ items, click }: SelectDoubleProps) {
+const SelectDouble: FC<SelectDoubleProps> = ({ items, click }) => {
   const [selected, setSelected] = useState<HTMLButtonElement>();
 
   const buttons = useRef<ButtonsRef>({});
@@ -68,4 +68,6 @@ export default function SelectDouble({ items, click }: SelectDoubleProps) {
       </div>
     </div>
   );
-}
+};
+
+export default SelectDouble;

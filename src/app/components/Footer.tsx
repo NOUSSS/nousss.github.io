@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { cn } from "../lib";
+import { FC } from "react";
 
-export default function Footer({
-  media = false,
-  style,
-}: {
+interface FooterProps {
   media?: boolean;
   style?: boolean;
-}) {
+}
+
+const Footer: FC<FooterProps> = ({ media = false, style }) => {
   return (
     <footer
       className={cn("mt-4 p-8", {
@@ -44,4 +44,6 @@ export default function Footer({
       <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>
     </footer>
   );
-}
+};
+
+export default Footer;

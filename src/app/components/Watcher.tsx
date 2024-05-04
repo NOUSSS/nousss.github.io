@@ -1,4 +1,4 @@
-import { RefObject, useRef } from "react";
+import { FC, RefObject, useRef } from "react";
 import { Anime } from "@/typings/types";
 import { getHostname } from "../lib/";
 
@@ -32,7 +32,7 @@ interface WatcherProps {
   containerRef: RefObject<HTMLDivElement>;
 }
 
-export default function Watcher({
+const Watcher: FC<WatcherProps> = ({
   video,
   lang,
   lecteur,
@@ -46,7 +46,7 @@ export default function Watcher({
 
   updateAnime,
   containerRef,
-}: WatcherProps) {
+}) => {
   const placeholderLecteurRef = useRef<HTMLParagraphElement>(null);
 
   const StorageEpisodes = new EpisodeData(anime);
@@ -143,4 +143,6 @@ export default function Watcher({
       )}
     </>
   );
-}
+};
+
+export default Watcher;

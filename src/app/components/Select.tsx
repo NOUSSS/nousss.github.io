@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, RefObject } from "react";
+import { FC, useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 import { cn } from "../lib";
 
@@ -25,14 +25,14 @@ interface ItemsRef {
   el: HTMLLIElement;
 }
 
-export default function Select({
+const Select: FC<SelectProps> = ({
   items,
   placeholder,
   onSelect,
   placeholderRef,
   multiple,
   scroll,
-}: SelectProps) {
+}) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
 
@@ -198,4 +198,6 @@ export default function Select({
       </div>
     </label>
   );
-}
+};
+
+export default Select;

@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FC } from "react";
 
 interface SwitchProps {
   placeholder?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Switch({ placeholder, onChange }: SwitchProps) {
+const Switch: FC<SwitchProps> = ({ placeholder, onChange }) => {
   return (
     <label className="relative flex gap-8">
       {placeholder && <p>{placeholder}</p>}
@@ -21,4 +21,6 @@ export default function Switch({ placeholder, onChange }: SwitchProps) {
       </div>
     </label>
   );
-}
+};
+
+export default Switch;

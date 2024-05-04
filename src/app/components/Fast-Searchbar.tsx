@@ -1,7 +1,6 @@
 "use client";
 
-import React, { RefObject } from "react";
-
+import { RefObject, FC, useEffect } from "react";
 import { ANIMES } from "@/animes/constants";
 import { cn, normalizeString } from "../lib/";
 import { useRouter } from "next/router";
@@ -20,7 +19,7 @@ interface FastSearchBarProps {
   className?: string;
 }
 
-const FastSearchBar: React.FC<FastSearchBarProps> = ({
+const FastSearchBar: FC<FastSearchBarProps> = ({
   setOutput,
   setIsVisible,
 
@@ -32,7 +31,7 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
 }) => {
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = "";
     }
@@ -64,11 +63,11 @@ const FastSearchBar: React.FC<FastSearchBarProps> = ({
     };
   }, [isVisible]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsVisible(window.location.hash === "#search");
   }, [setIsVisible, router.query]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isVisible) {
       router.push("#search", undefined, { shallow: true }).catch(() => 0);
     } else {

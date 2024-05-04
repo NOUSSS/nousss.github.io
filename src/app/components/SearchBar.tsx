@@ -1,6 +1,6 @@
 import { icons } from "lucide-react";
 import { cn, initSearchBar } from "@/app/lib/";
-import { RefObject, useRef } from "react";
+import { FC, RefObject, useRef } from "react";
 
 type QueryType = "id" | "innerText";
 
@@ -11,12 +11,12 @@ interface SearchBarProps {
   query: QueryType;
 }
 
-export default function SearchBar({
+const SearchBar: FC<SearchBarProps> = ({
   containerRef,
   placeholder,
   className,
   query,
-}: SearchBarProps) {
+}) => {
   const SearchIcon = icons["Search"];
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,4 +40,6 @@ export default function SearchBar({
       />
     </label>
   );
-}
+};
+
+export default SearchBar;
