@@ -200,17 +200,15 @@ const Scans = () => {
 
       <main className="flex select-none flex-col items-center">
         {anime?.anime && (
-          <h1 className="mb-12 animate-title text-5xl">
-            <Link
-              className="font-normal"
-              href={{
-                pathname: "/Home",
-                query: { anime: anime!.anime.anime },
-              }}
-            >
-              {anime.anime.anime}
-            </Link>
-          </h1>
+          <Link
+            className="mb-12 animate-title text-5xl font-normal"
+            href={{
+              pathname: "/Home",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
         )}
 
         <div className="mb-12 flex flex-col">

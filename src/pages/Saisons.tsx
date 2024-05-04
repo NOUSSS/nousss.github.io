@@ -50,17 +50,15 @@ const Saisons = () => {
 
       <main>
         {anime?.anime && (
-          <h1 className="animate-title text-5xl">
-            <Link
-              className="font-normal"
-              href={{
-                pathname: "/Home",
-                query: { anime: anime!.anime.anime },
-              }}
-            >
-              {anime.anime.anime}
-            </Link>
-          </h1>
+          <Link
+            className="animate-title text-5xl font-normal"
+            href={{
+              pathname: "/Home",
+              query: { anime: anime!.anime.anime },
+            }}
+          >
+            {anime.anime.anime}
+          </Link>
         )}
 
         <p className="m-4 text-5xl">

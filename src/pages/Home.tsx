@@ -51,13 +51,11 @@ const Home = () => {
       <main className="top-24 mx-12 max-sm:mx-0">
         <div className="relative mb-12 flex h-auto flex-col rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:rounded-none xl:flex-row">
           {anime?.options.affiche && (
-            <div>
-              <Image
-                alt={`affiche de ${anime.anime}`}
-                src={anime.options.affiche!}
-                className="rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-sm:rounded-none md:h-full md:w-[654px] md:max-w-[654px]"
-              />
-            </div>
+            <Image
+              alt={`affiche de ${anime.anime}`}
+              src={anime.options.affiche!}
+              className="rounded-l-md max-xl:rounded-l-none max-xl:rounded-t-md max-sm:rounded-none md:h-full md:w-[654px] md:max-w-[654px]"
+            />
           )}
 
           <div className="m-5 text-lg">
@@ -66,6 +64,7 @@ const Home = () => {
                 {anime.anime}
               </h1>
             )}
+
             {anime?.aliases && anime.aliases.length > 0 && (
               <div>
                 Aliases
