@@ -4,8 +4,9 @@ import RootLayout from "@/app/components/layout";
 
 import { AppProps } from "next/app";
 import { Toaster } from "sonner";
+import { FC } from "react";
 
-function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <RootLayout>
       <Toaster
@@ -18,6 +19,6 @@ function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </RootLayout>
   );
-}
+};
 
 export default App;
