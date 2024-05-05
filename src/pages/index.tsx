@@ -609,9 +609,9 @@ export default function Accueil() {
                             }
                             className="group w-40 max-md:mr-1 md:w-44"
                           >
-                            <div className="overflow-hidden rounded-md shadow-xl">
+                            <div className="overflow-hidden shadow-xl">
                               <Image
-                                className="aspect-[2/3] w-40 rounded-md transition-transform group-hover:scale-105 md:w-44"
+                                className="aspect-[2/3] w-40 transition-transform group-hover:scale-105 md:w-44"
                                 src={getWallpaper(animeName)!}
                                 alt="affiche d'un anime"
                               />
