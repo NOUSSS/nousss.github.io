@@ -3420,10 +3420,14 @@ const episodes = [
     index: "1102",
     name: "Des projets sinistres. L'opération pour échapper d'Egg Head !",
   },
-   {
+  {
     index: "1103",
     name: "Rends-moi mon père ! Le rêve éphémère de Bonney."
-   }
+  },
+  {
+    index: "1104",
+    name: "Situation désespérée. L'attaque générale des Séraphins !",
+  }
 ];
 
 export default episodes;

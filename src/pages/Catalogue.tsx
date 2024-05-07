@@ -88,10 +88,10 @@ export default function Catalogue() {
                 }}
                 key={anime}
               >
-                <div className="relative top-1 w-36 overflow-hidden rounded-md shadow-xl md:w-40">
+                <div className="relative top-1 w-36 overflow-hidden shadow-xl md:w-40">
                   {image && (
                     <Image
-                      className="z-[-1] aspect-[2/3] w-40 rounded-md transition-transform group-hover:scale-105 md:w-44"
+                      className="z-[-1] aspect-[2/3] w-40 transition-transform group-hover:scale-105 md:w-44"
                       src={image}
                       alt={`Affiche de l'anime ${anime}`}
                     />

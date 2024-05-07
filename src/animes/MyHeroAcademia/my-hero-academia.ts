@@ -43,7 +43,7 @@ export default class MyHeroAcademia extends Anime {
         image: () => getImage(6),
       },
       7: {
-        name: "Saison 7 : Memories",
+        name: "Saison 7",
         image: () => getImage(7),
       },
     };
