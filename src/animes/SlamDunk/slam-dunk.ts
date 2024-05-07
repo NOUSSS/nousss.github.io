@@ -3,6 +3,7 @@ import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/SlamDunk/Affiche.webp";
 import names from "./constants/episodes-names";
+import { getImageFilms } from "./constants/images-films";
 
 export default class SlamDunk extends Anime {
   constructor() {
@@ -14,6 +15,17 @@ export default class SlamDunk extends Anime {
         name: "Tous les épisodes",
         aliases: ["debut"],
         image: () => getImage(1),
+      },
+    };
+
+    this.FILM_OPTIONS = {
+      SCRIPT_URL: (langage) =>
+        `https://anime-sama.fr/catalogue/slam-dunk/film/${langage}/episodes.js`,
+      names: {
+        1: {
+          name: "The first Slam Dunk",
+          image: () => getImageFilms(1),
+        },
       },
     };
 
