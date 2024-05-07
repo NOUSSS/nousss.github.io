@@ -145,6 +145,7 @@ const names = [
   { index: "141", name: "Heroes: Thoughts (récapitulatif)" },
   { index: "142", name: "Tomura Shigaraki : Destruction (récapitulatif)" },
   { index: "143", name: "Une tornade de puissance venue de l'ouest" },
+  { index: "144", name: "Spectre" },
 ];
 
 export default names;

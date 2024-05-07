@@ -50,7 +50,8 @@ const SelectDouble: FC<SelectDoubleProps> = ({ items, click }) => {
             onClick={() => {
               const element = buttons.current[value];
 
-              if (selected) selected.style.color = "white";
+              if (selected && selected !== element)
+                selected.style.color = "white";
 
               setSelected(element);
               click(value);

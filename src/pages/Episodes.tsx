@@ -473,7 +473,7 @@ const Episodes = () => {
                 </Link>
               )}
 
-              <div className="text-xl font-normal sm:text-2xl">
+              <div className="text-lg font-normal md:text-xl xl:text-2xl">
                 {anime?.episodeTitle}
               </div>
             </div>

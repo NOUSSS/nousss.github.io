@@ -133,8 +133,8 @@ const Watcher: FC<WatcherProps> = ({
                 </Link>
               )}
 
-              <div className="text-xl font-normal sm:text-2xl">
-                {prefix ? "Episode " : ""}
+              <div className="text-lg font-normal md:text-xl xl:text-2xl">
+                {prefix ? "E-" : ""}
                 {episode}
               </div>
             </div>

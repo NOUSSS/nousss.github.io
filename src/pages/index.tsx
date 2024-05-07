@@ -187,6 +187,7 @@ export default function Accueil() {
     <>
       <Head>
         <title>Mugiwara-no Streaming</title>
+
         <meta
           property="og:description"
           content="La page d'accueil de Mugiwara-no Streaming"
