@@ -13,17 +13,17 @@ export default function Settings() {
         />
       </Head>
 
-      <main className="border border-neutral-700 bg-zinc-900 bg-opacity-50 p-6 md:mx-24 md:rounded-md xl:mx-44">
+      <main className="border border-neutral-700 bg-zinc-900 bg-opacity-50 p-4 sm:p-6 md:mx-24 md:rounded-md xl:mx-44">
         <h1 className="text-left text-2xl">Paramètres</h1>
 
-        <ul className="ml-5 mt-8 flex flex-col gap-4 *:flex *:items-center *:justify-between">
+        <ul className="mt-8 flex flex-col gap-4 *:flex *:items-center *:justify-between sm:ml-5">
           <li>
             <p>Changer de couleur thème</p>
             <ColorPicker />
           </li>
 
           <li>
-            <p>Supprimer tout l'historique</p>
+            <p>Historique</p>
             <RemoveHistorique />
           </li>
         </ul>
