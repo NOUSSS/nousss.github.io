@@ -158,7 +158,7 @@ const Select: FC<SelectProps> = ({
 
       <div
         ref={menuRef}
-        className="absolute left-0 top-14 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl"
+        className="absolute left-0 top-16 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl"
       >
         <div className="bg-white bg-opacity-75 p-2">
           {items?.map((item, index) => (
