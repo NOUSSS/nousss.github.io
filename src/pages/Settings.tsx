@@ -1,4 +1,4 @@
-import { ColorPicker } from "@/app/components/";
+import { ColorPicker, RemoveHistorique } from "@/app/components/";
 import Head from "next/head";
 
 export default function Settings() {
@@ -20,6 +20,11 @@ export default function Settings() {
           <li>
             <p>Changer de couleur thème</p>
             <ColorPicker />
+          </li>
+
+          <li>
+            <p>Supprimer tout l'historique</p>
+            <RemoveHistorique />
           </li>
         </ul>
       </main>

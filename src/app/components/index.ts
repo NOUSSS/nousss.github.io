@@ -1,6 +1,7 @@
 import ColorPicker from "./ColorPicker";
 import FastSearchBar from "./Fast-Searchbar";
 import Footer from "./Footer";
+import RemoveHistorique from "./RemoveHistorique";
 import SearchBar from "./SearchBar";
 import Select from "./Select";
 import SelectDouble from "./SelectDouble";
@@ -11,6 +12,7 @@ export {
   ColorPicker,
   FastSearchBar,
   Footer,
+  RemoveHistorique,
   SearchBar,
   Select,
   SelectDouble,

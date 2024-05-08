@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
 
-import { Footer } from "@/app/components/";
+import { Footer, RemoveHistorique } from "@/app/components/";
 import {
   ANIMES,
   AnimesType,
@@ -26,6 +26,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+
 import Head from "next/head";
 
 interface AmbiancePros {
@@ -64,9 +65,6 @@ export default function Accueil() {
       }, 300);
     }
   }, [currentIndex, randomAnimes]);
-
-  const confirmRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let shuffledAnimes = [...shuffle(ANIMES)];
@@ -195,11 +193,6 @@ export default function Accueil() {
       </Head>
 
       <main className="top-16">
-        <div
-          ref={overlayRef}
-          className="fixed inset-0 z-40 hidden bg-black bg-opacity-20"
-        ></div>
-
         {ambiance?.image && (
           <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
             <Image
@@ -384,73 +377,7 @@ export default function Accueil() {
 
                       <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
-                      <div
-                        ref={confirmRef}
-                        className="fixed left-1/2 top-1/2 z-50 hidden w-96 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-neutral-700 shadow-lg max-sm:w-full"
-                      >
-                        <div className="absolute inset-0 -z-10 rounded-sm bg-zinc-900 bg-opacity-50 backdrop-blur-3xl"></div>
-
-                        <div className="relative p-4 tracking-normal">
-                          <div>Confirmez vous ?</div>
-
-                          <p className="mb-12 text-sm opacity-50">
-                            Vous êtes sur le point de supprimer tout
-                            l'historique
-                          </p>
-                        </div>
-
-                        <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
-                          <button
-                            className="bg-green-500 hover:bg-green-700"
-                            onClick={() => {
-                              setHistoriques([]);
-
-                              for (const key of Object.keys(localStorage)) {
-                                if (key === "color" || key === "filever") {
-                                } else {
-                                  localStorage.removeItem(key);
-                                }
-                              }
-
-                              toast.success("L'historique a bien été vidé");
-
-                              if (confirmRef.current && overlayRef.current) {
-                                confirmRef.current.classList.add("hidden");
-                                overlayRef.current.classList.add("hidden");
-                              }
-                            }}
-                          >
-                            Oui
-                          </button>
-
-                          <button
-                            className="border border-red-500 hover:bg-red-800 hover:bg-opacity-20"
-                            onClick={() => {
-                              confirmRef.current?.classList.add("hidden");
-                              overlayRef.current?.classList.add("hidden");
-                            }}
-                          >
-                            Annuler
-                          </button>
-                        </div>
-                      </div>
-
-                      <button
-                        className="btn"
-                        onClick={() => {
-                          if (confirmRef.current && overlayRef.current) {
-                            confirmRef.current.classList.contains("hidden")
-                              ? confirmRef.current.classList.remove("hidden")
-                              : confirmRef.current.classList.add("hidden");
-
-                            overlayRef.current.classList.contains("hidden")
-                              ? overlayRef.current.classList.remove("hidden")
-                              : overlayRef.current.classList.add("hidden");
-                          }
-                        }}
-                      >
-                        <Trash /> Tout supprimer
-                      </button>
+                      <RemoveHistorique setHistoriques={setHistoriques} />
                     </>
                   ) : (
                     <div className="flex items-center gap-4">
