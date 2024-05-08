@@ -95,16 +95,14 @@ const Scans = () => {
 
   useEffect(() => {
     if (anime.anime?.options.SCANS_OPTIONS) {
-      if (anime.version === undefined) {
-        setScript(anime.anime.options.SCANS_OPTIONS.SCRIPT_URL);
-      } else {
-        setScript(
-          anime.anime.options.SCANS_OPTIONS.SCRIPT_URL.replace(
-            "/scan/",
-            `/scan${anime.version.split("|")[0]}/`,
-          ),
-        );
-      }
+      setScript(
+        !anime.version
+          ? anime.anime.options.SCANS_OPTIONS.SCRIPT_URL
+          : anime.anime.options.SCANS_OPTIONS.SCRIPT_URL.replace(
+              "/scan/",
+              `/scan${anime.version.split("|")[0]}/`,
+            ),
+      );
     }
   }, [anime.version]);
 
