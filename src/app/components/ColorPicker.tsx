@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 const ColorPicker = () => {
   const ResetIcon = icons["RotateCcw"];
 
-  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const colorPickerRef = useRef<HTMLButtonElement>(null);
   const colorInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ColorPicker = () => {
 
   return (
     <div className="flex items-center justify-center gap-3">
-      <div
+      <button
         ref={colorPickerRef}
         className="flex size-5 items-center justify-center overflow-hidden rounded-full"
       >
@@ -43,10 +43,9 @@ const ColorPicker = () => {
           }}
           type="color"
         />
-      </div>
+      </button>
 
-      <ResetIcon
-        className="size-5 cursor-pointer opacity-50 transition-opacity hover:opacity-100"
+      <button
         onClick={() => {
           const defaultColor = getComputedStyle(
             document.documentElement,
@@ -62,7 +61,9 @@ const ColorPicker = () => {
           if (colorPickerRef.current)
             colorPickerRef.current.style.backgroundColor = defaultColor;
         }}
-      />
+      >
+        <ResetIcon className="size-5 cursor-pointer opacity-50 transition-opacity hover:opacity-100" />
+      </button>
     </div>
   );
 };

@@ -18,7 +18,6 @@ const SearchBar: FC<SearchBarProps> = ({
   query,
 }) => {
   const SearchIcon = icons["Search"];
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (

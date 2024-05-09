@@ -1,6 +1,9 @@
 import { FC, useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 import { cn } from "../lib";
+import { useRouter } from "next/router";
+
+import Link from "next/link";
 
 export interface ItemsProps {
   name: string;
@@ -22,7 +25,7 @@ interface SelectProps {
 
 interface ItemsRef {
   name: string;
-  el: HTMLLIElement;
+  el: HTMLButtonElement;
 }
 
 const Select: FC<SelectProps> = ({
@@ -33,12 +36,14 @@ const Select: FC<SelectProps> = ({
   multiple,
   scroll,
 }) => {
+  const router = useRouter();
+
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
 
   const UpArrow = icons["ChevronUp"];
 
-  const labelRef = useRef<HTMLLabelElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const itemsRef = useRef<ItemsRef[]>([]);
@@ -58,7 +63,7 @@ const Select: FC<SelectProps> = ({
   const appear = () => {
     setIsSelected(!svgRef.current?.classList.contains("rotate-180"));
 
-    if (labelRef.current && menuRef.current && svgRef.current) {
+    if (linkRef.current && menuRef.current && svgRef.current) {
       if (svgRef.current.classList.contains("rotate-180")) {
         svgRef.current.classList.remove("rotate-180");
         menuRef.current.classList.add("hidden");
@@ -92,10 +97,7 @@ const Select: FC<SelectProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        labelRef.current &&
-        !labelRef.current.contains(event.target as Node)
-      ) {
+      if (linkRef.current && !linkRef.current.contains(event.target as Node)) {
         disappear();
       }
     };
@@ -142,10 +144,11 @@ const Select: FC<SelectProps> = ({
   };
 
   return (
-    <label
-      ref={labelRef}
+    <Link
+      href=""
+      ref={linkRef}
       className={cn(
-        "relative flex h-14 w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
+        "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
         { "ring-2 ring-main": isSelected },
       )}
       onClick={appear}
@@ -162,41 +165,39 @@ const Select: FC<SelectProps> = ({
       >
         <div className="bg-white bg-opacity-75 p-2">
           {items?.map((item, index) => (
-            <ul key={index}>
-              <li
-                onClick={() => {
-                  if (!multiple) toggleBodyScroll(false);
+            <button
+              key={index}
+              onClick={() => {
+                if (!multiple) toggleBodyScroll(false);
 
-                  if (!item.disabled) {
-                    handleSelect(item);
-                    appear();
-                  }
-                }}
-                ref={(el) =>
-                  (itemsRef.current[index] = {
-                    name: item.name,
-                    el: el!,
-                  })
+                if (!item.disabled) {
+                  handleSelect(item);
+                  appear();
                 }
-                className={cn(
-                  "flex h-8 cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
-                  {
-                    "mt-1": multiple,
-                    "bg-orange-500 text-white":
-                      selectedItems.find((i) => i.name === item.name) &&
-                      multiple,
-                    "opacity-50": item.disabled,
-                    "hover:border-orange-500": !item.disabled,
-                  },
-                )}
-              >
-                <p className="font-normal">{item.name}</p>
-              </li>
-            </ul>
+              }}
+              ref={(el) =>
+                (itemsRef.current[index] = {
+                  name: item.name,
+                  el: el!,
+                })
+              }
+              className={cn(
+                "flex h-8 w-full cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
+                {
+                  "mt-1": multiple,
+                  "bg-orange-500 text-white":
+                    selectedItems.find((i) => i.name === item.name) && multiple,
+                  "opacity-50": item.disabled,
+                  "hover:border-orange-500": !item.disabled,
+                },
+              )}
+            >
+              <p className="font-normal">{item.name}</p>
+            </button>
           ))}
         </div>
       </div>
-    </label>
+    </Link>
   );
 };
 
