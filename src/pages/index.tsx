@@ -299,6 +299,7 @@ export default function Accueil() {
                       }}
                     >
                       <Play />
+
                       {historiquesFiltered.find((e) => e.name === anime.anime)
                         ? "Reprendre " +
                           `${
@@ -374,7 +375,6 @@ export default function Accueil() {
                   {category === "Reprendre" ? (
                     <>
                       <p className="font-normal drop-shadow-2xl">{category}</p>
-
                       <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
                       <RemoveHistorique setHistoriques={setHistoriques} />
@@ -457,7 +457,7 @@ export default function Accueil() {
 
                             <div className="my-3 flex justify-between text-left">
                               <div>
-                                <p className="text-xs uppercase text-zinc-400">
+                                <p className="text-xs text-zinc-400">
                                   {animeName}
                                 </p>
 
