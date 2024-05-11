@@ -18,7 +18,7 @@
 }
 
 .btn {
-  @apply relative left-0 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent bg-sky-500 px-5 py-3 text-base font-normal text-zinc-950 transition-all hover:border-sky-500 hover:bg-opacity-10 hover:text-white active:bg-opacity-30 disabled:text-black disabled:opacity-50 disabled:hover:bg-sky-500 sm:gap-2 sm:text-lg;
+  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent px-5 py-3 text-base font-normal text-zinc-950 transition-all after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-full after:bg-main after:brightness-75 after:transition-all hover:border-main hover:text-white hover:after:opacity-10 active:after:opacity-30 disabled:text-black disabled:opacity-50 disabled:hover:after:bg-main sm:gap-2 sm:text-lg;
 }
 
 .container {
