@@ -19,6 +19,10 @@ const episodes = [
     index: "5",
     name: "Le mec gentil",
   },
+  {
+    index: "6",
+    name: "Je te suivrai jusqu'au bout",
+  },
 ];
 
 export default episodes;
