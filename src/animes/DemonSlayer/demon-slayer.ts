@@ -4,6 +4,7 @@ import { films } from "./constants/films-names";
 import Affiche from "@/assets/Animes/DemonSlayer/Affiche.webp";
 
 import { Anime } from "@/app/class/anime";
+import episodes from "./constants/episodes-names";
 
 export default class DemonSlayer extends Anime {
   constructor() {
@@ -80,6 +81,8 @@ export default class DemonSlayer extends Anime {
         4: 44,
         5: 55,
       },
+
+      names: episodes,
     };
   }
 }
