@@ -31,6 +31,11 @@ export default class DemonSlayer extends Anime {
         aliases: ["ile", "poneglyphe", "3"],
         image: () => getImage(3),
       },
+      5: {
+        name: "L'entraînement des piliers",
+        aliases: ["hashira training"],
+        image: () => getImage(4),
+      },
     };
 
     this.FILM_OPTIONS = {
