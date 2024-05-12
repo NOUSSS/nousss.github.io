@@ -26,14 +26,6 @@ type langType = "vostfr" | "vf";
 const Episodes = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    router.events.on("routeChangeStart", ClearCache);
-
-    return () => {
-      router.events.off("routeChangeStart", ClearCache);
-    };
-  }, [router.events]);
-
   const [anime, updateAnime] = useAnime<AnimeType.AnimeEpisodesProps>({});
   const [loadingToast, setLoadingToast] = useState<null | string | number>(
     null,
@@ -91,66 +83,68 @@ const Episodes = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      anime.lang &&
-      anime.anime &&
-      anime.saison &&
-      anime.anime.options.EPISODES_OPTIONS
-    ) {
-      const options = anime.anime.options;
+    setTimeout(() => {
+      if (
+        anime.lang &&
+        anime.anime &&
+        anime.saison &&
+        anime.anime.options.EPISODES_OPTIONS
+      ) {
+        const options = anime.anime.options;
 
-      const { saisons } = options!;
-      const { SCRIPT_URL } = options.EPISODES_OPTIONS!;
+        const { saisons } = options!;
+        const { SCRIPT_URL } = options.EPISODES_OPTIONS!;
 
-      const saisonsKeys = Object.keys(saisons!);
-      const saisonsValues = Object.values(saisons!);
+        const saisonsKeys = Object.keys(saisons!);
+        const saisonsValues = Object.values(saisons!);
 
-      const oavIndex = saisonsKeys.findIndex((e) => e === "oav");
+        const oavIndex = saisonsKeys.findIndex((e) => e === "oav");
 
-      const parts = options?.EPISODES_OPTIONS?.parts;
+        const parts = options?.EPISODES_OPTIONS?.parts;
 
-      let scriptIndex = getScriptIndex({
-        currentSaison: anime.saison,
-        parts,
-      });
+        let scriptIndex = getScriptIndex({
+          currentSaison: anime.saison,
+          parts,
+        });
 
-      let retard = 0;
-      let url = "";
+        let retard = 0;
+        let url = "";
 
-      episodeData?.setLang(anime.lang);
+        episodeData?.setLang(anime.lang);
 
-      const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
+        const hsIndex = saisonsValues.findIndex(({ hs }) => hs === true);
 
-      if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
+        if (hsIndex !== -1 && Number(scriptIndex) - 1 >= hsIndex) retard++;
 
-      if (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison)) {
-        url = SCRIPT_URL({
-          index: 1,
-          lang: anime.lang!,
-        }).replace(/saison\d+(-\d+)?/g, "oav");
-      } else {
-        if (saisonsValues[Number(scriptIndex) - 1]?.hs) {
-          url = SCRIPT_URL!({
-            index: Number(scriptIndex)
-              ? Number(scriptIndex) - retard
-              : scriptIndex!,
-            lang: anime.lang!,
-          }).replace(/saison\d+(-\d+)?/g, "saison1hs");
-        } else {
+        if (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison)) {
           url = SCRIPT_URL({
-            index: Number(scriptIndex)
-              ? Number(scriptIndex) - retard
-              : scriptIndex!,
+            index: 1,
             lang: anime.lang!,
-          });
+          }).replace(/saison\d+(-\d+)?/g, "oav");
+        } else {
+          if (saisonsValues[Number(scriptIndex) - 1]?.hs) {
+            url = SCRIPT_URL!({
+              index: Number(scriptIndex)
+                ? Number(scriptIndex) - retard
+                : scriptIndex!,
+              lang: anime.lang!,
+            }).replace(/saison\d+(-\d+)?/g, "saison1hs");
+          } else {
+            url = SCRIPT_URL({
+              index: Number(scriptIndex)
+                ? Number(scriptIndex) - retard
+                : scriptIndex!,
+              lang: anime.lang!,
+            });
+          }
         }
+
+        const filever = localStorage.getItem("filever");
+
+        setUrlScript(url);
+        if (filever) setFilever(filever);
       }
-
-      const filever = localStorage.getItem("filever");
-
-      setUrlScript(url);
-      if (filever) setFilever(filever);
-    }
+    }, 250);
   }, [anime.saison, anime.lang]);
 
   const status = useScript(url_script + `?filever=${filever}`, {
