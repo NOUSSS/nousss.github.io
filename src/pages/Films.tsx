@@ -135,7 +135,7 @@ const Films = () => {
         );
 
         getFilms(anime!, updateAnime);
-      }, 400);
+      }, 250);
     }
   }, [status, anime?.currentLecteur, anime?.lang]);
 

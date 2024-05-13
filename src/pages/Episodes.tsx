@@ -369,7 +369,7 @@ const Episodes = () => {
         }, 100);
 
         if (options) disclamerMessage.current = getNote(options.note, anime);
-      }, 500);
+      }, 300);
     }
   }, [anime.currentLecteur, anime.lang, anime.saison, status]);
 
@@ -402,6 +402,7 @@ const Episodes = () => {
       },
     });
 
+    episodeData?.setLecteur("");
     changeSaison(prevSaison.toString(), anime?.anime?.anime!);
 
     updateAnime((currentState) => ({
@@ -423,6 +424,7 @@ const Episodes = () => {
       },
     });
 
+    episodeData?.setLecteur("");
     changeSaison(newSaison.toString(), anime?.anime?.anime!);
 
     updateAnime((currentState) => ({

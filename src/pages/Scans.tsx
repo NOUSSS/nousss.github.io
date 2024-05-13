@@ -175,7 +175,7 @@ const Scans = () => {
             ),
           }));
         }
-      }, 500);
+      }, 250);
     }
   }, [status, anime.version]);
 
