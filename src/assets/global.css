@@ -59,3 +59,11 @@
     @apply relative top-20;
   }
 }
+
+*::-webkit-scrollbar {
+  @apply size-2 bg-transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply w-px rounded-md bg-main;
+}

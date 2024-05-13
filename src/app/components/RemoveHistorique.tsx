@@ -32,9 +32,9 @@ const RemoveHistorique: FC<RemoveHistoriqueProps> = ({ setHistoriques }) => {
           </p>
         </div>
 
-        <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
+        <div className="relative flex w-full justify-end gap-8 border-t border-neutral-700 p-3 text-sm font-normal text-white *:w-28 *:rounded-lg *:p-2 *:transition-colors">
           <button
-            className="bg-green-500 hover:bg-green-700"
+            className="bg-green-600 hover:bg-green-700"
             onClick={() => {
               if (setHistoriques) setHistoriques([]);
 
