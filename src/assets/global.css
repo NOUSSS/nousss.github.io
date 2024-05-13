@@ -22,7 +22,7 @@
 }
 
 .glassBtn {
-  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent px-5 py-3 text-base font-normal transition-all after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-full after:opacity-10 after:brightness-75 after:transition-all hover:border-neutral-700 hover:after:bg-neutral-200 active:after:opacity-5 disabled:after:opacity-0 disabled:hover:border-transparent sm:gap-2 sm:text-lg;
+  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-full border border-transparent px-5 py-3 text-base font-normal transition-all after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-full after:opacity-10 after:brightness-75 after:transition-all hover:border-neutral-700 hover:after:bg-neutral-200 active:after:opacity-5 disabled:opacity-50 disabled:after:opacity-0 disabled:hover:border-transparent sm:gap-2 sm:text-lg;
 }
 
 .container {
