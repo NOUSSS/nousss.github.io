@@ -14,12 +14,12 @@ class MadeInAbyss extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
       2: {
         name: "Saison 2",
-        aliases: [""],
+
         image: () => getImageSaisons(2),
       },
     } as Options.Season;
@@ -30,17 +30,17 @@ class MadeInAbyss extends Anime {
       names: {
         1: {
           name: "L'aurore de l'âme des profondeurs",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         2: {
           name: "Récapitulatif 1",
-          aliases: [""],
+
           image: () => getImageFilms(2),
         },
         3: {
           name: "Récapitulatif 2",
-          aliases: [""],
+
           image: () => getImageFilms(2),
         },
       } as Options.Film,

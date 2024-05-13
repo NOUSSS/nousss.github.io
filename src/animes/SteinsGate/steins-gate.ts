@@ -12,12 +12,12 @@ class SteinsGate extends Anime {
     this.saisons = {
       1: {
         name: "Steins;Gate",
-        aliases: [""],
+
         image: () => getImage(1),
       },
       2: {
         name: "Steins;Gate 0",
-        aliases: [""],
+
         image: () => getImage(2),
       },
     };

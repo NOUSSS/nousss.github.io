@@ -14,7 +14,7 @@ class CowboyBebop extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
     } as Options.Season;
@@ -25,7 +25,7 @@ class CowboyBebop extends Anime {
       names: {
         1: {
           name: "Le Film",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
       } as Options.Film,

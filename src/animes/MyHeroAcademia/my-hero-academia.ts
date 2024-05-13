@@ -24,17 +24,17 @@ export default class MyHeroAcademia extends Anime {
       },
       3: {
         name: "Saison 3",
-        aliases: [""],
+
         image: () => getImage(3),
       },
       4: {
         name: "Saison 4",
-        aliases: [""],
+
         image: () => getImage(4),
       },
       5: {
         name: "Saison 5",
-        aliases: [""],
+
         image: () => getImage(5),
       },
       6: {

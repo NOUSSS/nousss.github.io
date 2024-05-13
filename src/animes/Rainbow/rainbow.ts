@@ -13,7 +13,7 @@ class Rainbow extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => saison1,
       },
     } as Options.Season;

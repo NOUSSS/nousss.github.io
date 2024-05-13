@@ -14,7 +14,7 @@ class VioletEvergarden extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
       oav: {
@@ -29,17 +29,17 @@ class VioletEvergarden extends Anime {
       names: {
         1: {
           name: "Pour mémoire",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         2: {
           name: "Eternité et la poupée de souvenirs automatiques",
-          aliases: [""],
+
           image: () => getImageFilms(2),
         },
         3: {
           name: "Le film",
-          aliases: [""],
+
           image: () => getImageFilms(3),
         },
       } as Options.Film,

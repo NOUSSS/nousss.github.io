@@ -13,17 +13,17 @@ class KaguyaSama extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
       2: {
         name: "Saison 2",
-        aliases: [""],
+
         image: () => getImageSaisons(2),
       },
       3: {
         name: "Saison 3",
-        aliases: [""],
+
         image: () => getImageSaisons(3),
       },
       oav: {
@@ -38,22 +38,22 @@ class KaguyaSama extends Anime {
       names: {
         1: {
           name: "The first kiss that never ends (part 1)",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         2: {
           name: "The first kiss that never ends (part 2)",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         3: {
           name: "The first kiss that never ends (part 3)",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         4: {
           name: "The first kiss that never ends (part 4)",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
       } as Options.Film,

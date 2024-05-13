@@ -11,7 +11,7 @@ export default class ShangriLaFrontier extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImage(1),
       },
     };

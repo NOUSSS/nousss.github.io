@@ -5,7 +5,7 @@ export const films: Options.Film = {
   0: { name: "Memory Snow", aliases: ["1"], image: () => getImage(0) },
   1: {
     name: "The Frozen Bond",
-    aliases: [""],
+
     image: () => getImage(1),
   },
 };

@@ -6,12 +6,12 @@ export const films: Options.Film = {
 
   1: {
     name: "Film 2",
-    aliases: [""],
+
     image: () => getImage(1),
   },
   2: {
     name: "The Final",
-    aliases: [""],
+
     image: () => getImage(2),
   },
 };

@@ -12,19 +12,19 @@ export default class ClassroomOfTheElites extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImage(1),
       },
 
       2: {
         name: "Saison 2",
-        aliases: [""],
+
         image: () => getImage(2),
       },
 
       3: {
         name: "Saison 3",
-        aliases: [""],
+
         image: () => getImage(3),
       },
     };

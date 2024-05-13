@@ -11,32 +11,32 @@ class JojoBizarreAdventure extends Anime {
     this.saisons = {
       1: {
         name: "Phantom Blood",
-        aliases: [""],
+
         image: () => getImage(1),
       },
       2: {
         name: "Battle Tendency",
-        aliases: [""],
+
         image: () => getImage(2),
       },
       3: {
         name: "Stardust Crusaders",
-        aliases: [""],
+
         image: () => getImage(3),
       },
       4: {
         name: "Diamond is Unbreakable",
-        aliases: [""],
+
         image: () => getImage(4),
       },
       5: {
         name: "Golden Wind",
-        aliases: [""],
+
         image: () => getImage(5),
       },
       6: {
         name: "Stone Ocean",
-        aliases: [""],
+
         image: () => getImage(6),
       },
       oav: {

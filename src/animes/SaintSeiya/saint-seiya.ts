@@ -13,27 +13,27 @@ class SaintSeiya extends Anime {
     this.saisons = {
       1: {
         name: "Les Chevaliers du Zodiaque",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
       2: {
         name: "Chapitre Hades",
-        aliases: [""],
+
         image: () => getImageSaisons(2),
       },
       3: {
         name: "The Lost Canvas",
-        aliases: [""],
+
         image: () => getImageSaisons(3),
       },
       4: {
         name: "Omega",
-        aliases: [""],
+
         image: () => getImageSaisons(4),
       },
       5: {
         name: "Soul of God",
-        aliases: [""],
+
         image: () => getImageSaisons(5),
       },
     } as Options.Season;
@@ -44,27 +44,27 @@ class SaintSeiya extends Anime {
       names: {
         1: {
           name: "Eris",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         2: {
           name: "Dorbal",
-          aliases: [""],
+
           image: () => getImageFilms(2),
         },
         3: {
           name: "Abel",
-          aliases: [""],
+
           image: () => getImageFilms(3),
         },
         4: {
           name: "Lucifer",
-          aliases: [""],
+
           image: () => getImageFilms(4),
         },
         5: {
           name: "Artemis",
-          aliases: [""],
+
           image: () => getImageFilms(5),
         },
       } as Options.Film,

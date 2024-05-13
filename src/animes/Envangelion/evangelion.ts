@@ -14,7 +14,7 @@ class Evangelion extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
     } as Options.Season;
@@ -25,32 +25,32 @@ class Evangelion extends Anime {
       names: {
         1: {
           name: "Death (True)²",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
         2: {
           name: "The End of Evangelion",
-          aliases: [""],
+
           image: () => getImageFilms(2),
         },
         3: {
           name: "1.0 You Are (Not) Alone",
-          aliases: [""],
+
           image: () => getImageFilms(3),
         },
         4: {
           name: "2.0 You Can (Not) Advance",
-          aliases: [""],
+
           image: () => getImageFilms(4),
         },
         5: {
           name: "3.0 You Can (Not) Redo",
-          aliases: [""],
+
           image: () => getImageFilms(5),
         },
         6: {
           name: "3.0 + 1.0 Thrice Upon a Time",
-          aliases: [""],
+
           image: () => getImageFilms(6),
         },
       } as Options.Film,

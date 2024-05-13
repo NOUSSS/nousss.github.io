@@ -12,12 +12,12 @@ class TheDangersInMyHeart extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: [""],
+
         image: () => getImageSaisons(1),
       },
       2: {
         name: "Saison 2",
-        aliases: [""],
+
         image: () => getImageSaisons(2),
       },
     } as Options.Season;

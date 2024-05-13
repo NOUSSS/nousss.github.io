@@ -14,7 +14,7 @@ class Bleach extends Anime {
     this.saisons = {
       1: {
         name: "Tous les épisodes",
-        aliases: [""],
+
         image: () => getImage(1),
       },
       2: {

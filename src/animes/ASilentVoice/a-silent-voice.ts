@@ -16,7 +16,7 @@ class ASilentVoice extends Anime {
       names: {
         1: {
           name: "A Silent Voice",
-          aliases: [""],
+
           image: () => getImageFilms(1),
         },
       } as Options.Film,
