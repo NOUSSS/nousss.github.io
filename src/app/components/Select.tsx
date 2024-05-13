@@ -1,9 +1,6 @@
 import { FC, useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 import { cn } from "../lib";
-import { useRouter } from "next/router";
-
-import Link from "next/link";
 
 export interface ItemsProps {
   name: string;
@@ -36,14 +33,12 @@ const Select: FC<SelectProps> = ({
   multiple,
   scroll,
 }) => {
-  const router = useRouter();
-
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
 
   const UpArrow = icons["ChevronUp"];
 
-  const linkRef = useRef<HTMLAnchorElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const itemsRef = useRef<ItemsRef[]>([]);
@@ -63,7 +58,7 @@ const Select: FC<SelectProps> = ({
   const appear = () => {
     setIsSelected(!svgRef.current?.classList.contains("rotate-180"));
 
-    if (linkRef.current && menuRef.current && svgRef.current) {
+    if (buttonRef.current && menuRef.current && svgRef.current) {
       if (svgRef.current.classList.contains("rotate-180")) {
         svgRef.current.classList.remove("rotate-180");
         menuRef.current.classList.add("hidden");
@@ -97,7 +92,10 @@ const Select: FC<SelectProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (linkRef.current && !linkRef.current.contains(event.target as Node)) {
+      if (
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
         disappear();
       }
     };
@@ -144,9 +142,9 @@ const Select: FC<SelectProps> = ({
   };
 
   return (
-    <Link
-      href=""
-      ref={linkRef}
+    <button
+      tabIndex={1}
+      ref={buttonRef}
       className={cn(
         "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
         { "ring-2 ring-main": isSelected },
@@ -197,7 +195,7 @@ const Select: FC<SelectProps> = ({
           ))}
         </div>
       </div>
-    </Link>
+    </button>
   );
 };
 
