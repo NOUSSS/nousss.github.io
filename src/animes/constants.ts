@@ -108,6 +108,7 @@ import MadeInAbyss from "./MadeInAbyss/made-in-abyss";
 import Rainbow from "./Rainbow/rainbow";
 import ViralHit from "./ViralHit/viral-hit";
 import SaintSeiya from "./SaintSeiya/saint-seiya";
+import BlackLagoon from "./BlackLagoon/black-lagoon";
 
 export interface AnimesType {
   anime: string;
@@ -1102,6 +1103,14 @@ export const ANIMES: AnimesType[] = [
       "On raconte que quand les forces du mal veulent dominer la planète, Athéna et ses vaillants guerriers se dresseront contre l'envahisseur. Ces guerriers s'appellent les Saints (Chevaliers en VF), de leurs poings, ils pouvaient pourfendre le ciel et de leurs pieds, entrouvrir la terre. Aujourd'hui encore, la planète est la proie des forces maléfiques. Pour se préparer à lutter, la déesse Athéna se réincarne sous les traits de Saori Kido accompagnée des chevaliers de Bronze recueillis par son défunt grand-père : Seiya de Pégase de Grèce, Shiryu du Dragon des cinq Pics en Chine, Hyoga du Cygne de Sibérie, Shun d'Andromède de l'Ile d'Andromède et Ikki du Phénix de l'île de la Reine Morte et frère aîné de Shun.",
     category: ["Action", "Aventure", "Fantasy", "Science-fiction"],
     options: new SaintSeiya(),
+  },
+  {
+    anime: "Black Lagoon",
+    category: ["Action", "Drame", "Comédie"],
+    synopsis: `Okajima Rokuro, surnommé Rock, est un jeune employé d'une firme Japonaise : Asahi Industrial. Il y mène une vie monotone. Cependant, sa vie d'employé va soudainement basculer lorsqu'il sera pris en otage par l'équipage du Black Lagoon, qui sont là pour lui prendre la disquette dont il était responsable.
+    Rock sera abandonné par ses patrons, il décidera de se joindre à l'équipage en tant que matelot.
+    C'est ainsi que Rock, rejoint Revy, Dutch et Benny.`,
+    options: new BlackLagoon(),
   },
 ];
 
