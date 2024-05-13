@@ -12,6 +12,7 @@ const names = [
     index: "3",
   },
   { name: "Fortitude 9,8", index: "4" },
+  { name: "Admis !", index: "5" },
 ];
 
 export default names;
