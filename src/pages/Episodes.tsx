@@ -566,35 +566,33 @@ const Episodes = () => {
                 {anime?.episodes}
               </ul>
             </div>
-
-            <div className="my-6 flex w-full flex-col gap-5 min-[450px]:w-auto min-[450px]:flex-row">
-              <button
-                disabled={anime?.saison === "1"}
-                onClick={PrevSaison}
-                className="btn"
-              >
-                <Prev />
-                Saison précédente
-              </button>
-
-              <button
-                disabled={
-                  !(
-                    anime.anime &&
-                    anime?.saison !==
-                      Object.keys(
-                        anime.anime?.options.saisons!,
-                      )?.length.toString()
-                  )
-                }
-                onClick={NextSaison}
-                className="btn"
-              >
-                Saison suivante
-                <Next />
-              </button>
-            </div>
           </div>
+        </div>
+
+        <div className="my-6 flex w-11/12 flex-col justify-between sm:flex-row lg:w-[930px] xl:w-[1200px]">
+          <button
+            disabled={anime?.saison === "1"}
+            onClick={PrevSaison}
+            className="glassBtn"
+          >
+            <Prev />
+            Saison précédente
+          </button>
+
+          <button
+            disabled={
+              !(
+                anime.anime &&
+                anime?.saison !==
+                  Object.keys(anime.anime?.options.saisons!)?.length.toString()
+              )
+            }
+            onClick={NextSaison}
+            className="glassBtn"
+          >
+            Saison suivante
+            <Next />
+          </button>
         </div>
 
         <Footer style={true} media />
