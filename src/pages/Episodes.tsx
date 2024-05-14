@@ -571,7 +571,7 @@ const Episodes = () => {
           </div>
         </div>
 
-        <div className="my-6 flex w-11/12 flex-col justify-between sm:flex-row lg:w-[930px] xl:w-[1200px]">
+        <div className="my-6 flex w-full justify-between lg:w-[930px] xl:w-[1200px]">
           <button
             disabled={anime?.saison === "1"}
             onClick={PrevSaison}
