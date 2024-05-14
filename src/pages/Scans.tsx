@@ -324,7 +324,7 @@ const Scans = () => {
           <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
             <button
               disabled={isFirst as boolean}
-              className="btn"
+              className="glassBtn"
               onClick={() =>
                 PrevChapter(
                   anime!,
@@ -340,7 +340,7 @@ const Scans = () => {
 
             <button
               disabled={isLast as boolean}
-              className="btn"
+              className="glassBtn"
               onClick={() =>
                 NextChapter(
                   anime!,

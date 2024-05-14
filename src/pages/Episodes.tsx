@@ -489,12 +489,12 @@ const Episodes = () => {
               </div>
             </div>
 
-            <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-around">
+            <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-between">
               <button
                 disabled={
                   episodeData?.get()?.episode === "1" && anime.saison === "1"
                 }
-                className="btn"
+                className="glassBtn"
                 onClick={() => {
                   if (episodeData?.get()?.episode === "1") {
                     PrevSaison();
@@ -524,7 +524,7 @@ const Episodes = () => {
                         anime.anime?.options.saisons!,
                       ).length.toString()) as boolean
                 }
-                className="btn"
+                className="glassBtn sm:mr-8"
                 onClick={() => {
                   if (
                     episodeData?.get()?.episode ===
@@ -571,7 +571,7 @@ const Episodes = () => {
           </div>
         </div>
 
-        <div className="my-6 flex w-full justify-between lg:w-[930px] xl:w-[1200px]">
+        <div className="my-6 flex w-11/12 flex-col justify-between gap-5 min-[435px]:flex-row min-[435px]:gap-0 sm:w-11/12 lg:w-[930px] xl:w-[1200px]">
           <button
             disabled={anime?.saison === "1"}
             onClick={PrevSaison}
