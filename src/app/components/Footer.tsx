@@ -15,23 +15,27 @@ const Footer: FC<FooterProps> = ({ media = false, style }) => {
       })}
     >
       <div className="flex flex-col text-base">
-        <Link
-          className="text-main underline"
-          href={{
-            pathname: "/Suggest",
-          }}
-        >
-          Suggérer une oeuvre
-        </Link>
+        <span className="inline-block">
+          <Link
+            className="text-main  hover:underline"
+            href={{
+              pathname: "/Suggest",
+            }}
+          >
+            Suggérer une oeuvre
+          </Link>
+        </span>
 
-        <Link
-          className="text-main underline"
-          href={{
-            pathname: "/Report",
-          }}
-        >
-          Signaler un problème ?
-        </Link>
+        <span className="inline-block">
+          <Link
+            className="text-main hover:underline"
+            href={{
+              pathname: "/Report",
+            }}
+          >
+            Signaler un problème ?
+          </Link>
+        </span>
       </div>
 
       {media && (
