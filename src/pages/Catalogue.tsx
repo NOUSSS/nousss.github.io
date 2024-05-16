@@ -44,9 +44,11 @@ export default function Catalogue() {
             {finded} trouvé{finded > 1 ? "s" : ""}
           </h3>
 
-          <Link className="text-main hover:underline" href="#search">
-            Rechercher un anime ?
-          </Link>
+          <span className="inline-block">
+            <Link className="text-main hover:underline" href="#search">
+              Rechercher un anime ?
+            </Link>
+          </span>
 
           <div className="flex justify-center">
             <Select
