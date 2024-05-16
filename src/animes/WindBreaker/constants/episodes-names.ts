@@ -23,6 +23,10 @@ const episodes = [
     index: "6",
     name: "Je te suivrai jusqu'au bout",
   },
+  {
+    index: "7",
+    name: "Je peux pas perdre",
+  },
 ];
 
 export default episodes;
