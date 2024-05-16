@@ -7,12 +7,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import FastSearchBar from "./Fast-Searchbar";
+import { useRouter } from "next/router";
 
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  const router = useRouter();
+
   const [output, setOutput] = useState<React.ReactNode>();
   const [isVisible, setIsVisible] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -24,6 +27,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  const handleNavigation = (href: string) => {
+    if (router.pathname.toLowerCase() === href.toLowerCase()) {
+      router.back();
+    } else {
+      router.push(href);
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem("filever", random().toString());
@@ -168,19 +179,32 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </span>
             </Link>
 
-            <Link
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
-              href="/Catalogue"
+            <a
+              className={cn(
+                "cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50",
+                {
+                  "bg-opacity-50":
+                    router.pathname.toLowerCase() === "/catalogue",
+                },
+              )}
+              onClick={() => handleNavigation("/Catalogue")}
               title="Catalogue"
             >
               <Gallery className="mr-3" />
-
               <span className="text-base text-white">Catalogue</span>
-            </Link>
+            </a>
 
-            <Link
-              className="bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50"
-              href="/Settings"
+            <a
+              className={cn(
+                "cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50",
+                {
+                  "bg-opacity-50":
+                    router.pathname.toLowerCase() === "/settings",
+                },
+              )}
+              onClick={() => {
+                handleNavigation("/Settings");
+              }}
               title="Paramètres"
             >
               <Settings className="lg:mr-3" />
@@ -188,7 +212,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <span className="text-base text-white max-lg:hidden">
                 Paramètres
               </span>
-            </Link>
+            </a>
           </div>
         </nav>
       </header>
