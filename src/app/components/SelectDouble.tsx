@@ -46,7 +46,7 @@ const SelectDouble: FC<SelectDoubleProps> = ({ items, click }) => {
         {items.map(({ name, value }) => (
           <button
             key={value}
-            className="h-10 w-28"
+            className="h-full w-28"
             onClick={() => {
               const element = buttons.current[value];
 
@@ -64,7 +64,7 @@ const SelectDouble: FC<SelectDoubleProps> = ({ items, click }) => {
 
         <div
           ref={(el) => (follower.current = el!)}
-          className="absolute -z-10 h-10 w-28 rounded-full bg-white shadow-xl shadow-neutral-800 transition-all duration-300"
+          className="absolute -z-10 h-10 w-28 scale-105 rounded-full bg-white transition-all duration-300"
         ></div>
       </div>
     </div>
