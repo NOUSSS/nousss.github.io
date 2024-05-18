@@ -3428,6 +3428,10 @@ const episodes = [
     index: "1104",
     name: "Situation désespérée. L'attaque générale des Séraphins !",
   },
+  {
+    index: "1105",
+    name: "Une trahison pleine de grâce. Stussy l'agent double !",
+  },
 ];
 
 export default episodes;
