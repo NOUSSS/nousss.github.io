@@ -146,6 +146,7 @@ const names = [
   { index: "142", name: "Tomura Shigaraki : Destruction (récapitulatif)" },
   { index: "143", name: "Une tornade de puissance venue de l'ouest" },
   { index: "144", name: "Spectre" },
+  { index: "145", name: "Super-vilain" },
 ];
 
 export default names;
