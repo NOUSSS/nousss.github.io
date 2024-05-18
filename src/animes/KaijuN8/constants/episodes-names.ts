@@ -13,6 +13,10 @@ const names = [
   },
   { name: "Fortitude 9,8", index: "4" },
   { name: "Admis !", index: "5" },
+  {
+    name: "Opération d'éradiction à Sagamihara, à l'aube",
+    index: "6",
+  }
 ];
 
 export default names;
