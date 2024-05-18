@@ -2485,7 +2485,7 @@ const episodes = [
   },
   {
     index: "788",
-    name: "Attaque massive ! La faim de Mom frappe ! (14 mai 2017)`",
+    name: "Attaque massive ! La faim de Mom frappe !",
   },
   { index: "789", name: "La capitale s’effondre !? Big Mom et Jinbei" },
   {
@@ -2801,7 +2801,7 @@ const episodes = [
   { index: "890", name: "Marco. Le gardien du souvenir !" },
   {
     index: "891",
-    name: "La remontée de la cascade. À l’assaut de Wano ! (30 juin 2019) ",
+    name: "La remontée de la cascade. À l’assaut de Wano !",
   },
   { index: "892", name: "Le pays de Wano. Samouraïs et fleurs de cerisiers" },
   {
@@ -3422,12 +3422,12 @@ const episodes = [
   },
   {
     index: "1103",
-    name: "Rends-moi mon père ! Le rêve éphémère de Bonney."
+    name: "Rends-moi mon père ! Le rêve éphémère de Bonney.",
   },
   {
     index: "1104",
     name: "Situation désespérée. L'attaque générale des Séraphins !",
-  }
+  },
 ];
 
 export default episodes;
