@@ -45,7 +45,7 @@ class Boruto extends Anime {
     };
 
     this.note =
-      'Je conseille d\'aller sur <a class="underline" href="https://furansujapon.com/actualite/boruto-liste-episode/" target="_blank">ce site</a> pour voir les hors series';
+      'Je conseille d\'aller sur <a href="https://furansujapon.com/actualite/boruto-liste-episode/" target="_blank">ce site</a> pour voir les hors series';
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>

@@ -449,7 +449,7 @@ const Episodes = () => {
       <main className="flex flex-col items-center">
         {disclamerMessage.current && (
           <p
-            className="mt-12 text-xl text-red-500"
+            className="disclamer mt-12 text-xl text-red-500"
             dangerouslySetInnerHTML={{ __html: disclamerMessage.current }}
           ></p>
         )}
