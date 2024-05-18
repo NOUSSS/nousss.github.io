@@ -65,7 +65,7 @@
 }
 
 *::-webkit-scrollbar {
-  @apply size-2 bg-transparent;
+  @apply size-2 rounded-md bg-noise;
 }
 
 *::-webkit-scrollbar-thumb {
