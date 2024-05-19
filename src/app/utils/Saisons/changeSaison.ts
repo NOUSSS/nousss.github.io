@@ -7,6 +7,7 @@ export function changeSaison(index: string, currentAnime: string) {
   if (!Episodes) return;
 
   if (Episodes.saison !== index) {
+    StorageEpisodes.setLecteur("");
     StorageEpisodes.setEpisode("1");
   }
 
