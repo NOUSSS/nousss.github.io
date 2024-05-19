@@ -55,7 +55,7 @@ const episodes = [
   { name: "Kanroji Mitsuri, le pilier de l'amour", index: "54" },
   { name: "Unis au point du jour", index: "55" },
   { name: "Pour vaincre Kibutsuji Muzan", index: "56" },
-  { name: "La souffrance de Tomioka Giyû, pilier de l'eau" },
+  { name: "La souffrance de Tomioka Giyû, pilier de l'eau", index: "57" },
 ];
 
 export default episodes;
