@@ -42,6 +42,8 @@ export default function Accueil() {
 
   const Trash = icons["Trash2"];
   const Play = icons["Play"];
+  const Book = icons["BookOpen"];
+
   const ArrowUpRight = icons["ArrowUpRight"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
@@ -444,7 +446,14 @@ export default function Accueil() {
                             {fetchedAnime?.options.affiche && (
                               <div className="relative overflow-hidden">
                                 <div className="absolute left-2/4 top-2/4 z-10 -translate-x-2/4 -translate-y-2/4 rounded-full bg-zinc-900 bg-opacity-75 p-4">
-                                  <Play />
+                                  {(
+                                    historiques[i]
+                                      ?.detail as unknown as Data.ScansData
+                                  )?.chapitre ? (
+                                    <Book />
+                                  ) : (
+                                    <Play />
+                                  )}
                                 </div>
 
                                 <Image
