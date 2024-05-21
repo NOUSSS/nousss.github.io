@@ -382,7 +382,7 @@ export default function Accueil() {
                       <RemoveHistorique setHistoriques={setHistoriques} />
                     </>
                   ) : (
-                    <div className="flex items-center gap-4">
+                    <div className="flex justify-between items-center gap-4">
                       <p className="font-normal drop-shadow-2xl">{category}</p>
 
                       <div className="flex items-center gap-2 text-lg text-zinc-400">
