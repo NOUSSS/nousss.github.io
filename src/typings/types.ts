@@ -8,10 +8,7 @@ export interface Note {
 }
 
 export type Datas = Data.EpisodesData | Data.FilmsData | Data.ScansData;
-export type DatasArr =
-  | Data.EpisodesData[]
-  | Data.FilmsData[]
-  | Data.ScansData[];
+export type DatasArr = DataType[];
 
 export interface Historique {
   name: string;
