@@ -100,7 +100,7 @@ export default function Catalogue() {
                   )}
                 </div>
 
-                <p className="my-2 text-center text-base max-md:text-sm">
+                <p className="my-2 text-left text-base max-md:text-sm">
                   {anime} <br />
                   <span className="text-sm max-md:text-xs">
                     {disponibles.join(", ")}
