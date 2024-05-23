@@ -48,7 +48,7 @@ class DrStone extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Dr Stone/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Dr Stone/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [232],
 

@@ -33,7 +33,7 @@ class ASilentVoice extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/A Silent Voice/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/A Silent Voice/${chapitre}/${index}.jpg`,
     };
   }
 }

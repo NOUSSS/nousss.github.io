@@ -40,7 +40,7 @@ export default class ClassroomOfTheElites extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Classroom of the Elite/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Classroom of the Elite/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [109, 110],
     };
 

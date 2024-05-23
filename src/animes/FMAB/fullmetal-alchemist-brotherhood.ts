@@ -34,7 +34,7 @@ class FMAB extends Anime {
         "https://anime-sama.fr/catalogue/fullmetal-alchemist-brotherhood/scan/vf/episodes.js",
 
       IMAGE_URL: ({ chapitre, index }) =>
-        `https://anime-sama.fr/s1/scans/FullMetal Alchemist Brotherhood/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/FullMetal Alchemist Brotherhood/${chapitre}/${index}.jpg`,
     };
   }
 }

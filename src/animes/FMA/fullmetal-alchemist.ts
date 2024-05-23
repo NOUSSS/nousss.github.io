@@ -34,7 +34,7 @@ class FMA extends Anime {
         "https://anime-sama.fr/catalogue/fullmetal-alchemist/scan/vf/episodes.js",
 
       IMAGE_URL: ({ chapitre, index }) =>
-        `https://anime-sama.fr/s1/scans/Fullmetal Alchemist/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Fullmetal Alchemist/${chapitre}/${index}.jpg`,
     };
   }
 }

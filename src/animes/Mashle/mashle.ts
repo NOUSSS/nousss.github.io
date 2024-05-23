@@ -31,7 +31,7 @@ export default class Mashle extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Mashle/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Mashle/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [] as number[],
     };
 

@@ -29,7 +29,7 @@ class LesCarnetsDeLapothicaire extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Les Carnets de l'Apothicaire/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Les Carnets de l'Apothicaire/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

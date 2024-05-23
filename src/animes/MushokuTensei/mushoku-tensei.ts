@@ -39,7 +39,7 @@ class MushokuTensei extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Mushoku Tensei/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Mushoku Tensei/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [5, 11, 20, 59, 67, 73, 78, 86],
     };

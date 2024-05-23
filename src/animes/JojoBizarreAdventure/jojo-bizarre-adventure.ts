@@ -56,7 +56,7 @@ class JojoBizarreAdventure extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/JoJo's Bizarre Adventure/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/JoJo's Bizarre Adventure/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

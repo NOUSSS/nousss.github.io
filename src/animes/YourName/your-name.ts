@@ -25,7 +25,7 @@ class YourName extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Your Name/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Your Name/${chapitre}/${index}.jpg`,
     };
   }
 }

@@ -28,7 +28,7 @@ class ViralHit extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Viral Hit/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Viral Hit/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [134, 135, 136, 137],
     };

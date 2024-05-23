@@ -38,7 +38,7 @@ class SpyXFamily extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Spy X Family/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Spy X Family/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [8, 18, 25, 26, 34, 42, 50, 60, 74, 75],
     };

@@ -26,7 +26,7 @@ export default class TheBoxer extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/The boxer/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/The boxer/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [51, 52, 53, 54, 55, 56, 99, 100, 101, 102, 103],
     };
   }

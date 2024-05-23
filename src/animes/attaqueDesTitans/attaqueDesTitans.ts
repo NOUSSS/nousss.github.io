@@ -63,7 +63,7 @@ class AttaqueDesTitans extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Shingeki no Kyojin/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Shingeki no Kyojin/${chapitre}/${index}.jpg`,
       CHAPITRE_SPECIAUX: [],
     };
 

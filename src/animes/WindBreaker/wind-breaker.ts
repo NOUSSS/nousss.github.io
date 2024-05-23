@@ -28,7 +28,7 @@ class WindBreaker extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Wind Breaker manga/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Wind Breaker manga/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

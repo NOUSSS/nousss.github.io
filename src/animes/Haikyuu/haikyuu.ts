@@ -49,7 +49,7 @@ export default class Haikyuu extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Haikyuu/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Haikyuu/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [207, 208, 298, 299, 309, 319, 408],
     };

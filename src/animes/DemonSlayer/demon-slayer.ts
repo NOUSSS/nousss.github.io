@@ -56,7 +56,7 @@ export default class DemonSlayer extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Demon Slayer/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Demon Slayer/${chapitre}/${index}.jpg`,
 
       versions: [
         {

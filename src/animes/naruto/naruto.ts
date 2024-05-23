@@ -26,7 +26,7 @@ class Naruto extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Naruto/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Naruto/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [700, 701],
     };

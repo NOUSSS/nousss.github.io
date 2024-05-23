@@ -47,7 +47,7 @@ class Kingdom extends Anime {
       }: {
         chapitre: string | number;
         index: string | number;
-      }) => `https://anime-sama.fr/s1/scans/Kingdom/${chapitre}/${index}.jpg`,
+      }) => `https://anime-sama.fr/s2/scans/Kingdom/${chapitre}/${index}.jpg`,
     };
 
     this.EPISODES_OPTIONS = {

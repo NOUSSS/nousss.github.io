@@ -70,7 +70,7 @@ class KaguyaSama extends Anime {
         chapitre: string | number;
         index: string | number;
       }) =>
-        `https://anime-sama.fr/s1/scans/Kaguya-sama: Love is War/${chapitre}/${index}.jpg`,
+        `https://anime-sama.fr/s2/scans/Kaguya-sama: Love is War/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [5, 28, 66, 139, 176],
     };
