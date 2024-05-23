@@ -1,6 +1,6 @@
 export const getTailleChapitres = (): number => {
-  let tailleChapitres = 0;
-  for (let i = 1; window[`eps${i}`] !== undefined; i++) tailleChapitres++;
+  let i = 0;
+  for (; window[`eps${i + 1}`] !== undefined; i++) i++;
 
-  return tailleChapitres;
+  return i;
 };
