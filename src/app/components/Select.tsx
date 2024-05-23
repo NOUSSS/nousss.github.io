@@ -143,7 +143,6 @@ const Select: FC<SelectProps> = ({
 
   return (
     <button
-      tabIndex={1}
       ref={buttonRef}
       className={cn(
         "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-full border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
