@@ -85,8 +85,8 @@ export function Change(
               {saison === "1" || noc
                 ? ""
                 : `(${Number(indexEpisode) - retard})`}
-            </span>{" "}
-            -{" "}
+            </span>
+            {title ? " - " : ""}
             <span ref={episodeTitleRef} className="font-normal text-white">
               {title}
             </span>
@@ -115,8 +115,8 @@ export function Change(
           <span className="font-normal text-white">
             {numberEpisode}{" "}
             {saison === "1" || noc ? "" : `(${Number(indexEpisode)})`}
-          </span>{" "}
-          -{" "}
+          </span>
+          {episodeTitle ? " - " : ""}
           <span ref={episodeTitleRef} className="font-normal text-white">
             {episodeTitle}
           </span>

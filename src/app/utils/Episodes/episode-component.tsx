@@ -63,7 +63,7 @@ export default function EpisodeComponent({
     >
       <p className="font-normal">
         {!episodeSpecial ? "E" : ""}
-        {episodeNumber} {!episodeSpecial ? "-" : ""}{" "}
+        {episodeNumber} {!episodeSpecial && episodeTitle ? "-" : ""}{" "}
         <span
           className="font-normal text-white transition-all group-hover:text-main"
           ref={

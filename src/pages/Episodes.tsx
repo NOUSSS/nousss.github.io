@@ -333,8 +333,8 @@ const Episodes = () => {
                     {anime?.saison === "1" || noc
                       ? ""
                       : `(${Number(episode) - retardEsp})`}
-                  </span>{" "}
-                  -{" "}
+                  </span>
+                  {title ? " - " : ""}
                   <span
                     ref={episodeTitleRef}
                     className="font-normal text-white"
