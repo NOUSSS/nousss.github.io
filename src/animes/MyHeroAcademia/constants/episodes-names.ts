@@ -147,6 +147,7 @@ const names = [
   { index: "143", name: "Une tornade de puissance venue de l'ouest" },
   { index: "144", name: "Spectre" },
   { index: "145", name: "Super-vilain" },
+  { index: "146", name: "Comment nous sommes devenus des héros" },
 ];
 
 export default names;

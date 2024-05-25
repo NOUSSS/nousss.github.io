@@ -16,7 +16,11 @@ const names = [
   {
     name: "Opération d'éradiction à Sagamihara, à l'aube",
     index: "6",
-  }
+  },
+  {
+    name: "La kaiju n°9",
+    index: "7",
+  },
 ];
 
 export default names;
