@@ -491,23 +491,17 @@ const Episodes = () => {
 
             <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-between">
               <button
-                disabled={
-                  episodeData?.get()?.episode === "1" && anime.saison === "1"
-                }
+                disabled={episodeData?.get()?.episode === "1"}
                 className="glassBtn"
                 onClick={() => {
-                  if (episodeData?.get()?.episode === "1") {
-                    PrevSaison();
-                  } else {
-                    PrevEpisode(
-                      anime.currentLecteur!,
-                      updateAnime,
-                      anime!,
-                      containerRef,
-                      episodeTitleRef,
-                      episodesListRef,
-                    );
-                  }
+                  PrevEpisode(
+                    anime.currentLecteur!,
+                    updateAnime,
+                    anime!,
+                    containerRef,
+                    episodeTitleRef,
+                    episodesListRef,
+                  );
                 }}
               >
                 <Prev />
@@ -516,31 +510,19 @@ const Episodes = () => {
 
               <button
                 disabled={
-                  (anime.anime?.options.saisons &&
-                    episodeData?.get()?.episode ===
-                      anime.currentLecteur?.length.toString() &&
-                    anime.saison ===
-                      Object.keys(
-                        anime.anime?.options.saisons!,
-                      ).length.toString()) as boolean
+                  episodeData?.get()?.episode ===
+                  anime.currentLecteur?.length.toString()
                 }
                 className="glassBtn sm:mr-8"
                 onClick={() => {
-                  if (
-                    episodeData?.get()?.episode ===
-                    anime.currentLecteur?.length.toString()
-                  ) {
-                    NextSaison();
-                  } else {
-                    NextEpisode(
-                      anime?.currentLecteur!,
-                      updateAnime,
-                      anime!,
-                      containerRef,
-                      episodeTitleRef,
-                      episodesListRef,
-                    );
-                  }
+                  NextEpisode(
+                    anime?.currentLecteur!,
+                    updateAnime,
+                    anime!,
+                    containerRef,
+                    episodeTitleRef,
+                    episodesListRef,
+                  );
                 }}
               >
                 Épisode suivant
