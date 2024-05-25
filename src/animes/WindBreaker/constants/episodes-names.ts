@@ -27,6 +27,11 @@ const episodes = [
     index: "7",
     name: "Je peux pas perdre",
   },
+
+  {
+    index: "8",
+    name: "Échange de points de vue",
+  },
 ];
 
 export default episodes;
