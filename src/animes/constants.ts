@@ -109,6 +109,7 @@ import Rainbow from "./Rainbow/rainbow";
 import ViralHit from "./ViralHit/viral-hit";
 import SaintSeiya from "./SaintSeiya/saint-seiya";
 import BlackLagoon from "./BlackLagoon/black-lagoon";
+import BlackButler from "./BlackButler/black-butler";
 
 export interface AnimesType {
   anime: string;
@@ -1111,6 +1112,14 @@ export const ANIMES: AnimesType[] = [
     Rock sera abandonné par ses patrons, il décidera de se joindre à l'équipage en tant que matelot.
     C'est ainsi que Rock, rejoint Revy, Dutch et Benny.`,
     options: new BlackLagoon(),
+  },
+  {
+    anime: "Black Butler",
+    category: ["Drame", "Historique", "Psychologique", "Surnaturel"],
+    aliases: ["Kuroshitsuji"],
+    synopsis:
+      "Lorsqu'on le regarde au début, ce manoir perdu dans la campagne de Londres parait tout à fait normal. Mais ce manoir est habité par des personnes pour le moins étranges : Ciel Phantomhive (Funtomhive) jeune maître de 12 ans, industriel hors-pair à la tête de la famille la plus redoutée de l'Angleterre ; un majordome démoniaque, Sebastian Michaelis, doué pour les tâches ménagères comme pour les arts-martiaux ; un maître d'hôtel, Tanaka, qui ne sait rien faire d'autre que boire du saké et dire \"oh oh oh\" ; un cuisinier aux plats douteux, Bard, ne sachant cuisiner sa viande qu'au lance-flammes ; une servante, May Lin, tellement maladroite qu'elle pourrait vous tuer sans le vouloir ; et un jardinier, Finnian, à la force surhumaine, qui se croit à démolition land qui ne sait donc entretenir un jardin qu'en le dévastant. Et lorsque tout ce petit monde a affaire à des personnages aussi peu recommandable que Jack L'éventreur, forcément, ça fait tâche...",
+    options: new BlackButler(),
   },
 ];
 
