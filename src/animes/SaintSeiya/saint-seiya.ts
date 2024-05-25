@@ -73,6 +73,9 @@ class SaintSeiya extends Anime {
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/saint-seiya/saison${index}/${lang}/episodes.js`,
+
+      noc: true,
+
       allIndex: {
         1: 0,
         2: 114,

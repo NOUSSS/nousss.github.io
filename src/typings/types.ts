@@ -165,6 +165,8 @@ export namespace Options {
     names?: NameProps[];
     parts?: PartsProps;
 
+    noc?: boolean;
+
     allIndex: allIndexType;
   }
 }

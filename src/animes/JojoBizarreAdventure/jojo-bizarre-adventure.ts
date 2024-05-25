@@ -63,6 +63,8 @@ class JojoBizarreAdventure extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/jojos-bizarre-adventure/saison${index}/${lang}/episodes.js`,
 
+      noc: true,
+
       allIndex: {
         1: 0,
         2: 9,

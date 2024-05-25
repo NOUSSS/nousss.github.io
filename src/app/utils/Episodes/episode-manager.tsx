@@ -28,7 +28,7 @@ export function Change(
   const options = AnimeInfo.anime?.options;
   const saison = Episodes.saison;
 
-  const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS || {};
+  const { allIndex, horsSeries, names, noc } = options?.EPISODES_OPTIONS || {};
 
   const isHorsSerie =
     AnimeInfo.lang === "vostfr" &&
@@ -66,8 +66,9 @@ export function Change(
 
       const saison = Episodes.saison;
 
-      const numberEpisode =
-        Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
+      const numberEpisode = noc
+        ? Number(indexEpisode) - retard
+        : Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
 
       const title = names?.find((_, i) => i + 1 === numberEpisode)?.name || "";
 
@@ -81,7 +82,9 @@ export function Change(
             E
             <span className="font-normal text-white">
               {numberEpisode}{" "}
-              {saison === "1" ? "" : `(${Number(indexEpisode) - retard})`}
+              {saison === "1" || noc
+                ? ""
+                : `(${Number(indexEpisode) - retard})`}
             </span>{" "}
             -{" "}
             <span ref={episodeTitleRef} className="font-normal text-white">
@@ -94,8 +97,9 @@ export function Change(
       StorageEpisodes.setEpisode(indexEpisode.toString());
     }
   } else {
-    const numberEpisode =
-      Number(allIndex?.[Episodes.saison]) + Number(indexEpisode);
+    const numberEpisode = noc
+      ? indexEpisode
+      : Number(allIndex?.[Episodes.saison]) + Number(indexEpisode);
 
     const url = lecteur[Number(indexEpisode) - 1];
 
@@ -109,7 +113,8 @@ export function Change(
         <>
           E
           <span className="font-normal text-white">
-            {numberEpisode} {saison === "1" ? "" : `(${Number(indexEpisode)})`}
+            {numberEpisode}{" "}
+            {saison === "1" || noc ? "" : `(${Number(indexEpisode)})`}
           </span>{" "}
           -{" "}
           <span ref={episodeTitleRef} className="font-normal text-white">

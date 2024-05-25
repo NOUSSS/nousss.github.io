@@ -9,7 +9,7 @@ export function getSaisons() {
   const saisonsList = [];
 
   if (options && options.EPISODES_OPTIONS && options.saisons) {
-    const { allIndex } = options.EPISODES_OPTIONS;
+    const { allIndex, noc } = options.EPISODES_OPTIONS;
     const { saisons } = options;
 
     for (let i = 0; i < Object.keys(saisons).length; i++) {
@@ -37,7 +37,9 @@ export function getSaisons() {
               {saisonsValues[i].name}
               <br />
               <span>
-                {i === Object.keys(saisonsValues).length - 1 && !allIndex[i + 2]
+                {(i === Object.keys(saisonsValues).length - 1 &&
+                  !allIndex[i + 2]) ||
+                noc
                   ? ""
                   : `(${intervalEpisodes})`}
               </span>

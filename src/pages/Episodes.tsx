@@ -176,7 +176,7 @@ const Episodes = () => {
       setTimeout(() => {
         const options = anime!.anime?.options;
 
-        const { allIndex, horsSeries, names } = options?.EPISODES_OPTIONS!;
+        const { allIndex, horsSeries, names, noc } = options?.EPISODES_OPTIONS!;
 
         const saisonsKeys = Object.keys(options?.saisons!);
         const oavIndex = saisonsKeys.findIndex((e) => e === "oav");
@@ -219,7 +219,7 @@ const Episodes = () => {
           }
         }
 
-        const episodeIndex = allIndex![anime?.saison ?? 0];
+        const episodeIndex = noc ? 0 : allIndex![anime?.saison ?? 0];
         let episode = episodeData?.get()?.episode;
 
         if (!episode) {
@@ -330,7 +330,7 @@ const Episodes = () => {
                   E
                   <span className="font-normal text-white">
                     {Number(episodeIndex) + Number(episode) - retardEsp}{" "}
-                    {anime?.saison === "1"
+                    {anime?.saison === "1" || noc
                       ? ""
                       : `(${Number(episode) - retardEsp})`}
                   </span>{" "}
