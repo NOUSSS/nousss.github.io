@@ -3432,6 +3432,10 @@ const episodes = [
     index: "1105",
     name: "Une trahison pleine de grâce. Stussy l'agent double !",
   },
+  {
+    index: "1106",
+    name: "Problème à signaler. Trouvez le Dr Végapunk !",
+  },
 ];
 
 export default episodes;
