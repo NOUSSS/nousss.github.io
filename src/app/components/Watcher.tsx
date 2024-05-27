@@ -60,12 +60,12 @@ const Watcher: FC<WatcherProps> = ({
             {
               name: "VostFR",
               value: "vostfr",
-              defaultValue: lang === "vostfr" ? true : false,
+              defaultValue: lang === "vostfr",
             },
             {
               name: "VF",
               value: "vf",
-              defaultValue: lang === "vostfr" ? false : true,
+              defaultValue: !(lang === "vostfr"),
             },
           ]}
           click={(value) => {
@@ -106,7 +106,7 @@ const Watcher: FC<WatcherProps> = ({
             items={Object.keys(lecteurs).map((l, i) => ({
               name: getHostname(Object.values(lecteurs!)[i][0]),
               value: l,
-              disabled: lecteur === l ? true : false,
+              disabled: lecteur === l,
             }))}
           />
         )}
