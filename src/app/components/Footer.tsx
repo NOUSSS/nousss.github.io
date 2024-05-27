@@ -41,6 +41,7 @@ const Footer: FC<FooterProps> = ({ media = false, style }) => {
           <Link
             className="text-main hover:underline"
             href="https://www.twitch.tv/barroonn31"
+            target="_blank"
           >
             Twitch de Baron
           </Link>
