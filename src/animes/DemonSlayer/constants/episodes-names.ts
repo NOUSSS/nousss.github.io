@@ -57,6 +57,7 @@ const episodes = [
   { name: "Pour vaincre Kibutsuji Muzan", index: "56" },
   { name: "La souffrance de Tomioka Giyû, pilier de l'eau", index: "57" },
   { name: "Tanjirô est rétabli et se joint à l'entraînement !", index: "58" },
+  { name: "Souris", index: "59" },
 ];
 
 export default episodes;
