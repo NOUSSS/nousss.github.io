@@ -36,6 +36,15 @@ const Footer: FC<FooterProps> = ({ media = false, style }) => {
             Signaler un problème ?
           </Link>
         </span>
+
+        <span className="inline-block">
+          <Link
+            className="text-main hover:underline"
+            href="https://www.twitch.tv/barroonn31"
+          >
+            Twitch de Baron
+          </Link>
+        </span>
       </div>
 
       {media && (
