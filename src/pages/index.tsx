@@ -437,7 +437,7 @@ export default function Accueil() {
                       >
                         {category === "Reprendre" ? (
                           <div
-                            className="group w-72"
+                            className="w-72 transition-all hover:scale-[.97]"
                             title={
                               fetchedAnime?.synopsis ??
                               "Aucun synopsis pour cette anime"
@@ -457,7 +457,7 @@ export default function Accueil() {
                                 </div>
 
                                 <Image
-                                  className="-z-10 aspect-video w-72 brightness-75 transition-transform group-hover:scale-105"
+                                  className="-z-10 aspect-video w-72 brightness-75 transition-transform"
                                   src={fetchedAnime.options.affiche}
                                   alt="affiche d'un anime"
                                 />
@@ -550,11 +550,11 @@ export default function Accueil() {
                               fetchedAnime?.synopsis ??
                               "Aucun synopsis pour cette anime"
                             }
-                            className="group w-40 max-md:mr-1 md:w-44"
+                            className="w-40 transition-all hover:scale-[.97] max-md:mr-1 md:w-44"
                           >
                             <div className="overflow-hidden shadow-xl">
                               <Image
-                                className="aspect-[2/3] w-40 transition-transform group-hover:scale-105 md:w-44"
+                                className="aspect-[2/3] w-40 transition-transform md:w-44"
                                 src={getWallpaper(animeName)!}
                                 alt="affiche d'un anime"
                               />
