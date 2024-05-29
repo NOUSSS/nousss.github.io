@@ -3436,6 +3436,10 @@ const episodes = [
     index: "1106",
     name: "Problème à signaler. Trouvez le Dr Végapunk !",
   },
+  {
+    index: "1107",
+    name: "Frissons d'horreur. Le mal s'infiltre au laboratoire !",
+  },
 ];
 
 export default episodes;
