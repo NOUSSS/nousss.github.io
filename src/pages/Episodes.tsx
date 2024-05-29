@@ -469,7 +469,7 @@ const Episodes = () => {
 
         <div className="flex w-11/12 flex-col justify-between *:flex *:flex-col *:items-center lg:w-[930px] lg:flex-row xl:w-[1200px]">
           <div className="mb-5 w-full">
-            <div className="flex w-full flex-col text-left">
+            <div className="flex w-full flex-col text-left sm:gap-2">
               {anime?.anime && anime.saisonTitle && (
                 <span className="inline-block">
                   <Link
