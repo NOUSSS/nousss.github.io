@@ -1,4 +1,5 @@
 import { ChangeEvent, FC } from "react";
+import { cn } from "../lib";
 
 interface SwitchProps {
   placeholder?: string;
@@ -7,7 +8,11 @@ interface SwitchProps {
 
 const Switch: FC<SwitchProps> = ({ placeholder, onChange }) => {
   return (
-    <label className="group flex gap-8">
+    <label
+      className={cn("group flex items-center gap-2", {
+        "flex-col": placeholder,
+      })}
+    >
       {placeholder && <p>{placeholder}</p>}
 
       <div className="relative transition-colors before:absolute before:left-0 before:top-0 before:h-7 before:w-14 before:rounded-full before:border before:border-neutral-700 before:border-opacity-50 before:bg-transparent before:transition-all before:hover:border-opacity-100 before:has-[:checked]:bg-main before:has-[:checked]:brightness-50">

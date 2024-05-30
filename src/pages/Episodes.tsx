@@ -540,7 +540,13 @@ const Episodes = () => {
               <div className="mb-4 flex w-full justify-between *:rounded-md *:p-2 *:ring-0">
                 <div
                   ref={triRef}
-                  title="Trier les épisodes"
+                  title={
+                    triRef.current
+                      ? triRef.current.classList.contains("rotate-90")
+                        ? "Croissant"
+                        : "Décroissant"
+                      : ""
+                  }
                   className="rotate-90 bg-gray-600 bg-opacity-20 transition-all active:ring-2 active:ring-white"
                   onClick={() => {
                     if (triRef.current) {
@@ -578,7 +584,7 @@ const Episodes = () => {
               </div>
 
               <div
-                className="mb-4 hidden w-full rounded-md bg-gray-600 bg-opacity-20 p-4"
+                className="mb-4 hidden w-full justify-center rounded-md bg-gray-600 bg-opacity-20 p-4"
                 ref={moreRef}
               >
                 <SearchBar
@@ -587,7 +593,7 @@ const Episodes = () => {
                   query="innerText"
                 />
 
-                <div className="relative my-4 text-lg">
+                <div className="my-4 text-lg">
                   <Switch
                     placeholder="Cacher le nom des épisodes"
                     onChange={blurEpisodes}
