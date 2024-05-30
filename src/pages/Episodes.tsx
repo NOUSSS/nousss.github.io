@@ -602,12 +602,14 @@ const Episodes = () => {
                   query="innerText"
                 />
 
-                <div className="my-4 text-lg">
-                  <Switch
-                    placeholder="Cacher le nom des épisodes"
-                    onChange={blurEpisodes}
-                  />
-                </div>
+                {anime.anime?.options.EPISODES_OPTIONS?.names && (
+                  <div className="my-4 text-lg">
+                    <Switch
+                      placeholder="Cacher le nom des épisodes"
+                      onChange={blurEpisodes}
+                    />
+                  </div>
+                )}
               </div>
 
               <ul
