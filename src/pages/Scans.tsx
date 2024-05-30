@@ -303,6 +303,7 @@ const Scans = () => {
         <div className="relative flex flex-col gap-8">
           <button
             className="glassBtn relative top-4"
+            disabled={isLast as boolean}
             onClick={() => {
               const lastScan =
                 anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
