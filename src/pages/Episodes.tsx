@@ -572,19 +572,28 @@ const Episodes = () => {
                 <div
                   className="bg-gray-600 bg-opacity-20 transition-all active:ring-2 active:ring-white"
                   title="Plus d'options"
-                  onClick={() =>
-                    moreRef.current &&
-                    (moreRef.current.classList.contains("hidden")
-                      ? moreRef.current.classList.remove("hidden")
-                      : moreRef.current.classList.add("hidden"))
-                  }
+                  onClick={() => {
+                    if (moreRef.current) {
+                      if (moreRef.current.classList.contains("h-40")) {
+                        moreRef.current.classList.add("h-0");
+
+                        moreRef.current.classList.remove("h-40");
+                        moreRef.current.classList.remove("p-4");
+                      } else {
+                        moreRef.current.classList.remove("h-0");
+
+                        moreRef.current.classList.add("h-40");
+                        moreRef.current.classList.add("p-4");
+                      }
+                    }
+                  }}
                 >
                   <More size={25} />
                 </div>
               </div>
 
               <div
-                className="mb-4 hidden w-full justify-center rounded-md bg-gray-600 bg-opacity-20 p-4"
+                className="mb-4 h-0 w-full justify-center overflow-hidden rounded-md bg-gray-600 bg-opacity-20 transition-all"
                 ref={moreRef}
               >
                 <SearchBar
@@ -600,6 +609,7 @@ const Episodes = () => {
                   />
                 </div>
               </div>
+
               <ul
                 className="max-h-96 min-w-24 overflow-auto"
                 ref={(el) => (episodesListRef.current[0] = el!)}
