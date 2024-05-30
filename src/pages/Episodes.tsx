@@ -44,6 +44,8 @@ const Episodes = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const namesRef = useRef<HTMLSpanElement[]>([]);
   const disclamerMessage = useRef("");
+  const moreRef = useRef<HTMLDivElement>(null);
+  const triRef = useRef<HTMLDivElement>(null);
 
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<string>();
@@ -51,6 +53,8 @@ const Episodes = () => {
 
   const Next = icons["ChevronLast"];
   const Prev = icons["ChevronFirst"];
+  const More = icons["Ellipsis"];
+  const Tri = icons["Signal"];
 
   useEffect(() => {
     if (loadingToast) toast.dismiss(loadingToast);
@@ -493,7 +497,7 @@ const Episodes = () => {
               <button
                 disabled={episodeData?.get()?.episode === "1"}
                 className="glassBtn"
-                onClick={() => {
+                onClick={() =>
                   PrevEpisode(
                     anime.currentLecteur!,
                     updateAnime,
@@ -501,8 +505,8 @@ const Episodes = () => {
                     containerRef,
                     episodeTitleRef,
                     episodesListRef,
-                  );
-                }}
+                  )
+                }
               >
                 <Prev />
                 Épisode précedent
@@ -514,7 +518,7 @@ const Episodes = () => {
                   anime.currentLecteur?.length.toString()
                 }
                 className="glassBtn sm:mr-8"
-                onClick={() => {
+                onClick={() =>
                   NextEpisode(
                     anime?.currentLecteur!,
                     updateAnime,
@@ -522,8 +526,8 @@ const Episodes = () => {
                     containerRef,
                     episodeTitleRef,
                     episodesListRef,
-                  );
-                }}
+                  )
+                }
               >
                 Épisode suivant
                 <Next />
@@ -532,21 +536,68 @@ const Episodes = () => {
           </div>
 
           <div className="w-full lg:max-w-[450px]">
-            <SearchBar
-              placeholder="Rechercher un épisode"
-              containerRef={episodesListRef}
-              query="innerText"
-            />
+            <div>
+              <div className="mb-4 flex w-full justify-between *:rounded-md *:p-2 *:ring-0">
+                <div
+                  ref={triRef}
+                  title="Trier les épisodes"
+                  className="rotate-90 bg-gray-600 bg-opacity-20 transition-all active:ring-2 active:ring-white"
+                  onClick={() => {
+                    if (triRef.current) {
+                      if (triRef.current.classList.contains("rotate-90")) {
+                        triRef.current.classList.add("rotate-[270deg]");
+                        triRef.current.classList.remove("rotate-90");
+                      } else {
+                        triRef.current.classList.remove("rotate-[270deg]");
+                        triRef.current.classList.add("rotate-90");
+                      }
+                    }
 
-            <div className="relative mb-4 mt-8 text-lg">
-              <Switch
-                placeholder="Cacher le nom des épisodes"
-                onChange={blurEpisodes}
-              />
-            </div>
+                    if (anime.episodes)
+                      updateAnime((currentState) => ({
+                        ...currentState,
+                        episodes: [...anime.episodes!.reverse()],
+                      }));
+                  }}
+                >
+                  <Tri size={25} />
+                </div>
 
-            <div className="max-h-96 min-w-24 overflow-y-auto">
-              <ul ref={(el) => (episodesListRef.current[0] = el!)}>
+                <div
+                  className="bg-gray-600 bg-opacity-20 transition-all active:ring-2 active:ring-white"
+                  title="Plus d'options"
+                  onClick={() =>
+                    moreRef.current &&
+                    (moreRef.current.classList.contains("hidden")
+                      ? moreRef.current.classList.remove("hidden")
+                      : moreRef.current.classList.add("hidden"))
+                  }
+                >
+                  <More size={25} />
+                </div>
+              </div>
+
+              <div
+                className="mb-4 hidden w-full rounded-md bg-gray-600 bg-opacity-20 p-4"
+                ref={moreRef}
+              >
+                <SearchBar
+                  placeholder="Rechercher un épisode"
+                  containerRef={episodesListRef}
+                  query="innerText"
+                />
+
+                <div className="relative my-4 text-lg">
+                  <Switch
+                    placeholder="Cacher le nom des épisodes"
+                    onChange={blurEpisodes}
+                  />
+                </div>
+              </div>
+              <ul
+                className="max-h-96 min-w-24 overflow-auto"
+                ref={(el) => (episodesListRef.current[0] = el!)}
+              >
                 {anime?.episodes}
               </ul>
             </div>
