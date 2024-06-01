@@ -148,6 +148,8 @@ const names = [
   { index: "144", name: "Spectre" },
   { index: "145", name: "Super-vilain" },
   { index: "146", name: "Comment nous sommes devenus des héros" },
+  { index: "147", name: "Let you down" },
+  { index: "148", name: "Division" },
 ];
 
 export default names;

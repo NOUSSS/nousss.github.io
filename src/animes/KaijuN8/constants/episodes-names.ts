@@ -21,6 +21,10 @@ const names = [
     name: "La kaiju n°9",
     index: "7",
   },
+  {
+    name: "Bienvenue dans les Forces de Défense",
+    index: "8",
+  },
 ];
 
 export default names;
