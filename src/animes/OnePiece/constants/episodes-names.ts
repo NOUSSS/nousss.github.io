@@ -3440,6 +3440,10 @@ const episodes = [
     index: "1107",
     name: "Frissons d'horreur. Le mal s'infiltre au laboratoire !",
   },
+  {
+    index: "1108",
+    name: "Inconcevable. La rébellion des Séraphins !",
+  },
 ];
 
 export default episodes;
