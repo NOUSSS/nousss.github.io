@@ -574,15 +574,15 @@ const Episodes = () => {
                   title="Plus d'options"
                   onClick={() => {
                     if (moreRef.current) {
-                      if (moreRef.current.classList.contains("h-40")) {
+                      if (moreRef.current.classList.contains("h-auto")) {
                         moreRef.current.classList.add("h-0");
 
-                        moreRef.current.classList.remove("h-40");
+                        moreRef.current.classList.remove("h-auto");
                         moreRef.current.classList.remove("p-4");
                       } else {
                         moreRef.current.classList.remove("h-0");
 
-                        moreRef.current.classList.add("h-40");
+                        moreRef.current.classList.add("h-auto");
                         moreRef.current.classList.add("p-4");
                       }
                     }
