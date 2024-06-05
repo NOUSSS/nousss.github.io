@@ -17,12 +17,12 @@ class TokyoRevengers extends Anime {
         image: () => getImage(1),
       },
       2: {
-        name: "Christmas Showdown",
+        name: "Christmas Showdown (Saison 2)",
         aliases: ["2"],
         image: () => getImage(2),
       },
       3: {
-        name: "Tenjiku",
+        name: "Tenjiku (Saison 3)",
         aliases: ["3"],
         image: () => getImage(3),
       },
