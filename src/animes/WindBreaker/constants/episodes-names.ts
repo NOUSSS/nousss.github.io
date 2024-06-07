@@ -35,6 +35,10 @@ const episodes = [
     index: "9",
     name: "La méthode Umemiya",
   },
+  {
+    index: "10",
+    name: "La discute",
+  },
 ];
 
 export default episodes;
