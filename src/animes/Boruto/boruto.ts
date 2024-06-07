@@ -39,7 +39,7 @@ class Boruto extends Anime {
       versions: [
         {
           name: "Two Blue Vortex",
-          value: "-boruto-two-blue-vortex|Boruto Two Blue Vortex",
+          value: "-boruto-two-blue-vortex|Boruto - Two Blue Vortex",
         },
       ],
     };
