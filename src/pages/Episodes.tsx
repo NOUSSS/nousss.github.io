@@ -270,11 +270,15 @@ const Episodes = () => {
             );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
+            const episodeNumberName = noc
+              ? allIndex![anime?.saison ?? 0] + episodeNumber
+              : episodeNumber;
+
             const episodeTitle =
               names?.find(({ index }, i) =>
                 index
-                  ? Number(index) === episodeNumber
-                  : i + 1 === episodeNumber,
+                  ? Number(index) === episodeNumberName
+                  : i + 1 === episodeNumberName,
               )?.name || "";
 
             listEpisodes.push(
@@ -317,13 +321,17 @@ const Episodes = () => {
 
           if (!episodeSpecial) {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
+
             const episodeNumber = episodeIndex + Number(episode) - retardEsp;
+            const episodeNumberName = noc
+              ? allIndex![anime?.saison ?? 0] + episodeNumber
+              : episodeNumber;
 
             const title =
               names?.find(({ index }, i) =>
                 index
-                  ? Number(index) === episodeNumber
-                  : i + 1 === episodeNumber,
+                  ? Number(index) === episodeNumberName
+                  : i + 1 === episodeNumberName,
               )?.name || "";
 
             updateAnime((currentState) => ({

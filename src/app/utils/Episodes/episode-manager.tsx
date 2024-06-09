@@ -70,7 +70,12 @@ export function Change(
         ? Number(indexEpisode) - retard
         : Number(allIndex?.[saison ?? 0]) + Number(indexEpisode) - retard;
 
-      const title = names?.find((_, i) => i + 1 === numberEpisode)?.name || "";
+      const episodeNumberName = noc
+        ? allIndex![saison ?? 0] + numberEpisode
+        : numberEpisode;
+
+      const title =
+        names?.find((_, i) => i + 1 === episodeNumberName)?.name || "";
 
       const url = lecteur[Number(indexEpisode) - 1];
 
@@ -101,10 +106,14 @@ export function Change(
       ? indexEpisode
       : Number(allIndex?.[Episodes.saison]) + Number(indexEpisode);
 
+    const episodeNumberName = noc
+      ? allIndex![Episodes.saison ?? 0] + Number(numberEpisode)
+      : numberEpisode;
+
     const url = lecteur[Number(indexEpisode) - 1];
 
     const episodeTitle =
-      names?.find((_, i) => i + 1 === numberEpisode)?.name || "";
+      names?.find((_, i) => i + 1 === episodeNumberName)?.name || "";
 
     updateAnime((currentState) => ({
       ...currentState,
