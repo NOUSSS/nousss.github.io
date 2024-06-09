@@ -54,6 +54,8 @@ class MushokuTensei extends Anime {
         startToFirst: true,
       },
 
+      noc: true,
+
       allIndex: {
         1: 0,
         2: 24,
