@@ -59,6 +59,7 @@ const episodes = [
   { name: "Tanjirô est rétabli et se joint à l'entraînement !", index: "58" },
   { name: "Souris", index: "59" },
   { name: "Manger des démons", index: "60" },
+  { name: "L'élite des pourfendeurs", index: "61"}
 ];
 
 export default episodes;
