@@ -162,7 +162,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         ))}
       </div>
 
-      <div className="mt-4 flex justify-center">
+      <div className="mt-4 flex flex-col justify-center sm:flex-row">
         <button
           onClick={handlePrevPage}
           className="glassBtn mx-1"
@@ -171,7 +171,9 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
           Précédent
         </button>
 
-        {renderPageNumbers()}
+        <div className="my-2 flex flex-row justify-center sm:my-0">
+          {renderPageNumbers()}
+        </div>
 
         <button
           onClick={handleNextPage}
