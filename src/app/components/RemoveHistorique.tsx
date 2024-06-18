@@ -1,6 +1,6 @@
 import { Historique } from "@/typings/types";
 import { Trash } from "lucide-react";
-import { FC, RefObject, SetStateAction, useRef } from "react";
+import { FC, SetStateAction, useRef } from "react";
 import { toast } from "sonner";
 
 interface RemoveHistoriqueProps {

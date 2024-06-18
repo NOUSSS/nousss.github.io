@@ -1,7 +1,7 @@
 import { ANIMES } from "@/animes/constants";
 import { getAnime, getWallpaper } from "@/app/lib/";
 import { useRef, useState } from "react";
-import { Select } from "@/app/components/";
+import { Select, Pagination } from "@/app/components/";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -64,51 +64,54 @@ export default function Catalogue() {
         </div>
 
         <div>
-          {ANIMES.filter(({ category }) =>
-            filteredCategories.every((cat) => category.includes(cat)),
-          ).map(({ anime }) => {
-            const fetchedAnime = getAnime(anime);
+          <Pagination
+            items={ANIMES.filter(({ category }) =>
+              filteredCategories.every((cat) => category.includes(cat)),
+            ).map(({ anime }) => {
+              const fetchedAnime = getAnime(anime);
 
-            const disponibles = [
-              fetchedAnime?.options.EPISODES_OPTIONS && "Episodes",
-              fetchedAnime?.options.SCANS_OPTIONS && "Scans",
-              fetchedAnime?.options.FILM_OPTIONS && "Films",
-            ].filter(Boolean);
+              const disponibles = [
+                fetchedAnime?.options.EPISODES_OPTIONS && "Episodes",
+                fetchedAnime?.options.SCANS_OPTIONS && "Scans",
+                fetchedAnime?.options.FILM_OPTIONS && "Films",
+              ].filter(Boolean);
 
-            const image = getWallpaper(anime);
+              const image = getWallpaper(anime);
 
-            return (
-              <Link
-                title={
-                  fetchedAnime?.synopsis ||
-                  "Aucun synopsis disponible pour cet anime"
-                }
-                className="mb-2 mr-4 inline-flex w-36 cursor-pointer flex-col rounded-xl transition-all hover:scale-[.97] md:mr-6 md:w-40"
-                href={{
-                  pathname: "/Home",
-                  query: { anime: anime },
-                }}
-                key={anime}
-              >
-                <div className="relative top-1 w-36 overflow-hidden shadow-xl md:w-40">
-                  {image && (
-                    <Image
-                      className="z-[-1] aspect-[2/3] w-40 transition-transform md:w-44"
-                      src={image}
-                      alt={`Affiche de l'anime ${anime}`}
-                    />
-                  )}
-                </div>
+              return (
+                <Link
+                  title={
+                    fetchedAnime?.synopsis ||
+                    "Aucun synopsis disponible pour cet anime"
+                  }
+                  className="mb-2 mr-4 flex w-36 cursor-pointer flex-col rounded-xl transition-all hover:scale-[.97] md:mr-6 md:w-40"
+                  href={{
+                    pathname: "/Home",
+                    query: { anime: anime },
+                  }}
+                  key={anime}
+                >
+                  <div className="relative top-1 w-36 overflow-hidden shadow-xl md:w-40">
+                    {image && (
+                      <Image
+                        className="z-[-1] aspect-[2/3] w-40 transition-transform md:w-44"
+                        src={image}
+                        alt={`Affiche de l'anime ${anime}`}
+                      />
+                    )}
+                  </div>
 
-                <p className="my-2 text-left text-base max-md:text-sm">
-                  {anime} <br />
-                  <span className="text-sm max-md:text-xs">
-                    {disponibles.join(", ")}
-                  </span>
-                </p>
-              </Link>
-            );
-          })}
+                  <p className="my-2 text-left text-base max-md:text-sm">
+                    {anime} <br />
+                    <span className="text-sm max-md:text-xs">
+                      {disponibles.join(", ")}
+                    </span>
+                  </p>
+                </Link>
+              );
+            })}
+            itemsPerPage={30}
+          />
         </div>
       </main>
     </>

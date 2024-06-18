@@ -5,7 +5,6 @@ import { cn } from "../lib";
 export interface ItemsProps {
   name: string;
   value: string;
-
   disabled?: boolean;
 }
 
@@ -13,10 +12,8 @@ interface SelectProps {
   placeholder: string;
   multiple?: boolean;
   scroll?: boolean;
-
   items: ItemsProps[];
   placeholderRef: RefObject<HTMLParagraphElement>;
-
   onSelect: (value: ItemsProps[]) => void;
 }
 
@@ -35,6 +32,7 @@ const Select: FC<SelectProps> = ({
 }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   const UpArrow = icons["ChevronUp"];
 
@@ -44,9 +42,14 @@ const Select: FC<SelectProps> = ({
   const itemsRef = useRef<ItemsRef[]>([]);
 
   useEffect(() => {
-    if (placeholderRef.current && selectedItems.length === 0)
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (placeholderRef.current && selectedItems.length === 0) {
       placeholderRef.current.innerText = placeholder;
-  }, [selectedItems]);
+    }
+  }, [selectedItems, placeholder, placeholderRef]);
 
   const toggleBodyScroll = (toggle: boolean): void =>
     toggle
@@ -156,44 +159,47 @@ const Select: FC<SelectProps> = ({
 
       <UpArrow ref={svgRef} className="transition-all duration-300 ease-out" />
 
-      <div
-        ref={menuRef}
-        className="absolute left-0 top-16 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl"
-      >
-        <div className="bg-white bg-opacity-75 p-2">
-          {items?.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (!multiple) toggleBodyScroll(false);
+      {mounted && (
+        <div
+          ref={menuRef}
+          className="absolute left-0 top-16 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl"
+        >
+          <div className="bg-white bg-opacity-75 p-2">
+            {items?.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  if (!multiple) toggleBodyScroll(false);
 
-                if (!item.disabled) {
-                  handleSelect(item);
-                  appear();
+                  if (!item.disabled) {
+                    handleSelect(item);
+                    appear();
+                  }
+                }}
+                ref={(el) =>
+                  (itemsRef.current[index] = {
+                    name: item.name,
+                    el: el!,
+                  })
                 }
-              }}
-              ref={(el) =>
-                (itemsRef.current[index] = {
-                  name: item.name,
-                  el: el!,
-                })
-              }
-              className={cn(
-                "flex h-8 w-full cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
-                {
-                  "mt-1": multiple,
-                  "bg-orange-500 text-white":
-                    selectedItems.find((i) => i.name === item.name) && multiple,
-                  "opacity-50": item.disabled,
-                  "hover:border-orange-500": !item.disabled,
-                },
-              )}
-            >
-              <p className="font-normal">{item.name}</p>
-            </button>
-          ))}
+                className={cn(
+                  "flex h-8 w-full cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
+                  {
+                    "mt-1": multiple,
+                    "bg-orange-500 text-white":
+                      selectedItems.find((i) => i.name === item.name) &&
+                      multiple,
+                    "opacity-50": item.disabled,
+                    "hover:border-orange-500": !item.disabled,
+                  },
+                )}
+              >
+                <p className="font-normal">{item.name}</p>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </button>
   );
 };
