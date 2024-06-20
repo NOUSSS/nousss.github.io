@@ -1,3 +1,4 @@
+import { icons } from "lucide-react";
 import { FC, ReactNode, useEffect, useMemo, useState } from "react";
 
 interface PaginationProps {
@@ -6,7 +7,19 @@ interface PaginationProps {
 }
 
 const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
+  const Next = icons["ChevronLast"];
+  const Prev = icons["ChevronFirst"];
+
   const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        behavior: "smooth",
+        top: 0,
+      });
+    }
+  }, [currentPage]);
 
   const pages = useMemo(() => {
     const newPages: ReactNode[][] = [];
@@ -33,10 +46,6 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, pages.length - 1));
   };
 
-  const handlePageClick = (pageIndex: number) => {
-    setCurrentPage(pageIndex);
-  };
-
   const renderPageNumbers = () => {
     const totalPages = pages.length;
     const pageNumbers = [];
@@ -46,7 +55,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         pageNumbers.push(
           <button
             key={i}
-            onClick={() => handlePageClick(i)}
+            onClick={() => setCurrentPage(i)}
             className={`${currentPage === i ? "btn" : "glassBtn"} mx-1`}
           >
             {i + 1}
@@ -59,7 +68,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
           pageNumbers.push(
             <button
               key={i}
-              onClick={() => handlePageClick(i)}
+              onClick={() => setCurrentPage(i)}
               className={`${currentPage === i ? "btn" : "glassBtn"} mx-1`}
             >
               {i + 1}
@@ -74,7 +83,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         pageNumbers.push(
           <button
             key={totalPages - 1}
-            onClick={() => handlePageClick(totalPages - 1)}
+            onClick={() => setCurrentPage(totalPages - 1)}
             className={`${currentPage === totalPages - 1 ? "btn" : "glassBtn"} mx-1`}
           >
             {totalPages}
@@ -84,7 +93,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         pageNumbers.push(
           <button
             key={0}
-            onClick={() => handlePageClick(0)}
+            onClick={() => setCurrentPage(0)}
             className={`${currentPage === 0 ? "btn" : "glassBtn"} mx-1`}
           >
             1
@@ -99,7 +108,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
           pageNumbers.push(
             <button
               key={i}
-              onClick={() => handlePageClick(i)}
+              onClick={() => setCurrentPage(i)}
               className={`${currentPage === i ? "btn" : "glassBtn"} mx-1`}
             >
               {i + 1}
@@ -110,7 +119,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         pageNumbers.push(
           <button
             key={0}
-            onClick={() => handlePageClick(0)}
+            onClick={() => setCurrentPage(0)}
             className={`${currentPage === 0 ? "btn" : "glassBtn"} mx-1`}
           >
             1
@@ -125,7 +134,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
           pageNumbers.push(
             <button
               key={i}
-              onClick={() => handlePageClick(i)}
+              onClick={() => setCurrentPage(i)}
               className={`${currentPage === i ? "btn" : "glassBtn"} mx-1`}
             >
               {i + 1}
@@ -140,7 +149,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         pageNumbers.push(
           <button
             key={totalPages - 1}
-            onClick={() => handlePageClick(totalPages - 1)}
+            onClick={() => setCurrentPage(totalPages - 1)}
             className={`${currentPage === totalPages - 1 ? "btn" : "glassBtn"} mx-1`}
           >
             {totalPages}
@@ -162,12 +171,13 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
         ))}
       </div>
 
-      <div className="mt-4 flex flex-col justify-center sm:flex-row">
+      <div className="mt-4 flex flex-col justify-around sm:flex-row">
         <button
           onClick={handlePrevPage}
           className="glassBtn mx-1"
           disabled={currentPage === 0}
         >
+          <Prev />
           Précédent
         </button>
 
@@ -180,7 +190,7 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
           className="glassBtn mx-1"
           disabled={currentPage === pages.length - 1}
         >
-          Suivant
+          Suivant <Next />
         </button>
       </div>
     </div>
