@@ -150,6 +150,7 @@ const names = [
   { index: "146", name: "Comment nous sommes devenus des héros" },
   { index: "147", name: "Let you down" },
   { index: "148", name: "Division" },
+  { index: "149", name: "Inflation" },
 ];
 
 export default names;
