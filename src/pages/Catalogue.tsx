@@ -110,7 +110,7 @@ export default function Catalogue() {
                 </Link>
               );
             })}
-            itemsPerPage={30}
+            itemsPerPage={36}
           />
         </div>
       </main>
