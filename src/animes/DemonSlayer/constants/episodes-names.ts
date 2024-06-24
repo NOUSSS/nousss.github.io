@@ -61,6 +61,7 @@ const episodes = [
   { name: "Manger des démons", index: "60" },
   { name: "L'élite des pourfendeurs", index: "61" },
   { name: "Himejima Gyômei, pilier du rocher", index: "62" },
+  { name: "Rassemblement des piliers", index: "63" },
 ];
 
 export default episodes;
