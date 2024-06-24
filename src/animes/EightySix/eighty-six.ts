@@ -18,7 +18,7 @@ class EightySix extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
+      SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/86-eighty-six/saison${index}/${lang}/episodes.js`,
 
       horsSeries: [

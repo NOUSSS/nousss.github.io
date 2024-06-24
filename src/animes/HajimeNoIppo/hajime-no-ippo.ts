@@ -49,7 +49,7 @@ export default class HajimeNoIppo extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: string | number; lang: string }) =>
+      SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/hajime-no-ippo/saison${index}/${lang}/episodes.js`,
 
       allIndex: {

@@ -17,7 +17,7 @@ class ReMonster extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
+      SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/re-monster/saison${index}/${lang}/episodes.js`,
 
       allIndex: {

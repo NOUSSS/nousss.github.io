@@ -23,7 +23,7 @@ class TheDangersInMyHeart extends Anime {
     } as Options.Season;
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
+      SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/boku-no-kokoro-no-yabai-yatsu/saison${index}/${lang}/episodes.js`,
 
       allIndex: {

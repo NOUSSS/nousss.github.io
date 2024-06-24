@@ -33,7 +33,7 @@ export default class TheGodOfHighschool extends Anime {
     };
 
     this.EPISODES_OPTIONS = {
-      SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
+      SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/the-god-of-high-school/saison${index}/${lang}/episodes.js`,
 
       horsSeries: [],
