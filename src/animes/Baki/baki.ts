@@ -35,6 +35,8 @@ class Baki extends Anime {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/baki/saison${index}/${lang}/episodes.js`,
 
+      noc: true,
+
       allIndex: {
         1: 0,
         2: 48,
