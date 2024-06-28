@@ -47,6 +47,10 @@ const episodes = [
     index: "12",
     name: "À la hauteur",
   },
+  {
+    index: "13",
+    name: "Pour un pote",
+  },
 ];
 
 export default episodes;

@@ -25,6 +25,18 @@ const names = [
     name: "Bienvenue dans les Forces de Défense",
     index: "8",
   },
+  {
+    name: "L'attaque de la base de Tachikawa",
+    index: "9",
+  },
+  {
+    name: "Dévoilement",
+    index: "10",
+  },
+  {
+    name: "La kaiju n°8 sous les verrous",
+    index: "11",
+  },
 ];
 
 export default names;
