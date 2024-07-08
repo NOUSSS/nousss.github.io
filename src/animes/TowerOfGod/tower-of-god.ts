@@ -12,8 +12,11 @@ export default class TowerOfGod extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-        aliases: ["Saison 1"],
         image: () => getImage(1),
+      },
+      2: {
+        name: "Saison 2",
+        image: () => getImage(2),
       },
     };
 
