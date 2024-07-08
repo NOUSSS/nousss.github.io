@@ -37,6 +37,10 @@ const names = [
     name: "La kaiju n°8 sous les verrous",
     index: "11",
   },
+  {
+    name: "Kafka Hibino",
+    index: "12",
+  },
 ];
 
 export default names;

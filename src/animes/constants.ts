@@ -283,6 +283,7 @@ export const ANIMES: AnimesType[] = [
       "Fantasy",
       "Mystère",
       "Webtoon",
+      "Nouvelles saisons",
     ],
     synopsis:
       "Afin de retrouver Rachel, la seule personne chère à ses yeux, Bam décide de prendre tous les risques pour atteindre le sommet d'une mystérieuse tour. Pour passer chaque étage, il devra réussir un test complexe dans lequel il jouera à chaque fois sa vie.",
@@ -832,7 +833,7 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Haruka Sakura est le genre de lycéen qui fait passer la baston avant les révisions. Fraîchement débarqué en ville, c'est donc le sourire aux lèvres qu'il compte pousser les portes du lycée Fûrin, l'établissement scolaire au pire taux de délinquance du pays... Les intentions de Haruka sont claires : se mesurer aux meilleurs bagarreurs de ce bahut et devenir le meilleur de tous ! Mais entre-temps, il se retrouve mêlé à une altercation avec une bande de brutes dans un des quartiers de la ville, avant d'être sauvé in extremis par des élèves de son lycée. Haruka réalise alors à quel genre de phénomènes il risque d'avoir affaire...",
     options: new WindBreaker(),
-    category: ["Action", "Aventure", "Arts Martiaux", "Nouvelles saisons"],
+    category: ["Action", "Aventure", "Arts Martiaux"],
   },
   {
     anime: "Re:Monster",
@@ -998,7 +999,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Kaiju N°8",
     aliases: ["Monster 8"],
-    category: ["Aventure", "Science-fiction", "Nouvelles saisons"],
+    category: ["Aventure", "Science-fiction"],
     synopsis:
       "Les kaiju sont d'effroyables monstres géants qui surgissent de nulle part pour attaquer la population. Au Japon, ces apparitions font désormais partie du quotidien. Enfant, Kafka Hibino rêvait d'intégrer les Forces de Défense pour combattre ces terribles ennemis, mais après de nombreux échecs à l'examen d'entrée, ce trentenaire travaille à nettoyer les rues de leurs encombrants cadavres. Jusqu'au jour où une mystérieuse créature s'introduit dans son organisme et le métamorphose en une entité surpuissante mi-humaine, mi-kaiju. Son nouveau nom de code : \"Kaiju n° 8\" !",
     options: new KaijuN8(),
