@@ -12,6 +12,7 @@ const names = [
   { name: "Pêche en eaux profondes - Première partie", index: "11" },
   { name: "Pêche en eaux profondes - Deuxième partie", index: "12" },
   { name: "La Tour de Dieu", index: "13" },
+  { name: "Last chance", index: "14" },
 ];
 
 export default names;
