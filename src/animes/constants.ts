@@ -111,6 +111,7 @@ import SaintSeiya from "./SaintSeiya/saint-seiya";
 import BlackLagoon from "./BlackLagoon/black-lagoon";
 import BlackButler from "./BlackButler/black-butler";
 import FoodWars from "./FoodWars/food-wars";
+import SuicideSquadIsekai from "./SuicideSquadIsekai/suicide-squad-isekai";
 
 export interface AnimesType {
   anime: string;
@@ -1130,6 +1131,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Sôma Yukihira, 15 ans, rêve de surpasser son père Jôichirô, cuisinier de talent, et de reprendre le petit restaurant familial. Pour lui, son avenir est tout tracé : dès qu'il terminera sa dernière année de collège, il s'investira à plein temps dans le restaurant. Malheureusement, son père en décide autrement lorsqu'il accepte un travail à New York, dans un grand hôtel. Avant de partir, il oriente Sôma vers un prestigieux lycée, qui forme les meilleurs cuisiniers du Japon. Mais l'établissement est réputé extrêmement difficile et seuls 10% des élèves réussissent à y obtenir un diplôme. Mais Sôma, motivé par son père, a bien l'intention de faire partie des meilleurs.",
     options: new FoodWars(),
+  },
+  {
+    anime: "Suicide Squad Isekai",
+    category: ["Action", "Isekai"],
+    synopsis:
+      "Dans la ville de Gotham rongée par le crime, Amanda Waller, cheffe de l'A.R.G.U.S., a rassemblé un groupe de criminels notoires pour une mission : Harley Quinn, Deadshot, Peacemaker, Gueule d'argile et King Shark. Ces super-vilains sont envoyés dans un autre monde relié au nôtre par une porte. À cause des puces explosives plantées dans leur cou, ils ne peuvent ni s'enfuir, ni se cacher et échouer à la mission signifie un aller simple pour l'au-delà ! Harley Quinn et son équipe parviendront-ils à conquérir ce nouveau monde ?",
+    options: new SuicideSquadIsekai(),
   },
 ];
 
