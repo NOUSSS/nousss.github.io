@@ -13,6 +13,7 @@ const names = [
   { name: "Pêche en eaux profondes - Deuxième partie", index: "12" },
   { name: "La Tour de Dieu", index: "13" },
   { name: "Last chance", index: "14" },
+  { name: "Le plus puissant des réguliers", index: "15" },
 ];
 
 export default names;

@@ -151,6 +151,10 @@ const names = [
   { index: "147", name: "Let you down" },
   { index: "148", name: "Division" },
   { index: "149", name: "Inflation" },
+  { index: "150", name: "Deux poings incadescents" },
+  { index: "151", name: "Figurants" },
+  { index: "152", name: "La supernova d'un héros blessé" },
+  { index: "153", name: "Light fades to rain" },
 ];
 
 export default names;
