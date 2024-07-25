@@ -14,6 +14,7 @@ const names = [
   { name: "La Tour de Dieu", index: "13" },
   { name: "Last chance", index: "14" },
   { name: "Le plus puissant des réguliers", index: "15" },
+  { name: "La chambre digne de confiance", index: "16" },
 ];
 
 export default names;
