@@ -1,3 +1,5 @@
+// from there : https://github.com/juliencrn/usehooks-ts/blob/master/packages/usehooks-ts/src/useScript/useScript.ts
+
 import { useEffect, useState } from "react";
 
 type UseScriptStatus = "idle" | "loading" | "ready" | "error";
