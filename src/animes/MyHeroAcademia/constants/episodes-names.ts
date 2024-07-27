@@ -155,6 +155,7 @@ const names = [
   { index: "151", name: "Figurants" },
   { index: "152", name: "La supernova d'un héros blessé" },
   { index: "153", name: "Light fades to rain" },
+  { index: "154", name: "Défenseurs et attaquants" },
 ];
 
 export default names;

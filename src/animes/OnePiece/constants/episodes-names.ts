@@ -3448,6 +3448,26 @@ const episodes = [
     index: "1109",
     name: "L'histoire est écrite. Les turbulents Empereurs !",
   },
+  {
+    index: "1110",
+    name: "Pour survivre. Combat acharné contre les surhommes !",
+  },
+  {
+    index: "1111",
+    name: "Une nouvelle Ohara. Un complot ourdi par ambition !",
+  },
+  {
+    index: "1112",
+    name: "Duel au sommet. Shanks contre Eustass Kidd !",
+  },
+  {
+    index: "1113",
+    name: "Cours, Kobby. L'évasion ou la mort !",
+  },
+  {
+    index: "1114",
+    name: "Pour sauver le protégé. Le poing du vice-amiral Garp !",
+  },
 ];
 
 export default episodes;
