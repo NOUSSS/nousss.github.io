@@ -13,6 +13,7 @@ import random from "./random";
 import navMotion from "./navMotion";
 import restoreLocalStorage from "./restoreLocalStorage";
 import cn from "./cn";
+import relatedCats from "./relatedCats";
 
 export {
   formatLang,
@@ -30,4 +31,5 @@ export {
   navMotion,
   restoreLocalStorage,
   cn,
+  relatedCats,
 };

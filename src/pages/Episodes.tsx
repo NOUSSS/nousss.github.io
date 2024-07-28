@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-
 import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
-import { getCurrentAnime, getLecteur, getAnime } from "@/app/lib/";
+import {
+  getCurrentAnime,
+  getLecteur,
+  getAnime,
+  relatedCats,
+  getWallpaper,
+} from "@/app/lib/";
 import { Anime as AnimeType } from "@/typings/types";
 import { useRouter } from "next/router";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
@@ -11,6 +16,7 @@ import { toast } from "sonner";
 import { useScript, useAnime } from "@/app/lib/hooks/";
 import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
 import { icons } from "lucide-react";
+import { ANIMES } from "@/animes/constants";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import getNote from "@/app/utils/Episodes/getNote";
@@ -20,6 +26,7 @@ import ClearCache from "@/app/cache/ClearCache";
 import EpisodeComponent from "@/app/utils/Episodes/episode-component";
 import Link from "next/link";
 import EpisodeData from "@/app/class/episodeData";
+import Image from "next/image";
 
 type langType = "vostfr" | "vf";
 
@@ -50,6 +57,7 @@ const Episodes = () => {
   const [url_script, setUrlScript] = useState<string>();
   const [filever, setFilever] = useState<string>();
   const [episodeData, setEpisodeData] = useState<EpisodeData>();
+  const [relatedAnimes, setRelatedAnimes] = useState<string[]>([]);
 
   const Next = icons["ChevronLast"];
   const Prev = icons["ChevronFirst"];
@@ -220,6 +228,18 @@ const Episodes = () => {
               lecteur,
               currentLecteur: fetchedLecteurs[lecteur]!,
             }));
+          }
+        }
+
+        for (const a of ANIMES) {
+          if (
+            ((anime.anime?.category &&
+              relatedCats(a.category, anime.anime?.category)) ||
+              a.anime.includes(anime.anime!.anime)) &&
+            anime.anime?.anime !== a.anime &&
+            !relatedAnimes.includes(a.anime)
+          ) {
+            setRelatedAnimes((state) => [...state, a.anime]);
           }
         }
 
@@ -655,6 +675,72 @@ const Episodes = () => {
             <Next />
           </button>
         </div>
+
+        {!(
+          anime.anime &&
+          anime?.saison !==
+            Object.keys(anime.anime?.options.saisons!)?.length.toString()
+        ) &&
+          relatedAnimes.length > 0 && (
+            <div className="my-6 flex w-11/12 flex-col min-[435px]:gap-0 sm:w-11/12 lg:w-[930px] xl:w-[1200px]">
+              <p className="mb-4 text-left text-2xl font-normal">
+                Oeuvres similaires
+              </p>
+
+              <ul className="flex gap-6 overflow-auto">
+                {relatedAnimes.map((animeName) => {
+                  const fetchedAnime = getAnime(animeName);
+
+                  const disponibles = [
+                    fetchedAnime?.options.EPISODES_OPTIONS && "Episodes",
+                    fetchedAnime?.options.SCANS_OPTIONS && "Scans",
+                    fetchedAnime?.options.FILM_OPTIONS && "Films",
+                  ].filter(Boolean);
+
+                  return (
+                    <Link
+                      href={{
+                        pathname: "/Home",
+                        query: { anime: animeName },
+                      }}
+                      id={
+                        animeName +
+                        `${
+                          typeof fetchedAnime?.aliases === "undefined"
+                            ? ""
+                            : fetchedAnime?.aliases
+                        }`
+                      }
+                      key={animeName}
+                    >
+                      <div
+                        title={
+                          fetchedAnime?.synopsis ??
+                          "Aucun synopsis pour cette anime"
+                        }
+                        className="w-40 transition-all hover:scale-[.97] max-md:mr-1 md:w-44"
+                      >
+                        <div className="overflow-hidden shadow-xl">
+                          <Image
+                            className="aspect-[2/3] w-40 transition-transform md:w-44"
+                            src={getWallpaper(animeName)!}
+                            alt="affiche d'un anime"
+                          />
+                        </div>
+
+                        <p className="my-2 text-left text-base max-md:text-sm">
+                          {animeName} <br />{" "}
+                          <span className="text-sm max-md:text-xs">
+                            {disponibles.join(", ")}
+                          </span>
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
 
         <Footer style={true} media />
       </main>
