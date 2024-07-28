@@ -201,7 +201,15 @@ export const ANIMES: AnimesType[] = [
     anime: "Jujutsu Kaisen",
     aliases: ["jjk", "Sorcery Fight"],
     options: new JujutsuKaisen(),
-    category: ["Action", "Fantasy"],
+    category: [
+      "Action",
+      "Drame",
+      "Fantastique",
+      "Mystère",
+      "School Life",
+      "Surnaturel",
+      "Tragique",
+    ],
     synopsis:
       "L'intrigue de Jujutsu Kaisen se déroule dans un monde où l'énergie occulte existe, elle se matérialise par des démons appelés Fléaux, créés à partir des émotions négatives des Humains. Ceux-ci sont invisibles aux yeux des humains sauf pour une poignée de personnes.",
   },
