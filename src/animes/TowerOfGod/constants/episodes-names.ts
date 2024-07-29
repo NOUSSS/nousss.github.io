@@ -15,6 +15,8 @@ const names = [
   { name: "Last chance", index: "14" },
   { name: "Le plus puissant des réguliers", index: "15" },
   { name: "La chambre digne de confiance", index: "16" },
+  { name: "Nouilles et firmament", index: "17" },
+  { name: "L'autre équipe", index: "18" },
 ];
 
 export default names;
