@@ -656,14 +656,23 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Fullmetal Alchemist Brotherhood",
-    category: ["Aventure", "Fantasy", "Action", "Drame", "Surnaturel"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Psychologique",
+      "Surnaturel",
+      "Thriller",
+    ],
     options: new FMAB(),
     aliases: ["fmab", "Hagane no Renkinjutsushi", "Hagaren"],
     synopsis: `Dans un pays où l'alchimie permet de faire des choses extraordinaire, deux jeunes frères étudie cette science qui permet l'échange d'une chose contre une autre. Cette science repose sur le principe de "l'échange équivalent" qui requière de sacrifier une chose pour en obtenir une autre.`,
   },
   {
     anime: "Fullmetal Alchemist",
-    category: ["Aventure", "Fantasy"],
+    category: ["Action", "Comédie", "Drame", "Mystère", "Surnaturel"],
     options: new FMA(),
     aliases: ["Hagane no Renkinjutsushi", "fma"],
     synopsis:

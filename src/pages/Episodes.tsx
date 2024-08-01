@@ -235,7 +235,8 @@ const Episodes = () => {
           if (
             ((anime.anime?.category &&
               relatedCats(a.category, anime.anime?.category)) ||
-              a.anime.includes(anime.anime!.anime)) &&
+              a.anime.includes(anime.anime!.anime) ||
+              anime.anime!.anime.includes(a.anime)) &&
             anime.anime?.anime !== a.anime &&
             !relatedAnimes.includes(a.anime)
           ) {
