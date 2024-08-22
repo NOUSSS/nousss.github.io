@@ -112,6 +112,7 @@ import BlackLagoon from "./BlackLagoon/black-lagoon";
 import BlackButler from "./BlackButler/black-butler";
 import FoodWars from "./FoodWars/food-wars";
 import SuicideSquadIsekai from "./SuicideSquadIsekai/suicide-squad-isekai";
+import Berserk from "./Berserk/berserk";
 
 export interface AnimesType {
   anime: string;
@@ -1155,6 +1156,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Dans la ville de Gotham rongée par le crime, Amanda Waller, cheffe de l'A.R.G.U.S., a rassemblé un groupe de criminels notoires pour une mission : Harley Quinn, Deadshot, Peacemaker, Gueule d'argile et King Shark. Ces super-vilains sont envoyés dans un autre monde relié au nôtre par une porte. À cause des puces explosives plantées dans leur cou, ils ne peuvent ni s'enfuir, ni se cacher et échouer à la mission signifie un aller simple pour l'au-delà ! Harley Quinn et son équipe parviendront-ils à conquérir ce nouveau monde ?",
     options: new SuicideSquadIsekai(),
+  },
+  {
+    anime: "Berserk",
+    category: ["Aventure", "Fantastique", "Horreur", "Tragique", "Historique"],
+    synopsis:
+      "Dans un monde médiéval et marqué par un passé difficile, erre un mercenaire solitaire nommé Guts, décidé à être seul maître de son destin. Autrefois contraint par un pari perdu à rejoindre les Faucons, une troupe de mercenaires dirigés par Griffith, Guts fut acteur de nombreux combats sanglants et témoin de sombres intrigues politiques. Mais il réalisa soudain que la fatalité n'existe pas et qu'il pouvait reprendre sa liberté s'il le désirait vraiment... Mais un mal le traque sans relâche.",
+    options: new Berserk(),
+    aliases: ["The Prototype"],
   },
 ];
 
