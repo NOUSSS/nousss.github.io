@@ -1,7 +1,7 @@
 import { ANIMES } from "@/animes/constants";
 import { getAnime, getWallpaper } from "@/app/lib/";
 import { useRef, useState } from "react";
-import { Select, Pagination } from "@/app/components/";
+import { Select, Pagination, Footer } from "@/app/components/";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -114,6 +114,10 @@ export default function Catalogue() {
           />
         </div>
       </main>
+
+      <div className="mt-24">
+        <Footer style={true} />
+      </div>
     </>
   );
 }
