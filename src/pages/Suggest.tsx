@@ -54,14 +54,14 @@ export default function Suggest() {
       </Head>
 
       <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
-        <h1 className="mb-20 text-4xl">Suggérer un anime</h1>
+        <h1 className="mb-20 text-4xl">Suggérer une oeuvre</h1>
 
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <textarea
             className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2"
             value={message}
             onChange={({ target: { value } }) => setMessage(value)}
-            placeholder="Nom de l'anime ou des animes"
+            placeholder="Nom de l'oeuvre ou des oeuvres"
             required
           />
 
