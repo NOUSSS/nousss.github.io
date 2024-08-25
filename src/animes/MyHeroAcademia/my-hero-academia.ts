@@ -24,7 +24,6 @@ export default class MyHeroAcademia extends Anime {
       },
       3: {
         name: "Saison 3",
-
         image: () => getImage(3),
       },
       4: {

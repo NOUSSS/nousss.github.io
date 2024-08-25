@@ -3468,6 +3468,18 @@ const episodes = [
     index: "1114",
     name: "Pour sauver le protégé. Le poing du vice-amiral Garp !",
   },
+  {
+    index: "1115",
+    name: "La stupéfaction de la Marine. Kuzan, l'ancien amiral !",
+  },
+  {
+    index: "1116",
+    name: "Notre heure est venue. La déclaration de Baggy !",
+  },
+  {
+    index: "1117",
+    name: "Le Log de l'insurrection. La secrète Armée révolutionnaire !",
+  },
 ];
 
 export default episodes;
