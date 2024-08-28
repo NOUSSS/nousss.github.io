@@ -113,6 +113,11 @@ import BlackButler from "./BlackButler/black-butler";
 import FoodWars from "./FoodWars/food-wars";
 import SuicideSquadIsekai from "./SuicideSquadIsekai/suicide-squad-isekai";
 import Berserk from "./Berserk/berserk";
+import GrandBlue from "./GrandBlue/grand-blue";
+import PrisonSchool from "./PrisonSchool/prison-school";
+import Gleipnir from "./Gleipnir/gleipnir";
+import DevilmanCrybaby from "./DevilmanCrybaby/devilman-crybaby";
+import d91Days from "./91Days/91-days";
 
 export interface AnimesType {
   anime: string;
@@ -737,6 +742,7 @@ export const ANIMES: AnimesType[] = [
       "Isekai",
       "Romance",
       "Psychologique",
+      "Ecchi",
       "Nouvelles saisons",
     ],
     aliases: ["Isekai Ittara Honki Dasu"],
@@ -868,7 +874,14 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "No Game, No Life",
-    category: ["Isekai", "Fantasy", "Action", "Comédie", "Science-fiction"],
+    category: [
+      "Isekai",
+      "Fantasy",
+      "Action",
+      "Comédie",
+      "Science-fiction",
+      "Ecchi",
+    ],
     options: new NoGameNoLife(),
     synopsis:
       "Sora et Shiro sont deux frère et sœur hikikomori. L'hikikomori désigne une pathologie psycho-sociale caractérisant les personnes (souvent des adolescents) qui vivent coupées du monde en restant cloîtrées chez elles, refusant toute communication. Dans le cas des deux protagonistes, leur condition vient de leur vision du monde réel, qui se résume à un jeu guère intéressant. Ensemble, ils forment un duo de joueurs invaincus, véritable légende urbaine. Un jour, un garçon se qualifiant de \"Dieu\" les transporte dans un monde fantastique, où il a interdit toute forme de violence entre les 16 races différentes y vivant. À la place, toute décision ou conflit est réglé par le jeu. Les deux adolescents y sont convoqués car ils pourraient bien être les sauveurs de l'humanité, la race Imanity qui, classée dernière parmi les 16 races, se retrouve confinée dans leur seule et unique cité restante. Durant leur quête pour sauver l'Imanity, ils rencontrent Stephanie Dola : reconnue comme la petite fille de l'ancien roi considéré comme fou, Jibril : une Flügel qui est l'une des races les plus puissantes et Kurami Zell : une ancienne ennemie devenue une alliée.",
@@ -1164,6 +1177,61 @@ export const ANIMES: AnimesType[] = [
       "Dans un monde médiéval et marqué par un passé difficile, erre un mercenaire solitaire nommé Guts, décidé à être seul maître de son destin. Autrefois contraint par un pari perdu à rejoindre les Faucons, une troupe de mercenaires dirigés par Griffith, Guts fut acteur de nombreux combats sanglants et témoin de sombres intrigues politiques. Mais il réalisa soudain que la fatalité n'existe pas et qu'il pouvait reprendre sa liberté s'il le désirait vraiment... Mais un mal le traque sans relâche.",
     options: new Berserk(),
     aliases: ["The Prototype"],
+  },
+  {
+    anime: "Grand Blue",
+    category: ["Comédie", "School Life", "Slice of Life"],
+    aliases: ["Dreaming"],
+    synopsis:
+      "L'histoire se centre sur Kitahara Iori qui vient de déménager de son plein gré dans la ville côtière d'Izu. Durant son temps libre, il travaille dans la boutique de plongée de son oncle où des étudiants à l'université, passionnés de plongée, y traînent. Il découvre qu'à l'université on passe plus de temps à draguer les filles et à s'amuser avec ses amis plutôt qu'à étudier. Ainsi, un nouveau chapitre de sa vie s'est ouvert, rempli de plongée avec de jolies femmes.",
+    options: new GrandBlue(),
+  },
+  {
+    anime: "Prison School",
+    category: ["Comédie", "Ecchi", "Romance", "School Life"],
+    options: new PrisonSchool(),
+    aliases: ["Kangoku Gakuen"],
+    synopsis:
+      "Le lycée Hachimitsu est réputé pour être un des plus sévères du pays. Jusqu'à cette année, il était réservé aux filles, mais les garçons y sont désormais autorisés. Seulement, comme c'est l'année-test, ils ne sont que cinq dans tout l'établissement ! Kiyoshi est l'un d'eux. Il est particulièrement timide mais cherche à discuter avec des filles. Dès le premier jour, il fait connaissance avec Chiyo car la jeune fille est amatrice de sumo, tout comme lui. Mais à peine ont-ils lié amitié que ses quatre camarades garçons décident d'aller espionner les filles aux bains ! Kiyoshi acceptera-il de les accompagner, au risque de perdre la confiance de son amie ?",
+  },
+  {
+    anime: "Gleipnir",
+    category: [
+      "Action",
+      "Comédie",
+      "Drame",
+      "Ecchi",
+      "Mystère",
+      "Psychologique",
+      "Romance",
+      "School Life",
+      "Surnaturel",
+      "Thriller",
+    ],
+    synopsis:
+      "Shûichi Kagaya, un lycéen jusqu'ici sans histoires devient subitement capable de se transformer en un gigantesque 'monstre' aux capacités hors normes. Il sauve ainsi la vie de Claire coincée dans une maison en feu. Mais Claire découvre son secret et également qu'elle a la possibilité de se faufiler, par le biais d'une fermeture éclair, dans la mascotte incarnée par Shuîchi. Et si Shuîchi n'était pas le seul dans ce cas !? Qu'est-ce qui attend ces deux lycéens désormais liés par le destin !? Leur plus grand combat est sur le point de commencer !! Ne faisons plus qu'un... à la vie, à la mort !",
+    options: new Gleipnir(),
+  },
+  {
+    anime: "Devilman Crybaby",
+    category: ["Action", "Aventure", "Drame", "Horreur", "Surnaturel"],
+    options: new DevilmanCrybaby(),
+    synopsis:
+      "Les démons qui dominaient la Terre il y a longtemps ont vu leur monde détruit. De nos jours, Fudô Akira, un lycéen de faible constitution logeant chez son amie Makimura Miki voit revenir son ami d'enfance,Asuka Ryô, qui a découvert lors de son séjour en Amérique que les démons agissent toujours dans l'ombre et se sont infiltrés dans la société humaine.Ce dernier lui demande de l'aider à les combattre et il va alors fusionner avec Amon, un démon, et ainsi devenir Devilman, l'homme-démon. S'ensuit alors des combats incessants et sanglants où démons et humains montreront les pires facettes de leurs personnalités.",
+  },
+  {
+    anime: "91 Days",
+    category: [
+      "Action",
+      "Drame",
+      "Historique",
+      "Mystère",
+      "Psychologique",
+      "Thriller",
+    ],
+    options: new d91Days(),
+    synopsis:
+      "L'histoire se déroule aux États-Unis, en pleine prohibition. La mafia est alors une puissante organisation à laquelle il ne vaut mieux pas se frotter. Pourtant, Avilio décide d'affronter cette organisation gigantesque dans le seul et unique but de venger sa famille assassinée. Sa cible ? Le groupe pour lequel travaillait son père autrefois.",
   },
 ];
 
