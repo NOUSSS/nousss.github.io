@@ -118,6 +118,7 @@ import PrisonSchool from "./PrisonSchool/prison-school";
 import Gleipnir from "./Gleipnir/gleipnir";
 import DevilmanCrybaby from "./DevilmanCrybaby/devilman-crybaby";
 import d91Days from "./91Days/91-days";
+import Vivy from "./Vivy/vivy";
 
 export interface AnimesType {
   anime: string;
@@ -1232,6 +1233,13 @@ export const ANIMES: AnimesType[] = [
     options: new d91Days(),
     synopsis:
       "L'histoire se déroule aux États-Unis, en pleine prohibition. La mafia est alors une puissante organisation à laquelle il ne vaut mieux pas se frotter. Pourtant, Avilio décide d'affronter cette organisation gigantesque dans le seul et unique but de venger sa famille assassinée. Sa cible ? Le groupe pour lequel travaillait son père autrefois.",
+  },
+  {
+    anime: "Vivy: Fluorite Eye's Song",
+    category: ["Action", "Drame", "Mystère", "Science-fiction"],
+    options: new Vivy(),
+    synopsis:
+      "'NiaLand' est parc d'attraction à thème sur l'intelligence artificielle où se mêlent rêves, espoirs et science. Vivy, la première IA humanoïde autonome jamais créée, travaille au parc et continue de monter sur scène tous les jours pour chanter. Cependant, cette dernière est loin d'être aussi populaire que prévu.. Vivy a pour mission de rendre tout le monde heureux en chantant. Afin de remplir sa mission, elle continue de chanter avec l'objectif de se tenir un jour sur la scène principale du parc. Un jour, Vivy fait la rencontre d'une IA qui se fait appeler Matsumoto. Ce dernier prétend être une IA venant de 100 ans dans le futur et que sa mission est de travailler avec Vivy pour changer l'histoire afin d'empêcher la guerre entre les IA et les humains qui aura lieu dans 100 ans. Comment la rencontre entre deux IA ayant des objectifs différents va-t-elle changer l'avenir ?",
   },
 ];
 
