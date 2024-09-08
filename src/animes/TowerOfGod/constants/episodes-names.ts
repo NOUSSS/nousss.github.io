@@ -17,6 +17,12 @@ const names = [
   { name: "La chambre digne de confiance", index: "16" },
   { name: "Nouilles et firmament", index: "17" },
   { name: "L'autre équipe", index: "18" },
+  { name: "La fleur de Zigena", index: "19" },
+  { name: "Mazino le magicien", index: "20" },
+  { name: "Elle s'appelle Émilie", index: "21" },
+  { name: "Le démon à une aile", index: "22" },
+  { name: "La main d'Arlène", index: "23" },
+  { name: "Un mur épais et lointain", index: "24" },
 ];
 
 export default names;
