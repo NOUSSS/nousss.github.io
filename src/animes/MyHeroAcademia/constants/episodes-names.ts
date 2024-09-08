@@ -159,6 +159,8 @@ const names = [
   { index: "155", name: "Au fil du temps" },
   { index: "156", name: "Mezo et nous" },
   { index: "157", name: "Butterfly effect" },
+  { index: "158", name: "Ce qui a conduit à cet instant" },
+  { index: "159", name: "Hopes" },
 ];
 
 export default names;
