@@ -3478,7 +3478,11 @@ const episodes = [
   },
   {
     index: "1117",
-    name: "Le Log de l'insurrection. La secrète Armée révolutionnaire !",
+    name: "Le retour de Sabo. La terrible vérité enfin révélée !",
+  },
+  {
+    index: "1118",
+    name: "La terre sainte sans dessus dessous. Sai et Léo se rebiffent !",
   },
 ];
 
