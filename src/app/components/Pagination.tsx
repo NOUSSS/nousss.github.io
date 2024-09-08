@@ -75,11 +75,13 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
             </button>,
           );
         }
+
         pageNumbers.push(
           <span className="glassBtn mx-1 text-white" key="dots1">
             ...
           </span>,
         );
+
         pageNumbers.push(
           <button
             key={totalPages - 1}
@@ -99,11 +101,13 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
             1
           </button>,
         );
+
         pageNumbers.push(
           <span className="glassBtn mx-1 text-white" key="dots2">
             ...
           </span>,
         );
+
         for (let i = totalPages - 3; i < totalPages; i++) {
           pageNumbers.push(
             <button
@@ -125,11 +129,13 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
             1
           </button>,
         );
+
         pageNumbers.push(
           <span className="glassBtn mx-1 text-white" key="dots3">
             ...
           </span>,
         );
+
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pageNumbers.push(
             <button
@@ -141,11 +147,13 @@ const Pagination: FC<PaginationProps> = ({ items, itemsPerPage }) => {
             </button>,
           );
         }
+
         pageNumbers.push(
           <span className="glassBtn mx-1 text-white" key="dots4">
             ...
           </span>,
         );
+
         pageNumbers.push(
           <button
             key={totalPages - 1}
