@@ -119,6 +119,10 @@ import Gleipnir from "./Gleipnir/gleipnir";
 import DevilmanCrybaby from "./DevilmanCrybaby/devilman-crybaby";
 import d91Days from "./91Days/91-days";
 import Vivy from "./Vivy/vivy";
+import JapanSinks from "./JapanSinks/japan-sinks";
+import RankingOfKings from "./RankingOfKings/ranking-of-kings";
+import Barakamon from "./Barakamon/barakamon";
+import DeathParade from "./DeathParade/death-parade";
 
 export interface AnimesType {
   anime: string;
@@ -1240,6 +1244,36 @@ export const ANIMES: AnimesType[] = [
     options: new Vivy(),
     synopsis:
       "'NiaLand' est parc d'attraction à thème sur l'intelligence artificielle où se mêlent rêves, espoirs et science. Vivy, la première IA humanoïde autonome jamais créée, travaille au parc et continue de monter sur scène tous les jours pour chanter. Cependant, cette dernière est loin d'être aussi populaire que prévu.. Vivy a pour mission de rendre tout le monde heureux en chantant. Afin de remplir sa mission, elle continue de chanter avec l'objectif de se tenir un jour sur la scène principale du parc. Un jour, Vivy fait la rencontre d'une IA qui se fait appeler Matsumoto. Ce dernier prétend être une IA venant de 100 ans dans le futur et que sa mission est de travailler avec Vivy pour changer l'histoire afin d'empêcher la guerre entre les IA et les humains qui aura lieu dans 100 ans. Comment la rencontre entre deux IA ayant des objectifs différents va-t-elle changer l'avenir ?",
+  },
+  {
+    anime: "Japan Sinks 2020",
+    aliases: ["Nihon Chinbotsu 2020", "La Submersion du Japon"],
+    category: ["Action", "Drame", "Science-fiction"],
+    synopsis:
+      "Peu de temps après Tokyo 2020, un séisme d'une rare gravité touche le Japon, poussant inexorablement le pays vers sa chute. Au milieu du chaos, Ayumu et Gou, les enfants de la famille Mutou, commencent à fuir la ville avec leur famille de quatre personnes. Face à la catastrophe, assistant aux dernières heures de l'Archipel, les enfants vont devoir affronter des conditions extrêmes et souvent se retrouver à devoir faire des choix cornéliens pour survivre. Mais le plus important pour eux, sera de toujours rester ensemble.",
+    options: new JapanSinks(),
+  },
+  {
+    anime: "Ranking of Kings",
+    aliases: ["Ousama Ranking", "King Ranking"],
+    category: ["Action", "Aventure", "Comédie", "Drame", "Fantasy"],
+    synopsis:
+      "Le royaume de Boss est en péril. Son fondateur, connu pour sa force herculéenne, est gravement malade, et l'héritier, le jeune prince Bojji, est loin d'avoir le profil pour prendre sa place... Sourd et muet, d'une faiblesse telle qu'il est incapable de manier l'épée, il est la cible de toutes les moqueries, du chevalier au paysan ! S'il accède au trône, le pays est promis à la déchéance dans le classement des rois, dont le principal critère est la puissance des souverains. De ce point de vue, c'est le prince cadet, Daida, qui remporte le soutien populaire... Pourtant, Bojji arbore un éternel sourire. Même quand une mystérieuse ombre lui ordonne de lui donner ses vêtements, il s'exécute avec plaisir ! Car, pour la première fois de sa vie, le garçon trouve un partenaire de conversation. Cet étrange voleur comprend ses paroles... Bojji lui dévoile alors son rêve : devenir le meilleur roi du monde !",
+    options: new RankingOfKings(),
+  },
+  {
+    anime: "Barakamon",
+    category: ["Comédie", "Slice of Life"],
+    synopsis:
+      "Seishuu Handa, calligraphe de talent, est envoyé sur une île en pleine campagne pour avoir littéralement mis une gifle à un directeur d'exposition, non-content de ses œuvres. Alors qu'il traîne des pieds pour y aller, il finit par s'attacher petit à petit aux villageois : enfants, parents, grands-parents... tous ont une histoire à raconter et une expérience à apporter à Seishuu.",
+    options: new Barakamon(),
+  },
+  {
+    anime: "Death Parade",
+    category: ["Drame", "Mystère", "Psychologique"],
+    options: new DeathParade(),
+    synopsis:
+      "L'histoire débute avec l'arrivée de deux personnages, Takashi et Machiko, dans un bar étrange. Ils ne se souviennent même pas comment ils sont arrivés ici, et le maître des lieux, Decim, ne répond quasiment pas à leurs questions, leur imposant de jouer à un jeu. N'ayant pas d'autre choix, les voici entraînés dans une suite d'événements inattendus qui devraient révéler leur vraie nature que Decim jugera en conséquence. 'Bienvenue au Quindecim'",
   },
 ];
 
