@@ -3484,6 +3484,18 @@ const episodes = [
     index: "1118",
     name: "La terre sainte sans dessus dessous. Sai et Léo se rebiffent !",
   },
+  {
+    index: "1119",
+    name: "Un message à transmettre. La détermination du roi Cobra !",
+  },
+  {
+    index: "1120",
+    name: "Le monde choqué. Le jugement du souverain et la mise en marche des cinq doyens !",
+  },
+  {
+    index: "1121",
+    name: "Garp et Kuzan. La justice conflictuelle entre l'instructeur et l'élève !",
+  },
 ];
 
 export default episodes;
