@@ -163,6 +163,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <p className="text-2xl font-normal transition-colors hover:text-main max-sm:hidden">
                 Mugiwara-no Streaming
               </p>
+
+              <Image
+                src="/palestine.png"
+                alt="palestine"
+                width={60}
+                height={60}
+                className="w-10"
+              />
             </h1>
           </Link>
 
