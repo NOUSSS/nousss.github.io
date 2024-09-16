@@ -480,6 +480,17 @@ const Episodes = () => {
       </Head>
 
       <main className="flex flex-col items-center">
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {disclamerMessage.current && (
           <p
             className="disclamer mt-12 text-xl text-red-500"
@@ -742,6 +753,17 @@ const Episodes = () => {
               </ul>
             </div>
           )}
+
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
 
         <Footer style={true} media />
       </main>

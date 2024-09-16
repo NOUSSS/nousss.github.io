@@ -153,6 +153,17 @@ const Films = () => {
       </Head>
 
       <main className="flex flex-col items-center">
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {anime.lang && (
           <Watcher
             prefix={false}
@@ -195,6 +206,17 @@ const Films = () => {
             </li>
           ))}
         </ul>
+
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
 
         <Footer style={true} media />
       </main>

@@ -197,6 +197,17 @@ const Scans = () => {
       </Head>
 
       <main className="flex select-none flex-col items-center">
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {anime?.anime && (
           <Link
             className="mb-12 animate-title text-5xl font-normal"
@@ -428,6 +439,17 @@ const Scans = () => {
             size="25px"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           />
+        </div>
+
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
         </div>
 
         <Footer style={true} media />

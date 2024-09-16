@@ -227,6 +227,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <GoogleAnalytics gaId="G-F9N37DQQDM" />
 
+      <script
+        id="aclib"
+        type="text/javascript"
+        src="//acscdn.com/script/aclib.js"
+      ></script>
+
       {children}
     </>
   );

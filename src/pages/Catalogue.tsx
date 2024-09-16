@@ -39,6 +39,17 @@ export default function Catalogue() {
       </Head>
 
       <main className="mx-2 md:mx-16 lg:mx-36">
+        <div>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         <div className="mb-12 flex flex-col gap-5">
           <h3 className="text-2xl md:text-4xl">
             {finded} trouvé{finded > 1 ? "s" : ""}
@@ -114,6 +125,17 @@ export default function Catalogue() {
           />
         </div>
       </main>
+
+      <div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `aclib.runBanner({
+            zoneId: '8748782',
+        });`,
+          }}
+          type="text/javascript"
+        ></script>
+      </div>
 
       <div className="mt-24">
         <Footer style={true} />
