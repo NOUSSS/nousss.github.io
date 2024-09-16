@@ -2,12 +2,13 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { cn, random, restoreLocalStorage } from "../lib";
+import { useRouter } from "next/router";
 
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import Script from "next/script";
 import FastSearchBar from "./Fast-Searchbar";
-import { useRouter } from "next/router";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -227,11 +228,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <GoogleAnalytics gaId="G-F9N37DQQDM" />
 
-      <script
+      <Script
         id="aclib"
         type="text/javascript"
         src="//acscdn.com/script/aclib.js"
-      ></script>
+      ></Script>
 
       {children}
     </>
