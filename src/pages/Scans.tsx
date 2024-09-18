@@ -209,7 +209,7 @@ const Scans = () => {
           ></script>
         </div>
 
-        <div className="max-lg:hidden">
+        <div className="fixed left-0 max-lg:hidden">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
