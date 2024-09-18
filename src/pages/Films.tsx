@@ -164,6 +164,17 @@ const Films = () => {
           ></script>
         </div>
 
+        <div className="max-lg:hidden">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8765122',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {anime.lang && (
           <Watcher
             prefix={false}

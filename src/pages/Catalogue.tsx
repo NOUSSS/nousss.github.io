@@ -50,6 +50,17 @@ export default function Catalogue() {
           ></script>
         </div>
 
+        <div className="max-lg:hidden">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8765122',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         <div className="mb-12 flex flex-col gap-5">
           <h3 className="text-2xl md:text-4xl">
             {finded} trouvé{finded > 1 ? "s" : ""}

@@ -491,6 +491,17 @@ const Episodes = () => {
           ></script>
         </div>
 
+        <div className="max-lg:hidden">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8765122',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {disclamerMessage.current && (
           <p
             className="disclamer mt-12 text-xl text-red-500"

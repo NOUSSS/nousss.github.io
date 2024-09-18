@@ -208,6 +208,17 @@ const Scans = () => {
           ></script>
         </div>
 
+        <div className="max-lg:hidden">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `aclib.runBanner({
+            zoneId: '8765122',
+        });`,
+            }}
+            type="text/javascript"
+          ></script>
+        </div>
+
         {anime?.anime && (
           <Link
             className="mb-12 animate-title text-5xl font-normal"
