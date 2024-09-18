@@ -47,6 +47,7 @@ export default function Catalogue() {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -58,6 +59,7 @@ export default function Catalogue() {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -145,6 +147,7 @@ export default function Catalogue() {
         });`,
           }}
           type="text/javascript"
+          async
         ></script>
       </div>
 

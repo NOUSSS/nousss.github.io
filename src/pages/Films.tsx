@@ -161,6 +161,7 @@ const Films = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -172,6 +173,7 @@ const Films = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -226,6 +228,7 @@ const Films = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 

@@ -488,6 +488,7 @@ const Episodes = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -499,6 +500,7 @@ const Episodes = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -773,6 +775,7 @@ const Episodes = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 

@@ -205,6 +205,7 @@ const Scans = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -216,6 +217,7 @@ const Scans = () => {
         });`,
             }}
             type="text/javascript"
+            async
           ></script>
         </div>
 
@@ -459,6 +461,7 @@ const Scans = () => {
             zoneId: '8748782',
         });`,
             }}
+            async
             type="text/javascript"
           ></script>
         </div>
