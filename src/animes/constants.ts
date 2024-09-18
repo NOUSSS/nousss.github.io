@@ -123,6 +123,7 @@ import JapanSinks from "./JapanSinks/japan-sinks";
 import RankingOfKings from "./RankingOfKings/ranking-of-kings";
 import Barakamon from "./Barakamon/barakamon";
 import DeathParade from "./DeathParade/death-parade";
+import RakudaiKishi from "./RakudaiKishi/rakudai-kishi";
 
 export interface AnimesType {
   anime: string;
@@ -1274,6 +1275,22 @@ export const ANIMES: AnimesType[] = [
     options: new DeathParade(),
     synopsis:
       "L'histoire débute avec l'arrivée de deux personnages, Takashi et Machiko, dans un bar étrange. Ils ne se souviennent même pas comment ils sont arrivés ici, et le maître des lieux, Decim, ne répond quasiment pas à leurs questions, leur imposant de jouer à un jeu. N'ayant pas d'autre choix, les voici entraînés dans une suite d'événements inattendus qui devraient révéler leur vraie nature que Decim jugera en conséquence. 'Bienvenue au Quindecim'",
+  },
+  {
+    anime: "Rakudai Kishi no Cavalry",
+    aliases: ["Chivalry of a Failed Knight", "Rakudai Kishi no Eiyuutan"],
+    category: [
+      "Action",
+      "Drame",
+      "Ecchi",
+      "Fantasy",
+      "Romance",
+      "School Life",
+      "Surnaturel",
+    ],
+    options: new RakudaiKishi(),
+    synopsis:
+      "Au sein de l'académie japonaise Hagune, les élèves sont répertoriés et classés selon leur aptitude au combat ainsi que leur niveau d'escrime. Kurogane Ikki est un chevalier-mage novice ne jouissant d'aucun talent particulier. Il est en outre l'un des élèves les plus faibles de l'académie bien qu'il soit issu d'un illustre clan dont la réputation n'est plus à faire. Malgré ses mauvaises notes et son faible rang, notre héros n'a jamais renoncé à ses rêves et espère bien un jour siéger sur la plus haute marche du podium des chevaliers-mages. La vie d'Ikki bascule du tout ou tout lorsqu'il est affecté au même dortoir que Stella Vermillon, une princesse dirigeant un modeste royaume situé en Europe. Belle, talentueuse et sérieuse, Stella est tout le contraire d'Ikki : elle est née avec un talent inné et nul ne peut l'égaler au combat. Qui plus est, elle est classée dans les meilleurs élèves de l'académie. En la personne de Stella, notre héros trouvera tout d'abord une rivale mais également une alliée, une partenaire de choc qui visiblement le poussera à se surpasser au plus haut niveau. Déterminés à remporter le tournoi réunissant les sept académies de magie les plus prestigieuses du pays, Ikki et Stella vont dès lors s'entrainer rigoureusement afin d'être sélectionnés. Seront-ils en mesure d'atteindre leur objectif ?",
   },
 ];
 
