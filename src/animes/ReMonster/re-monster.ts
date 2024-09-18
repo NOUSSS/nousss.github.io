@@ -2,6 +2,7 @@ import { getImage } from "./constants/images-saisons";
 import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/ReMonster/affiche.jpg";
+import episodes from "./constants/episodes-names";
 
 class ReMonster extends Anime {
   constructor() {
@@ -23,6 +24,8 @@ class ReMonster extends Anime {
       allIndex: {
         1: 0,
       },
+
+      names: episodes,
     };
   }
 }
