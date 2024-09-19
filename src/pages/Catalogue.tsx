@@ -39,7 +39,7 @@ export default function Catalogue() {
       </Head>
 
       <main className="mx-2 md:mx-16 lg:mx-36">
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
@@ -139,7 +139,7 @@ export default function Catalogue() {
         </div>
       </main>
 
-      <div>
+      <div className="relative">
         <script
           dangerouslySetInnerHTML={{
             __html: `aclib.runBanner({

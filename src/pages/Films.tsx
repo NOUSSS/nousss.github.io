@@ -153,7 +153,7 @@ const Films = () => {
       </Head>
 
       <main className="flex flex-col items-center">
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
@@ -220,7 +220,7 @@ const Films = () => {
           ))}
         </ul>
 
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({

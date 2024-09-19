@@ -197,7 +197,7 @@ const Scans = () => {
       </Head>
 
       <main className="flex select-none flex-col items-center">
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
@@ -454,7 +454,7 @@ const Scans = () => {
           />
         </div>
 
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({

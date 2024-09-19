@@ -480,7 +480,7 @@ const Episodes = () => {
       </Head>
 
       <main className="flex flex-col items-center">
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
@@ -767,7 +767,7 @@ const Episodes = () => {
             </div>
           )}
 
-        <div>
+        <div className="relative">
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
