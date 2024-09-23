@@ -64,13 +64,6 @@ class TenseiShitara extends Anime {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/tensei-shitara-slime-datta-ken/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [
-        {
-          saison: "3",
-          hs: [0],
-        },
-      ],
-
       allIndex: {
         1: 0,
         2: 25,
