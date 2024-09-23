@@ -124,6 +124,7 @@ import RankingOfKings from "./RankingOfKings/ranking-of-kings";
 import Barakamon from "./Barakamon/barakamon";
 import DeathParade from "./DeathParade/death-parade";
 import RakudaiKishi from "./RakudaiKishi/rakudai-kishi";
+import TenseiShitara from "./TenseiShitara/tensei-shitara";
 
 export interface AnimesType {
   anime: string;
@@ -1291,6 +1292,19 @@ export const ANIMES: AnimesType[] = [
     options: new RakudaiKishi(),
     synopsis:
       "Au sein de l'académie japonaise Hagune, les élèves sont répertoriés et classés selon leur aptitude au combat ainsi que leur niveau d'escrime. Kurogane Ikki est un chevalier-mage novice ne jouissant d'aucun talent particulier. Il est en outre l'un des élèves les plus faibles de l'académie bien qu'il soit issu d'un illustre clan dont la réputation n'est plus à faire. Malgré ses mauvaises notes et son faible rang, notre héros n'a jamais renoncé à ses rêves et espère bien un jour siéger sur la plus haute marche du podium des chevaliers-mages. La vie d'Ikki bascule du tout ou tout lorsqu'il est affecté au même dortoir que Stella Vermillon, une princesse dirigeant un modeste royaume situé en Europe. Belle, talentueuse et sérieuse, Stella est tout le contraire d'Ikki : elle est née avec un talent inné et nul ne peut l'égaler au combat. Qui plus est, elle est classée dans les meilleurs élèves de l'académie. En la personne de Stella, notre héros trouvera tout d'abord une rivale mais également une alliée, une partenaire de choc qui visiblement le poussera à se surpasser au plus haut niveau. Déterminés à remporter le tournoi réunissant les sept académies de magie les plus prestigieuses du pays, Ikki et Stella vont dès lors s'entrainer rigoureusement afin d'être sélectionnés. Seront-ils en mesure d'atteindre leur objectif ?",
+  },
+  {
+    anime: "Tensei Shitara Slime Datta Ken",
+    aliases: [
+      "Moi, quand je me réincarne en Slime",
+      "That Time I Got Reincarnated as a Slime",
+      "Regarding Reincarnated to Slime",
+      "Tensura",
+    ],
+    category: ["Action", "Aventure", "Comédie", "Drame", "Fantasy", "Isekai"],
+    options: new TenseiShitara(),
+    synopsis:
+      "Satoru, employé de bureau lambda, se fait assassiner par un criminel en pleine rue. Son histoire aurait dû s'arrêter là, mais il se retrouve soudain réincarné dans un autre monde sous la forme d'un Slime, le monstre le plus faible du bestiaire fantastique. Son nouveau corps est équipé de deux compétences uniques : « Prédateur », lui permettant de récupérer les aptitudes de ses adversaires, et « Grand sage », grâce à laquelle il acquiert une compréhension aigüe de son environnement. Mais même muni de ces armes, ses chances de survie semblent encore limitées...",
   },
 ];
 
