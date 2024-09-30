@@ -376,14 +376,18 @@ export default function Accueil() {
                 >
                   {category === "Reprendre" ? (
                     <>
-                      <p className="font-normal drop-shadow-2xl">{category}</p>
+                      <p className="text-2xl font-normal drop-shadow-2xl md:text-3xl">
+                        {category}
+                      </p>
                       <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
                       <RemoveHistorique setHistoriques={setHistoriques} />
                     </>
                   ) : (
                     <div className="flex items-center justify-between gap-4">
-                      <p className="font-normal drop-shadow-2xl">{category}</p>
+                      <p className="text-2xl font-normal drop-shadow-2xl md:text-3xl">
+                        {category}
+                      </p>
 
                       <div className="flex items-center gap-2 text-lg text-zinc-400">
                         <ArrowUpRight />
@@ -550,11 +554,11 @@ export default function Accueil() {
                               fetchedAnime?.synopsis ??
                               "Aucun synopsis pour cette anime"
                             }
-                            className="w-40 transition-all hover:scale-[.97] max-md:mr-1 md:w-44"
+                            className="w-48 transition-all hover:scale-[.97] max-md:mr-1 md:w-56"
                           >
                             <div className="overflow-hidden shadow-xl">
                               <Image
-                                className="aspect-[2/3] w-40 transition-transform md:w-44"
+                                className="aspect-[2/3] w-48 transition-transform md:w-56"
                                 src={getWallpaper(animeName)!}
                                 alt="affiche d'un anime"
                               />
