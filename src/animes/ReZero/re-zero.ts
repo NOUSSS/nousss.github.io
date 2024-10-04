@@ -24,6 +24,7 @@ class ReZero extends Anime {
       3: {
         name: "Saison 3",
         image: () => getImage(3)
+      },
     };
 
     this.FILM_OPTIONS = {
