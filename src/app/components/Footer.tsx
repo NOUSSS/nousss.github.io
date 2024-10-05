@@ -51,8 +51,9 @@ const Footer: FC<FooterProps> = ({ media = false, style }) => {
 
       {media && (
         <p className="mb-5">
+          Mugiwara no Streaming n'héberge aucune vidéo dans son serveur.
           Contactez directement la plateforme d'hébergement vidéo pour toutes
-          réclamations de droits relatifs aux contenus en question.
+          réclamations de droits.
         </p>
       )}
 
