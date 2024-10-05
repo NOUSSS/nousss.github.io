@@ -23,15 +23,13 @@ export function getSaisons() {
             : saisonsValues[i].aliases?.join(", ")
         } ${i === Object.keys(saisonsValues).length - 1 ? "" : intervalEpisodes}`,
         element: (
-          <>
-            <div className="overflow-hidden rounded-md text-center">
-              <Image
-                src={saisonsValues[i].image()}
-                id={i.toString()}
-                alt="poster de saison"
-                className="aspect-[2/3] w-32 rounded-md transition-transform group-hover:scale-105 md:w-44"
-              />
-            </div>
+          <div className="transition-transform hover:scale-[.97]">
+            <Image
+              src={saisonsValues[i].image()}
+              id={i.toString()}
+              alt="poster de saison"
+              className="aspect-[2/3] w-32 md:w-44"
+            />
 
             <p className="relative top-2 text-sm md:text-base">
               {saisonsValues[i].name}
@@ -44,7 +42,7 @@ export function getSaisons() {
                   : `(${intervalEpisodes})`}
               </span>
             </p>
-          </>
+          </div>
         ),
       });
     }

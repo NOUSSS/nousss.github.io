@@ -82,11 +82,10 @@ const Saisons = () => {
                 }}
                 className="text-main hover:underline"
               >
-                {
-                  Object.values(anime?.anime?.options.saisons!)[
+                {anime.anime.options.saisons &&
+                  Object.values(anime.anime.options.saisons)[
                     Number(anime?.saison) - 1
-                  ]?.name
-                }
+                  ]?.name}
               </Link>
             </>
           )}
