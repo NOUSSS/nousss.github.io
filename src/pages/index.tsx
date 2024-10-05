@@ -346,8 +346,16 @@ export default function Accueil() {
                   <Link
                     href={{ pathname: "/Home", query: { anime: anime.anime } }}
                   >
+                    <div className="relative top-2 rounded-lg">
+                      <Image
+                        className="aspect-video h-full w-[900px] min-w-[900px] scale-90 rounded-lg border border-white max-lg:min-w-full max-lg:max-w-full"
+                        alt="affiche d'un anime aléatoire"
+                        src={anime.options.affiche!}
+                      />
+                    </div>
+
                     <Image
-                      className="aspect-video h-full w-[900px] min-w-[900px] max-lg:min-w-full max-lg:max-w-full"
+                      className="absolute top-0 -z-10 aspect-video h-full w-[900px] min-w-[900px] blur-md max-lg:min-w-full max-lg:max-w-full"
                       alt="affiche d'un anime aléatoire"
                       src={anime.options.affiche!}
                     />
