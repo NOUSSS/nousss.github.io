@@ -603,12 +603,7 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Ninja Kamui",
-    category: [
-      "Action",
-      "Nouvelles saisons",
-      "Science-fiction",
-      "Arts Martiaux",
-    ],
+    category: ["Action", "Science-fiction", "Arts Martiaux"],
     options: new NinjaKamui(),
     synopsis:
       "Joe Higan, ancien ninja, tombe dans une embuscade tendue par des assassins qui cherchent à se venger de sa trahison et de celle de sa famille, après avoir échappé à son clan et s'être enfui dans l'Amérique rurale.",
@@ -750,7 +745,6 @@ export const ANIMES: AnimesType[] = [
       "Romance",
       "Psychologique",
       "Ecchi",
-      "Nouvelles saisons",
     ],
     aliases: ["Isekai Ittara Honki Dasu"],
     synopsis:
@@ -869,13 +863,13 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "Re:Monster",
-    category: ["Action", "Nouvelles saisons", "Isekai"],
+    category: ["Action", "Isekai"],
     options: new ReMonster(),
     synopsis: `Après avoir été assassiné, Kanata Tomokui se réincarne dans le corps d'un faible gobelin du nom de Goburô. Cependant, ce dernier a conservé les souvenirs de sa vie antérieure. Bien que faible au départ, Goburô va rapidement devenir l'un des piliers de la race des gobelins grâce à sa compétence "d'absorption" qui lui permet d'obtenir les pouvoirs de ce qu'il mange. Dans ce monde où le plus fort survit, cette histoire va suivre l'ascension fulgurante de Goburô et de ses camarades.`,
   },
   {
     anime: "The Fable",
-    category: ["Action", "Drame", "Nouvelles saisons"],
+    category: ["Action", "Drame"],
     options: new TheFable(),
     synopsis: `Muni de son arme favorite, un pistolet Nighthawk couleur anthracite, "Fable" est un tueur professionnel craint de toute la pègre japonaise. Hommes politiques, mafieux, personnalités publiques... Ce génie de l'assassinat peut envoyer n'importe laquelle de ses cibles six pieds sous terre. Et en six secondes, si le cœur lui en dit. Sauf qu'un beau jour, son commanditaire lui ordonne de tout mettre en pause et de mener la vie d'un citoyen ordinaire, dans la planque d'un clan de yakuzas à Osaka. Interdiction de tuer ou d'attaquer qui que ce soit pendant une année entière. Pour cette arme humaine au tempérament imprévisible, entourée de criminels à la gâchette facile, c'est le plus dur des contrats qui commence...`,
   },
@@ -1080,13 +1074,7 @@ export const ANIMES: AnimesType[] = [
       "The Raven Does Not Choose Its Master",
       "The Crow Does Not Choose the Lord",
     ],
-    category: [
-      "Surnaturel",
-      "Drame",
-      "Historique",
-      "Fantasy",
-      "Nouvelles saisons",
-    ],
+    category: ["Surnaturel", "Drame", "Historique", "Fantasy"],
     options: new Yatagarasu(),
     synopsis:
       "Le monde alternatif de Yamauchi est gouverné par le clan Yatagarasu, dont les membres ont la faculté de se transformer en corbeaux. Yukiya, jeune membre du clan, est un jour choisi pour servir le prince. Entre complots et lutte de pouvoir, les deux garçons nouent une étroite amitié.",
@@ -1126,14 +1114,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Viral Hit",
     aliases: ["Ssaumdokhak", "Kenka Dokugaku"],
-    category: [
-      "School Life",
-      "Action",
-      "Arts Martiaux",
-      "Drame",
-      "Nouvelles saisons",
-      "Webtoon",
-    ],
+    category: ["School Life", "Action", "Arts Martiaux", "Drame", "Webtoon"],
     synopsis:
       "Le lycéen tout maigre et fragile Yoo Ho Bin est probablement le dernier gars qu'on s'attendrait à voir sur une chaîne Newtube qui tourne autour des combats. Mais après avoir suivi les conseils d'une mystérieuse chaîne Newtube, Ho Bin assomme des gars plus forts que lui et engrange plus d'argent qu'il n'aurait jamais pu rêver. Ho Bin pourra-t-il continuer comme ça ou finira-t-il par rencontrer son égal ?",
     options: new ViralHit(),
