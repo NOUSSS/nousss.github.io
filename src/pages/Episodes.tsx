@@ -14,7 +14,11 @@ import { useRouter } from "next/router";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
 import { useScript, useAnime } from "@/app/lib/hooks/";
-import { NextEpisode, PrevEpisode } from "@/app/utils/Episodes/episode-manager";
+import {
+  Change,
+  NextEpisode,
+  PrevEpisode,
+} from "@/app/utils/Episodes/episode-manager";
 import { icons } from "lucide-react";
 import { ANIMES } from "@/animes/constants";
 
@@ -546,7 +550,7 @@ const Episodes = () => {
               </div>
             </div>
 
-            <div className="my-8 flex w-full flex-col justify-between gap-5 min-[450px]:flex-row lg:justify-between">
+            <div className="my-8 flex w-full flex-col justify-between gap-3 min-[450px]:flex-row min-[450px]:gap-5">
               <button
                 disabled={episodeData?.get()?.episode === "1"}
                 className="glassBtn"
@@ -563,6 +567,27 @@ const Episodes = () => {
               >
                 <Prev />
                 Épisode précedent
+              </button>
+
+              <button
+                disabled={
+                  episodeData?.get()?.episode ===
+                  anime.currentLecteur?.length.toString()
+                }
+                className="glassBtn"
+                onClick={() =>
+                  Change(
+                    anime.currentLecteur!.length,
+                    anime?.currentLecteur!,
+                    updateAnime,
+                    anime!,
+                    containerRef,
+                    episodeTitleRef,
+                    episodesListRef,
+                  )
+                }
+              >
+                Dernier épisode
               </button>
 
               <button
