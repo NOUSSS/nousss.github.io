@@ -42,18 +42,18 @@ export function getFilms(
 
       filmsNodes.push({
         element: (
-          <>
-            <div className="flex-col overflow-hidden rounded-md text-center">
-              <Image
-                src={names[i].image()}
-                id={i.toString()}
-                alt="poster de film"
-                className="aspect-[2/3] w-28 rounded-md transition-transform group-hover:scale-105 md:w-36"
-              />
-            </div>
+          <div className="transition-transform hover:scale-[.97]">
+            <Image
+              src={names[i].image()}
+              id={i.toString()}
+              alt="poster de film"
+              className="aspect-[2/3] w-28 md:w-36"
+            />
 
-            <p className="text-sm md:text-base">{names[i].name}</p>
-          </>
+            <p className="relative top-1 text-sm md:text-base">
+              {names[i].name}
+            </p>
+          </div>
         ),
         url,
         id,
