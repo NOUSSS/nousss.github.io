@@ -161,6 +161,10 @@ const names = [
   { index: "157", name: "Butterfly effect" },
   { index: "158", name: "Ce qui a conduit à cet instant" },
   { index: "159", name: "Hopes" },
+  { index: "160", name: "It's a Small World" },
+  { index: "161", name: "La cavalerie est là" },
+  { index: "162", name: "Les sentiments d'une adolescente" },
+  { index: "163", name: "Un combat sans alters" },
 ];
 
 export default names;

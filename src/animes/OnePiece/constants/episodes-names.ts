@@ -3496,6 +3496,10 @@ const episodes = [
     index: "1121",
     name: "Garp et Kuzan. La justice conflictuelle entre l'instructeur et l'élève !",
   },
+  {
+    index: "1122",
+    name: "La dernière leçon. L'impact hérité !",
+  },
 ];
 
 export default episodes;
