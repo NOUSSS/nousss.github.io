@@ -6,6 +6,7 @@ import { ANIMES } from "@/animes/constants";
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { Options } from "@/typings/types";
 
 interface Error {
   manque: number;
@@ -47,7 +48,21 @@ export default function Suggest() {
                     `/api/seasonAS?url=${url.replace("https://", "")}`,
                   ).then((r) => r.json());
 
-                  const saisonsMNS = Object.keys(options.saisons).length;
+                  const saisons: Options.Season = {};
+
+                  for (
+                    let i = 0;
+                    i < Object.keys(options.saisons).length;
+                    i++
+                  ) {
+                    if (!Object.values(options.saisons)[i].hs) {
+                      saisons[Object.keys(options.saisons)[i]] = Object.values(
+                        options.saisons,
+                      )[i];
+                    }
+                  }
+
+                  const saisonsMNS = Object.keys(saisons).filter(Number).length;
 
                   if (saisonsAS.saisons > saisonsMNS) {
                     setErrors((prevErrors) => [
