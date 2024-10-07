@@ -322,7 +322,7 @@ export default function Accueil() {
                                     randomAnimes[historiqueIndex].anime,
                                     historiqueIndex,
                                     historiquesFiltered,
-                                  ) ?? "Épisode 1"
+                                  ) ?? ""
                                 }`
                               : (
                                     historiquesFiltered[historiqueIndex]
@@ -339,7 +339,7 @@ export default function Accueil() {
                           randomAnimes[historiqueIndex].anime,
                           historiqueIndex,
                           historiquesFiltered,
-                        ) ?? "Chapitre 1"
+                        ) ?? "Chapitre"
                       }`
                                   : ""
                           }`
