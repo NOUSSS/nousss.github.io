@@ -125,6 +125,7 @@ import Barakamon from "./Barakamon/barakamon";
 import DeathParade from "./DeathParade/death-parade";
 import RakudaiKishi from "./RakudaiKishi/rakudai-kishi";
 import TenseiShitara from "./TenseiShitara/tensei-shitara";
+import DetectiveConan from "./DetectiveConan/detective-conan";
 
 export interface AnimesType {
   anime: string;
@@ -1293,6 +1294,21 @@ export const ANIMES: AnimesType[] = [
     options: new TenseiShitara(),
     synopsis:
       "Satoru, employé de bureau lambda, se fait assassiner par un criminel en pleine rue. Son histoire aurait dû s'arrêter là, mais il se retrouve soudain réincarné dans un autre monde sous la forme d'un Slime, le monstre le plus faible du bestiaire fantastique. Son nouveau corps est équipé de deux compétences uniques : « Prédateur », lui permettant de récupérer les aptitudes de ses adversaires, et « Grand sage », grâce à laquelle il acquiert une compréhension aigüe de son environnement. Mais même muni de ces armes, ses chances de survie semblent encore limitées...",
+  },
+  {
+    anime: "Detective Conan",
+    aliases: ["Case Closed", "Meitantei Conan"],
+    category: [
+      "Action",
+      "Mystère",
+      "Comédie",
+      "Thriller",
+      "Fantastique",
+      "Science-fiction",
+    ],
+    synopsis:
+      "Shinichi Kudo est un brillant lycéen promis à un grand avenir. Il vit seul car ses parents vivent aux États-Unis, mais il passe beaucoup de temps avec Ran, son amie d'enfance qu'il aime en secret, ou avec le professeur Agasa. C'est un excellent détective, qui a le sens de l'observation et un très bon esprit de déduction, mais un jour, il va se faire surprendre alors qu'il espionnait deux hommes en noir suspects. Ils lui feront alors prendre un médicament censé le tuer, mais qui va le faire rajeunir et il redeviendra un enfant de 6 ans. Coincé dans ce corps, Shinichi se fera alors passer pour Conan Edogawa, neveu du professeur, et se fera 'adopter' par Ran dont le père est détective privé. Conan espère ainsi retrouver les hommes en noir, et enfin redevenir lui même.",
+    options: new DetectiveConan(),
   },
 ];
 
