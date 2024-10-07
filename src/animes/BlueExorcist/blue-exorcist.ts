@@ -26,6 +26,11 @@ export default class BlueExorcist extends Anime {
         aliases: ["3"],
         image: () => getImagesSaisons(3),
       },
+      4: {
+        name: "Saison 4",
+        aliases: ["3"],
+        image: () => getImagesSaisons(4),
+      },
     };
 
     this.FILM_OPTIONS = {
@@ -60,6 +65,7 @@ export default class BlueExorcist extends Anime {
         1: 0,
         2: 25,
         3: 37,
+        4: 49,
       },
 
       names,

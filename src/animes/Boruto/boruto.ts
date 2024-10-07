@@ -13,7 +13,13 @@ class Boruto extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tous les épisodes",
+        name: "Tous les épisodes (avec fillers)",
+        aliases: ["code", "shikamaru", "sasuke", "naruto"],
+        image: () => getImage(1),
+      },
+      2: {
+        name: "Tous les épisodes (sans fillers)",
+        hs: true,
         aliases: ["code", "shikamaru", "sasuke", "naruto"],
         image: () => getImage(1),
       },
@@ -44,9 +50,6 @@ class Boruto extends Anime {
       ],
     };
 
-    this.note =
-      'Je conseille d\'aller sur <a href="https://furansujapon.com/actualite/boruto-liste-episode/" target="_blank">ce site</a> pour voir les hors series';
-
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/boruto/saison${index}/${lang}/episodes.js`,
@@ -54,6 +57,8 @@ class Boruto extends Anime {
       allIndex: {
         1: 0,
       },
+
+      noc: true,
 
       names,
     };

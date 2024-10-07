@@ -15,6 +15,11 @@ export default class BlueLock extends Anime {
 
         image: () => getImage(1),
       },
+      2: {
+        name: "Saison 2",
+
+        image: () => getImage(2),
+      },
     };
 
     this.SCANS_OPTIONS = {

@@ -367,7 +367,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Lock",
     options: new BlueLock(),
-    category: ["Sport", "Thriller"],
+    category: ["Sport", "Drame", "Psychologique", "Nouvelles saisons"],
     synopsis: `Coupe du monde 2018, l'équipe de football du Japon est éliminée en huitièmes de finale... Ce nouvel échec incite l'Union japonaise de football à fonder le "Blue Lock" : un centre de formation révolutionnaire rassemblant les 300 meilleurs attaquants lycéens du pays.`,
   },
   {
@@ -410,7 +410,14 @@ export const ANIMES: AnimesType[] = [
     anime: "Sword Art Online",
     aliases: ["sao"],
     options: new SwordArtOnline(),
-    category: ["Action", "Aventure", "Fantasy", "Romance", "Science-fiction"],
+    category: [
+      "Action",
+      "Aventure",
+      "Fantasy",
+      "Romance",
+      "Science-fiction",
+      "Nouvelles saisons",
+    ],
     synopsis:
       "En 2022, l'humanité a réussi à créer une réalité virtuelle. Grâce à un casque, les humains peuvent se plonger entièrement dans le monde virtuel en étant comme déconnectés de la réalité, et Sword Art Online est le premier MMORPG a utiliser ce système.",
   },
@@ -514,7 +521,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Blue Exorcist",
     options: new BlueExorcist(),
-    category: ["Action", "Surnaturel"],
+    category: ["Action", "Surnaturel", "Nouvelles saisons"],
     synopsis:
       "Rin okumura, un ado de 15 ans adopté par un exorciste dès son plus jeune âge découvre un jour qu'il est le fils du Malin. Son père, Satan en personne, lui apparaît pour l'emmener dans son monde, mais le jeune garçon ne peut oublier tout ce qui lui a été enseigné jusqu'ici.",
     aliases: ["Ao no Exorcist"],

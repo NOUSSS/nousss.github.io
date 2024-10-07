@@ -23,6 +23,7 @@ const names = [
   { name: "La voix du cœur", index: "22" },
   { name: "Luck", index: "23" },
   { name: "L'heure est venue", index: "24" },
+  { name: "La détection", index: "25" },
 ];
 
 export default names;

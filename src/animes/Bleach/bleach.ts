@@ -14,22 +14,22 @@ class Bleach extends Anime {
     this.saisons = {
       1: {
         name: "Tous les épisodes",
-
         image: () => getImage(1),
       },
       2: {
-        name: "Thousand Year Blood War (1)",
+        name: "The Blood Warfare (1)",
         aliases: ["partie 1"],
         image: () => getImage(2),
       },
       3: {
-        name: "Thousand Year Blood War (2)",
+        name: "The Separation (2)",
         aliases: ["partie 2"],
         image: () => getImage(3),
       },
-      oav: {
-        name: "OAV",
-        image: () => getImage(1),
+      4: {
+        name: "The conflict (3)",
+        aliases: ["partie 3"],
+        image: () => getImage(4),
       },
     };
 
@@ -64,7 +64,7 @@ class Bleach extends Anime {
 
       parts: {
         from: 2,
-        to: 3,
+        to: 4,
         startToFirst: false,
       },
 

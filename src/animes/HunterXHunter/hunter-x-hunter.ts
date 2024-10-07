@@ -12,7 +12,7 @@ class HunterXHunter extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Anime de 2011",
+        name: "Version 2011",
         aliases: [
           "fourmi",
           "election",
@@ -24,6 +24,11 @@ class HunterXHunter extends Anime {
           "tour",
           "hisoka",
         ],
+        image: () => getImage(2),
+      },
+      2: {
+        name: "Version 1999",
+        hs: true,
         image: () => getImage(1),
       },
     };
@@ -54,7 +59,7 @@ class HunterXHunter extends Anime {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/hunter-x-hunter/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [],
+      noc: true,
 
       allIndex: {
         1: 0,

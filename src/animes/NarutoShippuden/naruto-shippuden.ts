@@ -11,8 +11,13 @@ export default class NarutoShippuden extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Tous les épisodes",
+        name: "Tous les épisodes (fillers)",
 
+        image: () => getImage(1),
+      },
+      2: {
+        name: "Tous les épisodes (sans fillers)",
+        hs: true,
         image: () => getImage(1),
       },
     };
@@ -27,7 +32,7 @@ export default class NarutoShippuden extends Anime {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/naruto-shippuden/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [],
+      noc: true,
 
       allIndex: {
         1: 0,

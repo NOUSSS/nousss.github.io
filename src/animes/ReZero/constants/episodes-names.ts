@@ -52,6 +52,7 @@ const episodes = [
   { name: "L'amour du sang et des entrailles", index: "48" },
   { name: "Choisis-moi", index: "49" },
   { name: "De fous pas de danse sous la lune", index: "50" },
+  { name: "Malice théâtrale", index: "51" },
 ];
 
 export default episodes;

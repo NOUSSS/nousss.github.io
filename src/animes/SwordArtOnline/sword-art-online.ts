@@ -32,9 +32,14 @@ export default class SwordArtOnline extends Anime {
         image: () => getImage(4),
       },
       5: {
-        name: "Alternative Gun Gale Online",
+        name: "Alternative Gun Gale Online (1)",
         aliases: ["5"],
         image: () => getImage(5),
+      },
+      6: {
+        name: "Alternative Gun Gale Online (2)",
+        aliases: ["6"],
+        image: () => getImage(6),
       },
     };
 
@@ -54,6 +59,8 @@ export default class SwordArtOnline extends Anime {
           hs: [14],
         },
       ],
+
+      noc: true,
 
       allIndex: {
         1: 0,

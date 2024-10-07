@@ -712,6 +712,7 @@ const names = [
   { index: "390", name: "Trop tôt pour crier victoire, trop tard pour savoir" },
   { index: "391", name: "Le Maitre" },
   { index: "392", name: "Noir" },
+  { index: "393", name: "A" },
 ];
 
 export default names;

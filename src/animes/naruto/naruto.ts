@@ -2,6 +2,7 @@ import { Anime } from "@/app/class/anime";
 
 import Affiche from "@/assets/Animes/Naruto/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
+
 import s1 from "@/assets/Animes/Naruto/Saisons/Saison1.webp";
 
 class Naruto extends Anime {
@@ -11,8 +12,14 @@ class Naruto extends Anime {
     this.affiche = Affiche;
     this.saisons = {
       1: {
-        name: "Les episodes",
+        name: "Tous les épisodes (fillers)",
         aliases: ["saisons"],
+        image: () => s1,
+      },
+      2: {
+        name: "Tous les épisodes (sans fillers)",
+        aliases: ["saisons"],
+        hs: true,
         image: () => s1,
       },
     };
@@ -35,7 +42,7 @@ class Naruto extends Anime {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/naruto/saison${index}/${lang}/episodes.js`,
 
-      horsSeries: [],
+      noc: true,
 
       allIndex: {
         1: 0,

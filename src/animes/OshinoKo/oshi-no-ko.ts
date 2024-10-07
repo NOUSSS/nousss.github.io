@@ -15,6 +15,11 @@ class OshinoKo extends Anime {
 
         image: () => getImage(1),
       },
+      2: {
+        name: "Saison 2",
+
+        image: () => getImage(2),
+      },
     };
 
     this.SCANS_OPTIONS = {
@@ -46,6 +51,7 @@ class OshinoKo extends Anime {
 
       allIndex: {
         1: 0,
+        2: 11,
       },
 
       names: episodes,

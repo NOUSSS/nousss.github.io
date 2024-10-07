@@ -48,6 +48,8 @@ const episodes = [
   { name: "Camarades", index: "47" },
   { name: "Pink Spider", index: "48" },
   { name: "Intentions cachées", index: "49" },
+  { name: "Ambition", index: "50" },
+  { name: "Souffrance", index: "51" },
 ];
 
 export default episodes;
