@@ -171,7 +171,7 @@ class DetectiveConan extends Anime {
 
       names: {
         "1": { name: "Le Gratte Ciel Infernal", image: () => getImageFilms(1) },
-        "2": { name: "La Quatorzième Cible", image: () => getImageFilms(2) },
+        "2": { name: "La 14ème Cible", image: () => getImageFilms(2) },
         "3": {
           name: "Le Magicien de la fin du siècle",
           image: () => getImageFilms(3),
@@ -206,10 +206,10 @@ class DetectiveConan extends Anime {
         },
         "14": { name: "L'Arche du Ciel", image: () => getImageFilms(14) },
         "15": {
-          name: "Les Quinze Minutes de silence",
+          name: "Les 15 Minutes de silence",
           image: () => getImageFilms(15),
         },
-        "16": { name: "Le Onzième Attaquant", image: () => getImageFilms(16) },
+        "16": { name: "Le 11ème Attaquant", image: () => getImageFilms(16) },
         "17": {
           name: "Un Détective privé en mer lointaine",
           image: () => getImageFilms(17),
