@@ -1,6 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
+import { Footer } from "@/app/components";
 
 import React from "react";
 import Head from "next/head";
@@ -50,6 +51,10 @@ export default function Suggest() {
           </button>
         </form>
       </main>
+
+      <div className="fixed bottom-0 w-full">
+        <Footer style={true} />
+      </div>
     </>
   );
 }

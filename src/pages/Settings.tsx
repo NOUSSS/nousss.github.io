@@ -1,4 +1,4 @@
-import { ColorPicker, RemoveHistorique } from "@/app/components/";
+import { ColorPicker, Footer, RemoveHistorique } from "@/app/components/";
 import Head from "next/head";
 
 export default function Settings() {
@@ -28,6 +28,10 @@ export default function Settings() {
           </li>
         </ul>
       </main>
+
+      <div className="fixed bottom-0 w-full">
+        <Footer style={true} />
+      </div>
     </>
   );
 }
