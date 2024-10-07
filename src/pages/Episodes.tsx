@@ -65,6 +65,8 @@ const Episodes = () => {
 
   const Next = icons["ChevronLast"];
   const Prev = icons["ChevronFirst"];
+  const Last = icons["ChevronsUp"];
+
   const More = icons["Ellipsis"];
   const Tri = icons["Signal"];
 
@@ -550,7 +552,7 @@ const Episodes = () => {
               </div>
             </div>
 
-            <div className="my-8 flex w-full flex-col justify-between gap-3 min-[450px]:flex-row min-[450px]:gap-5">
+            <div className="my-8 flex w-full justify-between gap-3 min-[450px]:gap-5">
               <button
                 disabled={episodeData?.get()?.episode === "1"}
                 className="glassBtn"
@@ -566,7 +568,7 @@ const Episodes = () => {
                 }
               >
                 <Prev />
-                Épisode précedent
+                <p className="max-[450px]:hidden">Épisode précedent</p>
               </button>
 
               <button
@@ -587,7 +589,8 @@ const Episodes = () => {
                   )
                 }
               >
-                Dernier épisode
+                <Last />
+                <p className="max-[450px]:hidden">Dernier épisode</p>
               </button>
 
               <button
@@ -607,7 +610,7 @@ const Episodes = () => {
                   )
                 }
               >
-                Épisode suivant
+                <p className="max-[450px]:hidden">Épisode suivant</p>
                 <Next />
               </button>
             </div>
