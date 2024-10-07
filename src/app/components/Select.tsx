@@ -176,12 +176,14 @@ const Select: FC<SelectProps> = ({
                     appear();
                   }
                 }}
-                ref={(el) =>
-                  (itemsRef.current[index] = {
-                    name: item.name,
-                    el: el!,
-                  })
-                }
+                ref={(el) => {
+                  if (el) {
+                    itemsRef.current[index] = {
+                      name: item.name,
+                      el: el,
+                    };
+                  }
+                }}
                 className={cn(
                   "flex h-8 w-full cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
                   {
