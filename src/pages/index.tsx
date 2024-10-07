@@ -317,11 +317,13 @@ export default function Accueil() {
                                   parts:
                                     randomAnimes[historiqueIndex].options
                                       .EPISODES_OPTIONS?.parts,
-                                })}, ${getCurrentEpisode(
-                                  randomAnimes[historiqueIndex].anime,
-                                  historiqueIndex,
-                                  historiquesFiltered,
-                                )}`
+                                })}, ${
+                                  getCurrentEpisode(
+                                    randomAnimes[historiqueIndex].anime,
+                                    historiqueIndex,
+                                    historiquesFiltered,
+                                  ) ?? "Épisode 1"
+                                }`
                               : (
                                     historiquesFiltered[historiqueIndex]
                                       .detail as unknown as Data.FilmsData
@@ -332,11 +334,13 @@ export default function Accueil() {
                                         .detail as unknown as Data.ScansData
                                     ).chapitre
                                   ? `
-                      ${getCurrentChapitre(
-                        randomAnimes[historiqueIndex].anime,
-                        historiqueIndex,
-                        historiquesFiltered,
-                      )}`
+                      ${
+                        getCurrentChapitre(
+                          randomAnimes[historiqueIndex].anime,
+                          historiqueIndex,
+                          historiquesFiltered,
+                        ) ?? "Chapitre 1"
+                      }`
                                   : ""
                           }`
                         : "REGARDER"}
