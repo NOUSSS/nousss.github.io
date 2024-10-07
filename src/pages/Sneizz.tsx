@@ -43,7 +43,11 @@ export default function Aim() {
               return (
                 <button
                   key={i}
-                  ref={(el) => (refs.current[i] = el!)}
+                  ref={(el) => {
+                    if (el) {
+                      refs.current[i] = el;
+                    }
+                  }}
                   onClick={() => {
                     if (current === i) {
                       randomAim();
@@ -57,7 +61,11 @@ export default function Aim() {
               return (
                 <div
                   key={i}
-                  ref={(el) => (refs.current[i] = el!)}
+                  ref={(el) => {
+                    if (el) {
+                      refs.current[i] = el;
+                    }
+                  }}
                   className="inline-flex size-16 bg-transparent"
                 ></div>
               );

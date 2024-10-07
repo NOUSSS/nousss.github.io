@@ -200,7 +200,13 @@ const Films = () => {
           query="id"
         />
 
-        <ul ref={(el) => (filmsRef.current[0] = el!)}>
+        <ul
+          ref={(el) => {
+            if (el) {
+              filmsRef.current[0] = el;
+            }
+          }}
+        >
           {anime.films?.map(({ url, id, element }, index) => (
             <li
               key={id}

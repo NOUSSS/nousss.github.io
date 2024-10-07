@@ -56,14 +56,22 @@ const SelectDouble: FC<SelectDoubleProps> = ({ items, click }) => {
               setSelected(element);
               click(value);
             }}
-            ref={(el) => (buttons.current[value] = el!)}
+            ref={(el) => {
+              if (el) {
+                buttons.current[value] = el;
+              }
+            }}
           >
             {name}
           </button>
         ))}
 
         <div
-          ref={(el) => (follower.current = el!)}
+          ref={(el) => {
+            if (el) {
+              follower.current = el;
+            }
+          }}
           className="absolute -z-10 h-10 w-28 scale-105 rounded-full bg-white transition-all duration-300"
         ></div>
       </div>

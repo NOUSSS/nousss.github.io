@@ -100,7 +100,11 @@ const Saisons = () => {
 
         <ul
           className="overflow-x-auto"
-          ref={(el) => (saisonsRef.current[0] = el!)}
+          ref={(el) => {
+            if (el) {
+              saisonsRef.current[0] = el;
+            }
+          }}
         >
           {anime?.saisons?.map(({ element, id }, index) => (
             <li

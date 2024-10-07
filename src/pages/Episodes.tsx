@@ -695,7 +695,11 @@ const Episodes = () => {
 
               <ul
                 className="max-h-96 min-w-24 overflow-auto"
-                ref={(el) => (episodesListRef.current[0] = el!)}
+                ref={(el) => {
+                  if (el) {
+                    episodesListRef.current[0] = el;
+                  }
+                }}
               >
                 {anime?.episodes}
               </ul>

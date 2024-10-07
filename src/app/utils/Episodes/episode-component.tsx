@@ -66,11 +66,11 @@ export default function EpisodeComponent({
         {episodeNumber} {!episodeSpecial && episodeTitle ? "-" : ""}{" "}
         <span
           className="font-normal text-white transition-all group-hover:text-main"
-          ref={
-            episodeSpecial
-              ? null
-              : (el) => (namesRef.current[episodeIndex - 1] = el!)
-          }
+          ref={(el) => {
+            if (!episodeSpecial && el) {
+              namesRef.current[episodeIndex - 1] = el;
+            }
+          }}
         >
           {episodeTitle}
         </span>
