@@ -44,7 +44,7 @@ export default function Suggest() {
                   url = url.slice(0, url.indexOf("saison"));
 
                   const saisonsAS = await fetch(
-                    `/api/get?url=${url.replace("https://", "")}`,
+                    `/api/seasonAS?url=${url.replace("https://", "")}`,
                   ).then((r) => r.json());
 
                   const saisonsMNS = Object.keys(options.saisons).length;
