@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { selectChapter } from "@/app/utils/Scans/chapters-utils";
 import { getTailleChapitres } from "@/app/utils/Scans/getTailleChapitre";
 import { Footer, Select, SelectDouble } from "@/app/components/";
-import { getCurrentAnime, getAnime } from "@/app/lib/";
+import { getCurrentAnime, getAnime, cn } from "@/app/lib/";
 import { Anime } from "@/typings/types";
 import { NextChapter, PrevChapter } from "@/app/utils/Scans/chapters-manager";
 
@@ -44,7 +44,7 @@ const Scans = () => {
 
   const router = useRouter();
 
-  const Last = icons["ChevronsRight"];
+  const Last = icons["ChevronsUp"];
   const Next = icons["ChevronLast"];
   const Prev = icons["ChevronFirst"];
 
@@ -182,6 +182,75 @@ const Scans = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, anime.scans);
+
+  const Buttons = ({ invert }: { invert: boolean }) => (
+    <div
+      className={cn(
+        "relative mb-24 flex flex-col gap-8 after:h-px after:w-full after:bg-neutral-700",
+        {
+          "flex-col-reverse": invert,
+          "top-12": invert,
+        },
+      )}
+    >
+      <button
+        className={cn("glassBtn relative top-4", {
+          "-top-2": invert,
+        })}
+        disabled={isLast as boolean}
+        onClick={() => {
+          const lastScan =
+            anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
+
+          updateAnime((currentState) => ({
+            ...currentState,
+            scans: selectChapter(
+              anime!,
+              lastScan,
+              placeholderRef,
+              !anime.version ? undefined : anime.version.split("|")[1],
+            ),
+          }));
+        }}
+      >
+        Dernier chapitre <Last />
+      </button>
+
+      <div className={cn("flex justify-between gap-4", {})}>
+        <button
+          disabled={isFirst as boolean}
+          className="glassBtn"
+          onClick={() =>
+            PrevChapter(
+              anime!,
+              updateAnime,
+              placeholderRef,
+              !anime.version ? undefined : anime.version.split("|")[1],
+            )
+          }
+        >
+          <Prev />
+          <p className="max-[430px]:hidden">Chapitre précédent</p>
+        </button>
+
+        <button
+          disabled={isLast as boolean}
+          className="glassBtn"
+          onClick={() =>
+            NextChapter(
+              anime!,
+              updateAnime,
+              placeholderRef,
+              !anime.version ? undefined : anime.version.split("|")[1],
+            )
+          }
+        >
+          <p className="max-[430px]:hidden">Chapitre suivant</p>
+          <Next />
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -324,62 +393,7 @@ const Scans = () => {
           )}
         </div>
 
-        <div className="relative flex flex-col gap-8">
-          <button
-            className="glassBtn relative top-4"
-            disabled={isLast as boolean}
-            onClick={() => {
-              const lastScan =
-                anime?.chapitresOptions![anime?.chapitresOptions!.length - 1]!;
-
-              updateAnime((currentState) => ({
-                ...currentState,
-                scans: selectChapter(
-                  anime!,
-                  lastScan,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                ),
-              }));
-            }}
-          >
-            Dernier chapitre <Last />
-          </button>
-
-          <div className="relative mb-24 flex gap-4 after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            <button
-              disabled={isFirst as boolean}
-              className="glassBtn"
-              onClick={() =>
-                PrevChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              <Prev />
-              Chapitre précédent
-            </button>
-
-            <button
-              disabled={isLast as boolean}
-              className="glassBtn"
-              onClick={() =>
-                NextChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              Chapitre suivant
-              <Next />
-            </button>
-          </div>
-        </div>
+        <Buttons invert={false} />
 
         {anime.method === "horizontal" && (
           <p className="relative -top-8">
@@ -411,41 +425,7 @@ const Scans = () => {
           )}
         </div>
 
-        <div className="relative top-24 mb-60 flex flex-col gap-4">
-          <div className="relative top-4 flex cursor-pointer gap-4 shadow-lg after:absolute after:-bottom-6 after:left-0 after:h-px after:w-full after:bg-neutral-700">
-            <button
-              disabled={isFirst as boolean}
-              className="btn"
-              onClick={() =>
-                PrevChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              <Prev />
-              Chapitre précédent
-            </button>
-
-            <button
-              disabled={isLast as boolean}
-              className="btn"
-              onClick={() =>
-                NextChapter(
-                  anime!,
-                  updateAnime,
-                  placeholderRef,
-                  !anime.version ? undefined : anime.version.split("|")[1],
-                )
-              }
-            >
-              Chapitre suivant
-              <Next />
-            </button>
-          </div>
-        </div>
+        <Buttons invert />
 
         <div className="fixed bottom-0 right-0 z-50 m-4 cursor-pointer rounded border border-main bg-zinc-900 p-2">
           <UpArrow
