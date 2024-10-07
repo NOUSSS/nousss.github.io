@@ -1,5 +1,5 @@
 import s1 from "@/assets/Animes/OshinoKo/saisons/saison1.webp";
-import s2 from "@/assets/Animes/OshinoKo/saisons/saison2.webp";
+import s2 from "@/assets/Animes/OshinoKo/saisons/Saison2.webp";
 
 const images = {
   1: s1,
