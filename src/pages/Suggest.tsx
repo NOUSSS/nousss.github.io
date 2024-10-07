@@ -41,7 +41,7 @@ export default function Suggest() {
             className="mb-8 h-64 rounded-md border border-neutral-700 bg-transparent p-2"
             value={message}
             onChange={({ target: { value } }) => setMessage(value)}
-            placeholder="Nom de l'oeuvre ou des oeuvres"
+            placeholder="Suggestion"
             required
           />
 

@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import Script from "next/script";
 import FastSearchBar from "./Fast-Searchbar";
 
 interface RootLayoutProps {
@@ -28,14 +27,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-
-  const handleNavigation = (href: string) => {
-    if (router.pathname.toLowerCase() === href.toLowerCase()) {
-      router.back();
-    } else {
-      router.push(href);
-    }
-  };
 
   useEffect(() => {
     localStorage.setItem("filever", random().toString());
@@ -188,7 +179,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </span>
             </Link>
 
-            <a
+            <Link
               className={cn(
                 "cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50",
                 {
@@ -196,14 +187,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     router.pathname.toLowerCase() === "/catalogue",
                 },
               )}
-              onClick={() => handleNavigation("/Catalogue")}
+              href="/Catalogue"
               title="Catalogue"
             >
               <Gallery className="mr-3" />
               <span className="text-base text-white">Catalogue</span>
-            </a>
+            </Link>
 
-            <a
+            <Link
               className={cn(
                 "cursor-pointer bg-zinc-700 bg-opacity-0 transition-all hover:scale-105 hover:bg-opacity-50",
                 {
@@ -211,9 +202,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     router.pathname.toLowerCase() === "/settings",
                 },
               )}
-              onClick={() => {
-                handleNavigation("/Settings");
-              }}
+              href="/Settings"
               title="Paramètres"
             >
               <Settings className="lg:mr-3" />
@@ -221,7 +210,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <span className="text-base text-white max-lg:hidden">
                 Paramètres
               </span>
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
