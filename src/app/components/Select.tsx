@@ -180,7 +180,7 @@ const Select: FC<SelectProps> = ({
                   if (el) {
                     itemsRef.current[index] = {
                       name: item.name,
-                      el: el,
+                      el,
                     };
                   }
                 }}
