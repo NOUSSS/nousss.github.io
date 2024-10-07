@@ -52,7 +52,7 @@ export default function Suggest() {
         </form>
       </main>
 
-      <div className="fixed bottom-0 w-full">
+      <div className="mt-24">
         <Footer style={true} />
       </div>
     </>
