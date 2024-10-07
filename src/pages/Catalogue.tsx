@@ -69,9 +69,15 @@ export default function Catalogue() {
           </h3>
 
           <span className="inline-block">
-            <Link className="text-main hover:underline" href="#search">
-              Rechercher un anime ?
-            </Link>
+            <div className="flex flex-col">
+              <Link className="text-main hover:underline" href="#search">
+                Rechercher un anime ?
+              </Link>
+
+              <Link className="text-main hover:underline" href="/Suggest">
+                Un anime n'est pas présent ?
+              </Link>
+            </div>
           </span>
 
           <div className="flex justify-center">
