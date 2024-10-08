@@ -126,6 +126,7 @@ import DeathParade from "./DeathParade/death-parade";
 import RakudaiKishi from "./RakudaiKishi/rakudai-kishi";
 import TenseiShitara from "./TenseiShitara/tensei-shitara";
 import DetectiveConan from "./DetectiveConan/detective-conan";
+import DanDaDan from "./DanDaDan/dandadan";
 
 export interface AnimesType {
   anime: string;
@@ -1309,6 +1310,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Shinichi Kudo est un brillant lycéen promis à un grand avenir. Il vit seul car ses parents vivent aux États-Unis, mais il passe beaucoup de temps avec Ran, son amie d'enfance qu'il aime en secret, ou avec le professeur Agasa. C'est un excellent détective, qui a le sens de l'observation et un très bon esprit de déduction, mais un jour, il va se faire surprendre alors qu'il espionnait deux hommes en noir suspects. Ils lui feront alors prendre un médicament censé le tuer, mais qui va le faire rajeunir et il redeviendra un enfant de 6 ans. Coincé dans ce corps, Shinichi se fera alors passer pour Conan Edogawa, neveu du professeur, et se fera 'adopter' par Ran dont le père est détective privé. Conan espère ainsi retrouver les hommes en noir, et enfin redevenir lui même.",
     options: new DetectiveConan(),
+  },
+  {
+    anime: "DanDaDan",
+    category: ["Action", "Comédie", "Horreur", "Mystère", "Romance", "Nouvelles saisons"],
+    options: new DanDaDan(),
+    synopsis:
+      "Momo Ayase et Ken Takakura sont tous deux lycéens. Tandis que la première croit aux fantômes, le second est fasciné par les extraterrestres. Évidemment, chacun se moque des croyances de l'autre. Incapables de se convaincre, ils se lancent un défi pour savoir lequel des deux a raison. Momo se retrouve dans un hôpital où des créatures de l'espace sont censées se trouver et Ken dans un tunnel hanté. C'est le début d'une romance survoltée où l'occulte, le paranormal et le surnaturel se bousculent dans un chaos haletant !",
   },
 ];
 
