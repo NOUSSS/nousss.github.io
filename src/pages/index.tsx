@@ -37,7 +37,9 @@ interface AmbiancePros {
 interface Query {
   [key: string]: string;
 }
+
 export default function Accueil() {
+  const copyAnimes = [...ANIMES];
   const router = useRouter();
 
   const Trash = icons["Trash2"];
@@ -69,7 +71,7 @@ export default function Accueil() {
   }, [currentIndex, randomAnimes]);
 
   useEffect(() => {
-    let shuffledAnimes = [...shuffle(ANIMES)];
+    let shuffledAnimes = shuffle(ANIMES);
     setRandomAnimes(shuffledAnimes.slice(0, 6));
 
     const loadedHistoriques: Historique[] = [];
@@ -103,6 +105,16 @@ export default function Accueil() {
       [momentItem] = updatedCatalogues.splice(momentIndex, 1);
 
     if (momentItem) updatedCatalogues.unshift(momentItem);
+
+    const recents = copyAnimes
+      .slice(Math.max(copyAnimes.length - 10, 0))
+      .map(({ anime }) => anime)
+      .reverse();
+
+    updatedCatalogues.splice(2, 1, {
+      category: "Ajout récent",
+      names: recents,
+    });
 
     setCatalogues(updatedCatalogues);
   }, []);
