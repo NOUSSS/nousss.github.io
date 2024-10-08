@@ -314,7 +314,12 @@ const Episodes = () => {
                 episodeIndex={indexEpisode - retard}
                 id={indexEpisode.toString()}
                 episodeTitle={episodeTitle}
-                episodeNumber={episodeNumber}
+                episodeNumber={
+                  episodeNumber.toString() +
+                  (anime?.saison === "1" || noc
+                    ? ""
+                    : ` (${indexEpisode - retard})`)
+                }
                 namesRef={namesRef}
                 episodeSpecial={false}
                 containerRef={containerRef}
