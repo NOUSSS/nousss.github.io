@@ -35,7 +35,7 @@ export default function Suggest() {
       </Head>
 
       <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
-        <h1 className="mb-20 text-4xl">Suggérer une oeuvre</h1>
+        <h1 className="mb-20 text-4xl font-normal">Suggérer une oeuvre ?</h1>
 
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <textarea

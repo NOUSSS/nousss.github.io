@@ -11,7 +11,7 @@ const Footer = () => {
               pathname: "/Suggest",
             }}
           >
-            Suggérer une oeuvre
+            Suggérer une oeuvre ?
           </Link>
         </span>
 
