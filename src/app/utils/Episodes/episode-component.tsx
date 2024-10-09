@@ -61,11 +61,14 @@ export default function EpisodeComponent({
       data-id={id}
       onClick={handleEpisode}
     >
-      <p className="font-normal">
-        {!episodeSpecial ? "E" : ""}
-        {episodeNumber} {!episodeSpecial && episodeTitle ? "-" : ""}{" "}
+      <p className="*:font-normal">
+        <span className="text-white transition-all group-hover:text-main">
+          {!episodeSpecial ? "E" : ""}
+          {episodeNumber} {!episodeSpecial && episodeTitle ? "-" : ""}{" "}
+        </span>
+
         <span
-          className="font-normal text-white transition-all group-hover:text-main"
+          className="text-white transition-all group-hover:text-main"
           ref={(el) => {
             if (!episodeSpecial && el) {
               namesRef.current[episodeIndex - 1] = el;

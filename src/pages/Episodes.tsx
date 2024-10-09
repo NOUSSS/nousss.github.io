@@ -1,13 +1,7 @@
 "use client";
 
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  ReactNode,
-} from "react";
-import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import {
   getCurrentAnime,
   getLecteur,
@@ -15,17 +9,20 @@ import {
   relatedCats,
   getWallpaper,
 } from "@/app/lib/";
-import { Anime as AnimeType } from "@/typings/types";
-import { useRouter } from "next/router";
-import { changeSaison } from "@/app/utils/Saisons/changeSaison";
-import { toast } from "sonner";
-import { useScript, useAnime } from "@/app/lib/hooks/";
+
 import {
   Change,
   NextEpisode,
   PrevEpisode,
 } from "@/app/utils/Episodes/episode-manager";
+
+import { useScript, useAnime } from "@/app/lib/hooks/";
+import { Anime as AnimeType } from "@/typings/types";
+import { useRouter } from "next/router";
+import { changeSaison } from "@/app/utils/Saisons/changeSaison";
+import { toast } from "sonner";
 import { icons } from "lucide-react";
+import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
 import { ANIMES } from "@/animes/constants";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
@@ -194,6 +191,30 @@ const Episodes = () => {
       });
     }
   }, [status]);
+
+  useEffect(() => {
+    const currentEpisode = Number(episodeData?.get()?.episode);
+
+    if (episodesListRef.current && currentEpisode) {
+      episodesListRef.current[0].scrollTo({
+        top: (
+          episodesListRef.current[0].childNodes[
+            currentEpisode - 1
+          ] as HTMLElement
+        ).offsetTop,
+        behavior: "smooth",
+      });
+
+      episodesListRef.current?.[0].childNodes.forEach((e) => {
+        (e.childNodes[0] as HTMLElement).classList.remove("*:text-main");
+      });
+
+      (
+        episodesListRef.current?.[0].childNodes[currentEpisode - 1]
+          .childNodes[0] as HTMLElement
+      ).classList.add("*:text-main");
+    }
+  }, [anime.video]);
 
   useEffect(() => {
     if (status === "ready") {
@@ -705,14 +726,14 @@ const Episodes = () => {
               </div>
 
               <ul
-                className="max-h-96 min-w-24 overflow-auto"
+                className="relative max-h-96 min-w-24 overflow-auto"
                 ref={(el) => {
                   if (el) {
                     episodesListRef.current[0] = el;
                   }
                 }}
               >
-                {anime?.episodes}
+                {anime.episodes}
               </ul>
             </div>
           </div>
