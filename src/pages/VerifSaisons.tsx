@@ -48,21 +48,16 @@ export default function Suggest() {
                     `/api/seasonAS?url=${url.replace("https://", "")}`,
                   ).then((r) => r.json());
 
-                  const saisons: Options.Season = {};
+                  let saisonsMNS = 0;
 
-                  for (
-                    let i = 0;
-                    i < Object.keys(options.saisons).length;
-                    i++
-                  ) {
-                    if (!Object.values(options.saisons)[i].hs) {
-                      saisons[Object.keys(options.saisons)[i]] = Object.values(
-                        options.saisons,
-                      )[i];
+                  const keys = Object.keys(options.saisons);
+                  const values = Object.values(options.saisons);
+
+                  for (let i = 0; i < keys.length; i++) {
+                    if (!values[i].hs && keys[i].toLowerCase() !== "oav") {
+                      saisonsMNS++;
                     }
                   }
-
-                  const saisonsMNS = Object.keys(saisons).filter(Number).length;
 
                   if (saisonsAS.saisons > saisonsMNS) {
                     setErrors((prevErrors) => [

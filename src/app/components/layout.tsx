@@ -161,7 +161,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 className="w-10"
               />
 
-              <p className="text-2xl font-normal transition-colors hover:text-main max-sm:hidden">
+              <p className="text-2xl font-medium transition-colors hover:text-main max-sm:hidden">
                 Mugiwara-no Streaming
               </p>
 
