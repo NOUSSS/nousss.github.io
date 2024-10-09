@@ -237,9 +237,9 @@ const Films = () => {
             async
           ></script>
         </div>
-
-        <Footer style={true} media />
       </main>
+
+      <Footer />
     </>
   );
 };

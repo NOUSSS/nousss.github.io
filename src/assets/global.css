@@ -9,6 +9,12 @@
   --mainColor: #ff9d00;
 }
 
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .swiper-pagination-progressbar-fill {
   background: var(--mainColor) !important;
 }
@@ -21,12 +27,17 @@
   @apply underline;
 }
 
+.btn,
+.glassBtn {
+  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-lg border transition-all;
+}
+
 .btn {
-  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-lg border border-transparent px-5 py-3 text-base font-normal text-zinc-950 transition-all after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-lg after:bg-main after:brightness-75 after:transition-all hover:border-main hover:text-white hover:after:opacity-10 active:after:opacity-30 disabled:after:opacity-50 disabled:hover:border-transparent disabled:hover:text-black disabled:hover:after:opacity-50 disabled:active:after:opacity-50 sm:gap-2 sm:text-lg;
+  @apply border-transparent px-5 py-3 text-base text-zinc-950 after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-lg after:bg-main after:brightness-75 after:transition-all hover:border-main hover:text-white hover:after:opacity-10 active:after:opacity-30 disabled:after:opacity-50 disabled:hover:border-transparent disabled:hover:text-black disabled:hover:after:opacity-50 disabled:active:after:opacity-50 sm:gap-2 sm:text-lg;
 }
 
 .glassBtn {
-  @apply relative left-0 z-30 flex min-h-12 items-center justify-center gap-1 rounded-lg border border-neutral-700 px-5 py-3 text-base font-normal transition-all after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-lg after:bg-neutral-200 after:opacity-10 after:brightness-75 after:transition-all hover:after:opacity-5 active:after:opacity-10 disabled:opacity-50 disabled:after:opacity-10 sm:gap-2 sm:text-lg;
+  @apply border-neutral-700 px-5 py-3 text-base after:absolute after:left-0 after:top-0 after:-z-30 after:h-full after:w-full after:rounded-lg after:bg-neutral-200 after:opacity-10 after:brightness-75 after:transition-all hover:after:opacity-5 active:after:opacity-10 disabled:opacity-50 disabled:after:opacity-10 sm:gap-2 sm:text-lg;
 }
 
 .container {
@@ -50,12 +61,12 @@
     @apply text-main;
   }
 
-  * {
-    @apply font-light;
+  button {
+    @apply font-normal;
   }
 
-  h1 {
-    @apply font-normal;
+  * {
+    @apply font-light;
   }
 
   input,
@@ -64,7 +75,7 @@
   }
 
   main {
-    @apply relative top-20;
+    @apply relative top-20 flex-1;
   }
 }
 

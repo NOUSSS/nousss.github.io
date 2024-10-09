@@ -29,9 +29,7 @@ export default function Settings() {
         </ul>
       </main>
 
-      <div className="fixed bottom-0 w-full">
-        <Footer style={true} />
-      </div>
+      <Footer />
     </>
   );
 }

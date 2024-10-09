@@ -139,9 +139,9 @@ const Home = () => {
             )}
           </ul>
         </div>
-
-        <Footer style={false} />
       </main>
+
+      <Footer />
     </>
   );
 };

@@ -445,9 +445,9 @@ const Scans = () => {
             type="text/javascript"
           ></script>
         </div>
-
-        <Footer style={true} media />
       </main>
+
+      <Footer />
     </>
   );
 };

@@ -68,17 +68,19 @@ export default function Catalogue() {
             {finded} trouvé{finded > 1 ? "s" : ""}
           </h3>
 
-          <span className="inline-block">
-            <div className="flex flex-col">
+          <div className="flex flex-col">
+            <span className="inline-block">
               <Link className="text-main hover:underline" href="#search">
                 Rechercher un anime ?
               </Link>
+            </span>
 
+            <span className="inline-block">
               <Link className="text-main hover:underline" href="/Suggest">
                 Un anime n'est pas présent ?
               </Link>
-            </div>
-          </span>
+            </span>
+          </div>
 
           <div className="flex justify-center">
             <Select
@@ -157,9 +159,7 @@ export default function Catalogue() {
         ></script>
       </div>
 
-      <div className="mt-24">
-        <Footer style={true} />
-      </div>
+      <Footer />
     </>
   );
 }

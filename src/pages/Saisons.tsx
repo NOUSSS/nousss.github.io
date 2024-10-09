@@ -129,9 +129,9 @@ const Saisons = () => {
             </li>
           ))}
         </ul>
-
-        <Footer />
       </main>
+
+      <Footer />
     </>
   );
 };

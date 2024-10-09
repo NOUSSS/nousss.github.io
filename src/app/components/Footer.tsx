@@ -1,24 +1,12 @@
 import Link from "next/link";
 
-import { cn } from "../lib";
-import { FC } from "react";
-
-interface FooterProps {
-  media?: boolean;
-  style?: boolean;
-}
-
-const Footer: FC<FooterProps> = ({ media = false, style }) => {
+const Footer = () => {
   return (
-    <footer
-      className={cn("mt-4 p-8", {
-        "w-full bg-zinc-900 bg-opacity-50": style,
-      })}
-    >
+    <footer className="mt-40 w-full bg-zinc-900 bg-opacity-50 p-8">
       <div className="flex flex-col text-base">
         <span className="inline-block">
           <Link
-            className="text-main  hover:underline"
+            className="text-main hover:underline"
             href={{
               pathname: "/Suggest",
             }}
@@ -49,15 +37,15 @@ const Footer: FC<FooterProps> = ({ media = false, style }) => {
         </span>
       </div>
 
-      {media && (
-        <p className="mb-5">
+      <div className="mt-4">
+        <p>
           Mugiwara no Streaming n'héberge aucune vidéo dans son serveur.
           Contactez directement la plateforme d'hébergement vidéo pour toutes
-          réclamations de droits.
+          réclamations de droits
         </p>
-      )}
 
-      <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>
+        <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>
+      </div>
     </footer>
   );
 };

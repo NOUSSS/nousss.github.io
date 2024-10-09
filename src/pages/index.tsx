@@ -285,7 +285,7 @@ export default function Accueil() {
                     </div>
 
                     <button
-                      className="btn"
+                      className="btn font-medium"
                       onClick={() => {
                         const query: Query = { anime: anime.anime };
 
@@ -603,9 +603,9 @@ export default function Accueil() {
               </div>
             ))}
         </div>
-
-        <Footer style={true} />
       </main>
+
+      <Footer />
     </>
   );
 }

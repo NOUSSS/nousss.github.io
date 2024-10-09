@@ -61,9 +61,7 @@ export default function Report() {
         </form>
       </main>
 
-      <div className="mt-24">
-        <Footer style={true} />
-      </div>
+      <Footer />
     </>
   );
 }
