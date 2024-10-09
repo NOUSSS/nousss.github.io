@@ -196,29 +196,6 @@ const Episodes = () => {
   }, [status]);
 
   useEffect(() => {
-    const currentEpisode = Number(episodeData?.get()?.episode);
-
-    if (currentEpisode) {
-      namesRef.current?.map((ep) => {
-        ep.classList.remove("text-gray-400");
-      });
-
-      episodesListRef.current?.[0].childNodes.forEach((ep, i) => {
-        (ep as HTMLElement).classList.remove("text-gray-400");
-      });
-
-      namesRef.current?.slice(0, currentEpisode).map((ep) => {
-        ep.classList.add("text-gray-400");
-      });
-
-      episodesListRef.current?.[0].childNodes.forEach((ep, i) => {
-        if (i < currentEpisode)
-          (ep as HTMLElement).classList.add("text-gray-400");
-      });
-    }
-  }, [anime.video]);
-
-  useEffect(() => {
     if (status === "ready") {
       setTimeout(() => {
         const options = anime!.anime?.options;

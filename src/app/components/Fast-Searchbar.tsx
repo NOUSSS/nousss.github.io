@@ -115,7 +115,7 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
                   </div>
 
                   <div>
-                    <h1 className="mx-3 text-2xl">
+                    <h1 className="mx-3 text-2xl font-normal">
                       {anime.length > 30
                         ? `${anime?.substring(0, 30)}...`
                         : anime}
