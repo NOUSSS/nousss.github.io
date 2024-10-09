@@ -270,7 +270,7 @@ const Scans = () => {
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
-            zoneId: '8748782',
+            zoneId: '8868058',
         });`,
             }}
             type="text/javascript"
@@ -282,7 +282,7 @@ const Scans = () => {
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
-            zoneId: '8765122',
+            zoneId: '8868062',
         });`,
             }}
             type="text/javascript"
@@ -438,7 +438,7 @@ const Scans = () => {
           <script
             dangerouslySetInnerHTML={{
               __html: `aclib.runBanner({
-            zoneId: '8748782',
+            zoneId: '8868058',
         });`,
             }}
             async

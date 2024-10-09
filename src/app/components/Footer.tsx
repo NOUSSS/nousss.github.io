@@ -26,7 +26,7 @@ const Footer = () => {
           </Link>
         </span>
 
-        <span className="inline-block">
+        {/* <span className="inline-block">
           <Link
             className="text-main hover:underline"
             href="https://www.twitch.tv/barroonn31"
@@ -34,7 +34,7 @@ const Footer = () => {
           >
             Twitch de Baron
           </Link>
-        </span>
+        </span> */}
       </div>
 
       <div className="mt-4">
