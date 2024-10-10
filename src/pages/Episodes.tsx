@@ -461,49 +461,28 @@ const Episodes = () => {
     [],
   );
 
-  const PrevSaison = useCallback(() => {
-    ClearCache();
+  const navigateSeason = useCallback(
+    (newSaison: number) => {
+      ClearCache();
 
-    const prevSaison = Number(episodeData?.get()?.saison) - 1;
+      router.push({
+        pathname: `/Episodes`,
+        query: {
+          anime: anime?.anime?.anime!,
+          saison: newSaison,
+        },
+      });
 
-    router.push({
-      pathname: `/Episodes`,
-      query: {
-        anime: anime?.anime!.anime,
-        saison: prevSaison,
-      },
-    });
+      episodeData?.setLecteur("");
+      changeSaison(newSaison.toString(), anime.anime?.anime!);
 
-    episodeData?.setLecteur("");
-    changeSaison(prevSaison.toString(), anime?.anime?.anime!);
-
-    updateAnime((currentState) => ({
-      ...currentState,
-      saison: prevSaison.toString(),
-    }));
-  }, [anime.anime?.anime]);
-
-  const NextSaison = useCallback(() => {
-    ClearCache();
-
-    const newSaison = Number(episodeData?.get()?.saison) + 1;
-
-    router.push({
-      pathname: `/Episodes`,
-      query: {
-        anime: anime?.anime?.anime!,
-        saison: newSaison,
-      },
-    });
-
-    episodeData?.setLecteur("");
-    changeSaison(newSaison.toString(), anime?.anime?.anime!);
-
-    updateAnime((currentState) => ({
-      ...currentState,
-      saison: newSaison.toString(),
-    }));
-  }, [anime.anime?.anime]);
+      updateAnime((currentState) => ({
+        ...currentState,
+        saison: newSaison.toString(),
+      }));
+    },
+    [anime.anime?.anime],
+  );
 
   return (
     <>
@@ -740,27 +719,9 @@ const Episodes = () => {
                           disabled: Number(anime.saison) === i + 1,
                         }),
                       )}
-                      onSelect={(items) => {
-                        ClearCache();
-
-                        const newSaison = items[0].value;
-
-                        router.push({
-                          pathname: `/Episodes`,
-                          query: {
-                            anime: anime?.anime?.anime!,
-                            saison: newSaison,
-                          },
-                        });
-
-                        episodeData?.setLecteur("");
-                        changeSaison(newSaison.toString(), anime.anime?.anime!);
-
-                        updateAnime((currentState) => ({
-                          ...currentState,
-                          saison: newSaison.toString(),
-                        }));
-                      }}
+                      onSelect={(items) =>
+                        navigateSeason(Number(items[0].value))
+                      }
                     />
                   </div>
                 )}
@@ -782,7 +743,9 @@ const Episodes = () => {
         <div className="my-6 flex w-11/12 flex-col justify-between gap-5 min-[435px]:flex-row min-[435px]:gap-0 sm:w-11/12 lg:w-[930px] xl:w-[1200px]">
           <button
             disabled={anime?.saison === "1"}
-            onClick={PrevSaison}
+            onClick={() =>
+              navigateSeason(Number(episodeData?.get()?.saison) - 1)
+            }
             className="glassBtn"
           >
             <Prev />
@@ -797,7 +760,9 @@ const Episodes = () => {
                   Object.keys(anime.anime?.options.saisons!)?.length.toString()
               )
             }
-            onClick={NextSaison}
+            onClick={() =>
+              navigateSeason(Number(episodeData?.get()?.saison) + 1)
+            }
             className="glassBtn"
           >
             Saison suivante
