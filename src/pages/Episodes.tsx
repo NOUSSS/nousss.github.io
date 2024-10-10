@@ -726,44 +726,47 @@ const Episodes = () => {
                 )}
               </div>
 
-              {anime.anime?.options.saisons && (
-                <Select
-                  parent
-                  placeholderRef={placeholderSeason}
-                  placeholder="Changer de saison"
-                  items={Object.values(anime.anime.options.saisons).map(
-                    ({ name }, i) => ({
-                      name,
-                      value: (i + 1).toString(),
-                      disabled: Number(anime.saison) === i + 1,
-                    }),
-                  )}
-                  onSelect={(items) => {
-                    ClearCache();
+              {anime.anime?.options.saisons &&
+                Object.keys(anime.anime.options.saisons).length !== 1 && (
+                  <div className="mb-4">
+                    <Select
+                      parent
+                      placeholderRef={placeholderSeason}
+                      placeholder="Changer de saison"
+                      items={Object.values(anime.anime.options.saisons).map(
+                        ({ name }, i) => ({
+                          name,
+                          value: (i + 1).toString(),
+                          disabled: Number(anime.saison) === i + 1,
+                        }),
+                      )}
+                      onSelect={(items) => {
+                        ClearCache();
 
-                    const newSaison = items[0].value;
+                        const newSaison = items[0].value;
 
-                    router.push({
-                      pathname: `/Episodes`,
-                      query: {
-                        anime: anime?.anime?.anime!,
-                        saison: newSaison,
-                      },
-                    });
+                        router.push({
+                          pathname: `/Episodes`,
+                          query: {
+                            anime: anime?.anime?.anime!,
+                            saison: newSaison,
+                          },
+                        });
 
-                    episodeData?.setLecteur("");
-                    changeSaison(newSaison.toString(), anime.anime?.anime!);
+                        episodeData?.setLecteur("");
+                        changeSaison(newSaison.toString(), anime.anime?.anime!);
 
-                    updateAnime((currentState) => ({
-                      ...currentState,
-                      saison: newSaison.toString(),
-                    }));
-                  }}
-                />
-              )}
+                        updateAnime((currentState) => ({
+                          ...currentState,
+                          saison: newSaison.toString(),
+                        }));
+                      }}
+                    />
+                  </div>
+                )}
 
               <ul
-                className="relative mt-4 max-h-96 min-w-24 overflow-auto"
+                className="relative max-h-96 min-w-24 overflow-auto"
                 ref={(el) => {
                   if (el) {
                     episodesListRef.current[0] = el;
