@@ -12,6 +12,7 @@ interface SelectProps {
   placeholder: string;
   multiple?: boolean;
   scroll?: boolean;
+  parent?: boolean;
   items: ItemsProps[];
   placeholderRef: RefObject<HTMLParagraphElement>;
   onSelect: (value: ItemsProps[]) => void;
@@ -29,6 +30,7 @@ const Select: FC<SelectProps> = ({
   placeholderRef,
   multiple,
   scroll,
+  parent,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
@@ -149,7 +151,7 @@ const Select: FC<SelectProps> = ({
       ref={buttonRef}
       className={cn(
         "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-lg border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
-        { "ring-2 ring-main": isSelected },
+        { "ring-2 ring-main": isSelected, "w-full": parent },
       )}
       onClick={appear}
     >
