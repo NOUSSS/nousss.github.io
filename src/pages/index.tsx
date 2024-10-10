@@ -403,6 +403,7 @@ export default function Accueil() {
                       <p className="text-2xl font-normal drop-shadow-2xl md:text-3xl">
                         {category}
                       </p>
+
                       <span className="m-4 h-8 border-r border-r-neutral-700"></span>
 
                       <RemoveHistorique setHistoriques={setHistoriques} />
@@ -429,7 +430,7 @@ export default function Accueil() {
                   )}
                 </div>
 
-                <ul className="flex gap-6 overflow-auto">
+                <ul className="flex gap-2 overflow-auto sm:gap-6">
                   {names.map((animeName: string, i) => {
                     const fetchedAnime = getAnime(animeName);
 
@@ -578,11 +579,11 @@ export default function Accueil() {
                               fetchedAnime?.synopsis ??
                               "Aucun synopsis pour cette anime"
                             }
-                            className="w-48 transition-all hover:scale-[.97] max-md:mr-1 md:w-56"
+                            className="w-40 transition-all hover:scale-[.97] max-md:mr-1 sm:w-48 md:w-56"
                           >
                             <div className="overflow-hidden shadow-xl">
                               <Image
-                                className="aspect-[2/3] w-48 transition-transform md:w-56"
+                                className="aspect-[2/3] w-40 transition-transform sm:w-48 md:w-56"
                                 src={getWallpaper(animeName)!}
                                 alt="affiche d'un anime"
                               />
