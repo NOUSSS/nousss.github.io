@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { toast } from "sonner";
 import { icons } from "lucide-react";
-import { Footer, SearchBar, Watcher, Switch } from "@/app/components/";
+import { Footer, SearchBar, Watcher, Switch, Select } from "@/app/components/";
 import { ANIMES } from "@/animes/constants";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
@@ -53,6 +53,7 @@ const Episodes = () => {
     null,
   );
 
+  const placeholderSeason = useRef<HTMLParagraphElement>(null);
   const episodeTitleRef = useRef<HTMLParagraphElement>(null);
   const episodesListRef = useRef<HTMLUListElement[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -725,8 +726,43 @@ const Episodes = () => {
                 )}
               </div>
 
+              {anime.anime?.options.saisons && (
+                <Select
+                  placeholderRef={placeholderSeason}
+                  placeholder="Changer de saison"
+                  items={Object.values(anime.anime.options.saisons).map(
+                    ({ name }, i) => ({
+                      name,
+                      value: (i + 1).toString(),
+                      disabled: Number(anime.saison) === i + 1,
+                    }),
+                  )}
+                  onSelect={(items) => {
+                    ClearCache();
+
+                    const newSaison = items[0].value;
+
+                    router.push({
+                      pathname: `/Episodes`,
+                      query: {
+                        anime: anime?.anime?.anime!,
+                        saison: newSaison,
+                      },
+                    });
+
+                    episodeData?.setLecteur("");
+                    changeSaison(newSaison.toString(), anime.anime?.anime!);
+
+                    updateAnime((currentState) => ({
+                      ...currentState,
+                      saison: newSaison.toString(),
+                    }));
+                  }}
+                />
+              )}
+
               <ul
-                className="relative max-h-96 min-w-24 overflow-auto"
+                className="relative mt-4 max-h-96 min-w-24 overflow-auto"
                 ref={(el) => {
                   if (el) {
                     episodesListRef.current[0] = el;
