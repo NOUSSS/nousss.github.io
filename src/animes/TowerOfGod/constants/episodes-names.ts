@@ -23,6 +23,10 @@ const names = [
   { name: "Le démon à une aile", index: "22" },
   { name: "La main d'Arlène", index: "23" },
   { name: "Un mur épais et lointain", index: "24" },
+  { name: "Une nouvelle épreuve", index: "25" },
+  { name: "L'Archimède", index: "26" },
+  { name: "Rencontre avec le voyageur", index: "27" },
+  { name: "La promesse faite ce jour-là", index: "28" },
 ];
 
 export default names;
