@@ -71,6 +71,13 @@ export default class MyHeroAcademia extends Anime {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/my-hero-academia/saison${index}/${lang}/episodes.js`,
 
+      horsSeries: [
+        {
+          saison: "7",
+          hs: [0, 1, 2, 3],
+        },
+      ],
+
       allIndex: {
         1: 0,
         2: 13,
