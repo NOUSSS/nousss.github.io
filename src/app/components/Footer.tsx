@@ -39,9 +39,10 @@ const Footer = () => {
 
       <div className="mt-4">
         <p>
-          Mugiwara no Streaming n'héberge aucune vidéo dans son serveur.
-          Contactez directement la plateforme d'hébergement vidéo pour toutes
-          réclamations de droits
+          Mugiwara no Streaming est un site de référencement d'animes (films +
+          scans) sans publicitées intrusives. Nous n'hébergeons aucune vidéo sur
+          notre serveur, contactez directement la plateforme d'hébergement vidéo
+          pour toutes réclamations de droits
         </p>
 
         <p>© 2024 Mugiwara-no Streaming - Tous droits réservés.</p>

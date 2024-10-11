@@ -40,3 +40,5 @@ next-env.d.ts
 
 # visual studio code
 /.vscode
+
+.vercel
