@@ -2,11 +2,12 @@
 
 import { toast } from "sonner";
 import { ANIMES } from "@/animes/constants";
-
 import { useState } from "react";
+import { cn } from "@/app/lib";
+import { Footer } from "@/app/components";
+
 import Head from "next/head";
 import Link from "next/link";
-import { Options } from "@/typings/types";
 
 interface Error {
   manque: number;
@@ -15,8 +16,7 @@ interface Error {
 }
 
 export default function Suggest() {
-  const [errors, setErrors] = useState<Error[]>([]);
-  const [ended, setEnded] = useState(false);
+  const [logs, setLogs] = useState<Error[]>([]);
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function Suggest() {
         <meta property="og:description" content="Vérification des saisons" />
       </Head>
 
-      <main className="mx-auto w-[500px] rounded-md bg-zinc-900 bg-opacity-50 p-4 shadow-lg max-md:w-auto max-md:bg-transparent">
+      <main className="border border-neutral-700 bg-zinc-900 bg-opacity-50 p-4 sm:p-6 md:mx-24 md:rounded-md xl:mx-44">
         <h1 className="mb-6 text-4xl">Vérification des saisons</h1>
 
         <button
@@ -59,16 +59,14 @@ export default function Suggest() {
                     }
                   }
 
-                  if (saisonsAS.saisons > saisonsMNS) {
-                    setErrors((prevErrors) => [
-                      ...prevErrors,
-                      {
-                        manque: saisonsAS.saisons - saisonsMNS,
-                        anime,
-                        url,
-                      },
-                    ]);
-                  }
+                  setLogs((prevLogs) => [
+                    ...prevLogs,
+                    {
+                      manque: saisonsAS.saisons - saisonsMNS,
+                      anime,
+                      url,
+                    },
+                  ]);
                 }
               }),
             );
@@ -76,37 +74,44 @@ export default function Suggest() {
             toast.success("Vérification terminé", {
               id: loading,
             });
-
-            setEnded(true);
           }}
         >
           Vérifier
         </button>
 
         <div className="mt-12 text-left">
-          <p className="text-4xl">Logs</p>
+          <p className="text-4xl">
+            Logs ({logs.length}/{ANIMES.length})
+          </p>
 
           <ul className="mt-4 flex flex-col">
-            {errors.length > 0
-              ? errors?.map(({ manque, anime, url }) => (
-                  <li className="flex gap-2" key={anime}>
-                    <Link
-                      target="_blank"
-                      href={url}
-                      className="text-xl text-main hover:underline"
-                    >
-                      {anime}
-                    </Link>
-                    {" - "}
-                    <p className="text-lg">Il manque {manque} saison(s)</p>
-                  </li>
-                ))
-              : ended
-                ? "Aucune nouvelle saison trouvée"
-                : ""}
+            {logs?.map(({ manque, anime, url }) => (
+              <li
+                className={cn("flex gap-2 text-green-500", {
+                  "text-red-500": manque > 0,
+                })}
+                key={anime}
+              >
+                <Link
+                  target="_blank"
+                  href={url}
+                  className="text-xl hover:underline"
+                >
+                  {anime}
+                </Link>
+                {" - "}
+                <p className="text-lg">
+                  {manque > 0
+                    ? `Il manque ${manque} saison(s)`
+                    : "Aucune nouvelle saison"}
+                </p>
+              </li>
+            ))}
           </ul>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }
