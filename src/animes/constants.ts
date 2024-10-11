@@ -127,6 +127,7 @@ import RakudaiKishi from "./RakudaiKishi/rakudai-kishi";
 import TenseiShitara from "./TenseiShitara/tensei-shitara";
 import DetectiveConan from "./DetectiveConan/detective-conan";
 import DanDaDan from "./DanDaDan/dandadan";
+import DragonBallDaima from "./DragonBallDaima/dragon-ball-daima";
 
 export interface AnimesType {
   anime: string;
@@ -1313,10 +1314,24 @@ export const ANIMES: AnimesType[] = [
   },
   {
     anime: "DanDaDan",
-    category: ["Action", "Comédie", "Horreur", "Mystère", "Romance", "Nouvelles saisons"],
+    category: [
+      "Action",
+      "Comédie",
+      "Horreur",
+      "Mystère",
+      "Romance",
+      "Nouvelles saisons",
+    ],
     options: new DanDaDan(),
     synopsis:
       "Momo Ayase et Ken Takakura sont tous deux lycéens. Tandis que la première croit aux fantômes, le second est fasciné par les extraterrestres. Évidemment, chacun se moque des croyances de l'autre. Incapables de se convaincre, ils se lancent un défi pour savoir lequel des deux a raison. Momo se retrouve dans un hôpital où des créatures de l'espace sont censées se trouver et Ken dans un tunnel hanté. C'est le début d'une romance survoltée où l'occulte, le paranormal et le surnaturel se bousculent dans un chaos haletant !",
+  },
+  {
+    anime: "Dragon Ball Daima",
+    category: ["Arts Martiaux", "Action", "Aventure", "Nouvelles saisons"],
+    options: new DragonBallDaima(),
+    synopsis:
+      "À la suite d'une conspiration, Goku et certains de ses alliés reprennent leur taille d'enfant. Commence alors une quête pour régler ce problème.",
   },
 ];
 
