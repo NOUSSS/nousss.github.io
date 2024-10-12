@@ -424,8 +424,11 @@ export default function Accueil() {
                       <RemoveHistorique setHistoriques={setHistoriques} />
                     </>
                   ) : (
-                    <Link href="/Catalogue" className="flex items-center gap-2 text-xl font-normal drop-shadow-2xl md:text-2xl hover:underline">
-                      <ArrowRight> {category}
+                    <Link
+                      href="/Catalogue"
+                      className="flex items-center gap-2 text-xl font-normal drop-shadow-2xl hover:underline md:text-2xl"
+                    >
+                      {category} <ArrowRight />
                     </Link>
                   )}
                 </div>
