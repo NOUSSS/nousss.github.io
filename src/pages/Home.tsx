@@ -63,7 +63,7 @@ const Home = () => {
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="absolute left-0 -z-10 h-full w-full blur-lg md:h-full xl:w-auto"
+                className="absolute left-0 -z-10 h-full w-full blur-3xl"
               />
             </>
           )}
@@ -110,6 +110,7 @@ const Home = () => {
                 </Link>
               </li>
             )}
+
             {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
               <li className="text-4xl">
                 <Link

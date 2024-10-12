@@ -386,7 +386,7 @@ export default function Accueil() {
                     </div>
 
                     <Image
-                      className="absolute top-0 -z-10 aspect-video h-full w-[900px] min-w-[900px] blur-md max-lg:min-w-full max-lg:max-w-full"
+                      className="absolute top-0 -z-10 aspect-video h-full w-full blur-3xl"
                       alt="affiche d'un anime aléatoire"
                       src={anime.options.affiche!}
                     />
