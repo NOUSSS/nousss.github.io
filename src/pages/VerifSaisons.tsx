@@ -83,7 +83,8 @@ export default function Suggest() {
           <p className="text-2xl">
             Logs ({logs.length}/
             {ANIMES.filter(({ options }) => options.saisons).length}) -{" "}
-            {logs.map(({ manque }) => manque > 0).length} erreur(s) trouvée(s)
+            {logs.filter(({ manque }) => manque > 0).length} erreur(s)
+            trouvée(s)
           </p>
 
           <ul className="mt-4 flex flex-col">
