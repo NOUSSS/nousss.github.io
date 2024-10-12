@@ -5,6 +5,7 @@ import Image, { StaticImageData } from "next/image";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
+import Head from "next/head";
 
 import { Footer, RemoveHistorique } from "@/app/components/";
 import {
@@ -17,7 +18,7 @@ import { toast } from "sonner";
 import { Data, DatasArr, Historique } from "@/typings/types";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
-import { getAnime, shuffle, getWallpaper, cn } from "@/app/lib/";
+import { getAnime, shuffle, getWallpaper, cn, formatName } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
 
@@ -26,8 +27,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-
-import Head from "next/head";
 
 interface AmbiancePros {
   image?: StaticImageData | null;
@@ -80,11 +79,27 @@ export default function Accueil() {
       const items = JSON.parse(localStorage.getItem(type) || "[]") as DatasArr;
 
       items.forEach((item) => {
-        loadedHistoriques.push({
-          name: item.name,
-          redirect: type.charAt(0).toUpperCase() + type.slice(1),
-          detail: item,
-        });
+        const animeName = formatName(item.name);
+        const redirectAnime = type.charAt(0).toUpperCase() + type.slice(1);
+
+        if (
+          animeName &&
+          !loadedHistoriques.find(
+            ({ name, redirect }) =>
+              name === animeName && redirect === redirectAnime,
+          )
+        ) {
+          loadedHistoriques.push({
+            name: animeName,
+            redirect: redirectAnime,
+            detail: item,
+          });
+        } else {
+          localStorage.setItem(
+            type,
+            JSON.stringify(items.filter(({ name }) => name === animeName)),
+          );
+        }
       });
     });
 

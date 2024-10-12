@@ -80,8 +80,10 @@ export default function Suggest() {
         </button>
 
         <div className="mt-12 text-left">
-          <p className="text-4xl">
-            Logs ({logs.length}/{ANIMES.length})
+          <p className="text-2xl">
+            Logs ({logs.length}/
+            {ANIMES.filter(({ options }) => options.saisons).length}) -{" "}
+            {logs.map(({ manque }) => manque > 0).length} erreur(s) trouvée(s)
           </p>
 
           <ul className="mt-4 flex flex-col">
@@ -100,7 +102,7 @@ export default function Suggest() {
                   {anime}
                 </Link>
                 {" - "}
-                <p className="text-lg">
+                <p className="text-base">
                   {manque > 0
                     ? `Il manque ${manque} saison(s)`
                     : "Aucune nouvelle saison"}
