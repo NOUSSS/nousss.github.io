@@ -9,14 +9,14 @@ import { Footer } from "@/app/components";
 import Head from "next/head";
 import Link from "next/link";
 
-interface Error {
+interface Log {
   manque: number;
   anime: string;
   url: string;
 }
 
 export default function Suggest() {
-  const [logs, setLogs] = useState<Error[]>([]);
+  const [logs, setLogs] = useState<Log[]>([]);
 
   return (
     <>
