@@ -1327,7 +1327,7 @@ export const ANIMES: AnimesType[] = [
       "Momo Ayase et Ken Takakura sont tous deux lycéens. Tandis que la première croit aux fantômes, le second est fasciné par les extraterrestres. Évidemment, chacun se moque des croyances de l'autre. Incapables de se convaincre, ils se lancent un défi pour savoir lequel des deux a raison. Momo se retrouve dans un hôpital où des créatures de l'espace sont censées se trouver et Ken dans un tunnel hanté. C'est le début d'une romance survoltée où l'occulte, le paranormal et le surnaturel se bousculent dans un chaos haletant !",
   },
   {
-    anime: "Dragon Ball Daima",
+    anime: "Dragon Ball DAIMA",
     category: ["Arts Martiaux", "Action", "Aventure", "Nouvelles saisons"],
     options: new DragonBallDaima(),
     synopsis:
