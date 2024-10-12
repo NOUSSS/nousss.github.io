@@ -415,7 +415,7 @@ export default function Accueil() {
                 >
                   {category === "Reprendre" ? (
                     <>
-                      <p className="text-2xl font-normal drop-shadow-2xl md:text-3xl">
+                      <p className="text-xl font-normal drop-shadow-2xl md:text-2xl">
                         {category}
                       </p>
 
@@ -425,7 +425,7 @@ export default function Accueil() {
                     </>
                   ) : (
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-2xl font-normal drop-shadow-2xl md:text-3xl">
+                      <p className="text-xl font-normal drop-shadow-2xl md:text-2xl">
                         {category}
                       </p>
 
