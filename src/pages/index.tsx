@@ -45,7 +45,7 @@ export default function Accueil() {
   const Play = icons["Play"];
   const Book = icons["BookOpen"];
 
-  const ArrowUpRight = icons["ArrowUpRight"];
+  const ArrowRight = icons["ArrowRight"];
 
   const [historiques, setHistoriques] = useState<Historique[]>([]);
   const [randomAnimes, setRandomAnimes] = useState<AnimesType[]>();
@@ -424,24 +424,9 @@ export default function Accueil() {
                       <RemoveHistorique setHistoriques={setHistoriques} />
                     </>
                   ) : (
-                    <div className="flex items-center justify-between gap-4">
-                      <p className="text-xl font-normal drop-shadow-2xl md:text-2xl">
-                        {category}
-                      </p>
-
-                      <div className="flex items-center gap-2 text-lg text-zinc-400">
-                        <ArrowUpRight />
-
-                        <Link
-                          href={{
-                            pathname: `/Catalogue`,
-                          }}
-                          className="hover:underline"
-                        >
-                          Voir tout
-                        </Link>
-                      </div>
-                    </div>
+                    <Link href="/Catalogue" className="flex items-center gap-2 text-xl font-normal drop-shadow-2xl md:text-2xl hover:underline">
+                      <ArrowRight> {category}
+                    </Link>
                   )}
                 </div>
 
