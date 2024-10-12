@@ -97,7 +97,7 @@ export default function Suggest() {
                 <Link
                   target="_blank"
                   href={url}
-                  className="text-xl hover:underline"
+                  className="text-lg hover:underline"
                 >
                   {anime}
                 </Link>
