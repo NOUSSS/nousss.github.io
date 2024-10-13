@@ -91,7 +91,7 @@ const Home = () => {
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="absolute left-0 top-0 -z-10 w-full scale-110 blur-[.5375rem] brightness-90"
+                className="absolute left-0 top-0 -z-10 w-full blur-[.5375rem] brightness-90"
               />
             </div>
           )}
