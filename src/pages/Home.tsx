@@ -78,7 +78,7 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-24 mx-12 flex flex-col gap-12 border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:mx-0">
+      <main className="top-0 mx-12 flex flex-col gap-12 border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:mx-0 min-[460px]:top-24">
         <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
             <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[400px]">
@@ -97,16 +97,18 @@ const Home = () => {
           )}
 
           {anime?.options.saisons && (
-            <Image
-              alt={`saison de ${anime.anime}`}
-              src={Object.values(anime.options.saisons)[
-                Object.keys(anime.options.saisons).length - 1
-              ].image()}
-              className="min-[460px]:hidden"
-            />
+            <div className="relative">
+              <Image
+                alt={`saison de ${anime.anime}`}
+                src={Object.values(anime.options.saisons)[
+                  Object.keys(anime.options.saisons).length - 1
+                ].image()}
+                className="mask-image-fade min-[460px]:hidden"
+              />
+            </div>
           )}
 
-          <div className="p-4 lg:p-8">
+          <div className="relative p-4 max-[460px]:-top-24 lg:p-8">
             <div className="text-lg font-normal">
               {anime?.anime && (
                 <h1 className="my-4 animate-title text-center text-4xl md:my-0">

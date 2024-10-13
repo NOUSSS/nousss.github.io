@@ -15,6 +15,10 @@
   min-height: 100vh;
 }
 
+.mask-image-fade {
+  mask-image: linear-gradient(to top, transparent, black 200px);
+}
+
 .swiper-pagination-progressbar-fill {
   background: var(--mainColor) !important;
 }
