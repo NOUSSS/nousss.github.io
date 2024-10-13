@@ -81,11 +81,11 @@ const Home = () => {
       <main className="top-24 mx-12 flex flex-col gap-12 border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:mx-0">
         <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
-            <div className="relative flex justify-center overflow-hidden md:h-[400px]">
+            <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[400px]">
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="md:w-[650px] md:max-w-[650px]"
+                className="w-[450px] sm:w-[400px] md:w-[650px]"
               />
 
               <Image
@@ -94,6 +94,16 @@ const Home = () => {
                 className="absolute left-0 top-0 -z-10 w-full blur-[.5375rem] brightness-90"
               />
             </div>
+          )}
+
+          {anime?.options.saisons && (
+            <Image
+              alt={`saison de ${anime.anime}`}
+              src={Object.values(anime.options.saisons)[
+                Object.keys(anime.options.saisons).length - 1
+              ].image()}
+              className="min-[460px]:hidden"
+            />
           )}
 
           <div className="p-4 lg:p-8">
