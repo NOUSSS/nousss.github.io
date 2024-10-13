@@ -550,7 +550,7 @@ const Episodes = () => {
                   <Link
                     className="text-sm font-normal text-main hover:underline sm:text-base"
                     href={{
-                      pathname: "/Saisons",
+                      pathname: "/Home",
                       query: { anime: anime!.anime.anime },
                     }}
                   >

@@ -11,15 +11,17 @@ export function getFilms(
       | Partial<Anime.AnimeFilmsProps>
       | ((prevState: Anime.AnimeFilmsProps) => Partial<Anime.AnimeFilmsProps>),
   ) => void,
+
+  filmPage: boolean,
 ) {
   let LecteursFilms: string[] = [];
   const Lecteurs = getLecteur();
 
   const filmsNodes: Anime.FilmNodes[] = [];
 
-  if (Anime?.lecteur) {
+  if (Anime?.lecteur && filmPage) {
     LecteursFilms = Lecteurs[Anime?.lecteur]!;
-  } else {
+  } else if (!Anime?.lecteur && filmPage) {
     const lecteur = Object.keys(Lecteurs)[0];
 
     updateAnime((currentState) => ({ ...currentState, lecteur }));
@@ -31,9 +33,12 @@ export function getFilms(
     ? Object.values(Anime.anime.options.FILM_OPTIONS.names)
     : undefined;
 
-  if (names && LecteursFilms?.length > 0) {
+  console.log(names);
+  console.log(filmPage);
+
+  if ((names && LecteursFilms?.length > 0) || (names && !filmPage)) {
     for (let i = 0; i < Object.keys(names).length; i++) {
-      const url = LecteursFilms[i];
+      const url = LecteursFilms?.[i];
       const id = `${names[i].name}|${
         typeof names[i].aliases === "undefined"
           ? ""

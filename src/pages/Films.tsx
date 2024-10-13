@@ -22,6 +22,7 @@ const Films = () => {
   const [loadingToast, setLoadingToast] = useState<string | number | null>(
     null,
   );
+
   const [script, setScript] = useState<string>("");
   const [filmData, setFilmData] = useState<FilmData>();
 
@@ -61,6 +62,7 @@ const Films = () => {
   }, []);
 
   useEffect(() => {
+    console.log(anime);
     if (anime && anime?.lang) {
       const options = anime?.anime?.options.FILM_OPTIONS;
 
@@ -134,7 +136,7 @@ const Films = () => {
           containerRef,
         );
 
-        getFilms(anime!, updateAnime);
+        getFilms(anime!, updateAnime, true);
       }, 250);
     }
   }, [status, anime?.currentLecteur, anime?.lang]);

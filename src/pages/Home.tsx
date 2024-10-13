@@ -5,19 +5,40 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { navMotion, getAnime, getCurrentAnime } from "@/app/lib/";
-
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Footer } from "@/app/components/";
+import { Footer, SearchBar } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
+import { useAnime } from "@/app/lib/hooks";
+import { Anime } from "@/typings/types";
+import { getSaisons } from "@/app/utils/Saisons/getSaisons";
+import { changeSaison } from "@/app/utils/Saisons/changeSaison";
+import { getFilms } from "@/app/utils/Films/getFilms";
+import { icons } from "lucide-react";
+
+import EpisodeData from "@/app/class/episodeData";
+import FilmData from "@/app/class/filmData";
 
 const Home = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
+  const [animeSeason, updateAnimeSeason] = useAnime<Anime.AnimeSaisonsProps>(
+    {},
+  );
+  const [animeFilms, updateAnimeFilms] = useAnime<Anime.AnimeFilmsProps>({});
 
   const router = useRouter();
   const query = router.query;
 
-  const choicesRef = useRef<HTMLDivElement>(null);
+  const seasonPart = useRef<HTMLDivElement>(null);
+  const filmPart = useRef<HTMLDivElement>(null);
+
+  const filmsRef = useRef<HTMLUListElement[]>([]);
+  const saisonsRef = useRef<HTMLUListElement[]>([]);
+
+  const ChevronDown = icons["ChevronDown"];
+
+  const ChevronDownSeasonRef = useRef<SVGSVGElement>(null);
+  const ChevronDownFilmsRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
@@ -25,15 +46,23 @@ const Home = () => {
     if (currentAnime) {
       setAnime(currentAnime);
 
-      navMotion({
-        container: choicesRef,
-        direction: "vertical",
-        size: 2,
+      const episodeData = new EpisodeData(currentAnime.anime);
+
+      updateAnimeSeason({
+        anime: currentAnime,
+        saisons: getSaisons(),
+        saison: episodeData.get()?.saison,
       });
+
+      updateAnimeFilms({
+        anime: currentAnime,
+      });
+
+      getFilms(animeFilms!, updateAnimeFilms, false);
     } else {
       router.push("/");
     }
-  }, [query.anime]);
+  }, [query.anime, router, anime?.anime]);
 
   return (
     <>
@@ -48,15 +77,15 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-24 mx-12 max-sm:mx-0">
-        <div className="relative mb-12 flex h-auto flex-col rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:rounded-none xl:flex-row">
+      <main className="top-24 mx-12 flex flex-col gap-12 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-8 text-left max-sm:mx-0 max-sm:rounded-none">
+        <div className="relative flex h-auto flex-col xl:flex-row">
           {anime?.options.affiche && (
             <>
-              <div className="relative flex justify-center rounded-lg xl:-left-2">
+              <div className="relative flex justify-center rounded-lg">
                 <Image
                   alt={`affiche de ${anime.anime}`}
                   src={anime.options.affiche!}
-                  className="w-full scale-90 rounded-lg border border-white md:h-full md:w-[654px] md:max-w-[654px]"
+                  className="w-full rounded-lg border border-white md:h-full md:w-[650px] md:max-w-[650px]"
                 />
               </div>
 
@@ -98,47 +127,154 @@ const Home = () => {
           </div>
         </div>
 
-        <div ref={choicesRef} className="flex justify-center text-left">
-          <ul>
-            {anime?.options.FILM_OPTIONS && (
-              <li className="text-4xl">
-                <Link
-                  className="transition-colors hover:text-main"
-                  href={{ pathname: "/Films", query: { anime: anime?.anime } }}
-                >
-                  Films
-                </Link>
-              </li>
-            )}
+        <div className="flex flex-col gap-2">
+          {anime?.options.saisons && (
+            <div>
+              <div className="inline-block">
+                <p
+                  onClick={() => {
+                    const classList = ChevronDownSeasonRef.current?.classList;
 
-            {anime?.options.EPISODES_OPTIONS && anime.options.saisons && (
-              <li className="text-4xl">
-                <Link
-                  className="transition-colors hover:text-main"
-                  href={{
-                    pathname:
-                      Object.keys(anime.options.saisons).length > 1
-                        ? "/Saisons"
-                        : `/Episodes`,
-                    query: { anime: anime.anime },
+                    if (classList?.contains("rotate-180")) {
+                      classList.remove("rotate-180");
+                      seasonPart.current?.classList.remove("hidden");
+                    } else {
+                      classList?.add("rotate-180");
+                      seasonPart.current?.classList.add("hidden");
+                    }
+                  }}
+                  className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
+                >
+                  <ChevronDown ref={ChevronDownSeasonRef} /> Saisons
+                </p>
+              </div>
+
+              <div ref={seasonPart}>
+                {animeSeason.saisons && animeSeason.saisons.length > 1 && (
+                  <SearchBar
+                    placeholder="Rechercher une saison"
+                    className="my-4"
+                    containerRef={saisonsRef}
+                    query="id"
+                  />
+                )}
+
+                <ul
+                  className="overflow-x-auto"
+                  ref={(el) => {
+                    if (el) {
+                      saisonsRef.current[0] = el;
+                    }
                   }}
                 >
-                  Saisons
-                </Link>
-              </li>
-            )}
+                  {animeSeason?.saisons?.map(({ element, id }, index) => (
+                    <li
+                      key={id}
+                      id={id}
+                      className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                      onClick={() => {
+                        changeSaison((index + 1).toString(), anime?.anime!);
+                      }}
+                    >
+                      <Link
+                        href={{
+                          pathname: "/Episodes",
+                          query: {
+                            anime: anime?.anime,
+                            saison: (index + 1).toString(),
+                          },
+                        }}
+                      >
+                        {element}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
 
-            {anime?.options.SCANS_OPTIONS && (
-              <li className="text-4xl">
-                <Link
-                  className="transition-colors hover:text-main"
-                  href={{ pathname: "/Scans", query: { anime: anime.anime } }}
+          {anime?.options.FILM_OPTIONS && (
+            <div>
+              <div className="inline-block">
+                <p
+                  onClick={() => {
+                    const classList = ChevronDownFilmsRef.current?.classList;
+
+                    if (classList?.contains("rotate-180")) {
+                      classList.remove("rotate-180");
+                      filmPart.current?.classList.remove("hidden");
+                    } else {
+                      classList?.add("rotate-180");
+                      filmPart.current?.classList.add("hidden");
+                    }
+                  }}
+                  className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
                 >
-                  {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
-                </Link>
-              </li>
-            )}
-          </ul>
+                  <ChevronDown ref={ChevronDownFilmsRef} /> Films
+                </p>
+              </div>
+
+              <div ref={filmPart}>
+                {animeFilms?.films && animeFilms.films.length > 1 && (
+                  <SearchBar
+                    className="my-4"
+                    placeholder="Rechercher un film"
+                    containerRef={filmsRef}
+                    query="id"
+                  />
+                )}
+
+                <ul
+                  ref={(el) => {
+                    if (el) {
+                      filmsRef.current[0] = el;
+                    }
+                  }}
+                >
+                  {animeFilms.films?.map(({ id, element }, index) => (
+                    <li
+                      key={id}
+                      id={id}
+                      className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                    >
+                      <Link
+                        href={{
+                          pathname: "/Films",
+                          query: { anime: anime?.anime },
+                        }}
+                        onClick={() => {
+                          const filmData = new FilmData(
+                            animeFilms.anime?.anime,
+                          );
+
+                          const filmDataGet = filmData.get();
+
+                          filmData.setFilm(index.toString());
+                          filmData.setLang(
+                            filmDataGet?.lang ? filmDataGet?.lang : "vostfr",
+                          );
+                        }}
+                      >
+                        {element}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="justify-left flex text-left">
+          {anime?.options.SCANS_OPTIONS && (
+            <Link
+              className="text-4xl transition-colors hover:text-main"
+              href={{ pathname: "/Scans", query: { anime: anime.anime } }}
+            >
+              {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
+            </Link>
+          )}
         </div>
       </main>
 
