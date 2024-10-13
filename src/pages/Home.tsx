@@ -78,204 +78,210 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-24 mx-12 flex flex-col gap-12 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2 text-left max-sm:mx-0 max-sm:rounded-none lg:p-8">
-        <div className="relative flex h-auto flex-col xl:flex-row">
+      <main className="top-24 mx-12 flex flex-col gap-12 border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:mx-0">
+        <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
-            <>
-              <div className="relative flex justify-center rounded-lg">
-                <Image
-                  alt={`affiche de ${anime.anime}`}
-                  src={anime.options.affiche!}
-                  className="w-full rounded-lg border border-white md:h-full md:w-[650px] md:max-w-[650px]"
-                />
-              </div>
+            <div className="relative flex justify-center overflow-hidden md:h-[400px]">
+              <Image
+                alt={`affiche de ${anime.anime}`}
+                src={anime.options.affiche!}
+                className="md:w-[650px] md:max-w-[650px]"
+              />
 
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="absolute left-0 -z-10 h-full w-full blur-3xl"
+                className="absolute left-0 top-0 -z-10 w-full scale-110 blur-[.5375rem] brightness-90"
               />
-            </>
+            </div>
           )}
 
-          <div className="m-5 text-lg">
-            {anime?.anime && (
-              <h1 className="animate-title text-center text-4xl">
-                {anime.anime}
-              </h1>
-            )}
+          <div className="p-4 lg:p-8">
+            <div className="text-lg font-normal">
+              {anime?.anime && (
+                <h1 className="my-4 animate-title text-center text-4xl md:my-0">
+                  {anime.anime}
+                </h1>
+              )}
 
-            {anime?.aliases && anime.aliases.length > 0 && (
+              {anime?.aliases && anime.aliases.length > 0 && (
+                <div>
+                  Aliases
+                  <p className="ml-1 text-sm text-zinc-300">
+                    {anime.aliases.join(", ")}
+                  </p>
+                </div>
+              )}
+
               <div>
-                Aliases
+                Catégories
                 <p className="ml-1 text-sm text-zinc-300">
-                  {anime.aliases.join(", ")}
+                  {anime?.category.join(", ")}
                 </p>
               </div>
-            )}
 
-            <div>
-              Catégories
-              <p className="ml-1 text-sm text-zinc-300">
-                {anime?.category.join(", ")}
-              </p>
+              <div className="my-4">
+                Synopsis
+                <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
+              </div>
             </div>
 
-            <div className="mt-4">
-              Synopsis
-              <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
+            <div className="flex flex-col gap-2">
+              {anime?.options.EPISODES_OPTIONS && (
+                <div>
+                  <div className="inline-block">
+                    <p
+                      onClick={() => {
+                        const classList =
+                          ChevronDownSeasonRef.current?.classList;
+
+                        if (classList?.contains("rotate-180")) {
+                          classList.remove("rotate-180");
+                          seasonPart.current?.classList.remove("hidden");
+                        } else {
+                          classList?.add("rotate-180");
+                          seasonPart.current?.classList.add("hidden");
+                        }
+                      }}
+                      className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
+                    >
+                      <ChevronDown ref={ChevronDownSeasonRef} /> Saisons{" "}
+                    </p>
+                  </div>
+
+                  <div ref={seasonPart}>
+                    {animeSeason.saisons && animeSeason.saisons.length > 1 && (
+                      <SearchBar
+                        placeholder="Rechercher une saison"
+                        className="my-4"
+                        containerRef={saisonsRef}
+                        query="id"
+                      />
+                    )}
+
+                    <ul
+                      className="overflow-x-auto"
+                      ref={(el) => {
+                        if (el) {
+                          saisonsRef.current[0] = el;
+                        }
+                      }}
+                    >
+                      {animeSeason?.saisons?.map(({ element, id }, index) => (
+                        <li
+                          key={id}
+                          id={id}
+                          className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                          onClick={() => {
+                            changeSaison((index + 1).toString(), anime?.anime!);
+                          }}
+                        >
+                          <Link
+                            href={{
+                              pathname: "/Episodes",
+                              query: {
+                                anime: anime?.anime,
+                                saison: (index + 1).toString(),
+                              },
+                            }}
+                          >
+                            {element}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {anime?.options.FILM_OPTIONS && (
+                <div>
+                  <div className="inline-block">
+                    <p
+                      onClick={() => {
+                        const classList =
+                          ChevronDownFilmsRef.current?.classList;
+
+                        if (classList?.contains("rotate-180")) {
+                          classList.remove("rotate-180");
+                          filmPart.current?.classList.remove("hidden");
+                        } else {
+                          classList?.add("rotate-180");
+                          filmPart.current?.classList.add("hidden");
+                        }
+                      }}
+                      className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
+                    >
+                      <ChevronDown ref={ChevronDownFilmsRef} /> Films
+                    </p>
+                  </div>
+
+                  <div ref={filmPart}>
+                    {animeFilms?.films && animeFilms.films.length > 1 && (
+                      <SearchBar
+                        className="my-4"
+                        placeholder="Rechercher un film"
+                        containerRef={filmsRef}
+                        query="id"
+                      />
+                    )}
+
+                    <ul
+                      ref={(el) => {
+                        if (el) {
+                          filmsRef.current[0] = el;
+                        }
+                      }}
+                    >
+                      {animeFilms.films?.map(({ id, element }, index) => (
+                        <li
+                          key={id}
+                          id={id}
+                          className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                        >
+                          <Link
+                            href={{
+                              pathname: "/Films",
+                              query: { anime: anime?.anime },
+                            }}
+                            onClick={() => {
+                              const filmData = new FilmData(
+                                animeFilms.anime?.anime,
+                              );
+
+                              const filmDataGet = filmData.get();
+
+                              filmData.setFilm(index.toString());
+                              filmData.setLang(
+                                filmDataGet?.lang
+                                  ? filmDataGet?.lang
+                                  : "vostfr",
+                              );
+                            }}
+                          >
+                            {element}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {anime?.options.SCANS_OPTIONS && (
+                <Link
+                  className="flex items-center gap-2 text-2xl transition-colors hover:text-main"
+                  href={{ pathname: "/Scans", query: { anime: anime.anime } }}
+                >
+                  <ArrowUpRight />
+                  {anime.category.includes("Webtoon")
+                    ? "Webtoon"
+                    : "Scans"}{" "}
+                </Link>
+              )}
             </div>
           </div>
         </div>
-
-        <div className="flex flex-col gap-2">
-          {anime?.options.EPISODES_OPTIONS && (
-            <div>
-              <div className="inline-block">
-                <p
-                  onClick={() => {
-                    const classList = ChevronDownSeasonRef.current?.classList;
-
-                    if (classList?.contains("rotate-180")) {
-                      classList.remove("rotate-180");
-                      seasonPart.current?.classList.remove("hidden");
-                    } else {
-                      classList?.add("rotate-180");
-                      seasonPart.current?.classList.add("hidden");
-                    }
-                  }}
-                  className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
-                >
-                  <ChevronDown ref={ChevronDownSeasonRef} /> Saisons{" "}
-                </p>
-              </div>
-
-              <div ref={seasonPart}>
-                {animeSeason.saisons && animeSeason.saisons.length > 1 && (
-                  <SearchBar
-                    placeholder="Rechercher une saison"
-                    className="my-4"
-                    containerRef={saisonsRef}
-                    query="id"
-                  />
-                )}
-
-                <ul
-                  className="overflow-x-auto"
-                  ref={(el) => {
-                    if (el) {
-                      saisonsRef.current[0] = el;
-                    }
-                  }}
-                >
-                  {animeSeason?.saisons?.map(({ element, id }, index) => (
-                    <li
-                      key={id}
-                      id={id}
-                      className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
-                      onClick={() => {
-                        changeSaison((index + 1).toString(), anime?.anime!);
-                      }}
-                    >
-                      <Link
-                        href={{
-                          pathname: "/Episodes",
-                          query: {
-                            anime: anime?.anime,
-                            saison: (index + 1).toString(),
-                          },
-                        }}
-                      >
-                        {element}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {anime?.options.FILM_OPTIONS && (
-            <div>
-              <div className="inline-block">
-                <p
-                  onClick={() => {
-                    const classList = ChevronDownFilmsRef.current?.classList;
-
-                    if (classList?.contains("rotate-180")) {
-                      classList.remove("rotate-180");
-                      filmPart.current?.classList.remove("hidden");
-                    } else {
-                      classList?.add("rotate-180");
-                      filmPart.current?.classList.add("hidden");
-                    }
-                  }}
-                  className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
-                >
-                  <ChevronDown ref={ChevronDownFilmsRef} /> Films
-                </p>
-              </div>
-
-              <div ref={filmPart}>
-                {animeFilms?.films && animeFilms.films.length > 1 && (
-                  <SearchBar
-                    className="my-4"
-                    placeholder="Rechercher un film"
-                    containerRef={filmsRef}
-                    query="id"
-                  />
-                )}
-
-                <ul
-                  ref={(el) => {
-                    if (el) {
-                      filmsRef.current[0] = el;
-                    }
-                  }}
-                >
-                  {animeFilms.films?.map(({ id, element }, index) => (
-                    <li
-                      key={id}
-                      id={id}
-                      className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
-                    >
-                      <Link
-                        href={{
-                          pathname: "/Films",
-                          query: { anime: anime?.anime },
-                        }}
-                        onClick={() => {
-                          const filmData = new FilmData(
-                            animeFilms.anime?.anime,
-                          );
-
-                          const filmDataGet = filmData.get();
-
-                          filmData.setFilm(index.toString());
-                          filmData.setLang(
-                            filmDataGet?.lang ? filmDataGet?.lang : "vostfr",
-                          );
-                        }}
-                      >
-                        {element}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {anime?.options.SCANS_OPTIONS && (
-          <Link
-            className="flex items-center gap-2 text-4xl transition-colors hover:text-main"
-            href={{ pathname: "/Scans", query: { anime: anime.anime } }}
-          >
-            {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}{" "}
-            <ArrowUpRight />
-          </Link>
-        )}
       </main>
 
       <Footer />
