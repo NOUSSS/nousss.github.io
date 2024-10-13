@@ -36,6 +36,7 @@ const Home = () => {
   const saisonsRef = useRef<HTMLUListElement[]>([]);
 
   const ChevronDown = icons["ChevronDown"];
+  const ArrowUpRight = icons["ArrowUpRight"];
 
   const ChevronDownSeasonRef = useRef<SVGSVGElement>(null);
   const ChevronDownFilmsRef = useRef<SVGSVGElement>(null);
@@ -77,7 +78,7 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-24 mx-12 flex flex-col gap-12 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-8 text-left max-sm:mx-0 max-sm:rounded-none">
+      <main className="top-24 mx-12 flex flex-col gap-12 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2 text-left max-sm:mx-0 max-sm:rounded-none lg:p-8">
         <div className="relative flex h-auto flex-col xl:flex-row">
           {anime?.options.affiche && (
             <>
@@ -128,7 +129,7 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          {anime?.options.saisons && (
+          {anime?.options.EPISODES_OPTIONS && (
             <div>
               <div className="inline-block">
                 <p
@@ -145,7 +146,7 @@ const Home = () => {
                   }}
                   className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
                 >
-                  <ChevronDown ref={ChevronDownSeasonRef} /> Saisons
+                  <ChevronDown ref={ChevronDownSeasonRef} /> Saisons{" "}
                 </p>
               </div>
 
@@ -266,16 +267,15 @@ const Home = () => {
           )}
         </div>
 
-        <div className="justify-left flex text-left">
-          {anime?.options.SCANS_OPTIONS && (
-            <Link
-              className="text-4xl transition-colors hover:text-main"
-              href={{ pathname: "/Scans", query: { anime: anime.anime } }}
-            >
-              {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
-            </Link>
-          )}
-        </div>
+        {anime?.options.SCANS_OPTIONS && (
+          <Link
+            className="flex items-center gap-2 text-4xl transition-colors hover:text-main"
+            href={{ pathname: "/Scans", query: { anime: anime.anime } }}
+          >
+            {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}{" "}
+            <ArrowUpRight />
+          </Link>
+        )}
       </main>
 
       <Footer />
