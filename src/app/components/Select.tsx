@@ -189,6 +189,7 @@ const Select: FC<SelectProps> = ({
               <div ref={searchBarRef}>
                 <SearchBar
                   notFirst
+                  iconColor="black"
                   containerRef={containerRef}
                   placeholder="Rechercher..."
                   query="innerText"

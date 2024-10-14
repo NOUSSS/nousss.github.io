@@ -18,7 +18,7 @@ const SearchBar: FC<SearchBarProps> = ({
   placeholder,
   className,
   query,
-  iconColor,
+  iconColor = "white",
   notFirst,
 }) => {
   const SearchIcon = icons["Search"];
@@ -32,7 +32,7 @@ const SearchBar: FC<SearchBarProps> = ({
       )}
       title="Système de recherche super cool"
     >
-      <SearchIcon color={iconColor ?? "black"} size="20" />
+      <SearchIcon color={iconColor} size="20" />
 
       <input
         ref={inputRef}
