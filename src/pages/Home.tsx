@@ -81,11 +81,11 @@ const Home = () => {
       <main className="top-0 flex flex-col gap-12 bg-zinc-900 bg-opacity-50 text-left min-[460px]:top-24">
         <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
-            <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[400px]">
+            <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[calc(100vh-28.75rem)]">
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="h-full w-3/4 max-w-none lg:w-auto"
+                className="h-full w-5/6 lg:w-auto"
               />
 
               <Image
