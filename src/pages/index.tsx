@@ -262,7 +262,7 @@ export default function Accueil() {
                   className="flex h-[525px] min-h-[525px] justify-between border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse"
                 >
                   <div className="relative max-[460px]:-top-24">
-                    <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
+                    <div className="flex h-full flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
                       <div className="my-4">
                         <h1 className="text-5xl font-normal max-xl:text-3xl">
                           {anime.anime.length > 25
