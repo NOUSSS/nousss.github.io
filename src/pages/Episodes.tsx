@@ -710,6 +710,7 @@ const Episodes = () => {
                   <div className="mb-4">
                     <Select
                       parent
+                      search
                       placeholderRef={placeholderSeason}
                       placeholder="Changer de saison"
                       items={Object.values(anime.anime.options.saisons).map(

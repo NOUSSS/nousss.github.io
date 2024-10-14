@@ -5,8 +5,9 @@ type QueryType = "id" | "innerText";
 
 export default function initSearchBar(
   input: RefObject<HTMLInputElement>,
-  containerRef: RefObject<HTMLUListElement[]>,
+  containerRef: RefObject<(HTMLUListElement | HTMLDivElement)[]>,
   query: QueryType,
+  notFirst?: boolean,
 ): void {
   const visible: Set<string> = new Set();
 
@@ -14,8 +15,10 @@ export default function initSearchBar(
     query === "id" ? element.id : element.innerText;
 
   if (containerRef.current && input.current) {
-    containerRef.current.forEach((e) =>
-      e.childNodes.forEach((el) => {
+    containerRef.current.forEach((e) => {
+      const items = notFirst ? Array.from(e.childNodes).slice(1) : e.childNodes;
+
+      items.forEach((el) => {
         const element = el as HTMLElement;
 
         const elementQuery = normalizeString(getSearchQuery(element));
@@ -30,7 +33,7 @@ export default function initSearchBar(
         } else {
           element.classList.add("hidden");
         }
-      }),
-    );
+      });
+    });
   }
 }

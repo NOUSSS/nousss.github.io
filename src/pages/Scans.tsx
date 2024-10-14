@@ -333,6 +333,7 @@ const Scans = () => {
           <div className="mb-2">
             <Select
               scroll={true}
+              search
               onSelect={(items) => {
                 scanData?.setChapitre(items[0].value);
 

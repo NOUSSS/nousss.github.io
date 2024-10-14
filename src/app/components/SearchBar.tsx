@@ -5,10 +5,12 @@ import { FC, RefObject, useRef } from "react";
 type QueryType = "id" | "innerText";
 
 interface SearchBarProps {
-  containerRef: RefObject<HTMLUListElement[]>;
+  containerRef: RefObject<(HTMLUListElement | HTMLDivElement)[]>;
   placeholder: string;
   className?: string;
   query: QueryType;
+  iconColor?: string;
+  notFirst?: boolean;
 }
 
 const SearchBar: FC<SearchBarProps> = ({
@@ -16,6 +18,8 @@ const SearchBar: FC<SearchBarProps> = ({
   placeholder,
   className,
   query,
+  iconColor,
+  notFirst,
 }) => {
   const SearchIcon = icons["Search"];
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,14 +32,24 @@ const SearchBar: FC<SearchBarProps> = ({
       )}
       title="Système de recherche super cool"
     >
-      <SearchIcon size="20" />
+      <SearchIcon color={iconColor ?? "black"} size="20" />
 
       <input
         ref={inputRef}
         type="text"
         placeholder={placeholder}
-        className="h-7 w-full rounded-md bg-transparent"
-        onInput={() => initSearchBar(inputRef, containerRef, query)}
+        className={cn("h-7 w-full rounded-md bg-transparent", {
+          "text-white": iconColor,
+        })}
+        onInput={() => initSearchBar(inputRef, containerRef, query, notFirst)}
+        onKeyDown={(e) => {
+          if (e.key === " " || e.key === "Spacebar") {
+            e.stopPropagation();
+            e.preventDefault();
+
+            if (inputRef.current) inputRef.current.value += " ";
+          }
+        }}
       />
     </label>
   );

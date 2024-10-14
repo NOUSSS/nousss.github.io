@@ -1,6 +1,7 @@
 import { FC, useState, useRef, useEffect, RefObject } from "react";
 import { icons } from "lucide-react";
 import { cn } from "../lib";
+import SearchBar from "./SearchBar";
 
 export interface ItemsProps {
   name: string;
@@ -16,6 +17,7 @@ interface SelectProps {
   items: ItemsProps[];
   placeholderRef: RefObject<HTMLParagraphElement>;
   onSelect: (value: ItemsProps[]) => void;
+  search?: boolean;
 }
 
 interface ItemsRef {
@@ -31,6 +33,7 @@ const Select: FC<SelectProps> = ({
   multiple,
   scroll,
   parent,
+  search,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ItemsProps[]>([]);
@@ -41,6 +44,9 @@ const Select: FC<SelectProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const searchBarRef = useRef<HTMLDivElement>(null);
+
+  const containerRef = useRef<HTMLDivElement[]>([]);
   const itemsRef = useRef<ItemsRef[]>([]);
 
   useEffect(() => {
@@ -60,7 +66,14 @@ const Select: FC<SelectProps> = ({
 
   useEffect(() => toggleBodyScroll(isSelected), [isSelected]);
 
-  const appear = () => {
+  const appear = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (
+      searchBarRef.current &&
+      searchBarRef.current.contains(event.target as Node)
+    ) {
+      return;
+    }
+
     setIsSelected(!svgRef.current?.classList.contains("rotate-180"));
 
     if (buttonRef.current && menuRef.current && svgRef.current) {
@@ -153,7 +166,7 @@ const Select: FC<SelectProps> = ({
         "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-lg border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
         { "ring-2 ring-main": isSelected, "w-full": parent },
       )}
-      onClick={appear}
+      onClick={(e) => appear(e)}
     >
       <p className="relative left-1 font-normal" ref={placeholderRef}>
         {placeholder}
@@ -166,16 +179,33 @@ const Select: FC<SelectProps> = ({
           ref={menuRef}
           className="absolute left-0 top-16 z-50 hidden max-h-64 w-full animate-appear overflow-auto rounded-md text-black shadow-xl backdrop-blur-xl"
         >
-          <div className="bg-white bg-opacity-75 p-2">
+          <div
+            ref={(e) => {
+              if (e) containerRef.current[0] = e;
+            }}
+            className="bg-white bg-opacity-75 p-2"
+          >
+            {search && (
+              <div ref={searchBarRef}>
+                <SearchBar
+                  notFirst
+                  containerRef={containerRef}
+                  placeholder="Rechercher..."
+                  query="innerText"
+                  className="mb-2 flex h-10 w-full cursor-default items-center justify-center rounded-lg border-2 border-blue-700 bg-transparent bg-opacity-100 text-base shadow-none transition-colors"
+                />
+              </div>
+            )}
+
             {items?.map((item, index) => (
               <button
                 key={index}
-                onClick={() => {
+                onClick={(e) => {
                   if (!multiple) toggleBodyScroll(false);
 
                   if (!item.disabled) {
                     handleSelect(item);
-                    appear();
+                    appear(e);
                   }
                 }}
                 ref={(el) => {
