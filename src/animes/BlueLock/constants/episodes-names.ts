@@ -24,6 +24,7 @@ const names = [
   { name: "Luck", index: "23" },
   { name: "L'heure est venue", index: "24" },
   { name: "La détection", index: "25" },
+  { name: "L'assassin et le ninja", index: "26" },
 ];
 
 export default names;
