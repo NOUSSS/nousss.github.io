@@ -405,7 +405,7 @@ export default function Accueil() {
           })}
         </Swiper>
 
-        <div className="relative mx-4 overflow-hidden max-[460px]:-top-24 lg:mx-28">
+        <div className="relative z-50 mx-4 overflow-hidden max-[460px]:-top-24 lg:mx-28">
           {catalogues
             ?.filter(
               ({ names, category }) =>
