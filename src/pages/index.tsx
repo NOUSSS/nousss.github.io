@@ -259,7 +259,7 @@ export default function Accueil() {
               <SwiperSlide key={index}>
                 <div
                   key={index}
-                  className="flex h-[525px] min-h-[525px] justify-between border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse"
+                  className="flex h-[525px] min-h-[525px] justify-between border-b-neutral-700 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse min-[460px]:border-b min-[460px]:bg-zinc-900"
                 >
                   <div className="relative max-[460px]:-top-24">
                     <div className="flex h-full flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
@@ -405,7 +405,7 @@ export default function Accueil() {
           })}
         </Swiper>
 
-        <div className="relative mx-4 overflow-hidden lg:mx-28">
+        <div className="relative mx-4 overflow-hidden max-[460px]:-top-24 lg:mx-28">
           {catalogues
             ?.filter(
               ({ names, category }) =>
