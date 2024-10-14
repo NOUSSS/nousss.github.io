@@ -103,7 +103,7 @@ const Home = () => {
                 src={Object.values(anime.options.saisons)[
                   Object.keys(anime.options.saisons).length - 1
                 ].image()}
-                className="mask-image-fade min-[460px]:hidden"
+                className="mask-image-fade w-full min-[460px]:hidden"
               />
             </div>
           )}
