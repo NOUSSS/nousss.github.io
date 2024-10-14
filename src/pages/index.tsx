@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
@@ -38,7 +38,6 @@ interface Query {
 }
 
 export default function Accueil() {
-  const copyAnimes = [...ANIMES];
   const router = useRouter();
 
   const Trash = icons["Trash2"];
@@ -52,6 +51,8 @@ export default function Accueil() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [catalogues, setCatalogues] = useState<GroupedAnimes[]>();
   const [ambiance, setAmbiance] = useState<AmbiancePros>();
+
+  const copyAnimes = useRef<AnimesType[]>([]);
 
   useEffect(() => {
     if (randomAnimes && randomAnimes[currentIndex]) {
@@ -70,7 +71,11 @@ export default function Accueil() {
   }, [currentIndex, randomAnimes]);
 
   useEffect(() => {
-    let shuffledAnimes = shuffle(ANIMES);
+    if (copyAnimes.current.length === 0) {
+      copyAnimes.current = [...ANIMES];
+    }
+
+    const shuffledAnimes = shuffle([...copyAnimes.current]);
     setRandomAnimes(shuffledAnimes.slice(0, 6));
 
     const loadedHistoriques: Historique[] = [];
@@ -121,8 +126,8 @@ export default function Accueil() {
 
     if (momentItem) updatedCatalogues.unshift(momentItem);
 
-    const recents = copyAnimes
-      .slice(Math.max(copyAnimes.length - 10, 0))
+    const recents = copyAnimes.current
+      .slice(Math.max(copyAnimes.current.length - 10, 0))
       .map(({ anime }) => anime)
       .reverse();
 
