@@ -78,7 +78,7 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-0 flex flex-col gap-12 bg-zinc-900 bg-opacity-50 text-left min-[460px]:top-24">
+      <main className="top-0 flex flex-col gap-12 border-b border-neutral-700 bg-zinc-900 bg-opacity-50 text-left min-[460px]:top-16 min-[460px]:border min-[460px]:bg-opacity-70">
         <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
             <div className="relative hidden justify-center overflow-hidden min-[460px]:flex lg:h-[calc(100vh-28.75rem)]">
@@ -170,7 +170,7 @@ const Home = () => {
                     )}
 
                     <ul
-                      className="overflow-x-auto"
+                      className="flex flex-wrap justify-center gap-3 md:justify-start md:gap-6"
                       ref={(el) => {
                         if (el) {
                           saisonsRef.current[0] = el;
@@ -181,7 +181,7 @@ const Home = () => {
                         <li
                           key={id}
                           id={id}
-                          className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                          className="group mb-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
                           onClick={() => {
                             changeSaison((index + 1).toString(), anime?.anime!);
                           }}
@@ -237,6 +237,7 @@ const Home = () => {
                     )}
 
                     <ul
+                      className="flex flex-wrap justify-center gap-3 md:justify-start md:gap-6"
                       ref={(el) => {
                         if (el) {
                           filmsRef.current[0] = el;
@@ -247,7 +248,7 @@ const Home = () => {
                         <li
                           key={id}
                           id={id}
-                          className="group m-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
+                          className="group mb-4 inline-flex w-28 cursor-pointer flex-col items-center gap-2.5 text-center md:w-36"
                         >
                           <Link
                             href={{
