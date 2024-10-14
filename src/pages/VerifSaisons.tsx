@@ -82,7 +82,7 @@ export default function Suggest() {
         <div className="mt-12 text-left">
           <p className="text-2xl">
             Logs ({logs.length}/
-            {ANIMES.filter(({ options }) => options.saisons).length}) -{" "}
+            {ANIMES.filter(({ options }) => options.EPISODES_OPTIONS).length}) -{" "}
             {logs.filter(({ manque }) => manque > 0).length} erreur(s)
             trouvée(s)
           </p>

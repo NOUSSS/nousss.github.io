@@ -14,6 +14,11 @@ export default class ShangriLaFrontier extends Anime {
 
         image: () => getImage(1),
       },
+
+      2: {
+        name: "Saison 2",
+        image: () => getImage(2),
+      },
     };
 
     this.SCANS_OPTIONS = {
@@ -36,8 +41,10 @@ export default class ShangriLaFrontier extends Anime {
         `https://anime-sama.fr/catalogue/shangri-la-frontier/saison${index}/${lang}/episodes.js`,
 
       horsSeries: [{ saison: "1", hs: [14] }],
+
       allIndex: {
         1: 0,
+        2: 25,
       },
     };
   }
