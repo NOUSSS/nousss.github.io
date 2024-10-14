@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-import { navMotion, getAnime, getCurrentAnime } from "@/app/lib/";
+import { navMotion, getAnime, getCurrentAnime, getWallpaper } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Footer, SearchBar } from "@/app/components/";
@@ -96,13 +96,11 @@ const Home = () => {
             </div>
           )}
 
-          {anime?.options.saisons && (
+          {anime?.anime && getWallpaper(anime.anime) && (
             <div className="relative">
               <Image
                 alt={`saison de ${anime.anime}`}
-                src={Object.values(anime.options.saisons)[
-                  Object.keys(anime.options.saisons).length - 1
-                ].image()}
+                src={getWallpaper(anime.anime)!}
                 className="mask-image-fade w-full min-[460px]:hidden"
               />
             </div>

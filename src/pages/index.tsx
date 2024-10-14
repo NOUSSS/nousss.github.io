@@ -386,18 +386,15 @@ export default function Accueil() {
                       src={anime.options.affiche!}
                     />
 
-                    {anime.options.saisons &&
-                      Object.values(anime.options.saisons).length > 0 && (
-                        <div className="relative">
-                          <Image
-                            alt={`saisonw de ${anime.anime}`}
-                            src={Object.values(anime.options.saisons)[
-                              Object.keys(anime.options.saisons).length - 1
-                            ].image()}
-                            className="mask-image-fade w-full min-[460px]:hidden"
-                          />
-                        </div>
-                      )}
+                    {getWallpaper(anime.anime) && (
+                      <div className="relative">
+                        <Image
+                          alt={`saisonw de ${anime.anime}`}
+                          src={getWallpaper(anime.anime)!}
+                          className="mask-image-fade w-full min-[460px]:hidden"
+                        />
+                      </div>
+                    )}
                   </Link>
                 </div>
               </SwiperSlide>
