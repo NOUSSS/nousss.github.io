@@ -128,6 +128,8 @@ import TenseiShitara from "./TenseiShitara/tensei-shitara";
 import DetectiveConan from "./DetectiveConan/detective-conan";
 import DanDaDan from "./DanDaDan/dandadan";
 import DragonBallDaima from "./DragonBallDaima/dragon-ball-daima";
+import SailorMoon from "./SailorMoon/sailor-moon";
+import KenLeSurvivant from "./KenLeSurvivant/ken-le-survivant";
 
 export interface AnimesType {
   anime: string;
@@ -1332,6 +1334,22 @@ export const ANIMES: AnimesType[] = [
     options: new DragonBallDaima(),
     synopsis:
       "À la suite d'une conspiration, Goku et certains de ses alliés reprennent leur taille d'enfant. Commence alors une quête pour régler ce problème.",
+  },
+  {
+    anime: "Sailor Moon",
+    aliases: ["Bishoujo Senshi Sailor Moon"],
+    category: ["Action", "Comédie", "Drame", "Romance"],
+    synopsis:
+      "Usagi Tsukino est une adolescente tout ce qu'il y a de plus banale, paresseuse, nulle à l'école, gourmande et fan de jeux vidéo. Un jour, elle aide une chatte maltraitée par des enfants et la retrouve le soir-même dans sa chambre. Usagi n'est pas au bout de ses surprises puisque la chatte se met à parler et se présente sous le nom de Luna. Elle donne à Usagi un bâton lui permettant de se transformer en Sailor Moon afin de sauver le monde des forces du mal. Elle va vite être rejointe par Sailor Vénus qui jouait déjà les justicières masquées depuis 2 ans sous le pseudo de Sailor V, mais aussi de Sailor Mars, Sailor Mercure et Sailor Jupiter. Les 5 guerrières de la Lune ainsi réunies vont commencer à combattre les forces du mal afin d'empêcher la Reine Béryl d'arriver à ses fins.",
+    options: new SailorMoon(),
+  },
+  {
+    anime: "Ken le survivant",
+    aliases: ["Hokuto no ken"],
+    category: ["Action", "Drame", "Science-fiction", "Arts Martiaux"],
+    options: new KenLeSurvivant(),
+    synopsis:
+      "L'histoire se déroule dans un futur relativement proche sur une terre ravagée par la guerre nucléaire qui a eu pour conséquences l'évaporation de la plupart des océans et la destruction d'une grande partie de la végétation. Dans cet univers post-apocalyptique, les survivants sont soit d'humbles villageois essayant de survivre ou des bandits vicieux regroupés dans des gangs qui s'adonnent aux pillages et à la persécution de ces villageois. Cependant, un artiste martial nommé Kenshiro, un homme reconnaissable aux sept cicatrices qu'il porte sur le torse, est choisi pour devenir le successeur du légendaire art assassin le Hokuto Shinken (北斗神拳, l'art divin de l'Étoile du nord). Au début de l'aventure, Kenshiro ne cherche pas réellement a aider les villageois, mais au fur et à mesure que son étoile le guide, il se révèle comme étant le sauveur tant attendu par une population au bord du désespoir. Accompagné dans son périple par deux jeunes enfants nommés Bart et Lynn, Ken affrontera un grand nombre de gangs, allant même jusqu'à affronter ses frères adoptifs, eux aussi disciples de l'art du Hokuto Shinken. Ken se mesurera aussi à certains maitres de l'école Nanto Seiken (南斗聖拳, Le poing sacré de l'étoile du Sud).",
   },
 ];
 

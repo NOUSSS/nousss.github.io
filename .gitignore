@@ -11,6 +11,7 @@
 
 # dev
 /dev.bat
+/test.js
 
 # next.js
 /.next/
