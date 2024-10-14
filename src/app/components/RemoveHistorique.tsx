@@ -69,7 +69,7 @@ const RemoveHistorique: FC<RemoveHistoriqueProps> = ({ setHistoriques }) => {
       </div>
 
       <button
-        className="btn"
+        className="glassBtn"
         onClick={() => {
           if (confirmRef.current && overlayRef.current) {
             confirmRef.current.classList.contains("hidden")
