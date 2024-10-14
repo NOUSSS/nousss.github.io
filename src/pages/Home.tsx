@@ -63,7 +63,7 @@ const Home = () => {
     } else {
       router.push("/");
     }
-  }, [query.anime, router, anime?.anime]);
+  }, [query.anime, anime?.anime]);
 
   return (
     <>
@@ -78,14 +78,14 @@ const Home = () => {
         />
       </Head>
 
-      <main className="top-0 mx-12 flex flex-col gap-12 border border-neutral-700 bg-zinc-900 bg-opacity-50 text-left max-sm:mx-0 min-[460px]:top-24">
+      <main className="top-0 flex flex-col gap-12 bg-zinc-900 bg-opacity-50 text-left min-[460px]:top-24">
         <div className="relative flex h-auto flex-col">
           {anime?.options.affiche && (
-            <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[400px]">
+            <div className="relative hidden justify-center overflow-hidden min-[460px]:flex md:h-[450px]">
               <Image
                 alt={`affiche de ${anime.anime}`}
                 src={anime.options.affiche!}
-                className="w-[450px] sm:w-[400px] md:w-[650px]"
+                className="w-[450px] sm:w-[400px] md:w-[750px]"
               />
 
               <Image
@@ -108,7 +108,7 @@ const Home = () => {
             </div>
           )}
 
-          <div className="relative p-4 max-[460px]:-top-24 lg:p-8">
+          <div className="relative p-4 max-[460px]:-top-24 md:mx-24 lg:p-8">
             <div className="text-lg font-normal">
               {anime?.anime && (
                 <h1 className="my-4 animate-title text-center text-4xl md:my-0">

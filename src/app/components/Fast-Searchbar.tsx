@@ -64,16 +64,17 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
   }, [isVisible]);
 
   useEffect(() => {
-    setIsVisible(window.location.hash === "#search");
-  }, [setIsVisible, router.query]);
+    const currentUrl = new URL(window.location.href);
 
-  useEffect(() => {
     if (isVisible) {
-      router.push("#search", undefined, { shallow: true }).catch(() => 0);
+      currentUrl.hash = "search";
     } else {
-      const newUrl = window.location.pathname + window.location.search;
-      router.push(newUrl, undefined, { shallow: true }).catch(() => 0);
+      currentUrl.hash = "";
     }
+
+    router
+      .replace(currentUrl.toString(), undefined, { shallow: true })
+      .catch(() => 0);
   }, [isVisible]);
 
   return (

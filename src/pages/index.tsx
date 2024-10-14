@@ -221,7 +221,7 @@ export default function Accueil() {
         />
       </Head>
 
-      <main className="top-16">
+      <main>
         {ambiance?.image && (
           <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
             <Image
@@ -238,6 +238,7 @@ export default function Accueil() {
           spaceBetween={30}
           slidesPerView={1}
           loop={true}
+          autoHeight={true}
           autoplay={{
             delay: 4500,
             disableOnInteraction: false,
@@ -258,109 +259,110 @@ export default function Accueil() {
               <SwiperSlide key={index}>
                 <div
                   key={index}
-                  className="flex h-[525px] min-h-[525px] justify-between border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:min-h-full max-lg:flex-col-reverse"
+                  className="flex h-[525px] min-h-[525px] justify-between border-b border-b-neutral-700 bg-zinc-900 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse"
                 >
-                  <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
-                    <div className="my-4">
-                      <h1 className="text-5xl max-xl:text-3xl">
-                        {anime.anime.length > 25
-                          ? anime.anime.substring(0, 25) + "..."
-                          : anime.anime}
-                      </h1>
+                  <div className="relative max-[460px]:-top-24">
+                    <div className="flex flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
+                      <div className="my-4">
+                        <h1 className="text-5xl font-normal max-xl:text-3xl">
+                          {anime.anime.length > 25
+                            ? anime.anime.substring(0, 25) + "..."
+                            : anime.anime}
+                        </h1>
 
-                      <p className="m-4 text-left text-xs max-xl:hidden max-lg:block md:text-lg">
-                        {anime.synopsis.length > 300
-                          ? `${anime.synopsis.substring(0, 300)}...`
-                          : anime.synopsis}
-                      </p>
+                        <p className="m-4 text-left text-xs max-xl:hidden max-lg:block md:text-lg">
+                          {anime.synopsis.length > 300
+                            ? `${anime.synopsis.substring(0, 300)}...`
+                            : anime.synopsis}
+                        </p>
 
-                      <Link
-                        href={{
-                          pathname: "/Home",
-                          query: { anime: anime.anime },
-                        }}
-                        className="mt-8 flex gap-2 *:rounded-full *:border *:border-orange-500 *:bg-orange-500 *:bg-opacity-20 *:px-4 *:py-2"
-                      >
-                        {Array.from(
-                          {
-                            length:
-                              anime.category.length > 2
-                                ? 2
-                                : anime.category.length,
-                          },
-                          (_, i) => (
-                            <div key={i}>{anime.category[i]}</div>
-                          ),
-                        )}
-
-                        {anime.category.length > 2 && (
-                          <div>+{anime.category.length - 2}</div>
-                        )}
-                      </Link>
-                    </div>
-
-                    <button
-                      className="btn font-medium"
-                      onClick={() => {
-                        const query: Query = { anime: anime.anime };
-
-                        if (
-                          historiquesFiltered[historiqueIndex]?.redirect &&
-                          historiquesFiltered[historiqueIndex]?.redirect ===
-                            "Episodes"
-                        )
-                          query.saison = (
-                            historiquesFiltered[historiqueIndex]
-                              .detail as unknown as Data.EpisodesData
-                          ).saison;
-
-                        if (historiquesFiltered[historiqueIndex]?.redirect)
-                          router.push({
-                            pathname:
-                              historiquesFiltered[historiqueIndex].redirect,
-                            query: { ...query },
-                          });
-                        else
-                          router.push({
+                        <Link
+                          href={{
                             pathname: "/Home",
                             query: { anime: anime.anime },
-                          });
-                      }}
-                    >
-                      <Play />
+                          }}
+                          className="mt-8 flex gap-2 *:rounded-full *:border *:border-orange-500 *:bg-orange-500 *:bg-opacity-20 *:px-4 *:py-2"
+                        >
+                          {Array.from(
+                            {
+                              length:
+                                anime.category.length > 2
+                                  ? 2
+                                  : anime.category.length,
+                            },
+                            (_, i) => (
+                              <div key={i}>{anime.category[i]}</div>
+                            ),
+                          )}
 
-                      {historiquesFiltered.find((e) => e.name === anime.anime)
-                        ? "Reprendre " +
-                          `${
-                            (
+                          {anime.category.length > 2 && (
+                            <div>+{anime.category.length - 2}</div>
+                          )}
+                        </Link>
+                      </div>
+
+                      <button
+                        className="btn font-medium"
+                        onClick={() => {
+                          const query: Query = { anime: anime.anime };
+
+                          if (
+                            historiquesFiltered[historiqueIndex]?.redirect &&
+                            historiquesFiltered[historiqueIndex]?.redirect ===
+                              "Episodes"
+                          )
+                            query.saison = (
                               historiquesFiltered[historiqueIndex]
                                 .detail as unknown as Data.EpisodesData
-                            ).episode
-                              ? `Saison ${getScriptIndex({
-                                  currentSaison: (
-                                    historiquesFiltered[historiqueIndex]
-                                      .detail as unknown as Data.EpisodesData
-                                  ).saison,
-                                  parts:
-                                    randomAnimes[historiqueIndex].options
-                                      .EPISODES_OPTIONS?.parts,
-                                })}, ${
-                                  getCurrentEpisode(
-                                    randomAnimes[historiqueIndex].anime,
-                                    historiqueIndex,
-                                    historiquesFiltered,
-                                  ) ?? ""
-                                }`
-                              : (
-                                    historiquesFiltered[historiqueIndex]
-                                      .detail as unknown as Data.FilmsData
-                                  ).film
-                                ? `Film ${Number((historiquesFiltered[historiqueIndex].detail as unknown as Data.FilmsData).film) + 1}`
+                            ).saison;
+
+                          if (historiquesFiltered[historiqueIndex]?.redirect)
+                            router.push({
+                              pathname:
+                                historiquesFiltered[historiqueIndex].redirect,
+                              query: { ...query },
+                            });
+                          else
+                            router.push({
+                              pathname: "/Home",
+                              query: { anime: anime.anime },
+                            });
+                        }}
+                      >
+                        <Play />
+
+                        {historiquesFiltered.find((e) => e.name === anime.anime)
+                          ? "Reprendre " +
+                            `${
+                              (
+                                historiquesFiltered[historiqueIndex]
+                                  .detail as unknown as Data.EpisodesData
+                              ).episode
+                                ? `Saison ${getScriptIndex({
+                                    currentSaison: (
+                                      historiquesFiltered[historiqueIndex]
+                                        .detail as unknown as Data.EpisodesData
+                                    ).saison,
+                                    parts:
+                                      randomAnimes[historiqueIndex].options
+                                        .EPISODES_OPTIONS?.parts,
+                                  })}, ${
+                                    getCurrentEpisode(
+                                      randomAnimes[historiqueIndex].anime,
+                                      historiqueIndex,
+                                      historiquesFiltered,
+                                    ) ?? ""
+                                  }`
                                 : (
                                       historiquesFiltered[historiqueIndex]
-                                        .detail as unknown as Data.ScansData
-                                    ).chapitre
-                                  ? `
+                                        .detail as unknown as Data.FilmsData
+                                    ).film
+                                  ? `Film ${Number((historiquesFiltered[historiqueIndex].detail as unknown as Data.FilmsData).film) + 1}`
+                                  : (
+                                        historiquesFiltered[historiqueIndex]
+                                          .detail as unknown as Data.ScansData
+                                      ).chapitre
+                                    ? `
                       ${
                         getCurrentChapitre(
                           randomAnimes[historiqueIndex].anime,
@@ -368,28 +370,44 @@ export default function Accueil() {
                           historiquesFiltered,
                         ) ?? "Chapitre"
                       }`
-                                  : ""
-                          }`
-                        : "REGARDER"}
-                    </button>
+                                    : ""
+                            }`
+                          : "REGARDER"}
+                      </button>
+                    </div>
                   </div>
 
                   <Link
                     href={{ pathname: "/Home", query: { anime: anime.anime } }}
                   >
-                    <div className="relative top-2 rounded-lg">
+                    <div className="max-[460px]:hidden">
+                      <div className="relative top-2 rounded-lg">
+                        <Image
+                          className="aspect-video h-full w-[900px] min-w-[900px] scale-90 rounded-lg border border-white max-lg:min-w-full max-lg:max-w-full"
+                          alt="affiche d'un anime aléatoire"
+                          src={anime.options.affiche!}
+                        />
+                      </div>
+
                       <Image
-                        className="aspect-video h-full w-[900px] min-w-[900px] scale-90 rounded-lg border border-white max-lg:min-w-full max-lg:max-w-full"
+                        className="absolute left-0 top-0 -z-10 aspect-video h-full w-full blur-3xl"
                         alt="affiche d'un anime aléatoire"
                         src={anime.options.affiche!}
                       />
                     </div>
 
-                    <Image
-                      className="absolute left-0 top-0 -z-10 aspect-video h-full w-full blur-3xl"
-                      alt="affiche d'un anime aléatoire"
-                      src={anime.options.affiche!}
-                    />
+                    {anime.options.saisons &&
+                      Object.values(anime.options.saisons).length > 0 && (
+                        <div className="relative">
+                          <Image
+                            alt={`saisonw de ${anime.anime}`}
+                            src={Object.values(anime.options.saisons)[
+                              Object.keys(anime.options.saisons).length - 1
+                            ].image()}
+                            className="mask-image-fade w-full min-[460px]:hidden"
+                          />
+                        </div>
+                      )}
                   </Link>
                 </div>
               </SwiperSlide>
