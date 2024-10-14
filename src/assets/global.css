@@ -19,6 +19,16 @@
   mask-image: linear-gradient(to top, transparent, black 200px);
 }
 
+.mask-image-fade-left {
+  mask-image: linear-gradient(to right, transparent, black 300px);
+}
+
+@media screen and (max-width: 1024px) {
+  .mask-image-fade-left {
+    mask-image: linear-gradient(to top, transparent, black 200px);
+  }
+}
+
 .swiper-pagination-progressbar-fill {
   background: var(--mainColor) !important;
 }
