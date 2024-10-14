@@ -64,11 +64,6 @@ export default class SwordArtOnline extends Anime {
 
       allIndex: {
         1: 0,
-        2: 25,
-        3: 49,
-        4: 73,
-        5: 96,
-        6: 109,
       },
     };
   }

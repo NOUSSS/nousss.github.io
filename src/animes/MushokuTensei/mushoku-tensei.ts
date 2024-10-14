@@ -58,8 +58,6 @@ class MushokuTensei extends Anime {
 
       allIndex: {
         1: 0,
-        2: 24,
-        3: 37,
       },
 
       names: episodes,

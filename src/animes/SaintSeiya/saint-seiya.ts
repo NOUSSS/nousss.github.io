@@ -78,11 +78,6 @@ class SaintSeiya extends Anime {
 
       allIndex: {
         1: 0,
-        2: 114,
-        3: 139,
-        4: 165,
-        5: 262,
-        6: 275,
       },
     };
   }

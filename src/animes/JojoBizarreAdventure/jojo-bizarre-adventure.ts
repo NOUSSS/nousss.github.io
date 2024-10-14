@@ -67,13 +67,6 @@ class JojoBizarreAdventure extends Anime {
 
       allIndex: {
         1: 0,
-        2: 9,
-        3: 26,
-        4: 74,
-        5: 113,
-        6: 152,
-        7: 190,
-        8: 194,
       },
     };
   }

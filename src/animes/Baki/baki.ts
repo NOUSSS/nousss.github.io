@@ -39,11 +39,6 @@ class Baki extends Anime {
 
       allIndex: {
         1: 0,
-        2: 48,
-        3: 74,
-        4: 87,
-        5: 99,
-        6: 126,
       },
     };
   }

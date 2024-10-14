@@ -68,9 +68,6 @@ class Berserk extends Anime {
 
       allIndex: {
         1: 0,
-        2: 25,
-        3: 49,
-        4: 62,
       },
 
       noc: true,
