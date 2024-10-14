@@ -130,6 +130,7 @@ import DanDaDan from "./DanDaDan/dandadan";
 import DragonBallDaima from "./DragonBallDaima/dragon-ball-daima";
 import SailorMoon from "./SailorMoon/sailor-moon";
 import KenLeSurvivant from "./KenLeSurvivant/ken-le-survivant";
+import Arifureta from "./Arifureta/arifureta";
 
 export interface AnimesType {
   anime: string;
@@ -1350,6 +1351,25 @@ export const ANIMES: AnimesType[] = [
     options: new KenLeSurvivant(),
     synopsis:
       "L'histoire se déroule dans un futur relativement proche sur une terre ravagée par la guerre nucléaire qui a eu pour conséquences l'évaporation de la plupart des océans et la destruction d'une grande partie de la végétation. Dans cet univers post-apocalyptique, les survivants sont soit d'humbles villageois essayant de survivre ou des bandits vicieux regroupés dans des gangs qui s'adonnent aux pillages et à la persécution de ces villageois. Cependant, un artiste martial nommé Kenshiro, un homme reconnaissable aux sept cicatrices qu'il porte sur le torse, est choisi pour devenir le successeur du légendaire art assassin le Hokuto Shinken (北斗神拳, l'art divin de l'Étoile du nord). Au début de l'aventure, Kenshiro ne cherche pas réellement a aider les villageois, mais au fur et à mesure que son étoile le guide, il se révèle comme étant le sauveur tant attendu par une population au bord du désespoir. Accompagné dans son périple par deux jeunes enfants nommés Bart et Lynn, Ken affrontera un grand nombre de gangs, allant même jusqu'à affronter ses frères adoptifs, eux aussi disciples de l'art du Hokuto Shinken. Ken se mesurera aussi à certains maitres de l'école Nanto Seiken (南斗聖拳, Le poing sacré de l'étoile du Sud).",
+  },
+  {
+    anime: "Arifureta",
+    aliases: [
+      "Shokugyou de Sekai Saikyou",
+      "From Common Job Class to the Strongest in the World",
+    ],
+    category: [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Ecchi",
+      "Fantasy",
+      "Isekai",
+      "Romance",
+    ],
+    synopsis:
+      "Parmi les élèves de sa classe transportés dans un autre monde, Hajime Nagumo est un étudiant ordinaire sans ambitions. À cause de son manque d'entrain, il est surnommé 'l'Incompétent' par ses camarades de classe. Cette classe a été invoquée pour sauver un pays de la destruction. Tous les élèves de la classe ont été bénis par des caractéristiques et des compétences uniques, excepté Hajime avec sa profession de 'Synergist' et ses statistiques médiocres. Pour mettre un mot sur cette profession de 'Synergist', il s'agit de la classe d'artisan. Un jour, alors qu'il explorait un donjon avec sa classe, il se fait trahir par l'un de ses camarades et tombe dans les profondeurs de l'abîme.",
+    options: new Arifureta(),
   },
 ];
 
