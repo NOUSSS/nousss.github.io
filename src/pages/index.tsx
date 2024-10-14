@@ -221,7 +221,7 @@ export default function Accueil() {
         />
       </Head>
 
-      <main>
+      <main className="max-[460px]:top-0">
         {ambiance?.image && (
           <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
             <Image
