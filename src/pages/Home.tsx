@@ -153,7 +153,7 @@ const Home = () => {
                           seasonPart.current?.classList.add("hidden");
                         }
                       }}
-                      className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
+                      className="flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
                     >
                       <ChevronDown ref={ChevronDownSeasonRef} /> Saisons
                     </p>
@@ -220,7 +220,7 @@ const Home = () => {
                           filmPart.current?.classList.add("hidden");
                         }
                       }}
-                      className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
+                      className="flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
                     >
                       <ChevronDown ref={ChevronDownFilmsRef} /> Films
                     </p>
@@ -281,7 +281,7 @@ const Home = () => {
 
               {anime?.options.SCANS_OPTIONS && (
                 <Link
-                  className="flex items-center gap-2 text-2xl transition-colors hover:text-main"
+                  className="flex items-center gap-2 text-2xl font-normal transition-colors hover:text-main"
                   href={{ pathname: "/Scans", query: { anime: anime.anime } }}
                 >
                   <ArrowUpRight />
