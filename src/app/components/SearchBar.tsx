@@ -39,7 +39,7 @@ const SearchBar: FC<SearchBarProps> = ({
         type="text"
         placeholder={placeholder}
         className={cn("h-7 w-full rounded-md bg-transparent", {
-          "text-white": iconColor,
+          "text-black": iconColor === "black",
         })}
         onInput={() => initSearchBar(inputRef, containerRef, query, notFirst)}
         onKeyDown={(e) => {
