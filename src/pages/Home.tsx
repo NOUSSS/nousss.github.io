@@ -155,7 +155,7 @@ const Home = () => {
                       }}
                       className="flex cursor-pointer items-center gap-1 text-2xl hover:text-main"
                     >
-                      <ChevronDown ref={ChevronDownSeasonRef} /> Saisons{" "}
+                      <ChevronDown ref={ChevronDownSeasonRef} /> Saisons
                     </p>
                   </div>
 
@@ -284,9 +284,7 @@ const Home = () => {
                   href={{ pathname: "/Scans", query: { anime: anime.anime } }}
                 >
                   <ArrowUpRight />
-                  {anime.category.includes("Webtoon")
-                    ? "Webtoon"
-                    : "Scans"}{" "}
+                  {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
                 </Link>
               )}
             </div>
