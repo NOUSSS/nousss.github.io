@@ -33,6 +33,13 @@ export default class BlueLock extends Anime {
         chapitre: string | number;
         index: string | number;
       }) => `https://anime-sama.fr/s2/scans/Blue Lock/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Spin-off Nagi",
+          value: "_spin-off|Blue Lock Spin-off Nagi",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
