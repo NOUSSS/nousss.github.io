@@ -188,6 +188,7 @@ const Select: FC<SelectProps> = ({
             {search && (
               <div ref={searchBarRef}>
                 <SearchBar
+                  dontClickOutside
                   notFirst
                   iconColor="black"
                   containerRef={containerRef}
