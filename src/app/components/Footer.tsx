@@ -48,14 +48,14 @@ const Footer = () => {
               <Qui /> Qui je suis ?
             </p>
             Mugiwara no Streaming est un site de référencement d'animes (films +
-            scans) sans publicitées intrusives
+            scans) sans publicitées intrusives et avec une interface intuitive.
           </li>
 
           <li>
             <p className="text-2xl font-normal">Informations supplémentaires</p>
             Nous n'hébergeons aucune vidéo sur notre serveur, contactez
             directement la plateforme d'hébergement vidéo pour toutes
-            réclamations de droits
+            réclamations de droits.
           </li>
 
           <li>
