@@ -327,7 +327,7 @@ export default function Accueil() {
                                     parts:
                                       randomAnimes[historiqueIndex].options
                                         .EPISODES_OPTIONS?.parts,
-                                  })}, ${
+                                  })} ${
                                     getCurrentEpisode(
                                       randomAnimes[historiqueIndex].anime,
                                       historiqueIndex,
