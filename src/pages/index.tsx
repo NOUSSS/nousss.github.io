@@ -372,7 +372,7 @@ export default function Accueil() {
                         <Image
                           alt={`saisonw de ${anime.anime}`}
                           src={getWallpaper(anime.anime)!}
-                          className="mask-image-fade w-full min-[460px]:hidden"
+                          className="mask-image-fade aspect-[9/13] w-full min-[460px]:hidden"
                         />
                       </div>
                     )}
