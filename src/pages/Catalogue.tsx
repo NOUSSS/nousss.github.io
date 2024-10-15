@@ -84,6 +84,7 @@ export default function Catalogue() {
 
           <div className="flex justify-center">
             <Select
+              search
               multiple={true}
               placeholder="Filtrer"
               placeholderRef={placeholderRef}
