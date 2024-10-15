@@ -319,7 +319,7 @@ export default function Accueil() {
                                 historiquesFiltered[historiqueIndex]
                                   .detail as unknown as Data.EpisodesData
                               ).episode
-                                ? `Saison ${getScriptIndex({
+                                ? `S${getScriptIndex({
                                     currentSaison: (
                                       historiquesFiltered[historiqueIndex]
                                         .detail as unknown as Data.EpisodesData
@@ -370,7 +370,7 @@ export default function Accueil() {
                     {getWallpaper(anime.anime) && (
                       <div className="relative">
                         <Image
-                          alt={`saisonw de ${anime.anime}`}
+                          alt={`saison de ${anime.anime}`}
                           src={getWallpaper(anime.anime)!}
                           className="mask-image-fade aspect-[9/13] w-full min-[460px]:hidden"
                         />

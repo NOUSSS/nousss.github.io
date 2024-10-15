@@ -38,8 +38,8 @@ export const getCurrentEpisode = (
     ?.hs.includes(currentEpisode - 1);
 
   if (isSpecialEpisode) {
-    return `Episode Special`;
+    return `ESP`;
   }
 
-  return `Episode ${Number(historiques.episode) - retard}`;
+  return `E${Number(historiques.episode) - retard}`;
 };
