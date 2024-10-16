@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer className="mt-40 w-full border-t border-neutral-700 bg-zinc-900 bg-opacity-50 p-8">
-      <div className="flex flex-col text-base border-b border-neutral-700">
+      <div className="pb-4 flex flex-col text-base border-b border-neutral-700">
         <span className="inline-block">
           <Link
             className="text-main hover:underline"
