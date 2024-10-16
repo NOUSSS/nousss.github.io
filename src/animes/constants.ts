@@ -846,7 +846,7 @@ export const ANIMES: AnimesType[] = [
       "Starting Life in Another World",
       "kara Hajimeru Isekai Seikatsu",
     ],
-    category: ["Action", "Aventure", "Drame", "Fantasy", "Isekai"],
+    category: ["Action", "Aventure", "Drame", "Fantasy", "Isekai", "Nouvelles saisons"],
     options: new ReZero(),
     synopsis:
       "Il s'agit de l'adaptation du roman Re:Zero de Nagatsuki Tappei et de Ootsuka Shinichirou. Un jour un jeune homme nommé Natsuki Subaru, à la sortie d'une supérette, est transporté dans un monde parallèle sans aucune explication. En essayant de comprendre pour quoi il se trouve ici, Subaru est attaqué par une bande de brigands mais est sauvé par une jeune fille : Emilia. Pour la remercier de l'aide qu'elle lui a fournie, il décide à son tour de l'aider à retrouver une voleuse qui lui a dérobé quelque chose. Un beau jour, Emilia et Subaru sont attaqués et tués par une mystérieuse personne. Cependant, Subaru se réveille au lieu et au jour où il est arrivé dans ce monde. C'est à ce moment-là qu'il se rend compte qu'il peut retourner dans le passé après être mort. Pour échapper à son funeste destin, Subaru décide d'utiliser son pouvoir pour sauver Emilia et pour se sauver lui-même.",
