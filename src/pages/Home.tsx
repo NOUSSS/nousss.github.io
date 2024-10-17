@@ -107,36 +107,33 @@ const Home = () => {
           )}
 
           <div className="relative p-4 max-[460px]:-top-24 md:mx-24 lg:p-8">
-            <div className="text-lg font-normal">
-              {anime?.anime && (
-                <h1 className="my-4 animate-title text-center text-4xl md:my-0">
-                  {anime.anime}
-                </h1>
-              )}
+            {anime?.anime && (
+              <h1 className="my-4 animate-title text-center text-3xl font-normal md:my-0 md:text-4xl">
+                {anime.anime}
+              </h1>
+            )}
 
-              {anime?.aliases && anime.aliases.length > 0 && (
-                <div>
-                  Aliases
-                  <p className="ml-1 text-sm text-zinc-300">
-                    {anime.aliases.join(", ")}
-                  </p>
-                </div>
-              )}
+            <p className="my-4 ml-1 text-sm text-zinc-300 md:text-base">
+              {anime?.synopsis}
+            </p>
 
+            {anime?.aliases && anime.aliases.length > 0 && (
               <div>
-                Catégories
+                Aliases
                 <p className="ml-1 text-sm text-zinc-300">
-                  {anime?.category.join(", ")}
+                  {anime.aliases.join(", ")}
                 </p>
               </div>
+            )}
 
-              <div className="my-4">
-                Synopsis
-                <p className="ml-1 text-sm text-zinc-300">{anime?.synopsis}</p>
-              </div>
+            <div>
+              Catégories
+              <p className="ml-1 text-sm text-zinc-300">
+                {anime?.category.join(", ")}
+              </p>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="mt-4 flex flex-col gap-2">
               {anime?.options.EPISODES_OPTIONS && (
                 <div>
                   <div className="inline-block">
