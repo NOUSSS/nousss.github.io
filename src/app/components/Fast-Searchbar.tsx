@@ -1,7 +1,7 @@
 "use client";
 
 import { RefObject, FC, useEffect } from "react";
-import { ANIMES } from "@/animes/constants";
+import { ANIMES, AnimesType } from "@/animes/constants";
 import { cn, normalizeString } from "../lib/";
 import { useRouter } from "next/router";
 
@@ -84,14 +84,29 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = normalizeString(e.target.value);
 
-        const filteredAnimes = ANIMES.filter(
-          ({ anime, aliases }) =>
-            normalizeString(anime).includes(inputValue) ||
-            (aliases &&
-              aliases.some((alias) =>
-                normalizeString(alias).includes(inputValue),
-              )),
-        );
+        const priorityAnimes: AnimesType[] = [];
+        const extendedAnimes: AnimesType[] = [];
+
+        ANIMES.map((anime) => {
+          if (normalizeString(anime.anime).startsWith(inputValue)) {
+            priorityAnimes.push(anime);
+          } else {
+            if (
+              normalizeString(anime.anime).includes(inputValue) ||
+              (anime.aliases &&
+                anime.aliases.some((alias) =>
+                  normalizeString(alias).includes(inputValue),
+                ))
+            ) {
+              extendedAnimes.push(anime);
+            }
+          }
+        });
+
+        const filteredAnimes: AnimesType[] = [
+          ...priorityAnimes,
+          ...extendedAnimes,
+        ];
 
         if (filteredAnimes.length === 0) {
           setOutput(<p>Aucun résultat trouvé.</p>);
