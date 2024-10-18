@@ -62,7 +62,6 @@ const Films = () => {
   }, []);
 
   useEffect(() => {
-    console.log(anime);
     if (anime && anime?.lang) {
       const options = anime?.anime?.options.FILM_OPTIONS;
 

@@ -4,7 +4,13 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-import { navMotion, getAnime, getCurrentAnime, getWallpaper } from "@/app/lib/";
+import {
+  navMotion,
+  getAnime,
+  getCurrentAnime,
+  getWallpaper,
+  cn,
+} from "@/app/lib/";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Footer, SearchBar } from "@/app/components/";
@@ -21,9 +27,12 @@ import FilmData from "@/app/class/filmData";
 
 const Home = () => {
   const [anime, setAnime] = useState<AnimesType | null>(null);
+  const [hidden, setHidden] = useState(true);
+
   const [animeSeason, updateAnimeSeason] = useAnime<Anime.AnimeSaisonsProps>(
     {},
   );
+
   const [animeFilms, updateAnimeFilms] = useAnime<Anime.AnimeFilmsProps>({});
 
   const router = useRouter();
@@ -34,6 +43,8 @@ const Home = () => {
 
   const filmsRef = useRef<HTMLUListElement[]>([]);
   const saisonsRef = useRef<HTMLUListElement[]>([]);
+
+  const catsRef = useRef<HTMLDivElement[]>([]);
 
   const ChevronDown = icons["ChevronDown"];
   const ArrowUpRight = icons["ArrowUpRight"];
@@ -113,25 +124,53 @@ const Home = () => {
               </h1>
             )}
 
-            <p className="my-4 ml-1 text-sm text-zinc-300 md:text-base">
+            <p className="my-4 text-sm text-zinc-300 md:text-base">
               {anime?.synopsis}
             </p>
 
-            {anime?.aliases && anime.aliases.length > 0 && (
-              <div>
-                Aliases
-                <p className="ml-1 text-sm text-zinc-300">
-                  {anime.aliases.join(", ")}
-                </p>
+            {anime?.category && (
+              <div className="my-4 flex flex-wrap gap-3">
+                {anime.category.map((category, i) => (
+                  <div
+                    ref={(e) => {
+                      if (e && catsRef.current) {
+                        catsRef.current[i] = e;
+                      }
+                    }}
+                    className={cn(
+                      "relative inline-flex rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75",
+                      { hidden: hidden && i > 2 },
+                    )}
+                    key={i}
+                  >
+                    {category}
+                  </div>
+                ))}
+
+                {anime.category.length > 3 && (
+                  <button
+                    onClick={() => {
+                      if (hidden) {
+                        catsRef.current.forEach((e) =>
+                          e.classList.remove("hidden"),
+                        );
+                      } else {
+                        catsRef.current.forEach((e, i) => {
+                          if (i > 2) {
+                            e.classList.add("hidden");
+                          }
+                        });
+                      }
+
+                      setHidden(!hidden);
+                    }}
+                    className="relative cursor-pointer rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75"
+                  >
+                    {hidden ? `+${anime.category.length - 3}` : "-"}
+                  </button>
+                )}
               </div>
             )}
-
-            <div>
-              Catégories
-              <p className="ml-1 text-sm text-zinc-300">
-                {anime?.category.join(", ")}
-              </p>
-            </div>
 
             <div className="mt-4 flex flex-col gap-2">
               {anime?.options.EPISODES_OPTIONS && (
