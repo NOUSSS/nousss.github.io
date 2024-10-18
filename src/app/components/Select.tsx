@@ -194,7 +194,7 @@ const Select: FC<SelectProps> = ({
                   containerRef={containerRef}
                   placeholder="Rechercher..."
                   query="innerText"
-                  className="mb-2 flex h-10 w-full cursor-default items-center justify-center rounded-lg border border-black bg-transparent bg-opacity-100 text-base shadow-none transition-colors"
+                  className="mb-2 flex h-10 w-full cursor-default items-center justify-center bg-transparent bg-opacity-100 text-base shadow-none transition-colors"
                 />
               </div>
             )}

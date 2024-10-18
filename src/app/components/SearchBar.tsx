@@ -54,13 +54,13 @@ const SearchBar: FC<SearchBarProps> = ({
   return (
     <label
       className={cn(
-        "flex h-11 cursor-pointer items-center gap-4 rounded-md border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2.5 shadow-xl",
+        "flex h-11 cursor-pointer items-center gap-4 rounded border border-neutral-700 bg-zinc-900 bg-opacity-50 p-2.5 shadow-xl",
         className,
       )}
       ref={labelRef}
       title="Système de recherche super cool"
     >
-      <SearchIcon color={iconColor} size="20" />
+      <SearchIcon className="text-neutral-700" size="20" />
 
       <input
         ref={inputRef}

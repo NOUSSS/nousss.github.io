@@ -150,7 +150,7 @@ const Home = () => {
                           seasonPart.current?.classList.add("hidden");
                         }
                       }}
-                      className="flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
+                      className="mb-4 flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
                     >
                       <ChevronDown ref={ChevronDownSeasonRef} /> Saisons
                     </p>
@@ -160,7 +160,7 @@ const Home = () => {
                     {animeSeason.saisons && animeSeason.saisons.length > 1 && (
                       <SearchBar
                         placeholder="Rechercher une saison"
-                        className="my-4"
+                        className="mb-4"
                         containerRef={saisonsRef}
                         query="id"
                       />
@@ -217,7 +217,7 @@ const Home = () => {
                           filmPart.current?.classList.add("hidden");
                         }
                       }}
-                      className="flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
+                      className="mb-4 flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
                     >
                       <ChevronDown ref={ChevronDownFilmsRef} /> Films
                     </p>
