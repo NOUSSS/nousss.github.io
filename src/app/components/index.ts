@@ -2,6 +2,7 @@ import ColorPicker from "./ColorPicker";
 import FastSearchBar from "./Fast-Searchbar";
 import Footer from "./Footer";
 import Pagination from "./Pagination";
+import RelatedAnimes from "./RelatedAnimes";
 import RemoveHistorique from "./RemoveHistorique";
 import SearchBar from "./SearchBar";
 import Select from "./Select";
@@ -14,6 +15,7 @@ export {
   FastSearchBar,
   Footer,
   Pagination,
+  RelatedAnimes,
   RemoveHistorique,
   SearchBar,
   Select,

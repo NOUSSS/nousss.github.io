@@ -13,7 +13,7 @@ import {
 } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { Footer, SearchBar } from "@/app/components/";
+import { Footer, RelatedAnimes, SearchBar } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
 import { useAnime } from "@/app/lib/hooks";
 import { Anime } from "@/typings/types";
@@ -325,6 +325,14 @@ const Home = () => {
                 </Link>
               )}
             </div>
+
+            {anime?.anime && (
+              <RelatedAnimes
+                animeName={anime.anime}
+                separation
+                categories={anime.category}
+              />
+            )}
           </div>
         </div>
       </main>
