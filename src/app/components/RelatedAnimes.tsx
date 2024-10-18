@@ -1,5 +1,5 @@
 import { ANIMES } from "@/animes/constants";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { cn, getAnime, getWallpaper, relatedCats } from "../lib";
 
 import Link from "next/link";
@@ -11,7 +11,7 @@ interface Props {
   separation?: boolean;
 }
 
-export default ({ animeName, categories, separation }: Props) => {
+const RelatedAnimes: FC<Props> = ({ animeName, categories, separation }) => {
   const [relatedAnimes, setRelatedAnimes] = useState<string[]>([]);
 
   useEffect(() => {
@@ -95,3 +95,5 @@ export default ({ animeName, categories, separation }: Props) => {
     ""
   );
 };
+
+export default RelatedAnimes;
