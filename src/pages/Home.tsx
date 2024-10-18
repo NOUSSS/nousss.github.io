@@ -206,7 +206,7 @@ const Home = () => {
                     )}
 
                     <ul
-                      className="flex flex-wrap justify-center gap-3 md:justify-start md:gap-6"
+                      className="flex flex-wrap gap-3 md:gap-6"
                       ref={(el) => {
                         if (el) {
                           saisonsRef.current[0] = el;
@@ -273,7 +273,7 @@ const Home = () => {
                     )}
 
                     <ul
-                      className="flex flex-wrap justify-center gap-3 md:justify-start md:gap-6"
+                      className="flex flex-wrap gap-3 md:gap-6"
                       ref={(el) => {
                         if (el) {
                           filmsRef.current[0] = el;

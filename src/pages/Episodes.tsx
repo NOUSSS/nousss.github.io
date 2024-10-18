@@ -427,7 +427,7 @@ const Episodes = () => {
 
           const saisonStorage = episodeData?.get()?.saison;
 
-          const saisonName =
+          const saisonTitle =
             anime?.anime &&
             Object.values(anime.anime?.options?.saisons!)[
               Number(saisonStorage) - 1
@@ -435,7 +435,7 @@ const Episodes = () => {
 
           updateAnime((currentState) => ({
             ...currentState,
-            saisonTitle: `${saisonName} (${anime.currentLecteur?.length})`,
+            saisonTitle,
           }));
         }, 100);
 
@@ -705,13 +705,14 @@ const Episodes = () => {
               </div>
 
               {anime.anime?.options.saisons &&
+                anime.saisonTitle &&
                 Object.keys(anime.anime.options.saisons).length !== 1 && (
                   <div className="mb-4">
                     <Select
                       parent
                       search
                       placeholderRef={placeholderSeason}
-                      placeholder="Changer de saison"
+                      placeholder={anime.saisonTitle}
                       items={Object.values(anime.anime.options.saisons).map(
                         ({ name }, i) => ({
                           name,
