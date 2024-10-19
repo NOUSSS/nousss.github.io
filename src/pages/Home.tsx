@@ -4,15 +4,9 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-import {
-  navMotion,
-  getAnime,
-  getCurrentAnime,
-  getWallpaper,
-  cn,
-} from "@/app/lib/";
+import { getAnime, getCurrentAnime, getWallpaper, cn } from "@/app/lib/";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Footer, RelatedAnimes, SearchBar } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
 import { useAnime } from "@/app/lib/hooks";
@@ -25,7 +19,12 @@ import { icons } from "lucide-react";
 import EpisodeData from "@/app/class/episodeData";
 import FilmData from "@/app/class/filmData";
 
+const synopsisLimit = 300;
+
 const Home = () => {
+  const [allSynopsis, setAllSynopsis] = useState<boolean>(false);
+  const [synopsisAnime, setSynopsis] = useState<ReactNode>();
+
   const [anime, setAnime] = useState<AnimesType | null>(null);
   const [hidden, setHidden] = useState(true);
 
@@ -75,6 +74,21 @@ const Home = () => {
       router.push("/");
     }
   }, [query.anime, anime?.anime]);
+
+  useEffect(() => {
+    if (anime?.synopsis) {
+      if (allSynopsis) {
+        setSynopsis(anime.synopsis);
+      } else {
+        setSynopsis(
+          <>
+            {anime.synopsis.slice(0, synopsisLimit)}...{" "}
+            <p className="inline text-main hover:underline">Voir plus</p>
+          </>,
+        );
+      }
+    }
+  }, [allSynopsis, anime]);
 
   return (
     <>
@@ -127,9 +141,20 @@ const Home = () => {
               </h1>
             )}
 
-            <p className="my-4 text-sm text-zinc-300 md:text-base">
-              {anime?.synopsis}
-            </p>
+            {anime?.synopsis && anime.synopsis.length > synopsisLimit ? (
+              <button
+                onClick={() => {
+                  setAllSynopsis(!allSynopsis);
+                }}
+                className="my-4 text-left text-sm text-zinc-300 md:text-base"
+              >
+                {synopsisAnime}
+              </button>
+            ) : (
+              <p className="my-4 text-sm text-zinc-300 md:text-base">
+                {anime?.synopsis}
+              </p>
+            )}
 
             {anime?.category && (
               <div className="my-4 flex flex-wrap gap-3">
