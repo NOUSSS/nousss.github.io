@@ -265,7 +265,7 @@ const Home = () => {
                   <div ref={filmPart}>
                     {animeFilms?.films && animeFilms.films.length > 1 && (
                       <SearchBar
-                        className="my-4"
+                        className="mb-4"
                         placeholder="Rechercher un film"
                         containerRef={filmsRef}
                         query="id"
