@@ -119,7 +119,10 @@ const Home = () => {
 
           <div className="relative p-4 max-[460px]:-top-24 md:mx-24 lg:p-8">
             {anime?.anime && (
-              <h1 className="my-4 animate-title text-center text-3xl font-normal md:my-0 md:text-4xl">
+              <h1
+                title={anime.aliases?.join(", ")}
+                className="my-4 animate-title text-center text-3xl font-normal md:my-0 md:text-4xl"
+              >
                 {anime.anime}
               </h1>
             )}
