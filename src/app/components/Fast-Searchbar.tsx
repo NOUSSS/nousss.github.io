@@ -32,7 +32,6 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
   const router = useRouter();
 
   useEffect(() => {
-    // Initialiser l'input
     if (inputRef.current) {
       inputRef.current.value = "";
     }
@@ -48,7 +47,9 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsVisible(false);
-        router.replace(router.asPath.split("#")[0], undefined, { shallow: true });
+        router.replace(router.asPath.split("#")[0], undefined, {
+          shallow: true,
+        });
       } else if (event.ctrlKey && event.key === "k") {
         event.preventDefault();
         setIsVisible(!isVisible);
@@ -65,23 +66,14 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
   }, [isVisible]);
 
   useEffect(() => {
-    const checkHash = () => {
-      const currentHash = window.location.hash;
-      if (currentHash === "#search") {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+    const currentHash = window.location.hash;
 
-    checkHash();
-
-    window.addEventListener("hashchange", checkHash);
-
-    return () => {
-      window.removeEventListener("hashchange", checkHash);
-    };
-  }, [setIsVisible]);
+    if (currentHash === "#search") {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  }, [setIsVisible, router]);
 
   useEffect(() => {
     const currentUrl = new URL(window.location.href);
