@@ -132,6 +132,8 @@ import SailorMoon from "./SailorMoon/sailor-moon";
 import KenLeSurvivant from "./KenLeSurvivant/ken-le-survivant";
 import Arifureta from "./Arifureta/arifureta";
 import SpareMeGreatLord from "./SpareMeGreatLord/spare-me-great-lord";
+import Eyeshield21 from "./Eyeshield21/eyeshield-21";
+import PianoForest from "./PianoForest/piano-forest";
 
 export interface AnimesType {
   anime: string;
@@ -1393,6 +1395,27 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "L'histoire tourne autour de Lu Shu, un méta-humain capable de devenir plus fort en collectant l'énergie négative des gens. En compagnie de sa petite sœur Lu Xiao Yu, il va tout mettre en œuvre pour perfectionner ses pouvoirs. En parallèle, de mystérieux évènements s'accumulent en ville...",
     options: new SpareMeGreatLord(),
+  },
+  {
+    anime: "Eyeshield 21",
+    category: ["Aventure", "Comédie", "School Life", "Sport"],
+    synopsis:
+      "Sena Kobayakawa, le héros de l'histoire, est un jeune homme frêle et craintif. À force de jouer les larbins pour les autres, il a acquis une vitesse de course phénoménale. Dès son arrivée au lycée, il est remarqué par Yoichi Hiruma, le démoniaque quarterback de l'équipe de football américain de son lycée, les Deimon Devil Bats. Si au début Sena accepte d'en faire partie en tant que simple manager, il va rapidement devenir Eyeshield 21, le mystérieux running back de l'équipe. Incognito derrière sa visière teintée, il est, grâce à sa rapidité, l'arme secrète des Devil Bats. L'histoire se focalise tout autant sur l'évolution de l'équipe, sur l'élargissement de son effectif, et sur le rêve irréaliste des vétérans du club, Hiruma et Kurita, de participer au Christmas Bowl.",
+    options: new Eyeshield21(),
+  },
+  {
+    anime: "Piano Forest",
+    aliases: [
+      "Le Piano dans la forêt",
+      "The Perfect World of Kai",
+      "Forest of Piano",
+      "Piano Forest",
+      "Piano no Mori",
+    ],
+    category: ["Aventure", "Comédie", "Drame", "School Life", "Slice of Life"],
+    options: new PianoForest(),
+    synopsis:
+      "Shuhei et Kai sont deux garçons que tout oppose : alors que l'un est le fils d'une bonne famille destiné à un avenir brillant, l'autre est le fils d'une prostituée à l'attitude pour le moins désinvolte. Lorsque Shuhei emménage dans la ville où vit Kai, les deux vont se découvrir une passion commune : le piano.",
   },
 ];
 
