@@ -10,17 +10,35 @@ export default function Report() {
   const [message, setMessage] = React.useState("");
   const [author, setAuthor] = React.useState("");
 
+  const [timeout, setTimeout] = React.useState(0);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `/api/webhook?author=${author}&message=${message}`,
-    );
+    if (timeout === 0) {
+      const response = await fetch(
+        `/api/webhook?author=${author}&message=${message}`,
+      );
 
-    if (response.ok) {
-      toast.success("Signalement envoyé avec succès !");
+      if (response.ok) {
+        toast.success("Signalement envoyé avec succès !");
+      } else {
+        toast.error("Erreur dans l'envoie du signalement.");
+      }
+
+      setTimeout(10);
+
+      const interval = setInterval(() => {
+        setTimeout((prevTimeout) => {
+          if (prevTimeout === 1) {
+            clearInterval(interval);
+          }
+
+          return prevTimeout - 1;
+        });
+      }, 1000);
     } else {
-      toast.error("Erreur dans l'envoie du signalement.");
+      toast.error(`Il reste ${timeout} secondes de timeout`);
     }
   };
 

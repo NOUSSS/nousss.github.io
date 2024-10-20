@@ -8,18 +8,35 @@ import Head from "next/head";
 
 export default function Suggest() {
   const [message, setMessage] = React.useState("");
+  const [timeout, setTimeout] = React.useState(0);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `/api/webhook?author=Suggestion&message=${message}`,
-    );
+    if (timeout === 0) {
+      const response = await fetch(
+        `/api/webhook?author=Suggestion&message=${message}`,
+      );
 
-    if (response.ok) {
-      toast.success("Suggestion envoyé avec succès !");
+      if (response.ok) {
+        toast.success("Suggestion envoyé avec succès !");
+      } else {
+        toast.error("Erreur dans l'envoie de la suggestion.");
+      }
+
+      setTimeout(10);
+
+      const interval = setInterval(() => {
+        setTimeout((prevTimeout) => {
+          if (prevTimeout === 1) {
+            clearInterval(interval);
+          }
+
+          return prevTimeout - 1;
+        });
+      }, 1000);
     } else {
-      toast.error("Erreur dans l'envoie de la suggestion.");
+      toast.error(`Il reste ${timeout} secondes de timeout`);
     }
   };
 
