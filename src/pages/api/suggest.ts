@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           {
             message: "<@795267940521607198>",
             description: message,
-            color: 0x04fbb7,
+            color: 0xf59b42,
             timestamp: new Date().toISOString(),
             author: {
               name: "Suggestion",
