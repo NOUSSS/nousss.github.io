@@ -7,6 +7,14 @@ const names = [
     name: "On dirait bien un extraterrestre !",
     index: "2",
   },
+  {
+    name: "Le choc des vioques !",
+    index: "3",
+  },
+  {
+    name: "Dégommons Mémé-Turbo !",
+    index: "4",
+  },
 ];
 
 export default names;
