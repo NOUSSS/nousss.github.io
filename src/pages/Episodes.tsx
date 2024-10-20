@@ -183,23 +183,28 @@ const Episodes = () => {
     const currentEpisode = Number(episodeData?.get()?.episode);
 
     if (episodesListRef.current && currentEpisode) {
-      episodesListRef.current[0].scrollTo({
-        top: (
-          episodesListRef.current[0].childNodes[
-            currentEpisode - 1
-          ] as HTMLElement
-        ).offsetTop,
-        behavior: "smooth",
+      let element: HTMLElement | undefined;
+
+      episodesListRef.current[0].childNodes.forEach((el) => {
+        const e = el as HTMLElement;
+
+        if (e.dataset.id === currentEpisode.toString()) {
+          element = e;
+        }
       });
 
-      episodesListRef.current?.[0].childNodes.forEach((e) => {
-        (e.childNodes[0] as HTMLElement).classList.remove("*:text-main");
-      });
+      if (element) {
+        episodesListRef.current[0].scrollTo({
+          top: element.offsetTop,
+          behavior: "smooth",
+        });
 
-      (
-        episodesListRef.current?.[0].childNodes[currentEpisode - 1]
-          .childNodes[0] as HTMLElement
-      ).classList.add("*:text-main");
+        episodesListRef.current[0].childNodes.forEach((e) => {
+          (e.childNodes[0] as HTMLElement).classList.remove("*:text-main");
+        });
+
+        (element.childNodes[0] as HTMLElement).classList.add("*:text-main");
+      }
     }
   }, [anime.video]);
 
