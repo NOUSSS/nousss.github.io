@@ -39,7 +39,7 @@ export default class VinlandSaga extends Anime {
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }) =>
-        `https://anime-sama.fr/catalogue/vinland-saga/saison${index}/${lang}${lang === "vf" ? "1" : ""}/episodes.js`,
+        `https://anime-sama.fr/catalogue/vinland-saga/saison${index}/${lang}${lang === "vf" && index.toString() === "1" ? "1" : ""}/episodes.js`,
 
       horsSeries: [],
 
