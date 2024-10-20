@@ -140,6 +140,7 @@ import Kaiji from "./Kaiji/kaiji";
 import Roshidere from "./Roshidere/roshidere";
 import TerraFormas from "./TerraFormas/terra-formas";
 import SamuraiChamploo from "./SamuraiChamploo/samurai-champloo";
+import AfroSamurai from "./AfroSamurai/afro-samurai";
 
 export interface AnimesType {
   anime: string;
@@ -1473,6 +1474,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Mugen est un féroce guerrier au style de combat plutôt sauvage alors que Jin est un samuraï très habile au style traditionnel. Ces deux samuraïs n'ont vraiment rien en commun mais leurs routes semblent se croiser. Mugen erre dans un salon de thé où il sauve la vie d'une jeune serveuse : Fû. Jin fait alors son apparition dans le salon de thé, Mugen sent qu'il est fort et ne peut s'empêcher de le défier. Fû les convainc de la suivre afin de retrouver un mystérieux samuraï qui sent comme les tournesols. C'est alors que commence leur long et périlleux voyage...",
     options: new SamuraiChamploo(),
+  },
+  {
+    anime: "Afro Samurai",
+    category: ["Action", "Aventure", "Fantasy", "Science-fiction"],
+    synopsis:
+      "Suite à la mort de son père dans un duel contre un mystérieux personnage, le jeune Afro décida de s'entraîner dur dans le but de le venger. Pour cela il apprendra l'art du maniement du sabre, tout au long de son parcours à la recherche de cet homme, il fera la rencontre de différents individus décidés à lui mettre des bâtons dans les roues ; il règlera ses comptes dans des combats tout aussi sanglants les uns que les autres.",
+    options: new AfroSamurai(),
   },
 ];
 
