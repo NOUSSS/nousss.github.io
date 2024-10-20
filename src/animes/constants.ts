@@ -138,6 +138,7 @@ import AllOut from "./AllOut/all-out";
 import FourKnightsOfTheApocalypse from "./FourKnightsOfTheApocalypse/four-knights-of-the-apocalypse";
 import Kaiji from "./Kaiji/kaiji";
 import Roshidere from "./Roshidere/roshidere";
+import TerraFormas from "./TerraFormas/terra-formas";
 
 export interface AnimesType {
   anime: string;
@@ -1457,6 +1458,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "D'origine russe et japonaise, Alisa Mikhailovna Kujou est la 'princesse solitaire' de l'Académie privée Seiren. Cette beauté aux cheveux argentés qui est première de sa classe, comptable du conseil des élèves est réputée pour être totalement inaccessible. Pour certaines raisons, elle s'est également chargée de réprimander Masachika Kuze, le fainéant qui s'assoit à côté d'elle en classe. Il la contrarie constamment en s'endormant, en oubliant ses manuels et en étant tout simplement un élève peu exemplaire. Du moins, c'est ce qui semble se passer de l'extérieur. Elle a beau jouer les dures, Masachika ne le dérange pas autant qu'on pourrait le croire et elle l'autorise même à l'appeler Alya, son surnom. Ceux qui entendent les commentaires qu'elle murmure en russe peuvent savoir ce qu'elle ressent vraiment, mais comme aucun de ses camarades de classe ne comprend cette langue, elle est libre de dire ce qu'elle veut ! Sauf qu'il y a en réalité une personne qui sait ce qu'elle dit. Masachika écoute ses révélations embarrassantes, fait semblant de ne rien comprendre, tout en se demandant ce que signifient réellement ses commentaires flatteurs !",
     options: new Roshidere(),
+  },
+  {
+    anime: "Terra Formars",
+    category: ["Action", "Horreur", "Science-fiction", "Tragique"],
+    synopsis:
+      "Les scientifiques du XXIème siècle ont pour but de terraformer Mars afin de la coloniser. Ils décident pour cela d'y envoyer une quantité incommensurable de cafards afin de fertiliser le sol martien et d'en purifier l'air. Environ quatre cent ans plus tard, en 2577, nous rencontrons Komaki Shokichi et Akita Nanao, deux astronautes nippons. Leur mission, ainsi que celle des treize autres membres de l'équipage, est de vérifier que Mars ait bien été terraformée ; ils sont en quelque sorte les premiers colons martiens. Mais quelle n'est pas leur surprise lorsqu'ils découvrent que la planète rouge est à présent peuplée d'êtres mutants mi-humains, mi-cafards à la force extraordinaire !! Bien que sur Terre, personne ne se doute de rien, pour eux, la descente aux enfers a déjà commencé.",
+    options: new TerraFormas(),
   },
 ];
 
