@@ -14,13 +14,17 @@ class FairyTail extends Anime {
     this.saisons = {
       1: {
         name: "Tous les épisodes",
-
         image: () => getImage(1),
+      },
+      2: {
+        name: "100 Years Quest Saison 1",
+        hs: true,
+        image: () => getImage(2),
       },
       oav: {
         name: "OAV",
 
-        image: () => getImage(2),
+        image: () => getImage(1),
       },
     };
 
@@ -68,8 +72,9 @@ class FairyTail extends Anime {
 
       allIndex: {
         1: 0,
-        2: 328,
       },
+
+      noc: true,
 
       names,
     };
