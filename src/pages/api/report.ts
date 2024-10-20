@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       body: JSON.stringify({
         embeds: [
           {
+            message: "<@795267940521607198>",
             description: message,
             color: 0x04fbb7,
             timestamp: new Date().toISOString(),
