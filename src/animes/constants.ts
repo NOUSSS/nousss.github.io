@@ -135,6 +135,7 @@ import SpareMeGreatLord from "./SpareMeGreatLord/spare-me-great-lord";
 import Eyeshield21 from "./Eyeshield21/eyeshield-21";
 import PianoForest from "./PianoForest/piano-forest";
 import AllOut from "./AllOut/all-out";
+import FourKnightsOfTheApocalypse from "./FourKnightsOfTheApocalypse/four-knights-of-the-apocalypse";
 
 export interface AnimesType {
   anime: string;
@@ -1424,6 +1425,14 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "L'histoire suit Kenji Gion, un lycéen de petite taille fraichement accueilli dans un lycée de la préfecture de Kanagawa. Ce dernier va rencontrer un lycéen durant un match de rugby et va petit à petit devenir ami avec lui. Avec ce lycéen nommé Sumiaki Iwashimizu, ils vont rejoindre le club de rugby du lycée. Cette série narre leurs exploits en tant que rugbyman.",
     options: new AllOut(),
+  },
+  {
+    anime: "Four Knights of the Apocalypse",
+    aliases: ["Mokushiroku no Yon-kishi"],
+    category: ["Action", "Aventure", "Comédie", "Drame", "Fantastique"],
+    synopsis:
+      "Percival vit seul avec son grand-père Bargis, au sommet d'une haute montagne nommée le 'Doigt divin'. Il y mène une vie heureuse, préservé du monde extérieur. Mais le jour de ses 16 ans, son destin bascule : un mystérieux guerrier à l'armure rouge s'en prend violemment à lui et à son grand-père. En effet, ce Chevalier sacré de Camelot est chargé d'éliminer quiconque s'apparenterait aux 'Four Knights of the Apocalypse', un groupe de cavaliers qui, d'après la prophétie, apparaîtra pour renverser le roi Arthur... Laissé pour mort, Percival survit à ses blessures et décide de partir en quête de vengeance, et d'aventures !",
+    options: new FourKnightsOfTheApocalypse(),
   },
 ];
 
