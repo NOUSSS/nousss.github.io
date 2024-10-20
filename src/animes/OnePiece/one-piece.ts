@@ -95,6 +95,10 @@ class OnePiece extends Anime {
         aliases: ["vegapunk", "gorosei", "gear 5", "11"],
         image: () => getImage(11),
       },
+      oav: {
+        name: "Fan Letter",
+        image: () => getImage(11),
+      },
     };
 
     this.FILM_OPTIONS = {

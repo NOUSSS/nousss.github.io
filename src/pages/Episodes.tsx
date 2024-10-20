@@ -269,7 +269,10 @@ const Episodes = () => {
           }
         }
 
-        const episodeIndex = noc ? 0 : allIndex![anime?.saison ?? 0];
+        const episodeIndex =
+          noc || (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison))
+            ? 0
+            : allIndex![anime?.saison ?? 0];
         let episode = episodeData?.get()?.episode;
 
         if (!episode) {
@@ -316,9 +319,10 @@ const Episodes = () => {
             );
           } else {
             const episodeNumber = episodeIndex + indexEpisode - retard;
-            const episodeNumberName = noc
-              ? allIndex![anime?.saison ?? 0] + episodeNumber
-              : episodeNumber;
+            const episodeNumberName =
+              noc || (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison))
+                ? allIndex![anime?.saison ?? 0] + episodeNumber
+                : episodeNumber;
 
             const episodeTitle =
               names?.find(({ index }, i) =>
@@ -374,9 +378,10 @@ const Episodes = () => {
             const URL_EPISODE = anime.currentLecteur?.[Number(episode) - 1];
 
             const episodeNumber = episodeIndex + Number(episode) - retardEsp;
-            const episodeNumberName = noc
-              ? allIndex![anime?.saison ?? 0] + episodeNumber
-              : episodeNumber;
+            const episodeNumberName =
+              noc || (oavIndex !== -1 && oavIndex + 1 === Number(anime?.saison))
+                ? allIndex![anime?.saison ?? 0] + episodeNumber
+                : episodeNumber;
 
             const title =
               names?.find(({ index }, i) =>
