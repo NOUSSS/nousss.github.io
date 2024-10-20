@@ -35,7 +35,7 @@ class DanDaDan extends Anime {
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
-        `https://anime-sama.fr/catalogue/dandadan/saison${index}/${lang}${lang === "vf" ? "1" : ""}/episodes.js`,
+        `https://anime-sama.fr/catalogue/dandadan/saison${index}/${lang}${lang === "vf" ? "2" : ""}/episodes.js`,
 
       allIndex: {
         1: 0,
