@@ -772,17 +772,10 @@ const Episodes = () => {
         </div>
 
         {anime.anime &&
-          anime.anime?.anime &&
-          anime.anime?.category &&
           !(
             anime?.saison !==
             Object.keys(anime.anime?.options.saisons!)?.length.toString()
-          ) && (
-            <RelatedAnimes
-              animeName={anime.anime.anime}
-              categories={anime.anime.category}
-            />
-          )}
+          ) && <RelatedAnimes anime={anime.anime} />}
 
         <div className="relative">
           <script

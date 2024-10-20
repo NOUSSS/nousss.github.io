@@ -1,32 +1,38 @@
-import { ANIMES } from "@/animes/constants";
+import { ANIMES, AnimesType } from "@/animes/constants";
 import { FC, useEffect, useState } from "react";
 import { cn, getAnime, getWallpaper, relatedCats } from "../lib";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 import Image from "next/image";
 
 interface Props {
-  animeName: string;
-  categories: string[];
+  anime: AnimesType;
   separation?: boolean;
 }
 
-const RelatedAnimes: FC<Props> = ({ animeName, categories, separation }) => {
+const RelatedAnimes: FC<Props> = ({ anime, separation }) => {
   const [relatedAnimes, setRelatedAnimes] = useState<string[]>([]);
 
   useEffect(() => {
+    const animes: string[] = [];
+
     for (const a of ANIMES) {
+      const categories = anime.category;
+
       if (
         ((categories && relatedCats(a.category, categories)) ||
-          a.anime.includes(animeName) ||
-          animeName.includes(a.anime)) &&
-        animeName !== a.anime &&
+          a.anime.includes(anime.anime) ||
+          anime.anime.includes(a.anime)) &&
+        anime.anime !== a.anime &&
         !relatedAnimes.includes(a.anime)
       ) {
-        setRelatedAnimes((state) => [...state, a.anime]);
+        animes.push(a.anime);
       }
     }
-  }, []);
+
+    setRelatedAnimes(animes);
+  }, [anime]);
 
   return relatedAnimes.length > 0 ? (
     <div

@@ -146,18 +146,18 @@ const Home = () => {
                 onClick={() => {
                   setAllSynopsis(!allSynopsis);
                 }}
-                className="my-4 text-left text-sm text-zinc-300 md:text-base"
+                className="mb-4 text-left text-sm text-zinc-300 md:text-base"
               >
                 {synopsisAnime}
               </button>
             ) : (
-              <p className="my-4 text-sm text-zinc-300 md:text-base">
+              <p className="mb-4 text-sm text-zinc-300 md:text-base">
                 {anime?.synopsis}
               </p>
             )}
 
             {anime?.category && (
-              <div className="my-4 flex flex-wrap gap-3">
+              <div className="mb-4 flex flex-wrap gap-3">
                 {anime.category.map((category, i) => (
                   <div
                     ref={(e) => {
@@ -354,13 +354,7 @@ const Home = () => {
               )}
             </div>
 
-            {anime?.anime && (
-              <RelatedAnimes
-                animeName={anime.anime}
-                separation
-                categories={anime.category}
-              />
-            )}
+            {anime && <RelatedAnimes anime={anime} separation />}
           </div>
         </div>
       </main>
