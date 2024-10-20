@@ -11,9 +11,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        content: "<@795267940521607198>",
         embeds: [
           {
-            message: "<@795267940521607198>",
             description: message,
             color: 0xf59b42,
             timestamp: new Date().toISOString(),
