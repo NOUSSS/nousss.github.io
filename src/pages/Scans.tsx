@@ -67,9 +67,8 @@ const Scans = () => {
       router.push("/");
     } else {
       const StorageScans = new ScanData(currentAnime.anime);
+      
       setScanData(StorageScans);
-
-      setLoadingToast(toast.loading("Les scans sont en cours de chargement"));
       updateAnime({ anime: currentAnime });
 
       const filever = localStorage.getItem("filever");

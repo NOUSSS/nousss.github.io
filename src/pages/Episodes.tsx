@@ -48,9 +48,6 @@ const Episodes = () => {
   }, [router.events]);
 
   const [anime, updateAnime] = useAnime<AnimeType.AnimeEpisodesProps>({});
-  const [loadingToast, setLoadingToast] = useState<null | string | number>(
-    null,
-  );
 
   const placeholderSeason = useRef<HTMLParagraphElement>(null);
   const episodeTitleRef = useRef<HTMLParagraphElement>(null);
@@ -74,8 +71,6 @@ const Episodes = () => {
   const Tri = icons["Signal"];
 
   useEffect(() => {
-    if (loadingToast) toast.dismiss(loadingToast);
-
     toast.info(
       "Les lecteurs ne nous appartiennent pas, donc si des pubs y sont présentes ignorez-les.",
       {
@@ -95,10 +90,6 @@ const Episodes = () => {
     if (!currentAnimeName || !currentAnimeData) {
       router.push("/");
     } else {
-      setLoadingToast(
-        toast.loading("Les épisodes sont en cours de chargement"),
-      );
-
       const currentSaison = currentAnimeData.saison || "1";
       const lang = (currentAnimeData.lang as langType) || "vostfr";
 
@@ -179,16 +170,12 @@ const Episodes = () => {
   });
 
   useEffect(() => {
-    if (status === "error" && loadingToast) {
-      toast.error("Erreur dans le chargement des épisodes.", {
-        id: loadingToast,
-      });
+    if (status === "error") {
+      toast.error("Erreur dans le chargement des épisodes.");
     }
 
-    if (status === "ready" && loadingToast) {
-      toast.success("Les épisodes ont bien été chargés", {
-        id: loadingToast,
-      });
+    if (status === "ready") {
+      toast.success("Les épisodes ont bien été chargés");
     }
   }, [status]);
 

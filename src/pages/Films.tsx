@@ -19,9 +19,6 @@ type langType = "vostfr" | "vf";
 
 const Films = () => {
   const [anime, updateAnime] = useAnime<Anime.AnimeFilmsProps>({});
-  const [loadingToast, setLoadingToast] = useState<string | number | null>(
-    null,
-  );
 
   const [script, setScript] = useState<string>("");
   const [filmData, setFilmData] = useState<FilmData>();
@@ -52,8 +49,6 @@ const Films = () => {
     } else {
       const lang = (FilmsData?.lang ?? "vostfr") as langType;
 
-      setLoadingToast(toast.loading("Les films sont en cours de chargement"));
-
       updateAnime({
         anime: getAnime(currentAnime),
         lang,
@@ -74,15 +69,11 @@ const Films = () => {
 
   useEffect(() => {
     if (status === "ready") {
-      toast.success("Les films ont bien été chargés.", {
-        id: loadingToast!,
-      });
+      toast.success("Les films ont bien été chargés.");
     }
 
     if (status === "error") {
-      toast.error("Erreur dans le chargement des films.", {
-        id: loadingToast!,
-      });
+      toast.error("Erreur dans le chargement des films.");
     }
   }, [status]);
 
