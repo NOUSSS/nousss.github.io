@@ -22,15 +22,8 @@ class SoloLeveling extends Anime {
       SCRIPT_URL:
         "https://anime-sama.fr/catalogue/solo-leveling/scan/vf/episodes.js",
 
-      IMAGE_URL: ({
-        chapitre,
-        index,
-      }: {
-        chapitre: string | number;
-        index: string | number;
-      }) =>
+      IMAGE_URL: ({ chapitre, index }) =>
         `https://anime-sama.fr/s2/scans/Solo Leveling/${chapitre}/${index}.jpg`,
-      CHAPITRE_SPECIAUX: [] as number[],
     };
 
     this.EPISODES_OPTIONS = {

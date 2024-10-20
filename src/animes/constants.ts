@@ -131,6 +131,7 @@ import DragonBallDaima from "./DragonBallDaima/dragon-ball-daima";
 import SailorMoon from "./SailorMoon/sailor-moon";
 import KenLeSurvivant from "./KenLeSurvivant/ken-le-survivant";
 import Arifureta from "./Arifureta/arifureta";
+import SpareMeGreatLord from "./SpareMeGreatLord/spare-me-great-lord";
 
 export interface AnimesType {
   anime: string;
@@ -1377,6 +1378,21 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Parmi les élèves de sa classe transportés dans un autre monde, Hajime Nagumo est un étudiant ordinaire sans ambitions. À cause de son manque d'entrain, il est surnommé 'l'Incompétent' par ses camarades de classe. Cette classe a été invoquée pour sauver un pays de la destruction. Tous les élèves de la classe ont été bénis par des caractéristiques et des compétences uniques, excepté Hajime avec sa profession de 'Synergist' et ses statistiques médiocres. Pour mettre un mot sur cette profession de 'Synergist', il s'agit de la classe d'artisan. Un jour, alors qu'il explorait un donjon avec sa classe, il se fait trahir par l'un de ses camarades et tombe dans les profondeurs de l'abîme.",
     options: new Arifureta(),
+  },
+  {
+    anime: "Spare Me, Great Lord!",
+    aliases: ["Da Wang Rao Ming"],
+    category: [
+      "Action",
+      "Comédie",
+      "Fantasy",
+      "School Life",
+      "Surnaturel",
+      "Arts Martiaux",
+    ],
+    synopsis:
+      "L'histoire tourne autour de Lu Shu, un méta-humain capable de devenir plus fort en collectant l'énergie négative des gens. En compagnie de sa petite sœur Lu Xiao Yu, il va tout mettre en œuvre pour perfectionner ses pouvoirs. En parallèle, de mystérieux évènements s'accumulent en ville...",
+    options: new SpareMeGreatLord(),
   },
 ];
 
