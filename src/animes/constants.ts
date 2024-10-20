@@ -139,6 +139,7 @@ import FourKnightsOfTheApocalypse from "./FourKnightsOfTheApocalypse/four-knight
 import Kaiji from "./Kaiji/kaiji";
 import Roshidere from "./Roshidere/roshidere";
 import TerraFormas from "./TerraFormas/terra-formas";
+import SamuraiChamploo from "./SamuraiChamploo/samurai-champloo";
 
 export interface AnimesType {
   anime: string;
@@ -1465,6 +1466,13 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Les scientifiques du XXIème siècle ont pour but de terraformer Mars afin de la coloniser. Ils décident pour cela d'y envoyer une quantité incommensurable de cafards afin de fertiliser le sol martien et d'en purifier l'air. Environ quatre cent ans plus tard, en 2577, nous rencontrons Komaki Shokichi et Akita Nanao, deux astronautes nippons. Leur mission, ainsi que celle des treize autres membres de l'équipage, est de vérifier que Mars ait bien été terraformée ; ils sont en quelque sorte les premiers colons martiens. Mais quelle n'est pas leur surprise lorsqu'ils découvrent que la planète rouge est à présent peuplée d'êtres mutants mi-humains, mi-cafards à la force extraordinaire !! Bien que sur Terre, personne ne se doute de rien, pour eux, la descente aux enfers a déjà commencé.",
     options: new TerraFormas(),
+  },
+  {
+    anime: "Samurai Champloo",
+    category: ["Action", "Aventure", "Comédie", "Drame", "Historique"],
+    synopsis:
+      "Mugen est un féroce guerrier au style de combat plutôt sauvage alors que Jin est un samuraï très habile au style traditionnel. Ces deux samuraïs n'ont vraiment rien en commun mais leurs routes semblent se croiser. Mugen erre dans un salon de thé où il sauve la vie d'une jeune serveuse : Fû. Jin fait alors son apparition dans le salon de thé, Mugen sent qu'il est fort et ne peut s'empêcher de le défier. Fû les convainc de la suivre afin de retrouver un mystérieux samuraï qui sent comme les tournesols. C'est alors que commence leur long et périlleux voyage...",
+    options: new SamuraiChamploo(),
   },
 ];
 
