@@ -3,6 +3,7 @@ import names from "./constants/episodes-names";
 
 import { Anime } from "@/app/class/anime";
 import { getImage } from "./constants/images-saisons";
+import { getImageFilms } from "./constants/images-films";
 
 export default class BlueLock extends Anime {
   constructor() {
@@ -12,12 +13,10 @@ export default class BlueLock extends Anime {
     this.saisons = {
       1: {
         name: "Saison 1",
-
         image: () => getImage(1),
       },
       2: {
         name: "Saison 2",
-
         image: () => getImage(2),
       },
     };
@@ -40,6 +39,18 @@ export default class BlueLock extends Anime {
           value: "_spin-off|Blue Lock Spin-off Nagi",
         },
       ],
+    };
+
+    this.FILM_OPTIONS = {
+      SCRIPT_URL: (langage: string) =>
+        `https://anime-sama.fr/catalogue/blue-lock/film/${langage}/episodes.js`,
+      names: {
+        0: {
+          name: "Nagi",
+          aliases: ["1"],
+          image: () => getImageFilms(1),
+        },
+      },
     };
 
     this.EPISODES_OPTIONS = {
