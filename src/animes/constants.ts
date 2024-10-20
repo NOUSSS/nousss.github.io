@@ -136,6 +136,8 @@ import Eyeshield21 from "./Eyeshield21/eyeshield-21";
 import PianoForest from "./PianoForest/piano-forest";
 import AllOut from "./AllOut/all-out";
 import FourKnightsOfTheApocalypse from "./FourKnightsOfTheApocalypse/four-knights-of-the-apocalypse";
+import Kaiji from "./Kaiji/kaiji";
+import Roshidere from "./Roshidere/roshidere";
 
 export interface AnimesType {
   anime: string;
@@ -1433,6 +1435,28 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Percival vit seul avec son grand-père Bargis, au sommet d'une haute montagne nommée le 'Doigt divin'. Il y mène une vie heureuse, préservé du monde extérieur. Mais le jour de ses 16 ans, son destin bascule : un mystérieux guerrier à l'armure rouge s'en prend violemment à lui et à son grand-père. En effet, ce Chevalier sacré de Camelot est chargé d'éliminer quiconque s'apparenterait aux 'Four Knights of the Apocalypse', un groupe de cavaliers qui, d'après la prophétie, apparaîtra pour renverser le roi Arthur... Laissé pour mort, Percival survit à ses blessures et décide de partir en quête de vengeance, et d'aventures !",
     options: new FourKnightsOfTheApocalypse(),
+  },
+  {
+    anime: "Kaiji",
+    aliases: [
+      "Gyakkyou Burai Kaiji : Ultimate Survivor",
+      "Tobaku Mokushiroku Kaiji",
+    ],
+    category: ["Action", "Psychologique", "Thriller"],
+    synopsis:
+      "Itou Kaiji est un pauvre type cherchant désespérément à gagner un peu d'argent en jouant. Ayant co-signé une reconnaissance de dette, Kaiji embarque sur un navire de la dernière chance tenu par des professionnels du crédit.",
+    options: new Kaiji(),
+  },
+  {
+    anime: "Roshidere",
+    aliases: [
+      "Alya Sometimes Hides Her Feelings in Russian",
+      "Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san",
+    ],
+    category: ["Comédie", "Romance", "School Life"],
+    synopsis:
+      "D'origine russe et japonaise, Alisa Mikhailovna Kujou est la 'princesse solitaire' de l'Académie privée Seiren. Cette beauté aux cheveux argentés qui est première de sa classe, comptable du conseil des élèves est réputée pour être totalement inaccessible. Pour certaines raisons, elle s'est également chargée de réprimander Masachika Kuze, le fainéant qui s'assoit à côté d'elle en classe. Il la contrarie constamment en s'endormant, en oubliant ses manuels et en étant tout simplement un élève peu exemplaire. Du moins, c'est ce qui semble se passer de l'extérieur. Elle a beau jouer les dures, Masachika ne le dérange pas autant qu'on pourrait le croire et elle l'autorise même à l'appeler Alya, son surnom. Ceux qui entendent les commentaires qu'elle murmure en russe peuvent savoir ce qu'elle ressent vraiment, mais comme aucun de ses camarades de classe ne comprend cette langue, elle est libre de dire ce qu'elle veut ! Sauf qu'il y a en réalité une personne qui sait ce qu'elle dit. Masachika écoute ses révélations embarrassantes, fait semblant de ne rien comprendre, tout en se demandant ce que signifient réellement ses commentaires flatteurs !",
+    options: new Roshidere(),
   },
 ];
 
