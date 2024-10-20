@@ -134,6 +134,7 @@ import Arifureta from "./Arifureta/arifureta";
 import SpareMeGreatLord from "./SpareMeGreatLord/spare-me-great-lord";
 import Eyeshield21 from "./Eyeshield21/eyeshield-21";
 import PianoForest from "./PianoForest/piano-forest";
+import AllOut from "./AllOut/all-out";
 
 export interface AnimesType {
   anime: string;
@@ -1416,6 +1417,13 @@ export const ANIMES: AnimesType[] = [
     options: new PianoForest(),
     synopsis:
       "Shuhei et Kai sont deux garçons que tout oppose : alors que l'un est le fils d'une bonne famille destiné à un avenir brillant, l'autre est le fils d'une prostituée à l'attitude pour le moins désinvolte. Lorsque Shuhei emménage dans la ville où vit Kai, les deux vont se découvrir une passion commune : le piano.",
+  },
+  {
+    anime: "All Out!!",
+    category: ["Comédie", "School Life", "Slice of Life", "Sport"],
+    synopsis:
+      "L'histoire suit Kenji Gion, un lycéen de petite taille fraichement accueilli dans un lycée de la préfecture de Kanagawa. Ce dernier va rencontrer un lycéen durant un match de rugby et va petit à petit devenir ami avec lui. Avec ce lycéen nommé Sumiaki Iwashimizu, ils vont rejoindre le club de rugby du lycée. Cette série narre leurs exploits en tant que rugbyman.",
+    options: new AllOut(),
   },
 ];
 
