@@ -14,9 +14,7 @@ export default function Suggest() {
     e.preventDefault();
 
     if (timeout === 0) {
-      const response = await fetch(
-        `/api/webhook?author=Suggestion&message=${message}`,
-      );
+      const response = await fetch(`/api/suggest?&message=${message}`);
 
       if (response.ok) {
         toast.success("Suggestion envoyé avec succès !");

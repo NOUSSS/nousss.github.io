@@ -17,7 +17,7 @@ export default function Report() {
 
     if (timeout === 0) {
       const response = await fetch(
-        `/api/webhook?author=${author}&message=${message}`,
+        `/api/report?author=${author}&message=${message}`,
       );
 
       if (response.ok) {
