@@ -1,4 +1,3 @@
-import { getImageSaisons } from "./constants/images-saisons";
 import { getImageFilms } from "./constants/images-films";
 import { Anime } from "@/app/class/anime";
 import { Options } from "@/typings/types";
@@ -14,12 +13,12 @@ class PianoForest extends Anime {
       1: {
         name: "Saison 1",
         aliases: [""],
-        image: () => getImageSaisons(1),
+        image: () => getImageFilms(1),
       },
       2: {
         name: "Saison 2",
         aliases: [""],
-        image: () => getImageSaisons(2),
+        image: () => getImageFilms(1),
       },
     } as Options.Season;
 
