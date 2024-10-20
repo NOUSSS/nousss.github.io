@@ -157,7 +157,24 @@ const Home = () => {
             )}
 
             {anime?.category && (
-              <div className="mb-4 flex flex-wrap gap-3">
+              <button
+                onClick={() => {
+                  if (hidden) {
+                    catsRef.current.forEach((e) =>
+                      e.classList.remove("hidden"),
+                    );
+                  } else {
+                    catsRef.current.forEach((e, i) => {
+                      if (i > 2) {
+                        e.classList.add("hidden");
+                      }
+                    });
+                  }
+
+                  setHidden(!hidden);
+                }}
+                className="mb-4 flex flex-wrap gap-3"
+              >
                 {anime.category.map((category, i) => (
                   <div
                     ref={(e) => {
@@ -176,28 +193,11 @@ const Home = () => {
                 ))}
 
                 {anime.category.length > 3 && (
-                  <button
-                    onClick={() => {
-                      if (hidden) {
-                        catsRef.current.forEach((e) =>
-                          e.classList.remove("hidden"),
-                        );
-                      } else {
-                        catsRef.current.forEach((e, i) => {
-                          if (i > 2) {
-                            e.classList.add("hidden");
-                          }
-                        });
-                      }
-
-                      setHidden(!hidden);
-                    }}
-                    className="relative cursor-pointer rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75"
-                  >
+                  <div className="relative cursor-pointer rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75">
                     {hidden ? `+${anime.category.length - 3}` : "-"}
-                  </button>
+                  </div>
                 )}
-              </div>
+              </button>
             )}
 
             <div className="mt-4 flex flex-col gap-2">
