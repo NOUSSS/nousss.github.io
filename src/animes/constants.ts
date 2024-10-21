@@ -158,6 +158,7 @@ import Gate from "./Gate/gate";
 import TimeShadows from "./TimeShadows/time-shadows";
 import RisingImpact from "./RisingImpact/rising-impact";
 import KenganAshura from "./KenganAshura/kengan-ashura";
+import ValkyrieApocalypse from "./ValkyrieApocalypse/valkyrie-apocalypse";
 
 export interface AnimesType {
   anime: string;
@@ -1678,5 +1679,18 @@ Après avoir passé la porte, nous suivrons l'unité de reconnaissance de Youji 
     synopsis:
       "Depuis des siècles maintenant, les désaccords entre grandes entreprises se résolvent dans l'ombre grâce à une méthode très simple... Les combats de Kengan ! Les représentants de chacune des parties s'y affrontent dans un duel à mains nues aux règles minimalistes, et le vainqueur remporte le litige en question... Bien loin de toutes ces considérations, Kazuo Yamashita, un employé de bureau vieillissant, va par hasard faire la rencontre d'Ohma Tokita, le combattant du conglomérat pour lequel il travaille... Et à qui il va devoir servir d'assistant ! Kazuo va alors découvrir un monde sombre, brutal et sanglant où les conflits économiques n'obéissent qu'à une loi : celle du plus fort !",
     options: new KenganAshura(),
+  },
+  {
+    anime: "Valkyrie Apocalypse",
+    aliases: [
+      "Record of Ragnarök",
+      "Shuumatsu no Walküre",
+      "Shūmatsu no Valkyrie",
+    ],
+    category: ["Action", "Aventure", "Drame", "Fantasy", "Historique"],
+    options: new ValkyrieApocalypse(),
+    synopsis: `Cette fois, la patience des dieux est à bout. Entre guerres incessantes et pollution extrême, les humains n'évoluent décidément pas et passent le plus clair de leur temps à semer le chaos sur terre. Les divinités décident donc à l'unanimité d'anéantir l'humanité en déclenchant l'apocalypse !
+
+Seules les valkyries, ces guerrières chargées de guider les âmes des morts vers le Valhalla, se rebellent contre ce jugement. Brunehilde, leur aînée, lance un défi aux créateurs du monde : que le sort des mortels soit soumis au Ragnarök, un affrontement ultime entre 13 divinités et 13 champions de l'humanité ! Mais les plus célèbres héros de notre passé feront-ils le poids face à Zeus, Belzébuth ou Shiva ?`,
   },
 ];
