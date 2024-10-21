@@ -226,7 +226,7 @@ export default function Accueil() {
         />
       </Head>
 
-      <main className="max-[460px]:top-0">
+      <main className="max-lg:top-0">
         {ambiance?.image && (
           <div className="fixed left-0 top-0 -z-50 h-full w-full blur-2xl after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-zinc-950 after:bg-opacity-90">
             <Image
@@ -264,10 +264,10 @@ export default function Accueil() {
               <SwiperSlide key={index}>
                 <div
                   key={index}
-                  className="flex h-[525px] min-h-[525px] justify-between border-b-neutral-700 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse min-[460px]:border-b min-[460px]:bg-zinc-900"
+                  className="flex h-[525px] min-h-[525px] justify-between border-b-neutral-700 bg-opacity-50 max-lg:h-auto max-lg:flex-col-reverse lg:border-b lg:bg-zinc-900"
                 >
-                  <div className="relative max-[460px]:-top-24">
-                    <div className="flex h-full flex-col justify-between p-8 max-md:p-4 md:min-w-[300px]">
+                  <div className="relative max-lg:-top-24">
+                    <div className="flex h-full flex-col justify-between p-8 max-md:p-4">
                       <div className="my-4">
                         <h1 className="text-5xl font-normal max-xl:text-3xl">
                           {anime.anime.length > 25
@@ -362,7 +362,7 @@ export default function Accueil() {
                     href={{ pathname: "/Home", query: { anime: anime.anime } }}
                   >
                     <Image
-                      className="mask-image-fade-left h-full w-[900px] min-w-[900px] max-lg:min-w-full max-lg:max-w-full max-[460px]:hidden"
+                      className="mask-image-fade-left aspect-video max-[460px]:hidden lg:h-full lg:max-w-[850px]"
                       alt="affiche d'un anime aléatoire"
                       src={anime.options.affiche!}
                     />
@@ -383,7 +383,7 @@ export default function Accueil() {
           })}
         </Swiper>
 
-        <div className="relative z-50 mx-4 overflow-hidden max-[460px]:-top-24 lg:mx-28">
+        <div className="relative z-50 mx-4 overflow-hidden max-lg:-top-24 lg:mx-28">
           {catalogues
             ?.filter(
               ({ names, category }) =>

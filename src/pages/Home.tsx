@@ -55,6 +55,9 @@ const Home = () => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
 
     if (currentAnime) {
+      setAllSynopsis(false);
+      setHidden(true);
+
       setAnime(currentAnime);
 
       const episodeData = new EpisodeData(currentAnime.anime);
