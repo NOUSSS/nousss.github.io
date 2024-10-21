@@ -439,7 +439,7 @@ const Episodes = () => {
         if (options) disclamerMessage.current = getNote(options.note, anime);
       }, 300);
     }
-  }, [anime.currentLecteur, anime.lang, anime.saison, status]);
+  }, [anime.currentLecteur, anime.lang, anime.saison, status, url_script]);
 
   const blurEpisodes = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -129,7 +129,7 @@ const Films = () => {
         getFilms(anime!, updateAnime, true);
       }, 250);
     }
-  }, [status, anime?.currentLecteur, anime?.lang]);
+  }, [status, anime?.currentLecteur, anime?.lang, script]);
 
   return (
     <>

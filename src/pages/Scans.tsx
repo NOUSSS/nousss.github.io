@@ -57,6 +57,10 @@ const Scans = () => {
   }, [router.events]);
 
   useEffect(() => {
+    console.log("LE SCRIPT", script);
+  }, [script]);
+
+  useEffect(() => {
     const currentAnime = getAnime(
       getCurrentAnime({
         wSaison: false,
@@ -67,7 +71,7 @@ const Scans = () => {
       router.push("/");
     } else {
       const StorageScans = new ScanData(currentAnime.anime);
-      
+
       setScanData(StorageScans);
       updateAnime({ anime: currentAnime });
 
