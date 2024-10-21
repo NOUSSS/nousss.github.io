@@ -159,7 +159,7 @@ import Castlevania from "./Castlevania/castlevania";
 import Gate from "./Gate/gate";
 import TimeShadows from "./TimeShadows/time-shadows";
 import RisingImpact from "./RisingImpact/rising-impact";
-import KenganAshura from "./KenganAshura/kengan-ashura";
+//import KenganAshura from "./KenganAshura/kengan-ashura";
 
 export interface AnimesType {
   anime: string;
@@ -1673,6 +1673,7 @@ Après avoir passé la porte, nous suivrons l'unité de reconnaissance de Youji 
       "Le jeune Gawain, qui vit dans les montagnes, adore jouer au baseball et aime par dessus tout la sensation de 'faire voler' sa balle. Un jour, il rencontre une étrangère qui lui présente un sport pouvant satisfaire ses passions : le golf ! Il suffit d'un coup pour que Gawain soit conquis. Avec l'approbation de son grand-père, il s'envole à Tokyo avec cette mystérieuse femme afin d'apprendre tout ce qu'elle peut lui enseigner sur le golf. Son voyage l'amènera à rencontrer de nombreuses personnes hautes en couleur, malgré les obstacles qui l'attendent.",
     options: new RisingImpact(),
   },
+  /*
   {
     anime: "Kengan Ashura",
     category: ["Action", "Drame", "Tragique", "Arts Martiaux"],
@@ -1680,6 +1681,7 @@ Après avoir passé la porte, nous suivrons l'unité de reconnaissance de Youji 
       "Depuis des siècles maintenant, les désaccords entre grandes entreprises se résolvent dans l'ombre grâce à une méthode très simple... Les combats de Kengan ! Les représentants de chacune des parties s'y affrontent dans un duel à mains nues aux règles minimalistes, et le vainqueur remporte le litige en question... Bien loin de toutes ces considérations, Kazuo Yamashita, un employé de bureau vieillissant, va par hasard faire la rencontre d'Ohma Tokita, le combattant du conglomérat pour lequel il travaille... Et à qui il va devoir servir d'assistant ! Kazuo va alors découvrir un monde sombre, brutal et sanglant où les conflits économiques n'obéissent qu'à une loi : celle du plus fort !",
     options: new KenganAshura(),
   },
+  */
 ];
 
 interface AnimeOption {
