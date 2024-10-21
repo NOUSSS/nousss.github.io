@@ -152,6 +152,7 @@ import FarmingLifeInAnotherWorld from "./FarmingLifeInAnotherWorld/farming-life-
 import Suzume from "./Suzume/suzume";
 import DanMachi from "./DanMachi/dan-machi";
 import Charlotte from "./Charlotte/charlotte";
+import Konosuba from "./Konosuba/konosuba";
 
 export interface AnimesType {
   anime: string;
@@ -1592,6 +1593,17 @@ Un jour, il est pris la main dans le sac par l'énigmatique, Nao Tomori. Ne pouv
 
 Le Bureau des Élèves (BDE) de cette école, mené par la fameuse Nao, est chargé de traquer les adolescents abusant de leurs pouvoirs. Ainsi, Yuu se retrouve obligé de rejoindre le BDE, qui jours après jours, va le mener sur la vérité qui attend tous les détenteurs de ces capacités surnaturelles : les ESPers...`,
     options: new Charlotte(),
+  },
+  {
+    anime: "KonoSuba",
+    aliases: [
+      "Kono Subarashii Sekai ni Shukufuku o!",
+      "Kono Subarashii Sekai ni Shukufuku wo!",
+    ],
+    category: ["Aventure", "Comédie", "Fantasy", "Isekai", "Surnaturel"],
+    synopsis:
+      "La vie de Satou Kazuma, un hikikomori aimant les jeux, se termine bien trop tôt, dû à un accident de la route... Alors que ce dernier est décédé, une déesse nommée Aqua apparaît devant lui et lui propose de se réincarner dans l'au delà, prenant l'aspect d'un monde fantastique de jeu vidéo. Après s'être bien adapté à ce monde et vivant avec une petite équipe dont fait partie la déesse Aqua, une magicienne du nom de Megumin et une paladin masochiste, Kazuma est chargé d'une mission : vaincre le roi-démon. Cependant, en raison de l'incapacité de son groupe à réussir des quêtes, ce dernier va très vite renoncer à cette idée et tenter de profiter de ce monde si parfait à ses yeux. Malheureusement pour lui, leurs chemins vont très vite croiser ceux des généraux du roi démon, et c'est ainsi que les galères vont commencer.",
+    options: new Konosuba(),
   },
 ];
 
