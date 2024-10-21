@@ -153,9 +153,13 @@ import Suzume from "./Suzume/suzume";
 import DanMachi from "./DanMachi/dan-machi";
 import Charlotte from "./Charlotte/charlotte";
 import Konosuba from "./Konosuba/konosuba";
-import BungouStrayDogs from "./BungoStrayDogs/bungo-stray-dogs";
+import BungouStrayDogs from "./BungouStrayDogs/bungou-stray-dogs";
 import VanitasNoCarte from "./VanitasNoCarte/vanitas-no-carte";
 import Castlevania from "./Castlevania/castlevania";
+import Gate from "./Gate/gate";
+import TimeShadows from "./TimeShadows/time-shadows";
+import RisingImpact from "./RisingImpact/rising-impact";
+import KenganAshura from "./KenganAshura/kengan-ashura";
 
 export interface AnimesType {
   anime: string;
@@ -1637,6 +1641,44 @@ Le Bureau des Élèves (BDE) de cette école, mené par la fameuse Nao, est char
     synopsis:
       "L'histoire retrace les aventures de Trevor Belmont qui combat le vampire Vlad Dracula Tepes. Ce vampire, après la mise à mort de sa femme au bûcher, décide pour se venger d'exterminer l'espèce humaine.",
     options: new Castlevania(),
+  },
+  {
+    anime: "Gate : Au-delà de la porte",
+    aliases: [
+      "Jieitai Kanochi nite, Kaku Tatakaeri",
+      "Thus The JSDF Fought There!",
+    ],
+    category: ["Action", "Aventure", "Fantasy"],
+    synopsis: `Un jour, un portail nommé Gate s'ouvre sur la Terre en plein centre de Tokyo. Ce portail reliant deux monde mène à une attaque sanglante de l'autre monde sur la Terre. Dans cette agitation, nous suivons l'otaku et militaire par la même occasion nommé Youji Itami. Ce dernier, abandonne sa convention pour venir en aide à un policier et pour mener à bien l'évacuation des survivants.
+
+Après que l'armée ait vaincu l'attaque surprise de l'autre monde, Youji est récompensé pour sa bravoure et son héroïsme et est promu second lieutenant de l'armée.
+
+Quelques mois plus tard, le gouvernement Japonais décide d'explorer le monde parallèle pour se protéger et anticiper une quelque seconde attaque.
+
+Après avoir passé la porte, nous suivrons l'unité de reconnaissance de Youji qui fait connaissance avec les habitants de ce monde et de ses problèmes.`,
+    options: new Gate(),
+  },
+  {
+    anime: "Time Shadows",
+    aliases: ["Summer Time Rendering"],
+    category: ["Drame", "Mystère", "Romance", "Surnaturel"],
+    synopsis:
+      "Lorsqu'il apprend que Ushio, son amie d'enfance, est décédée, Shinpei décide de retourner sur son île natale, Hitogashima. Là-bas, il se rend vite compte que quelque chose ne tourne pas rond... S'il s'agissait d'une mort accidentelle, pourquoi une autopsie a-t-elle été réalisée ? Qu'a bien pu voir Mio, la petite sœur d'Ushio ? Mais avant de pouvoir répondre à ses questions, Shinpei et Mio sont assassinés par un double de cette dernière... Et voilà que Shinpei se réveille à nouveau sur le bateau qui le conduit à Hitogashima pour assister à l'enterrement d'Ushio...",
+    options: new TimeShadows(),
+  },
+  {
+    anime: "Rising Impact",
+    category: ["Comédie", "Romance", "Sport"],
+    synopsis:
+      "Le jeune Gawain, qui vit dans les montagnes, adore jouer au baseball et aime par dessus tout la sensation de 'faire voler' sa balle. Un jour, il rencontre une étrangère qui lui présente un sport pouvant satisfaire ses passions : le golf ! Il suffit d'un coup pour que Gawain soit conquis. Avec l'approbation de son grand-père, il s'envole à Tokyo avec cette mystérieuse femme afin d'apprendre tout ce qu'elle peut lui enseigner sur le golf. Son voyage l'amènera à rencontrer de nombreuses personnes hautes en couleur, malgré les obstacles qui l'attendent.",
+    options: new RisingImpact(),
+  },
+  {
+    anime: "Kengan Ashura",
+    category: ["Action", "Drame", "Tragique", "Arts Martiaux"],
+    synopsis:
+      "Depuis des siècles maintenant, les désaccords entre grandes entreprises se résolvent dans l'ombre grâce à une méthode très simple... Les combats de Kengan ! Les représentants de chacune des parties s'y affrontent dans un duel à mains nues aux règles minimalistes, et le vainqueur remporte le litige en question... Bien loin de toutes ces considérations, Kazuo Yamashita, un employé de bureau vieillissant, va par hasard faire la rencontre d'Ohma Tokita, le combattant du conglomérat pour lequel il travaille... Et à qui il va devoir servir d'assistant ! Kazuo va alors découvrir un monde sombre, brutal et sanglant où les conflits économiques n'obéissent qu'à une loi : celle du plus fort !",
+    options: new KenganAshura(),
   },
 ];
 

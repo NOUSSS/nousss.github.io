@@ -4,9 +4,9 @@ import { Anime } from "@/app/class/anime";
 import { Options } from "@/typings/types";
 
 import episodes from "./constants/episodes-names";
-import Affiche from "@/assets/Animes/BungoStrayDogs/Affiche.jpeg";
+import Affiche from "@/assets/Animes/BungouStrayDogs/affiche.jpg";
 
-class BungoStrayDogs extends Anime {
+class BungouStrayDogs extends Anime {
   constructor() {
     super();
 
@@ -38,16 +38,16 @@ class BungoStrayDogs extends Anime {
         image: () => getImageSaisons(5),
       },
       6: {
-        name: "Bungo Stray Dogs Wan",
+        name: "Bungou Stray Dogs Wan",
         hs: true,
         aliases: [""],
-        image: () => getImageSaisons(5),
+        image: () => getImageSaisons(6),
       },
     } as Options.Season;
 
     this.FILM_OPTIONS = {
       SCRIPT_URL: (langage: string) =>
-        `https://anime-sama.fr/catalogue/bungo-stray-dogs/film/${langage}/episodes.js`,
+        `https://anime-sama.fr/catalogue/bungou-stray-dogs/film/${langage}/episodes.js`,
       names: {
         1: {
           name: "Dead Apple",
@@ -59,7 +59,7 @@ class BungoStrayDogs extends Anime {
 
     this.SCANS_OPTIONS = {
       SCRIPT_URL:
-        "https://anime-sama.fr/catalogue/bungo-stray-dogs/scan/vf/episodes.js",
+        "https://anime-sama.fr/catalogue/bungou-stray-dogs/scan/vf/episodes.js",
 
       IMAGE_URL: ({
         chapitre,
@@ -73,7 +73,7 @@ class BungoStrayDogs extends Anime {
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
-        `https://anime-sama.fr/catalogue/bungo-stray-dogs/saison${index}/${lang}/episodes.js`,
+        `https://anime-sama.fr/catalogue/bungou-stray-dogs/saison${index}/${lang}/episodes.js`,
 
       allIndex: {
         1: 0,
@@ -89,4 +89,4 @@ class BungoStrayDogs extends Anime {
   }
 }
 
-export default BungoStrayDogs;
+export default BungouStrayDogs;
