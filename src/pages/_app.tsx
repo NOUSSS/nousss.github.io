@@ -5,9 +5,26 @@ import Head from "next/head";
 
 import { AppProps } from "next/app";
 import { Toaster } from "sonner";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "v") {
+        router.push("/VerifSaisons");
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <RootLayout>
       <Head>
