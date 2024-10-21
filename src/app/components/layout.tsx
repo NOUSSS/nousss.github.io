@@ -104,15 +104,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <div
         className={cn(
-          "fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter bg-zinc-800 bg-opacity-80 text-sm backdrop-blur-md sm:w-[600px] sm:rounded-xl",
+          "fixed left-2/4 top-2/4 z-[2026] h-[420px] w-full -translate-x-2/4 -translate-y-2/4 animate-appearCenter border border-neutral-700 bg-zinc-800 bg-opacity-80 text-sm backdrop-blur-md sm:w-[600px] sm:rounded",
           {
             hidden: !isVisible,
           },
         )}
         ref={searchContainerRef}
       >
-        <div className="flex h-16 items-center gap-4 border-b border-neutral-700 border-opacity-50 bg-zinc-900 bg-opacity-50 p-4 sm:rounded-t-xl">
-          <SearchIcon size={20} />
+        <div className="flex h-16 items-center gap-4 border-b border-neutral-700 border-opacity-50 bg-zinc-900 bg-opacity-50 p-4 sm:rounded">
+          <SearchIcon className="text-neutral-700" size={20} />
 
           <FastSearchBar
             className="w-full text-xl"

@@ -91,7 +91,7 @@ const FastSearchBar: FC<FastSearchBarProps> = ({
 
   return (
     <input
-      className={cn("bg-transparent", className)}
+      className={cn("bg-transparent placeholder-neutral-700", className)}
       ref={inputRef}
       onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = normalizeString(e.target.value);
