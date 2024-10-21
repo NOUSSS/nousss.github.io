@@ -221,14 +221,14 @@ const Select: FC<SelectProps> = ({
                   }
                 }}
                 className={cn(
-                  "flex h-8 w-full cursor-default items-center justify-center rounded-md border border-transparent text-base transition-colors",
+                  "flex h-8 w-full cursor-default items-center justify-center rounded border border-transparent text-base transition-colors",
                   {
                     "mt-1": multiple,
-                    "bg-orange-500 text-white":
+                    "bg-neutral-700 text-white":
                       selectedItems.find((i) => i.name === item.name) &&
                       multiple,
                     "opacity-50": item.disabled,
-                    "hover:border-orange-500": !item.disabled,
+                    "hover:border-neutral-700": !item.disabled,
                   },
                 )}
               >
