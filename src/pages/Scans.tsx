@@ -33,9 +33,7 @@ const Scans = () => {
 
   const [anime, updateAnime] = useAnime<Anime.AnimeScansProps>({});
   const [filever, setFilever] = useState<string>();
-  const [loadingToast, setLoadingToast] = useState<null | string | number>(
-    null,
-  );
+
   const [scanData, setScanData] = useState<ScanData>();
   const [script, setScript] = useState<string>();
 
@@ -55,10 +53,6 @@ const Scans = () => {
       router.events.off("routeChangeStart", ClearCache);
     };
   }, [router.events]);
-
-  useEffect(() => {
-    console.log("LE SCRIPT", script);
-  }, [script]);
 
   useEffect(() => {
     const currentAnime = getAnime(
@@ -121,16 +115,12 @@ const Scans = () => {
 
   useEffect(() => {
     if (status === "error") {
-      toast.error("Erreur dans le chargement des scans.", {
-        id: loadingToast!,
-      });
+      toast.error("Erreur dans le chargement des scans.");
     }
 
     if (status === "ready") {
       setTimeout(() => {
-        toast.success("Les scans ont été chargés.", {
-          id: loadingToast!,
-        });
+        toast.success("Les scans ont été chargés.");
 
         const scanOptions = anime.anime?.options.SCANS_OPTIONS;
 
@@ -180,7 +170,7 @@ const Scans = () => {
         }
       }, 250);
     }
-  }, [status, anime.version]);
+  }, [status, anime.version, script]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
