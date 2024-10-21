@@ -153,6 +153,9 @@ import Suzume from "./Suzume/suzume";
 import DanMachi from "./DanMachi/dan-machi";
 import Charlotte from "./Charlotte/charlotte";
 import Konosuba from "./Konosuba/konosuba";
+import BungouStrayDogs from "./BungoStrayDogs/bungo-stray-dogs";
+import VanitasNoCarte from "./VanitasNoCarte/vanitas-no-carte";
+import Castlevania from "./Castlevania/castlevania";
 
 export interface AnimesType {
   anime: string;
@@ -1604,6 +1607,36 @@ Le Bureau des Élèves (BDE) de cette école, mené par la fameuse Nao, est char
     synopsis:
       "La vie de Satou Kazuma, un hikikomori aimant les jeux, se termine bien trop tôt, dû à un accident de la route... Alors que ce dernier est décédé, une déesse nommée Aqua apparaît devant lui et lui propose de se réincarner dans l'au delà, prenant l'aspect d'un monde fantastique de jeu vidéo. Après s'être bien adapté à ce monde et vivant avec une petite équipe dont fait partie la déesse Aqua, une magicienne du nom de Megumin et une paladin masochiste, Kazuma est chargé d'une mission : vaincre le roi-démon. Cependant, en raison de l'incapacité de son groupe à réussir des quêtes, ce dernier va très vite renoncer à cette idée et tenter de profiter de ce monde si parfait à ses yeux. Malheureusement pour lui, leurs chemins vont très vite croiser ceux des généraux du roi démon, et c'est ainsi que les galères vont commencer.",
     options: new Konosuba(),
+  },
+  {
+    anime: "Bungou Stray Dogs",
+    category: ["Mystère", "Surnaturel"],
+    synopsis:
+      "Atsushi Nakajima vient d'être exclu de son orphelinat, maintenant il n'a aucun endroit où aller et aucune nourriture. Tandis qu'il se tient près d'une rivière, étant sur le point de mourir de faim, il sauve un homme faisant une tentative de suicide. Cet homme est Osamu Dazai, lui et son partenaire Kunikida sont les membres d'une agence policière très spéciale. Ils possèdent des pouvoirs surnaturels et traitent les cas d'affaires qui sont trop dangereux pour la police ou l'armée.",
+    options: new BungouStrayDogs(),
+  },
+  {
+    anime: "Vanitas no Carte",
+    aliases: ["Les Mémoires de Vanitas", "The Case Study of Vanitas"],
+    category: [
+      "Action",
+      "Comédie",
+      "Fantastique",
+      "Historique",
+      "Mystère",
+      "Romance",
+      "Surnaturel",
+    ],
+    synopsis:
+      "Paris, XIXè siècle. Au cours d'un voyage en dirigeable, Noé remarque une jeune fille qui semble plutôt mal en point. Il passe donc un peu de temps avec elle en lui racontant des histoires pour la rassurer, et en vient tout naturellement à lui expliquer les raisons de son voyage : il est à la recherche du 'Livre de Vanitas' qui, selon la légende, a le pouvoir de tuer la majorité des vampires. Peu après, le duo est attaqué par de mystérieux individus prétendant que la demoiselle est très dangereuse et qu'elle doit venir avec eux.",
+    options: new VanitasNoCarte(),
+  },
+  {
+    anime: "Castlevania",
+    category: ["Action", "Drame", "Fantasy", "Horreur", "Science-fiction"],
+    synopsis:
+      "L'histoire retrace les aventures de Trevor Belmont qui combat le vampire Vlad Dracula Tepes. Ce vampire, après la mise à mort de sa femme au bûcher, décide pour se venger d'exterminer l'espèce humaine.",
+    options: new Castlevania(),
   },
 ];
 
