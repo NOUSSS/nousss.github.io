@@ -8,12 +8,7 @@ import Link from "next/link";
 import Head from "next/head";
 
 import { Footer, RemoveHistorique } from "@/app/components/";
-import {
-  ANIMES,
-  AnimesType,
-  GroupedAnimes,
-  groupAnimesByCategory,
-} from "@/animes/constants";
+import { ANIMES, AnimesType } from "@/animes/constants";
 import { toast } from "sonner";
 import { Data, DatasArr, Historique } from "@/typings/types";
 import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
@@ -21,7 +16,10 @@ import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
 import { getAnime, shuffle, getWallpaper, cn, formatName } from "@/app/lib/";
 import { useRouter } from "next/router";
 import { icons } from "lucide-react";
-
+import {
+  groupAnimesByCategory,
+  GroupedAnimes,
+} from "@/app/utils/Accueil/groupAnimesByCategory";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
@@ -320,10 +318,12 @@ export default function Accueil() {
                                   .detail as unknown as Data.EpisodesData
                               ).episode
                                 ? `S${getScriptIndex({
-                                    currentSaison: (
-                                      historiquesFiltered[historiqueIndex]
-                                        .detail as unknown as Data.EpisodesData
-                                    ).saison,
+                                    currentSaison: Number(
+                                      (
+                                        historiquesFiltered[historiqueIndex]
+                                          .detail as unknown as Data.EpisodesData
+                                      ).saison,
+                                    ),
                                     parts:
                                       randomAnimes[historiqueIndex].options
                                         .EPISODES_OPTIONS?.parts,
@@ -420,7 +420,7 @@ export default function Accueil() {
                 </div>
 
                 <ul className="flex gap-2 overflow-auto sm:gap-6">
-                  {names.map((animeName: string, i) => {
+                  {names.map((animeName: string, i: number) => {
                     const fetchedAnime = getAnime(animeName);
 
                     const disponibles = [
@@ -528,10 +528,12 @@ export default function Accueil() {
                                     <>
                                       Saison{" "}
                                       {getScriptIndex({
-                                        currentSaison: (
-                                          historiques[i]
-                                            ?.detail as unknown as Data.EpisodesData
-                                        ).saison,
+                                        currentSaison: Number(
+                                          (
+                                            historiques[i]
+                                              ?.detail as unknown as Data.EpisodesData
+                                          ).saison,
+                                        ),
                                         parts:
                                           fetchedAnime?.options.EPISODES_OPTIONS
                                             ?.parts,

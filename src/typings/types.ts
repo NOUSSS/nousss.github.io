@@ -155,7 +155,7 @@ export namespace Options {
   interface PartsProps {
     from: number;
     to: number;
-    startToFirst: boolean;
+    startToFirst?: boolean;
   }
 
   export interface EpisodesOptions {
@@ -163,7 +163,7 @@ export namespace Options {
 
     horsSeries?: horsSeriesType[];
     names?: NameProps[];
-    parts?: PartsProps;
+    parts?: PartsProps | PartsProps[];
 
     noc?: boolean;
 
