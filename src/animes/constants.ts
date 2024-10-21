@@ -141,6 +141,12 @@ import Roshidere from "./Roshidere/roshidere";
 import TerraFormas from "./TerraFormas/terra-formas";
 import SamuraiChamploo from "./SamuraiChamploo/samurai-champloo";
 import AfroSamurai from "./AfroSamurai/afro-samurai";
+import WhiteAlbum2 from "./WhiteAlbum2/white-album-2";
+import Avatar from "./Avatar/avatar";
+import TheRisingOfTheShieldHero from "./TheRisingOfTheShieldHero/the-rising-of-the-shield-hero";
+import DateALive from "./DateALive/date-a-live";
+import Bakuman from "./Bakuman/bakuman";
+import MyHappyMariage from "./MyHappyMariage/my-happy-mariage";
 
 export interface AnimesType {
   anime: string;
@@ -1481,6 +1487,60 @@ export const ANIMES: AnimesType[] = [
     synopsis:
       "Suite à la mort de son père dans un duel contre un mystérieux personnage, le jeune Afro décida de s'entraîner dur dans le but de le venger. Pour cela il apprendra l'art du maniement du sabre, tout au long de son parcours à la recherche de cet homme, il fera la rencontre de différents individus décidés à lui mettre des bâtons dans les roues ; il règlera ses comptes dans des combats tout aussi sanglants les uns que les autres.",
     options: new AfroSamurai(),
+  },
+  {
+    anime: "White Album 2",
+    category: ["Drame", "Romance", "Slice of Life"],
+    synopsis:
+      "L'histoire est centrée sur un lycéen nommé Haruki Kitahara et de ses relations avec Setsuna Ogiso et Kazusa Touma dans le club de musique. Haruki Kitahara est un guitariste qui est chargé par son ami et président du club, Takeya Iizuka, de recruter de nouveaux membres. Il arrive à trouver deux jeunes filles, une pianiste et une chanteuse. Ensemble ils vont composer une musique pour leur école et rapidement, des sentiments amoureux entre eux vont apparaître.",
+    options: new WhiteAlbum2(),
+  },
+  {
+    anime: "Avatar, le dernier maître de l'air",
+    category: ["Action", "Aventure", "Fantasy", "Comédie", "Drame"],
+    synopsis:
+      "Prisonnier à l'intérieur d'un iceberg pendant un siècle, Aang, maître de l'air d'une douzaine d'années, est libéré des glaces par deux jeunes membres de la tribu de l'eau du pôle Sud. Aang a une destinée hors du commun : il est l'Avatar, chargé de maintenir l'équilibre entre les maîtres des quatre éléments. Ceux-ci sont répartis en quatre civilisations : les tribus de l'eau, le royaume de la terre, la nation du feu et les nomades de l'air. Toutefois, sa tâche se complique lorsqu'il découvre que la nation du feu a profité des cent ans passés pour semer la guerre et la destruction. Et ce, pour étendre son emprise sur les trois autres peuples. Aang est le seul à pouvoir rétablir l'ordre au sein de l'univers. Néanmoins, il doit commencer par apprendre à maîtriser les trois autres éléments. C'est le seul moyen d'atteindre son but. Il commencera par l'eau, ensuite la terre et enfin le feu.",
+    options: new Avatar(),
+  },
+  {
+    anime: "The Rising of the Shield Hero",
+    aliases: ["Tate no Yūsha no Nariagari"],
+    category: ["Action", "Aventure", "Drame", "Fantasy", "Isekai"],
+    synopsis: `Naofumi Iwatani, 20 ans, est un étudiant passionné d'héroïc-fantasy. Un jour, il tombe sur un livre narrant la légende de 4 chevaliers maniant chacun une arme différente : épée, lance, arc et bouclier. Mais au bout de quelques pages, il ne trouve plus que des pages vierges et se retrouve aspiré à l'intérieur du livre où il devient le "héros au bouclier". Méprisé de tous, y compris par les autres héros, Nao va alors essayer de trouver sa place dans ce monde et de prouver sa valeur en dépit d'un handicap certain : il ne peut ni retirer son bouclier, ni utiliser aucune autre "arme".`,
+    options: new TheRisingOfTheShieldHero(),
+  },
+  {
+    anime: "Date A Live",
+    category: [
+      "Action",
+      "Comédie",
+      "Drame",
+      "Ecchi",
+      "Fantasy",
+      "Romance",
+      "School Life",
+      "Science-fiction",
+    ],
+    synopsis: `Itsuka Shido est un jeune lycéen vivant une vie paisible jusqu'à ce qu'une explosion détruise la ville et qu'une jeune fille en armure apparaisse devant lui. Quelques instants après, sa sœur adoptive Kotori, qui est en réalité commandante de l'organisation militaire Ratatoskr, lui apprend que la fille en question est un esprit qui déstabilise l'espace-temps. Le seul moyen d'arrêter cette menace est que Shido utilise son mystérieux pouvoir lui permettant de sceller les pouvoirs d'un esprit dans son corps. Cependant, cette méthode ne fonctionne que si l'esprit l'affectionne et a confiance en lui. Ainsi, l'organisation Ratatoskr va lui proposer sortir avec cet esprit pour gagner sa confiance et son affection.`,
+    options: new DateALive(),
+  },
+  {
+    anime: "Bakuman",
+    category: ["Comédie", "Drame", "Romance", "School Life", "Slice of Life"],
+    synopsis: `Moritaka Mashiro est un étudiant de neuvième année qui a un talent inné pour le dessin et Akito Takagi, le meilleur élève de sa classe veut devenir mangaka.
+Après beaucoup d'argumentation, Takagi convainc Mashiro de s'associer pour créer ensemble le meilleur manga que le Japon n'ait jamais eu.
+Takagi avec son don pour l'écriture espère devenir un très grand mangaka et Mashiro avec son talent pour le dessin espère se marier avec la fille de ses rêves, Azuki Miho.`,
+    options: new Bakuman(),
+  },
+  {
+    anime: "My Happy Mariage",
+    aliases: ["Watashi no Shiawase na Kekkon"],
+    category: ["Drame", "Fantasy", "Historique", "Romance"],
+    synopsis: `Miyo Saimori descend d'une longue lignée de nobles dotés de pouvoirs surnaturels, alors qu'elle-même n'en a pas. Sa demi-soeur, qui a, elle, hérité d'un don, la traite comme une servante. Ses parents ne lui témoignent aucun amour et personne ne se soucie d'elle. Pour couronner le tout, son ami d'enfance et seul allié s'est fiancé à sa sœur pour reprendre la tête du clan Saimori.
+Etant considérée comme une nuisance par tout son entourage, Miyo est envoyée dans la famille Kudô pour épouser leur chef, réputé cruel et sans coeur.
+
+Découvrez ce savant mélange de fantasy, de Japon ancien et de romance dans cette intrigue touchante menée tambour battant, et qui s'ouvre sur des fiançailles.`,
+    options: new MyHappyMariage(),
   },
 ];
 
