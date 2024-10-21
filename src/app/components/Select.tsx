@@ -41,7 +41,7 @@ const Select: FC<SelectProps> = ({
 
   const UpArrow = icons["ChevronUp"];
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const labelRef = useRef<HTMLLabelElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
@@ -66,7 +66,9 @@ const Select: FC<SelectProps> = ({
 
   useEffect(() => toggleBodyScroll(isSelected), [isSelected]);
 
-  const appear = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const appear = (
+    event: React.MouseEvent<HTMLLabelElement | HTMLButtonElement, MouseEvent>,
+  ) => {
     if (
       searchBarRef.current &&
       searchBarRef.current.contains(event.target as Node)
@@ -76,7 +78,7 @@ const Select: FC<SelectProps> = ({
 
     setIsSelected(!svgRef.current?.classList.contains("rotate-180"));
 
-    if (buttonRef.current && menuRef.current && svgRef.current) {
+    if (labelRef.current && menuRef.current && svgRef.current) {
       if (svgRef.current.classList.contains("rotate-180")) {
         svgRef.current.classList.remove("rotate-180");
         menuRef.current.classList.add("hidden");
@@ -111,8 +113,8 @@ const Select: FC<SelectProps> = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target as Node)
+        labelRef.current &&
+        !labelRef.current.contains(event.target as Node)
       ) {
         disappear();
       }
@@ -160,8 +162,8 @@ const Select: FC<SelectProps> = ({
   };
 
   return (
-    <button
-      ref={buttonRef}
+    <label
+      ref={labelRef}
       className={cn(
         "relative flex min-h-14 w-64 cursor-pointer items-center justify-between rounded-lg border border-neutral-700 bg-zinc-900 bg-opacity-50 p-3 text-white",
         { "ring-2 ring-main": isSelected, "w-full": parent },
@@ -236,7 +238,7 @@ const Select: FC<SelectProps> = ({
           </div>
         </div>
       )}
-    </button>
+    </label>
   );
 };
 
