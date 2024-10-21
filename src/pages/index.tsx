@@ -362,7 +362,7 @@ export default function Accueil() {
                     href={{ pathname: "/Home", query: { anime: anime.anime } }}
                   >
                     <Image
-                      className="mask-image-fade-left aspect-video max-[460px]:hidden lg:h-full lg:max-w-[850px]"
+                      className="mask-image-fade-left aspect-video w-full max-[460px]:hidden lg:h-full lg:w-[850px] lg:max-w-[850px]"
                       alt="affiche d'un anime aléatoire"
                       src={anime.options.affiche!}
                     />
