@@ -147,6 +147,11 @@ import TheRisingOfTheShieldHero from "./TheRisingOfTheShieldHero/the-rising-of-t
 import DateALive from "./DateALive/date-a-live";
 import Bakuman from "./Bakuman/bakuman";
 import MyHappyMariage from "./MyHappyMariage/my-happy-mariage";
+import SeraphOfTheEnd from "./SeraphOfTheEnd/seraph-of-the-end";
+import FarmingLifeInAnotherWorld from "./FarmingLifeInAnotherWorld/farming-life-in-another-world";
+import Suzume from "./Suzume/suzume";
+import DanMachi from "./DanMachi/dan-machi";
+import Charlotte from "./Charlotte/charlotte";
 
 export interface AnimesType {
   anime: string;
@@ -1541,6 +1546,52 @@ Etant considérée comme une nuisance par tout son entourage, Miyo est envoyée 
 
 Découvrez ce savant mélange de fantasy, de Japon ancien et de romance dans cette intrigue touchante menée tambour battant, et qui s'ouvre sur des fiançailles.`,
     options: new MyHappyMariage(),
+  },
+  {
+    anime: "Seraph of the End",
+    aliases: ["Vampire Reign", "Owari no Seraph"],
+    category: ["Action", "Drame", "Fantastique", "Mystère"],
+    options: new SeraphOfTheEnd(),
+    synopsis:
+      "Un virus mortel a décimé les adultes du Japon. Les enfants, seuls survivants de l'épidémie, ont été asservis par les vampires, qui ont profité de l'occasion pour faire leur come-out. Dans le souterrain de la ville vampirique de Sanguinem, Yûichirô et Mikaela Hyakuya sont deux jeunes esclaves chargés de donner leur sang aux aristocrates qui ont besoin de soulager leur soif. Mais Yûichirô ne l'entend pas de cette oreille et tente de s'échapper avec son frère adoptif et leurs amis. Mais les vampires les rattrapent et abattent tous leurs compagnons. Mikaela se sacrifie pour permettre à Yûichirô de s'échapper de la ville vampirique. Une fois à l'extérieur, le jeune garçon découvre un monde intact, et comprend que cette histoire d'épidémie n'était peut-être qu'un mensonge pour asservir les enfants. Il décide de rejoindre la résistance contre les vampires pour délivrer les esclaves et venger la mort de Mikaela. Mais ce qu'il va découvrir sur l'origine de l'épidémie risque fort de lui déplaire.",
+  },
+  {
+    anime: "Farming life in another world",
+    category: ["Comédie", "Fantasy", "Isekai", "Romance", "Slice of Life"],
+    synopsis:
+      "Machio Hiraku est mort d'une maladie liée au surmenage. Quand il rencontre Dieu, il a l'opportunité de se réincarner dans un autre monde et reçoit quatre souhaits en plus pour son travail acharné. Ainsi, Machio souhaite un corps qui ne puisse jamais tomber malade, vivre dans un endroit paisible, connaître la langue de l'endroit où il va se réincarner et ... être fermier ! Entouré de différentes personnes, qui vont le rejoindre au fur et à mesure, Machio est prêt à vivre sa nouvelle vie !",
+    aliases: ["Isekai Nonbiri Nouka"],
+    options: new FarmingLifeInAnotherWorld(),
+  },
+  {
+    anime: "Suzume",
+    category: ["Action", "Drame", "Surnaturel"],
+    options: new Suzume(),
+    aliases: ["Suzume no Tojimari", "Suzume's Locking-Up"],
+    synopsis:
+      "Suzume est une jeune fille de 17 ans qui habite une petite ville tranquille sur l'île de Kyushu, au Japon. Un jour, elle rencontre un vagabond qui lui dit qu'il est à la recherche d'une porte. Curieuse, elle le suit et découvre avec lui, au milieu de ruines, la porte tant convoitée. Celle-ci se tient, presque intacte, au milieu des décombres. Attirée par cette mystérieuse porte, Suzume tend la main et lorsque celle-ci s'ouvre, c'est une multitude de portails qui s'ouvrent avec elle à travers le Japon, causant par la même occasion des catastrophes...",
+  },
+  {
+    anime: "DanMachi",
+    aliases: [
+      "La Légende des Familias",
+      "Is It Wrong to Try to Pick Up Girls in a Dungeon",
+      "Dungeon ni Deai wo Motomeru no wa Machigatteiru Darō ka",
+    ],
+    category: ["Action", "Aventure", "Drame", "Fantasy", "Romance"],
+    synopsis:
+      "Bienvenue à Orario, la Cité-Labyrinthe où cohabitent dieux et humains. Sous cette ville, les aventuriers, bénis des dieux, partent en quête de gloire et de fortune dans le Donjon : un dédale mystérieux infesté de monstres. C'est là que nous rencontrons Bell Cranel, qui, malgré son manque d'expérience, part à la conquête du Donjon sous la protection d'Hestia, une déesse impopulaire. Le hasard faisant mal les choses, il tombe sur un terrible Minotaure. Il est alors sauvé par Aiz Wallenstein, une belle épéiste, dont il tombe immédiatement amoureux.",
+    options: new DanMachi(),
+  },
+  {
+    anime: "Charlotte",
+    category: ["Comédie", "Drame", "School Life", "Surnaturel"],
+    synopsis: `L'histoire nous entraîne dans un monde où certains enfants, durant la puberté, développent des pouvoirs spéciaux. Ces enfants sont nommés ESPers. Yuu Otosaka, l'un d'eux, semble être en apparence un simple lycéen. Cependant ce dernier à la capacité de pouvoir se glisser et de contrôler entièrement le corps d'une personne, mais seulement durant cinq secondes. Yuu a utilisé cette compétence durant des années pour atteindre ses objectifs, ce qui lui a permis de pouvoir rentrer dans un lycée prestigieux.
+
+Un jour, il est pris la main dans le sac par l'énigmatique, Nao Tomori. Ne pouvant plus reculer, lui et sa sœur Ayumi sont contraints d'être transférés à l'Académie Hoshi-no-umi, un établissement pour des étudiants aux capacités surnaturelles.
+
+Le Bureau des Élèves (BDE) de cette école, mené par la fameuse Nao, est chargé de traquer les adolescents abusant de leurs pouvoirs. Ainsi, Yuu se retrouve obligé de rejoindre le BDE, qui jours après jours, va le mener sur la vérité qui attend tous les détenteurs de ces capacités surnaturelles : les ESPers...`,
+    options: new Charlotte(),
   },
 ];
 

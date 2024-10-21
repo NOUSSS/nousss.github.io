@@ -1,0 +1,28 @@
+const names = [
+  { name: "Un monde de liens de sang", index: "1" },
+  { name: "Humains après la ruine", index: "2" },
+  { name: "Un démon niché dans le cœur", index: "3" },
+  { name: "Mikael le vampire", index: "4" },
+  { name: "Contrat avec un démon noir", index: "5" },
+  { name: "Nouvelle famille", index: "6" },
+  { name: "L'équipe de Mitsuba", index: "7" },
+  { name: "Le début de l'extermination", index: "8" },
+  { name: "L'assaut des vampires", index: "9" },
+  { name: "Choix et conséquences", index: "10" },
+  { name: "Les retrouvailles d'amis d'enfance", index: "11" },
+  { name: "Tous des criminels", index: "12" },
+  { name: "Le monde des hommes", index: "13" },
+  { name: "Relations croisées", index: "14" },
+  { name: "Les ambitions de l’armée démoniaque impériale", index: "15" },
+  { name: "L'ordre de Gekki", index: "16" },
+  { name: "La révolte du bétail", index: "17" },
+  { name: "La lame de la justice", index: "18" },
+  { name: "Shinya et Glenn", index: "19" },
+  { name: "Berceuse pour un démon", index: "20" },
+  { name: "Un allié traître", index: "21" },
+  { name: "Yû et Mika", index: "22" },
+  { name: "Un amour arrogant", index: "23" },
+  { name: "Le Séraphin de la Fin", index: "24" },
+];
+
+export default names;
