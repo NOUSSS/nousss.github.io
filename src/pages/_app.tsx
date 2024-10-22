@@ -12,24 +12,13 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
-  const [isAnalyticsEnabled, setAnalyticsEnabled] = useState(false);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("cookieConsent");
-
-    if (!consent) {
-      setAnalyticsEnabled(true);
-    }
-  }, []);
 
   const handleAcceptCookies = () => {
     localStorage.removeItem("cookieConsent");
-    setAnalyticsEnabled(true);
   };
 
   const handleDeclineCookies = () => {
     localStorage.setItem("cookieConsent", "false");
-    setAnalyticsEnabled(false);
   };
 
   useEffect(() => {
@@ -39,8 +28,24 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       }
     };
 
+    const disableDevTools = (e: any) => {
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+      }
+      if (e.keyCode === 123) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
+
+    document.addEventListener("keydown", disableDevTools);
     document.addEventListener("keydown", handleKeyDown);
+
     return () => {
+      document.removeEventListener("keydown", disableDevTools);
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
