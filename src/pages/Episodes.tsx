@@ -71,13 +71,6 @@ const Episodes = () => {
   const Tri = icons["Signal"];
 
   useEffect(() => {
-    toast.info(
-      "Les lecteurs ne nous appartiennent pas, donc si des pubs y sont présentes ignorez-les.",
-      {
-        duration: 10000,
-      },
-    );
-
     const currentAnimeName = getCurrentAnime({
       wSaison: true,
     });
