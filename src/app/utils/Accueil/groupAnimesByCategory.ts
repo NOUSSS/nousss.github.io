@@ -23,7 +23,12 @@ export const groupAnimesByCategory = (
       if (!grouped[category]) grouped[category] = [];
 
       if (!grouped[category].includes(anime)) {
-        if ((length && grouped[category].length < 10) || !length)
+        if (
+          (length &&
+            (category === "Nouvelles saisons" ||
+              grouped[category].length < 10)) ||
+          !length
+        )
           grouped[category].push(anime);
       }
     });
