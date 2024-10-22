@@ -97,7 +97,7 @@ class OnePiece extends Anime {
       },
       oav: {
         name: "Fan Letter",
-        image: () => getImage(11),
+        image: () => getImage(1),
       },
     };
 
