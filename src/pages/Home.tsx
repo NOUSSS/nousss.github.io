@@ -138,7 +138,7 @@ const Home = () => {
             {anime?.anime && (
               <h1
                 title={anime.aliases?.join(", ")}
-                className="my-4 animate-title text-center text-3xl font-normal md:my-0 md:text-4xl"
+                className="my-4 text-center text-5xl font-normal max-xl:text-3xl"
               >
                 {anime.anime}
               </h1>
