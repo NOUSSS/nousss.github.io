@@ -72,6 +72,15 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         flipButtons
         declineButtonText="Je refuse"
         cookieName="cookie-consent"
+        buttonStyle={{
+          transform: "scale(1.1)",
+          background: "green",
+          color: "white",
+        }}
+        declineButtonStyle={{
+          background: "transparent",
+          border: "1px solid red",
+        }}
         expires={150}
         onAccept={handleAcceptCookies}
         onDecline={handleDeclineCookies}
