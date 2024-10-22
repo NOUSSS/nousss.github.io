@@ -171,6 +171,8 @@ import MobileSuitGundam from "./MobileSuitGundam/mobile-suit-gundam";
 import LonerLifeInAnotherWorld from "./LonerLifeInAnotherWorld/loner-life-in-another-world";
 import Orient from "./Orient/orient";
 import InazumaEleven from "./InazumaEleven/inazuma-eleven";
+import Oregairu from "./Oregairu/oregairu";
+import Another from "./Another/another";
 
 export interface AnimesType {
   anime: string;
@@ -1847,5 +1849,34 @@ Vous le découvrirez dans le premier volet de ce manga qui conte les aventures d
     category: ["Comédie", "Surnaturel", "Sport"],
     synopsis: `Inazuma eleven est à la base un RPG de football lorsqu'il se transpose par la suite en anime. Se basant sur le jeu, l'anime relate les aventures de Endou Mamoru, un gardien de but talentueux, inscrit dans le club de foot de son collège Raimon ainsi que 5 autres membres. Cependant, leur minorité actuelle et la nonchalance de ses coéquipiers les empêche d'être pris au sérieux par les autres clubs. En conséquence, le fille du directeur leur lance un ultimatum : ils doivent gagner un match contre l'académie de Teikoku, une équipe puissante. Endou, plus que jamais motivé se lance à la recherche d'autres membres dans l'espoir de garder son club et ensuite de participer au fameux tournoi du "Football Frontier".`,
     options: new InazumaEleven(),
+  },
+  {
+    anime: "Oregairu",
+    aliases: [
+      "Yahari Ore no Seishun Love Come wa Machigatteiru.",
+      "My Teen Romantic Comedy SNAFU",
+      "My youth romantic comedy is wrong as I expected",
+    ],
+    category: ["Comédie", "Drame", "Romance", "School Life", "Slice of Life"],
+    synopsis: `Hikigaya Hachiman est un lycéen qui voit la vie différemment des autres. N'ayant pas d'amis ou de vie sociale, il ne comprend pas pourquoi ses camarades voient que leur jeunesse est si importante. En fait, il pense que les adolescents ne font que mentir quand ils parlent de leurs vies excitantes. Il n'a pas de rêves et d'ambitions pour le futur et mène une vie bien vide.
+C'est en lisant un de ses essais scolaires que sa professeur se rend compte de son problème. Elle le convainc alors à rejoindre le club de services volontaires, qui n'a pour membre que la fille la plus populaire du lycée : Yukinoshita Yukino.
+Suite à cet événement, tout change dans la vie de Hikigaya.`,
+    options: new Oregairu(),
+  },
+  {
+    anime: "Another",
+    category: [
+      "Horreur",
+      "Mystère",
+      "Psychologique",
+      "School Life",
+      "Surnaturel",
+    ],
+    options: new Another(),
+    synopsis: `En 1972, dans l'établissement de Yomiyama au Japon, un jeune nommé Misaki Yomiyama meurt dans un accident mystérieux. Ses camarades de la classe 3-3, très attristés et ne voulant pas y croire, décident de faire comme si il était encore en vie jusqu'à la fin de l'année, lors de la remise des diplômes. C'est alors le début d'une longue histoire...
+
+Vingt-six ans après le drame, en 1998, un jeune garçon nommé Koichi Sakakibara est transféré dans la classe 3-3.
+Il fait alors la connaissance d'une élève très discrète et mystérieuse, Misaki Mei qui porte un étrange bandeau à son œil gauche à laquelle aucun autre élève ne semble parler ou prêter attention.
+Dans cette classe, il y découvre une atmosphère tendue ainsi qu'un étrange comportement provenant de ses nouveaux camarades de classe qui semblent cacher un secret terrible et inavouable...`,
   },
 ];
