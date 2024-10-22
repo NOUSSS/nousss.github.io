@@ -159,6 +159,7 @@ import TimeShadows from "./TimeShadows/time-shadows";
 import RisingImpact from "./RisingImpact/rising-impact";
 import KenganAshura from "./KenganAshura/kengan-ashura";
 import ValkyrieApocalypse from "./ValkyrieApocalypse/valkyrie-apocalypse";
+import NickyLarson from "./NickyLarson/nicky-larson";
 
 export interface AnimesType {
   anime: string;
@@ -1692,5 +1693,18 @@ Après avoir passé la porte, nous suivrons l'unité de reconnaissance de Youji 
     synopsis: `Cette fois, la patience des dieux est à bout. Entre guerres incessantes et pollution extrême, les humains n'évoluent décidément pas et passent le plus clair de leur temps à semer le chaos sur terre. Les divinités décident donc à l'unanimité d'anéantir l'humanité en déclenchant l'apocalypse !
 
 Seules les valkyries, ces guerrières chargées de guider les âmes des morts vers le Valhalla, se rebellent contre ce jugement. Brunehilde, leur aînée, lance un défi aux créateurs du monde : que le sort des mortels soit soumis au Ragnarök, un affrontement ultime entre 13 divinités et 13 champions de l'humanité ! Mais les plus célèbres héros de notre passé feront-ils le poids face à Zeus, Belzébuth ou Shiva ?`,
+  },
+  {
+    anime: "Nicky Larson",
+    aliases: ["City Hunter"],
+    category: ["Action", "Comédie", "Mystère"],
+    synopsis: `Ryô Saeba, alias City Hunter, est un nettoyeur professionnel (un tueur à gages). Ses spécialités reposent dans l'investigation et le travail de garde du corps. Dans le milieu, il est le meilleur. Son habileté et sa précision dans le tir font de lui le tueur le plus redouté, mais son gros défaut reste son comportement d'obsédé à la vue de jolies femmes.
+
+La série commence avant la mort de son partenaire Hideyuki Makimura, assassiné par l'Union Teope, grande organisation criminelle. Ce puissant groupe travaillant dans la drogue en Amérique du Sud cherche à s'implanter au Japon et contacte City Hunter pour qu'il protège le réseau. Devant leur refus, l'Union Teope décide d'éliminer ces témoins gênants et dangereux.
+
+Après avoir vengé son ami, il demande à Kaori de s'échapper car l'Union Teope en a après elle. Kaori refuse de fuir. Elle veut rester auprès de Ryô pour remplacer son frère et régler ses comptes.
+
+S'ensuit une longue série d'aventures mouvementées et de complicité entre Ryô et Kaori`,
+    options: new NickyLarson(),
   },
 ];
