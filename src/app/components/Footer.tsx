@@ -1,10 +1,11 @@
 import { icons } from "lucide-react";
+
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
   const Copyright = icons["Copyright"];
   const Qui = icons["CircleUserRound"];
-  const Discord = icons["AtSign"];
 
   return (
     <footer className="mt-40 w-full border-t border-neutral-700 bg-zinc-900 bg-opacity-50 p-8">
@@ -12,10 +13,11 @@ const Footer = () => {
         <span className="inline-block">
           <Link
             target="_blank"
-            className="flex items-center justify-center gap-2 text-2xl text-main hover:underline"
+            className="mb-2 flex items-center justify-center gap-2 text-2xl text-main hover:underline"
             href="https://discord.gg/q5qSRQypJU"
           >
-            <Discord /> Serveur Discord
+            <Image src="/Discord.png" alt="Discord" width={30} height={30} />
+            Discord
           </Link>
         </span>
 

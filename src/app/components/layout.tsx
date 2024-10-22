@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import Script from "next/script";
 import FastSearchBar from "./Fast-Searchbar";
 
 interface RootLayoutProps {
