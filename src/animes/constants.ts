@@ -160,6 +160,8 @@ import RisingImpact from "./RisingImpact/rising-impact";
 import KenganAshura from "./KenganAshura/kengan-ashura";
 import ValkyrieApocalypse from "./ValkyrieApocalypse/valkyrie-apocalypse";
 import NickyLarson from "./NickyLarson/nicky-larson";
+import NarutoSDRockLee from "./NarutoSDRockLee/naruto-sd-rock-lee";
+import Mushishi from "./Mushishi/mushishi";
 
 export interface AnimesType {
   anime: string;
@@ -1706,5 +1708,30 @@ Après avoir vengé son ami, il demande à Kaori de s'échapper car l'Union Teop
 
 S'ensuit une longue série d'aventures mouvementées et de complicité entre Ryô et Kaori`,
     options: new NickyLarson(),
+  },
+  {
+    anime: "Naruto SD Rock Lee",
+    aliases: ["Les péripéties d'un ninja en herbe", "Spin-off"],
+    category: ["Hors Series"],
+    synopsis: "Hors series sur rock lee",
+    options: new NarutoSDRockLee(),
+  },
+  {
+    anime: "Mushishi",
+    aliases: ["Mushi-Shi"],
+    category: [
+      "Aventure",
+      "Drame",
+      "Fantasy",
+      "Horreur",
+      "Mystère",
+      "Psychologique",
+      "Surnaturel",
+    ],
+    options: new Mushishi(),
+    synopsis: `Mélangeant fantastique, écologie et Japon traditionnel, Mushishi est une suite d'histoires dans lesquelles le héros, Ginko, enquête sur différentes affaires plus ou moins étranges liées aux Mushi, une forme de vie primitive à l'origine de toutes les autres formes de vies.
+Leurs existence et apparences sont inconnues en général par les hommes... Seuls un nombre limité d'humains savent des choses à leur sujet et c'est le cas de Ginko qui est donc un "Mushishi" !
+
+Il voyage un peu partout pour en apprendre toujours plus sur les Mushi et aide par la même occasion des personnes confrontées à des problèmes surnaturels en rapport avec les Mushi...`,
   },
 ];
