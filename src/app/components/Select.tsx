@@ -208,11 +208,12 @@ const Select: FC<SelectProps> = ({
               <button
                 key={index}
                 onClick={(e) => {
+                  e.stopPropagation();
+
                   if (!multiple) toggleBodyScroll(false);
 
                   if (!item.disabled) {
                     handleSelect(item);
-                    appear(e);
                   }
                 }}
                 ref={(el) => {
