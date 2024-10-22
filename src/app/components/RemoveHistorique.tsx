@@ -7,6 +7,8 @@ interface RemoveHistoriqueProps {
   setHistoriques?: (value: SetStateAction<Historique[]>) => void;
 }
 
+const dangerousKeys = ["color", "filever", "cookieConsent"];
+
 const RemoveHistorique: FC<RemoveHistoriqueProps> = ({ setHistoriques }) => {
   const confirmRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -39,8 +41,7 @@ const RemoveHistorique: FC<RemoveHistoriqueProps> = ({ setHistoriques }) => {
               if (setHistoriques) setHistoriques([]);
 
               for (const key of Object.keys(localStorage)) {
-                if (key === "color" || key === "filever") {
-                } else {
+                if (!dangerousKeys.includes(key)) {
                   localStorage.removeItem(key);
                 }
               }

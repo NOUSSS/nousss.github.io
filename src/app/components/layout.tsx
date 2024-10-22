@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { icons } from "lucide-react";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { cn, random, restoreLocalStorage } from "../lib";
+import { cn, random } from "../lib";
 import { useRouter } from "next/router";
 
 import Image from "next/image";
@@ -57,13 +56,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         "border-radius: 2px;",
       ].join(";"),
     );
-
-    if (
-      !localStorage.getItem("episodes") ||
-      !localStorage.getItem("scans") ||
-      !localStorage.getItem("films")
-    )
-      restoreLocalStorage();
 
     const handleScroll = () => {
       const show = window.scrollY > 15;
@@ -224,8 +216,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </nav>
       </header>
-
-      <GoogleAnalytics gaId="G-F9N37DQQDM" />
 
       <script
         id="aclib"

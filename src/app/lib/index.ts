@@ -11,7 +11,6 @@ import shuffle from "./shuffle";
 import normalizeString from "./normalizeString";
 import random from "./random";
 import navMotion from "./navMotion";
-import restoreLocalStorage from "./restoreLocalStorage";
 import cn from "./cn";
 import relatedCats from "./relatedCats";
 
@@ -29,7 +28,6 @@ export {
   normalizeString,
   random,
   navMotion,
-  restoreLocalStorage,
   cn,
   relatedCats,
 };
