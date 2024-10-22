@@ -114,8 +114,6 @@ const Episodes = () => {
 
       const parts = options?.EPISODES_OPTIONS?.parts;
 
-      console.log(anime.saison);
-
       let scriptIndex = getScriptIndex({
         currentSaison: Number(anime.saison),
         parts,
