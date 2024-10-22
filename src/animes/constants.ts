@@ -169,6 +169,8 @@ import InitialD from "./InitialD/initial-d";
 import VersatileMage from "./VersatileMage/versatile-mage";
 import MobileSuitGundam from "./MobileSuitGundam/mobile-suit-gundam";
 import LonerLifeInAnotherWorld from "./LonerLifeInAnotherWorld/loner-life-in-another-world";
+import Orient from "./Orient/orient";
+import InazumaEleven from "./InazumaEleven/inazuma-eleven";
 
 export interface AnimesType {
   anime: string;
@@ -1831,5 +1833,19 @@ Haruka va donc hériter de tous les skills dont personne ne voulait ?!
 
 Vous le découvrirez dans le premier volet de ce manga qui conte les aventures d'un lycéen contraint de voyager seul dans un autre monde en mode HARD !`,
     options: new LonerLifeInAnotherWorld(),
+  },
+  {
+    anime: "Orient",
+    aliases: ["Samurai Quest"],
+    category: ["Action", "Aventure", "Fantastique"],
+    synopsis:
+      "Le monde est aux mains des oni, d'effroyables démons pourtant vénérés comme des dieux par le peuple, qui ignore tout de leur nature maléfique ! La vérité, seuls les bushi, de valeureux guerriers, la connaissent. Mais ces combattants sont traités en parias et condamnés à vivre dans la honte, de peur qu'ils ne renversent l'ordre établi. Cela n'empêche pas Musashi de rêver avec Kojirô, son ami d'enfance et descendant de bushi, de parvenir un jour à libérer le Japon en mettant un terme au joug des oni ! Ensemble, ils se sont jurés de fonder le plus puissant des clans de bushi. C'est ici que commence leur quête.",
+    options: new Orient(),
+  },
+  {
+    anime: "Inazuma Eleven",
+    category: ["Comédie", "Surnaturel", "Sport"],
+    synopsis: `Inazuma eleven est à la base un RPG de football lorsqu'il se transpose par la suite en anime. Se basant sur le jeu, l'anime relate les aventures de Endou Mamoru, un gardien de but talentueux, inscrit dans le club de foot de son collège Raimon ainsi que 5 autres membres. Cependant, leur minorité actuelle et la nonchalance de ses coéquipiers les empêche d'être pris au sérieux par les autres clubs. En conséquence, le fille du directeur leur lance un ultimatum : ils doivent gagner un match contre l'académie de Teikoku, une équipe puissante. Endou, plus que jamais motivé se lance à la recherche d'autres membres dans l'espoir de garder son club et ensuite de participer au fameux tournoi du "Football Frontier".`,
+    options: new InazumaEleven(),
   },
 ];

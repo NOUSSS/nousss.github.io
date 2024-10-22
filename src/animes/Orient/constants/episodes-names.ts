@@ -1,0 +1,28 @@
+const names = [
+  { name: "Musashi et Kojirō", index: "1" },
+  { name: "La fierté des bushi", index: "2" },
+  { index: "3" },
+  { name: "Le clan Kosameda", index: "4" },
+  { name: "Choisir son avenir", index: "5" },
+  { name: "Encore plus fort", index: "6" },
+  { name: "On ne peut pas respirer sous l’eau", index: "7" },
+  { name: "La déesse obsidienne", index: "8" },
+  { name: "Vivre comme un bushi", index: "9" },
+  { name: "La puissance de la déesse", index: "10" },
+  { index: "11" },
+  { name: "Au bout de ce chemin", index: "12" },
+  { name: "Le clan Uesugi", index: "13" },
+  { name: "Humiliation à bord", index: "14" },
+  { index: "15" },
+  { name: "Armures divines", index: "16" },
+  { name: "La mémoire de la pierre", index: "17" },
+  { name: "Duel de stratèges", index: "18" },
+  { name: "La mission qu’on nous a confiée", index: "19" },
+  { name: "Prouver son existence", index: "20" },
+  { name: "La rupture de Shimazu", index: "21" },
+  { name: "L’aîné et son jeune frère", index: "22" },
+  { name: "Le grand glaive de la déesse noire", index: "23" },
+  { name: "Serment", index: "24" },
+];
+
+export default names;
