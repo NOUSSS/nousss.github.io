@@ -168,6 +168,7 @@ import BuddyDaddies from "./BuddyDaddies/buddy-daddies";
 import InitialD from "./InitialD/initial-d";
 import VersatileMage from "./VersatileMage/versatile-mage";
 import MobileSuitGundam from "./MobileSuitGundam/mobile-suit-gundam";
+import LonerLifeInAnotherWorld from "./LonerLifeInAnotherWorld/loner-life-in-another-world";
 
 export interface AnimesType {
   anime: string;
@@ -370,7 +371,7 @@ export const ANIMES: AnimesType[] = [
   {
     anime: "Shangri-La Frontier",
     options: new ShangriLaFrontier(),
-    category: ["Action", "Aventure", "Fantastique"],
+    category: ["Action", "Aventure", "Fantastique", "Nouvelles saisons"],
     synopsis:
       "Sunraku est un passionné de jeux vidéo, il s'essaye aux pires jeux existants. Un jour il décide de s'attaquer au MMORPG Shangri-La Frontier, jeu aux trente millions de membres inscrits, il va devoir faire affronter de multiples dangers avec un masque ridicule... en forme d'oiseau.",
   },
@@ -1339,7 +1340,15 @@ export const ANIMES: AnimesType[] = [
       "Regarding Reincarnated to Slime",
       "Tensura",
     ],
-    category: ["Action", "Aventure", "Comédie", "Drame", "Fantasy", "Isekai"],
+    category: [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Drame",
+      "Fantasy",
+      "Isekai",
+      "Nouvelles saisons",
+    ],
     options: new TenseiShitara(),
     synopsis:
       "Satoru, employé de bureau lambda, se fait assassiner par un criminel en pleine rue. Son histoire aurait dû s'arrêter là, mais il se retrouve soudain réincarné dans un autre monde sous la forme d'un Slime, le monstre le plus faible du bestiaire fantastique. Son nouveau corps est équipé de deux compétences uniques : « Prédateur », lui permettant de récupérer les aptitudes de ses adversaires, et « Grand sage », grâce à laquelle il acquiert une compréhension aigüe de son environnement. Mais même muni de ces armes, ses chances de survie semblent encore limitées...",
@@ -1483,7 +1492,7 @@ export const ANIMES: AnimesType[] = [
       "Alya Sometimes Hides Her Feelings in Russian",
       "Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san",
     ],
-    category: ["Comédie", "Romance", "School Life"],
+    category: ["Comédie", "Romance", "School Life", "Nouvelles saisons"],
     synopsis:
       "D'origine russe et japonaise, Alisa Mikhailovna Kujou est la 'princesse solitaire' de l'Académie privée Seiren. Cette beauté aux cheveux argentés qui est première de sa classe, comptable du conseil des élèves est réputée pour être totalement inaccessible. Pour certaines raisons, elle s'est également chargée de réprimander Masachika Kuze, le fainéant qui s'assoit à côté d'elle en classe. Il la contrarie constamment en s'endormant, en oubliant ses manuels et en étant tout simplement un élève peu exemplaire. Du moins, c'est ce qui semble se passer de l'extérieur. Elle a beau jouer les dures, Masachika ne le dérange pas autant qu'on pourrait le croire et elle l'autorise même à l'appeler Alya, son surnom. Ceux qui entendent les commentaires qu'elle murmure en russe peuvent savoir ce qu'elle ressent vraiment, mais comme aucun de ses camarades de classe ne comprend cette langue, elle est libre de dire ce qu'elle veut ! Sauf qu'il y a en réalité une personne qui sait ce qu'elle dit. Masachika écoute ses révélations embarrassantes, fait semblant de ne rien comprendre, tout en se demandant ce que signifient réellement ses commentaires flatteurs !",
     options: new Roshidere(),
@@ -1594,7 +1603,14 @@ Découvrez ce savant mélange de fantasy, de Japon ancien et de romance dans cet
       "Is It Wrong to Try to Pick Up Girls in a Dungeon",
       "Dungeon ni Deai wo Motomeru no wa Machigatteiru Darō ka",
     ],
-    category: ["Action", "Aventure", "Drame", "Fantasy", "Romance"],
+    category: [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Fantasy",
+      "Romance",
+      "Nouvelles saisons",
+    ],
     synopsis:
       "Bienvenue à Orario, la Cité-Labyrinthe où cohabitent dieux et humains. Sous cette ville, les aventuriers, bénis des dieux, partent en quête de gloire et de fortune dans le Donjon : un dédale mystérieux infesté de monstres. C'est là que nous rencontrons Bell Cranel, qui, malgré son manque d'expérience, part à la conquête du Donjon sous la protection d'Hestia, une déesse impopulaire. Le hasard faisant mal les choses, il tombe sur un terrible Minotaure. Il est alors sauvé par Aiz Wallenstein, une belle épéiste, dont il tombe immédiatement amoureux.",
     options: new DanMachi(),
@@ -1797,5 +1813,23 @@ Grâce à cette peinture, Yatora a enfin trouvé sa voie. Dans l'optique de pouv
 
 Mobile Suit Gundam est une série d'animation japonaise qui date de 1979. Elle se caractérise par plusieurs singularités : première série à introduire le genre robots réalistes, elle a eu très peu de succès lors de sa première diffusion puis a cartonnée lors de ses rediffusions, elle a été compilée en trois énormes films résumés (3X2h30), elle est la première série à utiliser un "mecha-designer" et fait partie du patrimoine culturel du Japon ! La direction de la série a été confiée à Yoshiyuki Tomino, Yoshikazu Yasuhiko s'occupera du design des personnages et Kunio Okawara du design des mechas.`,
     options: new MobileSuitGundam(),
+  },
+  {
+    anime: "Loner life in another World",
+    aliases: [
+      "Lonely Attack on a Different World",
+      "Hitoribocchi no Isekai Kōryaku",
+    ],
+    category: ["Action", "Aventure", "Comédie", "Fantasy", "Nouvelles saisons"],
+    synopsis: `Lycéen solitaire, Haruka, ainsi que toute sa classe sont envoyés dans un autre monde type RPG.
+
+Mais quand vient son tour de choisir ses skills, il se rend compte qu'il est le dernier à passer et qu'il ne reste plus rien d'intéressant !!
+
+" Pour la peine, ch'e t'ocroie l'intégralité des skills restants !! ", dixit le dieu de cet autre monde.
+
+Haruka va donc hériter de tous les skills dont personne ne voulait ?!
+
+Vous le découvrirez dans le premier volet de ce manga qui conte les aventures d'un lycéen contraint de voyager seul dans un autre monde en mode HARD !`,
+    options: new LonerLifeInAnotherWorld(),
   },
 ];
