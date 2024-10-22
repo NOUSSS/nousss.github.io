@@ -32,6 +32,9 @@ class Roshidere extends Anime {
         `https://anime-sama.fr/s2/scans/Roshidere Anglais/${chapitre}/${index}.jpg`,
     };
 
+    this.note =
+      "La VF va jusqu'a l'épisode 9, pour la suite il faut être en VOSTFR";
+
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/roshidere/saison${index}/${lang}/episodes.js`,
