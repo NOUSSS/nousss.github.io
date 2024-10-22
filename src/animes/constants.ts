@@ -162,6 +162,12 @@ import ValkyrieApocalypse from "./ValkyrieApocalypse/valkyrie-apocalypse";
 import NickyLarson from "./NickyLarson/nicky-larson";
 import NarutoSDRockLee from "./NarutoSDRockLee/naruto-sd-rock-lee";
 import Mushishi from "./Mushishi/mushishi";
+import BluePeriod from "./BluePeriod/blue-period";
+import SaikiKusuo from "./SaikiKusuo/saiki-kusuo";
+import BuddyDaddies from "./BuddyDaddies/buddy-daddies";
+import InitialD from "./InitialD/initial-d";
+import VersatileMage from "./VersatileMage/versatile-mage";
+import MobileSuitGundam from "./MobileSuitGundam/mobile-suit-gundam";
 
 export interface AnimesType {
   anime: string;
@@ -1733,5 +1739,63 @@ S'ensuit une longue série d'aventures mouvementées et de complicité entre Ry�
 Leurs existence et apparences sont inconnues en général par les hommes... Seuls un nombre limité d'humains savent des choses à leur sujet et c'est le cas de Ginko qui est donc un "Mushishi" !
 
 Il voyage un peu partout pour en apprendre toujours plus sur les Mushi et aide par la même occasion des personnes confrontées à des problèmes surnaturels en rapport avec les Mushi...`,
+  },
+  {
+    anime: "Blue Period",
+    aliases: ["The Blue Period"],
+    category: ["Drame", "School Life", "Slice of Life"],
+    synopsis: `L'histoire nous entraîne dans le quotidien de Yatora Yaguchi, un lycéen avec de bonnes notes mais sans réelles ambitions. Un jour, alors qu'il entre dans la salle d'art, une peinture isolée attire son regard, le faisant découvrir une beauté qu'il n'avait jamais connue.
+
+Grâce à cette peinture, Yatora a enfin trouvé sa voie. Dans l'optique de pouvoir intégrer une université d'art, ce jeune lycéen va plonger dans ce monde sans expériences préalable.`,
+    options: new BluePeriod(),
+  },
+  {
+    anime: "Saiki Kusuo no Ψ Nan",
+    aliases: [
+      "The Disastrous Life of Saiki K",
+      "Saiki Kusuo no Psi Nan",
+      "Saiki Kusuo no Sainan",
+    ],
+    category: [
+      "Comédie",
+      "School Life",
+      "Science-fiction",
+      "Slice of Life",
+      "Surnaturel",
+    ],
+    synopsis:
+      "Kusuo Saiki est un étudiant de 16 ans qui possède plusieurs dons surnaturels, dont la télépathie et la télékinésie. Des pouvoirs dont n'importe qui rêverait, mais qui cause à notre héros un certain nombres de problèmes... Kusuo tente malgré tout de mener une vie normale.",
+    options: new SaikiKusuo(),
+  },
+  {
+    anime: "Buddy Daddies",
+    aliases: ["Family Story of Two Killers and a Girl", "Buddy Anime Project"],
+    category: ["Action", "Comédie", "Drame"],
+    synopsis:
+      "Kazuki Kurusu et Rei Suwa sont deux assassins vivant en colocation et travaillant ensemble. Leur mode de vie est totalement chamboulé lorsque surgit Miri Unasaka, une petite fille à la recherche de son père.",
+    options: new BuddyDaddies(),
+  },
+  {
+    anime: "Initial D",
+    category: ["Drame", "Slice of Life", "Sport"],
+    synopsis:
+      "Initial D raconte l'histoire de Takumi Fujiwara, lycéen de 18 ans, travaillant dans une station-service avec son meilleur ami Itsuki. Il n'aime pas trop conduire une voiture. En effet, cela fait 5 ans qu'il livre des tofus au volant de la voiture de son père, très tôt le matin, pour ne pas se faire remarquer par la police et c'est pour cette raison qu'il considère que conduire une voiture est un travail et non un plaisir. Durant ce temps, il a appris à maîtriser sa voiture avec perfection. À la demande de Kôichirô Iketani (un collègue de Takumi), Bunta, son père, poussa son fils à participer à une course de voiture à sa place pour le compte de l'équipe de street-racing du mont Akina, les Akina SpeedStars dont Iketani est le chef. C'est ainsi qu'il prend goût aux courses de street-racing afin de se mesurer à tous les as du volant de la région.",
+    options: new InitialD(),
+  },
+  {
+    anime: "Versatile Mage",
+    aliases: ["Quan Zhi Fa Shi", "full time magister"],
+    synopsis:
+      "Mo Fan est un collégien médiocre. Pas beaucoup d'ambition, vivant dans une maison bourgeoise, un père travailleur avec juste assez de revenus pour les maintenir à flot, Mo fan laisse simplement sa vie filer. Son seul réconfort est de voir le vieil homme Ying dans sa maison, située loin de l'agitation de la ville. Malheureusement, le temps de Man Ying est arrivé et laisse à Mo Fan un pendentif à garder. Cette nuit-là, Mo Fan le porte endormi et à sa grande surprise, se réveille dans un quartier légèrement différent. Il semble que Mo Fan ait voyagé dans un univers parallèle, où son quartier est toujours le même, mais la magie et les magiciens sont la norme. Avec une nouvelle ardoise, Mo Fan veut apprendre les arts magiques et, espérons-le, mener une vie meilleure dans cette nouvelle dimension. Mais d'abord, il doit reprendre ses performances scolaires médiocres.",
+    category: ["Action", "Comédie", "Drame", "Fantasy", "School Life"],
+    options: new VersatileMage(),
+  },
+  {
+    anime: "Mobile Suit Gundam",
+    category: ["Action", "Drame", "Science-fiction"],
+    synopsis: `Année 0079 du Calendrier Universel, le Duché de Zeon déclare la guerre au gouvernement fédéral de la Terre. Une lutte acharnée entre les "earthnoïdes" et les "spacenoïdes" commence et cause la mort de la moitié de l'humanité (qui comptait onze milliards d'êtres humains). Le conflit s'enlise ensuite dans un statut, huit mois qui s'achève lorsque le Colonel Char Aznable découvre l'existence du projet fédéral -V- qui consiste à développer de nouvelles armes pour lutter contre les Mobile Suits de Zeon. Suite à une attaque du commando de Char sur la Colonie spatiale où était établit le projet -V- le Gundam, plus puissant Mobile Suit de la Fédération se lève et extermine ses assaillants en quelques secondes !
+
+Mobile Suit Gundam est une série d'animation japonaise qui date de 1979. Elle se caractérise par plusieurs singularités : première série à introduire le genre robots réalistes, elle a eu très peu de succès lors de sa première diffusion puis a cartonnée lors de ses rediffusions, elle a été compilée en trois énormes films résumés (3X2h30), elle est la première série à utiliser un "mecha-designer" et fait partie du patrimoine culturel du Japon ! La direction de la série a été confiée à Yoshiyuki Tomino, Yoshikazu Yasuhiko s'occupera du design des personnages et Kunio Okawara du design des mechas.`,
+    options: new MobileSuitGundam(),
   },
 ];
