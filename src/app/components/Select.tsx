@@ -69,6 +69,9 @@ const Select: FC<SelectProps> = ({
   const appear = (
     event: React.MouseEvent<HTMLLabelElement | HTMLButtonElement, MouseEvent>,
   ) => {
+    event.stopPropagation();
+    event.preventDefault();
+
     if (
       searchBarRef.current &&
       searchBarRef.current.contains(event.target as Node)
