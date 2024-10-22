@@ -79,7 +79,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         Ce site utilise des cookies pour améliorer votre expérience.
       </CookieConsent>
 
-      {isAnalyticsEnabled && <GoogleAnalytics gaId="G-F9N37DQQDM" />}
+      <GoogleAnalytics gaId="G-F9N37DQQDM" />
     </RootLayout>
   );
 };
