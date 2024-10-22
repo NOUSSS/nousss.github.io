@@ -4,7 +4,7 @@ const contains = (episodes: string[], query: string): boolean =>
   episodes?.[0].includes(query) ?? false;
 
 export default function getLecteur(): Anime.LecteurReturnType {
-  const eps = ["eps1", "eps2", "eps3", "eps4"];
+  const eps = ["eps1", "eps2", "eps3", "eps4", "eps5", "eps6"];
 
   const { vkEps, sibnetEps, otherEps } = eps.reduce(
     (acc, cur) => {
