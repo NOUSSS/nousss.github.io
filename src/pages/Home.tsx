@@ -150,11 +150,9 @@ const Home = () => {
     if (historiques && anime?.anime) {
       const animeHist = historiques.find(({ name }) => name === anime.anime);
 
-      if (animeHist) {
-        setIndex(historiques.indexOf(animeHist));
-      }
+      setIndex(animeHist ? historiques.indexOf(animeHist) : null);
     }
-  }, [historiques, anime]);
+  }, [historiques, anime?.anime, query.anime]);
 
   return (
     <>
