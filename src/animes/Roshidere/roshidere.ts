@@ -33,7 +33,7 @@ class Roshidere extends Anime {
     };
 
     this.note =
-      "La VF va jusqu'a l'épisode 9, pour la suite il faut être en VOSTFR";
+      "La suite en VF sort demain (jeudi) heure non precisée";
 
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
