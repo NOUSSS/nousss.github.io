@@ -201,13 +201,13 @@ const Home = () => {
             {anime?.anime && (
               <h1
                 title={anime.aliases?.join(", ")}
-                className="my-4 text-center text-5xl font-normal max-xl:text-3xl"
+                className="my-4 text-5xl font-normal max-xl:text-3xl max-md:text-center"
               >
                 {anime.anime}
               </h1>
             )}
 
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-24">
+            <div className="flex flex-col lg:flex-row lg:gap-12">
               <div>
                 {anime?.synopsis && anime.synopsis.length > synopsisLimit ? (
                   <button
