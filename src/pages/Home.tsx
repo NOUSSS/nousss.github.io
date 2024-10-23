@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { getAnime, getCurrentAnime, getWallpaper, cn } from "@/app/lib/";
 import { useRouter } from "next/router";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Footer, RelatedAnimes, SearchBar } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
 import { useAnime } from "@/app/lib/hooks";
@@ -22,7 +22,10 @@ import EpisodeData from "@/app/class/episodeData";
 import FilmData from "@/app/class/filmData";
 import loadHistorique from "@/app/utils/Accueil/loadHistorique";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
-import goToAnime from "@/app/utils/Accueil/goToAnime";
+
+interface Query {
+  [key: string]: string;
+}
 
 const synopsisLimit = 300;
 
@@ -62,6 +65,40 @@ const Home = () => {
 
   const Play = icons["Play"];
   const Book = icons["BookOpen"];
+
+  const goToAnime = useCallback(
+    (
+      animeName: string,
+      i: number,
+    ): {
+      pathname: string;
+      query: Query;
+    } => {
+      const redirect = historiques[i]?.redirect;
+      const detail = historiques[i]?.detail;
+
+      if (redirect === "Episodes") {
+        return {
+          pathname: "/Episodes",
+          query: {
+            anime: animeName,
+            saison: (detail as Data.EpisodesData).saison,
+          },
+        };
+      } else if (redirect === "Scans" || redirect === "Films") {
+        return {
+          pathname: "/" + redirect,
+          query: { anime: animeName },
+        };
+      }
+
+      return {
+        pathname: "/Home",
+        query: { anime: animeName },
+      };
+    },
+    [historiques, router],
+  );
 
   useEffect(() => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
@@ -234,7 +271,7 @@ const Home = () => {
 
               {index !== null && anime?.anime && (
                 <Link
-                  href={goToAnime(anime.anime, index, historiques)}
+                  href={goToAnime(anime.anime, index)}
                   className="my-4 cursor-pointer transition-all hover:scale-[.97] lg:my-0 lg:w-[600px]"
                   title={anime.synopsis ?? "Aucun synopsis pour cette anime"}
                 >
