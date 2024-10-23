@@ -173,6 +173,7 @@ import Orient from "./Orient/orient";
 import InazumaEleven from "./InazumaEleven/inazuma-eleven";
 import Oregairu from "./Oregairu/oregairu";
 import Another from "./Another/another";
+import EdensZero from "./EdensZero/edens-zero";
 
 export interface AnimesType {
   anime: string;
@@ -1878,5 +1879,12 @@ Suite à cet événement, tout change dans la vie de Hikigaya.`,
 Vingt-six ans après le drame, en 1998, un jeune garçon nommé Koichi Sakakibara est transféré dans la classe 3-3.
 Il fait alors la connaissance d'une élève très discrète et mystérieuse, Misaki Mei qui porte un étrange bandeau à son œil gauche à laquelle aucun autre élève ne semble parler ou prêter attention.
 Dans cette classe, il y découvre une atmosphère tendue ainsi qu'un étrange comportement provenant de ses nouveaux camarades de classe qui semblent cacher un secret terrible et inavouable...`,
+  },
+  {
+    anime: "Edens Zero",
+    category: ["Comédie", "Drame", "Fantasy", "Science-fiction"],
+    synopsis:
+      "L'histoire d'Eden's Zero prend place dans un monde fictif mais futuriste où les aventuriers et les explorateurs naviguent à travers le cosmos pour effectuer diverses missions. Shiki Grandbell est un étrange jeune homme qui a fait la rencontre de Rebecca et de son chat Happy sur sa planète natale, Grandbell. Ensemble, ils voyagent à travers le cosmos afin de rencontrer Mother et ainsi devenir les premiers aventuriers à accomplir cet exploit.",
+    options: new EdensZero(),
   },
 ];
