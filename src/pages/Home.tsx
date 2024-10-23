@@ -10,18 +10,27 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { Footer, RelatedAnimes, SearchBar } from "@/app/components/";
 import { AnimesType } from "@/animes/constants";
 import { useAnime } from "@/app/lib/hooks";
-import { Anime } from "@/typings/types";
+import { Anime, Data, Historique } from "@/typings/types";
 import { getSaisons } from "@/app/utils/Saisons/getSaisons";
 import { changeSaison } from "@/app/utils/Saisons/changeSaison";
 import { getFilms } from "@/app/utils/Films/getFilms";
 import { icons } from "lucide-react";
+import { getCurrentEpisode } from "@/app/utils/Accueil/getCurrentEpisode";
+import { getCurrentChapitre } from "@/app/utils/Accueil/getCurrentChapitre";
 
 import EpisodeData from "@/app/class/episodeData";
 import FilmData from "@/app/class/filmData";
+import loadHistorique from "@/app/utils/Accueil/loadHistorique";
+import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
+import goToAnime from "@/app/utils/Accueil/goToAnime";
 
 const synopsisLimit = 300;
 
 const Home = () => {
+  const [index, setIndex] = useState<number | null>(null);
+
+  const [historiques, setHistoriques] = useState<Historique[]>([]);
+
   const [allSynopsis, setAllSynopsis] = useState<boolean>(false);
   const [synopsisAnime, setSynopsis] = useState<ReactNode>();
 
@@ -50,6 +59,9 @@ const Home = () => {
 
   const ChevronDownSeasonRef = useRef<SVGSVGElement>(null);
   const ChevronDownFilmsRef = useRef<SVGSVGElement>(null);
+
+  const Play = icons["Play"];
+  const Book = icons["BookOpen"];
 
   useEffect(() => {
     const currentAnime = getAnime(getCurrentAnime({ wSaison: false }));
@@ -92,6 +104,20 @@ const Home = () => {
       }
     }
   }, [allSynopsis, anime]);
+
+  useEffect(() => {
+    loadHistorique(setHistoriques);
+  }, []);
+
+  useEffect(() => {
+    if (historiques && anime?.anime) {
+      const animeHist = historiques.find(({ name }) => name === anime.anime);
+
+      if (animeHist) {
+        setIndex(historiques.indexOf(animeHist));
+      }
+    }
+  }, [historiques, anime]);
 
   return (
     <>
@@ -144,64 +170,159 @@ const Home = () => {
               </h1>
             )}
 
-            {anime?.synopsis && anime.synopsis.length > synopsisLimit ? (
-              <button
-                onClick={() => {
-                  setAllSynopsis(!allSynopsis);
-                }}
-                className="mb-4 text-left text-sm text-zinc-300 md:text-base"
-              >
-                {synopsisAnime}
-              </button>
-            ) : (
-              <p className="mb-4 text-sm text-zinc-300 md:text-base">
-                {anime?.synopsis}
-              </p>
-            )}
-
-            {anime?.category && (
-              <button
-                onClick={() => {
-                  if (hidden) {
-                    catsRef.current.forEach((e) =>
-                      e.classList.remove("hidden"),
-                    );
-                  } else {
-                    catsRef.current.forEach((e, i) => {
-                      if (i > 2) {
-                        e.classList.add("hidden");
-                      }
-                    });
-                  }
-
-                  setHidden(!hidden);
-                }}
-                className="mb-4 flex flex-wrap gap-3"
-              >
-                {anime.category.map((category, i) => (
-                  <div
-                    ref={(e) => {
-                      if (e && catsRef.current) {
-                        catsRef.current[i] = e;
-                      }
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-24">
+              <div>
+                {anime?.synopsis && anime.synopsis.length > synopsisLimit ? (
+                  <button
+                    onClick={() => {
+                      setAllSynopsis(!allSynopsis);
                     }}
-                    className={cn(
-                      "relative inline-flex rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75",
-                      { hidden: hidden && i > 2 },
-                    )}
-                    key={i}
+                    className="mb-4 text-left text-sm text-zinc-300 md:text-base"
                   >
-                    {category}
-                  </div>
-                ))}
-
-                {anime.category.length > 3 && (
-                  <div className="relative cursor-pointer rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75">
-                    {hidden ? `+${anime.category.length - 3}` : "-"}
-                  </div>
+                    {synopsisAnime}
+                  </button>
+                ) : (
+                  <p className="mb-4 text-sm text-zinc-300 md:text-base">
+                    {anime?.synopsis}
+                  </p>
                 )}
-              </button>
-            )}
+
+                {anime?.category && (
+                  <button
+                    onClick={() => {
+                      if (hidden) {
+                        catsRef.current.forEach((e) =>
+                          e.classList.remove("hidden"),
+                        );
+                      } else {
+                        catsRef.current.forEach((e, i) => {
+                          if (i > 2) {
+                            e.classList.add("hidden");
+                          }
+                        });
+                      }
+
+                      setHidden(!hidden);
+                    }}
+                    className="mb-4 flex flex-wrap gap-3"
+                  >
+                    {anime.category.map((category, i) => (
+                      <div
+                        ref={(e) => {
+                          if (e && catsRef.current) {
+                            catsRef.current[i] = e;
+                          }
+                        }}
+                        className={cn(
+                          "relative inline-flex rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75",
+                          { hidden: hidden && i > 2 },
+                        )}
+                        key={i}
+                      >
+                        {category}
+                      </div>
+                    ))}
+
+                    {anime.category.length > 3 && (
+                      <div className="relative cursor-pointer rounded border border-main p-2 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-main before:opacity-75">
+                        {hidden ? `+${anime.category.length - 3}` : "-"}
+                      </div>
+                    )}
+                  </button>
+                )}
+              </div>
+
+              {index !== null && anime?.anime && (
+                <Link
+                  href={goToAnime(anime.anime, index, historiques)}
+                  className="my-4 cursor-pointer transition-all hover:scale-[.97] lg:my-0 lg:w-[600px]"
+                  title={anime.synopsis ?? "Aucun synopsis pour cette anime"}
+                >
+                  {anime.options.affiche && (
+                    <div className="relative w-72 overflow-hidden">
+                      <div className="absolute left-2/4 top-2/4 z-10 -translate-x-2/4 -translate-y-2/4 rounded-full bg-zinc-900 bg-opacity-75 p-4">
+                        {(
+                          historiques[index]
+                            ?.detail as unknown as Data.ScansData
+                        )?.chapitre ? (
+                          <Book />
+                        ) : (
+                          <Play />
+                        )}
+                      </div>
+
+                      <Image
+                        className="-z-10 aspect-video w-72 brightness-75 transition-transform"
+                        src={anime.options.affiche}
+                        alt="affiche d'un anime"
+                      />
+                    </div>
+                  )}
+
+                  <div className="my-2 flex justify-between text-left">
+                    <div>
+                      <Link
+                        href={{
+                          pathname: "/Home",
+                          query: { anime: anime.anime },
+                        }}
+                        className="text-xs text-zinc-400 hover:text-zinc-300 hover:underline"
+                      >
+                        {anime.anime}
+                      </Link>
+
+                      <p className="text-lg text-main">
+                        {(
+                          historiques[index]
+                            ?.detail as unknown as Data.ScansData
+                        )?.chapitre && (
+                          <>
+                            {getCurrentChapitre(
+                              anime.anime!,
+                              index,
+                              historiques,
+                            )}
+                          </>
+                        )}
+                        {(
+                          historiques[index]
+                            ?.detail as unknown as Data.FilmsData
+                        )?.film && (
+                          <>
+                            Film{" "}
+                            {Number(
+                              (
+                                historiques[index]
+                                  ?.detail as unknown as Data.FilmsData
+                              )?.film,
+                            ) + 1}
+                          </>
+                        )}
+                        {(
+                          historiques[index]
+                            ?.detail as unknown as Data.EpisodesData
+                        )?.episode && (
+                          <>
+                            Saison{" "}
+                            {getScriptIndex({
+                              currentSaison: Number(
+                                (
+                                  historiques[index]
+                                    ?.detail as unknown as Data.EpisodesData
+                                ).saison,
+                              ),
+                              parts: anime.options.EPISODES_OPTIONS?.parts,
+                            })}
+                            {", "}
+                            {getCurrentEpisode(anime.anime, index, historiques)}
+                          </>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              )}
+            </div>
 
             <div className="mt-4 flex flex-col gap-2">
               {anime?.options.EPISODES_OPTIONS && (

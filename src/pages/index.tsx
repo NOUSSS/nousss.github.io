@@ -6,6 +6,7 @@ import Image, { StaticImageData } from "next/image";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
 import Link from "next/link";
 import Head from "next/head";
+import loadHistorique from "@/app/utils/Accueil/loadHistorique";
 
 import { Footer, RemoveHistorique } from "@/app/components/";
 import { ANIMES, AnimesType } from "@/animes/constants";
@@ -73,40 +74,10 @@ export default function Accueil() {
       copyAnimes.current = [...ANIMES];
     }
 
+    loadHistorique(setHistoriques);
+
     const shuffledAnimes = shuffle([...copyAnimes.current]);
     setRandomAnimes(shuffledAnimes.slice(0, 6));
-
-    const loadedHistoriques: Historique[] = [];
-
-    ["episodes", "scans", "films"].forEach((type) => {
-      const items = JSON.parse(localStorage.getItem(type) || "[]") as DatasArr;
-
-      items.forEach((item) => {
-        const animeName = formatName(item.name);
-        const redirectAnime = type.charAt(0).toUpperCase() + type.slice(1);
-
-        if (
-          animeName &&
-          !loadedHistoriques.find(
-            ({ name, redirect }) =>
-              name === animeName && redirect === redirectAnime,
-          )
-        ) {
-          loadedHistoriques.push({
-            name: animeName,
-            redirect: redirectAnime,
-            detail: item,
-          });
-        } else {
-          localStorage.setItem(
-            type,
-            JSON.stringify(items.filter(({ name }) => name === animeName)),
-          );
-        }
-      });
-    });
-
-    setHistoriques(loadedHistoriques);
 
     const updatedCatalogues = groupAnimesByCategory(
       ANIMES.map(({ anime, category }) => ({ anime, category })),
