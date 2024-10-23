@@ -53,6 +53,12 @@ const episodes = [
   { name: "Choisis-moi", index: "49" },
   { name: "De fous pas de danse sous la lune", index: "50" },
   { name: "Malice théâtrale", index: "51" },
+  { name: "Conclusion dans le feu et la glace", index: "52" },
+  { name: "Gorgeous Tiger", index: "53" },
+  {
+    name: "Opération reprise de la mairie",
+    index: "54",
+  },
 ];
 
 export default episodes;
