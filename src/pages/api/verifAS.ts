@@ -26,6 +26,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return saisonCount;
     });
 
+    const scans = await page.evaluate(() => {
+      let scanCount = 0;
+
+      document.querySelectorAll("a").forEach((e: HTMLAnchorElement) => {
+        if (e.href.includes("scan")) scanCount++;
+      });
+
+      return scanCount;
+    });
+
     await page.goto(`https://${url}/film/vostfr`);
 
     const films = await page.evaluate(() => {
@@ -42,9 +52,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     await browser.close();
 
-    res.status(200).json({ saisons, films });
+    res.status(200).json({ saisons, films, scans });
   } catch {
-    res.status(200).json({ saisons: 0, films: 0 });
+    res.status(200).json({ saisons: 0, films: 0, scans: 0 });
   }
 };
 

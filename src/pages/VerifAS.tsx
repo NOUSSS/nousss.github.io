@@ -13,6 +13,7 @@ interface Log {
   manque: {
     films: number;
     seasons: number;
+    scans: number;
   };
   anime: string;
   url: string;
@@ -39,62 +40,68 @@ export default function Suggest() {
 
             await Promise.all(
               ANIMES.map(async ({ options, anime }) => {
-                if (
-                  (options.EPISODES_OPTIONS && options.saisons) ||
-                  options.FILM_OPTIONS
-                ) {
-                  let url: string | undefined;
+                let url: string | undefined;
 
-                  if (options.EPISODES_OPTIONS) {
-                    url = options.EPISODES_OPTIONS.SCRIPT_URL({
-                      index: 1,
-                      lang: "vostfr",
-                    });
+                if (options.EPISODES_OPTIONS) {
+                  url = options.EPISODES_OPTIONS.SCRIPT_URL({
+                    index: 1,
+                    lang: "vostfr",
+                  });
 
-                    url = url.slice(0, url.indexOf("saison"));
-                  } else if (options.FILM_OPTIONS) {
-                    url = options.FILM_OPTIONS.SCRIPT_URL("vostfr");
-                    url = url.slice(0, url.indexOf("film"));
-                  }
+                  url = url.slice(0, url.indexOf("saison"));
+                } else if (options.FILM_OPTIONS) {
+                  url = options.FILM_OPTIONS.SCRIPT_URL("vostfr");
+                  url = url.slice(0, url.indexOf("film"));
+                } else if (options.SCANS_OPTIONS) {
+                  url = options.SCANS_OPTIONS.SCRIPT_URL;
+                  url = url.slice(0, url.indexOf("scan"));
+                }
 
-                  if (url) {
-                    const AS = await fetch(
-                      `/api/verifAS?url=${url.replace("https://", "")}`,
-                    ).then((r) => r.json());
+                if (url) {
+                  const { saisons, films, scans } = await fetch(
+                    `/api/verifAS?url=${url.replace("https://", "")}`,
+                  ).then((r) => r.json());
 
-                    let saisonsMNS = 0;
-                    const filmsMNS = options.FILM_OPTIONS
-                      ? Object.keys(options.FILM_OPTIONS.names).length
-                      : 0;
+                  let saisonsMNS = 0;
 
-                    const keys = options.saisons
-                      ? Object.keys(options.saisons)
-                      : 0;
+                  const filmsMNS = options.FILM_OPTIONS
+                    ? Object.keys(options.FILM_OPTIONS.names).length
+                    : 0;
 
-                    const values = options.saisons
-                      ? Object.values(options.saisons)
-                      : 0;
+                  const scansMNS = options.SCANS_OPTIONS
+                    ? options.SCANS_OPTIONS.versions
+                      ? options.SCANS_OPTIONS.versions.length
+                      : 1
+                    : 0;
 
-                    if (keys && values) {
-                      for (let i = 0; i < keys.length; i++) {
-                        if (!values[i].hs && keys[i].toLowerCase() !== "oav") {
-                          saisonsMNS++;
-                        }
+                  const keys = options.saisons
+                    ? Object.keys(options.saisons)
+                    : 0;
+
+                  const values = options.saisons
+                    ? Object.values(options.saisons)
+                    : 0;
+
+                  if (keys && values) {
+                    for (let i = 0; i < keys.length; i++) {
+                      if (!values[i].hs && keys[i].toLowerCase() !== "oav") {
+                        saisonsMNS++;
                       }
                     }
-
-                    setLogs((prevLogs) => [
-                      ...prevLogs,
-                      {
-                        manque: {
-                          seasons: AS.saisons - saisonsMNS,
-                          films: AS.films - filmsMNS,
-                        },
-                        anime,
-                        url,
-                      },
-                    ]);
                   }
+
+                  setLogs((prevLogs) => [
+                    ...prevLogs,
+                    {
+                      manque: {
+                        seasons: saisons - saisonsMNS,
+                        films: films - filmsMNS,
+                        scans: scans - scansMNS,
+                      },
+                      anime,
+                      url,
+                    },
+                  ]);
                 }
               }),
             );
@@ -109,48 +116,52 @@ export default function Suggest() {
 
         <div className="mt-12 text-left">
           <p className="text-2xl">
-            Logs ({logs.length}/
-            {
-              ANIMES.filter(
-                ({ options }) =>
-                  options.EPISODES_OPTIONS || options.FILM_OPTIONS,
-              ).length
-            }
-            ) -{" "}
+            Logs ({logs.length}/{ANIMES.length}) -{" "}
             {
               logs.filter(
-                ({ manque: { seasons, films } }) => seasons > 0 || films > 0,
+                ({ manque: { seasons, films, scans } }) =>
+                  seasons > 0 || films > 0 || scans > 0,
               ).length
             }{" "}
             erreur(s) trouvée(s)
           </p>
 
           <ul className="mt-4 flex flex-col">
-            {logs?.map(({ manque: { seasons, films }, anime, url }) => (
+            {logs?.map(({ manque: { seasons, films, scans }, anime, url }) => (
               <li
-                className={cn("flex gap-2 text-green-500", {
-                  "text-red-500": seasons > 0 || films > 0,
-                })}
+                className="flex items-center gap-2 text-green-500"
                 key={anime}
               >
                 <Link
                   target="_blank"
                   href={url}
-                  className="text-lg hover:underline"
+                  className={cn("text-lg hover:underline", {
+                    "text-red-500": seasons > 0 || films > 0 || scans > 0,
+                  })}
                 >
                   {anime}
+                  {" - "}
                 </Link>
-                {" - "}
-                <p className="text-base">
-                  {seasons > 0
-                    ? `Il manque ${seasons} saison(s)`
-                    : "Aucune nouvelle saison"}
+                <p
+                  className={cn("text-base", {
+                    "text-red-500": seasons > 0,
+                  })}
+                >
+                  Saisons: {seasons} |{" "}
                 </p>
-
-                <p className="text-base">
-                  {films > 0
-                    ? ` | Il manque ${films} films(s)`
-                    : " | Aucun nouveau film"}
+                <p
+                  className={cn("text-base", {
+                    "text-red-500": films > 0,
+                  })}
+                >
+                  Films: {films} |{" "}
+                </p>
+                <p
+                  className={cn("text-base", {
+                    "text-red-500": scans > 0,
+                  })}
+                >
+                  Scans: {scans}
                 </p>
               </li>
             ))}
