@@ -24,30 +24,32 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "v") {
-        router.push("/VerifSaisons");
+        router.push("/VerifAS");
       }
     };
 
-    const disableDevTools = (e: any) => {
-      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-        e.preventDefault();
-      }
-      if (e.keyCode === 123) {
-        e.preventDefault();
-      }
-    };
-
-    document.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-    });
-
-    document.addEventListener("keydown", disableDevTools);
     document.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      document.removeEventListener("keydown", disableDevTools);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    if (process.env.NODE_ENV === "production") {
+      const disableDevTools = (e: any) => {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+          e.preventDefault();
+        }
+        if (e.keyCode === 123) {
+          e.preventDefault();
+        }
+      };
+
+      document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+      });
+
+      document.addEventListener("keydown", disableDevTools);
+
+      return () => {
+        document.removeEventListener("keydown", disableDevTools);
+      };
+    }
   }, []);
 
   return (

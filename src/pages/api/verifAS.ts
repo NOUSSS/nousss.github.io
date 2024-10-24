@@ -26,11 +26,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return saisonCount;
     });
 
+    await page.goto(`https://${url}/film/vostfr`);
+
+    const films = await page.evaluate(() => {
+      const select = document.querySelector(
+        "#selectEpisodes",
+      ) as HTMLSelectElement;
+
+      if (select) {
+        return select.options.length;
+      } else {
+        return 0;
+      }
+    });
+
     await browser.close();
 
-    res.status(200).json({ saisons });
+    res.status(200).json({ saisons, films });
   } catch {
-    res.status(200).json({ saisons: 0 });
+    res.status(200).json({ saisons: 0, films: 0 });
   }
 };
 
