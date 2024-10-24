@@ -32,11 +32,6 @@ export default class KurokoBasket extends Anime {
       SCRIPT_URL: (langage: string) =>
         `https://anime-sama.fr/catalogue/kuroko-no-basket/film/${langage}/episodes.js`,
       names: films,
-      BLACKLIST_URL: [
-        "https://sendvid.com/embed/c66eycw4",
-        "https://sendvid.com/embed/bg29pir3",
-        "https://sendvid.com/embed/oj3esvvo",
-      ],
     };
 
     this.EPISODES_OPTIONS = {
