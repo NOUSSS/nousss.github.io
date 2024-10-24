@@ -22,6 +22,89 @@ interface Log {
 export default function Suggest() {
   const [logs, setLogs] = useState<Log[]>([]);
 
+  const Verif = async () => {
+    const loading = toast.loading("Vérification en cours");
+
+    await Promise.all(
+      ANIMES.map(async ({ options, anime }) => {
+        let url: string | undefined;
+
+        if (options.EPISODES_OPTIONS) {
+          url = options.EPISODES_OPTIONS.SCRIPT_URL({
+            index: 1,
+            lang: "vostfr",
+          });
+
+          url = url.slice(0, url.indexOf("saison"));
+        } else if (options.FILM_OPTIONS) {
+          url = options.FILM_OPTIONS.SCRIPT_URL("vostfr");
+          url = url.slice(0, url.indexOf("film"));
+        } else if (options.SCANS_OPTIONS) {
+          url = options.SCANS_OPTIONS.SCRIPT_URL;
+          url = url.slice(0, url.indexOf("scan"));
+        }
+
+        if (url) {
+          const { saisons, films, scans } = await fetch(
+            `/api/verifAS?url=${url.replace("https://", "")}`,
+          ).then((r) => r.json());
+
+          let saisonsMNS = 0;
+
+          const filmsMNS = options.FILM_OPTIONS
+            ? Object.keys(options.FILM_OPTIONS.names).length
+            : 0;
+
+          const scansMNS = options.SCANS_OPTIONS
+            ? options.SCANS_OPTIONS.versions
+              ? options.SCANS_OPTIONS.versions.length + 1
+              : 1
+            : 0;
+
+          const keys = options.saisons ? Object.keys(options.saisons) : 0;
+
+          const values = options.saisons ? Object.values(options.saisons) : 0;
+
+          if (keys && values) {
+            for (let i = 0; i < keys.length; i++) {
+              if (!values[i].hs && keys[i].toLowerCase() !== "oav") {
+                saisonsMNS++;
+              }
+            }
+          }
+
+          const manque = {
+            seasons: saisons - saisonsMNS,
+            films: films - filmsMNS,
+            scans: scans - scansMNS,
+          };
+
+          setLogs((prevLogs) => [
+            ...prevLogs,
+            {
+              manque,
+              anime,
+              url,
+            },
+          ]);
+
+          const icon =
+            manque.seasons > 0 || manque.films > 0 || manque.scans > 0
+              ? "❌"
+              : "✅";
+
+          console.log(
+            `${icon} ${anime} - Saisons: ${manque.seasons} | Films: ${manque.films} | Scans: ${manque.scans}`,
+          );
+        }
+      }),
+    );
+
+    toast.success("Vérification terminé", {
+      id: loading,
+    });
+  };
+
   return (
     <>
       <Head>
@@ -33,84 +116,7 @@ export default function Suggest() {
       <main className="border border-neutral-700 bg-zinc-900 bg-opacity-50 p-4 sm:p-6 md:mx-24 md:rounded-md xl:mx-44">
         <h1 className="mb-6 text-4xl">Vérification des animes</h1>
 
-        <button
-          className="btn w-full"
-          onClick={async () => {
-            const loading = toast.loading("Vérification en cours");
-
-            await Promise.all(
-              ANIMES.map(async ({ options, anime }) => {
-                let url: string | undefined;
-
-                if (options.EPISODES_OPTIONS) {
-                  url = options.EPISODES_OPTIONS.SCRIPT_URL({
-                    index: 1,
-                    lang: "vostfr",
-                  });
-
-                  url = url.slice(0, url.indexOf("saison"));
-                } else if (options.FILM_OPTIONS) {
-                  url = options.FILM_OPTIONS.SCRIPT_URL("vostfr");
-                  url = url.slice(0, url.indexOf("film"));
-                } else if (options.SCANS_OPTIONS) {
-                  url = options.SCANS_OPTIONS.SCRIPT_URL;
-                  url = url.slice(0, url.indexOf("scan"));
-                }
-
-                if (url) {
-                  const { saisons, films, scans } = await fetch(
-                    `/api/verifAS?url=${url.replace("https://", "")}`,
-                  ).then((r) => r.json());
-
-                  let saisonsMNS = 0;
-
-                  const filmsMNS = options.FILM_OPTIONS
-                    ? Object.keys(options.FILM_OPTIONS.names).length
-                    : 0;
-
-                  const scansMNS = options.SCANS_OPTIONS
-                    ? options.SCANS_OPTIONS.versions
-                      ? options.SCANS_OPTIONS.versions.length + 1
-                      : 1
-                    : 0;
-
-                  const keys = options.saisons
-                    ? Object.keys(options.saisons)
-                    : 0;
-
-                  const values = options.saisons
-                    ? Object.values(options.saisons)
-                    : 0;
-
-                  if (keys && values) {
-                    for (let i = 0; i < keys.length; i++) {
-                      if (!values[i].hs && keys[i].toLowerCase() !== "oav") {
-                        saisonsMNS++;
-                      }
-                    }
-                  }
-
-                  setLogs((prevLogs) => [
-                    ...prevLogs,
-                    {
-                      manque: {
-                        seasons: saisons - saisonsMNS,
-                        films: films - filmsMNS,
-                        scans: scans - scansMNS,
-                      },
-                      anime,
-                      url,
-                    },
-                  ]);
-                }
-              }),
-            );
-
-            toast.success("Vérification terminé", {
-              id: loading,
-            });
-          }}
-        >
+        <button className="btn w-full" onClick={Verif}>
           Vérifier
         </button>
 
