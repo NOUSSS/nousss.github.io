@@ -142,6 +142,13 @@ const Films = () => {
           property="og:description"
           content="Les films de l'anime que vous souhaitez"
         />
+
+        {anime.anime?.options.affiche && (
+          <meta
+            property="twitter:card"
+            content={anime.anime.options.affiche.src}
+          />
+        )}
       </Head>
 
       <main className="flex flex-col items-center">

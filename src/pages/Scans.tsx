@@ -256,6 +256,13 @@ const Scans = () => {
           property="og:description"
           content="Les scans de l'anime que vous souhaitez"
         />
+
+        {anime.anime?.options.affiche && (
+          <meta
+            property="twitter:card"
+            content={anime.anime.options.affiche.src}
+          />
+        )}
       </Head>
 
       <main className="flex select-none flex-col items-center">

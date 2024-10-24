@@ -61,6 +61,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
         <meta property="twitter:title" content="Mugiwara-no Streaming"></meta>
         <meta property="twitter:image" content="/Logo.png" />
+        <meta property="og:image" content="/Logo.png" />
 
         <meta
           property="twitter:description"

@@ -165,6 +165,10 @@ const Home = () => {
           property="og:description"
           content="L'accueil. Là où vous pouvez choisir entre : Films, Scans ou Episodes"
         />
+
+        {anime?.options.affiche && (
+          <meta property="twitter:card" content={anime.options.affiche.src} />
+        )}
       </Head>
 
       <main className="top-0 flex flex-col gap-12 border-b border-neutral-700 bg-zinc-900 bg-opacity-50 text-left min-[460px]:top-16 min-[460px]:border min-[460px]:bg-opacity-70">
