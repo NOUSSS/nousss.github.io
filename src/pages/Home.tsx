@@ -545,7 +545,7 @@ const Home = () => {
                       )}
 
                       <ul
-                        className="ml-6 inline-flex flex-col text-2xl"
+                        className="ml-3 inline-flex flex-col text-xl md:ml-6 md:text-2xl"
                         ref={(el) => {
                           if (el) {
                             scansRef.current[0] = el;
