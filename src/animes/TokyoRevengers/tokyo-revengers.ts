@@ -46,6 +46,17 @@ class TokyoRevengers extends Anime {
         index: string | number;
       }) =>
         `https://anime-sama.fr/s2/scans/Tokyo Revengers/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Spin off Baji et Chifuyu",
+          value: "_spin-off|Tokyo Revengers Spin-off",
+        },
+        {
+          name: "Todai Revengers (Parodie)",
+          value: "_parodie|Tokyo Revengers Parodie",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
