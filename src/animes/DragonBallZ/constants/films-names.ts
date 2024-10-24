@@ -72,4 +72,8 @@ export const films: Options.Film = {
 
     image: () => getImage(13),
   },
+  14: {
+    name: "Bardock VS Freezer",
+    image: () => getImage(14),
+  },
 };

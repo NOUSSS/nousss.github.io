@@ -12,6 +12,7 @@ import F11 from "@/assets/Animes/DragonBallZ/Films/10.jpg";
 import F12 from "@/assets/Animes/DragonBallZ/Films/11.jpg";
 import F13 from "@/assets/Animes/DragonBallZ/Films/12.webp";
 import F14 from "@/assets/Animes/DragonBallZ/Films/13.jpeg";
+import F15 from "@/assets/Animes/DragonBallZ/Films/14.jpg";
 
 export const images = {
   0: F1,
@@ -28,6 +29,7 @@ export const images = {
   11: F12,
   12: F13,
   13: F14,
+  14: F15,
 };
 
 export type ImageKey = keyof typeof images;
