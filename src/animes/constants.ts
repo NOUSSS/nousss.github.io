@@ -176,6 +176,7 @@ import Another from "./Another/another";
 import EdensZero from "./EdensZero/edens-zero";
 import TheElusiveSamurai from "./TheElusiveSamurai/the-elusive-samurai";
 import Sawako from "./Sawako/sawako";
+import Magi from "./Magi/magi";
 
 export interface AnimesType {
   anime: string;
@@ -1905,5 +1906,18 @@ Dans cette classe, il y découvre une atmosphère tendue ainsi qu'un étrange co
     synopsis: `Kimi Ni Todoke raconte l'histoire d'une jeune fille nommée Sawako Kuronuma, qui en entrant au Lycée se promet une chose : se faire des amis. Mais, des tas d'obstacles se dressent entre elle et ses camarades. En effet, Sawako possède une apparence qui laisse (presque) tout le monde perplexe. Avec une peau pâle, des cheveux longs et noirs et un regard sombre, Sawako devient celle qu'on fuit, qu'on craint et dont on se moque. De plus, ses camarades l'ont surnommée Sadako (en référence au film Ring) dû aux rumeurs qui évoquaient le fait que Sawako aurait le don de parler aux fantômes ! Mais, même si la persévérance reste son atout, en étant timide et réservée, son manque de confiance en soi ne la rapproche pas des autres.
 Mais, le jour où le garçon le plus aimable et populaire de la classe commence à lui parler, tout change alors pour Sawako. Kazehaya, en la saluant tous les matins, montre sûrement qu'il ne faut pas juger les personnes sur leur apparence.`,
     options: new Sawako(),
+  },
+  {
+    anime: "Magi : The Labyrinth of Magic",
+    category: ["Action", "Aventure", "Fantasy"],
+    synopsis: `L'histoire de Magi est en partie inspirée des fameux contes & légendes des mille et une nuits.
+
+Dans le monde de Magi, d'étranges lieux appelés "Labyrinth" ont commencé à apparaître de manière totalement aléatoire 14 ans avant le début de l'histoire. A l'intérieur ? Des montagnes de richesses, mais aussi d'horribles pièges et dangers. Cependant, dès qu'une personne est arrivée au bout du Labyrinth, celui-ci disparaît, laissant ses trésors à celui qui l'a vaincu.
+
+Aladdin est un enfant tout ce qu'il y a de plus inoffensif... du moins, en apparence ! En effet, la flute qu'il porte autour du cou est la demeure d'un puissant djinn du nom de Ugo.
+Un jour, le duo fait la connaissance d'Ali Baba, dont le rêve est d'entrer dans un Labyrinth, en quête de richesse et de gloire ! Avec l'aide d'Aladdin, son rêve lui semble être à portée de main.
+
+Mais Ali Baba ne se rend pas compte qu'avec Aladdin, son aventure ira bien plus loin.`,
+    options: new Magi(),
   },
 ];
