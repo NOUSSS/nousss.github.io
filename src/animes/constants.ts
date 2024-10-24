@@ -177,6 +177,7 @@ import EdensZero from "./EdensZero/edens-zero";
 import TheElusiveSamurai from "./TheElusiveSamurai/the-elusive-samurai";
 import Sawako from "./Sawako/sawako";
 import Magi from "./Magi/magi";
+import VampireKnight from "./VampireKnight/vampire-knight";
 
 export interface AnimesType {
   anime: string;
@@ -1919,5 +1920,15 @@ Un jour, le duo fait la connaissance d'Ali Baba, dont le rêve est d'entrer dans
 
 Mais Ali Baba ne se rend pas compte qu'avec Aladdin, son aventure ira bien plus loin.`,
     options: new Magi(),
+  },
+  {
+    anime: "Vampire Knight",
+    category: ["Fantastique", "Romance"],
+    synopsis: `Yuki Cross et Zero Kiryu sont tout les deux élèves a l'Academie Cross, qui abrite secrètement en son enceinte des étudiants humains et... des vampires. Yuki et Zero sont les seuls élèves au courant de ce secret, et en tant que chargés de discipline, ils doivent s'assurer que la cohabitation reste pacifique et que, pour leur sécurité, aucun élève humain ne sort la nuit.
+
+Mais Zero, dont les parents hunters ont été tués par un vampire ne rêve que d'une chose, se débarrasser d'eux. Quant à Yuki, fille adoptive du directeur de l'Academie, elle partage le rêve de son père et espère voir un jour un monde où humains et vampires cohabiterons sans peine. Ses sentiments pour le noble Kaname Kuran, vampires de sang pur qui l'a sauvée quand elle était enfant, la détermine encore plus a aller jusqu'au bout.
+
+Mais bon nombre de choses se dresserons sur son chemin, à commencer par ce auquel elle s'attendait le moins...`,
+    options: new VampireKnight(),
   },
 ];
