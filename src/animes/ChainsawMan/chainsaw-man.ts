@@ -30,6 +30,13 @@ class ChainsawMan extends Anime {
         index: string | number;
       }) =>
         `https://anime-sama.fr/s2/scans/Chainsaw Man/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Digital colored comics",
+          value: "_special|Chainsaw Man – Digital Colored Comics",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
