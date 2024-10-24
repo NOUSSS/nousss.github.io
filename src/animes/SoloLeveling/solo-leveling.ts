@@ -24,6 +24,21 @@ class SoloLeveling extends Anime {
 
       IMAGE_URL: ({ chapitre, index }) =>
         `https://anime-sama.fr/s2/scans/Solo Leveling/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Side Story",
+          value: "_side_story|Solo Leveling Side Story",
+        },
+        {
+          name: "Ragnarok",
+          value: "_ragnarok|Solo Leveling : Ragnarök",
+        },
+        {
+          name: "Arise",
+          value: "_arise|Solo Leveling Arise",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {

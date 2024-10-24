@@ -25,13 +25,13 @@ export default function Suggest() {
   return (
     <>
       <Head>
-        <title>Vérifications des saisons | Mugiwara-no Streaming</title>
+        <title>Vérifications des animes | Mugiwara-no Streaming</title>
 
-        <meta property="og:description" content="Vérification des saisons" />
+        <meta property="og:description" content="Vérification des animes" />
       </Head>
 
       <main className="border border-neutral-700 bg-zinc-900 bg-opacity-50 p-4 sm:p-6 md:mx-24 md:rounded-md xl:mx-44">
-        <h1 className="mb-6 text-4xl">Vérification des saisons</h1>
+        <h1 className="mb-6 text-4xl">Vérification des animes</h1>
 
         <button
           className="btn w-full"
