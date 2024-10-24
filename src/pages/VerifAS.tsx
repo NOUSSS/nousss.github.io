@@ -70,7 +70,7 @@ export default function Suggest() {
 
                   const scansMNS = options.SCANS_OPTIONS
                     ? options.SCANS_OPTIONS.versions
-                      ? options.SCANS_OPTIONS.versions.length
+                      ? options.SCANS_OPTIONS.versions.length + 1
                       : 1
                     : 0;
 
