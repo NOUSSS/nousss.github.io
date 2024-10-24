@@ -305,7 +305,10 @@ const Scans = () => {
               query: { anime: anime!.anime.anime },
             }}
           >
-            {anime.anime.anime}
+            {anime.anime.anime}{" "}
+            {anime.version && anime.anime.options.SCANS_OPTIONS?.versions
+              ? ` - ${anime.anime.options.SCANS_OPTIONS.versions.find(({ value }) => value === anime.version)?.name}`
+              : ""}
           </Link>
         )}
 
@@ -359,46 +362,6 @@ const Scans = () => {
               placeholderRef={placeholderRef}
             />
           </div>
-
-          {anime.anime?.options.SCANS_OPTIONS?.versions && (
-            <Select
-              placeholder="Changer de version"
-              placeholderRef={placeholderRefVersion}
-              items={[
-                {
-                  name: "Normal",
-                  value: "return-normal",
-                  disabled: anime.version ? false : true,
-                },
-                ...anime.anime.options.SCANS_OPTIONS.versions.map(
-                  ({ value, name }) => ({
-                    value,
-                    name,
-                    disabled: anime.version === value,
-                  }),
-                ),
-              ]}
-              onSelect={(items) => {
-                ClearCache();
-
-                if (items[0].value === "return-normal") {
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    version: undefined,
-                  }));
-
-                  scanData?.setVersion("");
-                } else {
-                  updateAnime((currentState) => ({
-                    ...currentState,
-                    version: items[0].value,
-                  }));
-
-                  scanData?.setVersion(items[0].value);
-                }
-              }}
-            />
-          )}
         </div>
 
         <Buttons invert={false} />

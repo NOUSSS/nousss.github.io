@@ -22,6 +22,8 @@ import EpisodeData from "@/app/class/episodeData";
 import FilmData from "@/app/class/filmData";
 import loadHistorique from "@/app/utils/Accueil/loadHistorique";
 import getScriptIndex from "@/app/utils/Episodes/getScriptIndex";
+import ScanData from "@/app/class/scanData";
+import clearCache from "@/app/cache/ClearCache";
 
 interface Query {
   [key: string]: string;
@@ -51,9 +53,11 @@ const Home = () => {
 
   const seasonPart = useRef<HTMLDivElement>(null);
   const filmPart = useRef<HTMLDivElement>(null);
+  const scansPart = useRef<HTMLDivElement>(null);
 
   const filmsRef = useRef<HTMLUListElement[]>([]);
   const saisonsRef = useRef<HTMLUListElement[]>([]);
+  const scansRef = useRef<HTMLUListElement[]>([]);
 
   const catsRef = useRef<HTMLDivElement[]>([]);
 
@@ -62,6 +66,7 @@ const Home = () => {
 
   const ChevronDownSeasonRef = useRef<SVGSVGElement>(null);
   const ChevronDownFilmsRef = useRef<SVGSVGElement>(null);
+  const ChevronDownScansRef = useRef<SVGSVGElement>(null);
 
   const Play = icons["Play"];
   const Book = icons["BookOpen"];
@@ -506,18 +511,103 @@ const Home = () => {
                 </div>
               )}
 
-              {anime?.options.SCANS_OPTIONS && (
-                <Link
-                  className="flex items-center gap-2 text-2xl font-normal transition-colors hover:text-main"
-                  href={{ pathname: "/Scans", query: { anime: anime.anime } }}
-                >
-                  <ArrowUpRight />
-                  {anime.category.includes("Webtoon") ? "Webtoon" : "Scans"}
-                </Link>
-              )}
-            </div>
+              <div className="mt-4 flex flex-col gap-2">
+                {anime?.options.SCANS_OPTIONS && (
+                  <div>
+                    <div className="inline-block">
+                      <p
+                        onClick={() => {
+                          const classList =
+                            ChevronDownScansRef.current?.classList;
 
-            {anime && <RelatedAnimes anime={anime} separation />}
+                          if (classList?.contains("rotate-180")) {
+                            classList.remove("rotate-180");
+                            scansPart.current?.classList.remove("hidden");
+                          } else {
+                            classList?.add("rotate-180");
+                            scansPart.current?.classList.add("hidden");
+                          }
+                        }}
+                        className="mb-4 flex cursor-pointer items-center gap-1 text-2xl font-normal hover:text-main"
+                      >
+                        <ChevronDown ref={ChevronDownScansRef} /> Scans
+                      </p>
+                    </div>
+
+                    <div ref={scansPart}>
+                      {anime.options.SCANS_OPTIONS?.versions && (
+                        <SearchBar
+                          placeholder="Rechercher un scan"
+                          className="mb-4"
+                          containerRef={scansRef}
+                          query="innerText"
+                        />
+                      )}
+
+                      <ul
+                        className="ml-6 inline-flex flex-col text-2xl"
+                        ref={(el) => {
+                          if (el) {
+                            scansRef.current[0] = el;
+                          }
+                        }}
+                      >
+                        <li
+                          className="transition-colors hover:text-main"
+                          onClick={() => {
+                            clearCache();
+
+                            const scanData = new ScanData(anime.anime);
+
+                            scanData.setVersion("");
+                          }}
+                        >
+                          <Link
+                            href={{
+                              pathname: "/Scans",
+                              query: {
+                                anime: anime?.anime,
+                              },
+                            }}
+                          >
+                            - {anime.anime}
+                          </Link>
+                        </li>
+
+                        {anime.options.SCANS_OPTIONS?.versions?.map(
+                          ({ name, value }) => (
+                            <li
+                              className="transition-colors hover:text-main"
+                              key={name}
+                              onClick={() => {
+                                clearCache();
+
+                                const scanData = new ScanData(anime.anime);
+
+                                scanData.setVersion(value);
+                              }}
+                            >
+                              <Link
+                                href={{
+                                  pathname: "/Scans",
+                                  query: {
+                                    anime: anime?.anime,
+                                  },
+                                }}
+                              >
+                                - {name}
+                              </Link>
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {anime && <RelatedAnimes anime={anime} separation />}
+              </div>
+            </div>
           </div>
         </div>
       </main>
