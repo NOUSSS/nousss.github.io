@@ -174,6 +174,8 @@ import InazumaEleven from "./InazumaEleven/inazuma-eleven";
 import Oregairu from "./Oregairu/oregairu";
 import Another from "./Another/another";
 import EdensZero from "./EdensZero/edens-zero";
+import TheElusiveSamurai from "./TheElusiveSamurai/the-elusive-samurai";
+import Sawako from "./Sawako/sawako";
 
 export interface AnimesType {
   anime: string;
@@ -1886,5 +1888,22 @@ Dans cette classe, il y découvre une atmosphère tendue ainsi qu'un étrange co
     synopsis:
       "L'histoire d'Eden's Zero prend place dans un monde fictif mais futuriste où les aventuriers et les explorateurs naviguent à travers le cosmos pour effectuer diverses missions. Shiki Grandbell est un étrange jeune homme qui a fait la rencontre de Rebecca et de son chat Happy sur sa planète natale, Grandbell. Ensemble, ils voyagent à travers le cosmos afin de rencontrer Mother et ainsi devenir les premiers aventuriers à accomplir cet exploit.",
     options: new EdensZero(),
+  },
+  {
+    anime: "The Elusive Samurai",
+    aliases: ["Nige Jōzu no Wakagimi"],
+    options: new TheElusiveSamurai(),
+    synopsis: `1333, entre les périodes Kamakura et Muromachi. Au terme d'une insurrection de Ashikaga Takauji, Hôjô Tokiyuki, jeune garçon dont le destin était d'hériter du shogunat, perd tout : sa famille, sa ville natale, les partisans de son clan suite... Dernier survivant de ce dernier, il devient alors le fugitif le plus recherché de la région. Mais heureusement, Tokiyuki a un don particulier pour la survie.
+
+À l'invitation de Suwa Yorishige, prêtre de la province de Shinano, le garçon s'enfuit et s'engage sur une voie qui lui permettra de devenir un véritable héros. Son histoire est celle de l'errance, de la dissimulation et de la reconquête... Ainsi commença la vie tumultueuse de l'insaisissable prince samouraï !`,
+    category: ["Action"],
+  },
+  {
+    anime: "Sawako",
+    aliases: ["Kimi ni todoke", "from me to you", "reaching you"],
+    category: ["Comédie", "Romance", "School Life", "Slice of Life"],
+    synopsis: `Kimi Ni Todoke raconte l'histoire d'une jeune fille nommée Sawako Kuronuma, qui en entrant au Lycée se promet une chose : se faire des amis. Mais, des tas d'obstacles se dressent entre elle et ses camarades. En effet, Sawako possède une apparence qui laisse (presque) tout le monde perplexe. Avec une peau pâle, des cheveux longs et noirs et un regard sombre, Sawako devient celle qu'on fuit, qu'on craint et dont on se moque. De plus, ses camarades l'ont surnommée Sadako (en référence au film Ring) dû aux rumeurs qui évoquaient le fait que Sawako aurait le don de parler aux fantômes ! Mais, même si la persévérance reste son atout, en étant timide et réservée, son manque de confiance en soi ne la rapproche pas des autres.
+Mais, le jour où le garçon le plus aimable et populaire de la classe commence à lui parler, tout change alors pour Sawako. Kazehaya, en la saluant tous les matins, montre sûrement qu'il ne faut pas juger les personnes sur leur apparence.`,
+    options: new Sawako(),
   },
 ];
