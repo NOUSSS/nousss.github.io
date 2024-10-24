@@ -18,6 +18,19 @@ export default class SlamDunk extends Anime {
       },
     };
 
+    this.SCANS_OPTIONS = {
+      SCRIPT_URL:
+        "https://anime-sama.fr/catalogue/slam-dunk/scan/vf/episodes.js",
+
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) => `https://anime-sama.fr/s2/scans/Slam Dunk/${chapitre}/${index}.jpg`,
+    };
+
     this.FILM_OPTIONS = {
       SCRIPT_URL: (langage) =>
         `https://anime-sama.fr/catalogue/slam-dunk/film/${langage}/episodes.js`,

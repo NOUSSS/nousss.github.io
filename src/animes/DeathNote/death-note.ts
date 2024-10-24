@@ -38,6 +38,13 @@ export default class DeathNote extends Anime {
         `https://anime-sama.fr/s2/scans/Death Note/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [109, 110],
+
+      versions: [
+        {
+          name: "One shot",
+          value: "_one-shot|Death Note One Shot",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
