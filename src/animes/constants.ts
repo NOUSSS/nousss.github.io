@@ -178,6 +178,8 @@ import TheElusiveSamurai from "./TheElusiveSamurai/the-elusive-samurai";
 import Sawako from "./Sawako/sawako";
 import Magi from "./Magi/magi";
 import VampireKnight from "./VampireKnight/vampire-knight";
+import Beelzebub from "./Beelzebub/beelzebub";
+import Wistoria from "./Wistoria/wistoria";
 
 export interface AnimesType {
   anime: string;
@@ -1930,5 +1932,23 @@ Mais Zero, dont les parents hunters ont été tués par un vampire ne rêve que 
 
 Mais bon nombre de choses se dresserons sur son chemin, à commencer par ce auquel elle s'attendait le moins...`,
     options: new VampireKnight(),
+  },
+  {
+    anime: "Beelzebub",
+    category: ["Action", "Comédie", "Surnaturel"],
+    synopsis: `Le lycée Ishiyama est un établissement entièrement fréquenté par des délinquants, où la violence et l'anarchie régnent. Cependant, il y a une règle universellement reconnue : ne pas croiser l'étudiant de première année Tatsumi Oga, le combattant le plus vicieux d'Ishiyama.
+
+Un jour, Oga est au bord d'une rivière lorsqu'il rencontre un homme qui descend la rivière. Après l'avoir récupéré, l'homme s'ouvre en deux pour révéler un bébé, qui rampe sur le dos d'Oga. Bien qu'il ne le sache pas encore, ce bébé se nomme Kaiser de Emperana Beelzebub IV, ou «Baby Beel» pour faire plus court, le fils du Seigneur des Démons!
+
+Comme si trouver le futur Seigneur des enfers ne suffisait pas, Oga est aussi confrontée à Hildegard, la servante démoniaque de Beel. Ensemble, ils vont tenter d'élever Baby Beel, bien qu'ils soient entourés de délinquants juvéniles et de puissants démons.`,
+    options: new Beelzebub(),
+  },
+  {
+    anime: "Wistoria: Wand and Sword",
+    aliases: ["Tsue to Tsurugi no Wistoria"],
+    category: ["Action", "Aventure", "Comédie", "Drame", "Fantasy"],
+    options: new Wistoria(),
+    synopsis:
+      "Cherchant à tenir la promesse faite à un ami d'enfance, Will Serfort intègre l'Académie magique de Rigarden dans le but de se hisser au sommet du monde magique. Mais il y a un problème : il ne sait pas utiliser la magie ! Ses compétences à l'épée seront-elles la clé qui lui permettra de révéler son véritable potentiel ?",
   },
 ];
