@@ -129,6 +129,7 @@ export namespace Options {
 
   interface VersionType {
     name: string;
+    default?: boolean;
     value: string;
   }
 

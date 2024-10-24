@@ -79,6 +79,13 @@ const Scans = () => {
 
       if (lastVersion) {
         updateAnime({ version: lastVersion });
+      } else {
+        const defaultVersion =
+          anime.anime?.options.SCANS_OPTIONS?.versions?.find((t) => t.default);
+
+        if (defaultVersion) {
+          updateAnime({ version: defaultVersion.name });
+        }
       }
 
       updateAnime((currentState) => ({

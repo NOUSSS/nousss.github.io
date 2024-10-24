@@ -36,6 +36,13 @@ class BlackClover extends Anime {
         index: string | number;
       }) =>
         `https://anime-sama.fr/s2/scans/Black Clover/${chapitre}/${index}.jpg`,
+
+      versions: [
+        {
+          name: "Quartet Knights",
+          value: "_quartet_knights|Black Clover",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
