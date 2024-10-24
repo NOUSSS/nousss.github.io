@@ -3,6 +3,7 @@ import { Anime } from "@/app/class/anime";
 
 import names from "./constants/episodes-names";
 import Affiche from "@/assets/Animes/SpyXFamily/affiche.jpg";
+import { getImageFilms } from "./constants/images-films";
 
 class SpyXFamily extends Anime {
   constructor() {
@@ -41,6 +42,17 @@ class SpyXFamily extends Anime {
         `https://anime-sama.fr/s2/scans/Spy X Family/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [8, 18, 25, 26, 34, 42, 50, 60, 74, 75],
+    };
+
+    this.FILM_OPTIONS = {
+      SCRIPT_URL: (lang) =>
+        `https://anime-sama.fr/catalogue/spy-x-family/film/${lang}/episodes.js`,
+      names: {
+        1: {
+          name: "Code White",
+          image: () => getImageFilms(1),
+        },
+      },
     };
 
     this.EPISODES_OPTIONS = {
