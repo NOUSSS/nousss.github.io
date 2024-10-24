@@ -56,8 +56,23 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         <title>Mugiwara-no Streaming</title>
         <meta
           name="description"
-          content="Site de référencement d'animes (films + scans)"
+          content="Mugiwara no Streaming est un site de référencement d'animes (films + scans) sans publicitées intrusives et avec une interface intuitive."
         />
+
+        <meta property="twitter:title" content="Mugiwara-no Streaming"></meta>
+        <meta property="twitter:image" content="/Logo.png" />
+
+        <meta
+          property="twitter:description"
+          content="Mugiwara no Streaming est un site de référencement d'animes (films + scans) sans publicitées intrusives et avec une interface intuitive."
+        />
+
+        <meta
+          property="og:url"
+          content="https://mugiwara-no-streaming.com"
+        ></meta>
+        <meta property="og:site_name" content="Mugiwara-no Streaming" />
+
         <meta name="keywords" content="anime, scans, film, streaming" />
       </Head>
 
