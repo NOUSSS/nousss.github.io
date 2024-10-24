@@ -1,4 +1,5 @@
 import { Anime } from "@/app/class/anime";
+import { getImage } from "./constants/images-films";
 
 import Affiche from "@/assets/Animes/Naruto/Affiche.jpg";
 import episodesNames from "./constants/episodes-names";
@@ -21,6 +22,25 @@ class Naruto extends Anime {
         aliases: ["saisons"],
         hs: true,
         image: () => s1,
+      },
+    };
+
+    this.FILM_OPTIONS = {
+      SCRIPT_URL: (langage: string) =>
+        `https://anime-sama.fr/catalogue/naruto/film/${langage}/episodes.js`,
+      names: {
+        1: {
+          name: "Naruto et la princesse des neiges",
+          image: () => getImage(1),
+        },
+        2: {
+          name: "La légende de la pierre de Guelel",
+          image: () => getImage(2),
+        },
+        3: {
+          name: "Mission spéciale au pays de la Lune",
+          image: () => getImage(3),
+        },
       },
     };
 
