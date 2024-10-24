@@ -56,6 +56,12 @@ class Naruto extends Anime {
       }) => `https://anime-sama.fr/s2/scans/Naruto/${chapitre}/${index}.jpg`,
 
       CHAPITRE_SPECIAUX: [700, 701],
+      versions: [
+        {
+          name: "Gaiden : La spirale au coeur du tourbillon",
+          value: "_one_shot|Naruto Gaiden: La Spirale Au Coeur Du Tourbillon",
+        },
+      ],
     };
 
     this.EPISODES_OPTIONS = {
