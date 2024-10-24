@@ -32,9 +32,6 @@ class Roshidere extends Anime {
         `https://anime-sama.fr/s2/scans/Roshidere Anglais/${chapitre}/${index}.jpg`,
     };
 
-    this.note =
-      "La suite en VF sort demain (jeudi) heure non precisée";
-
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/roshidere/saison${index}/${lang}/episodes.js`,
