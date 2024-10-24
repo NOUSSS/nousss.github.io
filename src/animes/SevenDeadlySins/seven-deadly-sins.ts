@@ -39,6 +39,20 @@ export default class SevenDeadlySins extends Anime {
       names: films,
     };
 
+    this.SCANS_OPTIONS = {
+      SCRIPT_URL:
+        "https://anime-sama.fr/catalogue/seven-deadly-sins/scan/vf/episodes.js",
+
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
+        `https://anime-sama.fr/s2/scans/Seven Deadly Sins/${chapitre}/${index}.jpg`,
+    };
+
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/seven-deadly-sins/saison${index}/${lang}/episodes.js`,

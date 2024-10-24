@@ -22,6 +22,20 @@ class TheDangersInMyHeart extends Anime {
       },
     } as Options.Season;
 
+    this.SCANS_OPTIONS = {
+      SCRIPT_URL:
+        "https://anime-sama.fr/catalogue/boku-no-kokoro-no-yabai-yatsu/scan/vf/episodes.js",
+
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
+        `https://anime-sama.fr/s2/scans/Boku no Kokoro no Yabai Yatsu/${chapitre}/${index}.jpg`,
+    };
+
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/boku-no-kokoro-no-yabai-yatsu/saison${index}/${lang}/episodes.js`,

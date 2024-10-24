@@ -17,6 +17,20 @@ class ReMonster extends Anime {
       },
     };
 
+    this.SCANS_OPTIONS = {
+      SCRIPT_URL:
+        "https://anime-sama.fr/catalogue/re-monster/scan/vf/episodes.js",
+
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
+        `https://anime-sama.fr/s2/scans/Re:monster/${chapitre}/${index}.jpg`,
+    };
+
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }) =>
         `https://anime-sama.fr/catalogue/re-monster/saison${index}/${lang}/episodes.js`,

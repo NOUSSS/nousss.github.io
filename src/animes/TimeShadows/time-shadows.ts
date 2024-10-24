@@ -18,6 +18,20 @@ class TimeShadows extends Anime {
       },
     } as Options.Season;
 
+    this.SCANS_OPTIONS = {
+      SCRIPT_URL:
+        "https://anime-sama.fr/catalogue/time-shadows/scan/vf/episodes.js",
+
+      IMAGE_URL: ({
+        chapitre,
+        index,
+      }: {
+        chapitre: string | number;
+        index: string | number;
+      }) =>
+        `https://anime-sama.fr/s2/scans/Time Shadows/${chapitre}/${index}.jpg`,
+    };
+
     this.EPISODES_OPTIONS = {
       SCRIPT_URL: ({ index, lang }: { index: number | string; lang: string }) =>
         `https://anime-sama.fr/catalogue/time-shadows/saison${index}/${lang}/episodes.js`,
