@@ -1,6 +1,7 @@
 import { Anime } from "@/app/class/anime";
 import affiche from "@/assets/Animes/Baki/affiche.webp";
 import { getImage } from "./constants/images-saisons";
+import { getImageFilms } from "./constants/images-films";
 
 class Baki extends Anime {
   constructor() {
@@ -28,6 +29,17 @@ class Baki extends Anime {
       5: {
         name: "Saison 2 (2021)",
         image: () => getImage(5),
+      },
+    };
+
+    this.FILM_OPTIONS = {
+      SCRIPT_URL: (lang) =>
+        `https://anime-sama.fr/catalogue/baki/film/${lang}/episodes.js`,
+      names: {
+        1: {
+          name: "Baki vs Kengan",
+          image: () => getImageFilms(1),
+        },
       },
     };
 
